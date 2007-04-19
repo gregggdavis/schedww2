@@ -998,6 +998,7 @@ namespace Scheduler.BusinessLayer {
 				com.Parameters["@NegetiveException"].Value = NegativeException;
 				com.Parameters["@RecurrenceText"].Value = RecurrenceText;
 				//com.Parameters["@RecurrenceFlag"].Value = RecurrenceFlag;
+                if (EventStatus < 0) EventStatus = 1;
 				com.Parameters["@EventStatus"].Value = EventStatus;
 				com.Parameters["@CreatedByUserId"].Value = Common.LogonID;
 				com.Parameters["@DateCreated"].Value = DateTime.Now;
@@ -1065,6 +1066,7 @@ namespace Scheduler.BusinessLayer {
 				com.Parameters["@NegetiveException"].Value = NegativeException;
 				com.Parameters["@RecurrenceText"].Value = RecurrenceText;
 				//com.Parameters["@RecurrenceFlag"].Value = RecurrenceFlag;
+                if (EventStatus < 0) EventStatus = 1;
 				com.Parameters["@EventStatus"].Value = EventStatus;
 				com.Parameters["@DateCreated"].Value = DateTime.Now;
 				com.Parameters["@DateLastModified"].Value = DateTime.Now;
