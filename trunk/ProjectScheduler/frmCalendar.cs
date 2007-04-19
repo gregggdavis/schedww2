@@ -952,6 +952,7 @@ this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
                         if (StartDatePickerTop.Checked) printStyle.StartRangeDate = CalendarFilter.StartDate;
                         if (EndDatePickerTop.Checked) printStyle.EndRangeDate = CalendarFilter.EndDate;
                     }
+                    Common.FontSize = 8.25f;
 					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 2);
 					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize);
 					schedulerPrintStyle.PageSettings.Margins = new Margins(0, 0, 0, 0);
