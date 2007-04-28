@@ -123,8 +123,12 @@
     <Reference Include="DevExpress.XtraVerticalGrid.v7.1, Version=7.1.1.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="FlatToolBar, Version=1.0.1579.21453, Culture=neutral" />
-    <Reference Include="MagicLibrary, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3a6eb82f876a49bc" />
+    <Reference Include="FlatToolBar, Version=1.0.1579.21453, Culture=neutral">
+      <HintPath>bin\Debug\FlatToolBar.dll</HintPath>
+    </Reference>
+    <Reference Include="MagicLibrary, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3a6eb82f876a49bc">
+      <HintPath>bin\Debug\MagicLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>

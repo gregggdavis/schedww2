@@ -1315,7 +1315,7 @@ namespace Scheduler.BusinessLayer
 				{
 					sql += "AND EventID <> " + eventid.ToString() + " ";
 				}
-
+                sql += " AND CalendarEventStatus = 0";
 				con=new Connection();
 				con.Connect();
 				com = new SqlCommand();
@@ -1351,8 +1351,10 @@ namespace Scheduler.BusinessLayer
 					{
 						sql += "AND EventID <> " + eventid.ToString() + " ";
 					}
+                    sql += " AND CalendarEventStatus = 0";
 
 					com.CommandText = sql;
+
 					Reader = com.ExecuteReader();
 					if(Reader.HasRows) intID=1;
 					if(Reader.Read())
