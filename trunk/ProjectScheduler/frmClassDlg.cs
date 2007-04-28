@@ -5060,6 +5060,8 @@ namespace Scheduler
             objEvent.RepeatRule = XMLData_Initial;
             objEvent.NegativeException = "";
             objEvent.Description = txtDescription_I.Text;
+            if (cmbEventStatus_I.SelectedIndex == -1)
+                cmbEventStatus_I.SelectedIndex = 0;
             objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
 
             if (IsRecurrenceFlag_Initial > 0)
@@ -5321,8 +5323,6 @@ namespace Scheduler
             }
 
         }
-
-        
 
         private void btnEventSave_Click(object sender, System.EventArgs e)
         {
