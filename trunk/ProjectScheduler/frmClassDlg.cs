@@ -14,9 +14,10 @@ namespace Scheduler
 	/// Summary description for frmClassDlg.
 	/// </summary>
 	public class frmClassDlg : System.Windows.Forms.Form
-	{
-		#region Controls 
-		private TabControl tbcCourse;
+    {
+        #region Initialization
+        #region Controls
+        private TabControl tbcCourse;
 		private TabPage tbpCourse;
 		private TabPage tbpDescription;
 		private TabPage tbpSpecialRemarks;
@@ -131,7 +132,8 @@ namespace Scheduler
 		private Button btnRecurrence;
 		#endregion Controls
 
-		private int intProgramID=0;
+        #region Declarations
+        private int intProgramID=0;
 		private bool deleted=false;
 		private int intClientID=0;
 		private int intDepartmentID=0;
@@ -195,8 +197,10 @@ namespace Scheduler
 		private PageSettings ps=null;
         private CheckBox chkEventModified;
         NormalPrinting nm = null;
+        #endregion
 
-		public frmClassDlg()
+        #region Constructors
+        public frmClassDlg()
 		{
 			InitializeComponent();
 
@@ -397,9 +401,9 @@ namespace Scheduler
 			}
 			//tbcCourse_SelectedIndexChanged(tbcCourse, new EventArgs());
 			//txtNote_I.Height = 150;
-		}
-
-		/// <summary>
+        }
+        #endregion
+        /// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
@@ -2135,8 +2139,10 @@ namespace Scheduler
 
 		}
 		#endregion
+        #endregion
 
-		private string _mode="";
+        #region Loading
+        private string _mode="";
 		private int  _courseid=0;
 
 		public string Mode
@@ -2720,10 +2726,11 @@ namespace Scheduler
                 new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
             g.DrawString("Class Information", _font, new SolidBrush(label1.ForeColor), 20, 40, new StringFormat());
         }
+        #endregion
 
-		#region Methods for Events
+        #region Methods for Events
 
-		private void OpenInstructor(object sender)
+        private void OpenInstructor(object sender)
 		{
 			ComboBox cbx = (ComboBox)sender;
 			frmInstructorDlg fContDlg=new frmInstructorDlg();
@@ -2943,744 +2950,6 @@ namespace Scheduler
 			return true;
 		}
 
-		private bool IsValid()
-		{
-			if(txtName_I.Text=="")
-			{
-				BusinessLayer.Message.MsgInformation("Enter Event Name");
-				txtName_I.Focus();
-				return false;
-			}
-
-			try
-			{
-				if(cmbStartTime.Text=="")
-				{
-					BusinessLayer.Message.MsgInformation("Enter Event Start Time");
-					cmbStartTime.Focus();
-					return false;
-				}
-				if(cmbEndTime.Text=="")
-				{
-					BusinessLayer.Message.MsgInformation("Enter Event End Time");
-					cmbEndTime.Focus();
-					return false;
-				}
-				
-				string strStart = dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text;
-				string strFinish = dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text;
-				dtStart.Value = Convert.ToDateTime(strStart);
-				dtEnd.Value = Convert.ToDateTime(strFinish);
-			}
-			catch{}
-
-			if(!boolNoOfRecords_Initial)
-			{
-				if(dtEnd.Value<dtStart.Value)
-				{
-					BusinessLayer.Message.MsgInformation("Start Date/Time must be before End Date/Time");
-					dtStart.Focus();
-					return false;
-				}
-			}
-			return true;
-		}
-
-		private void SaveEventData(ref int _eventid)
-		{
-			bool boolSuccess;
-			objEvent=null;
-			
-			if(File.Exists(strAppPath))
-			{
-				StreamReader re = File.OpenText(strAppPath);
-				XMLData_Initial = re.ReadToEnd();
-				re.Close();
-				re=null;
-			}
-			else 
-			{
-				XMLData_Initial="";
-				IsRecurrenceFlag_Initial=0;
-			}
-			
-			objEvent=new Scheduler.BusinessLayer.Events();
-			objEvent.EventID=0;
-			objEvent.RepeatRule = XMLData_Initial;
-			objEvent.NegativeException = "";
-			objEvent.Description = txtDescription_I.Text;
-			objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
-			
-			if(IsRecurrenceFlag_Initial>0)
-				objEvent.RecurrenceText = lblRecurrenceText_I.Text;
-			else
-				objEvent.RecurrenceText = "";
-
-			if(_eventid<=0)
-			{
-				if(objEvent.Exists())
-				{
-					Scheduler.BusinessLayer.Message.MsgInformation("Duplicate Course Name not allowed");
-					txtName_I.Focus();
-					return;
-				}
-				boolSuccess = objEvent.InsertData();
-				_eventid_Initial = objEvent.EventID;
-				_eventid = objEvent.EventID;
-				setEventID(objEvent.EventID);
-			}
-			else
-			{
-				objEvent.EventID=_eventid;
-				boolSuccess = objEvent.UpdateData();
-			}
-			if(!boolSuccess)
-			{
-				if(_eventid==0)
-					Scheduler.BusinessLayer.Message.ShowException("Inserting Event record.", objEvent.Message);
-				else
-					Scheduler.BusinessLayer.Message.ShowException("Updating Event record.", objEvent.Message);
-				return;
-			}
-		}
-
-		//These methods re-generate the series using the Repeat Rules
-        private void GenerateEvent(int _eventid, int IsRecur, DateTime date1, DateTime date2)
-		{
-			DateTime StartDate1 = date1;
-			DateTime EndDate1 = date2;
-
-			if(IsRecur>0)
-			{
-				if(ReccType=="Daily")
-				{
-					if(Pattern1!="")
-					{
-						GenerateDataForDaily(_eventid, "EveryDay", date1, date2);
-					}
-					else if(Pattern2!="")
-					{
-						GenerateDataForDaily(_eventid, "EveryWeekDay", date1, date2);
-					}
-				}
-				else if(ReccType=="Weekly")
-				{
-					if(Pattern1!="")
-					{
-						GenerateDataForWeekly(_eventid, date1, date2);
-					}
-				}
-				else if(ReccType=="Monthly")
-				{
-					if(Pattern1!="")
-					{
-						GenerateDataForMonthly(_eventid, date1, date2);
-					}
-				}
-				else if(ReccType=="Yearly")
-				{
-					if(Pattern1!="")
-					{
-						GenerateDataForYearly(_eventid, date1, date2);
-					}
-				}
-			}
-			else
-			{
-				//No Recurrence....
-				SaveCalendarEvent(_eventid, StartDate1, EndDate1);
-			}
-
-		}
-
-		private void GenerateDataForDaily(int _eventid, string option, DateTime date1, DateTime date2)
-		{
-			//dtStart
-			//dtEnd
-			int NoOfRecords=0;
-			DateTime StartDate1=Convert.ToDateTime(null);
-			StartDate1 = date1;
-
-			if(NoEntries=="")
-			{
-				TimeSpan ts = date2 - StartDate1;
-				NoOfRecords = ts.Days;
-				NoOfRecords++;
-			}
-			else 
-			{
-				NoOfRecords = Convert.ToInt16(NoEntries);
-				if(option=="EveryWeekDay")
-				{
-					NoOfRecords = NoOfRecords*7;
-				}
-			}
-
-			if(option=="EveryDay")
-			{
-				while(NoOfRecords>0)
-				{
-					SaveCalendarEvent(_eventid, StartDate1, StartDate1);
-					StartDate1 = StartDate1.AddDays(1);
-					NoOfRecords--;
-				}
-			}
-			else if(option=="EveryWeekDay")
-			{
-				bool boolOk=false;
-				while(NoOfRecords>0)
-				{
-					if((Pattern2=="Monday") && (StartDate1.DayOfWeek==DayOfWeek.Monday)) boolOk=true;
-					else if((Pattern2=="Tuesday") && (StartDate1.DayOfWeek==DayOfWeek.Tuesday)) boolOk=true;
-					else if((Pattern2=="Wednesday") && (StartDate1.DayOfWeek==DayOfWeek.Wednesday)) boolOk=true;
-					else if((Pattern2=="Thursday") && (StartDate1.DayOfWeek==DayOfWeek.Thursday)) boolOk=true;
-					else if((Pattern2=="Friday") && (StartDate1.DayOfWeek==DayOfWeek.Friday)) boolOk=true;
-					else if((Pattern2=="Saturday") && (StartDate1.DayOfWeek==DayOfWeek.Saturday)) boolOk=true;
-					else if((Pattern2=="Sunday") && (StartDate1.DayOfWeek==DayOfWeek.Sunday)) boolOk=true;
-
-					if(boolOk)
-					{
-						//MessageBox.Show(StartDate.ToString());
-						SaveCalendarEvent(_eventid, StartDate1, StartDate1);
-					}
-					StartDate1 = StartDate1.AddDays(1);
-					NoOfRecords--;
-					
-					boolOk=false;
-				}
-			}
-		}
-
-		private void GenerateDataForWeekly(int _eventid, DateTime date1, DateTime date2)
-		{
-			int NoOfRecords=0;
-			DateTime StartDate1=Convert.ToDateTime(null);
-			StartDate1 = date1;
-
-			int WeekNo=0;
-			string WeekDay="";
-
-			WeekNo = Convert.ToInt16(Pattern1);
-			
-			string[] arr = Pattern2.Split(new char[]{'|'});
-			int counter=arr.Length-1;
-			WeekDay = Pattern2;
-
-			bool boolEntries=false;
-			if(NoEntries=="")
-			{
-				TimeSpan ts = date2 - StartDate1;
-				NoOfRecords = ts.Days;
-				NoOfRecords++;
-			}
-			else 
-			{
-				NoOfRecords = Convert.ToInt16(NoEntries);
-				boolEntries=true;
-			}
-
-			bool boolOk=false;
-			int cnt=0;
-			while(NoOfRecords>0)
-			{
-				foreach(string s in arr)
-				{
-					if(s!="")
-					{
-						boolOk=false;
-						if((s=="Monday") && (StartDate1.DayOfWeek==DayOfWeek.Monday)) boolOk=true;
-						else if((s=="Tuesday") && (StartDate1.DayOfWeek==DayOfWeek.Tuesday)) boolOk=true;
-						else if((s=="Wednesday") && (StartDate1.DayOfWeek==DayOfWeek.Wednesday)) boolOk=true;
-						else if((s=="Thursday") && (StartDate1.DayOfWeek==DayOfWeek.Thursday)) boolOk=true;
-						else if((s=="Friday") && (StartDate1.DayOfWeek==DayOfWeek.Friday)) boolOk=true;
-						else if((s=="Saturday") && (StartDate1.DayOfWeek==DayOfWeek.Saturday)) boolOk=true;
-						else if((s=="Sunday") && (StartDate1.DayOfWeek==DayOfWeek.Sunday)) boolOk=true;
-
-						if(boolOk)
-						{
-							if(cnt<counter)
-							{
-								if(boolOk)
-								{
-									boolOk=false;
-								}
-								SaveCalendarEvent(_eventid, StartDate1, StartDate1);
-								if(boolEntries) NoOfRecords--;
-							}
-							cnt++;
-						}
-					}
-				}
-				if(cnt==WeekNo*counter) cnt=0;
-				StartDate1 = StartDate1.AddDays(1);
-				if(boolEntries==false) NoOfRecords--;
-			}
-		}
-
-		private void GenerateDataForMonthly(int _eventid, DateTime date1, DateTime date2)
-		{
-			int NoOfRecords=0;
-			DateTime StartDate1=Convert.ToDateTime(null);
-			StartDate1 = date1;
-
-			int DayNo=0;
-			int MonthFreqiency=0;
-
-			DayNo = Convert.ToInt16(Pattern1);
-			MonthFreqiency = Convert.ToInt16(Pattern2);
-
-			if(NoEntries=="")
-			{
-				TimeSpan ts = date2 - StartDate1;
-				NoOfRecords = ts.Days;
-				NoOfRecords++;
-			}
-			else 
-			{
-				NoOfRecords = Convert.ToInt16(NoEntries);
-				DateTime dtCaclEnd = StartDate1.AddMonths(NoOfRecords);
-				TimeSpan ts = new TimeSpan();
-				ts = dtCaclEnd.Subtract(StartDate1);
-				NoOfRecords = (int)Math.Round(ts.TotalDays,0);
-			}
-
-			bool boolOk=false;
-			int cnt=0;
-			while(NoOfRecords>0)
-			{
-				if(StartDate1.Day==DayNo) boolOk=true;
-				if(boolOk)
-				{
-					if(cnt==0)
-					{
-						//MessageBox.Show(StartDate.ToString());
-						SaveCalendarEvent(_eventid, StartDate1, StartDate1);
-					}
-					cnt++;
-					if(cnt==MonthFreqiency) cnt=0;
-				}
-				StartDate1 = StartDate1.AddDays(1);
-				NoOfRecords--;
-					
-				boolOk=false;
-			}
-		}
-
-		private void GenerateDataForYearly(int _eventid, DateTime date1, DateTime date2)
-		{
-			int NoOfRecords=0;
-			DateTime StartDate1=Convert.ToDateTime(null);
-			StartDate1 = date1;
-
-			string Month="";
-			int DayNo=0;
-
-			Month = Pattern1;
-			DayNo = Convert.ToInt16(Pattern2);
-
-			if(NoEntries=="")
-			{
-				TimeSpan ts = date2 - StartDate1;
-				NoOfRecords = ts.Days;
-				NoOfRecords++;
-			}
-			else 
-			{
-				NoOfRecords = Convert.ToInt16(NoEntries);
-				NoOfRecords = NoOfRecords*366;
-			}
-
-			int MonthNo=0;
-			bool boolOk=false;
-
-			if(Month=="January") MonthNo=1;
-			else if(Month=="February") MonthNo=2;
-			else if(Month=="March") MonthNo=3;
-			else if(Month=="April") MonthNo=4;
-			else if(Month=="May") MonthNo=5;
-			else if(Month=="June") MonthNo=6;
-			else if(Month=="July") MonthNo=7;
-			else if(Month=="August") MonthNo=8;
-			else if(Month=="September") MonthNo=9;
-			else if(Month=="October") MonthNo=10;
-			else if(Month=="November") MonthNo=11;
-			else if(Month=="December") MonthNo=12;
-
-			while(NoOfRecords>0)
-			{
-				if((StartDate1.Day==DayNo) && (StartDate1.Month==MonthNo)) boolOk=true;
-				if(boolOk)
-				{
-					//MessageBox.Show(StartDate.ToString());
-					SaveCalendarEvent(_eventid, StartDate1, StartDate1);
-				}
-				StartDate1 = StartDate1.AddDays(1);
-				NoOfRecords--;
-					
-				boolOk=false;
-			}
-		}
-
-		private bool SaveCalendarEvent(int _eventid, DateTime mStart, DateTime mEnd)
-		{
-			if(!AutoSave)
-			{
-				if(dtblDates!=null)
-				{
-					dtblDates.Rows.Add(new object[]{mStart, mEnd});
-				}
-				return true;
-			}
-			
-			bool boolSuccess=false;
-			string StartTime="";
-			string EndTime="";
-			int startlength=8;
-			int endlength=8;
-
-			if(objEvent==null) objEvent	= new Scheduler.BusinessLayer.Events();
-			objEvent.EventID = _eventid;
-			objEvent.Name = txtName_I.Text;
-			objEvent.NamePhonetic = txtPhonetic_I.Text;
-			objEvent.NameRomaji = txtRomaji_I.Text;
-
-			string[] arr1 = cmbTeacher1_I.Text.Split(new char[]{','});
-			string[] arr2 = cmbTeacher1_I.Text.Split(new char[]{','});
-
-			string str1="", str2="";
-			str1 = arr1[0].Trim();
-			if(arr1.Length>1) str2 = arr1[1].Trim();
-
-			objEvent.SchedulerTeacherID = Common.GetTeacherID(
-				"Select ContactID From Contact " +
-				"Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
-				);
-
-			str1="";
-			str2="";
-			arr1 = cmbTeacher2_I.Text.Split(new char[]{','});
-			arr2 = cmbTeacher2_I.Text.Split(new char[]{','});
-			str1 = arr2[0].Trim();
-			if(arr2.Length>1) str2 = arr2[1].Trim();
-
-			objEvent.RealTeacherID = Common.GetTeacherID(
-				"Select ContactID From Contact " +
-				"Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
-				);
-
-			//objEvent.EventType = cmbEventType_I.SelectedIndex;
-            objEvent.EventType = cmbEventType_I.Text;
-			objEvent.Location = txtLocation_I.Text;
-			objEvent.BlockCode = cmbBlock_I.Text;
-			objEvent.RoomNo = txtRoomNo_I.Text;
-			objEvent.ChangeReason = txtChangeReason_I.Text;
-
-			try
-			{
-				startlength = cmbStartTime.Text.Length;
-				endlength = cmbEndTime.Text.Length;
-
-				StartTime = mStart.ToShortDateString() + " " + cmbStartTime.Text.Trim();
-				EndTime = mEnd.ToShortDateString() + " " + cmbEndTime.Text.Trim();
-
-				mStart=Convert.ToDateTime(StartTime);
-				mEnd=Convert.ToDateTime(EndTime);
-			}
-			catch{}
-			objEvent.StartDate = mStart;
-			objEvent.EndDate = mEnd;
-			objEvent.DateCompleted = dtDateComplete_I.Value;
-
-			if(chkIsHoliday.Checked)
-				objEvent.IsHoliday = 1;
-			else
-				objEvent.IsHoliday = 0;
-			
-			objEvent.Description = txtDescription_I.Text;
-			objEvent.Notes = txtNote_I.Text;
-			objEvent.ExceptionReason = cmbExceptionReason_I.Text;
-
-			objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
-
-			boolSuccess = objEvent.InsertCalendarEventData();
-			if(!boolSuccess)
-			{
-                if (_mode == "Add" || _mode == "AddClone")
-					Scheduler.BusinessLayer.Message.ShowException("Inserting Calendar Event record.", objEvent.Message);
-				else
-					Scheduler.BusinessLayer.Message.ShowException("Updating Calendar Event record.", objEvent.Message);
-			}
-
-			return boolSuccess;
-		}
-
-		private bool SaveCalendarData(int _eventid, int _calid, DateTime mStart, DateTime mEnd)
-		{
-			bool boolSuccess=false;
-			string StartTime="";
-			string EndTime="";
-			int startlength=8;
-			int endlength=8;
-
-			if(objEvent==null) objEvent	= new Scheduler.BusinessLayer.Events();
-			objEvent.EventID = _eventid;
-			objEvent.Name = txtName_I.Text;
-			objEvent.NamePhonetic = txtPhonetic_I.Text;
-			objEvent.NameRomaji = txtRomaji_I.Text;
-			objEvent.CalendarEventID = _calid;
-
-
-			string[] arr1 = cmbTeacher1_I.Text.Split(new char[]{','});
-			string[] arr2 = cmbTeacher1_I.Text.Split(new char[]{','});
-
-			string str1="", str2="";
-			str1 = arr1[0].Trim();
-			if(arr1.Length>1) str2 = arr1[1].Trim();
-
-			objEvent.SchedulerTeacherID = Common.GetTeacherID(
-				"Select ContactID From Contact " +
-				"Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
-				);
-
-			str1="";
-			str2="";
-			arr1 = cmbTeacher2_I.Text.Split(new char[]{','});
-			arr2 = cmbTeacher2_I.Text.Split(new char[]{','});
-			str1 = arr2[0].Trim();
-			if(arr2.Length>1) str2 = arr2[1].Trim();
-
-			objEvent.RealTeacherID = Common.GetTeacherID(
-				"Select ContactID From Contact " +
-				"Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
-				);
-
-			objEvent.ChangeReason = txtChangeReason_I.Text;
-			//objEvent.EventType = cmbEventType_I.SelectedIndex;
-            objEvent.EventType = cmbEventType_I.Text;
-			objEvent.Location = txtLocation_I.Text;
-			objEvent.BlockCode = cmbBlock_I.Text;
-			objEvent.RoomNo = txtRoomNo_I.Text;
-
-			try
-			{
-				startlength = cmbStartTime.Text.Length;
-				endlength = cmbEndTime.Text.Length;
-
-				StartTime = mStart.ToShortDateString() + " " + cmbStartTime.Text.Trim();
-				EndTime = mEnd.ToShortDateString() + " " + cmbEndTime.Text.Trim();
-
-				mStart=Convert.ToDateTime(StartTime);
-				mEnd=Convert.ToDateTime(EndTime);
-			}
-			catch{}
-			objEvent.StartDate = mStart;
-			objEvent.EndDate = mEnd;
-			objEvent.DateCompleted = dtDateComplete_I.Value;
-
-			if(chkIsHoliday.Checked)
-				objEvent.IsHoliday = 1;
-			else
-				objEvent.IsHoliday = 0;
-			
-			objEvent.Description = txtDescription_I.Text;
-			objEvent.Notes = txtNote_I.Text;
-			objEvent.ExceptionReason = cmbExceptionReason_I.Text;
-
-			objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
-
-			boolSuccess = objEvent.UpdateCalendarEventData();
-			if(!boolSuccess)
-			{
-				Scheduler.BusinessLayer.Message.ShowException("Updating Calendar Event record.", objEvent.Message);
-			}
-
-			return boolSuccess;
-		}
-
-		private bool SaveAllEvents(int _eventid)
-		{
-			string sConflictingEvent="";
-			if(!IsValid()) return false;
-
-			//check real teacher first
-			string strOverLapMess="";
-
-			//=============================
-			/*if(cmbClient.Text!="")
-			{
-				strOverLapMess = "-<" + cmbClient.Text + ">";
-				if(txtCourseName.Text!="")
-				{
-					strOverLapMess += "<" + txtCourseName.Text + ">";
-				}
-			}
-			strOverLapMess = strOverLapMess.Trim();*/
-			
-			AutoSave=false;
-			GenerateEvent(_eventid, IsRecurrenceFlag_Initial, dtStart.Value, dtEnd.Value);
-			AutoSave=true;
-
-			if(cmbTeacher2_I.Text.Trim()!="")
-			{
-				bool Ok=false;
-				if(dtblDates==null)
-				{
-					Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Real", ref strOverLapMess);
-				}
-				else
-				{
-					foreach(DataRow dr in dtblDates.Rows)
-					{
-						Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Real", dr[0].ToString(), dr[1].ToString(), ref strOverLapMess);
-						if(Ok) break;
-					}
-				}
-				if(Ok)
-				{
-					DialogResult dlg = 
-						BusinessLayer.Message.MsgConfirmation(
-						"<" + cmbTeacher2_I.Text + "> is already scheduled in <" + 
-						sConflictingEvent + ">" + strOverLapMess +
-						"\nDo you still wish to save this event?");
-					if(dlg==DialogResult.No) 
-					{
-						//if(File.Exists(strAppPath))
-						//{
-						//	File.Delete(strAppPath);
-						//}
-						IsEventChanged = false;
-						return false;
-					}
-				}
-			}
-			else
-			{
-				//if real instructor blank check scheduled teacher
-				bool Ok=false;
-				if(dtblDates==null)
-				{
-					Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Scheduled", ref strOverLapMess);
-				}
-				else
-				{
-					foreach(DataRow dr in dtblDates.Rows)
-					{
-						Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Scheduled", dr[0].ToString(), dr[1].ToString(), ref strOverLapMess);
-						if(Ok) break;
-					}
-				}
-				if(Ok)
-				{
-					DialogResult dlg = 
-						BusinessLayer.Message.MsgConfirmation(
-						"<" + cmbTeacher1_I.Text + "> is already scheduled in <" + 
-						sConflictingEvent + ">" + strOverLapMess +
-						"\nDo you still wish to save this event?");
-					if(dlg==DialogResult.No) 
-					{
-						//if(File.Exists(strAppPath))
-						//{
-						//	File.Delete(strAppPath);
-						//}
-						IsEventChanged = false;
-						return false;
-					}
-				}
-			}
-
-			//=============================
-
-			if(boolSaveSeries_initial)
-			{
-				SaveEventData(ref _eventid);
-				objEvent.DeleteCalendarEvent();
-				GenerateEvent(_eventid, IsRecurrenceFlag_Initial, dtStart.Value, dtEnd.Value);
-			}
-			else
-			{
-				int _calid=0;
-                /*
-				if(tbcCourse.SelectedTab==tbpInitial)
-					_calid = calendareventid[0];
-				else if(tbcCourse.SelectedTab==tbpMidterm)
-					_calid = calendareventid[1];
-				else if(tbcCourse.SelectedTab==tbpFinal)
-					_calid = calendareventid[2];
-                */
-				if(tbcCourse.SelectedTab==tbpClassEvent)
-					_calid = calendareventid[3];
-
-				SaveCalendarData(_eventid, _calid, dtStart.Value, dtEnd.Value);
-			}
-		
-			_eventid_Initial = _eventid;
-			return true;
-		}
-
-		private bool doSaveEvents(int _eventid)
-		{
-			this.Cursor = Cursors.WaitCursor;
-			try
-			{
-				if(SaveAllEvents(_eventid))
-				{
-					IsEventChanged=false;
-
-					ShowEventDetails((TabPage)pnlEvent.Parent);
-					if(pnlEvent.Parent==tbpClassEvent)
-					{
-						eventid[3] = _eventid_Initial;
-						calendareventid[3] = _calendareventid_Initial;
-					}/*
-					else if(pnlEvent.Parent==tbpInitial)
-					{
-						eventid[0] = _eventid_Initial;
-						calendareventid[0] = _calendareventid_Initial;
-					}
-					else if(pnlEvent.Parent==tbpMidterm)
-					{
-						eventid[1] = _eventid_Initial;
-						calendareventid[1] = _calendareventid_Initial;
-					}
-					else if(pnlEvent.Parent==tbpFinal)
-					{
-						eventid[2] = _eventid_Initial;
-						calendareventid[2] = _calendareventid_Initial;
-					}*/
-
-					_eventid_Initial=0;
-					_calendareventid_Initial=0;
-
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			finally
-			{
-				this.Cursor = Cursors.Default;
-			}
-
-		}
-
-		private int GetCurrentEventID(TabPage tbp)
-		{
-			int _eventid=0;
-            /*
-			if(tbp==tbpInitial)
-				_eventid=eventid[0];
-			else if(tbp==tbpMidterm)
-				_eventid=eventid[1];
-			else if(tbp==tbpFinal)
-				_eventid=eventid[2];
-			else*/ if(tbp==tbpClassEvent)
-				_eventid=eventid[3];
-
-			return _eventid;
-		}
-
 		private void InitializeEventForm()
 		{
 			lblRecurrenceText1_I.Visible=false;
@@ -3770,346 +3039,7 @@ namespace Scheduler
 			cmbEventType_I.SelectedIndex=0;
 		}
 
-        //Generic method, CalendarID == 0 means we're opening as series
-        private void LoadEvent(int _eventid, int CalendarID)
-		{
-            if(_eventid==0) return;
-			_curreventid = _eventid;
-			DataTable dtbl=null;
-
-			objEvent=new Scheduler.BusinessLayer.Events();
-			objEvent.EventID = _eventid;
-
-			//pnlTop_I.Visible=false;
-			//btn_ClearRecc.Visible=true;
-			
-			if(CalendarID>0) objEvent.CalendarEventID=CalendarID;
-			dtbl = objEvent.LoadData();
-
-			if(dtbl.Rows.Count<=0)
-			{
-				_eventid=0;
-				CalendarID=0;
-				_calendareventid_Initial=0;
-				_eventid_Initial=0;
-			}
-			
-            if(CalendarID!=0)
-			{
-                //means opening a single occurrence
-				pnlTop_I.Visible=true;
-				pnlBottom.Visible = false;
-				objEvent.CalendarEventID=CalendarID;
-				boolSaveSeries_initial=false;
-			}
-			else
-			{
-                pnlTop_I.Visible = false;
-                pnlBottom.Visible = true;
-                //Commented our because the 'Clear Recurrence' button should not be visible for non-repeating class events
-                //btn_ClearRecc.Visible = true;
-                //boolSaveSeries_initial = true;
-			}
-
-			//Adjust Textbox height
-            if (pnlBottom.Visible)
-				txtNote_I.Height = 130;
-			else
-				txtNote_I.Height = 150;
-
-			if(dtbl.Rows.Count<=0)
-			{
-				InitializeEventForm();
-				return;
-			}
-			string strClient="", strDept="", strClass="", strProgram="";
-
-			foreach(DataRow dr in dtbl.Rows)
-			{
-				RepeatRule= dr["RepeatRule"].ToString();
-				NegativeException = dr["NegetiveException"].ToString();
-					
-				txtName_I.Text = dr["Name"].ToString();
-				txtPhonetic_I.Text = dr["NamePhonetic"].ToString();
-				txtRomaji_I.Text = dr["NameRomaji"].ToString();
-
-                if (dr["EventType"] != System.DBNull.Value)
-                {
-                    cmbEventType_I.SelectedIndex = cmbEventType_I.Items.IndexOf(dr["EventType"].ToString());
-                    //cmbEventType_I.SelectedIndex = Convert.ToInt16(dr["EventType"].ToString());
-                }
-                else
-                    cmbEventType_I.SelectedIndex = -1;
-
-                txtLocation_I.Text = dr["Location"].ToString();
-				cmbBlock_I.Text = dr["BlockCode"].ToString();
-				txtRoomNo_I.Text = dr["RoomNumber"].ToString();
-				txtDescription_I.Text = dr["Description"].ToString();
-				txtNote_I.Text = dr["Note"].ToString();
-				if(dr["ExceptionReason"]!=System.DBNull.Value)
-					cmbExceptionReason_I.Text = dr["ExceptionReason"].ToString();
-
-				cmbEventStatus_I.SelectedIndex = Convert.ToInt16(dr["EventStatus"].ToString());
-				cmbTeacher1_I.Text = dr["ScheduledTeacher"].ToString();
-				cmbTeacher2_I.Text = dr["RealTeacher"].ToString();
-				txtChangeReason_I.Text = dr["ChangeReason"].ToString();
-
-                if(dr["IsHoliday"]==System.DBNull.Value)
-					chkIsHoliday.Checked=false;
-				else
-					chkIsHoliday.Checked = (Convert.ToInt16(dr["IsHoliday"])>0);
-
-				XMLData_Initial = dr["RepeatRule"].ToString();
-
-				IsRecurrenceFlag_Initial = 0;
-				if(dr["RecurrenceText"]!=System.DBNull.Value)
-					if(dr["RecurrenceText"].ToString()!="")
-						IsRecurrenceFlag_Initial = 1;
-
-				if(IsRecurrenceFlag_Initial==1)
-				{
-                    //For loading series or one occurrence in a series
-					if(dtblDates==null)
-					{
-						dtblDates = new DataTable();
-						dtblDates.Columns.Add("StartDate", Type.GetType("System.DateTime"));
-						dtblDates.Columns.Add("EndDate", Type.GetType("System.DateTime"));
-					}
-					else
-					{
-						dtblDates.Rows.Clear();
-					}
-
-					FileInfo fi = new FileInfo(strAppPath);
-					StreamWriter Tex =fi.CreateText();
-					Tex.Write(XMLData_Initial);
-					Tex.Close();
-					Tex=null;
-
-					if(AP==null) AP = new Serialize();
-					AP = AP.Load(strAppPath);
-
-					if(AP==null)
-					{
-						dtStart.Value = Convert.ToDateTime(dr["StartDateTime"].ToString());
-						dtEnd.Value = Convert.ToDateTime(dr["EndDateTime"].ToString());
-
-						cmbStartTime.Text = Convert.ToDateTime(dr["StartDateTime"]).ToString("HH:mm");
-						SetTime(cmbEndTime, Convert.ToDateTime(dr["EndDateTime"]).ToString("HH:mm"));
-							
-						StartTime = cmbStartTime.Text;
-						EndTime = cmbEndTime.Text;
-					}
-					else
-					{
-						try
-						{
-							setToConfig();
-							dtStart.Value = Convert.ToDateTime(_startdate_Initial);
-							dtEnd.Value = Convert.ToDateTime(_enddate_Initial);
-
-							SetTime(cmbStartTime, Convert.ToDateTime(_startdate_Initial).ToString("HH:mm"));
-							SetTime(cmbEndTime, Convert.ToDateTime(_enddate_Initial).ToString("HH:mm"));
-
-							StartTime = cmbStartTime.Text;
-							EndTime = cmbEndTime.Text;
-                            SeforRecurrence(true);
-						}
-						catch{}
-					}
-				}
-				else
-				{
-					//For single class events that do not repeat.
-                    dtStart.Value = Convert.ToDateTime(dr["StartDateTime"].ToString());
-					dtEnd.Value = Convert.ToDateTime(dr["EndDateTime"].ToString());
-
-					StartTime = dtStart.Value.ToString("HH:mm");
-					EndTime = dtEnd.Value.ToString("HH:mm");
-					try
-					{
-						SetTime(cmbStartTime, Convert.ToDateTime(StartTime).ToString("HH:mm"));
-						SetTime(cmbEndTime, Convert.ToDateTime(EndTime).ToString("HH:mm"));
-					}
-					catch{}
-				}
-
-				if((_eventid>0) && (boolSaveSeries_initial==false))
-				{
-					dtStart.Value = Convert.ToDateTime(dr["StartDateTime"].ToString());
-					dtEnd.Value = Convert.ToDateTime(dr["EndDateTime"].ToString());
-
-					string StartTime="";
-					string EndTime="";
-					StartTime = dtStart.Value.ToString("HH:mm");
-					EndTime = dtEnd.Value.ToString("HH:mm");
-					try
-					{
-						//StartTime
-						StartTime = Convert.ToDateTime(StartTime).ToString("HH:mm");
-						if(StartTime.Substring(0,1)=="0")
-						{
-							StartTime = StartTime.Substring(1, StartTime.Length-1);
-						}
-						cmbStartTime.Text  = StartTime;
-						SetTime(cmbEndTime, Convert.ToDateTime(EndTime).ToString("HH:mm"));
-					}
-					catch{}
-				}
-
-				dtDateComplete_I.Value = Convert.ToDateTime(dr["DateCompleted"].ToString());
-					
-				StartDate = dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text;
-				EndDate = dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text;
-
-				break;
-			}
-
-            if (cmbEventStatus_I.SelectedIndex != 1 && cmbTeacher2_I.SelectedIndex <= 0 && cmbExceptionReason_I.SelectedIndex <= 0 && txtChangeReason_I.Text == "")
-                SetEventModificationControls(false);
-            else
-                SetEventModificationControls(true);
-		}
-
-		private void setEventID(int _eventid)
-		{/*
-			if(pnlEvent.Parent==tbpInitial)
-			{
-				eventid[0] = _eventid;
-			}
-			else if(pnlEvent.Parent==tbpMidterm)
-			{
-				eventid[1] = _eventid;
-			}
-			else if(pnlEvent.Parent==tbpFinal)
-			{
-				eventid[2] = _eventid;
-			}
-			else*/ if(pnlEvent.Parent==tbpClassEvent)
-			{
-				eventid[3] = _eventid;
-			}
-		}
-
-		private void ShowEventDetails(TabPage tbp)
-		{
-			//load Events if any
-			string strHint="";
-			Program objProgram=new Program();
-            /*
-			if(tbp==tbpInitial)
-			{
-				llblInitialEvt.Text = objProgram.getEventText(eventid[0].ToString(), "Initial", ref strHint);
-			}
-			else if(tbp==tbpMidterm)
-			{
-				llblMidEvt.Text = objProgram.getEventText(eventid[1].ToString(), "Midterm", ref strHint);
-			}
-			else if(tbp==tbpFinal)
-			{
-				llblFinalEvt.Text = objProgram.getEventText(eventid[2].ToString(), "Final", ref strHint);
-			}
-			else*/ if(tbp==tbpClassEvent)
-			{
-				llblEvent.Text = objProgram.getEventText(eventid[2].ToString(), "Final", ref strHint);
-			}
-		}
-
-		private bool IsCheckOverlapTime(int _eventid, 
-			ref string confilictingEvent, 
-			string instructortype,
-			ref string conflictMess)
-		{
-			bool Ok=false;
-			if(_eventid>0)
-			{
-				DateTime dtOS=Convert.ToDateTime(StartDate);
-				DateTime dtOE=Convert.ToDateTime(StartDate);
-
-				DateTime dtNS=Convert.ToDateTime(dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text);
-				DateTime dtNE=Convert.ToDateTime(dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text);
-
-				if((dtOS==dtNS) && (dtNE==dtOE))
-				{
-					Ok=false;
-					return false;
-				}
-			}
-			string[] arr1;
-			if(instructortype=="Scheduled")
-				arr1 = cmbTeacher1_I.Text.Split(new char[]{','});
-			else
-				arr1 = cmbTeacher2_I.Text.Split(new char[]{','});
-
-			string str1="", str2="";
-			str1 = arr1[0].Trim();
-			if(arr1.Length>1) str2 = arr1[1].Trim();
-
-			if((str1=="") && (str2=="")) return false;
-			int intTeacherID = Common.GetTeacherID(
-				"Select ContactID From Contact " +
-				"Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
-				);
-
-			int evtid = Common.CheckOverlapTime(intTeacherID, _eventid, instructortype, ref confilictingEvent,
-				dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text,
-				dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text);
-		
-			if(evtid>0)
-			{
-				string sOverlapMess=string.Empty;
-				sOverlapMess = Common.GetConflictMess(evtid);
-
-				conflictMess=sOverlapMess;
-
-				return true;
-			}
-			else return false;
-
-		}
-
-		private bool IsCheckOverlapTime(int _eventid, 
-			ref string confilictingEvent, 
-			string instructortype, 
-			string dt1, 
-			string dt2,
-			ref string conflictMess)
-		{
-			bool Ok=false;
-			string[] arr1;
-
-			if(instructortype=="Scheduled")
-				arr1 = cmbTeacher1_I.Text.Split(new char[]{','});
-			else
-				arr1 = cmbTeacher2_I.Text.Split(new char[]{','});
-
-			string str1="", str2="";
-			str1 = arr1[0].Trim();
-			if(arr1.Length>1) str2 = arr1[1].Trim();
-
-			if((str1=="") && (str2=="")) return false;
-			int intTeacherID = Common.GetTeacherID(
-				"Select ContactID From Contact " +
-				"Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
-				);
-
-			int evtid = Common.CheckOverlapTime(intTeacherID, _eventid, instructortype, ref confilictingEvent, 
-				dt1,
-				dt2);
-
-			if(evtid>0)
-			{
-				string sOverlapMess=string.Empty;
-				sOverlapMess = Common.GetConflictMess(evtid);
-
-				conflictMess=sOverlapMess;
-
-				return true;
-			}
-			else return false;
-
-		}
-
+        
 		#endregion
 
 		#region Control Events for Calendar
@@ -4202,14 +3132,7 @@ namespace Scheduler
 			boolNoOfRecords_Initial = false;
 		}
 
-		private void btnEventSave_Click(object sender, System.EventArgs e)
-		{
-			
-            IsEventChanged=true;
-			if(IsEventChanged==false) return;			
-			doSaveEvents(GetCurrentEventID(tbcCourse.SelectedTab));
-            
-		}
+		
 
 		private void tbcCourse_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
@@ -4603,9 +3526,13 @@ namespace Scheduler
 
 		#endregion
 
+        #region Event Handling
+
         private void btnSave_Click(object sender, System.EventArgs e)
         {
             btnEventSave_Click(sender, e); //fake call to save event. it is here to remove a save button. actually the code below is unclear to me sorry
+
+            #region Course Validation
             if (txtCourseName.Text == "")
             {
                 tbcCourse.SelectedIndex = 0;
@@ -4629,8 +3556,11 @@ namespace Scheduler
             }
 
             bool boolSuccess;
+            #endregion
+
             Scheduler.BusinessLayer.Course objCourse = null;
 
+            #region Setting Course Object
             objCourse = new Scheduler.BusinessLayer.Course();
             objCourse.CourseID = 0;
 
@@ -4684,7 +3614,9 @@ namespace Scheduler
                 objCourse.CourseID = _courseid;
                 boolSuccess = objCourse.UpdateData();
             }
+            #endregion
 
+            #region Handling the event saving
             if (IsEventChanged)
             {
                 DialogResult dlg = MessageBox.Show(this,
@@ -4738,7 +3670,7 @@ namespace Scheduler
                 }
             }
 
-
+            #endregion
             if (!boolSuccess)
             {
                 if (_mode == "Add")
@@ -5419,5 +4351,1109 @@ namespace Scheduler
             else
                 SetEventModificationControls(false);
         }
-	}
+        #endregion
+
+
+        #region Event Business Logic Handling
+
+        #region RulesHandling
+        //Generic method, CalendarID == 0 means we're opening as series
+
+        private void ShowEventDetails(TabPage tbp)
+        {
+            //load Events if any
+            string strHint = "";
+            Program objProgram = new Program();
+            
+			/*if(tbp==tbpInitial)
+			{
+				llblInitialEvt.Text = objProgram.getEventText(eventid[0].ToString(), "Initial", ref strHint);
+			}
+			else if(tbp==tbpMidterm)
+			{
+				llblMidEvt.Text = objProgram.getEventText(eventid[1].ToString(), "Midterm", ref strHint);
+			}
+			else if(tbp==tbpFinal)
+			{
+				llblFinalEvt.Text = objProgram.getEventText(eventid[2].ToString(), "Final", ref strHint);
+			}
+			else*/ if (tbp == tbpClassEvent)
+            {
+                llblEvent.Text = objProgram.getEventText(eventid[2].ToString(), "Final", ref strHint);
+            }
+        }
+
+        private bool IsCheckOverlapTime(int _eventid,
+            ref string confilictingEvent,
+            string instructortype,
+            ref string conflictMess)
+        {
+            bool Ok = false;
+            if (_eventid > 0)
+            {
+                DateTime dtOS = Convert.ToDateTime(StartDate);
+                DateTime dtOE = Convert.ToDateTime(StartDate);
+
+                DateTime dtNS = Convert.ToDateTime(dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text);
+                DateTime dtNE = Convert.ToDateTime(dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text);
+
+                if ((dtOS == dtNS) && (dtNE == dtOE))
+                {
+                    Ok = false;
+                    return false;
+                }
+            }
+            string[] arr1;
+            if (instructortype == "Scheduled")
+                arr1 = cmbTeacher1_I.Text.Split(new char[] { ',' });
+            else
+                arr1 = cmbTeacher2_I.Text.Split(new char[] { ',' });
+
+            string str1 = "", str2 = "";
+            str1 = arr1[0].Trim();
+            if (arr1.Length > 1) str2 = arr1[1].Trim();
+
+            if ((str1 == "") && (str2 == "")) return false;
+            int intTeacherID = Common.GetTeacherID(
+                "Select ContactID From Contact " +
+                "Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
+                );
+
+            int evtid = Common.CheckOverlapTime(intTeacherID, _eventid, instructortype, ref confilictingEvent,
+                dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text,
+                dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text);
+
+            if (evtid > 0)
+            {
+                string sOverlapMess = string.Empty;
+                sOverlapMess = Common.GetConflictMess(evtid);
+
+                conflictMess = sOverlapMess;
+
+                return true;
+            }
+            else return false;
+
+        }
+
+        private bool IsCheckOverlapTime(int _eventid,
+            ref string confilictingEvent,
+            string instructortype,
+            string dt1,
+            string dt2,
+            ref string conflictMess)
+        {
+            bool Ok = false;
+            string[] arr1;
+
+            if (instructortype == "Scheduled")
+                arr1 = cmbTeacher1_I.Text.Split(new char[] { ',' });
+            else
+                arr1 = cmbTeacher2_I.Text.Split(new char[] { ',' });
+
+            string str1 = "", str2 = "";
+            str1 = arr1[0].Trim();
+            if (arr1.Length > 1) str2 = arr1[1].Trim();
+
+            if ((str1 == "") && (str2 == "")) return false;
+            int intTeacherID = Common.GetTeacherID(
+                "Select ContactID From Contact " +
+                "Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
+                );
+
+            int evtid = Common.CheckOverlapTime(intTeacherID, _eventid, instructortype, ref confilictingEvent,
+                dt1,
+                dt2);
+
+            if (evtid > 0)
+            {
+                string sOverlapMess = string.Empty;
+                sOverlapMess = Common.GetConflictMess(evtid);
+
+                conflictMess = sOverlapMess;
+
+                return true;
+            }
+            else return false;
+
+        }
+
+        private void LoadEvent(int _eventid, int CalendarID)
+        {
+            if (_eventid == 0) return;
+            _curreventid = _eventid;
+            DataTable dtbl = null;
+
+            objEvent = new Scheduler.BusinessLayer.Events();
+            objEvent.EventID = _eventid;
+
+            //pnlTop_I.Visible=false;
+            //btn_ClearRecc.Visible=true;
+
+            if (CalendarID > 0) objEvent.CalendarEventID = CalendarID;
+            dtbl = objEvent.LoadData();
+
+            if (dtbl.Rows.Count <= 0)
+            {
+                _eventid = 0;
+                CalendarID = 0;
+                _calendareventid_Initial = 0;
+                _eventid_Initial = 0;
+            }
+
+            if (CalendarID != 0)
+            {
+                //means opening a single occurrence
+                pnlTop_I.Visible = true;
+                pnlBottom.Visible = false;
+                objEvent.CalendarEventID = CalendarID;
+                boolSaveSeries_initial = false;
+            }
+            else
+            {
+                pnlTop_I.Visible = false;
+                pnlBottom.Visible = true;
+                //Commented our because the 'Clear Recurrence' button should not be visible for non-repeating class events
+                //btn_ClearRecc.Visible = true;
+                //boolSaveSeries_initial = true;
+            }
+
+            //Adjust Textbox height
+            if (pnlBottom.Visible)
+                txtNote_I.Height = 130;
+            else
+                txtNote_I.Height = 150;
+
+            if (dtbl.Rows.Count <= 0)
+            {
+                InitializeEventForm();
+                return;
+            }
+            string strClient = "", strDept = "", strClass = "", strProgram = "";
+
+            foreach (DataRow dr in dtbl.Rows)
+            {
+                RepeatRule = dr["RepeatRule"].ToString();
+                NegativeException = dr["NegetiveException"].ToString();
+
+                txtName_I.Text = dr["Name"].ToString();
+                txtPhonetic_I.Text = dr["NamePhonetic"].ToString();
+                txtRomaji_I.Text = dr["NameRomaji"].ToString();
+
+                if (dr["EventType"] != System.DBNull.Value)
+                {
+                    cmbEventType_I.SelectedIndex = cmbEventType_I.Items.IndexOf(dr["EventType"].ToString());
+                    //cmbEventType_I.SelectedIndex = Convert.ToInt16(dr["EventType"].ToString());
+                }
+                else
+                    cmbEventType_I.SelectedIndex = -1;
+
+                txtLocation_I.Text = dr["Location"].ToString();
+                cmbBlock_I.Text = dr["BlockCode"].ToString();
+                txtRoomNo_I.Text = dr["RoomNumber"].ToString();
+                txtDescription_I.Text = dr["Description"].ToString();
+                txtNote_I.Text = dr["Note"].ToString();
+                if (dr["ExceptionReason"] != System.DBNull.Value)
+                    cmbExceptionReason_I.Text = dr["ExceptionReason"].ToString();
+
+                cmbEventStatus_I.SelectedIndex = Convert.ToInt16(dr["EventStatus"].ToString());
+                cmbTeacher1_I.Text = dr["ScheduledTeacher"].ToString();
+                cmbTeacher2_I.Text = dr["RealTeacher"].ToString();
+                txtChangeReason_I.Text = dr["ChangeReason"].ToString();
+
+                if (dr["IsHoliday"] == System.DBNull.Value)
+                    chkIsHoliday.Checked = false;
+                else
+                    chkIsHoliday.Checked = (Convert.ToInt16(dr["IsHoliday"]) > 0);
+
+                XMLData_Initial = dr["RepeatRule"].ToString();
+
+                IsRecurrenceFlag_Initial = 0;
+                if (dr["RecurrenceText"] != System.DBNull.Value)
+                    if (dr["RecurrenceText"].ToString() != "")
+                        IsRecurrenceFlag_Initial = 1;
+
+                if (IsRecurrenceFlag_Initial == 1)
+                {
+                    //For loading series or one occurrence in a series
+                    if (dtblDates == null)
+                    {
+                        dtblDates = new DataTable();
+                        dtblDates.Columns.Add("StartDate", Type.GetType("System.DateTime"));
+                        dtblDates.Columns.Add("EndDate", Type.GetType("System.DateTime"));
+                    }
+                    else
+                    {
+                        dtblDates.Rows.Clear();
+                    }
+
+                    FileInfo fi = new FileInfo(strAppPath);
+                    StreamWriter Tex = fi.CreateText();
+                    Tex.Write(XMLData_Initial);
+                    Tex.Close();
+                    Tex = null;
+
+                    if (AP == null) AP = new Serialize();
+                    AP = AP.Load(strAppPath);
+
+                    if (AP == null)
+                    {
+                        dtStart.Value = Convert.ToDateTime(dr["StartDateTime"].ToString());
+                        dtEnd.Value = Convert.ToDateTime(dr["EndDateTime"].ToString());
+
+                        cmbStartTime.Text = Convert.ToDateTime(dr["StartDateTime"]).ToString("HH:mm");
+                        SetTime(cmbEndTime, Convert.ToDateTime(dr["EndDateTime"]).ToString("HH:mm"));
+
+                        StartTime = cmbStartTime.Text;
+                        EndTime = cmbEndTime.Text;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            setToConfig();
+                            dtStart.Value = Convert.ToDateTime(_startdate_Initial);
+                            dtEnd.Value = Convert.ToDateTime(_enddate_Initial);
+
+                            SetTime(cmbStartTime, Convert.ToDateTime(_startdate_Initial).ToString("HH:mm"));
+                            SetTime(cmbEndTime, Convert.ToDateTime(_enddate_Initial).ToString("HH:mm"));
+
+                            StartTime = cmbStartTime.Text;
+                            EndTime = cmbEndTime.Text;
+                            SeforRecurrence(true);
+                        }
+                        catch { }
+                    }
+                }
+                else
+                {
+                    //For single class events that do not repeat.
+                    dtStart.Value = Convert.ToDateTime(dr["StartDateTime"].ToString());
+                    dtEnd.Value = Convert.ToDateTime(dr["EndDateTime"].ToString());
+
+                    StartTime = dtStart.Value.ToString("HH:mm");
+                    EndTime = dtEnd.Value.ToString("HH:mm");
+                    try
+                    {
+                        SetTime(cmbStartTime, Convert.ToDateTime(StartTime).ToString("HH:mm"));
+                        SetTime(cmbEndTime, Convert.ToDateTime(EndTime).ToString("HH:mm"));
+                    }
+                    catch { }
+                }
+
+                if ((_eventid > 0) && (boolSaveSeries_initial == false))
+                {
+                    dtStart.Value = Convert.ToDateTime(dr["StartDateTime"].ToString());
+                    dtEnd.Value = Convert.ToDateTime(dr["EndDateTime"].ToString());
+
+                    string StartTime = "";
+                    string EndTime = "";
+                    StartTime = dtStart.Value.ToString("HH:mm");
+                    EndTime = dtEnd.Value.ToString("HH:mm");
+                    try
+                    {
+                        //StartTime
+                        StartTime = Convert.ToDateTime(StartTime).ToString("HH:mm");
+                        if (StartTime.Substring(0, 1) == "0")
+                        {
+                            StartTime = StartTime.Substring(1, StartTime.Length - 1);
+                        }
+                        cmbStartTime.Text = StartTime;
+                        SetTime(cmbEndTime, Convert.ToDateTime(EndTime).ToString("HH:mm"));
+                    }
+                    catch { }
+                }
+
+                dtDateComplete_I.Value = Convert.ToDateTime(dr["DateCompleted"].ToString());
+
+                StartDate = dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text;
+                EndDate = dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text;
+
+                break;
+            }
+
+            if (cmbEventStatus_I.SelectedIndex != 1 && cmbTeacher2_I.SelectedIndex <= 0 && cmbExceptionReason_I.SelectedIndex <= 0 && txtChangeReason_I.Text == "")
+                SetEventModificationControls(false);
+            else
+                SetEventModificationControls(true);
+        }
+
+        private void setEventID(int _eventid)
+        {
+            /*if (pnlEvent.Parent == tbpInitial)
+            {
+                eventid[0] = _eventid;
+            }
+            else if (pnlEvent.Parent == tbpMidterm)
+            {
+                eventid[1] = _eventid;
+            }
+            else if (pnlEvent.Parent == tbpFinal)
+            {
+                eventid[2] = _eventid;
+            }
+            else*/ if (pnlEvent.Parent == tbpClassEvent)
+            {
+                eventid[3] = _eventid;
+            }
+        }
+        private int GetCurrentEventID(TabPage tbp)
+        {
+            int _eventid = 0;
+            
+			/*if(tbp==tbpInitial)
+				_eventid=eventid[0];
+			else if(tbp==tbpMidterm)
+				_eventid=eventid[1];
+			else if(tbp==tbpFinal)
+				_eventid=eventid[2];
+			else*/
+            if (tbp == tbpClassEvent)
+                _eventid = eventid[3];
+
+            return _eventid;
+        }
+        private bool IsValid()
+        {
+            if (txtName_I.Text == "")
+            {
+                BusinessLayer.Message.MsgInformation("Enter Event Name");
+                txtName_I.Focus();
+                return false;
+            }
+
+            try
+            {
+                if (cmbStartTime.Text == "")
+                {
+                    BusinessLayer.Message.MsgInformation("Enter Event Start Time");
+                    cmbStartTime.Focus();
+                    return false;
+                }
+                if (cmbEndTime.Text == "")
+                {
+                    BusinessLayer.Message.MsgInformation("Enter Event End Time");
+                    cmbEndTime.Focus();
+                    return false;
+                }
+
+                string strStart = dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text;
+                string strFinish = dtEnd.Value.ToShortDateString() + " " + cmbEndTime.Text;
+                dtStart.Value = Convert.ToDateTime(strStart);
+                dtEnd.Value = Convert.ToDateTime(strFinish);
+            }
+            catch { }
+
+            if (!boolNoOfRecords_Initial)
+            {
+                if (dtEnd.Value < dtStart.Value)
+                {
+                    BusinessLayer.Message.MsgInformation("Start Date/Time must be before End Date/Time");
+                    dtStart.Focus();
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        //These methods re-generate the series using the Repeat Rules
+        private void GenerateEvent(int _eventid, int IsRecur, DateTime date1, DateTime date2)
+        {
+            DateTime StartDate1 = date1;
+            DateTime EndDate1 = date2;
+
+            if (IsRecur > 0)
+            {
+                if (ReccType == "Daily")
+                {
+                    if (Pattern1 != "")
+                    {
+                        GenerateDataForDaily(_eventid, "EveryDay", date1, date2);
+                    }
+                    else if (Pattern2 != "")
+                    {
+                        GenerateDataForDaily(_eventid, "EveryWeekDay", date1, date2);
+                    }
+                }
+                else if (ReccType == "Weekly")
+                {
+                    if (Pattern1 != "")
+                    {
+                        GenerateDataForWeekly(_eventid, date1, date2);
+                    }
+                }
+                else if (ReccType == "Monthly")
+                {
+                    if (Pattern1 != "")
+                    {
+                        GenerateDataForMonthly(_eventid, date1, date2);
+                    }
+                }
+                else if (ReccType == "Yearly")
+                {
+                    if (Pattern1 != "")
+                    {
+                        GenerateDataForYearly(_eventid, date1, date2);
+                    }
+                }
+            }
+            else
+            {
+                //No Recurrence....
+                SaveCalendarEvent(_eventid, StartDate1, EndDate1);
+            }
+
+        }
+
+        #region Event Generation
+        private void GenerateDataForDaily(int _eventid, string option, DateTime date1, DateTime date2)
+        {
+            //dtStart
+            //dtEnd
+            int NoOfRecords = 0;
+            DateTime StartDate1 = Convert.ToDateTime(null);
+            StartDate1 = date1;
+
+            if (NoEntries == "")
+            {
+                TimeSpan ts = date2 - StartDate1;
+                NoOfRecords = ts.Days;
+                NoOfRecords++;
+            }
+            else
+            {
+                NoOfRecords = Convert.ToInt16(NoEntries);
+                if (option == "EveryWeekDay")
+                {
+                    NoOfRecords = NoOfRecords * 7;
+                }
+            }
+
+            if (option == "EveryDay")
+            {
+                while (NoOfRecords > 0)
+                {
+                    SaveCalendarEvent(_eventid, StartDate1, StartDate1);
+                    StartDate1 = StartDate1.AddDays(1);
+                    NoOfRecords--;
+                }
+            }
+            else if (option == "EveryWeekDay")
+            {
+                bool boolOk = false;
+                while (NoOfRecords > 0)
+                {
+                    if ((Pattern2 == "Monday") && (StartDate1.DayOfWeek == DayOfWeek.Monday)) boolOk = true;
+                    else if ((Pattern2 == "Tuesday") && (StartDate1.DayOfWeek == DayOfWeek.Tuesday)) boolOk = true;
+                    else if ((Pattern2 == "Wednesday") && (StartDate1.DayOfWeek == DayOfWeek.Wednesday)) boolOk = true;
+                    else if ((Pattern2 == "Thursday") && (StartDate1.DayOfWeek == DayOfWeek.Thursday)) boolOk = true;
+                    else if ((Pattern2 == "Friday") && (StartDate1.DayOfWeek == DayOfWeek.Friday)) boolOk = true;
+                    else if ((Pattern2 == "Saturday") && (StartDate1.DayOfWeek == DayOfWeek.Saturday)) boolOk = true;
+                    else if ((Pattern2 == "Sunday") && (StartDate1.DayOfWeek == DayOfWeek.Sunday)) boolOk = true;
+
+                    if (boolOk)
+                    {
+                        //MessageBox.Show(StartDate.ToString());
+                        SaveCalendarEvent(_eventid, StartDate1, StartDate1);
+                    }
+                    StartDate1 = StartDate1.AddDays(1);
+                    NoOfRecords--;
+
+                    boolOk = false;
+                }
+            }
+        }
+
+        private void GenerateDataForWeekly(int _eventid, DateTime date1, DateTime date2)
+        {
+            int NoOfRecords = 0;
+            DateTime StartDate1 = Convert.ToDateTime(null);
+            StartDate1 = date1;
+
+            int WeekNo = 0;
+            string WeekDay = "";
+
+            WeekNo = Convert.ToInt16(Pattern1);
+
+            string[] arr = Pattern2.Split(new char[] { '|' });
+            int counter = arr.Length - 1;
+            WeekDay = Pattern2;
+
+            bool boolEntries = false;
+            if (NoEntries == "")
+            {
+                TimeSpan ts = date2 - StartDate1;
+                NoOfRecords = ts.Days;
+                NoOfRecords++;
+            }
+            else
+            {
+                NoOfRecords = Convert.ToInt16(NoEntries);
+                boolEntries = true;
+            }
+
+            bool boolOk = false;
+            int cnt = 0;
+            while (NoOfRecords > 0)
+            {
+                foreach (string s in arr)
+                {
+                    if (s != "")
+                    {
+                        boolOk = false;
+                        if ((s == "Monday") && (StartDate1.DayOfWeek == DayOfWeek.Monday)) boolOk = true;
+                        else if ((s == "Tuesday") && (StartDate1.DayOfWeek == DayOfWeek.Tuesday)) boolOk = true;
+                        else if ((s == "Wednesday") && (StartDate1.DayOfWeek == DayOfWeek.Wednesday)) boolOk = true;
+                        else if ((s == "Thursday") && (StartDate1.DayOfWeek == DayOfWeek.Thursday)) boolOk = true;
+                        else if ((s == "Friday") && (StartDate1.DayOfWeek == DayOfWeek.Friday)) boolOk = true;
+                        else if ((s == "Saturday") && (StartDate1.DayOfWeek == DayOfWeek.Saturday)) boolOk = true;
+                        else if ((s == "Sunday") && (StartDate1.DayOfWeek == DayOfWeek.Sunday)) boolOk = true;
+
+                        if (boolOk)
+                        {
+                            if (cnt < counter)
+                            {
+                                if (boolOk)
+                                {
+                                    boolOk = false;
+                                }
+                                SaveCalendarEvent(_eventid, StartDate1, StartDate1);
+                                if (boolEntries) NoOfRecords--;
+                            }
+                            cnt++;
+                        }
+                    }
+                }
+                if (cnt == WeekNo * counter) cnt = 0;
+                StartDate1 = StartDate1.AddDays(1);
+                if (boolEntries == false) NoOfRecords--;
+            }
+        }
+
+        private void GenerateDataForMonthly(int _eventid, DateTime date1, DateTime date2)
+        {
+            int NoOfRecords = 0;
+            DateTime StartDate1 = Convert.ToDateTime(null);
+            StartDate1 = date1;
+
+            int DayNo = 0;
+            int MonthFreqiency = 0;
+
+            DayNo = Convert.ToInt16(Pattern1);
+            MonthFreqiency = Convert.ToInt16(Pattern2);
+
+            if (NoEntries == "")
+            {
+                TimeSpan ts = date2 - StartDate1;
+                NoOfRecords = ts.Days;
+                NoOfRecords++;
+            }
+            else
+            {
+                NoOfRecords = Convert.ToInt16(NoEntries);
+                DateTime dtCaclEnd = StartDate1.AddMonths(NoOfRecords);
+                TimeSpan ts = new TimeSpan();
+                ts = dtCaclEnd.Subtract(StartDate1);
+                NoOfRecords = (int)Math.Round(ts.TotalDays, 0);
+            }
+
+            bool boolOk = false;
+            int cnt = 0;
+            while (NoOfRecords > 0)
+            {
+                if (StartDate1.Day == DayNo) boolOk = true;
+                if (boolOk)
+                {
+                    if (cnt == 0)
+                    {
+                        //MessageBox.Show(StartDate.ToString());
+                        SaveCalendarEvent(_eventid, StartDate1, StartDate1);
+                    }
+                    cnt++;
+                    if (cnt == MonthFreqiency) cnt = 0;
+                }
+                StartDate1 = StartDate1.AddDays(1);
+                NoOfRecords--;
+
+                boolOk = false;
+            }
+        }
+
+        private void GenerateDataForYearly(int _eventid, DateTime date1, DateTime date2)
+        {
+            int NoOfRecords = 0;
+            DateTime StartDate1 = Convert.ToDateTime(null);
+            StartDate1 = date1;
+
+            string Month = "";
+            int DayNo = 0;
+
+            Month = Pattern1;
+            DayNo = Convert.ToInt16(Pattern2);
+
+            if (NoEntries == "")
+            {
+                TimeSpan ts = date2 - StartDate1;
+                NoOfRecords = ts.Days;
+                NoOfRecords++;
+            }
+            else
+            {
+                NoOfRecords = Convert.ToInt16(NoEntries);
+                NoOfRecords = NoOfRecords * 366;
+            }
+
+            int MonthNo = 0;
+            bool boolOk = false;
+
+            if (Month == "January") MonthNo = 1;
+            else if (Month == "February") MonthNo = 2;
+            else if (Month == "March") MonthNo = 3;
+            else if (Month == "April") MonthNo = 4;
+            else if (Month == "May") MonthNo = 5;
+            else if (Month == "June") MonthNo = 6;
+            else if (Month == "July") MonthNo = 7;
+            else if (Month == "August") MonthNo = 8;
+            else if (Month == "September") MonthNo = 9;
+            else if (Month == "October") MonthNo = 10;
+            else if (Month == "November") MonthNo = 11;
+            else if (Month == "December") MonthNo = 12;
+
+            while (NoOfRecords > 0)
+            {
+                if ((StartDate1.Day == DayNo) && (StartDate1.Month == MonthNo)) boolOk = true;
+                if (boolOk)
+                {
+                    //MessageBox.Show(StartDate.ToString());
+                    SaveCalendarEvent(_eventid, StartDate1, StartDate1);
+                }
+                StartDate1 = StartDate1.AddDays(1);
+                NoOfRecords--;
+
+                boolOk = false;
+            }
+        }
+        #endregion
+        #endregion
+
+        #region Class Events
+        private void SaveEventData(ref int _eventid)
+        {
+            bool boolSuccess;
+            objEvent = null;
+
+            if (File.Exists(strAppPath))
+            {
+                StreamReader re = File.OpenText(strAppPath);
+                XMLData_Initial = re.ReadToEnd();
+                re.Close();
+                re = null;
+            }
+            else
+            {
+                XMLData_Initial = "";
+                IsRecurrenceFlag_Initial = 0;
+            }
+
+            objEvent = new Scheduler.BusinessLayer.Events();
+            objEvent.EventID = 0;
+            objEvent.RepeatRule = XMLData_Initial;
+            objEvent.NegativeException = "";
+            objEvent.Description = txtDescription_I.Text;
+            objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
+
+            if (IsRecurrenceFlag_Initial > 0)
+                objEvent.RecurrenceText = lblRecurrenceText_I.Text;
+            else
+                objEvent.RecurrenceText = "";
+
+            if (_eventid <= 0)
+            {
+                if (objEvent.Exists())
+                {
+                    Scheduler.BusinessLayer.Message.MsgInformation("Duplicate Course Name not allowed");
+                    txtName_I.Focus();
+                    return;
+                }
+                boolSuccess = objEvent.InsertData();
+                _eventid_Initial = objEvent.EventID;
+                _eventid = objEvent.EventID;
+                setEventID(objEvent.EventID);
+            }
+            else
+            {
+                objEvent.EventID = _eventid;
+                boolSuccess = objEvent.UpdateData();
+            }
+            if (!boolSuccess)
+            {
+                if (_eventid == 0)
+                    Scheduler.BusinessLayer.Message.ShowException("Inserting Event record.", objEvent.Message);
+                else
+                    Scheduler.BusinessLayer.Message.ShowException("Updating Event record.", objEvent.Message);
+                return;
+            }
+        }
+        #endregion
+
+        #region Other Events
+        private bool SaveCalendarEvent(int _eventid, DateTime mStart, DateTime mEnd)
+        {
+            if (!AutoSave)
+            {
+                if (dtblDates != null)
+                {
+                    dtblDates.Rows.Add(new object[] { mStart, mEnd });
+                }
+                return true;
+            }
+
+            bool boolSuccess = false;
+            string StartTime = "";
+            string EndTime = "";
+            int startlength = 8;
+            int endlength = 8;
+
+            if (objEvent == null) objEvent = new Scheduler.BusinessLayer.Events();
+            objEvent.EventID = _eventid;
+            objEvent.Name = txtName_I.Text;
+            objEvent.NamePhonetic = txtPhonetic_I.Text;
+            objEvent.NameRomaji = txtRomaji_I.Text;
+
+            string[] arr1 = cmbTeacher1_I.Text.Split(new char[] { ',' });
+            string[] arr2 = cmbTeacher1_I.Text.Split(new char[] { ',' });
+
+            string str1 = "", str2 = "";
+            str1 = arr1[0].Trim();
+            if (arr1.Length > 1) str2 = arr1[1].Trim();
+
+            objEvent.SchedulerTeacherID = Common.GetTeacherID(
+                "Select ContactID From Contact " +
+                "Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
+                );
+
+            str1 = "";
+            str2 = "";
+            arr1 = cmbTeacher2_I.Text.Split(new char[] { ',' });
+            arr2 = cmbTeacher2_I.Text.Split(new char[] { ',' });
+            str1 = arr2[0].Trim();
+            if (arr2.Length > 1) str2 = arr2[1].Trim();
+
+            objEvent.RealTeacherID = Common.GetTeacherID(
+                "Select ContactID From Contact " +
+                "Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
+                );
+
+            //objEvent.EventType = cmbEventType_I.SelectedIndex;
+            objEvent.EventType = cmbEventType_I.Text;
+            objEvent.Location = txtLocation_I.Text;
+            objEvent.BlockCode = cmbBlock_I.Text;
+            objEvent.RoomNo = txtRoomNo_I.Text;
+            objEvent.ChangeReason = txtChangeReason_I.Text;
+
+            try
+            {
+                startlength = cmbStartTime.Text.Length;
+                endlength = cmbEndTime.Text.Length;
+
+                StartTime = mStart.ToShortDateString() + " " + cmbStartTime.Text.Trim();
+                EndTime = mEnd.ToShortDateString() + " " + cmbEndTime.Text.Trim();
+
+                mStart = Convert.ToDateTime(StartTime);
+                mEnd = Convert.ToDateTime(EndTime);
+            }
+            catch { }
+            objEvent.StartDate = mStart;
+            objEvent.EndDate = mEnd;
+            objEvent.DateCompleted = dtDateComplete_I.Value;
+
+            if (chkIsHoliday.Checked)
+                objEvent.IsHoliday = 1;
+            else
+                objEvent.IsHoliday = 0;
+
+            objEvent.Description = txtDescription_I.Text;
+            objEvent.Notes = txtNote_I.Text;
+            objEvent.ExceptionReason = cmbExceptionReason_I.Text;
+            objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
+            objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
+
+            boolSuccess = objEvent.InsertCalendarEventData();
+            if (!boolSuccess)
+            {
+                if (_mode == "Add" || _mode == "AddClone")
+                    Scheduler.BusinessLayer.Message.ShowException("Inserting Calendar Event record.", objEvent.Message);
+                else
+                    Scheduler.BusinessLayer.Message.ShowException("Updating Calendar Event record.", objEvent.Message);
+            }
+
+            return boolSuccess;
+        }
+
+        private bool SaveCalendarData(int _eventid, int _calid, DateTime mStart, DateTime mEnd)
+        {
+            bool boolSuccess = false;
+            string StartTime = "";
+            string EndTime = "";
+            int startlength = 8;
+            int endlength = 8;
+
+            if (objEvent == null) objEvent = new Scheduler.BusinessLayer.Events();
+            objEvent.EventID = _eventid;
+            objEvent.Name = txtName_I.Text;
+            objEvent.NamePhonetic = txtPhonetic_I.Text;
+            objEvent.NameRomaji = txtRomaji_I.Text;
+            objEvent.CalendarEventID = _calid;
+
+
+            string[] arr1 = cmbTeacher1_I.Text.Split(new char[] { ',' });
+            string[] arr2 = cmbTeacher1_I.Text.Split(new char[] { ',' });
+
+            string str1 = "", str2 = "";
+            str1 = arr1[0].Trim();
+            if (arr1.Length > 1) str2 = arr1[1].Trim();
+
+            objEvent.SchedulerTeacherID = Common.GetTeacherID(
+                "Select ContactID From Contact " +
+                "Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
+                );
+
+            str1 = "";
+            str2 = "";
+            arr1 = cmbTeacher2_I.Text.Split(new char[] { ',' });
+            arr2 = cmbTeacher2_I.Text.Split(new char[] { ',' });
+            str1 = arr2[0].Trim();
+            if (arr2.Length > 1) str2 = arr2[1].Trim();
+
+            objEvent.RealTeacherID = Common.GetTeacherID(
+                "Select ContactID From Contact " +
+                "Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
+                );
+
+            objEvent.ChangeReason = txtChangeReason_I.Text;
+            //objEvent.EventType = cmbEventType_I.SelectedIndex;
+            objEvent.EventType = cmbEventType_I.Text;
+            objEvent.Location = txtLocation_I.Text;
+            objEvent.BlockCode = cmbBlock_I.Text;
+            objEvent.RoomNo = txtRoomNo_I.Text;
+
+            try
+            {
+                startlength = cmbStartTime.Text.Length;
+                endlength = cmbEndTime.Text.Length;
+
+                StartTime = mStart.ToShortDateString() + " " + cmbStartTime.Text.Trim();
+                EndTime = mEnd.ToShortDateString() + " " + cmbEndTime.Text.Trim();
+
+                mStart = Convert.ToDateTime(StartTime);
+                mEnd = Convert.ToDateTime(EndTime);
+            }
+            catch { }
+            objEvent.StartDate = mStart;
+            objEvent.EndDate = mEnd;
+            objEvent.DateCompleted = dtDateComplete_I.Value;
+
+            if (chkIsHoliday.Checked)
+                objEvent.IsHoliday = 1;
+            else
+                objEvent.IsHoliday = 0;
+
+            objEvent.Description = txtDescription_I.Text;
+            objEvent.Notes = txtNote_I.Text;
+            objEvent.ExceptionReason = cmbExceptionReason_I.Text;
+
+            objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
+
+            boolSuccess = objEvent.UpdateCalendarEventData();
+            if (!boolSuccess)
+            {
+                Scheduler.BusinessLayer.Message.ShowException("Updating Calendar Event record.", objEvent.Message);
+            }
+
+            return boolSuccess;
+        }
+        #endregion
+
+        private bool doSaveEvents(int _eventid)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            try
+            {
+                if (SaveAllEvents(_eventid))
+                {
+                    IsEventChanged = false;
+
+                    ShowEventDetails((TabPage)pnlEvent.Parent);
+                    if (pnlEvent.Parent == tbpClassEvent)
+                    {
+                        eventid[3] = _eventid_Initial;
+                        calendareventid[3] = _calendareventid_Initial;
+                    }
+					/*else if(pnlEvent.Parent==tbpInitial)
+					{
+						eventid[0] = _eventid_Initial;
+						calendareventid[0] = _calendareventid_Initial;
+					}
+					else if(pnlEvent.Parent==tbpMidterm)
+					{
+						eventid[1] = _eventid_Initial;
+						calendareventid[1] = _calendareventid_Initial;
+					}
+					else if(pnlEvent.Parent==tbpFinal)
+					{
+						eventid[2] = _eventid_Initial;
+						calendareventid[2] = _calendareventid_Initial;
+					}*/
+
+                    _eventid_Initial = 0;
+                    _calendareventid_Initial = 0;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+        }
+
+        
+
+        private void btnEventSave_Click(object sender, System.EventArgs e)
+        {
+
+            //IsEventChanged=true;
+            if (IsEventChanged == false) return;
+            doSaveEvents(GetCurrentEventID(tbcCourse.SelectedTab));
+
+        }
+
+        private bool SaveAllEvents(int _eventid)
+        {
+            string sConflictingEvent = "";
+            if (!IsValid()) return false;
+
+            //check real teacher first
+            string strOverLapMess = "";
+
+            //=============================
+            /*if(cmbClient.Text!="")
+            {
+                strOverLapMess = "-<" + cmbClient.Text + ">";
+                if(txtCourseName.Text!="")
+                {
+                    strOverLapMess += "<" + txtCourseName.Text + ">";
+                }
+            }
+            strOverLapMess = strOverLapMess.Trim();*/
+
+            AutoSave = false;
+            GenerateEvent(_eventid, IsRecurrenceFlag_Initial, dtStart.Value, dtEnd.Value);
+            AutoSave = true;
+
+            if (cmbTeacher2_I.Text.Trim() != "")
+            {
+                bool Ok = false;
+                if (dtblDates == null)
+                {
+                    Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Real", ref strOverLapMess);
+                }
+                else
+                {
+                    foreach (DataRow dr in dtblDates.Rows)
+                    {
+                        Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Real", dr[0].ToString(), dr[1].ToString(), ref strOverLapMess);
+                        if (Ok) break;
+                    }
+                }
+                if (Ok)
+                {
+                    DialogResult dlg =
+                        BusinessLayer.Message.MsgConfirmation(
+                        "<" + cmbTeacher2_I.Text + "> is already scheduled in <" +
+                        sConflictingEvent + ">" + strOverLapMess +
+                        "\nDo you still wish to save this event?");
+                    if (dlg == DialogResult.No)
+                    {
+                        //if(File.Exists(strAppPath))
+                        //{
+                        //	File.Delete(strAppPath);
+                        //}
+                        IsEventChanged = false;
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                //if real instructor blank check scheduled teacher
+                bool Ok = false;
+                if (dtblDates == null)
+                {
+                    Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Scheduled", ref strOverLapMess);
+                }
+                else
+                {
+                    foreach (DataRow dr in dtblDates.Rows)
+                    {
+                        Ok = IsCheckOverlapTime(_eventid, ref sConflictingEvent, "Scheduled", dr[0].ToString(), dr[1].ToString(), ref strOverLapMess);
+                        if (Ok) break;
+                    }
+                }
+                if (Ok)
+                {
+                    DialogResult dlg =
+                        BusinessLayer.Message.MsgConfirmation(
+                        "<" + cmbTeacher1_I.Text + "> is already scheduled in <" +
+                        sConflictingEvent + ">" + strOverLapMess +
+                        "\nDo you still wish to save this event?");
+                    if (dlg == DialogResult.No)
+                    {
+                        //if(File.Exists(strAppPath))
+                        //{
+                        //	File.Delete(strAppPath);
+                        //}
+                        IsEventChanged = false;
+                        return false;
+                    }
+                }
+            }
+
+            //=============================
+
+            if (boolSaveSeries_initial)
+            {
+                SaveEventData(ref _eventid);
+                objEvent.DeleteCalendarEvent();
+                GenerateEvent(_eventid, IsRecurrenceFlag_Initial, dtStart.Value, dtEnd.Value);
+            }
+            else
+            {
+                int _calid = 0;
+                /*
+				if(tbcCourse.SelectedTab==tbpInitial)
+					_calid = calendareventid[0];
+				else if(tbcCourse.SelectedTab==tbpMidterm)
+					_calid = calendareventid[1];
+				else if(tbcCourse.SelectedTab==tbpFinal)
+					_calid = calendareventid[2];
+                */
+                if (tbcCourse.SelectedTab == tbpClassEvent)
+                    _calid = calendareventid[3];
+
+                SaveCalendarData(_eventid, _calid, dtStart.Value, dtEnd.Value);
+            }
+
+            _eventid_Initial = _eventid;
+            return true;
+        }
+        #endregion
+
+
+    }
 }
