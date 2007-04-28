@@ -16,8 +16,9 @@ namespace Scheduler
 	/// Summary description for frmEventBrw.
 	/// </summary>
 	public class frmEventBrw : Form
-	{
-		public Panel pnlBody;
+    {
+        #region Declarations
+        public Panel pnlBody;
 		internal Panel pnl_SpeedSearch;
 		internal Panel pnl_SpeedSearch1;
 		internal TextBox txt_SpeedSearch;
@@ -82,9 +83,14 @@ namespace Scheduler
         public GridColumn gcolCourseId;
 		private bool IsLoad=true;
         private GridColumn gcolDayOfWeek;
+        private ImageList imgContext;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem deleteToolStripMenuItem;
         private bool IsAllow = false;
+        #endregion
 
-		public frmEventBrw()
+        public frmEventBrw()
 		{
 			InitializeComponent();
 			pnl_Find.Height = 0;
@@ -124,6 +130,7 @@ namespace Scheduler
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEventBrw));
+            this.gcolStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlBrowse = new System.Windows.Forms.Panel();
             this.grdEvent = new DevExpress.XtraGrid.GridControl();
@@ -143,7 +150,6 @@ namespace Scheduler
             this.gcolEventType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolScheduledIns = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolRealIns = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcolStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolDateLastLogin = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolDateCreated = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolLastModified = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -182,6 +188,10 @@ namespace Scheduler
             this.btn_Find = new System.Windows.Forms.Button();
             this.lbl_Find = new System.Windows.Forms.Label();
             this.chk_AdvanceSearch = new System.Windows.Forms.CheckBox();
+            this.imgContext = new System.Windows.Forms.ImageList(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBody.SuspendLayout();
             this.pnlBrowse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEvent)).BeginInit();
@@ -193,7 +203,15 @@ namespace Scheduler
             this.pnl_Find.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // gcolStatus
+            // 
+            this.gcolStatus.Caption = "Status";
+            this.gcolStatus.FieldName = "EventStatus";
+            this.gcolStatus.Name = "gcolStatus";
+            this.gcolStatus.Width = 70;
             // 
             // pnlBody
             // 
@@ -219,6 +237,7 @@ namespace Scheduler
             // 
             // grdEvent
             // 
+            this.grdEvent.ContextMenuStrip = this.contextMenuStrip1;
             this.grdEvent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdEvent.EmbeddedNavigator.Name = "";
             this.grdEvent.ExternalRepository = this.persistentRepository1;
@@ -399,13 +418,6 @@ namespace Scheduler
             this.gcolRealIns.FieldName = "RealTeacher";
             this.gcolRealIns.Name = "gcolRealIns";
             this.gcolRealIns.Width = 80;
-            // 
-            // gcolStatus
-            // 
-            this.gcolStatus.Caption = "Status";
-            this.gcolStatus.FieldName = "EventStatus";
-            this.gcolStatus.Name = "gcolStatus";
-            this.gcolStatus.Width = 70;
             // 
             // gcolDateLastLogin
             // 
@@ -847,6 +859,35 @@ namespace Scheduler
             this.chk_AdvanceSearch.Text = "Search All Fields";
             this.chk_AdvanceSearch.UseVisualStyleBackColor = false;
             // 
+            // imgContext
+            // 
+            this.imgContext.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgContext.ImageStream")));
+            this.imgContext.TransparentColor = System.Drawing.Color.Fuchsia;
+            this.imgContext.Images.SetKeyName(0, "");
+            this.imgContext.Images.SetKeyName(1, "");
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // frmEventBrw
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -872,6 +913,7 @@ namespace Scheduler
             this.pnl_Find.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -992,35 +1034,34 @@ namespace Scheduler
 		{
 			SpeedSearch();
 		}
+        public void OpenEvent()
+        {
+            int row = 0;
+            int intEventID = 0;
+            bool IsRecur = false;
 
-		private void grdEvent_DoubleClick(object sender, EventArgs e)
-		{
-			int row=0;
-			int intEventID=0;
-			bool IsRecur=false;
-			
-			row=gvwEvent.FocusedRowHandle;
+            row = gvwEvent.FocusedRowHandle;
 
-			if(gvwEvent.FocusedRowHandle<0)
-			{
-				Message.MsgInformation("No record exists.");
-				return;
-			}
+            if (gvwEvent.FocusedRowHandle < 0)
+            {
+                Message.MsgInformation("No record exists.");
+                return;
+            }
 
-			intEventID = Convert.ToInt32(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolEventID));
-			int intCalID = Convert.ToInt32(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, colCalendarEventID).ToString());
+            intEventID = Convert.ToInt32(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolEventID));
+            int intCalID = Convert.ToInt32(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, colCalendarEventID).ToString());
             //int CourseID = Common.ConvertToInteger(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolCourseId).ToString());
             //int ProgramID = Common.ConvertToInteger(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolProgramId).ToString());
             string strEventType = gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolEventType).ToString();
-            
-            if(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolIsRecur).ToString()!="")
-				IsRecur=true;
 
-			int Option=-1;
+            if (gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolIsRecur).ToString() != "")
+                IsRecur = true;
 
-			if(IsRecur)
-			{
-                if(strEventType!="Extra Class")
+            int Option = -1;
+
+            if (IsRecur)
+            {
+                if (strEventType != "Extra Class")
                 {
                     frmOpenEvents frmOpenEvt = new frmOpenEvents();
                     if (frmOpenEvt.ShowDialog() == DialogResult.OK)
@@ -1034,59 +1075,59 @@ namespace Scheduler
                         return;
                     }
                 }
-			}
+            }
 
-			frmEventDlg fEvtDlg=null;
+            frmEventDlg fEvtDlg = null;
             //Option '0' means a single occurence and '1' means the entire series
-			if(Option==1)
-			{
-				//fEvtDlg=new frmEventDlg(intEventID, intCalID);
-				//fEvtDlg.Mode="Edit";
-				//fEvtDlg.EventID = intEventID;
-				//fEvtDlg.LoadData();
+            if (Option == 1)
+            {
+                //fEvtDlg=new frmEventDlg(intEventID, intCalID);
+                //fEvtDlg.Mode="Edit";
+                //fEvtDlg.EventID = intEventID;
+                //fEvtDlg.LoadData();
 
-				string module=string.Empty;
-				int _uid=0;
-				int _eventtypeindex=0;
-				Events objEvent=new Events();
+                string module = string.Empty;
+                int _uid = 0;
+                int _eventtypeindex = 0;
+                Events objEvent = new Events();
                 //Returns Course/Program ID
-				_uid = objEvent.GetEvent(intEventID, ref module, ref _eventtypeindex);
+                _uid = objEvent.GetEvent(intEventID, ref module, ref _eventtypeindex);
 
-				if(module!="")
-				{
-					if(module=="Class")
-					{
-						frmClassDlg frm = new frmClassDlg(_uid, _eventtypeindex, intCalID);
+                if (module != "")
+                {
+                    if (module == "Class")
+                    {
+                        frmClassDlg frm = new frmClassDlg(_uid, _eventtypeindex, intCalID);
                         frm.Mode = "Edit";
-						if(frm.ShowDialog()==DialogResult.OK)
-						{
-							LoadEvent();
-							frm.Close();
-							frm.Dispose();
-							frm=null;
-						}
-					}
-					else if(module=="Program")
-					{
-						frmProgramDlg frm = new frmProgramDlg(_uid, _eventtypeindex);
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            LoadEvent();
+                            frm.Close();
+                            frm.Dispose();
+                            frm = null;
+                        }
+                    }
+                    else if (module == "Program")
+                    {
+                        frmProgramDlg frm = new frmProgramDlg(_uid, _eventtypeindex);
                         frm.Mode = "Edit";
-						if(frm.ShowDialog()==DialogResult.OK)
-						{
-							LoadEvent();
-							frm.Close();
-							frm.Dispose();
-							frm=null;
-						}
-					}
-				}
-//				else
-//				{
-//					fEvtDlg=new frmEventDlg();
-//					fEvtDlg.Mode="Edit";
-//					fEvtDlg.EventID = intEventID;
-//					fEvtDlg.LoadData();
-//				}
-			}
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            LoadEvent();
+                            frm.Close();
+                            frm.Dispose();
+                            frm = null;
+                        }
+                    }
+                }
+                //				else
+                //				{
+                //					fEvtDlg=new frmEventDlg();
+                //					fEvtDlg.Mode="Edit";
+                //					fEvtDlg.EventID = intEventID;
+                //					fEvtDlg.LoadData();
+                //				}
+            }
             /*else if(Option==-1 && strEventType!="Event")
             {
                 //For Extra Classes and Test Events;
@@ -1148,20 +1189,24 @@ namespace Scheduler
                 //					fEvtDlg.LoadData();
                 //				}
             }
-			/*
+            /*
             if(fEvtDlg!=null)
-			{
-				if(fEvtDlg.ShowDialog()==DialogResult.OK)
-				{
-					LoadEvent();
-				}
+            {
+                if(fEvtDlg.ShowDialog()==DialogResult.OK)
+                {
+                    LoadEvent();
+                }
 
-				fEvtDlg.Close();
-				fEvtDlg.Dispose();
-				fEvtDlg=null;
-			}
+                fEvtDlg.Close();
+                fEvtDlg.Dispose();
+                fEvtDlg=null;
+            }
             */
-			gvwEvent.FocusedRowHandle = row;
+            gvwEvent.FocusedRowHandle = row;
+        }
+		private void grdEvent_DoubleClick(object sender, EventArgs e)
+		{
+            OpenEvent();
 		}
 
 		private void btn_Find_Click(object sender, EventArgs e)
@@ -1484,5 +1529,67 @@ namespace Scheduler
 		{
            
 		}
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenEvent();
+        }
+        void DeleteEvent()
+        {
+            System.Data.DataRow eventRow = null;
+            
+            if (gvwEvent.SelectedRowsCount > 0)
+                eventRow = gvwEvent.GetDataRow(gvwEvent.FocusedRowHandle);
+            if (eventRow != null)
+            {
+                bool isRecur = false;
+                int calEventID = Convert.ToInt32(eventRow["CalendarEventID"]);
+                int eventID = Convert.ToInt32(eventRow["EventID"]);
+                string strRecurrenceText = Common.GetString("select RecurrenceText from Event where EventID=" + eventID.ToString());
+
+                if (strRecurrenceText != "")
+                    isRecur = true;
+
+               
+                if (isRecur)
+                {
+                    #region Delete Recurrence
+                    frmDeleteEvents frmDelEvt = new frmDeleteEvents(eventID, calEventID);
+					if (frmDelEvt.ShowDialog() == DialogResult.OK) 
+						LoadEvent();
+                    frmDelEvt.Close();
+					frmDelEvt.Dispose();
+                    #endregion
+                }
+                else
+                {
+                    #region DeleteEvent
+                    if (Message.MsgDelete()) 
+                    {
+					    string strMess;
+					    Events evt = new Events();
+					    evt.EventID = eventID;
+					    strMess = evt.CheckClassEvent();
+					    if (strMess == "") strMess = evt.CheckProgramEcent();
+
+					    if (strMess != "") {
+						    Message.MsgWarning("This Event is linked with" + strMess + ".\n\nEvent cannot be deleted.");
+						    return;
+					    }
+
+					    evt.DeleteData(true);
+					    LoadEvent();
+                    }
+                    #endregion
+                }
+               
+
+
+            }
+        }
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteEvent();
+        }
 	}
 }

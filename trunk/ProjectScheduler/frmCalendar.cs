@@ -83,8 +83,8 @@ namespace Scheduler {
 		/// </summary>
 		private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler4 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalendar));
             this.StartDatePickerTop = new System.Windows.Forms.DateTimePicker();
             this.schedulerStorage1 = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
@@ -177,10 +177,7 @@ namespace Scheduler {
             this.schedulerControl1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Location = new System.Drawing.Point(0, 64);
             this.schedulerControl1.Name = "schedulerControl1";
-            // 
-            // 
-            //
-this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
+            this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
             this.schedulerControl1.Start = new System.DateTime(2006, 3, 6, 0, 0, 0, 0);
             this.schedulerControl1.Storage = this.schedulerStorage1;
             this.schedulerControl1.TabIndex = 1;
@@ -199,10 +196,7 @@ this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
             this.schedulerControl1.Views.DayView.Appearance.TimeRuler.Options.UseFont = true;
             this.schedulerControl1.Views.DayView.Appearance.TimeRulerNowArea.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.DayView.Appearance.TimeRulerNowArea.Options.UseFont = true;
-            this.schedulerControl1.Views.DayView.TimeRulers.AddRange(new DevExpress.XtraScheduler.TimeRuler[] {
-            timeRuler3});
-            this.schedulerControl1.Views.DayView.VisibleTime.Duration = System.TimeSpan.Parse("1.00:00:00");
-            this.schedulerControl1.Views.DayView.WorkTime.Duration = System.TimeSpan.Parse("09:00:00");
+            this.schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1);
             this.schedulerControl1.Views.MonthView.Appearance.Appointment.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.MonthView.Appearance.Appointment.Options.UseFont = true;
             this.schedulerControl1.Views.WeekView.Appearance.CellHeaderCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,10 +209,7 @@ this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
             this.schedulerControl1.Views.WeekView.Appearance.HeaderCaptionLine.Options.UseFont = true;
             this.schedulerControl1.Views.WeekView.Appearance.Selection.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.WeekView.Appearance.Selection.Options.UseFont = true;
-            this.schedulerControl1.Views.WorkWeekView.TimeRulers.AddRange(new DevExpress.XtraScheduler.TimeRuler[] {
-            timeRuler4});
-            this.schedulerControl1.Views.WorkWeekView.VisibleTime.Duration = System.TimeSpan.Parse("1.00:00:00");
-            this.schedulerControl1.Views.WorkWeekView.WorkTime.Duration = System.TimeSpan.Parse("09:00:00");
+            this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl1.Click += new System.EventHandler(this.schedulerControl1_Click);
             this.schedulerControl1.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl_EditAppointmentFormShowing);
             this.schedulerControl1.PrepareContextMenu += new DevExpress.XtraScheduler.PrepareContextMenuEventHandler(this.OnPrepareContextMenu);
@@ -438,6 +429,7 @@ this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
             this.dateNavigator1.SchedulerControl = this.schedulerControl1;
             this.dateNavigator1.Size = new System.Drawing.Size(184, 622);
             this.dateNavigator1.TabIndex = 0;
+            this.dateNavigator1.View = DevExpress.XtraEditors.Controls.DateEditCalendarViewType.MonthInfo;
             // 
             // imgContext
             // 
