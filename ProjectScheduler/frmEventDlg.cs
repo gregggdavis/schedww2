@@ -13,8 +13,10 @@ namespace Scheduler
 	/// Summary description for frmEventDlg.
 	/// </summary>
 	public class frmEventDlg : System.Windows.Forms.Form
-	{
-		private System.Windows.Forms.Label label4;
+    {
+        #region Initialization
+        #region Controls
+        private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label lblEventType;
@@ -52,12 +54,30 @@ namespace Scheduler
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkIsHoliday;
+        private System.Windows.Forms.Panel pnlBody;
+        private System.Windows.Forms.LinkLabel llblClient;
+        private System.Windows.Forms.ComboBox cmbClient;
+        private System.Windows.Forms.LinkLabel llbDepartment;
+        private System.Windows.Forms.ComboBox cmbDept;
+        private System.Windows.Forms.LinkLabel llblProgram;
+        private System.Windows.Forms.ComboBox cmbProgram;
+        private System.Windows.Forms.LinkLabel llblClass;
+        private System.Windows.Forms.ComboBox cmbClass;
+        private System.Windows.Forms.Label lblEvent1;
+        private System.Windows.Forms.ComboBox cmbEvent;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtChangeReason;
+        private System.Windows.Forms.Label lblChangeReason;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbExceptionReason;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
+        #endregion
 
-		//Class/Program
+        #region Declarations
+        //Class/Program
 		private string _eventName="";
 
 		
@@ -79,17 +99,7 @@ namespace Scheduler
 		private Serialize AP=null;
         private string _startdate;
         private string _enddate;
-        private System.Windows.Forms.Panel pnlBody;
-		private System.Windows.Forms.LinkLabel llblClient;
-		private System.Windows.Forms.ComboBox cmbClient;
-		private System.Windows.Forms.LinkLabel llbDepartment;
-		private System.Windows.Forms.ComboBox cmbDept;
-		private System.Windows.Forms.LinkLabel llblProgram;
-		private System.Windows.Forms.ComboBox cmbProgram;
-		private System.Windows.Forms.LinkLabel llblClass;
-		private System.Windows.Forms.ComboBox cmbClass;
-		private System.Windows.Forms.Label lblEvent1;
-		private System.Windows.Forms.ComboBox cmbEvent;
+
 		private bool boolSaveSeries=true;
         private bool boolAllowExtraClasses = true;
         private bool boolAllowTestInitial = true;
@@ -101,9 +111,6 @@ namespace Scheduler
 		private int intProgramID=0;
 		private int intClassID=0;
 		private int intTestEventID=0;
-		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.TextBox txtChangeReason;
-		private System.Windows.Forms.Label lblChangeReason;
 
 		private bool OpenFromClsProg=false;
 
@@ -115,16 +122,17 @@ namespace Scheduler
 		private string strStartTime="00:00";
 		private string strEndTime="00:00";
 		private string StartDate="", EndDate="";
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.ComboBox cmbExceptionReason;
+
 		private bool boolNoOfRecords = false;
 
 		private bool AutoSave=true;
 		private DataTable dtblDates=null;
         private EventType _eventtype;
         //private EventType _eventtype_initial;
+        #endregion
 
-		public string Mode
+        #region Properties
+        public string Mode
 		{
 			get{return _mode;}
 			set{_mode=value;}
@@ -178,8 +186,10 @@ namespace Scheduler
             get { return intProgramID; }
             set { intProgramID = value; }
         }
+        #endregion
 
-		public frmEventDlg()
+        #region Constructor
+        public frmEventDlg()
 		{
 			InitializeComponent();
             
@@ -341,9 +351,10 @@ namespace Scheduler
 			_calendareventid=mCalEventID;
 
 			//boolSaveSeries=false;
-		}
+        }
+        #endregion
 
-		/// <summary>
+        /// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
 		protected override void Dispose( bool disposing )
@@ -1149,8 +1160,8 @@ namespace Scheduler
 
 		}
 		#endregion
-
-		private void cmbStartTime_SelectedIndexChanged(object sender, System.EventArgs e)
+        #endregion
+        private void cmbStartTime_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			TimeSpan ts=new TimeSpan(1,0,0,0,0);
 			if(dtStart.Value!=dtEnd.Value)
