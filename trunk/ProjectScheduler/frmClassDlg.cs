@@ -3139,7 +3139,7 @@ namespace Scheduler
 			//DoProcessCourseTabChanging(true, tbcCourse.SelectedTab!=pnlEvent.Parent);
             DoProcessCourseTabChanging(true);
 		}
-
+        bool saved = false;
 		private void DoProcessCourseTabChanging(bool showOnChangeConfirmation) 
 		{
 			pnlTop_I.Visible=false;
@@ -3155,6 +3155,11 @@ namespace Scheduler
                     */
                 if ((tbcCourse.SelectedTab == tbpClassEvent) || (tbcCourse.SelectedTab == tbpOtherEvents))
                 {
+                    if (saved)
+                    {
+                        IsEventChanged = false;
+                        saved = false;
+                    }
 					if(IsEventChanged)
 					{
 						if(pnlEvent.Parent!=tbpSelected)
@@ -4249,9 +4254,10 @@ namespace Scheduler
             frmEvent.AllowTestInitial = !HasTestInitialEvent;
             frmEvent.AllowTestMid = !HasTestMidtermEvent;
             frmEvent.AllowTestFinal = !HasTestFinalEvent;
-
+            
             if (frmEvent.ShowDialog() == DialogResult.OK)
             {
+                saved = true;
                 LoadData();
                 LoadOtherEvents();                                
             }
@@ -4272,6 +4278,7 @@ namespace Scheduler
 
             if (frmEvent.ShowDialog() == DialogResult.OK)
             {
+                saved = true;
                 LoadData(); 
                 LoadOtherEvents();
             }
