@@ -148,7 +148,7 @@ namespace Scheduler.BusinessLayer {
 					if (CalendarEventID > 0)
 						strSql += "and CalendarEvent.CalendarEventID=" + CalendarEventID.ToString();
                     else
-                        strSql+="and CalendarEvent.EventType<>'Extra Class'";
+                        strSql+="and CalendarEvent.EventType<>'Extra Class' AND CalendarEvent.EventType<>'Test Initial' AND CalendarEvent.EventType <>'Test Midterm' AND CalendarEvent.EventType<>'Test Final' ";
 				}
 
 				con = new Connection();
