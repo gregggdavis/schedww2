@@ -348,7 +348,7 @@ namespace Scheduler
             // tmrMain
             // 
             this.tmrMain.Interval = 1000;
-            //this.tmrMain.Tick += new System.EventHandler(this.tmrMain_Tick);
+            this.tmrMain.Tick += new System.EventHandler(this.tmrMain_Tick);
             // 
             // imlSmallImageNavBar
             // 
@@ -1665,10 +1665,10 @@ namespace Scheduler
 			MessageBox.Show("Under Construction...");
 		}
 
-        //private void tmrMain_Tick(object sender, EventArgs e)
-        //{
-        //    sPnlDate.Text = "Date : " + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
-        //}
+        private void tmrMain_Tick(object sender, EventArgs e)
+        {
+            sPnlDate.Text = "Date : " + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+        }
 
 		private void menuItem3_Click(object sender, EventArgs e)
 		{
