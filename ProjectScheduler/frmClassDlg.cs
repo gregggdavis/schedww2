@@ -4487,6 +4487,11 @@ namespace Scheduler
 
         private void LoadEvent(int _eventid, int CalendarID)
         {
+            if (saved)
+            {
+                saved = false;
+                return;
+            }
             if (_eventid == 0) return;
             _curreventid = _eventid;
             DataTable dtbl = null;
