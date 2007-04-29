@@ -1161,6 +1161,7 @@ namespace Scheduler
 		}
 		#endregion
         #endregion
+
         private void cmbStartTime_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			TimeSpan ts=new TimeSpan(1,0,0,0,0);
