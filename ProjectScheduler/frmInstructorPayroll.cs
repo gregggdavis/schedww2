@@ -59,7 +59,8 @@ namespace Scheduler
                 dv.Table = dataSet11.viewInstructorPaymentDetails;
                 //BusinessLayer.Connection conn = new Scheduler.BusinessLayer.Connection();
                 //System.Data.SqlClient.SqlCommand command = new System.Data.SqlClient.SqlCommand();
-
+                dateEditEndDate.EditValue = System.DateTime.Today;
+                dateEditStartDate.EditValue = System.DateTime.Today;
 
                 string query = "select * from viewInstructorPaymentDetails";
                 //conn.Connect();
@@ -83,7 +84,8 @@ namespace Scheduler
         //string lastRowFilter = "";
         private void frmInstructorPayroll_Load(object sender, EventArgs e)
         {
-           
+            dateEditEndDate.EditValue = System.DateTime.Today;
+            dateEditStartDate.EditValue = System.DateTime.Today;
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)

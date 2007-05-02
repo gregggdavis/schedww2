@@ -1555,11 +1555,18 @@ namespace Scheduler
                 {
                     #region Delete Recurrence
                     frmDeleteEvents frmDelEvt = new frmDeleteEvents(eventID, calEventID);
-					if (frmDelEvt.ShowDialog() == DialogResult.OK) 
-						LoadEvent();
+                    if (frmDelEvt.ShowDialog() == DialogResult.OK)
+                    {
+                        Events evt = new Events();
+                        evt.EventID = eventID;
+                        evt.DeleteCalendarEvent();
+                        LoadEvent();
+                        
+                    }
                     frmDelEvt.Close();
 					frmDelEvt.Dispose();
                     #endregion
+
                 }
                 else
                 {

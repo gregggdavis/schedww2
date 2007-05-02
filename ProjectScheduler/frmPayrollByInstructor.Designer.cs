@@ -326,7 +326,7 @@ namespace Scheduler
             // 
             // checkEdit2
             // 
-            this.checkEdit2.Location = new System.Drawing.Point(9, 44);
+            this.checkEdit2.Location = new System.Drawing.Point(23, 49);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "End Date:";
             this.checkEdit2.Size = new System.Drawing.Size(75, 19);
@@ -335,7 +335,7 @@ namespace Scheduler
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(9, 19);
+            this.checkEdit1.Location = new System.Drawing.Point(23, 24);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Start Date:";
             this.checkEdit1.Size = new System.Drawing.Size(75, 19);
@@ -344,7 +344,7 @@ namespace Scheduler
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(261, 19);
+            this.simpleButton1.Location = new System.Drawing.Point(275, 24);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(81, 44);
             this.simpleButton1.TabIndex = 5;
@@ -355,7 +355,7 @@ namespace Scheduler
             // 
             this.dateEditEndDate.EditValue = new System.DateTime(2007, 3, 22, 7, 25, 31, 171);
             this.dateEditEndDate.Enabled = false;
-            this.dateEditEndDate.Location = new System.Drawing.Point(86, 44);
+            this.dateEditEndDate.Location = new System.Drawing.Point(100, 49);
             this.dateEditEndDate.Name = "dateEditEndDate";
             this.dateEditEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -368,7 +368,7 @@ namespace Scheduler
             // 
             this.dateEditStartDate.EditValue = new System.DateTime(2007, 3, 22, 7, 25, 23, 234);
             this.dateEditStartDate.Enabled = false;
-            this.dateEditStartDate.Location = new System.Drawing.Point(86, 19);
+            this.dateEditStartDate.Location = new System.Drawing.Point(100, 24);
             this.dateEditStartDate.Name = "dateEditStartDate";
             this.dateEditStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -384,6 +384,7 @@ namespace Scheduler
             this.Controls.Add(this.pnlBody);
             this.Name = "frmPayrollByInstructor";
             this.Text = "Payroll By Instructor";
+            this.Load += new System.EventHandler(this.frmPayrollByInstructor_Load);
             this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);

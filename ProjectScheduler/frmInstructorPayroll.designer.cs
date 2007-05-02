@@ -108,7 +108,7 @@ namespace Scheduler
             this.repositoryItemDateEdit2,
             this.repositoryItemSpinEdit1,
             this.repositoryItemSpinEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(688, 351);
+            this.gridControl1.Size = new System.Drawing.Size(688, 360);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -464,9 +464,9 @@ namespace Scheduler
             // 
             this.panelControl2.Controls.Add(this.gridControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 100);
+            this.panelControl2.Location = new System.Drawing.Point(0, 91);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(692, 355);
+            this.panelControl2.Size = new System.Drawing.Size(692, 364);
             this.panelControl2.TabIndex = 2;
             this.panelControl2.Text = "panelControl2";
             // 
@@ -480,7 +480,7 @@ namespace Scheduler
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(692, 100);
+            this.panelControl1.Size = new System.Drawing.Size(692, 91);
             this.panelControl1.TabIndex = 1;
             this.panelControl1.Text = "panelControl1";
             // 

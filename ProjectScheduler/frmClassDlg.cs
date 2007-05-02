@@ -2164,7 +2164,7 @@ namespace Scheduler
 		private void frmCourseDlg_Load(object sender, System.EventArgs e)
 		{
 			this.ActiveControl = txtCourseName;
-
+            cmbEventStatus_I.SelectedIndex = 0;
 			cmbEventType_I.SelectedIndex=0;
 			IsEventChanged=false;
 
