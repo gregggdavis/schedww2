@@ -40,7 +40,8 @@ namespace Scheduler
                 //BusinessLayer.DAC.ConnectionString = BusinessLayer.Common.ConnString;
                // pay.GetData(dateEditStartDate.DateTime, dateEditEndDate.DateTime, true, dataSet11);
                 //gridView1.CollapseAllGroups();
-
+                dateEditEndDate.EditValue = System.DateTime.Today;
+                dateEditStartDate.EditValue = System.DateTime.Today;
                 if (checkEdit1.Checked && checkEdit2.Checked)
                 {
                     if (dateEditStartDate.DateTime > dateEditEndDate.DateTime)
@@ -147,6 +148,12 @@ namespace Scheduler
         private void checkEdit2_CheckedChanged(object sender, EventArgs e)
         {
             dateEditEndDate.Enabled = checkEdit2.Checked;
+        }
+
+        private void frmPayrollByInstructor_Load(object sender, EventArgs e)
+        {
+            dateEditEndDate.DateTime = System.DateTime.Today;
+            dateEditStartDate.DateTime = System.DateTime.Today;
         }
     }
 }

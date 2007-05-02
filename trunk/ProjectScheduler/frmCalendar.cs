@@ -83,6 +83,12 @@ namespace Scheduler {
 		/// </summary>
 		private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraScheduler.Printing.DailyPrintStyle dailyPrintStyle1 = new DevExpress.XtraScheduler.Printing.DailyPrintStyle();
+            DevExpress.XtraScheduler.Printing.WeeklyPrintStyle weeklyPrintStyle1 = new DevExpress.XtraScheduler.Printing.WeeklyPrintStyle();
+            DevExpress.XtraScheduler.Printing.MonthlyPrintStyle monthlyPrintStyle1 = new DevExpress.XtraScheduler.Printing.MonthlyPrintStyle();
+            DevExpress.XtraScheduler.Printing.TriFoldPrintStyle triFoldPrintStyle1 = new DevExpress.XtraScheduler.Printing.TriFoldPrintStyle();
+            DevExpress.XtraScheduler.Printing.CalendarDetailsPrintStyle calendarDetailsPrintStyle1 = new DevExpress.XtraScheduler.Printing.CalendarDetailsPrintStyle();
+            DevExpress.XtraScheduler.Printing.MemoPrintStyle memoPrintStyle1 = new DevExpress.XtraScheduler.Printing.MemoPrintStyle();
             DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalendar));
@@ -177,6 +183,17 @@ namespace Scheduler {
             this.schedulerControl1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Location = new System.Drawing.Point(0, 64);
             this.schedulerControl1.Name = "schedulerControl1";
+            dailyPrintStyle1.CalendarHeaderVisible = false;
+            weeklyPrintStyle1.CalendarHeaderVisible = false;
+            monthlyPrintStyle1.CalendarHeaderVisible = false;
+            triFoldPrintStyle1.CalendarHeaderVisible = false;
+            this.schedulerControl1.PrintStyles.AddRange(new DevExpress.XtraScheduler.Printing.SchedulerPrintStyle[] {
+            dailyPrintStyle1,
+            weeklyPrintStyle1,
+            monthlyPrintStyle1,
+            triFoldPrintStyle1,
+            calendarDetailsPrintStyle1,
+            memoPrintStyle1});
             this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
             this.schedulerControl1.Start = new System.DateTime(2006, 3, 6, 0, 0, 0, 0);
             this.schedulerControl1.Storage = this.schedulerStorage1;
@@ -211,6 +228,7 @@ namespace Scheduler {
             this.schedulerControl1.Views.WeekView.Appearance.Selection.Options.UseFont = true;
             this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl1.Click += new System.EventHandler(this.schedulerControl1_Click);
+            this.schedulerControl1.CustomDrawAppointment += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl1_CustomDrawAppointment);
             this.schedulerControl1.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl_EditAppointmentFormShowing);
             this.schedulerControl1.PrepareContextMenu += new DevExpress.XtraScheduler.PrepareContextMenuEventHandler(this.OnPrepareContextMenu);
             // 
@@ -528,8 +546,8 @@ namespace Scheduler {
 				schedulerControl1.ActiveViewType = SchedulerViewType.Month;
 				pnlCalendar.Dock = DockStyle.Fill;
 				//we set hegiht of appointment and make it multiline
-				schedulerControl1.Views.MonthView.AppointmentHeight = 35;
-				schedulerControl1.Views.MonthView.Appearance.Appointment.TextOptions.Assign(TextOptions.DefaultOptionsMultiLine);
+				//schedulerControl1.Views.MonthView.AppointmentHeight = 35;
+				schedulerControl1.Views.MonthView.Appearance.Appointment.TextOptions.Assign(TextOptions.DefaultOptions);
 			}
             isProcess = true;
 		}
@@ -944,6 +962,15 @@ namespace Scheduler {
                         if (StartDatePickerTop.Checked) printStyle.StartRangeDate = CalendarFilter.StartDate;
                         if (EndDatePickerTop.Checked) printStyle.EndRangeDate = CalendarFilter.EndDate;
                     }
+                    
+                    PrintStyleWithResourceOptions printresources = schedulerPrintStyle as PrintStyleWithResourceOptions;
+                    if (printresources != null)
+                    {
+                        printresources.CalendarHeaderVisible = false;
+                        if (StartDatePickerTop.Checked) printresources.StartRangeDate = CalendarFilter.StartDate;
+                        if (EndDatePickerTop.Checked) printresources.EndRangeDate = CalendarFilter.EndDate;                        
+                    }
+                    
                     Common.FontSize = 8.25f;
 					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 2);
 					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize);
@@ -979,7 +1006,7 @@ namespace Scheduler {
 						schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Monthly;
 						break;
 				}
-
+                
                 schedulerControl1.ShowPrintOptionsForm();
             }
             catch (Exception ex)
@@ -1024,5 +1051,10 @@ namespace Scheduler {
 		{
 
 		}
+
+        private void schedulerControl1_CustomDrawAppointment(object sender, CustomDrawObjectEventArgs e)
+        {
+            
+        }
 	}
 }

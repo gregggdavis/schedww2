@@ -1295,6 +1295,31 @@ namespace Scheduler.BusinessLayer {
 			}
 		}
 
+        public bool DeleteExtraClassEvents()
+        {
+            try
+            {
+                string strSql = "";
+                SqlCommand com = null;
+                Connection con = null;
+                strSql = "Delete From [CalendarEvent] Where EventID=@EventID AND EventType = 'Extra Class'";
+                con = new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.Connection = con.SQLCon;
+                com.CommandText = strSql;
+                com.Parameters.Add(new SqlParameter("@EventID", SqlDbType.Int));
+                com.Parameters["@EventID"].Value = EventID;
+                com.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+        }
+
 		public bool DeleteData(bool DeleteMaster) {
 			string strSql = "";
 			SqlCommand com = null;
