@@ -642,7 +642,7 @@ namespace Scheduler {
 						Events evt = new Events();
 						evt.EventID = intEventID;
 						strMess = evt.CheckClassEvent();
-						if (strMess == "") strMess = evt.CheckProgramEcent();
+						if (strMess == "") strMess = evt.CheckProgramEvent();
 
 						if (strMess != "") {
 							Message.MsgWarning("This Event is linked with" + strMess + ".\n\nEvent cannot be deleted.");

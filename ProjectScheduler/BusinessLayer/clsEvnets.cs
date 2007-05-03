@@ -1229,7 +1229,7 @@ namespace Scheduler.BusinessLayer {
 			}
 		}
 
-		public string CheckProgramEcent() {
+		public string CheckProgramEvent() {
 			bool OK = false;
 			string strSql = "";
 			string Result = "";
@@ -1399,8 +1399,11 @@ namespace Scheduler.BusinessLayer {
                     con.DisConnect();
                 }
             }
-        }		
+        }
+        //public int GetClassID(int eventid)
+        //{
 
+        //}
         public bool DeleteCalendarEvent() {
 			string strSql = "";
 			SqlCommand com = null;
@@ -2075,7 +2078,11 @@ namespace Scheduler.BusinessLayer {
 				}
 			}
 		}
-
+        public bool CheckEventExists(int id)
+        {
+            System.Data.SqlClient.SqlDataReader reader = DAC.SelectStatement("Select EventID from Event where EventId = " + id);
+            return reader.HasRows;
+        }
 		public int GetEvent(int eventID, ref string module, ref int eventtypeindex) {
 			string strSql = "";
 			SqlCommand com = null;
