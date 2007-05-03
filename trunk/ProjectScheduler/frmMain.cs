@@ -2929,7 +2929,7 @@ namespace Scheduler
 							Events evt = new Events();
 							evt.EventID = intID;
 							strMess = evt.CheckClassEvent();
-							if (strMess == "") strMess = evt.CheckProgramEcent();
+							if (strMess == "") strMess = evt.CheckProgramEvent();
 
 							if (strMess != "")
 							{
@@ -2990,7 +2990,7 @@ namespace Scheduler
 							Events evt = new Events();
 							evt.EventID = intEventID;
 							strMess = evt.CheckClassEvent();
-							if (strMess == "") strMess = evt.CheckProgramEcent();
+							if (strMess == "") strMess = evt.CheckProgramEvent();
 
 							if (strMess != "")
 							{

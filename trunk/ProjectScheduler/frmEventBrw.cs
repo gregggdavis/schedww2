@@ -134,6 +134,9 @@ namespace Scheduler
             this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlBrowse = new System.Windows.Forms.Panel();
             this.grdEvent = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.persistentRepository1 = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gvwEvent = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -189,12 +192,10 @@ namespace Scheduler
             this.lbl_Find = new System.Windows.Forms.Label();
             this.chk_AdvanceSearch = new System.Windows.Forms.CheckBox();
             this.imgContext = new System.Windows.Forms.ImageList(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlBody.SuspendLayout();
             this.pnlBrowse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEvent)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvent)).BeginInit();
             this.pnlFilter.SuspendLayout();
@@ -203,7 +204,6 @@ namespace Scheduler
             this.pnl_Find.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gcolStatus
@@ -251,6 +251,28 @@ namespace Scheduler
             this.grdEvent.DoubleClick += new System.EventHandler(this.grdEvent_DoubleClick);
             this.grdEvent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdEvent_KeyPress);
             this.grdEvent.Click += new System.EventHandler(this.grdEvent_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 48);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // persistentRepository1
             // 
@@ -866,28 +888,6 @@ namespace Scheduler
             this.imgContext.Images.SetKeyName(0, "");
             this.imgContext.Images.SetKeyName(1, "");
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // frmEventBrw
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -902,6 +902,7 @@ namespace Scheduler
             this.pnlBody.ResumeLayout(false);
             this.pnlBrowse.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEvent)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvent)).EndInit();
             this.pnlFilter.ResumeLayout(false);
@@ -913,7 +914,6 @@ namespace Scheduler
             this.pnl_Find.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -1099,7 +1099,8 @@ namespace Scheduler
                     {
                         frmClassDlg frm = new frmClassDlg(_uid, _eventtypeindex, intCalID);
                         frm.Mode = "Edit";
-                        if (frm.ShowDialog() == DialogResult.OK)
+                       //if (frm.ShowDialog() == DialogResult.OK)
+                        frm.ShowDialog();
                         {
                             LoadEvent();
                             frm.Close();
@@ -1111,7 +1112,8 @@ namespace Scheduler
                     {
                         frmProgramDlg frm = new frmProgramDlg(_uid, _eventtypeindex);
                         frm.Mode = "Edit";
-                        if (frm.ShowDialog() == DialogResult.OK)
+                        //if (frm.ShowDialog() == DialogResult.OK)
+                        frm.ShowDialog();
                         {
                             LoadEvent();
                             frm.Close();
@@ -1160,7 +1162,8 @@ namespace Scheduler
                     {
                         frmClassDlg frm = new frmClassDlg(_uid, _eventtypeindex);
                         frm.Mode = "Edit";
-                        if (frm.ShowDialog() == DialogResult.OK)
+                     //   if (frm.ShowDialog() == DialogResult.OK)
+                        frm.ShowDialog();
                         {
                             LoadEvent();
                             frm.Close();
@@ -1172,7 +1175,8 @@ namespace Scheduler
                     {
                         frmProgramDlg frm = new frmProgramDlg(_uid, _eventtypeindex);
                         frm.Mode = "Edit";
-                        if (frm.ShowDialog() == DialogResult.OK)
+                     //   if (frm.ShowDialog() == DialogResult.OK)
+                        frm.ShowDialog();
                         {
                             LoadEvent();
                             frm.Close();
@@ -1557,11 +1561,7 @@ namespace Scheduler
                     frmDeleteEvents frmDelEvt = new frmDeleteEvents(eventID, calEventID);
                     if (frmDelEvt.ShowDialog() == DialogResult.OK)
                     {
-                        Events evt = new Events();
-                        evt.EventID = eventID;
-                        evt.DeleteCalendarEvent();
                         LoadEvent();
-                        
                     }
                     frmDelEvt.Close();
 					frmDelEvt.Dispose();
@@ -1577,14 +1577,26 @@ namespace Scheduler
 					    Events evt = new Events();
 					    evt.EventID = eventID;
 					    strMess = evt.CheckClassEvent();
-					    if (strMess == "") strMess = evt.CheckProgramEcent();
+					    if (strMess == "") strMess = evt.CheckProgramEvent();
 
 					    if (strMess != "") {
 						    Message.MsgWarning("This Event is linked with" + strMess + ".\n\nEvent cannot be deleted.");
 						    return;
 					    }
 
+
 					    evt.DeleteData(true);
+                        if (!evt.CheckEventExists(eventID))
+                        {
+                            string module = string.Empty;
+                            int _uid = 0;
+                            int _eventtypeindex = 0;
+                            Events objEvent = new Events();
+                            //Returns Course/Program ID
+                            _uid = objEvent.GetEvent(eventID, ref module, ref _eventtypeindex);
+                            objEvent.EventID = 0;
+                            objEvent.UpdateClassEvent(_uid, "EventId");
+                        }
 					    LoadEvent();
                     }
                     #endregion
