@@ -137,6 +137,7 @@ namespace Scheduler {
             // 
             // schedulerStorage1
             // 
+            this.schedulerStorage1.Appointments.Mappings.Description = "Status";
             this.schedulerStorage1.Appointments.Mappings.End = "ENDDATETIME";
             this.schedulerStorage1.Appointments.Mappings.Label = "CEID";
             this.schedulerStorage1.Appointments.Mappings.Start = "STARTDATETIME";
@@ -230,6 +231,7 @@ namespace Scheduler {
             this.schedulerControl1.Click += new System.EventHandler(this.schedulerControl1_Click);
             this.schedulerControl1.CustomDrawAppointment += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl1_CustomDrawAppointment);
             this.schedulerControl1.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl_EditAppointmentFormShowing);
+            this.schedulerControl1.AppointmentViewInfoCustomizing += new DevExpress.XtraScheduler.AppointmentViewInfoCustomizingEventHandler(this.schedulerControl1_AppointmentViewInfoCustomizing);
             this.schedulerControl1.PrepareContextMenu += new DevExpress.XtraScheduler.PrepareContextMenuEventHandler(this.OnPrepareContextMenu);
             // 
             // pnlFilter
@@ -1055,6 +1057,15 @@ namespace Scheduler {
         private void schedulerControl1_CustomDrawAppointment(object sender, CustomDrawObjectEventArgs e)
         {
             
+        }
+
+        private void schedulerControl1_AppointmentViewInfoCustomizing(object sender, AppointmentViewInfoCustomizingEventArgs e)
+        {
+            if (e.ViewInfo.Appointment.Description.Contains("InActive"))
+            {
+                e.ViewInfo.Appearance.Font = new Font(e.ViewInfo.Appearance.Font,(FontStyle.Bold|FontStyle.Strikeout));
+            }
+
         }
 	}
 }
