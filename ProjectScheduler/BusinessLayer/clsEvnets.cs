@@ -663,7 +663,7 @@ namespace Scheduler.BusinessLayer {
 			try {
 				eventsSql = @"
 				SELECT     Event.EventId, CalendarEvent.CalendarEventId, Event.Description, CalendarEvent.Name AS EventName, 
-				CalendarEvent.StartDateTime, 
+				CalendarEvent.StartDateTime, CASE When CalendarEvent.CalendarEventStatus = 0 Then 'Active' Else 'InActive' End as Status,
                       CalendarEvent.EndDateTime, CalendarEvent.ScheduledTeacherId, CalendarEvent.RealTeacherId,
                       CC1.LastName + ', ' + CC1.FirstName AS ScheduledTeacher, CC2.LastName + ', ' + CC2.FirstName AS RealTeacher,
                       Course.CourseId, 
@@ -728,14 +728,14 @@ namespace Scheduler.BusinessLayer {
 				dtbl.Columns.Add("STARTDATETIME", Type.GetType("System.DateTime"));
 				dtbl.Columns.Add("ENDDATETIME", Type.GetType("System.DateTime"));
 				dtbl.Columns.Add("TASKDESC", Type.GetType("System.String"));
-				
+                dtbl.Columns.Add("Status", Type.GetType("System.String"));
 				foreach (DataRow dr in _dtbl.Rows) {
 					string strfinalstring = "";
 					string strDept = "";
 					string strDescription = "";
 					string strTeacher = "";
 					string strClient = "";
-					
+                    string status = "";
 					if (dr["EventName"].ToString().Trim().Length > 0)
 					{
 						strDescription = dr["EventName"].ToString();
@@ -776,7 +776,7 @@ namespace Scheduler.BusinessLayer {
 								continue;
 						}
 					}
-
+                    if (dr["Status"] != DBNull.Value) status = dr["Status"].ToString();
 					//strfinalstring = strTime.Trim();
 					/*if(strDept!="")
 					{
@@ -812,7 +812,7 @@ namespace Scheduler.BusinessLayer {
 														  dr["CalendarEventID"].ToString(),
 														  dtStart,
 														  dtEnd,
-														  strfinalstring
+														  strfinalstring,status
 													  });
 				}
 				return dtbl;
