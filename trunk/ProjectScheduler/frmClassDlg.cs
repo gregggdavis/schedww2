@@ -2230,6 +2230,7 @@ namespace Scheduler
 
 					if(intClientID!=0)
 					{
+                        llblClient.Tag = intClientID;
 						Common.PopulateDropdown(
 							cmbDept, "Select CompanyName = CASE " + 
 							"WHEN C.NickName IS NULL THEN C.CompanyName " +
@@ -2250,6 +2251,8 @@ namespace Scheduler
 
                     if (intDepartmentID != 0)
                     {
+                        llbDepartment.Tag = intDepartmentID;
+
                         Common.PopulateDropdown(
                             cmbProgram, "Select [Name] = CASE " +
                             "WHEN NickName IS NULL THEN [Name] " +
@@ -2261,7 +2264,10 @@ namespace Scheduler
                     }
 
                     if (dr["Program"] != System.DBNull.Value)
+                    {
+                        llblProgram.Tag = dr["ProgramId"].ToString();
                         cmbProgram.SelectedIndex = cmbProgram.Items.IndexOf(dr["Program"].ToString());
+                    }
 
 					txtCourseName.Text = dr["Name"].ToString();
                     if (_mode == "AddClone") txtCourseName.Text = "Copy of " + txtCourseName.Text;
@@ -3693,7 +3699,15 @@ namespace Scheduler
         private void llblProgram_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
             frmProgramDlg fProgDlg = new frmProgramDlg();
-            fProgDlg.Mode = "Add";
+            if (llblProgram.Tag == null || Convert.ToInt32(llblProgram.Tag) == 0)
+                fProgDlg.Mode = "Add";
+            else
+            {
+                fProgDlg.ProgramID = Convert.ToInt32(llblProgram.Tag);
+                fProgDlg.Mode = "Edit";
+                fProgDlg.LoadData();
+            }
+            
             if (fProgDlg.ShowDialog() == DialogResult.OK)
             {
                 Common.PopulateDropdown(
@@ -3999,6 +4013,7 @@ namespace Scheduler
 
             if (intClientID != 0)
             {
+                
                 Common.PopulateDropdown(
                     cmbDept, "Select CompanyName = CASE " +
                     "WHEN C.NickName IS NULL THEN C.CompanyName " +
@@ -4011,6 +4026,7 @@ namespace Scheduler
 
                 cmbProgram.Items.Clear();
             }
+            llblClient.Tag = intClientID;
         }
 
         private void cmbDept_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -4023,6 +4039,7 @@ namespace Scheduler
 
             if (intDepartmentID != 0)
             {
+                llblProgram.Tag = 0;
                 Common.PopulateDropdown(
                     cmbProgram, "Select [Name] = CASE " +
                     "WHEN NickName IS NULL THEN [Name] " +
@@ -4032,6 +4049,7 @@ namespace Scheduler
                     "Program Where ProgramStatus=0 and DepartmentID=" + intDepartmentID +
                     " Order By [Name] ");
             }
+            llbDepartment.Tag = intDepartmentID;
         }
 
         private void cmbProgram_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -4039,13 +4057,24 @@ namespace Scheduler
             intProgramID = Common.GetProgramID(
                 "Select ProgramID From Program Where (Name =@Name OR NickName=@Name) and DepartmentID=" + intDepartmentID.ToString(), cmbProgram.Text
                 );
-
+            if(cmbProgram.SelectedIndex != 0)
+                llblProgram.Tag = intProgramID;
+            else
+                llblProgram.Tag = 0;
         }
 
         private void llblClient_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
         {
             frmClientDlg fContDlg = new frmClientDlg();
-            fContDlg.Mode = "Add";
+            if (llblClient.Tag == null || Convert.ToInt32(llblClient.Tag) == 0)
+                fContDlg.Mode = "Add";
+            else
+            {
+                fContDlg.ContactID = Convert.ToInt32(llblClient.Tag);
+                fContDlg.Mode = "Edit";
+                fContDlg.LoadData();
+            }
+            //fContDlg.Mode = "Add";
             string str = cmbClient.Text;
             if (fContDlg.ShowDialog() == DialogResult.OK)
             {
@@ -4069,6 +4098,14 @@ namespace Scheduler
         {
             frmDepartmentDlg fDeptDlg = new frmDepartmentDlg();
             fDeptDlg.Mode = "Add";
+            if (llbDepartment.Tag == null || Convert.ToInt32(llbDepartment.Tag) == 0)
+                fDeptDlg.Mode = "Add";
+            else
+            {
+                fDeptDlg.DeptID = Convert.ToInt32(llbDepartment.Tag);
+                fDeptDlg.Mode = "Edit";
+                fDeptDlg.LoadData();
+            }
             string str = cmbDept.Text;
             if (fDeptDlg.ShowDialog() == DialogResult.OK)
             {
@@ -4359,7 +4396,6 @@ namespace Scheduler
                 SetEventModificationControls(false);
         }
         #endregion
-
 
         #region Event Business Logic Handling
 
@@ -5465,7 +5501,6 @@ namespace Scheduler
             return true;
         }
         #endregion
-
 
     }
 }
