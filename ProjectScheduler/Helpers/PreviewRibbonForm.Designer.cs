@@ -1279,6 +1279,7 @@ namespace Scheduler.Helpers
             this.printControl1.Name = "printControl1";
             this.printControl1.Size = new System.Drawing.Size(732, 390);
             this.printControl1.TabIndex = 0;
+            //this.printControl1.
             // 
             // printRibbonController1
             // 

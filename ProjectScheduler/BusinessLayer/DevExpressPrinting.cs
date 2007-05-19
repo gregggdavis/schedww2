@@ -37,6 +37,11 @@ namespace Scheduler.BusinessLayer
 		float BottomMargin;
         #endregion
 
+        public void CreateReport()
+        {
+
+        }
+
         #region Constructors
         public DevExpressPrinting(ArrayList _arrLabel, ArrayList _arrValue, DevExpress.XtraPrinting.PrintingSystem aPrintDocument)
 		{
