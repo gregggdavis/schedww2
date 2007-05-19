@@ -4285,30 +4285,30 @@ namespace Scheduler
 			nm.RowCount = 0;
             //xtraPrinting.
             //xtraPrinting.DrawClass
-            
-            //DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
-            //printingSystem.Begin();
-            ////printingSystem.Graph.
-            //DrawTopLabel(g);
-            //bool more = xtraPrinting.DrawDataGrid(g);
-            //if (more == true)
-            //{
-            //    //e.HasMorePages = true;
-            //    //nm.PageNumber++;
-            //    xtraPrinting.PageNumber++;
 
-            //}
-            ////printingSystem
+            DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
+            printingSystem.Begin();
+            //printingSystem.Graph.
+            DrawTopLabel(g);
+            bool more = xtraPrinting.DrawDataGrid(g);
+            if (more == true)
+            {
+                //e.HasMorePages = true;
+                //nm.PageNumber++;
+                xtraPrinting.PageNumber++;
 
-            ////printingSystem.start
-            //printingSystem.End();
+            }
+            //printingSystem
+
+            //printingSystem.start
+            printingSystem.End();
             //printingSystem.
             printingSystem.PreviewFormEx.Show();
             Helpers.PreviewRibbonForm frm = new Scheduler.Helpers.PreviewRibbonForm();
             frm.MyPrintingSystem = printingSystem;
             frm.Show();
             
-			if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
+			//if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
 			{
 			}
 
@@ -4325,6 +4325,23 @@ namespace Scheduler
 				e.HasMorePages = true;
 				nm.PageNumber++;
 			}
+
+            //DevExpress.XtraPrinting.BrickGraphics g1 = printingSystem.Graph;
+            ////printingSystem.Begin();
+            ////printingSystem.Graph.
+            //DrawTopLabel(g1);
+            //more = xtraPrinting.DrawDataGrid(g1);
+            //if (more == true)
+            //{
+            //    e.HasMorePages = true;
+            //    //nm.PageNumber++;
+            //    xtraPrinting.PageNumber++;
+
+            //}
+            ////printingSystem
+
+            //printingSystem.start
+            //printingSystem.End();
 		}
         
 		private void buttonClear_Click(object sender, EventArgs e)
@@ -5582,22 +5599,23 @@ namespace Scheduler
 
         private void printingSystem_BeforePagePaint(object sender, DevExpress.XtraPrinting.PageEventArgs e)
         {
-            DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
-            printingSystem.Begin();
-            //printingSystem.Graph.
-            DrawTopLabel(g);
-            bool more = xtraPrinting.DrawDataGrid(g);
-            if (more == true)
-            {
-                //e.HasMorePages = true;
-                //nm.PageNumber++;
-                xtraPrinting.PageNumber++;
+            //DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
+            //printingSystem.Begin();
+            
+            ////printingSystem.Graph.
+            //DrawTopLabel(g);
+            //bool more = xtraPrinting.DrawDataGrid(g);
+            //if (more == true)
+            //{
+            //    //e.HasMorePages = true;
+            //    //nm.PageNumber++;
+            //    xtraPrinting.PageNumber++;
 
-            }
-            //printingSystem
+            //}
+            ////printingSystem
 
-            //printingSystem.start
-            printingSystem.End();
+            ////printingSystem.start
+            //printingSystem.End();
         }
 
     }
