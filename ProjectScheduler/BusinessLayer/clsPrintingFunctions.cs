@@ -17,6 +17,8 @@ namespace Scheduler.BusinessLayer
 			//
 		}
 
+
+
 		public static void ShowPageSettings(ref PageSettings ps) 
 		{ 
 			if(ps==null)
