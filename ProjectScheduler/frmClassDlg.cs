@@ -81,9 +81,7 @@ namespace Scheduler
 		private Panel pnlBody_I;
 		private Label lblExReason_I;
 		private ComboBox cmbExceptionReason_I;
-		private GroupBox groupBox4;
-		private TextBox txtChangeReason_I;
-		private Label lblChangeReason_I;
+        private GroupBox groupBox4;
 		private PictureBox picAlert_I;
 		private CheckBox chkIsHoliday;
 		private Label lblIsHoliday_I;
@@ -92,8 +90,7 @@ namespace Scheduler
 		private Label lblDtComp_I;
 		private TextBox txtNote_I;
 		private TextBox txtDescription_I;
-		private Label lblDescription_I;
-		private Label lblStatus_I;
+        private Label lblDescription_I;
 		private TextBox txtRoomNo_I;
 		private Label lblRoomNo_I;
 		private TextBox txtLocation_I;
@@ -114,8 +111,7 @@ namespace Scheduler
 		private DateTimePicker dtDateComplete_I;
 		public ComboBox cmbEndTime;
 		public ComboBox cmbStartTime;
-		private GroupBox groupBox6;
-		private ComboBox cmbEventStatus_I;
+        private GroupBox groupBox6;
 		private ComboBox cmbBlock_I;
 		public DateTimePicker dtEnd;
 		public DateTimePicker dtStart;
@@ -196,6 +192,7 @@ namespace Scheduler
         private CheckBox chkEventModified;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem;
         NormalPrinting nm = null;
+        private CheckBox chkEventStatus_I;
         BusinessLayer.DevExpressPrinting xtraPrinting;
         #endregion
 
@@ -487,12 +484,11 @@ namespace Scheduler
             this.btn_ClearRecc = new System.Windows.Forms.Button();
             this.btnRecurrence = new System.Windows.Forms.Button();
             this.pnlBody_I = new System.Windows.Forms.Panel();
+            this.chkEventStatus_I = new System.Windows.Forms.CheckBox();
             this.chkEventModified = new System.Windows.Forms.CheckBox();
             this.lblExReason_I = new System.Windows.Forms.Label();
             this.cmbExceptionReason_I = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtChangeReason_I = new System.Windows.Forms.TextBox();
-            this.lblChangeReason_I = new System.Windows.Forms.Label();
             this.picAlert_I = new System.Windows.Forms.PictureBox();
             this.chkIsHoliday = new System.Windows.Forms.CheckBox();
             this.lblIsHoliday_I = new System.Windows.Forms.Label();
@@ -502,7 +498,6 @@ namespace Scheduler
             this.txtNote_I = new System.Windows.Forms.TextBox();
             this.txtDescription_I = new System.Windows.Forms.TextBox();
             this.lblDescription_I = new System.Windows.Forms.Label();
-            this.lblStatus_I = new System.Windows.Forms.Label();
             this.txtRoomNo_I = new System.Windows.Forms.TextBox();
             this.lblRoomNo_I = new System.Windows.Forms.Label();
             this.txtLocation_I = new System.Windows.Forms.TextBox();
@@ -524,7 +519,6 @@ namespace Scheduler
             this.cmbEndTime = new System.Windows.Forms.ComboBox();
             this.cmbStartTime = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cmbEventStatus_I = new System.Windows.Forms.ComboBox();
             this.cmbBlock_I = new System.Windows.Forms.ComboBox();
             this.dtEnd = new System.Windows.Forms.DateTimePicker();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
@@ -1256,12 +1250,11 @@ namespace Scheduler
             // 
             // pnlBody_I
             // 
+            this.pnlBody_I.Controls.Add(this.chkEventStatus_I);
             this.pnlBody_I.Controls.Add(this.chkEventModified);
             this.pnlBody_I.Controls.Add(this.lblExReason_I);
             this.pnlBody_I.Controls.Add(this.cmbExceptionReason_I);
             this.pnlBody_I.Controls.Add(this.groupBox4);
-            this.pnlBody_I.Controls.Add(this.txtChangeReason_I);
-            this.pnlBody_I.Controls.Add(this.lblChangeReason_I);
             this.pnlBody_I.Controls.Add(this.picAlert_I);
             this.pnlBody_I.Controls.Add(this.chkIsHoliday);
             this.pnlBody_I.Controls.Add(this.lblIsHoliday_I);
@@ -1271,7 +1264,6 @@ namespace Scheduler
             this.pnlBody_I.Controls.Add(this.txtNote_I);
             this.pnlBody_I.Controls.Add(this.txtDescription_I);
             this.pnlBody_I.Controls.Add(this.lblDescription_I);
-            this.pnlBody_I.Controls.Add(this.lblStatus_I);
             this.pnlBody_I.Controls.Add(this.txtRoomNo_I);
             this.pnlBody_I.Controls.Add(this.lblRoomNo_I);
             this.pnlBody_I.Controls.Add(this.txtLocation_I);
@@ -1293,7 +1285,6 @@ namespace Scheduler
             this.pnlBody_I.Controls.Add(this.cmbEndTime);
             this.pnlBody_I.Controls.Add(this.cmbStartTime);
             this.pnlBody_I.Controls.Add(this.groupBox6);
-            this.pnlBody_I.Controls.Add(this.cmbEventStatus_I);
             this.pnlBody_I.Controls.Add(this.cmbBlock_I);
             this.pnlBody_I.Controls.Add(this.dtEnd);
             this.pnlBody_I.Controls.Add(this.dtStart);
@@ -1305,14 +1296,25 @@ namespace Scheduler
             this.pnlBody_I.Size = new System.Drawing.Size(762, 486);
             this.pnlBody_I.TabIndex = 275;
             // 
+            // chkEventStatus_I
+            // 
+            this.chkEventStatus_I.AutoSize = true;
+            this.chkEventStatus_I.Location = new System.Drawing.Point(400, 196);
+            this.chkEventStatus_I.Name = "chkEventStatus_I";
+            this.chkEventStatus_I.Size = new System.Drawing.Size(111, 17);
+            this.chkEventStatus_I.TabIndex = 289;
+            this.chkEventStatus_I.Text = "Cancel This Event";
+            this.chkEventStatus_I.UseVisualStyleBackColor = true;
+            this.chkEventStatus_I.CheckedChanged += new System.EventHandler(this.chkEventStatus_I_CheckedChanged);
+            // 
             // chkEventModified
             // 
             this.chkEventModified.AutoSize = true;
             this.chkEventModified.Location = new System.Drawing.Point(14, 196);
             this.chkEventModified.Name = "chkEventModified";
-            this.chkEventModified.Size = new System.Drawing.Size(183, 17);
+            this.chkEventModified.Size = new System.Drawing.Size(128, 17);
             this.chkEventModified.TabIndex = 288;
-            this.chkEventModified.Text = "Original Event has been modified";
+            this.chkEventModified.Text = "Modify the Instructor";
             this.chkEventModified.UseVisualStyleBackColor = true;
             this.chkEventModified.CheckedChanged += new System.EventHandler(this.chkEventModified_CheckedChanged);
             // 
@@ -1320,20 +1322,20 @@ namespace Scheduler
             // 
             this.lblExReason_I.AutoSize = true;
             this.lblExReason_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblExReason_I.Location = new System.Drawing.Point(16, 274);
+            this.lblExReason_I.Location = new System.Drawing.Point(288, 223);
             this.lblExReason_I.Name = "lblExReason_I";
-            this.lblExReason_I.Size = new System.Drawing.Size(93, 13);
+            this.lblExReason_I.Size = new System.Drawing.Size(43, 13);
             this.lblExReason_I.TabIndex = 287;
-            this.lblExReason_I.Text = "Exception Reason";
+            this.lblExReason_I.Text = "Reason";
             // 
             // cmbExceptionReason_I
             // 
             this.cmbExceptionReason_I.Enabled = false;
             this.cmbExceptionReason_I.Items.AddRange(new object[] {
-            "Cancelled",
-            "Extra",
-            "Make-Up"});
-            this.cmbExceptionReason_I.Location = new System.Drawing.Point(128, 272);
+            "Weather",
+            "Instructor",
+            "Client"});
+            this.cmbExceptionReason_I.Location = new System.Drawing.Point(400, 221);
             this.cmbExceptionReason_I.Name = "cmbExceptionReason_I";
             this.cmbExceptionReason_I.Size = new System.Drawing.Size(256, 21);
             this.cmbExceptionReason_I.TabIndex = 22;
@@ -1342,31 +1344,11 @@ namespace Scheduler
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox4.Location = new System.Drawing.Point(14, 300);
+            this.groupBox4.Location = new System.Drawing.Point(14, 258);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(730, 3);
             this.groupBox4.TabIndex = 285;
             this.groupBox4.TabStop = false;
-            // 
-            // txtChangeReason_I
-            // 
-            this.txtChangeReason_I.Enabled = false;
-            this.txtChangeReason_I.Location = new System.Drawing.Point(400, 219);
-            this.txtChangeReason_I.MaxLength = 100;
-            this.txtChangeReason_I.Multiline = true;
-            this.txtChangeReason_I.Name = "txtChangeReason_I";
-            this.txtChangeReason_I.Size = new System.Drawing.Size(344, 73);
-            this.txtChangeReason_I.TabIndex = 21;
-            this.txtChangeReason_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
-            // 
-            // lblChangeReason_I
-            // 
-            this.lblChangeReason_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblChangeReason_I.Location = new System.Drawing.Point(304, 224);
-            this.lblChangeReason_I.Name = "lblChangeReason_I";
-            this.lblChangeReason_I.Size = new System.Drawing.Size(80, 42);
-            this.lblChangeReason_I.TabIndex = 284;
-            this.lblChangeReason_I.Text = "Instructor Change Reason";
             // 
             // picAlert_I
             // 
@@ -1399,7 +1381,7 @@ namespace Scheduler
             // llblTeacher2_I
             // 
             this.llblTeacher2_I.AutoSize = true;
-            this.llblTeacher2_I.Location = new System.Drawing.Point(14, 248);
+            this.llblTeacher2_I.Location = new System.Drawing.Point(14, 221);
             this.llblTeacher2_I.Name = "llblTeacher2_I";
             this.llblTeacher2_I.Size = new System.Drawing.Size(79, 13);
             this.llblTeacher2_I.TabIndex = 265;
@@ -1431,11 +1413,11 @@ namespace Scheduler
             // 
             // txtNote_I
             // 
-            this.txtNote_I.Location = new System.Drawing.Point(15, 314);
+            this.txtNote_I.Location = new System.Drawing.Point(15, 278);
             this.txtNote_I.MaxLength = 255;
             this.txtNote_I.Multiline = true;
             this.txtNote_I.Name = "txtNote_I";
-            this.txtNote_I.Size = new System.Drawing.Size(729, 130);
+            this.txtNote_I.Size = new System.Drawing.Size(729, 166);
             this.txtNote_I.TabIndex = 24;
             this.txtNote_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1457,16 +1439,6 @@ namespace Scheduler
             this.lblDescription_I.Size = new System.Drawing.Size(60, 13);
             this.lblDescription_I.TabIndex = 253;
             this.lblDescription_I.Text = "Description";
-            // 
-            // lblStatus_I
-            // 
-            this.lblStatus_I.AutoSize = true;
-            this.lblStatus_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblStatus_I.Location = new System.Drawing.Point(16, 220);
-            this.lblStatus_I.Name = "lblStatus_I";
-            this.lblStatus_I.Size = new System.Drawing.Size(38, 13);
-            this.lblStatus_I.TabIndex = 250;
-            this.lblStatus_I.Text = "Status";
             // 
             // txtRoomNo_I
             // 
@@ -1625,7 +1597,7 @@ namespace Scheduler
             "Recording",
             "Mendan",
             "Other"});
-            this.cmbTeacher2_I.Location = new System.Drawing.Point(128, 246);
+            this.cmbTeacher2_I.Location = new System.Drawing.Point(128, 219);
             this.cmbTeacher2_I.Name = "cmbTeacher2_I";
             this.cmbTeacher2_I.Size = new System.Drawing.Size(152, 21);
             this.cmbTeacher2_I.TabIndex = 20;
@@ -1716,6 +1688,7 @@ namespace Scheduler
             this.cmbEndTime.Size = new System.Drawing.Size(75, 21);
             this.cmbEndTime.TabIndex = 6;
             this.cmbEndTime.Leave += new System.EventHandler(this.cmbEndTime_Leave);
+            this.cmbEndTime.SelectedIndexChanged += new System.EventHandler(this.cmbEndTime_SelectedIndexChanged);
             // 
             // cmbStartTime
             // 
@@ -1784,19 +1757,6 @@ namespace Scheduler
             this.groupBox6.Size = new System.Drawing.Size(730, 3);
             this.groupBox6.TabIndex = 252;
             this.groupBox6.TabStop = false;
-            // 
-            // cmbEventStatus_I
-            // 
-            this.cmbEventStatus_I.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEventStatus_I.Enabled = false;
-            this.cmbEventStatus_I.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.cmbEventStatus_I.Location = new System.Drawing.Point(128, 219);
-            this.cmbEventStatus_I.Name = "cmbEventStatus_I";
-            this.cmbEventStatus_I.Size = new System.Drawing.Size(120, 21);
-            this.cmbEventStatus_I.TabIndex = 18;
-            this.cmbEventStatus_I.SelectedIndexChanged += new System.EventHandler(this.cmbEventStatus_I_SelectedIndexChanged);
             // 
             // cmbBlock_I
             // 
@@ -2174,7 +2134,8 @@ namespace Scheduler
 		private void frmCourseDlg_Load(object sender, System.EventArgs e)
 		{
 			this.ActiveControl = txtCourseName;
-            cmbEventStatus_I.SelectedIndex = 0;
+            //cmbEventStatus_I.SelectedIndex = 0;
+            
 			cmbEventType_I.SelectedIndex=0;
 			IsEventChanged=false;
 
@@ -3207,11 +3168,11 @@ namespace Scheduler
 							
 						if (showOnChangeConfirmation)
 						{
-							dlg = MessageBox.Show(this, "Are you sure, you want to save the current events. " +
-							                            "\r\rCancelling will result a loss of event data.", "Scheduler", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+							dlg = MessageBox.Show(this, "Do you want to save the current Class Event?" +
+							                            "\r\rCancelling will result a loss of event data.", "Scheduler", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						}
 						
-						if(dlg==DialogResult.Cancel)
+						if(dlg==DialogResult.No)
 						{
 							tbcCourse.SelectedTab = (TabPage)pnlEvent.Parent;
 							return;
@@ -3224,6 +3185,7 @@ namespace Scheduler
 								return;
 							}
 						}
+                        
 						tbcCourse.SelectedTab = tbpSelected;
 					}
 				    
@@ -3536,20 +3498,20 @@ namespace Scheduler
 
 		private void cmbEventStatus_I_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			IsEventChanged=true;
-			if(GetCurrentEventID((TabPage)pnlEvent.Parent)>0)
-			{
-				if(cmbEventStatus_I.SelectedIndex==1)
-				{
-					Common.MakeReadOnly(pnlBody_I, false);
-					cmbEventStatus_I.Enabled=true;
-				}
-				else
-				{
-					Common.MakeEnabled(pnlBody_I, false);
-				}
-				cmbEventType_I_SelectedIndexChanged(sender, null);
-			}
+            //IsEventChanged=true;
+            //if(GetCurrentEventID((TabPage)pnlEvent.Parent)>0)
+            //{
+            //    if(cmbEventStatus_I.SelectedIndex==1)
+            //    {
+            //        Common.MakeReadOnly(pnlBody_I, false);
+            //        cmbEventStatus_I.Enabled=true;
+            //    }
+            //    else
+            //    {
+            //        Common.MakeEnabled(pnlBody_I, false);
+            //    }
+            //    cmbEventType_I_SelectedIndexChanged(sender, null);
+            //}
 		}
 
 		private void cmbEventType_I_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -4157,9 +4119,9 @@ namespace Scheduler
 
 		private void btnPageSetup_Click(object sender, System.EventArgs e)
 		{
-			PrintingFunctions.ShowPageSettings(ref ps);
+			//PrintingFunctions.ShowPageSettings(ref ps);
             printingSystem.PageSetup();
-			printDocument1.DefaultPageSettings = ps;
+			//printDocument1.DefaultPageSettings = ps;
 		}
 
 		private void btnPrint_Click(object sender, System.EventArgs e)
@@ -4276,16 +4238,31 @@ namespace Scheduler
             }
 
             #endregion
-            nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
+            //nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
 
             xtraPrinting = new DevExpressPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printingSystem);
-			nm.PageNumber = 1;
+			//nm.PageNumber = 1;
             xtraPrinting.PageNumber = 1;
             xtraPrinting.RowCount = 0;
-			nm.RowCount = 0;
+			//nm.RowCount = 0;
             //xtraPrinting.
             //xtraPrinting.DrawClass
 
+            PrintClassDetails();
+            //printingSystem.
+            printingSystem.PreviewFormEx.Show();
+            //Helpers.PreviewRibbonForm frm = new Scheduler.Helpers.PreviewRibbonForm();
+            //frm.MyPrintingSystem = printingSystem;
+            //frm.Show();
+            
+			//if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
+			{
+			}
+
+		}
+
+        private void PrintClassDetails()
+        {
             DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
             printingSystem.Begin();
             //printingSystem.Graph.
@@ -4296,35 +4273,40 @@ namespace Scheduler
                 //e.HasMorePages = true;
                 //nm.PageNumber++;
                 xtraPrinting.PageNumber++;
-
+                //CompletePrinting(g);
+                //PrintClassDetails();
             }
             //printingSystem
 
             //printingSystem.start
             printingSystem.End();
-            //printingSystem.
-            printingSystem.PreviewFormEx.Show();
-            Helpers.PreviewRibbonForm frm = new Scheduler.Helpers.PreviewRibbonForm();
-            frm.MyPrintingSystem = printingSystem;
-            frm.Show();
-            
-			//if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
-			{
-			}
+        }
 
-		}
-
+        private void CompletePrinting(DevExpress.XtraPrinting.BrickGraphics g)
+        {
+            DrawTopLabel(g);
+            bool more = xtraPrinting.DrawDataGrid(g);
+            if (more == true)
+            {
+                //e.HasMorePages = true;
+                //nm.PageNumber++;
+                xtraPrinting.PageNumber++;
+                CompletePrinting(g);
+                //PrintClassDetails();
+            }
+        }
 		
 		private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
-			Graphics	g = e.Graphics;
-			DrawTopLabel(g);
-			bool more = nm.DrawDataGrid(g);
-			if (more == true)
-			{
-				e.HasMorePages = true;
-				nm.PageNumber++;
-			}
+            
+            //Graphics	g = e.Graphics;
+            //DrawTopLabel(g);
+            //bool more = nm.DrawDataGrid(g);
+            //if (more == true)
+            //{
+            //    e.HasMorePages = true;
+            //    nm.PageNumber++;
+            //}
 
             //DevExpress.XtraPrinting.BrickGraphics g1 = printingSystem.Graph;
             ////printingSystem.Begin();
@@ -4444,22 +4426,24 @@ namespace Scheduler
         {
             if (boolEnableControls)
             {
-                cmbEventStatus_I.Enabled = true;
+                //cmbEventStatus_I.Enabled = true;
+                chkEventStatus_I.Enabled = true;
                 chkEventModified.Checked = true;
-                if (cmbEventStatus_I.SelectedIndex != 1)
+                if (!chkEventStatus_I.Checked)
                 {
                     cmbTeacher2_I.Enabled = true;
                     cmbExceptionReason_I.Enabled = true;
-                    txtChangeReason_I.Enabled = true;
+                    //txtChangeReason_I.Enabled = true;
+                    
                 }
             }
             else
             {
                 chkEventModified.Checked = false;
-                if(cmbEventStatus_I.SelectedIndex!=1) cmbEventStatus_I.Enabled = false;
+                if(!chkEventStatus_I.Checked) chkEventStatus_I.Enabled = false;
                 cmbTeacher2_I.Enabled = false;
                 cmbExceptionReason_I.Enabled = false;
-                txtChangeReason_I.Enabled = false;
+                //txtChangeReason_I.Enabled = false;
             }
         }
 
@@ -4679,10 +4663,14 @@ namespace Scheduler
                 if (dr["ExceptionReason"] != System.DBNull.Value)
                     cmbExceptionReason_I.Text = dr["ExceptionReason"].ToString();
 
-                cmbEventStatus_I.SelectedIndex = Convert.ToInt16(dr["EventStatus"].ToString());
+                //cmbEventStatus_I.SelectedIndex = Convert.ToInt16(dr["EventStatus"].ToString());
+                if (Convert.ToInt16(dr["EventStatus"].ToString()) == 1)
+                    chkEventStatus_I.Checked = true;
+                else
+                    chkEventStatus_I.Checked = false;
                 cmbTeacher1_I.Text = dr["ScheduledTeacher"].ToString();
                 cmbTeacher2_I.Text = dr["RealTeacher"].ToString();
-                txtChangeReason_I.Text = dr["ChangeReason"].ToString();
+                //txtChangeReason_I.Text = dr["ChangeReason"].ToString();
 
                 if (dr["IsHoliday"] == System.DBNull.Value)
                     chkIsHoliday.Checked = false;
@@ -4795,7 +4783,7 @@ namespace Scheduler
                 break;
             }
 
-            if (cmbEventStatus_I.SelectedIndex != 1 && cmbTeacher2_I.SelectedIndex <= 0 && cmbExceptionReason_I.SelectedIndex <= 0 && txtChangeReason_I.Text == "")
+            if (!chkEventStatus_I.Checked && cmbTeacher2_I.SelectedIndex <= 0 && cmbExceptionReason_I.SelectedIndex <= 0 && cmbExceptionReason_I.Text == "")
                 SetEventModificationControls(false);
             else
                 SetEventModificationControls(true);
@@ -5183,9 +5171,14 @@ namespace Scheduler
             objEvent.RepeatRule = XMLData_Initial;
             objEvent.NegativeException = "";
             objEvent.Description = txtDescription_I.Text;
-            if (cmbEventStatus_I.SelectedIndex == -1)
-                cmbEventStatus_I.SelectedIndex = 0;
-            objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
+            
+            //if (cmbEventStatus_I.SelectedIndex == -1)
+            //    cmbEventStatus_I.SelectedIndex = 0;
+            if (chkEventStatus_I.Checked)
+                objEvent.EventStatus = 1;
+            else
+                objEvent.EventStatus = 0;
+            //objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
 
             if (IsRecurrenceFlag_Initial > 0)
                 objEvent.RecurrenceText = lblRecurrenceText_I.Text;
@@ -5274,7 +5267,7 @@ namespace Scheduler
             objEvent.Location = txtLocation_I.Text;
             objEvent.BlockCode = cmbBlock_I.Text;
             objEvent.RoomNo = txtRoomNo_I.Text;
-            objEvent.ChangeReason = txtChangeReason_I.Text;
+            //objEvent.ChangeReason = txtChangeReason_I.Text;
 
             try
             {
@@ -5300,8 +5293,18 @@ namespace Scheduler
             objEvent.Description = txtDescription_I.Text;
             objEvent.Notes = txtNote_I.Text;
             objEvent.ExceptionReason = cmbExceptionReason_I.Text;
-            objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
-            objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
+            if (chkEventStatus_I.Checked)
+            {
+                objEvent.EventStatus = 1;
+                objEvent.CalendarEventStatus = 1;
+            }
+            else
+            {
+                objEvent.EventStatus = 0;
+                objEvent.CalendarEventStatus = 0;
+            }
+            //objEvent.EventStatus = cmbEventStatus_I.SelectedIndex;
+            //objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
 
             boolSuccess = objEvent.InsertCalendarEventData();
             if (!boolSuccess)
@@ -5355,7 +5358,7 @@ namespace Scheduler
                 "Where FirstName =@FirstName and LastName = @LastName and ContactType=1 ", str2, str1
                 );
 
-            objEvent.ChangeReason = txtChangeReason_I.Text;
+            //objEvent.ChangeReason = txtChangeReason_I.Text;
             //objEvent.EventType = cmbEventType_I.SelectedIndex;
             objEvent.EventType = cmbEventType_I.Text;
             objEvent.Location = txtLocation_I.Text;
@@ -5387,7 +5390,11 @@ namespace Scheduler
             objEvent.Notes = txtNote_I.Text;
             objEvent.ExceptionReason = cmbExceptionReason_I.Text;
 
-            objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
+            if (chkEventStatus_I.Checked)
+                objEvent.CalendarEventStatus = 1;
+            else
+                objEvent.CalendarEventStatus = 0;
+            //objEvent.CalendarEventStatus = cmbEventStatus_I.SelectedIndex;
 
             boolSuccess = objEvent.UpdateCalendarEventData();
             if (!boolSuccess)
@@ -5580,11 +5587,13 @@ namespace Scheduler
         private void printingSystem_AfterPagePrint(object sender, DevExpress.XtraPrinting.PageEventArgs e)
         {
 
-            
+            //MessageBox.Show("After PAge PRint");
+            //PrintClassDetails();
         }
 
         private void printingSystem_StartPrint(object sender, DevExpress.XtraPrinting.PrintDocumentEventArgs e)
         {
+            MessageBox.Show("Start Print");
             //DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
             //DrawTopLabel(g);
             //bool more = xtraPrinting.DrawDataGrid(g);
@@ -5599,23 +5608,32 @@ namespace Scheduler
 
         private void printingSystem_BeforePagePaint(object sender, DevExpress.XtraPrinting.PageEventArgs e)
         {
-            //DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
-            //printingSystem.Begin();
             
-            ////printingSystem.Graph.
-            //DrawTopLabel(g);
-            //bool more = xtraPrinting.DrawDataGrid(g);
-            //if (more == true)
-            //{
-            //    //e.HasMorePages = true;
-            //    //nm.PageNumber++;
-            //    xtraPrinting.PageNumber++;
+        }
 
-            //}
-            ////printingSystem
+        private void chkEventStatus_I_CheckedChanged(object sender, EventArgs e)
+        {
+            IsEventChanged = true;
+            if (GetCurrentEventID((TabPage)pnlEvent.Parent) > 0)
+            {
+                if (chkEventStatus_I.Checked)
+                {
+                    Common.MakeReadOnly(pnlBody_I, false);
+                    chkEventStatus_I.Enabled = true;
+                    cmbExceptionReason_I.Enabled = true;
+                }
+                else
+                {
+                    Common.MakeEnabled(pnlBody_I, false);
+                }
 
-            ////printingSystem.start
-            //printingSystem.End();
+                cmbEventType_I_SelectedIndexChanged(sender, null);
+            }
+        }
+
+        private void cmbEndTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IsEventChanged = true;
         }
 
     }

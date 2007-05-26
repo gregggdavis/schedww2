@@ -134,6 +134,7 @@ namespace Scheduler
 		private System.Drawing.Printing.PrintDocument printDocument1;
 		private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem;
 		private bool deleted=false;
 
 		public string Mode
@@ -301,6 +302,7 @@ namespace Scheduler
             this.btnPrint = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printingSystem = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.tbcClient.SuspendLayout();
             this.tbpClientInfo.SuspendLayout();
             this.pnlClientInfo.SuspendLayout();
@@ -313,6 +315,7 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).BeginInit();
             this.pnlBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcClient
@@ -1502,6 +1505,7 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).EndInit();
             this.pnlBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -2059,7 +2063,8 @@ namespace Scheduler
 		private PageSettings ps=null;
 		private void btnPageSetup_Click(object sender, System.EventArgs e)
 		{
-			PrintingFunctions.ShowPageSettings(ref ps);
+			//PrintingFunctions.ShowPageSettings(ref ps);
+            printingSystem.PageSetup();
 		}
 
 		private DataGridPrinter dataGridPrinter1=null;

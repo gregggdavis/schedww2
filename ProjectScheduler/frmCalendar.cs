@@ -14,6 +14,9 @@ using DevExpress.XtraScheduler.Printing;
 using DevExpress.XtraScheduler.UI;
 using Scheduler.BusinessLayer;
 using Message = Scheduler.BusinessLayer.Message;
+using DevExpress.XtraPrinting.Preview;
+using DevExpress.XtraPrinting.Control;
+using DevExpress.XtraPrinting.Design;
 
 namespace Scheduler {
 	/// <summary>
@@ -961,6 +964,7 @@ namespace Scheduler {
                     if (printStyle != null)
                     {
                         printStyle.CalendarHeaderVisible = false;
+                        
                         if (StartDatePickerTop.Checked) printStyle.StartRangeDate = CalendarFilter.StartDate;
                         if (EndDatePickerTop.Checked) printStyle.EndRangeDate = CalendarFilter.EndDate;
                     }
@@ -979,6 +983,18 @@ namespace Scheduler {
 					schedulerPrintStyle.PageSettings.Margins = new Margins(0, 0, 0, 0);
 					schedulerPrintStyle.PageSettings.Landscape = true;
                     
+
+                    //-------------------
+//                    PrintableComponentLink pcl = new PrintableComponentLink(new
+//PrintingSystem());
+//                    pcl.CreateMarginalHeaderArea += new
+//                    CreateAreaEventHandler(pcl_CreateMarginalHeaderArea);
+//                    schedulerControl1.OptionsPrint.PrintStyle =
+//                    DevExpress.XtraScheduler.Printing.SchedulerPrintStyleKind.Weekly;
+//                    pcl.Component = this.schedulerControl1;
+//                    pcl.ShowPreview();
+
+                    //------------------
                     PrinterSettings settings = new PrinterSettings();
                     //Set PageSize to 'A4'
                     bool found = false;
