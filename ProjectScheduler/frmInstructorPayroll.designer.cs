@@ -243,7 +243,7 @@ namespace Scheduler
             this.colProgramName.OptionsColumn.AllowEdit = false;
             this.colProgramName.OptionsColumn.ReadOnly = true;
             this.colProgramName.Visible = true;
-            this.colProgramName.VisibleIndex = 3;
+            this.colProgramName.VisibleIndex = 5;
             this.colProgramName.Width = 62;
             // 
             // colClassName
@@ -254,7 +254,7 @@ namespace Scheduler
             this.colClassName.OptionsColumn.AllowEdit = false;
             this.colClassName.OptionsColumn.ReadOnly = true;
             this.colClassName.Visible = true;
-            this.colClassName.VisibleIndex = 4;
+            this.colClassName.VisibleIndex = 6;
             this.colClassName.Width = 47;
             // 
             // colClassType
@@ -265,7 +265,7 @@ namespace Scheduler
             this.colClassType.OptionsColumn.AllowEdit = false;
             this.colClassType.OptionsColumn.ReadOnly = true;
             this.colClassType.Visible = true;
-            this.colClassType.VisibleIndex = 5;
+            this.colClassType.VisibleIndex = 7;
             this.colClassType.Width = 66;
             // 
             // colClientShortName
@@ -276,7 +276,7 @@ namespace Scheduler
             this.colClientShortName.OptionsColumn.AllowEdit = false;
             this.colClientShortName.OptionsColumn.ReadOnly = true;
             this.colClientShortName.Visible = true;
-            this.colClientShortName.VisibleIndex = 2;
+            this.colClientShortName.VisibleIndex = 8;
             this.colClientShortName.Width = 49;
             // 
             // colStartDateTime
@@ -288,7 +288,7 @@ namespace Scheduler
             this.colStartDateTime.OptionsColumn.AllowEdit = false;
             this.colStartDateTime.OptionsColumn.ReadOnly = true;
             this.colStartDateTime.Visible = true;
-            this.colStartDateTime.VisibleIndex = 7;
+            this.colStartDateTime.VisibleIndex = 3;
             this.colStartDateTime.Width = 71;
             // 
             // repositoryItemTimeEdit1
@@ -310,7 +310,7 @@ namespace Scheduler
             this.colEndDateTime.OptionsColumn.AllowEdit = false;
             this.colEndDateTime.OptionsColumn.ReadOnly = true;
             this.colEndDateTime.Visible = true;
-            this.colEndDateTime.VisibleIndex = 8;
+            this.colEndDateTime.VisibleIndex = 4;
             this.colEndDateTime.Width = 65;
             // 
             // repositoryItemTimeEdit2
@@ -330,7 +330,7 @@ namespace Scheduler
             this.colDayName.OptionsColumn.AllowEdit = false;
             this.colDayName.OptionsColumn.ReadOnly = true;
             this.colDayName.Visible = true;
-            this.colDayName.VisibleIndex = 6;
+            this.colDayName.VisibleIndex = 2;
             this.colDayName.Width = 41;
             // 
             // colCalendarEventId
@@ -347,7 +347,6 @@ namespace Scheduler
             this.colPaidHours.Caption = "Paid Hours";
             this.colPaidHours.ColumnEdit = this.repositoryItemSpinEdit2;
             this.colPaidHours.FieldName = "PaidHours";
-            this.colPaidHours.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.colPaidHours.Name = "colPaidHours";
             this.colPaidHours.OptionsColumn.AllowEdit = false;
             this.colPaidHours.OptionsColumn.ReadOnly = true;
@@ -380,7 +379,6 @@ namespace Scheduler
             // 
             this.colInstructorName.Caption = "Instructor Name";
             this.colInstructorName.FieldName = "InstructorName";
-            this.colInstructorName.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colInstructorName.Name = "colInstructorName";
             this.colInstructorName.OptionsColumn.AllowEdit = false;
             this.colInstructorName.OptionsColumn.ReadOnly = true;
@@ -393,7 +391,6 @@ namespace Scheduler
             this.colScheduledHours.Caption = "Scheduled Hours";
             this.colScheduledHours.ColumnEdit = this.repositoryItemSpinEdit1;
             this.colScheduledHours.FieldName = "ScheduledHours";
-            this.colScheduledHours.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.colScheduledHours.Name = "colScheduledHours";
             this.colScheduledHours.OptionsColumn.AllowEdit = false;
             this.colScheduledHours.OptionsColumn.ReadOnly = true;
