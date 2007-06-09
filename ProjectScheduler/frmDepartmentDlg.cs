@@ -136,6 +136,7 @@ namespace Scheduler
 		private Button button1;
 		private PrintPreviewDialog printPreviewDialog1;
         private PrintDocument printDocument1;
+        private Button btnImportClientAddress;
 		private IContainer components;
 		#endregion Controls
 
@@ -300,6 +301,7 @@ namespace Scheduler
             this.btnPageSetup = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.btnImportClientAddress = new System.Windows.Forms.Button();
             this.tbcDepartment.SuspendLayout();
             this.tbpDeptInfo.SuspendLayout();
             this.pnlDeptInfo.SuspendLayout();
@@ -457,6 +459,7 @@ namespace Scheduler
             this.cmbClient.Name = "cmbClient";
             this.cmbClient.Size = new System.Drawing.Size(192, 21);
             this.cmbClient.TabIndex = 4;
+            this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
             // dtEnded
             // 
@@ -608,6 +611,7 @@ namespace Scheduler
             // 
             // pnlAddress
             // 
+            this.pnlAddress.Controls.Add(this.btnImportClientAddress);
             this.pnlAddress.Controls.Add(this.label48);
             this.pnlAddress.Controls.Add(this.groupBox9);
             this.pnlAddress.Controls.Add(this.txtAccFirstRomaji);
@@ -679,7 +683,7 @@ namespace Scheduler
             this.label48.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label48.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label48.Location = new System.Drawing.Point(342, 248);
+            this.label48.Location = new System.Drawing.Point(342, 284);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(151, 17);
             this.label48.TabIndex = 311;
@@ -687,7 +691,7 @@ namespace Scheduler
             // 
             // groupBox9
             // 
-            this.groupBox9.Location = new System.Drawing.Point(474, 256);
+            this.groupBox9.Location = new System.Drawing.Point(474, 292);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(144, 2);
             this.groupBox9.TabIndex = 310;
@@ -695,7 +699,7 @@ namespace Scheduler
             // 
             // txtAccFirstRomaji
             // 
-            this.txtAccFirstRomaji.Location = new System.Drawing.Point(464, 400);
+            this.txtAccFirstRomaji.Location = new System.Drawing.Point(464, 436);
             this.txtAccFirstRomaji.MaxLength = 255;
             this.txtAccFirstRomaji.Name = "txtAccFirstRomaji";
             this.txtAccFirstRomaji.Size = new System.Drawing.Size(165, 21);
@@ -703,7 +707,7 @@ namespace Scheduler
             // 
             // txtAccFirstPhonetic
             // 
-            this.txtAccFirstPhonetic.Location = new System.Drawing.Point(464, 376);
+            this.txtAccFirstPhonetic.Location = new System.Drawing.Point(464, 412);
             this.txtAccFirstPhonetic.MaxLength = 255;
             this.txtAccFirstPhonetic.Name = "txtAccFirstPhonetic";
             this.txtAccFirstPhonetic.Size = new System.Drawing.Size(165, 21);
@@ -712,7 +716,7 @@ namespace Scheduler
             // label49
             // 
             this.label49.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label49.Location = new System.Drawing.Point(342, 402);
+            this.label49.Location = new System.Drawing.Point(342, 438);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(114, 17);
             this.label49.TabIndex = 309;
@@ -721,7 +725,7 @@ namespace Scheduler
             // label50
             // 
             this.label50.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label50.Location = new System.Drawing.Point(342, 378);
+            this.label50.Location = new System.Drawing.Point(342, 414);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(118, 17);
             this.label50.TabIndex = 308;
@@ -729,7 +733,7 @@ namespace Scheduler
             // 
             // txtAccFirstName
             // 
-            this.txtAccFirstName.Location = new System.Drawing.Point(464, 352);
+            this.txtAccFirstName.Location = new System.Drawing.Point(464, 388);
             this.txtAccFirstName.MaxLength = 255;
             this.txtAccFirstName.Name = "txtAccFirstName";
             this.txtAccFirstName.Size = new System.Drawing.Size(165, 21);
@@ -738,7 +742,7 @@ namespace Scheduler
             // label51
             // 
             this.label51.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label51.Location = new System.Drawing.Point(342, 354);
+            this.label51.Location = new System.Drawing.Point(342, 390);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(114, 17);
             this.label51.TabIndex = 307;
@@ -746,7 +750,7 @@ namespace Scheduler
             // 
             // txtAccLRomaji1
             // 
-            this.txtAccLRomaji1.Location = new System.Drawing.Point(464, 320);
+            this.txtAccLRomaji1.Location = new System.Drawing.Point(464, 356);
             this.txtAccLRomaji1.MaxLength = 255;
             this.txtAccLRomaji1.Name = "txtAccLRomaji1";
             this.txtAccLRomaji1.Size = new System.Drawing.Size(165, 21);
@@ -754,7 +758,7 @@ namespace Scheduler
             // 
             // txtAccLPhonetic
             // 
-            this.txtAccLPhonetic.Location = new System.Drawing.Point(464, 296);
+            this.txtAccLPhonetic.Location = new System.Drawing.Point(464, 332);
             this.txtAccLPhonetic.MaxLength = 255;
             this.txtAccLPhonetic.Name = "txtAccLPhonetic";
             this.txtAccLPhonetic.Size = new System.Drawing.Size(165, 21);
@@ -764,7 +768,7 @@ namespace Scheduler
             // label52
             // 
             this.label52.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label52.Location = new System.Drawing.Point(342, 322);
+            this.label52.Location = new System.Drawing.Point(342, 358);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(114, 17);
             this.label52.TabIndex = 306;
@@ -773,7 +777,7 @@ namespace Scheduler
             // label53
             // 
             this.label53.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label53.Location = new System.Drawing.Point(342, 298);
+            this.label53.Location = new System.Drawing.Point(342, 334);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(114, 17);
             this.label53.TabIndex = 305;
@@ -782,7 +786,7 @@ namespace Scheduler
             // 
             // txtAccLName
             // 
-            this.txtAccLName.Location = new System.Drawing.Point(464, 272);
+            this.txtAccLName.Location = new System.Drawing.Point(464, 308);
             this.txtAccLName.MaxLength = 255;
             this.txtAccLName.Name = "txtAccLName";
             this.txtAccLName.Size = new System.Drawing.Size(165, 21);
@@ -791,7 +795,7 @@ namespace Scheduler
             // label54
             // 
             this.label54.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label54.Location = new System.Drawing.Point(342, 274);
+            this.label54.Location = new System.Drawing.Point(342, 310);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(114, 17);
             this.label54.TabIndex = 304;
@@ -800,7 +804,7 @@ namespace Scheduler
             // label36
             // 
             this.label36.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label36.Location = new System.Drawing.Point(344, 152);
+            this.label36.Location = new System.Drawing.Point(344, 188);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(114, 17);
             this.label36.TabIndex = 287;
@@ -811,7 +815,7 @@ namespace Scheduler
             this.txtUrl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtUrl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUrl.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.txtUrl.Location = new System.Drawing.Point(464, 174);
+            this.txtUrl.Location = new System.Drawing.Point(464, 210);
             this.txtUrl.MaxLength = 255;
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(165, 21);
@@ -820,7 +824,7 @@ namespace Scheduler
             // label38
             // 
             this.label38.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label38.Location = new System.Drawing.Point(344, 176);
+            this.label38.Location = new System.Drawing.Point(344, 212);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(114, 17);
             this.label38.TabIndex = 286;
@@ -828,7 +832,7 @@ namespace Scheduler
             // 
             // txtFax2
             // 
-            this.txtFax2.Location = new System.Drawing.Point(464, 150);
+            this.txtFax2.Location = new System.Drawing.Point(464, 186);
             this.txtFax2.MaxLength = 255;
             this.txtFax2.Name = "txtFax2";
             this.txtFax2.Size = new System.Drawing.Size(165, 21);
@@ -836,7 +840,7 @@ namespace Scheduler
             // 
             // txtFax1
             // 
-            this.txtFax1.Location = new System.Drawing.Point(464, 126);
+            this.txtFax1.Location = new System.Drawing.Point(464, 162);
             this.txtFax1.MaxLength = 255;
             this.txtFax1.Name = "txtFax1";
             this.txtFax1.Size = new System.Drawing.Size(165, 21);
@@ -845,7 +849,7 @@ namespace Scheduler
             // label41
             // 
             this.label41.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label41.Location = new System.Drawing.Point(344, 128);
+            this.label41.Location = new System.Drawing.Point(344, 164);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(114, 17);
             this.label41.TabIndex = 285;
@@ -856,7 +860,7 @@ namespace Scheduler
             this.lblContactInfoHeader.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblContactInfoHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContactInfoHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblContactInfoHeader.Location = new System.Drawing.Point(342, 11);
+            this.lblContactInfoHeader.Location = new System.Drawing.Point(342, 47);
             this.lblContactInfoHeader.Name = "lblContactInfoHeader";
             this.lblContactInfoHeader.Size = new System.Drawing.Size(86, 17);
             this.lblContactInfoHeader.TabIndex = 284;
@@ -864,7 +868,7 @@ namespace Scheduler
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(421, 18);
+            this.groupBox2.Location = new System.Drawing.Point(421, 54);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(195, 2);
             this.groupBox2.TabIndex = 283;
@@ -873,7 +877,7 @@ namespace Scheduler
             // label43
             // 
             this.label43.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label43.Location = new System.Drawing.Point(344, 104);
+            this.label43.Location = new System.Drawing.Point(344, 140);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(114, 17);
             this.label43.TabIndex = 281;
@@ -881,7 +885,7 @@ namespace Scheduler
             // 
             // txtPhoneOther
             // 
-            this.txtPhoneOther.Location = new System.Drawing.Point(464, 102);
+            this.txtPhoneOther.Location = new System.Drawing.Point(464, 138);
             this.txtPhoneOther.MaxLength = 255;
             this.txtPhoneOther.Name = "txtPhoneOther";
             this.txtPhoneOther.Size = new System.Drawing.Size(165, 21);
@@ -890,7 +894,7 @@ namespace Scheduler
             // label33
             // 
             this.label33.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label33.Location = new System.Drawing.Point(342, 66);
+            this.label33.Location = new System.Drawing.Point(342, 102);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(114, 17);
             this.label33.TabIndex = 280;
@@ -898,7 +902,7 @@ namespace Scheduler
             // 
             // txtPhone2
             // 
-            this.txtPhone2.Location = new System.Drawing.Point(464, 64);
+            this.txtPhone2.Location = new System.Drawing.Point(464, 100);
             this.txtPhone2.MaxLength = 255;
             this.txtPhone2.Name = "txtPhone2";
             this.txtPhone2.Size = new System.Drawing.Size(165, 21);
@@ -906,7 +910,7 @@ namespace Scheduler
             // 
             // txtPhone1
             // 
-            this.txtPhone1.Location = new System.Drawing.Point(464, 40);
+            this.txtPhone1.Location = new System.Drawing.Point(464, 76);
             this.txtPhone1.MaxLength = 255;
             this.txtPhone1.Name = "txtPhone1";
             this.txtPhone1.Size = new System.Drawing.Size(165, 21);
@@ -915,7 +919,7 @@ namespace Scheduler
             // label32
             // 
             this.label32.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label32.Location = new System.Drawing.Point(342, 42);
+            this.label32.Location = new System.Drawing.Point(342, 78);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(114, 17);
             this.label32.TabIndex = 276;
@@ -926,7 +930,7 @@ namespace Scheduler
             this.lblStation2Header.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblStation2Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStation2Header.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblStation2Header.Location = new System.Drawing.Point(12, 303);
+            this.lblStation2Header.Location = new System.Drawing.Point(12, 339);
             this.lblStation2Header.Name = "lblStation2Header";
             this.lblStation2Header.Size = new System.Drawing.Size(75, 17);
             this.lblStation2Header.TabIndex = 273;
@@ -934,7 +938,7 @@ namespace Scheduler
             // 
             // groupBox11
             // 
-            this.groupBox11.Location = new System.Drawing.Point(80, 310);
+            this.groupBox11.Location = new System.Drawing.Point(80, 346);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(235, 2);
             this.groupBox11.TabIndex = 272;
@@ -942,7 +946,7 @@ namespace Scheduler
             // 
             // txtMintSt2
             // 
-            this.txtMintSt2.Location = new System.Drawing.Point(120, 376);
+            this.txtMintSt2.Location = new System.Drawing.Point(120, 412);
             this.txtMintSt2.MaxLength = 255;
             this.txtMintSt2.Name = "txtMintSt2";
             this.txtMintSt2.Size = new System.Drawing.Size(72, 21);
@@ -954,7 +958,7 @@ namespace Scheduler
             // 
             // txtClosestLine2
             // 
-            this.txtClosestLine2.Location = new System.Drawing.Point(120, 352);
+            this.txtClosestLine2.Location = new System.Drawing.Point(120, 388);
             this.txtClosestLine2.MaxLength = 255;
             this.txtClosestLine2.Name = "txtClosestLine2";
             this.txtClosestLine2.Size = new System.Drawing.Size(192, 21);
@@ -963,7 +967,7 @@ namespace Scheduler
             // label60
             // 
             this.label60.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label60.Location = new System.Drawing.Point(12, 378);
+            this.label60.Location = new System.Drawing.Point(12, 414);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(107, 17);
             this.label60.TabIndex = 271;
@@ -972,7 +976,7 @@ namespace Scheduler
             // label61
             // 
             this.label61.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label61.Location = new System.Drawing.Point(12, 354);
+            this.label61.Location = new System.Drawing.Point(12, 390);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(100, 17);
             this.label61.TabIndex = 270;
@@ -980,7 +984,7 @@ namespace Scheduler
             // 
             // txtClosestSt2
             // 
-            this.txtClosestSt2.Location = new System.Drawing.Point(120, 328);
+            this.txtClosestSt2.Location = new System.Drawing.Point(120, 364);
             this.txtClosestSt2.MaxLength = 255;
             this.txtClosestSt2.Name = "txtClosestSt2";
             this.txtClosestSt2.Size = new System.Drawing.Size(192, 21);
@@ -989,7 +993,7 @@ namespace Scheduler
             // label62
             // 
             this.label62.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label62.Location = new System.Drawing.Point(12, 330);
+            this.label62.Location = new System.Drawing.Point(12, 366);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(107, 17);
             this.label62.TabIndex = 269;
@@ -1000,7 +1004,7 @@ namespace Scheduler
             this.lblStation1Header.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblStation1Header.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStation1Header.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblStation1Header.Location = new System.Drawing.Point(8, 208);
+            this.lblStation1Header.Location = new System.Drawing.Point(8, 244);
             this.lblStation1Header.Name = "lblStation1Header";
             this.lblStation1Header.Size = new System.Drawing.Size(79, 17);
             this.lblStation1Header.TabIndex = 268;
@@ -1008,7 +1012,7 @@ namespace Scheduler
             // 
             // groupBox10
             // 
-            this.groupBox10.Location = new System.Drawing.Point(79, 216);
+            this.groupBox10.Location = new System.Drawing.Point(79, 252);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(235, 2);
             this.groupBox10.TabIndex = 267;
@@ -1016,7 +1020,7 @@ namespace Scheduler
             // 
             // txtMintSt1
             // 
-            this.txtMintSt1.Location = new System.Drawing.Point(120, 272);
+            this.txtMintSt1.Location = new System.Drawing.Point(120, 308);
             this.txtMintSt1.MaxLength = 255;
             this.txtMintSt1.Name = "txtMintSt1";
             this.txtMintSt1.Size = new System.Drawing.Size(72, 21);
@@ -1028,7 +1032,7 @@ namespace Scheduler
             // 
             // txtClosestLine1
             // 
-            this.txtClosestLine1.Location = new System.Drawing.Point(120, 248);
+            this.txtClosestLine1.Location = new System.Drawing.Point(120, 284);
             this.txtClosestLine1.MaxLength = 255;
             this.txtClosestLine1.Name = "txtClosestLine1";
             this.txtClosestLine1.Size = new System.Drawing.Size(192, 21);
@@ -1037,7 +1041,7 @@ namespace Scheduler
             // label55
             // 
             this.label55.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label55.Location = new System.Drawing.Point(12, 274);
+            this.label55.Location = new System.Drawing.Point(12, 310);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(107, 17);
             this.label55.TabIndex = 266;
@@ -1046,7 +1050,7 @@ namespace Scheduler
             // label56
             // 
             this.label56.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label56.Location = new System.Drawing.Point(12, 250);
+            this.label56.Location = new System.Drawing.Point(12, 286);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(100, 17);
             this.label56.TabIndex = 265;
@@ -1054,7 +1058,7 @@ namespace Scheduler
             // 
             // txtClosestSt1
             // 
-            this.txtClosestSt1.Location = new System.Drawing.Point(120, 224);
+            this.txtClosestSt1.Location = new System.Drawing.Point(120, 260);
             this.txtClosestSt1.MaxLength = 255;
             this.txtClosestSt1.Name = "txtClosestSt1";
             this.txtClosestSt1.Size = new System.Drawing.Size(192, 21);
@@ -1063,7 +1067,7 @@ namespace Scheduler
             // label57
             // 
             this.label57.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label57.Location = new System.Drawing.Point(12, 226);
+            this.label57.Location = new System.Drawing.Point(12, 262);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(107, 17);
             this.label57.TabIndex = 264;
@@ -1072,7 +1076,7 @@ namespace Scheduler
             // label28
             // 
             this.label28.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label28.Location = new System.Drawing.Point(195, 128);
+            this.label28.Location = new System.Drawing.Point(195, 164);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(52, 29);
             this.label28.TabIndex = 263;
@@ -1082,7 +1086,7 @@ namespace Scheduler
             // label29
             // 
             this.label29.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label29.Location = new System.Drawing.Point(12, 184);
+            this.label29.Location = new System.Drawing.Point(12, 220);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(100, 17);
             this.label29.TabIndex = 262;
@@ -1099,14 +1103,14 @@ namespace Scheduler
             "F",
             "G",
             "H"});
-            this.cmbBlock.Location = new System.Drawing.Point(120, 182);
+            this.cmbBlock.Location = new System.Drawing.Point(120, 218);
             this.cmbBlock.Name = "cmbBlock";
             this.cmbBlock.Size = new System.Drawing.Size(72, 21);
             this.cmbBlock.TabIndex = 237;
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(120, 158);
+            this.txtCountry.Location = new System.Drawing.Point(120, 194);
             this.txtCountry.MaxLength = 255;
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(192, 21);
@@ -1115,7 +1119,7 @@ namespace Scheduler
             // label27
             // 
             this.label27.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label27.Location = new System.Drawing.Point(12, 160);
+            this.label27.Location = new System.Drawing.Point(12, 196);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(100, 17);
             this.label27.TabIndex = 261;
@@ -1123,7 +1127,7 @@ namespace Scheduler
             // 
             // txtPost
             // 
-            this.txtPost.Location = new System.Drawing.Point(253, 131);
+            this.txtPost.Location = new System.Drawing.Point(253, 167);
             this.txtPost.MaxLength = 255;
             this.txtPost.Name = "txtPost";
             this.txtPost.Size = new System.Drawing.Size(59, 21);
@@ -1131,7 +1135,7 @@ namespace Scheduler
             // 
             // txtState
             // 
-            this.txtState.Location = new System.Drawing.Point(120, 131);
+            this.txtState.Location = new System.Drawing.Point(120, 167);
             this.txtState.MaxLength = 255;
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(72, 21);
@@ -1140,7 +1144,7 @@ namespace Scheduler
             // label26
             // 
             this.label26.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label26.Location = new System.Drawing.Point(12, 133);
+            this.label26.Location = new System.Drawing.Point(12, 169);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(100, 17);
             this.label26.TabIndex = 260;
@@ -1148,7 +1152,7 @@ namespace Scheduler
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(120, 104);
+            this.txtCity.Location = new System.Drawing.Point(120, 140);
             this.txtCity.MaxLength = 255;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(192, 21);
@@ -1157,7 +1161,7 @@ namespace Scheduler
             // label25
             // 
             this.label25.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label25.Location = new System.Drawing.Point(12, 106);
+            this.label25.Location = new System.Drawing.Point(12, 142);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(100, 17);
             this.label25.TabIndex = 259;
@@ -1165,7 +1169,7 @@ namespace Scheduler
             // 
             // txtStreet3
             // 
-            this.txtStreet3.Location = new System.Drawing.Point(120, 80);
+            this.txtStreet3.Location = new System.Drawing.Point(120, 116);
             this.txtStreet3.MaxLength = 255;
             this.txtStreet3.Name = "txtStreet3";
             this.txtStreet3.Size = new System.Drawing.Size(192, 21);
@@ -1173,7 +1177,7 @@ namespace Scheduler
             // 
             // txtStreet2
             // 
-            this.txtStreet2.Location = new System.Drawing.Point(120, 56);
+            this.txtStreet2.Location = new System.Drawing.Point(120, 92);
             this.txtStreet2.MaxLength = 255;
             this.txtStreet2.Name = "txtStreet2";
             this.txtStreet2.Size = new System.Drawing.Size(192, 21);
@@ -1181,7 +1185,7 @@ namespace Scheduler
             // 
             // txtStreet1
             // 
-            this.txtStreet1.Location = new System.Drawing.Point(120, 32);
+            this.txtStreet1.Location = new System.Drawing.Point(120, 68);
             this.txtStreet1.MaxLength = 255;
             this.txtStreet1.Name = "txtStreet1";
             this.txtStreet1.Size = new System.Drawing.Size(192, 21);
@@ -1190,7 +1194,7 @@ namespace Scheduler
             // label24
             // 
             this.label24.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label24.Location = new System.Drawing.Point(12, 34);
+            this.label24.Location = new System.Drawing.Point(12, 70);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(100, 17);
             this.label24.TabIndex = 258;
@@ -1201,7 +1205,7 @@ namespace Scheduler
             this.lblAddressHeader.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblAddressHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddressHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblAddressHeader.Location = new System.Drawing.Point(12, 11);
+            this.lblAddressHeader.Location = new System.Drawing.Point(12, 47);
             this.lblAddressHeader.Name = "lblAddressHeader";
             this.lblAddressHeader.Size = new System.Drawing.Size(75, 17);
             this.lblAddressHeader.TabIndex = 257;
@@ -1209,7 +1213,7 @@ namespace Scheduler
             // 
             // groupBox8
             // 
-            this.groupBox8.Location = new System.Drawing.Point(80, 18);
+            this.groupBox8.Location = new System.Drawing.Point(80, 54);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(235, 2);
             this.groupBox8.TabIndex = 256;
@@ -1485,6 +1489,17 @@ namespace Scheduler
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // btnImportClientAddress
+            // 
+            this.btnImportClientAddress.Enabled = false;
+            this.btnImportClientAddress.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnImportClientAddress.Location = new System.Drawing.Point(200, 7);
+            this.btnImportClientAddress.Name = "btnImportClientAddress";
+            this.btnImportClientAddress.Size = new System.Drawing.Size(240, 23);
+            this.btnImportClientAddress.TabIndex = 312;
+            this.btnImportClientAddress.Text = "Import Client\'s Address Information";
+            this.btnImportClientAddress.Click += new System.EventHandler(this.btnImportClientAddress_Click);
+            // 
             // frmDepartmentDlg
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -1630,7 +1645,7 @@ namespace Scheduler
 				intClientID = objDept.ClientID;
 				intContactID = objDept.ContactID;
 				cmbClient.Text = objDept.ClientName;
-				cmbClient.Tag = objDept.ClientName;
+				cmbClient.Tag = objDept.ClientID;
 				intStatus = objDept.StatusID;
 
 				cmbStatus.SelectedIndex=intStatus;
@@ -2366,6 +2381,37 @@ namespace Scheduler
 				new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
             g.DrawString("Department Contacts", _font, new SolidBrush(lblContactInfoHeader.ForeColor), 10, 40, new StringFormat());
 		}
+
+        private void cmbClient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbClient.Text != "")
+            {
+                btnImportClientAddress.Enabled = true;
+
+            }
+            else
+                btnImportClientAddress.Enabled = false;
+        }
+
+        private void btnImportClientAddress_Click(object sender, EventArgs e)
+        {
+            int intCID = 0;
+            intCID = Common.GetCompanyID(
+                "Select ContactID From Contact " +
+                "Where (CompanyName =@CompanyName OR NickName=@CompanyName) ", cmbClient.Text
+                );
+            
+
+            clsContactInfo contactInfo = new clsContactInfo();
+            contactInfo.ContactID = intCID;
+            contactInfo.LoadData();
+            txtPhone1.Text = contactInfo.Phone1;
+            txtPhone2.Text = contactInfo.Phone2;
+            txtPhoneOther.Text = contactInfo.OtherPhone;
+            txtFax1.Text = contactInfo.Fax1;
+            txtFax2.Text = contactInfo.Fax2;
+            txtUrl.Text = contactInfo.Url;
+        }
 	}
 }
 

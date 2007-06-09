@@ -171,6 +171,7 @@
     <Compile Include="BusinessLayer\clsContact.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BusinessLayer\clsContactInfo.cs" />
     <Compile Include="BusinessLayer\clsCourse.cs">
       <SubType>Code</SubType>
     </Compile>
