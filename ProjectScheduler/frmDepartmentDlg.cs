@@ -410,7 +410,7 @@ namespace Scheduler
             // 
             // txtNickName
             // 
-            this.txtNickName.Location = new System.Drawing.Point(144, 130);
+            this.txtNickName.Location = new System.Drawing.Point(147, 153);
             this.txtNickName.MaxLength = 255;
             this.txtNickName.Name = "txtNickName";
             this.txtNickName.Size = new System.Drawing.Size(192, 21);
@@ -419,7 +419,7 @@ namespace Scheduler
             // lblNickName
             // 
             this.lblNickName.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblNickName.Location = new System.Drawing.Point(24, 132);
+            this.lblNickName.Location = new System.Drawing.Point(27, 155);
             this.lblNickName.Name = "lblNickName";
             this.lblNickName.Size = new System.Drawing.Size(114, 17);
             this.lblNickName.TabIndex = 336;
@@ -430,16 +430,16 @@ namespace Scheduler
             this.chkNoDept.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkNoDept.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.chkNoDept.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkNoDept.Location = new System.Drawing.Point(24, 33);
+            this.chkNoDept.Location = new System.Drawing.Point(27, 56);
             this.chkNoDept.Name = "chkNoDept";
-            this.chkNoDept.Size = new System.Drawing.Size(128, 16);
+            this.chkNoDept.Size = new System.Drawing.Size(134, 16);
             this.chkNoDept.TabIndex = 334;
             this.chkNoDept.Text = "No Department";
             this.chkNoDept.CheckedChanged += new System.EventHandler(this.chkNoDept_CheckedChanged);
             // 
             // llblClient
             // 
-            this.llblClient.Location = new System.Drawing.Point(24, 157);
+            this.llblClient.Location = new System.Drawing.Point(27, 33);
             this.llblClient.Name = "llblClient";
             this.llblClient.Size = new System.Drawing.Size(104, 17);
             this.llblClient.TabIndex = 3;
@@ -457,7 +457,7 @@ namespace Scheduler
             "Recording",
             "Mendan",
             "Other"});
-            this.cmbClient.Location = new System.Drawing.Point(144, 155);
+            this.cmbClient.Location = new System.Drawing.Point(147, 31);
             this.cmbClient.Name = "cmbClient";
             this.cmbClient.Size = new System.Drawing.Size(192, 21);
             this.cmbClient.TabIndex = 4;
@@ -552,7 +552,7 @@ namespace Scheduler
             // 
             // txtCompRomaji
             // 
-            this.txtCompRomaji.Location = new System.Drawing.Point(144, 105);
+            this.txtCompRomaji.Location = new System.Drawing.Point(147, 128);
             this.txtCompRomaji.MaxLength = 255;
             this.txtCompRomaji.Name = "txtCompRomaji";
             this.txtCompRomaji.Size = new System.Drawing.Size(192, 21);
@@ -560,7 +560,7 @@ namespace Scheduler
             // 
             // txtCompPhonetic
             // 
-            this.txtCompPhonetic.Location = new System.Drawing.Point(144, 81);
+            this.txtCompPhonetic.Location = new System.Drawing.Point(147, 104);
             this.txtCompPhonetic.MaxLength = 255;
             this.txtCompPhonetic.Name = "txtCompPhonetic";
             this.txtCompPhonetic.Size = new System.Drawing.Size(192, 21);
@@ -569,7 +569,7 @@ namespace Scheduler
             // label4
             // 
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(24, 105);
+            this.label4.Location = new System.Drawing.Point(27, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 17);
             this.label4.TabIndex = 77;
@@ -578,7 +578,7 @@ namespace Scheduler
             // label5
             // 
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(24, 81);
+            this.label5.Location = new System.Drawing.Point(27, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 17);
             this.label5.TabIndex = 76;
@@ -586,7 +586,7 @@ namespace Scheduler
             // 
             // txtCompName
             // 
-            this.txtCompName.Location = new System.Drawing.Point(144, 57);
+            this.txtCompName.Location = new System.Drawing.Point(147, 80);
             this.txtCompName.MaxLength = 255;
             this.txtCompName.Name = "txtCompName";
             this.txtCompName.Size = new System.Drawing.Size(192, 21);
@@ -595,7 +595,7 @@ namespace Scheduler
             // label6
             // 
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(24, 57);
+            this.label6.Location = new System.Drawing.Point(27, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 17);
             this.label6.TabIndex = 75;
