@@ -79,6 +79,8 @@ namespace Scheduler.BusinessLayer
 			_dtbl.Columns.Add(new DataColumn("Contact1", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("Contact2", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("DepartmentStatus", Type.GetType("System.String")));
+            _dtbl.Columns.Add(new DataColumn("Contact1Phone", Type.GetType("System.String")));
+            _dtbl.Columns.Add(new DataColumn("Contact2Phone", Type.GetType("System.String")));
 		}
 
 		public static int[] CloneData(int departmentID)
@@ -140,12 +142,12 @@ namespace Scheduler.BusinessLayer
 					strSql += "WHEN C.NickName IS NULL THEN C.CompanyName ";
 					strSql += "WHEN C.NickName = '' THEN C.CompanyName ";
 					strSql += "ELSE C.NickName ";
-					strSql += "END,  ";
+					strSql += "END, ";
 					strSql += "C1.ContactID As ClientID, Client = CASE ";
 					strSql += "WHEN C1.NickName IS NULL THEN C1.CompanyName ";
 					strSql += "WHEN C1.NickName = '' THEN C1.CompanyName ";
 					strSql += "ELSE C1.NickName ";
-					strSql += "END  ";
+					strSql += "END ";
 					strSql += "From Department D ";
 					strSql += "Left Join Contact C on(D.ContactID=C.ContactID) ";
 					strSql += "Left Join Contact C1 on(D.ClientID=C1.ContactID) ";
@@ -236,17 +238,19 @@ namespace Scheduler.BusinessLayer
 
 				//Get the contacts
 				int deptid=0;
-				string contact1="";
-				string contact2="";
+				string contact1="",contact1Phone = "";
+				string contact2="",contact2Phone = "";
 				foreach(DataRow dr in _dtbl.Rows)
 				{
 					deptid=0;
 					contact1="";
 					contact2="";
 					deptid=Convert.ToInt32(dr["DepartmentID"].ToString());				
-					GetContact(deptid, ref contact1, ref contact2);
+					GetContact(deptid, ref contact1, ref contact2,ref contact1Phone,ref contact2Phone);
 					dr["Contact1"] = contact1;
 					dr["Contact2"] = contact2;
+                    dr["Contact1Phone"] = contact1Phone;
+                    dr["Contact2Phone"] = contact2Phone;
 					dr.AcceptChanges();
 				}
 				
@@ -314,6 +318,56 @@ namespace Scheduler.BusinessLayer
 				}
 			}
 		}
+
+        private bool GetContact(int mdeptid, ref string contact1, ref string contact2,ref string contactPhone1,ref string contactPhone2)
+        {
+            string strSql = "";
+            SqlCommand com = null;
+            Connection con = null;
+            try
+            {
+                strSql = "Select Top 2 LastName + ', ' + FirstName As ContactName,Phone1 From Contact Where ContactType=5 AND RefID=" + mdeptid.ToString() + " Order by ContactID";
+
+                con = new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.Connection = con.SQLCon;
+                com.CommandText = strSql;
+
+                SqlDataReader Reader = com.ExecuteReader();
+                while (Reader.Read())
+                {
+                    if (contact1 == "")
+                    {
+                        contact1 = Reader["ContactName"].ToString();
+                        contactPhone1 = Reader["Phone1"].ToString();
+                    }
+                    else
+                    {
+                        contact2 = Reader["ContactName"].ToString();
+                        contactPhone2 = Reader["Phone1"].ToString();
+                    }
+
+                }
+                Reader.Close();
+
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                Message = ex.Message;
+                return false;
+            }
+            finally
+            {
+                if (com != null)
+                {
+                    com.Dispose();
+                    com = null;
+                    con.DisConnect();
+                }
+            }
+        }
 
 		public bool InsertData()
 		{
