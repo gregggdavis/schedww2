@@ -1383,10 +1383,10 @@ namespace Scheduler
             this.llblTeacher2_I.AutoSize = true;
             this.llblTeacher2_I.Location = new System.Drawing.Point(14, 221);
             this.llblTeacher2_I.Name = "llblTeacher2_I";
-            this.llblTeacher2_I.Size = new System.Drawing.Size(79, 13);
+            this.llblTeacher2_I.Size = new System.Drawing.Size(88, 13);
             this.llblTeacher2_I.TabIndex = 265;
             this.llblTeacher2_I.TabStop = true;
-            this.llblTeacher2_I.Text = "Real Instructor";
+            this.llblTeacher2_I.Text = "Actual Instructor";
             this.llblTeacher2_I.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblTeacher2_LinkClicked);
             // 
             // llblTeacher1_I
