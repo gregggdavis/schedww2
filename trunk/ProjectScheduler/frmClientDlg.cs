@@ -2076,11 +2076,11 @@ namespace Scheduler
 		{
 			int TopMargin = printDocument1.DefaultPageSettings.Margins.Top;
 
-			g.FillRectangle(new SolidBrush(label1.BackColor), 
-			                label1.Location.X, label1.Location.Y + TopMargin, label1.Size.Width, label1.Size.Height);
-			g.DrawString(label1.Text, label1.Font, new SolidBrush(label1.ForeColor),
-			             label1.Location.X + 50, label1.Location.Y + TopMargin, new StringFormat());
-			return label1.Location.Y + TopMargin + label1.Size.Height;
+            g.FillRectangle(new SolidBrush(lblContactInfoHeader.BackColor),
+                            lblContactInfoHeader.Location.X, lblContactInfoHeader.Location.Y + TopMargin, lblContactInfoHeader.Size.Width, lblContactInfoHeader.Size.Height);
+            g.DrawString(lblContactInfoHeader.Text, lblContactInfoHeader.Font, new SolidBrush(lblContactInfoHeader.ForeColor),
+                         lblContactInfoHeader.Location.X + 50, lblContactInfoHeader.Location.Y + TopMargin, new StringFormat());
+            return lblContactInfoHeader.Location.Y + TopMargin + lblContactInfoHeader.Size.Height;
 		}
 
 		private void pnlAddress_Paint(object sender, PaintEventArgs e)

@@ -87,6 +87,7 @@ namespace Scheduler
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem openToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
+        private GridColumn colDateAndTime;
         private bool IsAllow = false;
         #endregion
 
@@ -164,6 +165,7 @@ namespace Scheduler
             this.gcolExceptionReason = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolCourseId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolDayOfWeek = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDateAndTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnlFilter = new System.Windows.Forms.Panel();
             this.datePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.datePickerStart = new System.Windows.Forms.DateTimePicker();
@@ -314,7 +316,8 @@ namespace Scheduler
             this.gcolInstructor,
             this.gcolExceptionReason,
             this.gcolCourseId,
-            this.gcolDayOfWeek});
+            this.gcolDayOfWeek,
+            this.colDateAndTime});
             this.gvwEvent.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Strikeout))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             styleFormatCondition1.Appearance.Options.UseFont = true;
@@ -358,8 +361,6 @@ namespace Scheduler
             this.colStartDateTime.FieldName = "StartDateTime";
             this.colStartDateTime.MinWidth = 90;
             this.colStartDateTime.Name = "colStartDateTime";
-            this.colStartDateTime.Visible = true;
-            this.colStartDateTime.VisibleIndex = 0;
             this.colStartDateTime.Width = 105;
             // 
             // colEndDateTime
@@ -378,8 +379,8 @@ namespace Scheduler
             this.gColName.FieldName = "Name";
             this.gColName.Name = "gColName";
             this.gColName.Visible = true;
-            this.gColName.VisibleIndex = 4;
-            this.gColName.Width = 104;
+            this.gColName.VisibleIndex = 5;
+            this.gColName.Width = 93;
             // 
             // gcolClass
             // 
@@ -394,8 +395,8 @@ namespace Scheduler
             this.gcolProgram.FieldName = "Program";
             this.gcolProgram.Name = "gcolProgram";
             this.gcolProgram.Visible = true;
-            this.gcolProgram.VisibleIndex = 3;
-            this.gcolProgram.Width = 92;
+            this.gcolProgram.VisibleIndex = 4;
+            this.gcolProgram.Width = 82;
             // 
             // gcolDescription
             // 
@@ -432,7 +433,7 @@ namespace Scheduler
             this.gcolScheduledIns.Name = "gcolScheduledIns";
             this.gcolScheduledIns.Visible = true;
             this.gcolScheduledIns.VisibleIndex = 6;
-            this.gcolScheduledIns.Width = 80;
+            this.gcolScheduledIns.Width = 72;
             // 
             // gcolRealIns
             // 
@@ -477,8 +478,8 @@ namespace Scheduler
             this.gcolDept.FieldName = "Department";
             this.gcolDept.Name = "gcolDept";
             this.gcolDept.Visible = true;
-            this.gcolDept.VisibleIndex = 2;
-            this.gcolDept.Width = 95;
+            this.gcolDept.VisibleIndex = 3;
+            this.gcolDept.Width = 85;
             // 
             // gcolClient
             // 
@@ -486,17 +487,17 @@ namespace Scheduler
             this.gcolClient.FieldName = "Client";
             this.gcolClient.Name = "gcolClient";
             this.gcolClient.Visible = true;
-            this.gcolClient.VisibleIndex = 1;
-            this.gcolClient.Width = 95;
+            this.gcolClient.VisibleIndex = 2;
+            this.gcolClient.Width = 85;
             // 
             // gcolInstructor
             // 
-            this.gcolInstructor.Caption = "Instructor";
+            this.gcolInstructor.Caption = "Actual Instructor";
             this.gcolInstructor.FieldName = "Instructor";
             this.gcolInstructor.Name = "gcolInstructor";
             this.gcolInstructor.Visible = true;
-            this.gcolInstructor.VisibleIndex = 5;
-            this.gcolInstructor.Width = 80;
+            this.gcolInstructor.VisibleIndex = 7;
+            this.gcolInstructor.Width = 72;
             // 
             // gcolExceptionReason
             // 
@@ -504,8 +505,8 @@ namespace Scheduler
             this.gcolExceptionReason.FieldName = "ExceptionReason";
             this.gcolExceptionReason.Name = "gcolExceptionReason";
             this.gcolExceptionReason.Visible = true;
-            this.gcolExceptionReason.VisibleIndex = 7;
-            this.gcolExceptionReason.Width = 89;
+            this.gcolExceptionReason.VisibleIndex = 8;
+            this.gcolExceptionReason.Width = 84;
             // 
             // gcolCourseId
             // 
@@ -519,7 +520,17 @@ namespace Scheduler
             this.gcolDayOfWeek.FieldName = "DayOfWeek";
             this.gcolDayOfWeek.Name = "gcolDayOfWeek";
             this.gcolDayOfWeek.Visible = true;
-            this.gcolDayOfWeek.VisibleIndex = 8;
+            this.gcolDayOfWeek.VisibleIndex = 1;
+            this.gcolDayOfWeek.Width = 67;
+            // 
+            // colDateAndTime
+            // 
+            this.colDateAndTime.Caption = "Date and Time";
+            this.colDateAndTime.FieldName = "DateAndTime";
+            this.colDateAndTime.Name = "colDateAndTime";
+            this.colDateAndTime.Visible = true;
+            this.colDateAndTime.VisibleIndex = 0;
+            this.colDateAndTime.Width = 116;
             // 
             // pnlFilter
             // 

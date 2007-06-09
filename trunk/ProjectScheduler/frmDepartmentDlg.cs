@@ -2364,7 +2364,7 @@ namespace Scheduler
 			//g.FillRectangle(new SolidBrush(System.Drawing.Color.Gray), 0, 2 , 200, label1.Size.Height);
 			Font _font = 
 				new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			g.DrawString("Department Contacts", _font, new SolidBrush(label1.ForeColor), 10, 40, new StringFormat());
+            g.DrawString("Department Contacts", _font, new SolidBrush(lblContactInfoHeader.ForeColor), 10, 40, new StringFormat());
 		}
 	}
 }
