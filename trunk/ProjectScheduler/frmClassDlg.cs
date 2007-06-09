@@ -3593,12 +3593,12 @@ namespace Scheduler
             objCourse.CourseStatus = cmbStatus.SelectedIndex;
 
             objCourse.CourseID = _courseid;
-            if (objCourse.Exists())
-            {
-                Scheduler.BusinessLayer.Message.MsgInformation("Duplicate Class Name not allowed");
-                txtCourseName.Focus();
-                return;
-            }
+            //if (objCourse.Exists())
+            //{
+            //    Scheduler.BusinessLayer.Message.MsgInformation("Duplicate Class Name not allowed");
+            //    txtCourseName.Focus();
+            //    return;
+            //}
             if (txtNickName.Text != "")
             {
                 if (objCourse.NickNameExists())

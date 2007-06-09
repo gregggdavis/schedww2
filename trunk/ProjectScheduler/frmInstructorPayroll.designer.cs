@@ -501,7 +501,7 @@ namespace Scheduler
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(275, 24);
+            this.simpleButton1.Location = new System.Drawing.Point(305, 24);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(81, 44);
             this.simpleButton1.TabIndex = 10;
@@ -512,7 +512,7 @@ namespace Scheduler
             // 
             this.dateEditEndDate.EditValue = new System.DateTime(2007, 3, 22, 7, 25, 31, 171);
             this.dateEditEndDate.Enabled = false;
-            this.dateEditEndDate.Location = new System.Drawing.Point(100, 49);
+            this.dateEditEndDate.Location = new System.Drawing.Point(130, 49);
             this.dateEditEndDate.Name = "dateEditEndDate";
             this.dateEditEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -525,7 +525,7 @@ namespace Scheduler
             // 
             this.dateEditStartDate.EditValue = new System.DateTime(2007, 3, 22, 7, 25, 23, 234);
             this.dateEditStartDate.Enabled = false;
-            this.dateEditStartDate.Location = new System.Drawing.Point(100, 24);
+            this.dateEditStartDate.Location = new System.Drawing.Point(130, 24);
             this.dateEditStartDate.Name = "dateEditStartDate";
             this.dateEditStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
