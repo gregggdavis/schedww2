@@ -876,10 +876,10 @@ namespace Scheduler
             this.llblTeacher2.AutoSize = true;
             this.llblTeacher2.Location = new System.Drawing.Point(16, 197);
             this.llblTeacher2.Name = "llblTeacher2";
-            this.llblTeacher2.Size = new System.Drawing.Size(79, 13);
+            this.llblTeacher2.Size = new System.Drawing.Size(88, 13);
             this.llblTeacher2.TabIndex = 265;
             this.llblTeacher2.TabStop = true;
-            this.llblTeacher2.Text = "Real Instructor";
+            this.llblTeacher2.Text = "Actual Instructor";
             this.llblTeacher2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblTeacher2_LinkClicked);
             // 
             // cmbTeacher2

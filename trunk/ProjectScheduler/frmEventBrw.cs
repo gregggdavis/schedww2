@@ -436,7 +436,7 @@ namespace Scheduler
             // 
             // gcolRealIns
             // 
-            this.gcolRealIns.Caption = "Real Instructor";
+            this.gcolRealIns.Caption = "Actual Instructor";
             this.gcolRealIns.FieldName = "RealTeacher";
             this.gcolRealIns.Name = "gcolRealIns";
             this.gcolRealIns.Width = 80;
