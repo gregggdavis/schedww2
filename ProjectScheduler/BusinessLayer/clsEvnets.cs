@@ -347,7 +347,7 @@ namespace Scheduler.BusinessLayer {
 						"CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
 						"CalendarEvent.ExceptionReason, CC1.LastName + ', ' + CC1.FirstName as ScheduledTeacher, " +
 						"CC2.LastName + ', ' + CC2.FirstName as RealTeacher, " +
-						"Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program " +
+						"Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program,dbo.DateAndTime(CalendarEvent.StartDateTime,CalendarEvent.EndDateTime) as DateAndTime " +
 						"From Event " +
 						"Inner Join CalendarEvent ON(Event.EventID=CalendarEvent.EventID) " +
 						"Left Join Contact CC1 ON(CC1.ContactID=CalendarEvent.ScheduledTeacherID) " +
