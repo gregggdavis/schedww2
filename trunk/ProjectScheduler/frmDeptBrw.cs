@@ -107,11 +107,11 @@ namespace Scheduler
             this.gcolClient = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gColDeptName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gColContact1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcolContact1Phone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolContact2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcolContact2Phone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolContact = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolStatus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcolContact1Phone = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcolContact2Phone = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.pnl_Find.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -320,11 +320,11 @@ namespace Scheduler
             this.gcolClient,
             this.gColDeptName,
             this.gColContact1,
-            this.gcolContact2,
-            this.gcolContact,
-            this.gcolStatus,
             this.gcolContact1Phone,
-            this.gcolContact2Phone});
+            this.gcolContact2,
+            this.gcolContact2Phone,
+            this.gcolContact,
+            this.gcolStatus});
             this.gvwDept.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gvwDept.GridControl = this.grdDept;
             this.gvwDept.Name = "gvwDept";
@@ -380,14 +380,30 @@ namespace Scheduler
             this.gColContact1.VisibleIndex = 2;
             this.gColContact1.Width = 145;
             // 
+            // gcolContact1Phone
+            // 
+            this.gcolContact1Phone.Caption = "Contact 1 Phone";
+            this.gcolContact1Phone.FieldName = "Contact1Phone";
+            this.gcolContact1Phone.Name = "gcolContact1Phone";
+            this.gcolContact1Phone.Visible = true;
+            this.gcolContact1Phone.VisibleIndex = 3;
+            // 
             // gcolContact2
             // 
             this.gcolContact2.Caption = "Contact 2 Name";
             this.gcolContact2.FieldName = "Contact2";
             this.gcolContact2.Name = "gcolContact2";
             this.gcolContact2.Visible = true;
-            this.gcolContact2.VisibleIndex = 3;
+            this.gcolContact2.VisibleIndex = 4;
             this.gcolContact2.Width = 145;
+            // 
+            // gcolContact2Phone
+            // 
+            this.gcolContact2Phone.Caption = "Contact 2 Phone";
+            this.gcolContact2Phone.FieldName = "Contact2Phone";
+            this.gcolContact2Phone.Name = "gcolContact2Phone";
+            this.gcolContact2Phone.Visible = true;
+            this.gcolContact2Phone.VisibleIndex = 5;
             // 
             // gcolContact
             // 
@@ -402,24 +418,8 @@ namespace Scheduler
             this.gcolStatus.FieldName = "DepartmentStatus";
             this.gcolStatus.Name = "gcolStatus";
             this.gcolStatus.Visible = true;
-            this.gcolStatus.VisibleIndex = 4;
+            this.gcolStatus.VisibleIndex = 6;
             this.gcolStatus.Width = 108;
-            // 
-            // gcolContact1Phone
-            // 
-            this.gcolContact1Phone.Caption = "Contact 1 Phone";
-            this.gcolContact1Phone.FieldName = "Contact1Phone";
-            this.gcolContact1Phone.Name = "gcolContact1Phone";
-            this.gcolContact1Phone.Visible = true;
-            this.gcolContact1Phone.VisibleIndex = 5;
-            // 
-            // gcolContact2Phone
-            // 
-            this.gcolContact2Phone.Caption = "Contact 2 Phone";
-            this.gcolContact2Phone.FieldName = "Contact2Phone";
-            this.gcolContact2Phone.Name = "gcolContact2Phone";
-            this.gcolContact2Phone.Visible = true;
-            this.gcolContact2Phone.VisibleIndex = 6;
             // 
             // frmDeptBrw
             // 
