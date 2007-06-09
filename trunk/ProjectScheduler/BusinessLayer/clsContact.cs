@@ -140,7 +140,7 @@ namespace Scheduler.BusinessLayer
 					"When '0' Then 'Yes' " +
 					"When '1' Then 'No' " +
 					"ELSE '' " +
-					"END " +
+					"END,Email1,Email2,Phone1,Phone2,PhoneMobile1,PhoneMobile2,PhoneBusiness1,PhoneBusiness2 " +
 					"From Contact ";
 					if(option!="Contact")
 					{
@@ -214,7 +214,7 @@ namespace Scheduler.BusinessLayer
 					_dtbl.Columns.Add("Contact2", Type.GetType("System.String"));
 					_dtbl.Columns.Add("Contact1Phone", Type.GetType("System.String"));
 					_dtbl.Columns.Add("Contact2Phone", Type.GetType("System.String"));
-
+                    
 					//Get the contacts
 					int contid=0;
 					string contact1="";

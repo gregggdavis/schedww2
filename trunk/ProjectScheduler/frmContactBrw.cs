@@ -155,6 +155,8 @@ namespace Scheduler
             this.gcolContactPhone1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolContact2Name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolContactPhone2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcolMobilePhone = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcolDateJoined = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnl_Find = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -164,8 +166,6 @@ namespace Scheduler
             this.btn_Find = new System.Windows.Forms.Button();
             this.lbl_Find = new System.Windows.Forms.Label();
             this.chk_AdvanceSearch = new System.Windows.Forms.CheckBox();
-            this.gcolMobilePhone = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gcolDateJoined = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnlBody.SuspendLayout();
             this.pnl_SpeedSearch.SuspendLayout();
             this.pnl_SpeedSearch1.SuspendLayout();
@@ -465,6 +465,18 @@ namespace Scheduler
             this.gcolContactPhone2.FieldName = "Contact2Phone";
             this.gcolContactPhone2.Name = "gcolContactPhone2";
             // 
+            // gcolMobilePhone
+            // 
+            this.gcolMobilePhone.Caption = "Mobile Phone";
+            this.gcolMobilePhone.FieldName = "PhoneMobile1";
+            this.gcolMobilePhone.Name = "gcolMobilePhone";
+            // 
+            // gcolDateJoined
+            // 
+            this.gcolDateJoined.Caption = "Date Joined";
+            this.gcolDateJoined.FieldName = "DateJoined";
+            this.gcolDateJoined.Name = "gcolDateJoined";
+            // 
             // pnl_Find
             // 
             this.pnl_Find.BackColor = System.Drawing.SystemColors.Window;
@@ -570,18 +582,6 @@ namespace Scheduler
             this.chk_AdvanceSearch.TabIndex = 8;
             this.chk_AdvanceSearch.Text = "Search All Fields";
             this.chk_AdvanceSearch.UseVisualStyleBackColor = false;
-            // 
-            // gcolMobilePhone
-            // 
-            this.gcolMobilePhone.Caption = "Mobile Phone";
-            this.gcolMobilePhone.FieldName = "MobilePhone1";
-            this.gcolMobilePhone.Name = "gcolMobilePhone";
-            // 
-            // gcolDateJoined
-            // 
-            this.gcolDateJoined.Caption = "Date Joined";
-            this.gcolDateJoined.FieldName = "DateJoined";
-            this.gcolDateJoined.Name = "gcolDateJoined";
             // 
             // frmContactBrw
             // 
@@ -729,7 +729,7 @@ namespace Scheduler
                 gcolContact2Name.VisibleIndex = 3;
                 gcolContactPhone2.VisibleIndex = 4;
                 gcolStatus.VisibleIndex = 5;
-
+                gcolPhone.Caption = "Phone";
                 gcolContactName.VisibleIndex = -1;
                 gcolContactNameRomaji.VisibleIndex = -1;
                 gcolPhone.VisibleIndex = -1;
@@ -757,6 +757,7 @@ namespace Scheduler
                 //gColLastName.Visible = true;
                 gColLastName.VisibleIndex = 0;
                 gcolFirstName.VisibleIndex = 1;
+                gcolPhone.Caption = "Home Phone";
                 gcolPhone.VisibleIndex = 2;
                 gcolMobilePhone.VisibleIndex = 3;
                 gcolEmail1.VisibleIndex = 4;
