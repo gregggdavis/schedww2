@@ -1645,7 +1645,7 @@ namespace Scheduler
 				intClientID = objDept.ClientID;
 				intContactID = objDept.ContactID;
 				cmbClient.Text = objDept.ClientName;
-				cmbClient.Tag = objDept.ClientID;
+				cmbClient.Tag = objDept.ClientName;
 				intStatus = objDept.StatusID;
 
 				cmbStatus.SelectedIndex=intStatus;

@@ -243,7 +243,7 @@ namespace Scheduler
             this.colProgramName.OptionsColumn.AllowEdit = false;
             this.colProgramName.OptionsColumn.ReadOnly = true;
             this.colProgramName.Visible = true;
-            this.colProgramName.VisibleIndex = 5;
+            this.colProgramName.VisibleIndex = 6;
             this.colProgramName.Width = 62;
             // 
             // colClassName
@@ -254,7 +254,7 @@ namespace Scheduler
             this.colClassName.OptionsColumn.AllowEdit = false;
             this.colClassName.OptionsColumn.ReadOnly = true;
             this.colClassName.Visible = true;
-            this.colClassName.VisibleIndex = 6;
+            this.colClassName.VisibleIndex = 7;
             this.colClassName.Width = 47;
             // 
             // colClassType
@@ -265,7 +265,7 @@ namespace Scheduler
             this.colClassType.OptionsColumn.AllowEdit = false;
             this.colClassType.OptionsColumn.ReadOnly = true;
             this.colClassType.Visible = true;
-            this.colClassType.VisibleIndex = 7;
+            this.colClassType.VisibleIndex = 8;
             this.colClassType.Width = 66;
             // 
             // colClientShortName
@@ -276,7 +276,7 @@ namespace Scheduler
             this.colClientShortName.OptionsColumn.AllowEdit = false;
             this.colClientShortName.OptionsColumn.ReadOnly = true;
             this.colClientShortName.Visible = true;
-            this.colClientShortName.VisibleIndex = 8;
+            this.colClientShortName.VisibleIndex = 5;
             this.colClientShortName.Width = 49;
             // 
             // colStartDateTime

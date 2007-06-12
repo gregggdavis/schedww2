@@ -336,7 +336,7 @@ namespace Scheduler
             this.gvwDept.OptionsView.ShowHorzLines = false;
             this.gvwDept.OptionsView.ShowIndicator = false;
             this.gvwDept.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gColDeptName, DevExpress.Data.ColumnSortOrder.Ascending)});
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClient, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gvwDept.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
             this.gvwDept.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
