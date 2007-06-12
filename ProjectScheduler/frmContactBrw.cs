@@ -406,7 +406,7 @@ namespace Scheduler
             // 
             // gcolEmail1
             // 
-            this.gcolEmail1.Caption = "EMail";
+            this.gcolEmail1.Caption = "Email";
             this.gcolEmail1.FieldName = "Email1";
             this.gcolEmail1.Name = "gcolEmail1";
             this.gcolEmail1.Width = 41;
@@ -743,6 +743,8 @@ namespace Scheduler
                 gcolState.VisibleIndex = -1;
                 gcolCountry.VisibleIndex = -1;
                 gcolEmail1.VisibleIndex = -1;
+                gcolDateJoined.VisibleIndex = -1;
+                gcolMobilePhone.VisibleIndex = -1;
             }
             else if (option == "Instructor")
             {
