@@ -188,6 +188,7 @@ namespace Scheduler.BusinessLayer
 			_dtbl.Columns.Add(new DataColumn("EventStartDateTime", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("EventEndDateTime", Type.GetType("System.String")));
             _dtbl.Columns.Add(new DataColumn("OccurrenceCount", Type.GetType("System.String")));
+            _dtbl.Columns.Add(new DataColumn("ScheduledInstructor", Type.GetType("System.String")));
 		}
 
 		public static int CloneData(int courseID)
@@ -371,22 +372,26 @@ namespace Scheduler.BusinessLayer
 						Reader["TestInitialForm"].ToString(),
 						Reader["TestMidtermForm"].ToString(),
 						Reader["TestFinalForm"].ToString(),
-						strstatus, ""
+						strstatus, "",""
 					});
 				}
 				Reader.Close();
 
 				int intEID=0;
 				string startdate="", enddate="";
+                string instructorName = "";
 				foreach(DataRow dr in _dtbl.Rows)
 				{
 					intEID = Convert.ToInt32(dr["EventID"].ToString()); 
+
 					//getEventText(intEID, ref startdate, ref enddate);
-					startdate = getEventText(intEID, true);
+					startdate = getEventText(intEID, true,true,ref instructorName);
 					enddate = getEventText(intEID, false);
+
 					dr["EventStartDateTime"] = startdate;
 					dr["EventEndDateTime"] = enddate;
                     dr["OccurrenceCount"] = getOccurrenceCount(intEID);
+                    dr["ScheduledInstructor"] = instructorName;
 					dr.AcceptChanges();
 				}
 
@@ -1039,7 +1044,7 @@ namespace Scheduler.BusinessLayer
 			{
 				if(Start)
 				{
-					strSql =  "Select Top 1 StartDateTime From [CalendarEvent] ";
+					strSql =  "Select Top 1 StartDateTime,ScheduledTeacherID From [CalendarEvent] ";
 					strSql += "WHERE EventID=@EventID Order By CalendarEventID";
 				}
 				else
@@ -1124,6 +1129,178 @@ namespace Scheduler.BusinessLayer
 				}
 			}
 		}
+
+        public string getEventText(int eventid, bool Start,bool getInstructor,ref string instructorName)
+        {
+            string startdate = "", enddate = "";
+            string Result = "";
+            string strSql = "";
+            
+            SqlCommand com = null;
+            Connection con = null;
+            SqlDataReader Reader = null;
+            SqlCommand com1 = null;
+            DateTime dtStart = Convert.ToDateTime(null);
+            DateTime dtEnd = Convert.ToDateTime(null);
+
+            if (Start)
+                dtStart = Convert.ToDateTime(null);
+            else
+                dtEnd = Convert.ToDateTime(null);
+
+            try
+            {
+                if (Start)
+                {
+                    strSql = "Select Top 1 StartDateTime,ScheduledTeacherID From [CalendarEvent] ";
+                    strSql += "WHERE EventID=@EventID Order By CalendarEventID";
+                }
+                else
+                {
+                    strSql = "Select Top 1 EndDateTime From [CalendarEvent] ";
+                    strSql += "WHERE EventID=@EventID Order by CalendarEventID DESC";
+                }
+
+                con = new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.Connection = con.SQLCon;
+                com.CommandText = strSql;
+
+                com.Parameters.Add(new SqlParameter("@EventID", SqlDbType.BigInt));
+                com.Parameters["@EventID"].Value = eventid;
+
+                Reader = com.ExecuteReader();
+                string id = "";
+                bool IsRecord = false;
+                if (Reader.Read())
+                {
+                    IsRecord = true;
+                    if (Start)
+                    {
+                        if (Reader["StartDateTime"] != System.DBNull.Value)
+                        {
+                            dtStart = Convert.ToDateTime(Reader["StartDateTime"].ToString());
+                        }
+                    }
+                    else
+                    {
+                        if (Reader["EndDateTime"] != System.DBNull.Value)
+                        {
+                            dtEnd = Convert.ToDateTime(Reader["EndDateTime"].ToString());
+                        }
+                    }
+                    if(getInstructor)
+                    {
+                        if (Reader["ScheduledTeacherID"] != System.DBNull.Value)
+                        {
+                            id = Convert.ToString(Reader["ScheduledTeacherID"]);
+                            //instructorName = getInstructorName(id);
+                        }
+                        else
+                        {
+                            instructorName = "None";
+                        }
+                    }
+                }
+                Reader.Close();
+                if (IsRecord)
+                {
+                    if (Start)
+                    {
+                        if (dtStart != Convert.ToDateTime(null))
+                        {
+                            Result = dtStart.ToShortDateString() + " " + dtStart.ToShortTimeString();
+                            if (Result.IndexOf("(") > 0)
+                            {
+                                Result = Result.Substring(0, Result.IndexOf("(") + 1);
+                            }
+                            startdate = Result;
+                        }
+                    }
+                    else
+                    {
+                        if (dtEnd != Convert.ToDateTime(null))
+                        {
+                            Result = dtEnd.ToShortDateString() + " " + dtEnd.ToShortTimeString();
+                            if (Result.IndexOf("(") > 0)
+                            {
+                                Result = Result.Substring(0, Result.IndexOf("(") + 1);
+                            }
+                            enddate = Result;
+                        }
+                    }
+
+                    if (id != "None" || id != "")
+                    {
+                        instructorName = getInstructorName(id,con);
+                    }
+                    else
+                        instructorName = "None";
+                }
+                else
+                { Result = "None"; instructorName = "None"; }
+
+                return Result;
+            }
+            catch (SqlException ex)
+            {
+                Message = ex.Message;
+                return "";
+            }
+            finally
+            {
+                if (com != null)
+                {
+                    com.Dispose();
+                    com = null;
+                    con.DisConnect();
+                }
+            }
+        }
+
+        public string getInstructorName(string id,Connection con)
+        {
+            string Result = "";
+            string strSql = "";
+
+            SqlCommand com = null;
+            //Connection con = null;
+            SqlDataReader Reader = null;
+            SqlCommand com1 = null;
+            //con = new Connection();
+            //con.Connect();
+            strSql = "Select LastName,FirstName from Contact Where ContactID = " + id;
+            com1 = new SqlCommand();
+            com1.Connection = con.SQLCon;
+            com1.CommandText = strSql;
+
+            try
+            {
+                Reader = com1.ExecuteReader();
+                if (Reader.Read())
+                {
+                    Result = Reader["LastName"].ToString() + ", " + Reader["FirstName"].ToString();
+                }
+                Reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+
+                if (com1 != null)
+                {
+                    com1.Dispose();
+                    com = null;
+                    //con.DisConnect();
+                }
+            }
+            return Result;
+
+        }
 
 		public string getEventText(int eventid, ref string startdate, ref string enddate)
 		{

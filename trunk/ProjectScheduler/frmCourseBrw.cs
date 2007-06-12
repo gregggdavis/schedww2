@@ -63,6 +63,10 @@ namespace Scheduler
 		private DevExpress.XtraGrid.Columns.GridColumn gcolEndDateTime;
         private DevExpress.XtraGrid.Columns.GridColumn gcolEventId;
         private DevExpress.XtraGrid.Columns.GridColumn gcolOccurrenceCount;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gcolScheduledInstructor;
 		private bool boolFetch=true;
 
 		public frmCourseBrw()
@@ -130,7 +134,9 @@ namespace Scheduler
             this.gcolClient = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolDept = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolEventDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.gcolEndDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTimeEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.gcolNumberStudents = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolHomeWorkMinutes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolTestIniEventID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -148,6 +154,8 @@ namespace Scheduler
             this.gcolLastModifiedByUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolEventId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolOccurrenceCount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcolScheduledInstructor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.pnl_Find.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -157,6 +165,9 @@ namespace Scheduler
             this.pnl_SpeedSearch1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwCourse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // persistentRepository1
@@ -340,6 +351,10 @@ namespace Scheduler
             this.grdCourse.Location = new System.Drawing.Point(0, 90);
             this.grdCourse.MainView = this.gvwCourse;
             this.grdCourse.Name = "grdCourse";
+            this.grdCourse.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTimeEdit1,
+            this.repositoryItemButtonEdit1,
+            this.repositoryItemTimeEdit2});
             this.grdCourse.Size = new System.Drawing.Size(672, 267);
             this.grdCourse.TabIndex = 26;
             this.grdCourse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -377,7 +392,8 @@ namespace Scheduler
             this.gcolLastModified,
             this.gcolLastModifiedByUser,
             this.gcolEventId,
-            this.gcolOccurrenceCount});
+            this.gcolOccurrenceCount,
+            this.gcolScheduledInstructor});
             this.gvwCourse.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gvwCourse.GridControl = this.grdCourse;
             this.gvwCourse.Name = "gvwCourse";
@@ -459,20 +475,42 @@ namespace Scheduler
             // gcolEventDateTime
             // 
             this.gcolEventDateTime.Caption = "Event Start Date";
+            this.gcolEventDateTime.ColumnEdit = this.repositoryItemTimeEdit1;
             this.gcolEventDateTime.FieldName = "EventStartDateTime";
             this.gcolEventDateTime.Name = "gcolEventDateTime";
             this.gcolEventDateTime.Visible = true;
             this.gcolEventDateTime.VisibleIndex = 4;
             this.gcolEventDateTime.Width = 94;
             // 
+            // repositoryItemTimeEdit1
+            // 
+            this.repositoryItemTimeEdit1.AutoHeight = false;
+            this.repositoryItemTimeEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemTimeEdit1.DisplayFormat.FormatString = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemTimeEdit1.Mask.EditMask = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
+            // 
             // gcolEndDateTime
             // 
             this.gcolEndDateTime.Caption = "Event End Date";
+            this.gcolEndDateTime.ColumnEdit = this.repositoryItemTimeEdit2;
             this.gcolEndDateTime.FieldName = "EventEndDateTime";
             this.gcolEndDateTime.Name = "gcolEndDateTime";
             this.gcolEndDateTime.Visible = true;
             this.gcolEndDateTime.VisibleIndex = 5;
             this.gcolEndDateTime.Width = 94;
+            // 
+            // repositoryItemTimeEdit2
+            // 
+            this.repositoryItemTimeEdit2.AutoHeight = false;
+            this.repositoryItemTimeEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemTimeEdit2.DisplayFormat.FormatString = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemTimeEdit2.Mask.EditMask = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit2.Name = "repositoryItemTimeEdit2";
             // 
             // gcolNumberStudents
             // 
@@ -536,7 +574,7 @@ namespace Scheduler
             this.gcolStatus.FieldName = "CourseStatus";
             this.gcolStatus.Name = "gcolStatus";
             this.gcolStatus.Visible = true;
-            this.gcolStatus.VisibleIndex = 6;
+            this.gcolStatus.VisibleIndex = 7;
             this.gcolStatus.Width = 48;
             // 
             // gcolDescription
@@ -583,7 +621,22 @@ namespace Scheduler
             this.gcolOccurrenceCount.FieldName = "OccurrenceCount";
             this.gcolOccurrenceCount.Name = "gcolOccurrenceCount";
             this.gcolOccurrenceCount.Visible = true;
-            this.gcolOccurrenceCount.VisibleIndex = 7;
+            this.gcolOccurrenceCount.VisibleIndex = 8;
+            // 
+            // gcolScheduledInstructor
+            // 
+            this.gcolScheduledInstructor.Caption = "Scheduled Instructor";
+            this.gcolScheduledInstructor.FieldName = "ScheduledInstructor";
+            this.gcolScheduledInstructor.Name = "gcolScheduledInstructor";
+            this.gcolScheduledInstructor.Visible = true;
+            this.gcolScheduledInstructor.VisibleIndex = 6;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
             // frmCourseBrw
             // 
@@ -607,6 +660,9 @@ namespace Scheduler
             this.pnl_SpeedSearch1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwCourse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             this.ResumeLayout(false);
 
 		}
