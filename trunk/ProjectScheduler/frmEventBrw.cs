@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Data.SqlTypes;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Repository;
@@ -129,7 +130,6 @@ namespace Scheduler
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEventBrw));
             this.gcolStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnlBody = new System.Windows.Forms.Panel();
@@ -319,14 +319,6 @@ namespace Scheduler
             this.gcolDayOfWeek,
             this.colDateAndTime});
             this.gvwEvent.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            styleFormatCondition1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Strikeout))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            styleFormatCondition1.Appearance.Options.UseFont = true;
-            styleFormatCondition1.ApplyToRow = true;
-            styleFormatCondition1.Column = this.gcolStatus;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition1.Value1 = "Inactive";
-            this.gvwEvent.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1});
             this.gvwEvent.GridControl = this.grdEvent;
             this.gvwEvent.Name = "gvwEvent";
             this.gvwEvent.OptionsBehavior.Editable = false;
@@ -340,6 +332,7 @@ namespace Scheduler
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClass, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gvwEvent.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
             this.gvwEvent.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
+            this.gvwEvent.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvwEvent_RowCellStyle);
             // 
             // gcolEventID
             // 
@@ -1620,6 +1613,12 @@ namespace Scheduler
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeleteEvent();
+        }
+
+        private void gvwEvent_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            if(Convert.ToString(gvwEvent.GetRowCellValue(e.RowHandle,"EventStatus")) == "Inactive")
+                e.Appearance.Font = new Font(e.Appearance.Font,(FontStyle.Bold|FontStyle.Strikeout));
         }
 	}
 }
