@@ -117,7 +117,12 @@ namespace Scheduler
 			//{
 				//	EndTime = EndTime.Substring(1, EndTime.Length-1);
 				//}
-				SetTime(cmbEnd, EndTime);
+                //SetTime(cmbStart, StartTime);
+                DateTime testEnd = Convert.ToDateTime(StartTime);
+                if (testEnd.Hour >= 23 && testEnd.Minute >= 30)
+                    SetTime(cmbEnd, StartTime);
+                else
+				    SetTime(cmbEnd, EndTime);
 			}
             catch{}
 
@@ -132,6 +137,15 @@ namespace Scheduler
 			}
 
 			SetDuration();
+            if (cmbDurr.Text == "Invalid")
+            {
+                cmbStart.SelectedIndex = 0;
+                cmbEnd.Items.Clear();
+                int index = cmbStart.SelectedIndex;
+                for (int i = index; i < cmbStart.Items.Count; i++)
+                    cmbEnd.Items.Add(cmbStart.Items[i]);
+                cmbEnd.SelectedIndex = 0;
+            }
 
 		}
 		
@@ -1966,6 +1980,7 @@ namespace Scheduler
             int index = cmbStart.SelectedIndex;
             for(int i=index;i<cmbStart.Items.Count;i++)
                 cmbEnd.Items.Add(cmbStart.Items[i]);
+            cmbEnd.SelectedIndex = 0;
         }
 
     }

@@ -4298,6 +4298,8 @@ namespace Scheduler
                 //e.HasMorePages = true;
                 //nm.PageNumber++;
                 xtraPrinting.PageNumber++;
+                DrawTopLabel(g);
+                more = xtraPrinting.DrawClass(g);
                 //CompletePrinting(g);
                 //PrintClassDetails();
             }
