@@ -15,7 +15,10 @@ namespace Scheduler.BusinessLayer
         public string Fax1;
         public string Fax2;
         public string Url;
-
+        public string LastName, LastNamePhonetic, LastNameRomaji;
+        public string FirstName, FirstNamePhonetic, FirstNameRomaji;
+        public string ClosestStation1, ClosestStation2, ClosestLine1, ClosestLine2, MinutesToStation1, MinutesToStation2;
+        public string Street1, Street2, Street3, City, State, PostalCode, Country, Block;
 
         public void LoadData()
         {
@@ -40,6 +43,28 @@ namespace Scheduler.BusinessLayer
                 this.Fax1 = reader["PhoneFax1"].ToString();
                 this.Fax2 = reader["PhoneFax2"].ToString();
                 this.Url = reader["Url"].ToString();
+                this.FirstName = reader["FirstName"].ToString();
+                this.FirstNamePhonetic = reader["FirstNamePhonetic"].ToString();
+                this.FirstNameRomaji = reader["FirstNameRomaji"].ToString();
+                this.LastName = reader["LastName"].ToString();
+                this.LastNamePhonetic = reader["LastNamePhonetic"].ToString();
+                this.LastNameRomaji = reader["LastNameRomaji"].ToString();
+
+                this.Street1 = reader["Street1"].ToString();
+                this.Street2 = reader["Street2"].ToString();
+                this.Street3 = reader["Street3"].ToString();
+                this.City = reader["City"].ToString();
+                this.State = reader["State"].ToString();
+                this.PostalCode = reader["PostalCode"].ToString();
+                this.Country = reader["Country"].ToString();
+                this.Block = reader["BlockCode"].ToString();
+
+                this.ClosestStation1 = reader["ClosestStation1"].ToString();
+                this.ClosestStation2 = reader["ClosestStation2"].ToString();
+                this.ClosestLine1 = reader["ClosestLine1"].ToString();
+                this.ClosestLine2 = reader["ClosestLine2"].ToString();
+                this.MinutesToStation1 = reader["MinutesToStation1"].ToString();
+                this.MinutesToStation2 = reader["MinutesToStation2"].ToString();
             }
             if (DAC.Connection.State == ConnectionState.Open)
             {

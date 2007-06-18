@@ -2411,6 +2411,29 @@ namespace Scheduler
             txtFax1.Text = contactInfo.Fax1;
             txtFax2.Text = contactInfo.Fax2;
             txtUrl.Text = contactInfo.Url;
+
+            txtAccFirstName.Text = contactInfo.FirstName;
+            txtAccFirstPhonetic.Text = contactInfo.FirstNamePhonetic;
+            txtAccFirstRomaji.Text = contactInfo.FirstNameRomaji;
+            txtAccLName.Text = contactInfo.LastName;
+            txtAccLPhonetic.Text = contactInfo.LastNamePhonetic;
+            txtAccLRomaji1.Text = contactInfo.LastNameRomaji;
+            txtStreet1.Text = contactInfo.Street1;
+            txtStreet2.Text = contactInfo.Street2;
+            txtStreet3.Text = contactInfo.Street3;
+            txtCity.Text = contactInfo.City;
+            txtPost.Text = contactInfo.PostalCode;
+            txtState.Text = contactInfo.State;
+            txtCountry.Text = contactInfo.Country;
+            cmbBlock.Text = contactInfo.Block;
+            //------------------------------
+
+            txtClosestLine1.Text = contactInfo.ClosestLine1;
+            txtClosestLine2.Text = contactInfo.ClosestLine2;
+            txtClosestSt1.Text = contactInfo.ClosestStation1;
+            txtClosestSt2.Text = contactInfo.ClosestStation2;
+            txtMintSt1.Text = contactInfo.MinutesToStation1;
+            txtMintSt2.Text = contactInfo.MinutesToStation2;
         }
 	}
 }
