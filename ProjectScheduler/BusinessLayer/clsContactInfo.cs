@@ -43,12 +43,12 @@ namespace Scheduler.BusinessLayer
                 this.Fax1 = reader["PhoneFax1"].ToString();
                 this.Fax2 = reader["PhoneFax2"].ToString();
                 this.Url = reader["Url"].ToString();
-                this.FirstName = reader["FirstName"].ToString();
-                this.FirstNamePhonetic = reader["FirstNamePhonetic"].ToString();
-                this.FirstNameRomaji = reader["FirstNameRomaji"].ToString();
-                this.LastName = reader["LastName"].ToString();
-                this.LastNamePhonetic = reader["LastNamePhonetic"].ToString();
-                this.LastNameRomaji = reader["LastNameRomaji"].ToString();
+                this.FirstName = reader["AccountRepFirstName"].ToString();
+                this.FirstNamePhonetic = reader["AccountRepFirstNamePhonetic"].ToString();
+                this.FirstNameRomaji = reader["AccountRepFirstNameRomaji"].ToString();
+                this.LastName = reader["AccountRepLastName"].ToString();
+                this.LastNamePhonetic = reader["AccountRepLastNamePhonetic"].ToString();
+                this.LastNameRomaji = reader["AccountRepLastNameRomaji"].ToString();
 
                 this.Street1 = reader["Street1"].ToString();
                 this.Street2 = reader["Street2"].ToString();
