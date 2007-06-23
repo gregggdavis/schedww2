@@ -2411,13 +2411,14 @@ namespace Scheduler
             txtFax1.Text = contactInfo.Fax1;
             txtFax2.Text = contactInfo.Fax2;
             txtUrl.Text = contactInfo.Url;
-
+            //------------------------------
             txtAccFirstName.Text = contactInfo.FirstName;
             txtAccFirstPhonetic.Text = contactInfo.FirstNamePhonetic;
             txtAccFirstRomaji.Text = contactInfo.FirstNameRomaji;
             txtAccLName.Text = contactInfo.LastName;
             txtAccLPhonetic.Text = contactInfo.LastNamePhonetic;
             txtAccLRomaji1.Text = contactInfo.LastNameRomaji;
+            //--------------------------------
             txtStreet1.Text = contactInfo.Street1;
             txtStreet2.Text = contactInfo.Street2;
             txtStreet3.Text = contactInfo.Street3;
