@@ -52,6 +52,7 @@ namespace Scheduler {
 		private Label lblMonth;
 		private Label lblYear;
 		private CultureInfo culture = null;
+        private DevExpress.XtraEditors.CheckEdit chkHideWeekends;
         private bool IsAllow = false;
 		#endregion Controls
 
@@ -117,6 +118,7 @@ namespace Scheduler {
             this.pnlDateNavigator = new System.Windows.Forms.Panel();
             this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
             this.imgContext = new System.Windows.Forms.ImageList(this.components);
+            this.chkHideWeekends = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
             this.pnlBody.SuspendLayout();
             this.pnlCalendar.SuspendLayout();
@@ -124,6 +126,7 @@ namespace Scheduler {
             this.pnlFilter.SuspendLayout();
             this.pnlDateNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHideWeekends.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // StartDatePickerTop
@@ -230,6 +233,7 @@ namespace Scheduler {
             this.schedulerControl1.Views.WeekView.Appearance.HeaderCaptionLine.Options.UseFont = true;
             this.schedulerControl1.Views.WeekView.Appearance.Selection.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.WeekView.Appearance.Selection.Options.UseFont = true;
+            this.schedulerControl1.Views.WorkWeekView.ShowFullWeek = true;
             this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl1.Click += new System.EventHandler(this.schedulerControl1_Click);
             this.schedulerControl1.CustomDrawAppointment += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl1_CustomDrawAppointment);
@@ -240,6 +244,7 @@ namespace Scheduler {
             // pnlFilter
             // 
             this.pnlFilter.BackColor = System.Drawing.SystemColors.GrayText;
+            this.pnlFilter.Controls.Add(this.chkHideWeekends);
             this.pnlFilter.Controls.Add(this.lblMonth);
             this.pnlFilter.Controls.Add(this.lblYear);
             this.pnlFilter.Controls.Add(this.EndDatePickerTop);
@@ -294,7 +299,7 @@ namespace Scheduler {
             // btnClearFilters
             // 
             this.btnClearFilters.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearFilters.Location = new System.Drawing.Point(10, 24);
+            this.btnClearFilters.Location = new System.Drawing.Point(10, 7);
             this.btnClearFilters.Name = "btnClearFilters";
             this.btnClearFilters.Size = new System.Drawing.Size(104, 23);
             this.btnClearFilters.TabIndex = 13;
@@ -461,6 +466,15 @@ namespace Scheduler {
             this.imgContext.Images.SetKeyName(0, "");
             this.imgContext.Images.SetKeyName(1, "");
             // 
+            // chkHideWeekends
+            // 
+            this.chkHideWeekends.Location = new System.Drawing.Point(13, 34);
+            this.chkHideWeekends.Name = "chkHideWeekends";
+            this.chkHideWeekends.Properties.Caption = "Hide Weekends";
+            this.chkHideWeekends.Size = new System.Drawing.Size(101, 19);
+            this.chkHideWeekends.TabIndex = 20;
+            this.chkHideWeekends.CheckedChanged += new System.EventHandler(this.chkHideWeekends_CheckedChanged);
+            // 
             // frmCalendar
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -478,6 +492,7 @@ namespace Scheduler {
             this.pnlFilter.PerformLayout();
             this.pnlDateNavigator.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHideWeekends.Properties)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -545,7 +560,7 @@ namespace Scheduler {
 				schedulerControl1.ActiveViewType = SchedulerViewType.Day;
 				pnlDateNavigator.Show();
 			} else if (strView == "Week") {
-				schedulerControl1.ActiveViewType = SchedulerViewType.Week;
+				schedulerControl1.ActiveViewType = SchedulerViewType.WorkWeek;
 				pnlCalendar.Dock = DockStyle.Fill;
 			} else if (strView == "Month") {
 				schedulerControl1.ActiveViewType = SchedulerViewType.Month;
@@ -856,6 +871,7 @@ namespace Scheduler {
 		}
 
 		public void LoadFilterSettings() {
+            chkHideWeekends.Checked = true;
 			isProcess = false;
             IsAllow = false;
 
@@ -929,6 +945,11 @@ namespace Scheduler {
 				schedulerControl1.WeekView.Appearance.Appointment.Font = f;
 				schedulerControl1.WeekView.Appearance.CellHeaderCaption.Font = f;
 				schedulerControl1.WeekView.Appearance.Selection.Font = f;
+
+                schedulerControl1.WorkWeekView.Appearance.Appointment.Font = f;
+                schedulerControl1.WorkWeekView.Appearance.HeaderCaption.Font = f;
+                schedulerControl1.WorkWeekView.Appearance.Selection.Font = f;
+
 			}
 
 			//schedulerControl1.Refresh();
@@ -1082,6 +1103,19 @@ namespace Scheduler {
                 e.ViewInfo.Appearance.Font = new Font(e.ViewInfo.Appearance.Font,(FontStyle.Bold|FontStyle.Strikeout));
             }
 
+        }
+
+        private void chkHideWeekends_CheckedChanged(object sender, EventArgs e)
+        {
+            //if(chkHideWeekends.Checked)
+                
+            //else
+            //    schedulerControl1.WeekView.Type = SchedulerViewType.Month;
+
+          //  schedulerControl1.WeekView.ViewInfo.ShowWeekend = !chkHideWeekends.Checked;
+            schedulerControl1.WorkWeekView.ShowFullWeek = !chkHideWeekends.Checked;
+            schedulerControl1.MonthView.ShowWeekend = !chkHideWeekends.Checked;
+            
         }
 	}
 }
