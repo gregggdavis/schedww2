@@ -1910,7 +1910,7 @@ namespace Scheduler
 			}
 			else if (strMenuOption == "Event..." || strMenuOption == "Calendar...")
 			{
-                MessageBox.Show(strMenuOption);
+                //MessageBox.Show(strMenuOption);
 				MessageBox.Show(
 					"New events can't be created from this window, please use program or class properties to manage events !",
 					"Adding new event", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
