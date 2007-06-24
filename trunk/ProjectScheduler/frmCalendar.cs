@@ -1045,8 +1045,11 @@ namespace Scheduler {
 						schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Monthly;
 						break;
 				}
-                
+                if (_viewModeName == "Week")
+                    schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Weekly;
                 schedulerControl1.ShowPrintOptionsForm();
+                if(_viewModeName == "Week")
+                    schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Weekly;
             }
             catch (Exception ex)
             {
