@@ -8,7 +8,7 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraPrinting.Drawing;
 namespace Scheduler.BusinessLayer
 {
-    public class DevExpressPrinting
+    public class DevExpressPrinting : Link
     {
         #region Attributes
         public DevExpress.XtraPrinting.PrintingSystem ThePrintSystem;
@@ -813,9 +813,9 @@ namespace Scheduler.BusinessLayer
 			//		bottom);
 			//}
 		}
+        
 
-
-		public bool DrawDataGrid(BrickGraphics g)
+		public bool DrawDataGrid(BrickGraphics g,frmClassDlg mainFrm)
 		{
 			bool bContinue=false;
 			try
@@ -831,7 +831,24 @@ namespace Scheduler.BusinessLayer
 				}
 
 				if(!boolContinue) InitializeData();
-				return bContinue;
+                if (bContinue)
+                {
+                    PageNumber++;
+                    //sClass = false;
+
+                    BrickGraphics newBrick = (BrickGraphics)g.PrintingSystem.CreateBrick("Brick");
+                    
+                    //g.PrintingSystem.Document.Pages.Add((Page)p);
+                    mainFrm.DrawTopLabel(newBrick);
+                    // sClass = true;
+                    return DrawDataGrid(newBrick, mainFrm);
+                }
+                else
+                {
+                    return bContinue;
+                }
+
+                //return bContinue;
 			}
 			catch (Exception ex)
 			{

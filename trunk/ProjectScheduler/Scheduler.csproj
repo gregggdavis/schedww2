@@ -222,7 +222,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BusinessLayer\DevExpressPrinting.cs" />
+    <Compile Include="BusinessLayer\DevExpressClassPrinting.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BusinessLayer\DevExpressPrinting.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BusinessLayer\GridViewPrinter.cs">
       <SubType>Code</SubType>
     </Compile>
