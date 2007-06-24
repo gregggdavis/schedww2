@@ -1357,6 +1357,7 @@ namespace Scheduler
 		
 		private void frmEventDlg_Load(object sender, System.EventArgs e)
 		{
+            //MessageBox.Show("sa7 el sa7");
 			this.ActiveControl = txtName;
 
 			try
@@ -1405,14 +1406,22 @@ namespace Scheduler
 				if(strMode=="")
 				{
 					cmbStartTime.Text = DateTime.Now.ToString("HH:mm");
-					cmbEndTime.Text = DateTime.Now.Add(new TimeSpan(0,0,30,0,0)).ToString("HH:mm");
+                    if (Convert.ToDateTime(cmbStartTime.Text).Hour >= 23 && Convert.ToDateTime(cmbStartTime.Text).Minute >= 30)
+                    {
+                        cmbEndTime.Text = cmbStartTime.Text;
+                    }
+                    else
+					    cmbEndTime.Text = DateTime.Now.Add(new TimeSpan(0,0,30,0,0)).ToString("HH:mm");
 				}
 				else
 				{
 					if((strStartTime!="")&&(strEndTime!=""))
 					{
 						cmbStartTime.Text = strStartTime.Trim();
-						cmbEndTime.Text = strEndTime.Trim();
+                        if (Convert.ToDateTime(cmbStartTime.Text).Hour >= 23 && Convert.ToDateTime(cmbStartTime.Text).Minute >= 30)
+                            cmbEndTime.Text = cmbStartTime.Text;
+                        else
+						    cmbEndTime.Text = strEndTime.Trim();
 					}
 					else
 					{

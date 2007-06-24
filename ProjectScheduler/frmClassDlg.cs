@@ -486,6 +486,8 @@ namespace Scheduler
             this.btn_ClearRecc = new System.Windows.Forms.Button();
             this.btnRecurrence = new System.Windows.Forms.Button();
             this.pnlBody_I = new System.Windows.Forms.Panel();
+            this.txtChangeReason_I = new System.Windows.Forms.TextBox();
+            this.lblChangeReason_I = new System.Windows.Forms.Label();
             this.chkEventStatus_I = new System.Windows.Forms.CheckBox();
             this.chkEventModified = new System.Windows.Forms.CheckBox();
             this.lblExReason_I = new System.Windows.Forms.Label();
@@ -549,8 +551,6 @@ namespace Scheduler
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printingSystem = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.txtChangeReason_I = new System.Windows.Forms.TextBox();
-            this.lblChangeReason_I = new System.Windows.Forms.Label();
             this.tbcCourse.SuspendLayout();
             this.tbpCourse.SuspendLayout();
             this.tbpDescription.SuspendLayout();
@@ -638,7 +638,7 @@ namespace Scheduler
             this.tbpCourse.Controls.Add(this.cmbStatus);
             this.tbpCourse.Location = new System.Drawing.Point(4, 22);
             this.tbpCourse.Name = "tbpCourse";
-            this.tbpCourse.Size = new System.Drawing.Size(762, 518);
+            this.tbpCourse.Size = new System.Drawing.Size(762, 543);
             this.tbpCourse.TabIndex = 0;
             this.tbpCourse.Text = "Class";
             this.tbpCourse.UseVisualStyleBackColor = true;
@@ -1137,7 +1137,7 @@ namespace Scheduler
             this.tbpDescription.Controls.Add(this.txtDescription);
             this.tbpDescription.Location = new System.Drawing.Point(4, 22);
             this.tbpDescription.Name = "tbpDescription";
-            this.tbpDescription.Size = new System.Drawing.Size(762, 518);
+            this.tbpDescription.Size = new System.Drawing.Size(762, 543);
             this.tbpDescription.TabIndex = 1;
             this.tbpDescription.Text = "Description";
             this.tbpDescription.UseVisualStyleBackColor = true;
@@ -1149,7 +1149,7 @@ namespace Scheduler
             this.txtDescription.MaxLength = 4000;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(762, 518);
+            this.txtDescription.Size = new System.Drawing.Size(762, 543);
             this.txtDescription.TabIndex = 0;
             // 
             // tbpSpecialRemarks
@@ -1157,7 +1157,7 @@ namespace Scheduler
             this.tbpSpecialRemarks.Controls.Add(this.txtRemarks);
             this.tbpSpecialRemarks.Location = new System.Drawing.Point(4, 22);
             this.tbpSpecialRemarks.Name = "tbpSpecialRemarks";
-            this.tbpSpecialRemarks.Size = new System.Drawing.Size(762, 518);
+            this.tbpSpecialRemarks.Size = new System.Drawing.Size(762, 543);
             this.tbpSpecialRemarks.TabIndex = 2;
             this.tbpSpecialRemarks.Text = "Special Remarks";
             this.tbpSpecialRemarks.UseVisualStyleBackColor = true;
@@ -1169,7 +1169,7 @@ namespace Scheduler
             this.txtRemarks.MaxLength = 4000;
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(762, 518);
+            this.txtRemarks.Size = new System.Drawing.Size(762, 543);
             this.txtRemarks.TabIndex = 1;
             // 
             // tbpCurriculam
@@ -1177,7 +1177,7 @@ namespace Scheduler
             this.tbpCurriculam.Controls.Add(this.txtCurriculam);
             this.tbpCurriculam.Location = new System.Drawing.Point(4, 22);
             this.tbpCurriculam.Name = "tbpCurriculam";
-            this.tbpCurriculam.Size = new System.Drawing.Size(762, 518);
+            this.tbpCurriculam.Size = new System.Drawing.Size(762, 543);
             this.tbpCurriculam.TabIndex = 3;
             this.tbpCurriculam.Text = "Curriculum";
             this.tbpCurriculam.UseVisualStyleBackColor = true;
@@ -1189,7 +1189,7 @@ namespace Scheduler
             this.txtCurriculam.MaxLength = 4000;
             this.txtCurriculam.Multiline = true;
             this.txtCurriculam.Name = "txtCurriculam";
-            this.txtCurriculam.Size = new System.Drawing.Size(762, 518);
+            this.txtCurriculam.Size = new System.Drawing.Size(762, 543);
             this.txtCurriculam.TabIndex = 2;
             // 
             // tbpClassEvent
@@ -1301,6 +1301,25 @@ namespace Scheduler
             this.pnlBody_I.Name = "pnlBody_I";
             this.pnlBody_I.Size = new System.Drawing.Size(762, 511);
             this.pnlBody_I.TabIndex = 275;
+            // 
+            // txtChangeReason_I
+            // 
+            this.txtChangeReason_I.Enabled = false;
+            this.txtChangeReason_I.Location = new System.Drawing.Point(128, 246);
+            this.txtChangeReason_I.MaxLength = 100;
+            this.txtChangeReason_I.Multiline = true;
+            this.txtChangeReason_I.Name = "txtChangeReason_I";
+            this.txtChangeReason_I.Size = new System.Drawing.Size(152, 65);
+            this.txtChangeReason_I.TabIndex = 290;
+            // 
+            // lblChangeReason_I
+            // 
+            this.lblChangeReason_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lblChangeReason_I.Location = new System.Drawing.Point(15, 249);
+            this.lblChangeReason_I.Name = "lblChangeReason_I";
+            this.lblChangeReason_I.Size = new System.Drawing.Size(87, 34);
+            this.lblChangeReason_I.TabIndex = 291;
+            this.lblChangeReason_I.Text = "Instructor Change Reason";
             // 
             // chkEventStatus_I
             // 
@@ -1866,7 +1885,7 @@ namespace Scheduler
             this.tbpOtherEvents.Controls.Add(this.grdEvents);
             this.tbpOtherEvents.Location = new System.Drawing.Point(4, 22);
             this.tbpOtherEvents.Name = "tbpOtherEvents";
-            this.tbpOtherEvents.Size = new System.Drawing.Size(762, 518);
+            this.tbpOtherEvents.Size = new System.Drawing.Size(762, 543);
             this.tbpOtherEvents.TabIndex = 8;
             this.tbpOtherEvents.Text = "Other Events";
             this.tbpOtherEvents.UseVisualStyleBackColor = true;
@@ -1877,7 +1896,7 @@ namespace Scheduler
             this.pnlButtons.Controls.Add(this.btnEdit);
             this.pnlButtons.Controls.Add(this.btnDel);
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlButtons.Location = new System.Drawing.Point(0, 476);
+            this.pnlButtons.Location = new System.Drawing.Point(0, 501);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(762, 42);
             this.pnlButtons.TabIndex = 32;
@@ -1921,7 +1940,7 @@ namespace Scheduler
             this.grdEvents.Location = new System.Drawing.Point(0, 0);
             this.grdEvents.MainView = this.gvwEvents;
             this.grdEvents.Name = "grdEvents";
-            this.grdEvents.Size = new System.Drawing.Size(762, 518);
+            this.grdEvents.Size = new System.Drawing.Size(762, 543);
             this.grdEvents.TabIndex = 31;
             this.grdEvents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwEvents});
@@ -2063,28 +2082,9 @@ namespace Scheduler
             // printingSystem
             // 
             this.printingSystem.StartPrint += new DevExpress.XtraPrinting.PrintDocumentEventHandler(this.printingSystem_StartPrint);
+            this.printingSystem.AfterPagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePaint);
             this.printingSystem.BeforePagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_BeforePagePaint);
             this.printingSystem.AfterPagePrint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePrint);
-            // 
-            // txtChangeReason_I
-            // 
-            this.txtChangeReason_I.Enabled = false;
-            this.txtChangeReason_I.Location = new System.Drawing.Point(128, 246);
-            this.txtChangeReason_I.MaxLength = 100;
-            this.txtChangeReason_I.Multiline = true;
-            this.txtChangeReason_I.Name = "txtChangeReason_I";
-            this.txtChangeReason_I.Size = new System.Drawing.Size(152, 65);
-            this.txtChangeReason_I.TabIndex = 290;
-            
-            // 
-            // lblChangeReason_I
-            // 
-            this.lblChangeReason_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblChangeReason_I.Location = new System.Drawing.Point(15, 249);
-            this.lblChangeReason_I.Name = "lblChangeReason_I";
-            this.lblChangeReason_I.Size = new System.Drawing.Size(87, 34);
-            this.lblChangeReason_I.TabIndex = 291;
-            this.lblChangeReason_I.Text = "Instructor Change Reason";
             // 
             // frmClassDlg
             // 
@@ -2495,7 +2495,7 @@ namespace Scheduler
             foreach (DataRow dr in dtbl.Rows)
             {
                 bool IsRecc = false;
-
+                #region oldCode
                 /*if(dr["RecurrenceText"]!=System.DBNull.Value)
                 {
                     if(dr["RecurrenceText"].ToString()!="")
@@ -2530,6 +2530,7 @@ namespace Scheduler
 					
                     }
                 }*/
+                #endregion
                 if (IsRecc == false)
                 {
                     dt1 = Convert.ToDateTime(dr["StartDateTime"].ToString());
@@ -2730,7 +2731,7 @@ namespace Scheduler
             g.DrawString("Class Information", _font, new SolidBrush(label1.ForeColor), 20, 40, new StringFormat());
         }
 
-        void DrawTopLabel(DevExpress.XtraPrinting.BrickGraphics g)
+        public void DrawTopLabel(DevExpress.XtraPrinting.BrickGraphics g)
         {
 
             int TopMargin = printingSystem.PageSettings.Margins.Top;
@@ -3274,7 +3275,11 @@ namespace Scheduler
 						{
 							txtName_I.Text = txtCourseName.Text;
 							cmbStartTime.Text = DateTime.Now.ToString("HH:mm");
-							cmbEndTime.Text = DateTime.Now.Add(new TimeSpan(0,0,30,0,0)).ToString("HH:mm");
+                            DateTime testEnd = Convert.ToDateTime(cmbStartTime.Text);
+                            if (testEnd.Hour >= 23 && testEnd.Minute >= 30)
+                                cmbEndTime.Text = cmbStartTime.Text;
+                            else
+							    cmbEndTime.Text = DateTime.Now.Add(new TimeSpan(0,0,30, 0,0)).ToString("HH:mm");
 						}
 						else
 						{
@@ -4263,13 +4268,13 @@ namespace Scheduler
             }
 
             #endregion
-            //nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
+            nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
 
             xtraPrinting = new DevExpressPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printingSystem);
-			//nm.PageNumber = 1;
+			nm.PageNumber = 1;
             xtraPrinting.PageNumber = 1;
             xtraPrinting.RowCount = 0;
-			//nm.RowCount = 0;
+			nm.RowCount = 0;
             //xtraPrinting.
             //xtraPrinting.DrawClass
 
@@ -4280,6 +4285,7 @@ namespace Scheduler
             //frm.MyPrintingSystem = printingSystem;
             //frm.Show();
             
+            this.printPreviewDialog1.ShowDialog();
 			//if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
 			{
 			}
@@ -4292,14 +4298,15 @@ namespace Scheduler
             printingSystem.Begin();
             //printingSystem.Graph.
             DrawTopLabel(g);
-            bool more = xtraPrinting.DrawDataGrid(g);
+            bool more = xtraPrinting.DrawDataGrid(g,this);
             if (more == true)
             {
+                //printingSystem.Document.p
                 //e.HasMorePages = true;
                 //nm.PageNumber++;
-                xtraPrinting.PageNumber++;
-                DrawTopLabel(g);
-                more = xtraPrinting.DrawClass(g);
+                 xtraPrinting.PageNumber++;
+                //DrawTopLabel(g);
+                //more = xtraPrinting.DrawClass(g);
                 //CompletePrinting(g);
                 //PrintClassDetails();
             }
@@ -4312,28 +4319,28 @@ namespace Scheduler
         private void CompletePrinting(DevExpress.XtraPrinting.BrickGraphics g)
         {
             DrawTopLabel(g);
-            bool more = xtraPrinting.DrawDataGrid(g);
+            bool more = xtraPrinting.DrawDataGrid(g,this);
             if (more == true)
             {
                 //e.HasMorePages = true;
                 //nm.PageNumber++;
-                xtraPrinting.PageNumber++;
-                CompletePrinting(g);
+                //xtraPrinting.PageNumber++;
+                //CompletePrinting(g);
                 //PrintClassDetails();
             }
         }
 		
 		private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
-            
-            //Graphics	g = e.Graphics;
-            //DrawTopLabel(g);
-            //bool more = nm.DrawDataGrid(g);
-            //if (more == true)
-            //{
-            //    e.HasMorePages = true;
-            //    nm.PageNumber++;
-            //}
+
+            Graphics g = e.Graphics;
+            DrawTopLabel(g);
+            bool more = nm.DrawDataGrid(g);
+            if (more == true)
+            {
+                e.HasMorePages = true;
+                nm.PageNumber++;
+            }
 
             //DevExpress.XtraPrinting.BrickGraphics g1 = printingSystem.Graph;
             ////printingSystem.Begin();
@@ -5661,6 +5668,23 @@ namespace Scheduler
         private void cmbEndTime_SelectedIndexChanged(object sender, EventArgs e)
         {
             IsEventChanged = true;
+        }
+
+        private void printingSystem_AfterPagePaint(object sender, DevExpress.XtraPrinting.PageEventArgs e)
+        {
+            //DevExpress.XtraPrinting.BrickGraphics g1 = printingSystem.Graph;
+            ////printingSystem.Begin();
+            ////printingSystem.Graph.
+            //bool more;
+            //DrawTopLabel(g1);
+            //more = xtraPrinting.DrawDataGrid(g1,this);
+            //if (more == true)
+            //{
+            //    e.Page.Printed = true;
+            //    //nm.PageNumber++;
+            //    xtraPrinting.PageNumber++;
+
+            //}
         }
 
     }

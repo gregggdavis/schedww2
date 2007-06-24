@@ -9,8 +9,9 @@ using Scheduler.BusinessLayer;
 namespace Scheduler
 {
 	public class frm_RecurrenceDiaryDlg : Form
-	{
-		private System.Windows.Forms.RadioButton rdb_Daily;
+    {
+        #region Declarations
+        private System.Windows.Forms.RadioButton rdb_Daily;
 		private System.Windows.Forms.RadioButton rdb_Weekly;
 		private System.Windows.Forms.RadioButton rdb_Monthly;
 		private System.Windows.Forms.RadioButton rdb_Yearly;
@@ -83,8 +84,8 @@ namespace Scheduler
 		private System.Windows.Forms.GroupBox groupBox3;
 
 		private string strAppPath = Application.StartupPath + "\\Recurrence.xml";
-		
-		public frm_RecurrenceDiaryDlg(string strTempMode,int TaskID,int intRefID)
+        #endregion
+        public frm_RecurrenceDiaryDlg(string strTempMode,int TaskID,int intRefID)
 		{
 			
 			InitializeComponent();
