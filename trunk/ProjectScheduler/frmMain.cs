@@ -30,8 +30,10 @@ namespace Scheduler
 	/// Summary description for Form1.
 	/// </summary>
 	public class frmMain : Form
-	{
-		internal MainMenu mnuMain;
+    {
+        #region Initialization
+        #region Declaration
+        internal MainMenu mnuMain;
 		internal MenuItem MenuItem1;
 		internal MenuItem mnuDBLogin;
 		internal MenuItem MenuItem2;
@@ -106,6 +108,7 @@ namespace Scheduler
 		private frmEventBrw fEvt = null;
 		private frmCalendar fCalendar = null;
         private frmInstructorPayroll fpayment = null;
+        private TransportationExpenses fTransportationExpenses = null;
         private frmPayrollByInstructor fpayrollByInstructor = null;
 
 		private AppointmentFormController controller;
@@ -115,9 +118,10 @@ namespace Scheduler
         private ToolBarButton tbtnDuplicate;
         private NavBarItem navBarItem1;
         private NavBarItem navBarItem2;
+        private NavBarItem navBarTransportationExpenses;
 		private string strCalendar = "";
-
-		public string MenuOption
+        #endregion
+        public string MenuOption
 		{
 			get { return strMenuOption; }
 			set
@@ -189,6 +193,10 @@ namespace Scheduler
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlNavBar = new System.Windows.Forms.Panel();
             this.navBar = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarTransportationExpenses = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nBarClient = new DevExpress.XtraNavBar.NavBarItem();
             this.nBarDept = new DevExpress.XtraNavBar.NavBarItem();
@@ -202,9 +210,6 @@ namespace Scheduler
             this.nBarMonth = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nBarUser = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.nBarContacts = new DevExpress.XtraNavBar.NavBarItem();
             this.cMenu_New = new System.Windows.Forms.ContextMenu();
             this.mnuItemClient = new System.Windows.Forms.MenuItem();
@@ -403,6 +408,7 @@ namespace Scheduler
             this.imlNavBar.Images.SetKeyName(20, "");
             this.imlNavBar.Images.SetKeyName(21, "");
             this.imlNavBar.Images.SetKeyName(22, "");
+            this.imlNavBar.Images.SetKeyName(23, "money_envelope.ico");
             // 
             // sbarMain
             // 
@@ -498,7 +504,7 @@ namespace Scheduler
             // 
             // navBar
             // 
-            this.navBar.ActiveGroup = this.navBarGroup1;
+            this.navBar.ActiveGroup = this.navBarGroup4;
             this.navBar.Appearance.ItemDisabled.Options.UseTextOptions = true;
             this.navBar.Appearance.ItemDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.navBar.Appearance.ItemDisabled.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
@@ -528,7 +534,8 @@ namespace Scheduler
             this.nBarWeek,
             this.nBarMonth,
             this.navBarItem1,
-            this.navBarItem2});
+            this.navBarItem2,
+            this.navBarTransportationExpenses});
             this.navBar.LargeImages = this.imlNavBar;
             this.navBar.Location = new System.Drawing.Point(0, 0);
             this.navBar.Name = "navBar";
@@ -539,10 +546,40 @@ namespace Scheduler
             this.navBar.View = new DevExpress.XtraNavBar.ViewInfo.FlatViewInfoRegistrator();
             this.navBar.Click += new System.EventHandler(this.navBar_Click);
             // 
+            // navBarGroup4
+            // 
+            this.navBarGroup4.Caption = "Accounting";
+            this.navBarGroup4.Expanded = true;
+            this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarTransportationExpenses)});
+            this.navBarGroup4.Name = "navBarGroup4";
+            // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "Pay Details By Instructor";
+            this.navBarItem1.LargeImageIndex = 6;
+            this.navBarItem1.Name = "navBarItem1";
+            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
+            // 
+            // navBarItem2
+            // 
+            this.navBarItem2.Caption = "Payroll By Instructor";
+            this.navBarItem2.LargeImageIndex = 5;
+            this.navBarItem2.Name = "navBarItem2";
+            this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem2_LinkClicked);
+            // 
+            // navBarTransportationExpenses
+            // 
+            this.navBarTransportationExpenses.Caption = "Transportation Expenses";
+            this.navBarTransportationExpenses.LargeImageIndex = 23;
+            this.navBarTransportationExpenses.Name = "navBarTransportationExpenses";
+            this.navBarTransportationExpenses.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarTransportationExpenses_LinkClicked);
+            // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "System Data";
-            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nBarClient),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nBarDept),
@@ -648,28 +685,6 @@ namespace Scheduler
             this.nBarUser.Name = "nBarUser";
             this.nBarUser.SmallImageIndex = 12;
             this.nBarUser.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nBarUser_LinkClicked);
-            // 
-            // navBarGroup4
-            // 
-            this.navBarGroup4.Caption = "Accounting";
-            this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2)});
-            this.navBarGroup4.Name = "navBarGroup4";
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "Pay Details By Instructor";
-            this.navBarItem1.LargeImageIndex = 6;
-            this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
-            // 
-            // navBarItem2
-            // 
-            this.navBarItem2.Caption = "Payroll By Instructor";
-            this.navBarItem2.LargeImageIndex = 5;
-            this.navBarItem2.Name = "navBarItem2";
-            this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem2_LinkClicked);
             // 
             // nBarContacts
             // 
@@ -845,8 +860,8 @@ namespace Scheduler
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scheduler";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Closing += new System.ComponentModel.CancelEventHandler(this.frmMain_Closing);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.frmMain_Closing);
             ((System.ComponentModel.ISupportInitialize)(this.sPnlGeneral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPnlLogon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPnlDate)).EndInit();
@@ -891,9 +906,11 @@ namespace Scheduler
 
 			_dockingManager.ShowContent(_dockingManager.Contents["Navigation"]);
 			_dockingManager.AddContentWithState(ouBar, State.DockLeft);
-		}
+        }
+        #endregion
 
-		private void nBarUser_LinkClicked(object sender, NavBarLinkEventArgs e)
+
+        private void nBarUser_LinkClicked(object sender, NavBarLinkEventArgs e)
 		{
 			Focus();
 			OpenBrowse("User");
@@ -1006,6 +1023,18 @@ namespace Scheduler
                     Common.Caption = "Pay Details By Instructor";
                     fpayment.LoadData();
 
+                }
+                else if (caller == "TransportationExpenses")
+                {
+                    if (fTransportationExpenses == null)
+                    {
+                        DisposeAll();
+                        fTransportationExpenses = new TransportationExpenses();
+                        fTransportationExpenses.pnlBody.Parent = pnlMain;
+                    }
+                    MenuOption = "Transportation Expenses...";
+                    Common.Caption = "Transportation Expenses";
+                    fTransportationExpenses.LoadData();
                 }
                 else if (caller == "InstructorPayroll")
                 {
@@ -1237,6 +1266,12 @@ namespace Scheduler
                 fpayment.pnlBody.Parent = null;
                 fpayment.Dispose();
                 fpayment = null;
+            }
+            if (fTransportationExpenses != null)
+            {
+                fTransportationExpenses.pnlBody.Parent = null;
+                fTransportationExpenses.Dispose();
+                fTransportationExpenses = null;
             }
             if (fpayrollByInstructor != null)
             {
@@ -3203,6 +3238,12 @@ namespace Scheduler
         {
             Focus();
             OpenBrowse("InstructorPayroll");
+        }
+
+        private void navBarTransportationExpenses_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            Focus();
+            OpenBrowse("TransportationExpenses");
         }
 	}
 }
