@@ -1000,6 +1000,7 @@ namespace Scheduler {
                         
                         if (StartDatePickerTop.Checked) printStyle.StartRangeDate = CalendarFilter.StartDate;
                         if (EndDatePickerTop.Checked) printStyle.EndRangeDate = CalendarFilter.EndDate;
+                        
                     }
                     
                     PrintStyleWithResourceOptions printresources = schedulerPrintStyle as PrintStyleWithResourceOptions;
@@ -1008,7 +1009,10 @@ namespace Scheduler {
                         printresources.CalendarHeaderVisible = false;
                         if (StartDatePickerTop.Checked) printresources.StartRangeDate = CalendarFilter.StartDate;
                         if (EndDatePickerTop.Checked) printresources.EndRangeDate = CalendarFilter.EndDate;                        
+                        
                     }
+
+                    
                     
                     Common.FontSize = 8.25f;
 					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 2);
@@ -1016,8 +1020,8 @@ namespace Scheduler {
 					schedulerPrintStyle.PageSettings.Margins = new Margins(0, 0, 0, 0);
 					schedulerPrintStyle.PageSettings.Landscape = true;
                     
-
-                    //-------------------
+                    
+                    
 //                    PrintableComponentLink pcl = new PrintableComponentLink(new
 //PrintingSystem());
 //                    pcl.CreateMarginalHeaderArea += new
@@ -1058,6 +1062,7 @@ namespace Scheduler {
                         //schedulerControl1.
 						break;
 				}
+                //print
                 if (_viewModeName == "Week")
                     schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Weekly;
                 //schedulerControl1.print
