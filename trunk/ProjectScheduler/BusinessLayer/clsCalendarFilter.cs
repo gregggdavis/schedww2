@@ -16,5 +16,8 @@ namespace Scheduler.BusinessLayer
 		public static int InstructorIndex=0;
 		public static int ProgramIndex=0;
 		public static int ClassIndex=0;
+        public static bool MonthlyHideWeekends = true;
+        public static bool WeeklyHideWeekends = true;
+        public static bool DailyHideWeekends = true;
 	}
 }

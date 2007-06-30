@@ -871,7 +871,19 @@ namespace Scheduler {
 		}
 
 		public void LoadFilterSettings() {
-            chkHideWeekends.Checked = true;
+            if (_viewModeName == "Day")
+            {
+                chkHideWeekends.Checked = CalendarFilter.DailyHideWeekends;
+            }
+            else if (_viewModeName == "Week")
+            {
+                chkHideWeekends.Checked = CalendarFilter.WeeklyHideWeekends;
+            }
+            else if (_viewModeName == "Month")
+            {
+                chkHideWeekends.Checked = CalendarFilter.MonthlyHideWeekends;
+            }
+            
 			isProcess = false;
             IsAllow = false;
 
@@ -1043,10 +1055,12 @@ namespace Scheduler {
 						break;
 					case "Month":
 						schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Monthly;
+                        //schedulerControl1.
 						break;
 				}
                 if (_viewModeName == "Week")
                     schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Weekly;
+                //schedulerControl1.print
                 schedulerControl1.ShowPrintOptionsForm();
                 if(_viewModeName == "Week")
                     schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Weekly;
@@ -1110,6 +1124,19 @@ namespace Scheduler {
 
         private void chkHideWeekends_CheckedChanged(object sender, EventArgs e)
         {
+            if (_viewModeName == "Day")
+            {
+                CalendarFilter.DailyHideWeekends = chkHideWeekends.Checked;
+            }
+            else if (_viewModeName == "Week")
+            {
+                CalendarFilter.WeeklyHideWeekends  = chkHideWeekends.Checked;
+            }
+            else if (_viewModeName == "Month")
+            {
+                CalendarFilter.MonthlyHideWeekends = chkHideWeekends.Checked ;
+            }
+            //CalendarFilter.HideWeekends = chkHideWeekends.Checked;
             //if(chkHideWeekends.Checked)
                 
             //else
