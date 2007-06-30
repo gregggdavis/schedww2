@@ -871,15 +871,15 @@ namespace Scheduler {
 		}
 
 		public void LoadFilterSettings() {
-            if (_viewModeName == "Day")
-            {
-                chkHideWeekends.Checked = CalendarFilter.DailyHideWeekends;
-            }
-            else if (_viewModeName == "Week")
-            {
-                chkHideWeekends.Checked = CalendarFilter.WeeklyHideWeekends;
-            }
-            else if (_viewModeName == "Month")
+            //if (_viewModeName == "Day")
+            //{
+            //    chkHideWeekends.Checked = CalendarFilter.DailyHideWeekends;
+            //}
+            //else if (_viewModeName == "Week")
+            //{
+            //    chkHideWeekends.Checked = CalendarFilter.WeeklyHideWeekends;
+            //}
+            //else if (_viewModeName == "Month")
             {
                 chkHideWeekends.Checked = CalendarFilter.MonthlyHideWeekends;
             }
@@ -1129,19 +1129,19 @@ namespace Scheduler {
 
         private void chkHideWeekends_CheckedChanged(object sender, EventArgs e)
         {
-            if (_viewModeName == "Day")
-            {
-                CalendarFilter.DailyHideWeekends = chkHideWeekends.Checked;
-            }
-            else if (_viewModeName == "Week")
-            {
-                CalendarFilter.WeeklyHideWeekends  = chkHideWeekends.Checked;
-            }
-            else if (_viewModeName == "Month")
-            {
-                CalendarFilter.MonthlyHideWeekends = chkHideWeekends.Checked ;
-            }
-            //CalendarFilter.HideWeekends = chkHideWeekends.Checked;
+            //if (_viewModeName == "Day")
+            //{
+            //    CalendarFilter.DailyHideWeekends = chkHideWeekends.Checked;
+            //}
+            //else if (_viewModeName == "Week")
+            //{
+            //    CalendarFilter.WeeklyHideWeekends  = chkHideWeekends.Checked;
+            //}
+            //else if (_viewModeName == "Month")
+            //{
+            //    CalendarFilter.MonthlyHideWeekends = chkHideWeekends.Checked ;
+            //}
+            CalendarFilter.MonthlyHideWeekends = chkHideWeekends.Checked;
             //if(chkHideWeekends.Checked)
                 
             //else

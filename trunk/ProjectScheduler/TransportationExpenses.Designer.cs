@@ -372,8 +372,6 @@ namespace Scheduler
             this.colPaidHours.OptionsColumn.ReadOnly = true;
             this.colPaidHours.SummaryItem.DisplayFormat = "Paid Hours = {0}";
             this.colPaidHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-            this.colPaidHours.Visible = true;
-            this.colPaidHours.VisibleIndex = 9;
             this.colPaidHours.Width = 172;
             // 
             // repositoryItemSpinEdit2
@@ -463,21 +461,22 @@ namespace Scheduler
             this.colBlock.Caption = "Block";
             this.colBlock.Name = "colBlock";
             this.colBlock.Visible = true;
-            this.colBlock.VisibleIndex = 10;
+            this.colBlock.VisibleIndex = 9;
             // 
             // colExpense
             // 
             this.colExpense.Caption = "Expense";
             this.colExpense.Name = "colExpense";
             this.colExpense.Visible = true;
-            this.colExpense.VisibleIndex = 11;
+            this.colExpense.VisibleIndex = 10;
             // 
             // colComment
             // 
             this.colComment.Caption = "Comment";
             this.colComment.Name = "colComment";
             this.colComment.Visible = true;
-            this.colComment.VisibleIndex = 12;
+            this.colComment.VisibleIndex = 11;
+            this.colComment.Width = 244;
             // 
             // repositoryItemDateEdit1
             // 
