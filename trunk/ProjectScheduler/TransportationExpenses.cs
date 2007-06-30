@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.Utils;
+using DevExpress.XtraGrid;
 namespace Scheduler
 {
     public partial class TransportationExpenses : DevExpress.XtraEditors.XtraForm
@@ -166,34 +167,46 @@ namespace Scheduler
             //strHeader += " Information";
             PageHeaderFooter phf = new PageHeaderFooter();
             phf.Header.Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Point);
-            StringBuilder str = new StringBuilder();
-            str.AppendFormat("Transportation Expenses");
-            str.AppendFormat(Environment.NewLine);
-            str.AppendFormat("Date Generated: {0}", System.DateTime.Today.ToShortDateString());
-            str.AppendFormat(Environment.NewLine);
+            string str = "";
+            phf.Header.LineAlignment = BrickAlignment.Near;
+            str = "Transportation Expenses";
+           // str.AppendFormat(Environment.NewLine);
+            //Page header = phf.Header;
+            phf.Header.Content.Add(str);
+           // str.AppendFormat("Date Generated: {0}", System.DateTime.Today.ToShortDateString());
+            //str.AppendFormat(Environment.NewLine);
             if(checkEdit1.Checked && checkEdit2.Checked)
-                str.AppendFormat("From: {0} To: {1}", dateEditStartDate.DateTime.ToShortDateString(), dateEditEndDate.DateTime.ToShortDateString());
+                str = dateEditStartDate.DateTime.ToShortDateString() + " - " + dateEditEndDate.DateTime.ToShortDateString();
             else if (checkEdit1.Checked && !checkEdit2.Checked)
             {
-                str.AppendFormat("From: {0} To: Not Filtered", dateEditStartDate.DateTime.ToShortDateString());
+                str = dateEditStartDate.DateTime.ToLongDateString() + " - Unlimited";
             }
             else if (!checkEdit1.Checked && checkEdit2.Checked)
             {
-                str.AppendFormat("From: Not Filtered To: {1}", dateEditEndDate.DateTime.ToShortDateString());
+                str = "Unlimited - " + dateEditEndDate.DateTime.ToShortDateString();
             }
             else
             {
-                str.AppendFormat("From: Not Filtered To: Not Filtered");
+                str = "";
+                //str.AppendFormat("From: Not Filtered To: Not Filtered");
             }
-            
-            phf.Header.Content.Add(str.ToString());
+            phf.Header.LineAlignment = BrickAlignment.Center;
+            phf.Header.Content.Add(str);
+            phf.Footer.LineAlignment = BrickAlignment.Near;
+            phf.Footer.Content.Add("");
+            phf.Footer.LineAlignment = BrickAlignment.Center;
+            phf.Footer.Content.Add("");
+            phf.Footer.LineAlignment = BrickAlignment.Far;
+            String footer = "Date Generated: " + System.DateTime.Today.ToShortDateString();
+            phf.Footer.Content.Add(footer);
+            phf.Footer.LineAlignment = BrickAlignment.Far;
 
             PrintableComponentLink _link = new PrintableComponentLink(new PrintingSystem());
             _link.Component = gc;
             _link.Landscape = true;
             _link.PageHeaderFooter = phf;
             _link.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            _link.Margins.Top = 100;
+            _link.Margins.Top = 60;
             _link.Margins.Bottom = 60;
             if (printPreview)
                 _link.ShowPreviewDialog();
