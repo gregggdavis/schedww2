@@ -4153,7 +4153,7 @@ namespace Scheduler
             printingSystem.PageSetup();
 			//printDocument1.DefaultPageSettings = ps;
 		}
-
+        DevExpressClassPrinting classPrinting;
 		private void btnPrint_Click(object sender, System.EventArgs e)
         {
             #region Intializing Values to Lists
@@ -4271,16 +4271,21 @@ namespace Scheduler
             nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
 
             xtraPrinting = new DevExpressPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printingSystem);
+
+            classPrinting = new DevExpressClassPrinting(printingSystem,arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4);
+
 			nm.PageNumber = 1;
             xtraPrinting.PageNumber = 1;
             xtraPrinting.RowCount = 0;
 			nm.RowCount = 0;
             //xtraPrinting.
-            //xtraPrinting.DrawClass
-
-            PrintClassDetails();
+           //xtraPrinting.DrawClass
+            classPrinting.label1ForeColor = label1.ForeColor;
+            classPrinting.ShowPreview();
+           
+           // PrintClassDetails();
             //printingSystem.
-            printingSystem.PreviewFormEx.Show();
+            //printingSystem.PreviewFormEx.Show();
             //Helpers.PreviewRibbonForm frm = new Scheduler.Helpers.PreviewRibbonForm();
             //frm.MyPrintingSystem = printingSystem;
             //frm.Show();

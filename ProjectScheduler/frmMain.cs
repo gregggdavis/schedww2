@@ -504,7 +504,7 @@ namespace Scheduler
             // 
             // navBar
             // 
-            this.navBar.ActiveGroup = this.navBarGroup4;
+            this.navBar.ActiveGroup = this.navBarGroup1;
             this.navBar.Appearance.ItemDisabled.Options.UseTextOptions = true;
             this.navBar.Appearance.ItemDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.navBar.Appearance.ItemDisabled.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
@@ -549,7 +549,6 @@ namespace Scheduler
             // navBarGroup4
             // 
             this.navBarGroup4.Caption = "Accounting";
-            this.navBarGroup4.Expanded = true;
             this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
@@ -580,6 +579,7 @@ namespace Scheduler
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "System Data";
+            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nBarClient),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nBarDept),
@@ -761,7 +761,7 @@ namespace Scheduler
             // 
             // tBarMain
             // 
-            //this.tBarMain.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+           // this.tBarMain.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
             this.tBarMain.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
             this.tbtnNew,
             this.tbtnDuplicate,
@@ -771,7 +771,7 @@ namespace Scheduler
             this.tbtnFind,
             this.tbtnPrint});
             this.tBarMain.ButtonSize = new System.Drawing.Size(67, 34);
-            //this.tBarMain.Divider = false;
+          //  this.tBarMain.Divider = false;
             this.tBarMain.DropDownArrows = true;
             this.tBarMain.DropDownAsOne = false;
             this.tBarMain.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1393,7 +1393,10 @@ namespace Scheduler
 					}
 				}
 				GridControl gc = (GridControl) c;
-				PrintGrid(gc);
+                if (strMenuOption == "Transportation Expenses...")
+                    fTransportationExpenses.PrintGrid(gc, true);
+                else
+    				PrintGrid(gc);
 			}
 		}
         
