@@ -63,6 +63,9 @@ namespace Scheduler
             this.colEventDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colHomeworkMinutes = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBlock = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colExpense = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colComment = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
@@ -70,9 +73,6 @@ namespace Scheduler
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.dateEditEndDate = new DevExpress.XtraEditors.DateEdit();
             this.dateEditStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.colBlock = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colExpense = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colComment = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -148,14 +148,14 @@ namespace Scheduler
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // printPreviewToolStripMenuItem
             // 
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.printPreviewToolStripMenuItem.Text = "Print Preview";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
@@ -167,7 +167,7 @@ namespace Scheduler
             this.exportToXMLToolStripMenuItem,
             this.exportToTXTToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // exportToolStripMenuItem1
@@ -458,6 +458,27 @@ namespace Scheduler
             this.colHomeworkMinutes.OptionsColumn.AllowEdit = false;
             this.colHomeworkMinutes.OptionsColumn.ReadOnly = true;
             // 
+            // colBlock
+            // 
+            this.colBlock.Caption = "Block";
+            this.colBlock.Name = "colBlock";
+            this.colBlock.Visible = true;
+            this.colBlock.VisibleIndex = 10;
+            // 
+            // colExpense
+            // 
+            this.colExpense.Caption = "Expense";
+            this.colExpense.Name = "colExpense";
+            this.colExpense.Visible = true;
+            this.colExpense.VisibleIndex = 11;
+            // 
+            // colComment
+            // 
+            this.colComment.Caption = "Comment";
+            this.colComment.Name = "colComment";
+            this.colComment.Visible = true;
+            this.colComment.VisibleIndex = 12;
+            // 
             // repositoryItemDateEdit1
             // 
             this.repositoryItemDateEdit1.AutoHeight = false;
@@ -531,27 +552,6 @@ namespace Scheduler
             this.dateEditStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateEditStartDate.Size = new System.Drawing.Size(169, 20);
             this.dateEditStartDate.TabIndex = 8;
-            // 
-            // colBlock
-            // 
-            this.colBlock.Caption = "Block";
-            this.colBlock.Name = "colBlock";
-            this.colBlock.Visible = true;
-            this.colBlock.VisibleIndex = 10;
-            // 
-            // colExpense
-            // 
-            this.colExpense.Caption = "Expense";
-            this.colExpense.Name = "colExpense";
-            this.colExpense.Visible = true;
-            this.colExpense.VisibleIndex = 11;
-            // 
-            // colComment
-            // 
-            this.colComment.Caption = "Comment";
-            this.colComment.Name = "colComment";
-            this.colComment.Visible = true;
-            this.colComment.VisibleIndex = 12;
             // 
             // TransportationExpenses
             // 
