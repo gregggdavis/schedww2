@@ -178,6 +178,9 @@
     <Compile Include="BusinessLayer\clsDepartment.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BusinessLayer\clsDevExpressFormPrinting.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="BusinessLayer\clsEventData.cs">
       <SubType>Code</SubType>
     </Compile>

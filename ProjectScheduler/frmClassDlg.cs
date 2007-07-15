@@ -4290,7 +4290,7 @@ namespace Scheduler
             //frm.MyPrintingSystem = printingSystem;
             //frm.Show();
             
-            this.printPreviewDialog1.ShowDialog();
+            //this.printPreviewDialog1.ShowDialog();
 			//if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
 			{
 			}

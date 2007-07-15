@@ -40,7 +40,7 @@ namespace Scheduler.BusinessLayer
         private int LastIndex = 0;
         private int LastPos = 0;
         bool boolContinue = false;
-
+        int X;
         #region Page Settings Attributes
         float PageWidth;
         float PageHeight;
@@ -131,33 +131,23 @@ namespace Scheduler.BusinessLayer
             try
             {
                 //DrawHeader(g);
-                //if (sClass)
-                //{
-                //    bContinue = DrawClass(g);
-                //}
-                //else
-                //{
-                //    bContinue = DrawRows(g);
-                //}
-                g.DrawString("Test Printing", new RectangleF(new PointF(100, 100), new SizeF(150, 150)));
-              //  if (!bContinue) InitializeData();
-              //  if (bContinue)
+                if (sClass)
                 {
-                   // PageNumber++;
-                    //sClass = false;
-
-                    //BrickGraphics newBrick = (BrickGraphics)g.PrintingSystem.CreateBrick("Brick");
-
-                    //g.PrintingSystem.Document.Pages.Add((Page)p);
-                    //mainFrm.DrawTopLabel(newBrick);
-                    // sClass = true;
-                    //return DrawDataGrid(newBrick, mainFrm);
+                    bContinue = DrawClass(g);
                 }
-               // else
+                else
                 {
-                 //   return bContinue;
+                    bContinue = DrawRows(g);
+                  //  if (!bContinue) InitializeData();
+
+                    bContinue = DrawClass(g);
                 }
-                System.Console.WriteLine("Test");
+
+               // DrawHorizontalLines(g, 10);
+               // g.DrawString("Test Printing",Color.Black,new RectangleF(10,20,200,100), BorderSide.None);
+                if (!bContinue) InitializeData();
+                
+              //  System.Console.WriteLine("Test");
                 //return bContinue;
             }
             catch (Exception ex)
@@ -165,18 +155,33 @@ namespace Scheduler.BusinessLayer
                 MessageBox.Show(ex.Message.ToString());
                 //return false;
             }
+            //if (bContinue)
+            //{
+            //    PageNumber++;
+            //    // sClass = false;
+
+
+            //    //mainFrm.DrawTopLabel(newBrick);
+            //    sClass = true;
+            //    return CreateRow(g);
+            //}
+            //else
+            //{
+            //    return bContinue;
+            //}
 
         }
-
+        
         protected override void CreateInnerPageHeader(BrickGraphics graph)
         {
-            base.CreateInnerPageHeader(graph);
+        
+        
             int TopMargin = PrintingSystem.PageSettings.Margins.Top;
 
             Font _font =
                 new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
             graph.Font = _font;
-            RectangleF rect = new RectangleF(20, 40, 300, 300);
+            RectangleF rect = new RectangleF(20, 40, 300, 40);
             try
             {
                 Color c = label1ForeColor;
@@ -186,6 +191,7 @@ namespace Scheduler.BusinessLayer
             {
 
             }
+            base.CreateInnerPageHeader(graph);
             
         }
         #region Main Methods
@@ -210,8 +216,8 @@ namespace Scheduler.BusinessLayer
 
                 Font _font_value = new Font("Arial", 8F, FontStyle.Regular, GraphicsUnit.Point, ((System.Byte)(0)));
                 Rectangle iRectangle = new Rectangle(0, 0, 200, 100);
-
-                int X = 85;
+                //X=85;
+                X = 15;
                 bool IsRichText = false;
                 bool LastIsRichText = false;
                 #endregion
@@ -225,11 +231,9 @@ namespace Scheduler.BusinessLayer
                         {
                             if (arrValue[i].ToString() == "RICHTEXT") IsRichText = true;
                             DrawHorizontalLines(g, X);
+                            //X += 20;
                         }
                         else
-                        {
-
-                        }
                         {
                             if (IsRichText)
                             {
@@ -524,7 +528,7 @@ namespace Scheduler.BusinessLayer
                 Font _font_value = new Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
                 Rectangle iRectangle = new Rectangle(0, 0, 200, 100);
 
-                int X = 85;
+               // int X = 85;
                 bool IsRichText = false;
                 bool LastIsRichText = false;
                 #endregion

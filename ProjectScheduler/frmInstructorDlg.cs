@@ -124,11 +124,8 @@ namespace Scheduler
 		private System.Windows.Forms.Label lblAddressHeader;
 		private System.Windows.Forms.GroupBox groupBox8;
 		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.Button btnSave;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        private System.Windows.Forms.Button btnSave;
+        private IContainer components;
 
 		private string _mode="";
 		private System.Windows.Forms.Button btnDelete;
@@ -142,6 +139,7 @@ namespace Scheduler
         private Label label28;
         private Label label8;
         private TextBox spinBaseRate;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
 		private bool deleted=false;
 
 		public string Mode
@@ -189,6 +187,7 @@ namespace Scheduler
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             this.tbcUser = new System.Windows.Forms.TabControl();
             this.tbpPersonal = new System.Windows.Forms.TabPage();
             this.pnlPersonal = new System.Windows.Forms.Panel();
@@ -309,11 +308,13 @@ namespace Scheduler
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnPageSetup = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.tbcUser.SuspendLayout();
             this.tbpPersonal.SuspendLayout();
             this.pnlPersonal.SuspendLayout();
             this.tbpContact.SuspendLayout();
             this.pnlAddress.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcUser
@@ -1552,8 +1553,8 @@ namespace Scheduler
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Instructor...";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTeacherDlg_KeyDown);
             this.Load += new System.EventHandler(this.frmTeacherDlg_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTeacherDlg_KeyDown);
             this.tbcUser.ResumeLayout(false);
             this.tbpPersonal.ResumeLayout(false);
             this.pnlPersonal.ResumeLayout(false);
@@ -1561,6 +1562,7 @@ namespace Scheduler
             this.tbpContact.ResumeLayout(false);
             this.pnlAddress.ResumeLayout(false);
             this.pnlAddress.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -1709,7 +1711,9 @@ namespace Scheduler
 		private void frmTeacherDlg_Load(object sender, System.EventArgs e)
 		{
 			this.ActiveControl=txtLName;
-
+            printingSystem1.PageSettings.RightMargin = 80;
+            printingSystem1.PageSettings.LeftMargin = 80;
+            
 			try
 			{
 				Common.SetControlFont(this);
@@ -2027,11 +2031,12 @@ namespace Scheduler
 			pnlAddress.Dock = DockStyle.Fill;
 
 			CreateFormPrintingObject(pnl);
-			PrintingFunctions.SetProperties(ref fp, ps);
+			//PrintingFunctions.SetProperties(ref fp, ps);
+            PrintingFunctions.SetProperties(ref xfp);
 
 			// Print!
-			fp.Print();
-
+			//fp.Print();
+            xfp.Print();
 			tbpPersonal.Controls.Add(pnlPersonal);
 			tbpContact.Controls.Add(pnlAddress);
             pnlPersonal.Dock = DockStyle.Fill;
@@ -2043,16 +2048,20 @@ namespace Scheduler
 
 
 		private FormPrinting fp=null;
+        private clsDevExpressFormPrinting xfp= null;
 		private void CreateFormPrintingObject(System.Windows.Forms.Control c)
 		{
 			fp = new FormPrinting(c);
+            xfp = new clsDevExpressFormPrinting(c,printingSystem1);
 		}
 
 
 		private PageSettings ps=null;
 		private void btnPageSetup_Click(object sender, System.EventArgs e)
 		{
-			PrintingFunctions.ShowPageSettings(ref ps);
+			//PrintingFunctions.ShowPageSettings(ref ps);
+            //fp.PrintingSystem.PageSetup();
+            printingSystem1.PageSetup();
 		}
 
         private void spinBaseRate_Leave(object sender, EventArgs e)
