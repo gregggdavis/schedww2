@@ -89,6 +89,46 @@ namespace Scheduler.BusinessLayer
 			}
 		}
 
+        public static void SetProperties(ref clsDevExpressFormPrinting fp)
+        {
+            fp.TextBoxBoxed = false;
+            fp.TabControlBoxed = false;
+            fp.LabelInBold = true;
+            fp.PrintPreview = true;
+            fp.DisabledControlsInGray = true;
+            fp.PageNumbering = true;
+            fp.TopMargin = 50;
+
+            if (fp.PrintingSystem.PageSettings == null)
+            {
+                fp.Orientation = clsDevExpressFormPrinting.OrientationENum.Automatic;
+                fp.Orientation = clsDevExpressFormPrinting.OrientationENum.Portrait;
+                fp.DelegatePrintingReportTitle = null;
+                //fp.ps=null;
+            }
+            else
+            {
+                fp.TextBoxBoxed = false;
+                fp.TabControlBoxed = false;
+                fp.LabelInBold = true;
+                fp.PrintPreview = true;
+                fp.DisabledControlsInGray = true;
+                fp.PageNumbering = true;
+
+                if (fp.PrintingSystem.PageSettings.Landscape)
+                {
+                    fp.Orientation = clsDevExpressFormPrinting.OrientationENum.Lanscape;
+                }
+                else
+                {
+                    fp.Orientation = clsDevExpressFormPrinting.OrientationENum.Portrait;
+                }
+                fp.PrintingSystem.PageSettings.RightMargin = 80;
+                fp.PrintingSystem.PageSettings.LeftMargin = 80;
+                //fp.ps = ps;
+            }
+        }
+
         public static void RemoveGroupBoxes(ref Panel panel)
         {
             foreach (Control _control in panel.Controls)

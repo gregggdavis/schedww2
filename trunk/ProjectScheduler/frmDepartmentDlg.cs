@@ -137,6 +137,7 @@ namespace Scheduler
 		private PrintPreviewDialog printPreviewDialog1;
         private PrintDocument printDocument1;
         private Button btnImportClientAddress;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
 		private IContainer components;
 		#endregion Controls
 
@@ -213,6 +214,7 @@ namespace Scheduler
             this.label6 = new System.Windows.Forms.Label();
             this.tbpAddress = new System.Windows.Forms.TabPage();
             this.pnlAddress = new System.Windows.Forms.Panel();
+            this.btnImportClientAddress = new System.Windows.Forms.Button();
             this.label48 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.txtAccFirstRomaji = new System.Windows.Forms.TextBox();
@@ -301,7 +303,7 @@ namespace Scheduler
             this.btnPageSetup = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.btnImportClientAddress = new System.Windows.Forms.Button();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.tbcDepartment.SuspendLayout();
             this.tbpDeptInfo.SuspendLayout();
             this.pnlDeptInfo.SuspendLayout();
@@ -314,6 +316,7 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.grdContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -677,6 +680,17 @@ namespace Scheduler
             this.pnlAddress.Name = "pnlAddress";
             this.pnlAddress.Size = new System.Drawing.Size(640, 484);
             this.pnlAddress.TabIndex = 312;
+            // 
+            // btnImportClientAddress
+            // 
+            this.btnImportClientAddress.Enabled = false;
+            this.btnImportClientAddress.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnImportClientAddress.Location = new System.Drawing.Point(200, 7);
+            this.btnImportClientAddress.Name = "btnImportClientAddress";
+            this.btnImportClientAddress.Size = new System.Drawing.Size(240, 23);
+            this.btnImportClientAddress.TabIndex = 312;
+            this.btnImportClientAddress.Text = "Import Client\'s Address Information";
+            this.btnImportClientAddress.Click += new System.EventHandler(this.btnImportClientAddress_Click);
             // 
             // label48
             // 
@@ -1489,17 +1503,6 @@ namespace Scheduler
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // btnImportClientAddress
-            // 
-            this.btnImportClientAddress.Enabled = false;
-            this.btnImportClientAddress.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnImportClientAddress.Location = new System.Drawing.Point(200, 7);
-            this.btnImportClientAddress.Name = "btnImportClientAddress";
-            this.btnImportClientAddress.Size = new System.Drawing.Size(240, 23);
-            this.btnImportClientAddress.TabIndex = 312;
-            this.btnImportClientAddress.Text = "Import Client\'s Address Information";
-            this.btnImportClientAddress.Click += new System.EventHandler(this.btnImportClientAddress_Click);
-            // 
             // frmDepartmentDlg
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -1520,8 +1523,8 @@ namespace Scheduler
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adding Department...";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDepartmentDlg_KeyDown);
             this.Load += new System.EventHandler(this.frmDepartmentDlg_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDepartmentDlg_KeyDown);
             this.tbcDepartment.ResumeLayout(false);
             this.tbpDeptInfo.ResumeLayout(false);
             this.pnlDeptInfo.ResumeLayout(false);
@@ -1536,6 +1539,7 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.grdContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -2321,10 +2325,12 @@ namespace Scheduler
 			pnlAddress.Dock = DockStyle.Fill;
 
 			CreateFormPrintingObject(pnl);
-			PrintingFunctions.SetProperties(ref fp, ps);
+			//PrintingFunctions.SetProperties(ref fp, ps);
+            PrintingFunctions.SetProperties(ref xfp);
 
 			// Print!
-			fp.Print();
+            //fp.Print();
+			xfp.Print();
 
 			tbpDeptInfo.Controls.Add(pnlDeptInfo);
 			tbpAddress.Controls.Add(pnlAddress);
@@ -2337,15 +2343,18 @@ namespace Scheduler
 		}
 
 		private FormPrinting fp=null;
+        private clsDevExpressFormPrinting xfp = null;
 		private void CreateFormPrintingObject(System.Windows.Forms.Control c)
 		{
-			fp = new FormPrinting(c);
+		//	fp = new FormPrinting(c);
+            xfp = new clsDevExpressFormPrinting(c,printingSystem1);
 		}
 		
 		private PageSettings ps=null;
 		private void btnPageSetup_Click(object sender, System.EventArgs e)
 		{
-			PrintingFunctions.ShowPageSettings(ref ps);
+			//PrintingFunctions.ShowPageSettings(ref ps);
+            printingSystem1.PageSetup();
 		}
 
 		private GridViewPrinter dataGridPrinter1=null;

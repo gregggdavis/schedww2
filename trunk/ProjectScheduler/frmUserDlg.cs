@@ -21,12 +21,8 @@ namespace Scheduler
 		private Button btnSave;
 		private Button btnCancel;
 		private TextBox txtUserName;
-		private TextBox txtPwd;
-
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private Container components = null;
+        private TextBox txtPwd;
+        private IContainer components;
 
 		private TabControl tbcUser;
 		private TabPage tbpLogin;
@@ -163,6 +159,7 @@ namespace Scheduler
 
 		#region UserID 
 		private int _userid;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
 
 		public int UserID
 		{
@@ -206,6 +203,7 @@ namespace Scheduler
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserDlg));
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -334,6 +332,7 @@ namespace Scheduler
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnPageSetup = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.tbcUser.SuspendLayout();
             this.tbpLogin.SuspendLayout();
             this.pnlLogin.SuspendLayout();
@@ -342,6 +341,7 @@ namespace Scheduler
             this.groupBox1.SuspendLayout();
             this.tbpContact.SuspendLayout();
             this.pnlContact.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUser
@@ -1643,8 +1643,8 @@ namespace Scheduler
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adding User...";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUserDlg_KeyDown);
             this.Load += new System.EventHandler(this.frmUserDlg_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUserDlg_KeyDown);
             this.tbcUser.ResumeLayout(false);
             this.tbpLogin.ResumeLayout(false);
             this.pnlLogin.ResumeLayout(false);
@@ -1656,6 +1656,7 @@ namespace Scheduler
             this.tbpContact.ResumeLayout(false);
             this.pnlContact.ResumeLayout(false);
             this.pnlContact.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -2243,10 +2244,12 @@ namespace Scheduler
 			//pnl.Controls.Add(pnlBody);
 
 			CreateFormPrintingObject(pnl);
-			PrintingFunctions.SetProperties(ref fp, ps);
+			//PrintingFunctions.SetProperties(ref fp, ps);
+            PrintingFunctions.SetProperties(ref xfp);
 
 			// Print!
-			fp.Print();
+			//fp.Print();
+            xfp.Print();
 
 			tbpLogin.Controls.Add(pnlLogin);
 			tbpPersonal.Controls.Add(pnlPersonal);
@@ -2257,17 +2260,19 @@ namespace Scheduler
 		}
 
 		private FormPrinting fp = null;
-
+        private clsDevExpressFormPrinting xfp = null;
 		private void CreateFormPrintingObject(Control c)
 		{
-			fp = new FormPrinting(c);
+			//fp = new FormPrinting(c);
+            xfp = new clsDevExpressFormPrinting(c, printingSystem1);
 		}
 
 		private PageSettings ps = null;
 
 		private void btnPageSetup_Click(object sender, EventArgs e)
 		{
-			PrintingFunctions.ShowPageSettings(ref ps);
+			//PrintingFunctions.ShowPageSettings(ref ps);
+            printingSystem1.PageSetup();
 		}
 	}
 }

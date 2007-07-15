@@ -133,6 +133,7 @@ namespace Scheduler
 		private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.GroupBox groupBox2;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
 		private bool deleted=false;
 
 		public string Mode
@@ -299,6 +300,7 @@ namespace Scheduler
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printingSystem = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.tbcClient.SuspendLayout();
             this.tbpClientInfo.SuspendLayout();
             this.pnlClientInfo.SuspendLayout();
@@ -312,6 +314,7 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).BeginInit();
             this.pnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcClient
@@ -1464,8 +1467,8 @@ namespace Scheduler
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client...";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmClientDlg_KeyDown);
             this.Load += new System.EventHandler(this.frmClientDlg_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmClientDlg_KeyDown);
             this.tbcClient.ResumeLayout(false);
             this.tbpClientInfo.ResumeLayout(false);
             this.pnlClientInfo.ResumeLayout(false);
@@ -1481,6 +1484,7 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).EndInit();
             this.pnlBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -2015,10 +2019,11 @@ namespace Scheduler
 			
 
 			CreateFormPrintingObject(pnl);
-			PrintingFunctions.SetProperties(ref fp, ps);
+			//PrintingFunctions.SetProperties(ref fp, ps);
+            PrintingFunctions.SetProperties(ref xfp);
 
 			// Print!
-			fp.Print();
+			xfp.Print();
 
 			tbpClientInfo.Controls.Add(pnlClientInfo);
 			tbpAddress.Controls.Add(pnlAddress);
@@ -2030,16 +2035,19 @@ namespace Scheduler
 		}
 
 		private FormPrinting fp=null;
+        private clsDevExpressFormPrinting xfp = null;
 		private void CreateFormPrintingObject(System.Windows.Forms.Control c)
 		{
-			fp = new FormPrinting(c);
+			//fp = new FormPrinting(c);
+            xfp = new clsDevExpressFormPrinting(c, printingSystem1);
 		}
 
 		private PageSettings ps=null;
 		private void btnPageSetup_Click(object sender, System.EventArgs e)
 		{
 			//PrintingFunctions.ShowPageSettings(ref ps);
-            printingSystem.PageSetup();
+            //printingSystem.PageSetup();
+            printingSystem1.PageSetup();
 		}
 
 		private DataGridPrinter dataGridPrinter1=null;

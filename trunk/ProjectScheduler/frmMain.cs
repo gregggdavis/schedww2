@@ -193,10 +193,6 @@ namespace Scheduler
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlNavBar = new System.Windows.Forms.Panel();
             this.navBar = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarTransportationExpenses = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nBarClient = new DevExpress.XtraNavBar.NavBarItem();
             this.nBarDept = new DevExpress.XtraNavBar.NavBarItem();
@@ -210,6 +206,10 @@ namespace Scheduler
             this.nBarMonth = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nBarUser = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarTransportationExpenses = new DevExpress.XtraNavBar.NavBarItem();
             this.nBarContacts = new DevExpress.XtraNavBar.NavBarItem();
             this.cMenu_New = new System.Windows.Forms.ContextMenu();
             this.mnuItemClient = new System.Windows.Forms.MenuItem();
@@ -546,36 +546,6 @@ namespace Scheduler
             this.navBar.View = new DevExpress.XtraNavBar.ViewInfo.FlatViewInfoRegistrator();
             this.navBar.Click += new System.EventHandler(this.navBar_Click);
             // 
-            // navBarGroup4
-            // 
-            this.navBarGroup4.Caption = "Accounting";
-            this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarTransportationExpenses)});
-            this.navBarGroup4.Name = "navBarGroup4";
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "Pay Details By Instructor";
-            this.navBarItem1.LargeImageIndex = 6;
-            this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
-            // 
-            // navBarItem2
-            // 
-            this.navBarItem2.Caption = "Payroll By Instructor";
-            this.navBarItem2.LargeImageIndex = 5;
-            this.navBarItem2.Name = "navBarItem2";
-            this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem2_LinkClicked);
-            // 
-            // navBarTransportationExpenses
-            // 
-            this.navBarTransportationExpenses.Caption = "Transportation Expenses";
-            this.navBarTransportationExpenses.LargeImageIndex = 23;
-            this.navBarTransportationExpenses.Name = "navBarTransportationExpenses";
-            this.navBarTransportationExpenses.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarTransportationExpenses_LinkClicked);
-            // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "System Data";
@@ -686,6 +656,36 @@ namespace Scheduler
             this.nBarUser.SmallImageIndex = 12;
             this.nBarUser.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nBarUser_LinkClicked);
             // 
+            // navBarGroup4
+            // 
+            this.navBarGroup4.Caption = "Accounting";
+            this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarTransportationExpenses)});
+            this.navBarGroup4.Name = "navBarGroup4";
+            // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "Pay Details By Instructor";
+            this.navBarItem1.LargeImageIndex = 6;
+            this.navBarItem1.Name = "navBarItem1";
+            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
+            // 
+            // navBarItem2
+            // 
+            this.navBarItem2.Caption = "Payroll By Instructor";
+            this.navBarItem2.LargeImageIndex = 5;
+            this.navBarItem2.Name = "navBarItem2";
+            this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem2_LinkClicked);
+            // 
+            // navBarTransportationExpenses
+            // 
+            this.navBarTransportationExpenses.Caption = "Transportation Expenses";
+            this.navBarTransportationExpenses.LargeImageIndex = 23;
+            this.navBarTransportationExpenses.Name = "navBarTransportationExpenses";
+            this.navBarTransportationExpenses.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarTransportationExpenses_LinkClicked);
+            // 
             // nBarContacts
             // 
             this.nBarContacts.Caption = "Contacts";
@@ -761,7 +761,7 @@ namespace Scheduler
             // 
             // tBarMain
             // 
-           // this.tBarMain.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
+            //this.tBarMain.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
             this.tBarMain.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
             this.tbtnNew,
             this.tbtnDuplicate,
@@ -771,7 +771,7 @@ namespace Scheduler
             this.tbtnFind,
             this.tbtnPrint});
             this.tBarMain.ButtonSize = new System.Drawing.Size(67, 34);
-          //  this.tBarMain.Divider = false;
+            //this.tBarMain.Divider = false;
             this.tBarMain.DropDownArrows = true;
             this.tBarMain.DropDownAsOne = false;
             this.tBarMain.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
