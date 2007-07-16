@@ -238,6 +238,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BusinessLayer\SQLHelper.cs" />
+    <Compile Include="DevNormalPrinting.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frmAboutDlg.cs">
       <SubType>Form</SubType>
     </Compile>

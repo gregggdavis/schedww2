@@ -1,26 +1,18 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using DevExpress.XtraPrinting;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.Data;
 using System.Collections;
-namespace Scheduler.BusinessLayer
+using DevExpress.XtraPrinting;
+
+
+namespace Scheduler
 {
-    class DevExpressClassPrinting : Link
+    public class DevNormalPrinting : Link
     {
-
         #region Declarations
-        #region Alignment Attributes
-        int top = 85;
-        int leftColumn = 50;
-        int rightColumn = 210;
-        int topIncrement = 20;
-        public Color label1ForeColor = Color.Black;
-        PrintingSystem printingSystem;
-        #endregion
-
-        #region Data Attributes
+        //private PrintDocument ThePrintDocument;
         private ArrayList arrLabel;
         private ArrayList arrValue;
 
@@ -29,7 +21,6 @@ namespace Scheduler.BusinessLayer
         private ArrayList arrValue2;
         private ArrayList arrValue3;
         private ArrayList arrValue4;
-        #endregion
 
         private bool sClass = false;
 
@@ -40,209 +31,140 @@ namespace Scheduler.BusinessLayer
         private int LastIndex = 0;
         private int LastPos = 0;
         bool boolContinue = false;
-        int X;
-        #region Page Settings Attributes
-        float PageWidth;
-        float PageHeight;
-        float TopMargin;
-        float BottomMargin;
 
+        int PageWidth;
+        int PageHeight;
+        int TopMargin;
+        int BottomMargin;
+
+        int TextWidth = 200;
+        int TextHeight = 100;
+        public Color Label1ForeColor = Color.Black;
         public string RTitle = "";
-        #endregion
         #endregion
 
         #region Constructors
-        public DevExpressClassPrinting(PrintingSystem ps, ArrayList _arrLabel, ArrayList _arrValue): base(ps)
-        {
-            printingSystem = ps;
-            arrLabel = _arrLabel;
-            arrValue = _arrValue;
-
-            PageWidth = ps.PageSettings.UsablePageSize.Width;
-            PageHeight = ps.PageSettings.UsablePageSize.Height;
+        public DevNormalPrinting(ArrayList _arrLabel, ArrayList _arrValue, PrintingSystem aPrintDocument)
+		{
+			//
+			// TODO: Add constructor logic here
+			//
+			arrLabel = _arrLabel;
+			arrValue = _arrValue;
+			this.ps = aPrintDocument;
+            
             TopMargin = ps.PageMargins.Top;
             BottomMargin = ps.PageMargins.Bottom;
+            PageWidth = ps.PageBounds.Width - ps.PageMargins.Right - ps.PageMargins.Left;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
+            PageHeight = ps.PageBounds.Height - TopMargin - BottomMargin;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Height);
+            
+		}
 
-            CreateDocument(ps);
-        }
+		public DevNormalPrinting(ArrayList _arrLabel, ArrayList _arrValue, 
+			ArrayList _arrLabel1, ArrayList _arrValue1, ArrayList _arrValue2, ArrayList _arrValue3,
+			PrintingSystem aPrintDocument)
+		{
+			//
+			// TODO: Add constructor logic here
+			//
+			arrLabel = _arrLabel;
+			arrValue = _arrValue;
 
-        public DevExpressClassPrinting(PrintingSystem ps, ArrayList _arrLabel, ArrayList _arrValue, ArrayList _arrLabel1, ArrayList _arrValue1, ArrayList _arrValue2, ArrayList _arrValue3) : base(ps)
-        {
-            printingSystem = ps;
-            arrLabel = _arrLabel;
-            arrValue = _arrValue;
-
-            arrLabel1 = _arrLabel1;
-            arrValue1 = _arrValue1;
-            arrValue2 = _arrValue2;
-            arrValue3 = _arrValue3;
-
-            PageWidth = ps.PageSettings.UsablePageSize.Width;
-            PageHeight = ps.PageSettings.UsablePageSize.Height;
+			arrLabel1 = _arrLabel1;
+			arrValue1 = _arrValue1;
+			arrValue2 = _arrValue2;
+			arrValue3 = _arrValue3;
+			
+			this.ps = aPrintDocument;
             TopMargin = ps.PageMargins.Top;
             BottomMargin = ps.PageMargins.Bottom;
+            PageWidth = ps.PageBounds.Width - ps.PageMargins.Right - ps.PageMargins.Left;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
+            PageHeight = ps.PageBounds.Height - TopMargin - BottomMargin;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Height);
+            //PageWidth = Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
+            //PageHeight = Convert.ToInt32(ps.PageSettings.UsablePageSize.Height);
+            //TopMargin = ps.PageMargins.Top;
+            //BottomMargin = ps.PageMargins.Bottom;
+		}
 
-            CreateDocument(ps);
-        }
+        public DevNormalPrinting(ArrayList _arrLabel, ArrayList _arrValue, 
+			ArrayList _arrLabel1, ArrayList _arrValue1, 
+			ArrayList _arrValue2, 
+			ArrayList _arrValue3,
+			ArrayList _arrValue4,
+			PrintingSystem aPrintDocument)
+		{
+			//
+			// TODO: Add constructor logic here
+			//
+			sClass=true;
+			
+			arrLabel = _arrLabel;
+			arrValue = _arrValue;
 
-        public DevExpressClassPrinting(PrintingSystem ps, ArrayList _arrLabel, ArrayList _arrValue, ArrayList _arrLabel1, ArrayList _arrValue1, ArrayList _arrValue2, ArrayList _arrValue3,ArrayList _arrValue4) : base(ps)
-        {
-            printingSystem = ps;
-            arrLabel = _arrLabel;
-            arrValue = _arrValue;
-
-            arrLabel1 = _arrLabel1;
-            arrValue1 = _arrValue1;
-            arrValue2 = _arrValue2;
-            arrValue3 = _arrValue3;
-            arrValue4 = _arrValue4;
-
-            PageWidth = ps.PageSettings.UsablePageSize.Width;
-            PageHeight = ps.PageSettings.UsablePageSize.Height;
+			arrLabel1 = _arrLabel1;
+			arrValue1 = _arrValue1;
+			arrValue2 = _arrValue2;
+			arrValue3 = _arrValue3;
+			arrValue4 = _arrValue4;
+			
+			this.ps = aPrintDocument;
             TopMargin = ps.PageMargins.Top;
             BottomMargin = ps.PageMargins.Bottom;
-
-            CreateDocument(ps);
-
-        }
+            PageWidth = ps.PageBounds.Width - ps.PageMargins.Right - ps.PageMargins.Left;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
+            PageHeight = ps.PageBounds.Height - TopMargin - BottomMargin;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Height);
+            //PageWidth = Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
+            //PageHeight = Convert.ToInt32(ps.PageSettings.UsablePageSize.Height);
+            //TopMargin = ps.PageMargins.Top;
+            //BottomMargin = ps.PageMargins.Bottom;
+		}
 
         #endregion
 
-
-
-        public override void CreateDocument(PrintingSystem ps)
-        {
-            
-            if (ps != null)
-            {
-                base.CreateDocument();
-            }
-
-        }
-
-        protected override void CreateDetail(BrickGraphics g)
-        {
-            base.CreateDetail(g);
-            CreateRow(g);
-        }
-
-        #region Methods
-        protected virtual void CreateRow(BrickGraphics g)
-        {
-            bool bContinue = false;
-            try
-            {
-                //DrawHeader(g);
-                if (sClass)
-                {
-                    bContinue = DrawClass(g);
-                }
-                else
-                {
-                    bContinue = DrawRows(g);
-                  //  if (!bContinue) InitializeData();
-
-                    bContinue = DrawClass(g);
-                }
-
-               // DrawHorizontalLines(g, 10);
-               // g.DrawString("Test Printing",Color.Black,new RectangleF(10,20,200,100), BorderSide.None);
-                if (!bContinue) InitializeData();
-                
-              //  System.Console.WriteLine("Test");
-                //return bContinue;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-                //return false;
-            }
-            //if (bContinue)
-            //{
-            //    PageNumber++;
-            //    // sClass = false;
-
-
-            //    //mainFrm.DrawTopLabel(newBrick);
-            //    sClass = true;
-            //    return CreateRow(g);
-            //}
-            //else
-            //{
-            //    return bContinue;
-            //}
-
-        }
-        
-        protected override void CreateInnerPageHeader(BrickGraphics graph)
-        {
-        
-        
-            int TopMargin = PrintingSystem.PageSettings.Margins.Top;
-
-            Font _font =
-                new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-            graph.Font = _font;
-            RectangleF rect = new RectangleF(20, 40, 300, 40);
-            try
-            {
-                Color c = label1ForeColor;
-                graph.DrawString(RTitle, c, rect, DevExpress.XtraPrinting.BorderSide.None);
-            }
-            catch (Exception ex)
-            {
-
-            }
-            base.CreateInnerPageHeader(graph);
-            
-        }
-        #region Main Methods
+        #region MainMethods
         public bool DrawRows(BrickGraphics g)
         {
-            float lastRowBottom = TopMargin;
+            int lastRowBottom = TopMargin;
 
             try
             {
-                #region Declarations
-                SolidBrush ForeBrush = new SolidBrush(System.Drawing.Color.Black);
-                SolidBrush BackBrush = new SolidBrush(System.Drawing.Color.White);
+                //SolidBrush ForeBrush = new SolidBrush(System.Drawing.Color.Black);
+                Color ForeBrush = System.Drawing.Color.Black;
+                Color BackBrush = System.Drawing.Color.White;
                 Pen TheLinePen = new Pen(System.Drawing.Color.Gray, 1);
                 StringFormat cellformat = new StringFormat();
                 cellformat.Trimming = StringTrimming.EllipsisCharacter;
                 cellformat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit;
+                BrickStringFormat brickCellFormat = new BrickStringFormat(cellformat);
 
                 RectangleF RowBounds = new RectangleF(0, 0, 0, 0);
 
 
                 Font _font_label = new Font("Arial", 8F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte)(0)));
-
                 Font _font_value = new Font("Arial", 8F, FontStyle.Regular, GraphicsUnit.Point, ((System.Byte)(0)));
-                Rectangle iRectangle = new Rectangle(0, 0, 200, 100);
-                //X=85;
-                X = 15;
+                // int X = 10;
                 bool IsRichText = false;
                 bool LastIsRichText = false;
-                #endregion
 
                 if (LastPos <= 0)
                 {
-                    #region Last Pos Less than or equal zero
                     for (int i = LastIndex; i < arrLabel.Count; i++)
                     {
                         if (arrLabel[i].ToString() == "------")
                         {
                             if (arrValue[i].ToString() == "RICHTEXT") IsRichText = true;
                             DrawHorizontalLines(g, X);
-                            //X += 20;
                         }
                         else
                         {
                             if (IsRichText)
                             {
-                                g.Font = _font_label;
-                                iRectangle.X = 50;
-                                iRectangle.Y = X;
-                                g.DrawString(arrLabel[i].ToString() + " : ", System.Drawing.Color.Black, iRectangle, BorderSide.None); // 50, X, new StringFormat());
+                                
+                                
+
+                                this.DrawString(arrLabel[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight,new StringFormat(), g);
+                                
+                                
+                                //g.DrawString(arrLabel[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                 X += 20;
 
                                 string s = arrValue[i].ToString();
@@ -251,84 +173,60 @@ namespace Scheduler.BusinessLayer
                                 {
                                     if (c == '\n') CarriageReturnCnt++;
                                 }
-                                g.Font = _font_value;
-                                iRectangle.X = 50;
-                                iRectangle.Y = X;
-                                g.DrawString(arrValue[i].ToString(), System.Drawing.Color.Black, iRectangle, BorderSide.None);
-
+                                this.DrawString(arrValue[i].ToString(), _font_value, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                 //g.DrawString(arrValue[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                 X += CarriageReturnCnt * 11;
                                 IsRichText = false;
                             }
                             else
                             {
-
-                                g.Font = _font_label;
-                                iRectangle.X = 50;
-                                iRectangle.Y = X;
-                                g.DrawString(arrLabel[i].ToString() + " : ", System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                this.DrawString(arrLabel[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                 //g.DrawString(arrLabel[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
-                                g.Font = _font_value;
-                                iRectangle.X = 210;
-                                iRectangle.Y = X;
-                                g.DrawString(arrValue[i].ToString(), System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                this.DrawString(arrValue[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                 //g.DrawString(arrValue[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
                             }
 
                         }
                         X += 20;
 
-                        if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
-                        {
-                            boolContinue = true;
-                            LastPos = 0;
-                            LastIndex = i;
-                            LastIsRichText = IsRichText;
-                            return true;
-                        }
-                        else LastPos = 1;
+                        //if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
+                        //{
+                        //    boolContinue = true;
+                        //    LastPos = 0;
+                        //    LastIndex = i;
+                        //    LastIsRichText = IsRichText;
+                        //    return true;
+                        //}
+                        //else 
+                        LastPos = 1;
                         boolContinue = false;
                     }
-                    #endregion
                 }
 
                 if (arrValue1 != null)
                 {
-                    #region arrValue1 Not Equal to 0
                     if (((LastPos == 1) && (boolContinue)) || (!boolContinue))
                     {
-
                         if (!boolContinue) LastIndex = 0;
 
                         if (arrValue1.Count > 0)
                         {
-                            #region arrValue1 Count is greater than zero
                             for (int i = LastIndex; i < arrLabel1.Count; i++)
                             {
                                 if (arrLabel1[i].ToString() == "------")
                                 {
                                     DrawHorizontalLines(g, X);
                                     X += 15;
-                                    g.Font = _font_label;
-                                    iRectangle.X = 50;
-                                    iRectangle.Y = X;
-                                    g.DrawString("Initial Test Event >>", System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                    this.DrawString("Initial Test Event >>",_font_label,Color.Black,50,X,TextWidth,TextHeight,new StringFormat(), g);
                                     //g.DrawString("Initial Test Event >>", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                     X += 10;
                                 }
                                 else
                                 {
-                                    g.Font = _font_label;
-                                    iRectangle.X = 50;
-                                    iRectangle.Y = X;
-                                    g.DrawString(arrLabel1[i].ToString() + " : ", System.Drawing.Color.Black, iRectangle, BorderSide.None);
-
-
-                                    g.Font = _font_value;
-                                    iRectangle.X = 210;
-                                    iRectangle.Y = X;
-                                    g.DrawString(arrValue1[i].ToString(), System.Drawing.Color.Black, iRectangle, BorderSide.None);
-                                    //   g.DrawString(arrValue1[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
+                                    this.DrawString(arrLabel1[i].ToString(), _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
+                                    //g.DrawString(arrLabel1[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
+                                    this.DrawString(arrValue1[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
+                                    //g.DrawString(arrValue1[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
 
                                 }
 
@@ -344,25 +242,24 @@ namespace Scheduler.BusinessLayer
                                     X += 20;
                                 }
 
-                                if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
-                                {
-                                    boolContinue = true;
-                                    LastPos = 1;
-                                    LastIndex = i;
-                                    LastIsRichText = IsRichText;
-                                    return true;
-                                }
-                                else LastPos = 2;
+                                //if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
+                                //{
+                                //    boolContinue = true;
+                                //    LastPos = 1;
+                                //    LastIndex = i;
+                                //    LastIsRichText = IsRichText;
+                                //    return true;
+                                //}
+                                //else 
+                                LastPos = 2;
                                 boolContinue = false;
                             }
-                            #endregion
                         }
                         else LastPos = 2;
                     }
 
                     if (arrValue2 != null)
                     {
-                        #region arrValue2 IS NOT NULL
                         if (((LastPos == 2) && (boolContinue)) || (!boolContinue))
                         {
                             if (!boolContinue) LastIndex = 0;
@@ -375,30 +272,16 @@ namespace Scheduler.BusinessLayer
                                     {
                                         DrawHorizontalLines(g, X);
                                         X += 15;
-
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString("MidTerm Test Event >>", System.Drawing.Color.Black, iRectangle, BorderSide.None);
-
+                                        this.DrawString("MidTerm Test Event >>", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString("MidTerm Test Event >>", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                         X += 10;
                                     }
                                     else
                                     {
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrLabel1[i].ToString() + " : ", System.Drawing.Color.Black, iRectangle, BorderSide.None);
-
-
+                                        this.DrawString(arrLabel1[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrLabel1[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
 
-                                        g.Font = _font_value;
-                                        iRectangle.X = 210;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrValue2[i].ToString(), System.Drawing.Color.Black, iRectangle, BorderSide.None);
-
+                                        this.DrawString(arrValue2[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrValue2[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
 
                                     }
@@ -414,26 +297,25 @@ namespace Scheduler.BusinessLayer
                                         X += 20;
                                     }
 
-                                    if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
-                                    {
-                                        boolContinue = true;
-                                        LastPos = 2;
-                                        LastIndex = i;
-                                        LastIsRichText = IsRichText;
-                                        return true;
-                                    }
-                                    else LastPos = 3;
+                                    //if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
+                                    //{
+                                    //    boolContinue = true;
+                                    //    LastPos = 2;
+                                    //    LastIndex = i;
+                                    //    LastIsRichText = IsRichText;
+                                    //    return true;
+                                    //}
+                                    //else 
+                                    LastPos = 3;
                                     boolContinue = false;
                                 }
                             }
                         }
                         else LastPos = 3;
-                        #endregion
                     }
 
                     if (arrValue3 != null)
                     {
-                        #region arrValue3 IS NOT NULL
                         if (((LastPos == 3) && (boolContinue)) || (!boolContinue))
                         {
                             if (!boolContinue) LastIndex = 0;
@@ -445,26 +327,16 @@ namespace Scheduler.BusinessLayer
                                     {
                                         DrawHorizontalLines(g, X);
                                         X += 15;
-
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString("Final Test Event >>", System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString("Final Test Event >>", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);                                        
                                         //g.DrawString("Final Test Event >>", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                         X += 10;
                                     }
                                     else
                                     {
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrLabel1[i].ToString() + " : ", System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString(arrLabel1[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrLabel1[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
 
-                                        g.Font = _font_value;
-                                        iRectangle.X = 210;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrValue3[i].ToString(), System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString(arrValue3[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrValue3[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
 
                                     }
@@ -480,22 +352,21 @@ namespace Scheduler.BusinessLayer
                                         X += 20;
                                     }
 
-                                    if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
-                                    {
-                                        boolContinue = true;
-                                        LastPos = 3;
-                                        LastIndex = i;
-                                        LastIsRichText = IsRichText;
-                                        return true;
-                                    }
-                                    else LastPos = 3;
+                                    //if (X > (PageHeight * PageNumber) - (BottomMargin + TopMargin))
+                                    //{
+                                    //    boolContinue = true;
+                                    //    LastPos = 3;
+                                    //    LastIndex = i;
+                                    //    LastIsRichText = IsRichText;
+                                    //    return true;
+                                    //}
+                                    //else 
+                                    LastPos = 3;
                                     boolContinue = false;
                                 }
                             }
                         }
-                        #endregion
                     }
-                    #endregion
                 }
 
                 return false;
@@ -508,15 +379,13 @@ namespace Scheduler.BusinessLayer
             }
 
         }
-
+        int X = 10;
         public bool DrawClass(BrickGraphics g)
         {
-            float lastRowBottom = TopMargin;
+            int lastRowBottom = TopMargin;
 
             try
             {
-                #region Declarations
-
                 SolidBrush ForeBrush = new SolidBrush(System.Drawing.Color.Black);
                 SolidBrush BackBrush = new SolidBrush(System.Drawing.Color.White);
                 Pen TheLinePen = new Pen(System.Drawing.Color.Gray, 1);
@@ -528,12 +397,10 @@ namespace Scheduler.BusinessLayer
 
                 Font _font_label = new Font("Arial", 8F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte)(0)));
                 Font _font_value = new Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-                Rectangle iRectangle = new Rectangle(0, 0, 200, 100);
-
-               // int X = 85;
+               
                 bool IsRichText = false;
                 bool LastIsRichText = false;
-                #endregion
+
                 if (LastPos <= 0)
                 {
                     for (int i = LastIndex; i < arrLabel.Count; i++)
@@ -541,17 +408,13 @@ namespace Scheduler.BusinessLayer
                         if (arrLabel[i].ToString() == "------")
                         {
                             if (arrValue[i].ToString() == "RICHTEXT") IsRichText = true;
-                            DrawHorizontalLines(g, (float)X);
+                            DrawHorizontalLines(g, X);
                         }
                         else
                         {
                             if (IsRichText)
                             {
-                                g.Font = _font_label;
-                                iRectangle.X = 50;
-                                iRectangle.Y = X;
-                                g.DrawString(arrLabel[i].ToString() + " : ", System.Drawing.Color.Black, iRectangle, BorderSide.None);
-
+                                this.DrawString(arrLabel[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                 //g.DrawString(arrLabel[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                 X += 20;
 
@@ -561,42 +424,32 @@ namespace Scheduler.BusinessLayer
                                 {
                                     if (c == '\n') CarriageReturnCnt++;
                                 }
-
-                                g.Font = _font_value;
-                                iRectangle.X = 50;
-                                iRectangle.Y = X;
-                                g.DrawString(arrValue[i].ToString(), System.Drawing.Color.Black, iRectangle, BorderSide.None);
-                                //g.DrawString(arrValue[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
+                                this.DrawString(arrValue[i].ToString(), _font_value, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
+                               // g.DrawString(arrValue[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                 X += CarriageReturnCnt * 11;
                                 IsRichText = false;
                             }
                             else
                             {
-                                g.Font = _font_label;
-                                iRectangle.X = 50;
-                                iRectangle.Y = X;
-                                g.DrawString(arrLabel[i].ToString() + " : ", System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                this.DrawString(arrLabel[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                 //g.DrawString(arrLabel[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
-
-                                g.Font = _font_value;
-                                iRectangle.X = 210;
-                                iRectangle.Y = X;
-                                g.DrawString(arrValue[i].ToString(), System.Drawing.Color.Black, iRectangle, BorderSide.None);
+                                this.DrawString(arrValue[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                 //g.DrawString(arrValue[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
                             }
 
                         }
                         X += 20;
 
-                        if (X > (PageHeight) - (BottomMargin + TopMargin))
-                        {
-                            boolContinue = true;
-                            LastPos = 0;
-                            LastIndex = i;
-                            LastIsRichText = IsRichText;
-                            return true;
-                        }
-                        else LastPos = 1;
+                        //if (X > (PageHeight) - (BottomMargin + TopMargin))
+                        //{
+                        //    boolContinue = true;
+                        //    LastPos = 0;
+                        //    LastIndex = i;
+                        //    LastIsRichText = IsRichText;
+                        //    return true;
+                        //}
+                        //else 
+                        LastPos = 1;
                         boolContinue = false;
                     }
                 }
@@ -615,25 +468,16 @@ namespace Scheduler.BusinessLayer
                                 {
                                     DrawHorizontalLines(g, X);
                                     X += 15;
-                                    g.Font = _font_label;
-                                    iRectangle.X = 50;
-                                    iRectangle.Y = X;
-                                    g.DrawString("Class Event >>", Color.Black, iRectangle, BorderSide.None);
+                                    this.DrawString("Class Event >>", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                     //g.DrawString("Class Event >>", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                     X += 10;
                                 }
                                 else
                                 {
-                                    g.Font = _font_label;
-                                    iRectangle.X = 50;
-                                    iRectangle.Y = X;
-                                    g.DrawString(arrLabel1[i].ToString() + " : ", Color.Black, iRectangle, BorderSide.None);
+                                    this.DrawString(arrLabel1[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                     //g.DrawString(arrLabel1[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
 
-                                    g.Font = _font_value;
-                                    iRectangle.X = 210;
-                                    iRectangle.Y = X;
-                                    g.DrawString(arrValue4[i].ToString() + " : ", Color.Black, iRectangle, BorderSide.None);
+                                    this.DrawString(arrValue4[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                     //g.DrawString(arrValue4[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
 
                                 }
@@ -650,15 +494,17 @@ namespace Scheduler.BusinessLayer
                                     X += 20;
                                 }
 
-                                if (X > (PageHeight) - (BottomMargin + TopMargin))
-                                {
-                                    boolContinue = true;
-                                    LastPos = 1;
-                                    LastIndex = i;
-                                    LastIsRichText = IsRichText;
-                                    return true;
-                                }
-                                else LastPos = 2;
+                                //if (X > (PageHeight))// - (BottomMargin + TopMargin))
+                                //{
+                                //    X += 20;
+                                //    //boolContinue = true;
+                                //    //LastPos = 1;
+                                //    //LastIndex = i;
+                                //    //LastIsRichText = IsRichText;
+                                //    //return true;
+                                //}
+                                //else 
+                                LastPos = 2;
                                 boolContinue = false;
                             }
                         }
@@ -679,25 +525,15 @@ namespace Scheduler.BusinessLayer
                                     {
                                         DrawHorizontalLines(g, X);
                                         X += 15;
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString("Initial Test Event >>", Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString("Initial Test Event >>",_font_label,Color.Black,50,X,TextWidth,TextHeight,new StringFormat(), g);
                                         //g.DrawString("Initial Test Event >>", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                         X += 10;
                                     }
                                     else
                                     {
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrLabel1[i].ToString() + " : ", Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString(arrLabel1[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrLabel1[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
-
-                                        g.Font = _font_value;
-                                        iRectangle.X = 210;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrValue1[i].ToString(), Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString(arrValue1[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrValue1[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
 
                                     }
@@ -713,15 +549,16 @@ namespace Scheduler.BusinessLayer
                                         X += 20;
                                     }
 
-                                    if (X > (PageHeight) - (BottomMargin + TopMargin))
-                                    {
-                                        boolContinue = true;
-                                        LastPos = 2;
-                                        LastIndex = i;
-                                        LastIsRichText = IsRichText;
-                                        return true;
-                                    }
-                                    else LastPos = 3;
+                                    //if (X > (PageHeight) - (BottomMargin + TopMargin))
+                                    //{
+                                    //    boolContinue = true;
+                                    //    LastPos = 2;
+                                    //    LastIndex = i;
+                                    //    LastIsRichText = IsRichText;
+                                    //    return true;
+                                    //}
+                                    //else 
+                                    LastPos = 3;
                                     boolContinue = false;
                                 }
                             }
@@ -742,26 +579,15 @@ namespace Scheduler.BusinessLayer
                                     {
                                         DrawHorizontalLines(g, X);
                                         X += 15;
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString("MidTerm Test Event >>", Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString("MidTerm Test Event >>", _font_label,Color.Black,50,X,TextWidth,TextHeight,new StringFormat(), g);
                                         //g.DrawString("MidTerm Test Event >>", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                         X += 10;
                                     }
                                     else
                                     {
-                                        g.Font = _font_label;
-                                        iRectangle.X = 50;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrLabel1[i].ToString() + " : ", Color.Black, iRectangle, BorderSide.None);
+                                        this.DrawString(arrLabel1[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrLabel1[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
-
-                                        g.Font = _font_value;
-                                        iRectangle.X = 210;
-                                        iRectangle.Y = X;
-                                        g.DrawString(arrValue2[i].ToString(), Color.Black, iRectangle, BorderSide.None);
-
+                                        this.DrawString(arrValue2[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                         //g.DrawString(arrValue2[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
 
                                     }
@@ -777,15 +603,16 @@ namespace Scheduler.BusinessLayer
                                         X += 20;
                                     }
 
-                                    if (X > (PageHeight) - (BottomMargin + TopMargin))
-                                    {
-                                        boolContinue = true;
-                                        LastPos = 3;
-                                        LastIndex = i;
-                                        LastIsRichText = IsRichText;
-                                        return true;
-                                    }
-                                    else LastPos = 4;
+                                    //if (X > (PageHeight) - (BottomMargin + TopMargin))
+                                    //{
+                                    //    boolContinue = true;
+                                    //    LastPos = 3;
+                                    //    LastIndex = i;
+                                    //    LastIsRichText = IsRichText;
+                                    //    return true;
+                                    //}
+                                    //else 
+                                    LastPos = 4;
                                     boolContinue = false;
                                 }
                             }
@@ -808,25 +635,15 @@ namespace Scheduler.BusinessLayer
                                 {
                                     DrawHorizontalLines(g, X);
                                     X += 15;
-                                    g.Font = _font_label;
-                                    iRectangle.X = 50;
-                                    iRectangle.Y = X;
-                                    g.DrawString("Final Test Event >>", Color.Black, iRectangle, BorderSide.None);
+                                    this.DrawString("Final Test Event >>", _font_label,Color.Black,50,X,TextWidth,TextHeight,new StringFormat(), g);
                                     //g.DrawString("Final Test Event >>", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
                                     X += 10;
                                 }
                                 else
                                 {
-                                    g.Font = _font_label;
-                                    iRectangle.X = 50;
-                                    iRectangle.Y = X;
-                                    g.DrawString(arrLabel1[i].ToString() + " : ", Color.Black, iRectangle, BorderSide.None);
+                                    this.DrawString(arrLabel1[i].ToString() + " : ", _font_label, Color.Black, 50, X, TextWidth, TextHeight, new StringFormat(), g);
                                     //g.DrawString(arrLabel1[i].ToString() + " : ", _font_label, new SolidBrush(System.Drawing.Color.Black), 50, X, new StringFormat());
-
-                                    g.Font = _font_value;
-                                    iRectangle.X = 210;
-                                    iRectangle.Y = X;
-                                    g.DrawString(arrValue3[i].ToString() + " : ", Color.Black, iRectangle, BorderSide.None);
+                                    this.DrawString(arrValue3[i].ToString(), _font_value, Color.Black, 210, X, TextWidth, TextHeight, new StringFormat(), g);
                                     //g.DrawString(arrValue3[i].ToString(), _font_value, new SolidBrush(System.Drawing.Color.Black), 210, X, new StringFormat());
 
                                 }
@@ -842,15 +659,16 @@ namespace Scheduler.BusinessLayer
                                     X += 20;
                                 }
 
-                                if (X > (PageHeight) - (BottomMargin + TopMargin))
-                                {
-                                    boolContinue = true;
-                                    LastPos = 4;
-                                    LastIndex = i;
-                                    LastIsRichText = IsRichText;
-                                    return true;
-                                }
-                                else LastPos = 5;
+                                //if (X > (PageHeight) - (BottomMargin + TopMargin))
+                                //{
+                                //    boolContinue = true;
+                                //    LastPos = 4;
+                                //    LastIndex = i;
+                                //    LastIsRichText = IsRichText;
+                                //    return true;
+                                //}
+                                //else 
+                                LastPos = 5;
                                 boolContinue = false;
                             }
                         }
@@ -869,6 +687,61 @@ namespace Scheduler.BusinessLayer
 
         }
 
+        void DrawHorizontalLines(BrickGraphics g, int y)
+        {
+            Pen TheLinePen = new Pen(System.Drawing.Color.Gray, 1);
+
+            //if (TheDataGrid.GridLineStyle == DataGridLineStyle.None)
+            //	return;
+
+            //for (int i = 0;  i < lines.Count; i++)
+            //{
+            g.DrawLine(new PointF(20, y), new PointF(PageWidth - 40, y), TheLinePen.Color, TheLinePen.Width);
+            //g.DrawLine(TheLinePen, 20, y, PageWidth - 40, y);
+            //}
+        }
+
+        void DrawVerticalGridLines(BrickGraphics g, Pen TheLinePen, int columnwidth, int bottom)
+        {
+            //if (TheDataGrid.GridLineStyle == DataGridLineStyle.None)
+            //	return;
+
+            //for (int k = 0; k < TheTable.Columns.Count; k++)
+            //{
+            //	g.DrawLine(TheLinePen, TheDataGrid.Location.X + k*columnwidth, 
+            //		TheDataGrid.Location.Y + TopMargin,
+            //		TheDataGrid.Location.X + k*columnwidth,
+            //		bottom);
+            //}
+        }
+
+
+        public bool DrawDataGrid(BrickGraphics g)
+        {
+            bool bContinue = false;
+            try
+            {
+                //DrawHeader(g);
+                if (sClass)
+                {
+                    bContinue = DrawClass(g);
+                }
+                else
+                {
+                    bContinue = DrawRows(g);
+                }
+
+                if (!boolContinue) InitializeData();
+                return bContinue;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                return false;
+            }
+
+        }
+
         public void InitializeData()
         {
             RowCount = 0;
@@ -878,20 +751,78 @@ namespace Scheduler.BusinessLayer
             boolContinue = false;
         }
 
-        void DrawHorizontalLines(BrickGraphics g, float y)
+
+
+        public void DrawString(string s, Font printFont, Color brush, Single x, Single y, Single w, Single h, BrickGraphics _G)
         {
-            Pen TheLinePen = new Pen(System.Drawing.Color.Gray, 1);
+            DrawString(s, printFont, brush, x, y, w, h, new StringFormat(),_G);
+        }
 
-            //if (TheDataGrid.GridLineStyle == DataGridLineStyle.None)
-            //	return;
+        public void DrawString(string s, Font printFont, Color brush, Single x, Single y, Single w, Single h, StringFormat sf, BrickGraphics _G)
+        {
+                
+                RectangleF r = new RectangleF();
+                r.X = x;
+                r.Y = y;
+                r.Width = w;
+                r.Height = h;
+                _G.Font = printFont;
+                BrickStringFormat xformat = new BrickStringFormat(sf);
+                _G.StringFormat = xformat;
+                _G.ForeColor = brush;
+                _G.DrawString(s, brush, r, BorderSide.None);
+        }
 
-            //for (int i = 0;  i < lines.Count; i++)
-            //{
-            g.DrawLine(new PointF(20, y), new PointF(PageWidth - 40, y), Color.Gray, 1);
+        #endregion
 
-            //}
+        #region OverLoadedMethods
+        //protected override void CreateInnerPageHeader(BrickGraphics graph)
+        //{
+        //    base.CreateInnerPageHeader(graph);
+        //    int TopMargin = ps.PageSettings.Margins.Top;
+
+        //    Font _font =
+        //        new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+        //    //g.DrawString("Class Information", _font, new SolidBrush(label1.ForeColor), 20, 40, new StringFormat());
+        //    this.DrawString("Class Information", _font, Label1ForeColor, 20, 40, TextWidth, TextHeight, new StringFormat(), graph);
+        //    //Graphics g = e.Graphics;
+        //    //DrawTopLabel(g);
+        //    //bool more = nm.DrawDataGrid(g);
+        //    //if (more == true)
+        //    //{
+        //    //    e.HasMorePages = true;
+        //    //    nm.PageNumber++;
+        //    //}
+        //}
+        protected override void CreateMarginalHeader(BrickGraphics graph)
+        {
+            base.CreateMarginalHeader(graph);
+            int TopMargin = ps.PageSettings.Margins.Top;
+
+            Font _font =
+                new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+            //g.DrawString("Class Information", _font, new SolidBrush(label1.ForeColor), 20, 40, new StringFormat());
+            this.DrawString(RTitle, _font, Label1ForeColor, 20, 40, TextWidth, TextHeight, new StringFormat(), graph);
+        }
+        public override void CreateDocument()
+        {
+            if (ps != null)
+            {
+                base.CreateDocument();
+            }
+        }
+
+        protected override void CreateDetail(BrickGraphics graph)
+        {
+            base.CreateDetail(graph);
+            bool more = DrawDataGrid(graph);
+            if (more == true)
+            {
+                //e.HasMorePages = true;
+                PageNumber++;
+            }
         }
         #endregion
-        #endregion
     }
+
 }

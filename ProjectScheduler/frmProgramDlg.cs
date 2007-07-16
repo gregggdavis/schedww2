@@ -68,8 +68,8 @@ namespace Scheduler
 		private GroupBox groupBox2;
 		private LinkLabel llblFinalEvt;
 		private LinkLabel llblMidEvt;
-		private LinkLabel llblInitialEvt;
-		private Container components = null;
+        private LinkLabel llblInitialEvt;
+        private IContainer components;
 		private Label label7;
 		private Label label6;
 		private Label label14;
@@ -131,6 +131,7 @@ namespace Scheduler
         private DevExpress.XtraGrid.Columns.GridColumn gcolStartDateTime;
         private DevExpress.XtraGrid.Columns.GridColumn gcolEndDateTime;
         private frmEventDlg frmEvent;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
 		private PageSettings ps = null;
 
 		public frmProgramDlg()
@@ -331,6 +332,7 @@ namespace Scheduler
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProgramDlg));
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -414,6 +416,7 @@ namespace Scheduler
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.tbcCourse.SuspendLayout();
             this.tbpCourse.SuspendLayout();
             this.tbpDescription.SuspendLayout();
@@ -422,6 +425,7 @@ namespace Scheduler
             this.pnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEvents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -732,10 +736,10 @@ namespace Scheduler
             this.llblFinalEvt.TabIndex = 13;
             this.llblFinalEvt.TabStop = true;
             this.llblFinalEvt.Text = "None";
+            this.llblFinalEvt.TextChanged += new System.EventHandler(this.llblFinalEvt_TextChanged);
             this.llblFinalEvt.MouseLeave += new System.EventHandler(this.llblFinalEvt_MouseLeave);
             this.llblFinalEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblFinalEvt_LinkClicked);
             this.llblFinalEvt.MouseEnter += new System.EventHandler(this.llblFinalEvt_MouseEnter);
-            this.llblFinalEvt.TextChanged += new System.EventHandler(this.llblFinalEvt_TextChanged);
             // 
             // llblMidEvt
             // 
@@ -746,10 +750,10 @@ namespace Scheduler
             this.llblMidEvt.TabIndex = 11;
             this.llblMidEvt.TabStop = true;
             this.llblMidEvt.Text = "None";
+            this.llblMidEvt.TextChanged += new System.EventHandler(this.llblMidEvt_TextChanged);
             this.llblMidEvt.MouseLeave += new System.EventHandler(this.llblMidEvt_MouseLeave);
             this.llblMidEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblMidEvt_LinkClicked);
             this.llblMidEvt.MouseEnter += new System.EventHandler(this.llblMidEvt_MouseEnter);
-            this.llblMidEvt.TextChanged += new System.EventHandler(this.llblMidEvt_TextChanged);
             // 
             // llblInitialEvt
             // 
@@ -760,10 +764,10 @@ namespace Scheduler
             this.llblInitialEvt.TabIndex = 9;
             this.llblInitialEvt.TabStop = true;
             this.llblInitialEvt.Text = "None";
+            this.llblInitialEvt.TextChanged += new System.EventHandler(this.llblInitialEvt_TextChanged);
             this.llblInitialEvt.MouseLeave += new System.EventHandler(this.llblInitialEvt_MouseLeave);
             this.llblInitialEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblInitialEvt_LinkClicked);
             this.llblInitialEvt.MouseEnter += new System.EventHandler(this.llblInitialEvt_MouseEnter);
-            this.llblInitialEvt.TextChanged += new System.EventHandler(this.llblInitialEvt_TextChanged);
             // 
             // label5
             // 
@@ -1341,8 +1345,8 @@ namespace Scheduler
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adding Program...";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProgramDlg_KeyDown);
             this.Load += new System.EventHandler(this.frmProgramDlg_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmProgramDlg_KeyDown);
             this.tbcCourse.ResumeLayout(false);
             this.tbpCourse.ResumeLayout(false);
             this.tbpCourse.PerformLayout();
@@ -1354,6 +1358,7 @@ namespace Scheduler
             this.pnlButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEvents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -2373,10 +2378,11 @@ namespace Scheduler
             }
             catch { }
 		}
-
+        DevNormalPrinting xnm = null;
 		private void btnPrint_Click(object sender, EventArgs e)
-		{
-			ArrayList arrLabel = new ArrayList();
+        {
+            #region Initializaing Values
+            ArrayList arrLabel = new ArrayList();
 
 			ArrayList arrLabel1 = new ArrayList();
 			ArrayList arrLabel2 = new ArrayList();
@@ -2484,9 +2490,9 @@ namespace Scheduler
 			{
 				arrLabel2.Add(s);
 				arrLabel3.Add(s);
-			}
-
-			//get the event data
+            }
+            #endregion
+            //get the event data
 			/*
             if (eventid[0] > 0)
 				LoadEvent(eventid[0], ref arrValue1);
@@ -2496,12 +2502,18 @@ namespace Scheduler
 				LoadEvent(eventid[2], ref arrValue3);
 
             */
-			nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, printDocument1);
+			//nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, printDocument1);
+            xnm = new DevNormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, printingSystem1);
 
+			//nm.PageNumber = 1;
+			//nm.RowCount = 0;
 
-			nm.PageNumber = 1;
-			nm.RowCount = 0;
-			if (printPreviewDialog1.ShowDialog() == DialogResult.OK) {}
+            xnm.PageNumber = 1;
+            xnm.RowCount = 0;
+            xnm.RTitle = "Program Information";
+            xnm.CreateDocument();
+            xnm.PrintingSystem.PreviewFormEx.ShowDialog();
+			//if (printPreviewDialog1.ShowDialog() == DialogResult.OK) {}
 		}
 
 		private NormalPrinting nm = null;
