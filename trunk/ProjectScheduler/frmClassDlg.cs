@@ -4154,6 +4154,7 @@ namespace Scheduler
 			//printDocument1.DefaultPageSettings = ps;
 		}
         DevExpressClassPrinting classPrinting;
+        DevNormalPrinting devNormalPrinting;
 		private void btnPrint_Click(object sender, System.EventArgs e)
         {
             #region Intializing Values to Lists
@@ -4268,21 +4269,24 @@ namespace Scheduler
             }
 
             #endregion
-            nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
+            //nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
+            devNormalPrinting = new DevNormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printingSystem);
+            devNormalPrinting.Label1ForeColor = label1.ForeColor;
+            //xtraPrinting = new DevExpressPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printingSystem);
 
-            xtraPrinting = new DevExpressPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printingSystem);
-
-            classPrinting = new DevExpressClassPrinting(printingSystem,arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4);
-
-			nm.PageNumber = 1;
-            xtraPrinting.PageNumber = 1;
-            xtraPrinting.RowCount = 0;
-			nm.RowCount = 0;
+            //classPrinting = new DevExpressClassPrinting(printingSystem,arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4);
+         //   nm.PageNumber = 1;
+			devNormalPrinting.PageNumber = 1;
+            //xtraPrinting.PageNumber = 1;
+            devNormalPrinting.RowCount = 0;
+			//nm.RowCount = 0;
             //xtraPrinting.
            //xtraPrinting.DrawClass
-            classPrinting.label1ForeColor = label1.ForeColor;
-            classPrinting.ShowPreview();
-           
+            //classPrinting.label1ForeColor = label1.ForeColor;
+            //classPrinting.ShowPreview();
+            devNormalPrinting.RTitle = "Class Information";
+            devNormalPrinting.CreateDocument();
+            devNormalPrinting.PrintingSystem.PreviewFormEx.ShowDialog();
            // PrintClassDetails();
             //printingSystem.
             //printingSystem.PreviewFormEx.Show();
@@ -4290,7 +4294,7 @@ namespace Scheduler
             //frm.MyPrintingSystem = printingSystem;
             //frm.Show();
             
-            //this.printPreviewDialog1.ShowDialog();
+           // this.printPreviewDialog1.ShowDialog();
 			//if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
 			{
 			}
