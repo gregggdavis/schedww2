@@ -2476,6 +2476,8 @@ namespace Scheduler
         */
         private bool LoadEvent(int _eventid, ref ArrayList arrEvent)
         {
+            //SaveEventData(ref _eventid);
+            
             if (_eventid == 0) return false;
             DataTable dtbl = null;
             DateTime dt1 = Convert.ToDateTime(null);
@@ -2540,7 +2542,7 @@ namespace Scheduler
 
                 arrEvent.Add(dr["Name"].ToString());
                 arrEvent.Add(dr["NamePhonetic"].ToString());
-                arrEvent.Add(dr["NamePhonetic"].ToString());
+                arrEvent.Add(dr["NameRomaji"].ToString());
 
                 arrEvent.Add(dt1.ToString());
                 arrEvent.Add(dt2.ToString());
@@ -4157,6 +4159,9 @@ namespace Scheduler
         DevNormalPrinting devNormalPrinting;
 		private void btnPrint_Click(object sender, System.EventArgs e)
         {
+            DoProcessCourseTabChanging(true);
+           // doSaveEvents(GetCurrentEventID((TabPage)pnlEvent.Parent));
+          //  SaveEventData(ref _eventid_Initial);
             #region Intializing Values to Lists
             ArrayList arrLabel = new ArrayList();
 
@@ -4217,9 +4222,9 @@ namespace Scheduler
 			arrValues.Add(txtNumberStudents.Text);
 			arrValues.Add(txtHomeWorkMinutes.Text);
 			
-			arrValues.Add(txtInitialEvent.Text);
-			arrValues.Add(txtMidtermEvent.Text);
-			arrValues.Add(txtFinalEvent.Text);
+			arrValues.Add(txtInitialForm.Text);
+			arrValues.Add(txtMidtermForm.Text);
+			arrValues.Add(txtFinalForm.Text);
 			
 			arrValues.Add("RICHTEXT");
 			arrValues.Add(txtDescription.Text);
@@ -4253,21 +4258,26 @@ namespace Scheduler
 			//get the event data
 			if(eventid[0]>0)
 			{
+                //SaveAllEvents(eventid[0]);
 				LoadEvent(eventid[0], ref arrValue1);
+
 			}
 			if(eventid[1]>0)
 			{
+                //SaveAllEvents(eventid[1]);
 				LoadEvent(eventid[1], ref arrValue2);
 			}
 			if(eventid[2]>0)
 			{
+                //SaveAllEvents(eventid[2]);
 				LoadEvent(eventid[2], ref arrValue3);
 			}
 			if(eventid[3]>0)
 			{
+                //SaveAllEvents(eventid[3]);
 				LoadEvent(eventid[3], ref arrValue4);
             }
-
+            
             #endregion
             //nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printDocument1);
             devNormalPrinting = new DevNormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, arrValue4, printingSystem);
@@ -4536,7 +4546,7 @@ namespace Scheduler
             bool Ok = false;
             if (_eventid > 0)
             {
-                DateTime dtOS = Convert.ToDateTime(StartDate);
+                 DateTime dtOS = Convert.ToDateTime(StartDate);
                 DateTime dtOE = Convert.ToDateTime(StartDate);
 
                 DateTime dtNS = Convert.ToDateTime(dtStart.Value.ToShortDateString() + " " + cmbStartTime.Text);
