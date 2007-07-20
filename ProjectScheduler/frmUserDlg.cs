@@ -2230,12 +2230,17 @@ namespace Scheduler
 			pnl.Tag = "User Information";
 			pnl.Width = tbcUser.Width;
 			pnl.Height = tbcUser.Height*3 + 20;
+            TextBox password = (TextBox)pnlLogin.Controls["txtPwd"];
+            Label lpass = (Label)pnlLogin.Controls["lblPassword"];
 
+            pnlLogin.Controls.Remove(password);
+            pnlLogin.Controls.Remove(lpass);
 			pnl.Controls.Add(pnlContact);
 			pnl.Controls.Add(pnlPersonal);
 			pnl.Controls.Add(pnlLogin);
 
-
+            
+           
 			pnlLogin.Dock = DockStyle.Top;
 			pnlPersonal.Dock = DockStyle.Top;
 			pnlContact.Dock = DockStyle.Top;
@@ -2253,8 +2258,9 @@ namespace Scheduler
 
 			tbpLogin.Controls.Add(pnlLogin);
 			tbpPersonal.Controls.Add(pnlPersonal);
+            pnlLogin.Controls.Add(password);
+            pnlLogin.Controls.Add(lpass);
 			tbpContact.Controls.Add(pnlContact);
-
 			pnl.Dispose();
 			pnl = null;
 		}

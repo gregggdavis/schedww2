@@ -79,6 +79,8 @@ namespace Scheduler.BusinessLayer
 			AddDelegateToPrintControl("System.Windows.Forms.ListBox", new ControlPrinting(PrintListBox));
 			AddDelegateToPrintControl("System.Windows.Forms.DataGrid", new ControlPrinting(PrintDataGrid));
             AddDelegateToPrintControl("DevExpress.XtraEditors.SpinEdit", new ControlPrinting(PrintTextBox));
+            AddDelegateToPrintControl("DevExpress.XtraGrid.GridControl", new ControlPrinting(PrintDataGrid));
+            
             
 		}
 
@@ -1067,86 +1069,184 @@ namespace Scheduler.BusinessLayer
         {
             ScanForChildControls = false;
 
-            DataGrid dg = (DataGrid)c;
-            Single extraHeight = 0;
-            Single extraHeightHeaderLine = 0;
-            Font printFont = new Font(dg.Font.Name, dg.Font.Size, FontStyle.Bold);
-            Single h = mp.FontHeight(printFont);
-
-            // Column header
-            DataGridTableStyle myGridTableStyle;
-            if (dg.TableStyles.Count == 0)
+            if (c is DevExpress.XtraGrid.GridControl)
             {
-                myGridTableStyle = new DataGridTableStyle();
-                dg.TableStyles.Add(myGridTableStyle);
-            }
+                DevExpress.XtraGrid.GridControl dg = (DevExpress.XtraGrid.GridControl)c;
+                Single extraHeight = 0;
+                Single extraHeightHeaderLine = 0;
+                
+                Font printFont = new Font(dg.Font.Name, dg.Font.Size, FontStyle.Bold);
+                Single h = mp.FontHeight(printFont);
 
-            // Header of each column
-            Single xPos = x;
-            Single yPos = y;
-            Single w;
-            extraHeightHeaderLine = mp.BeginPrintUnit(yPos, h + 1);  //Space required for header text
-            for (int i = 0; i < dg.TableStyles[0].GridColumnStyles.Count; i++)
-            {
-                string caption = dg.TableStyles[0].GridColumnStyles[i].HeaderText;
-                w = dg.TableStyles[0].GridColumnStyles[i].Width;
-                if (xPos + w > x + dg.Width)
-                    w = x + dg.Width - xPos;
-                if (xPos < x + dg.Width)
-                    mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
-                if (i == 0)  // Draw horizontal line below header
-                    mp.DrawLines(_Pen, x, yPos + h, x + dg.Width, yPos + h);
-                xPos += w;
-            }
-            mp.EndPrintUnit();
-            yPos += h + 1 + extraHeightHeaderLine;
+                // Column header
+                //DataGridTableStyle myGridTableStyle;
+                
+                //if (dg.Styles.Count == 0)
+                //{
+                    
+                //    myGridTableStyle = new DataGridTableStyle();
+                //    dg.TableStyles.Add(myGridTableStyle);
+                //}
 
-            // Get dataTable displayed in DataGrid
-            // This function only support DataGrid with DataTable as DataSource
-            // This is the only case I code to obtain data in DataGrid
-            DataTable dt = null;
-            if (dg.DataSource is System.Data.DataTable)
-                dt = (DataTable)dg.DataSource;
-            else
-                if ((dg.DataSource is System.Data.DataSet) && (dg.DataMember != null))
+                // Header of each column
+                Single xPos = x;
+                Single yPos = y;
+                Single w;
+                extraHeightHeaderLine = mp.BeginPrintUnit(yPos, h + 1);  //Space required for header text
+                DevExpress.XtraGrid.Views.Grid.GridView myview = null;
+                foreach (DevExpress.XtraGrid.Views.Grid.GridView view in dg.Views)
                 {
-                    DataSet ds = (DataSet)dg.DataSource;
-                    if (ds.Tables.Contains(dg.DataMember))
-                        dt = ds.Tables[dg.DataMember];
+                    myview = view;
                 }
-
-            // Loop on DataRow, with embed loop on columns
-            if (dt != null)
-                foreach (DataRow dr in dt.Rows)
+                int ix = 0;
+                foreach(DevExpress.XtraGrid.Columns.GridColumn col in myview.Columns)
                 {
-                    extraHeight = mp.BeginPrintUnit(yPos, h);  //Space required for header text
-                    xPos = x;
-                    for (int i = 0; i < dg.TableStyles[0].GridColumnStyles.Count; i++)
+                    string caption = col.Caption;
+                    w = col.Width;
+                    if (xPos + w > x + dg.Width)
+                        w = x + dg.Width - xPos;
+                    if (xPos < x + dg.Width)
+                        mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
+                    if (ix == 0)  // Draw horizontal line below header
+                        mp.DrawLines(_Pen, x, yPos + h, x + dg.Width, yPos + h);
+                    xPos += w;
+                    ix++;
+                }
+                
+                mp.EndPrintUnit();
+                yPos += h + 1 + extraHeightHeaderLine;
+
+                // Get dataTable displayed in DataGrid
+                // This function only support DataGrid with DataTable as DataSource
+                // This is the only case I code to obtain data in DataGrid
+                DataTable dt = null;
+                if (dg.DataSource is System.Data.DataTable)
+                    dt = (DataTable)dg.DataSource;
+                else
+                    if ((dg.DataSource is System.Data.DataSet) && (dg.DataMember != null))
                     {
-                        string caption = dr[i].ToString();
-                        w = dg.TableStyles[0].GridColumnStyles[i].Width;
-                        if (xPos + w > x + dg.Width)
-                            w = x + dg.Width - xPos;
-                        if (xPos < x + dg.Width)
-                            mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
-                        xPos += w;
-                    };
-                    mp.EndPrintUnit();
-                    yPos += h + extraHeight;
+                        DataSet ds = (DataSet)dg.DataSource;
+                        if (ds.Tables.Contains(dg.DataMember))
+                            dt = ds.Tables[dg.DataMember];
+                    }
+
+                // Loop on DataRow, with embed loop on columns
+                if (dt != null)
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        extraHeight = mp.BeginPrintUnit(yPos, h);  //Space required for header text
+                        xPos = x;
+                        int i = 0;
+                        foreach (DevExpress.XtraGrid.Columns.GridColumn col in myview.Columns)
+                        {
+                            string caption = dr[i].ToString();
+                            w = col.Width;
+                            if (xPos + w > x + dg.Width)
+                                w = x + dg.Width - xPos;
+                            if (xPos < x + dg.Width)
+                                mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
+                            xPos += w;
+                            i++;
+                        };
+                        mp.EndPrintUnit();
+                        yPos += h + extraHeight;
+                    }
+
+                // Draw horizontal line at the bottom of DataGrid
+                if (yPos < y + dg.Height + extraHeightHeaderLine)
+                    yPos = y + dg.Height + extraHeightHeaderLine;
+                mp.BeginPrintUnit(yPos, 1);
+                mp.DrawLines(_Pen, x, yPos, x + dg.Width, yPos);
+                mp.EndPrintUnit();
+
+                // Finally, Compute extendedHeight
+                if ((yPos - y) > dg.Height)
+                    extendedHeight = (yPos - y) - dg.Height;
+            }
+            else
+            {
+                DataGrid dg = (DataGrid)c;
+                Single extraHeight = 0;
+                Single extraHeightHeaderLine = 0;
+                Font printFont = new Font(dg.Font.Name, dg.Font.Size, FontStyle.Bold);
+                Single h = mp.FontHeight(printFont);
+
+                // Column header
+                DataGridTableStyle myGridTableStyle;
+                if (dg.TableStyles.Count == 0)
+                {
+                    myGridTableStyle = new DataGridTableStyle();
+                    dg.TableStyles.Add(myGridTableStyle);
                 }
 
-            // Draw horizontal line at the bottom of DataGrid
-            if (yPos < y + dg.Height + extraHeightHeaderLine)
-                yPos = y + dg.Height + extraHeightHeaderLine;
-            mp.BeginPrintUnit(yPos, 1);
-            mp.DrawLines(_Pen, x, yPos, x + dg.Width, yPos);
-            mp.EndPrintUnit();
+                // Header of each column
+                Single xPos = x;
+                Single yPos = y;
+                Single w;
+                extraHeightHeaderLine = mp.BeginPrintUnit(yPos, h + 1);  //Space required for header text
+                for (int i = 0; i < dg.TableStyles[0].GridColumnStyles.Count; i++)
+                {
+                    string caption = dg.TableStyles[0].GridColumnStyles[i].HeaderText;
+                    w = dg.TableStyles[0].GridColumnStyles[i].Width;
+                    if (xPos + w > x + dg.Width)
+                        w = x + dg.Width - xPos;
+                    if (xPos < x + dg.Width)
+                        mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
+                    if (i == 0)  // Draw horizontal line below header
+                        mp.DrawLines(_Pen, x, yPos + h, x + dg.Width, yPos + h);
+                    xPos += w;
+                }
+                mp.EndPrintUnit();
+                yPos += h + 1 + extraHeightHeaderLine;
 
-            // Finally, Compute extendedHeight
-            if ((yPos - y) > dg.Height)
-                extendedHeight = (yPos - y) - dg.Height;
+                // Get dataTable displayed in DataGrid
+                // This function only support DataGrid with DataTable as DataSource
+                // This is the only case I code to obtain data in DataGrid
+                DataTable dt = null;
+                if (dg.DataSource is System.Data.DataTable)
+                    dt = (DataTable)dg.DataSource;
+                else
+                    if ((dg.DataSource is System.Data.DataSet) && (dg.DataMember != null))
+                    {
+                        DataSet ds = (DataSet)dg.DataSource;
+                        if (ds.Tables.Contains(dg.DataMember))
+                            dt = ds.Tables[dg.DataMember];
+                    }
+
+                // Loop on DataRow, with embed loop on columns
+                if (dt != null)
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        extraHeight = mp.BeginPrintUnit(yPos, h);  //Space required for header text
+                        xPos = x;
+                        for (int i = 0; i < dg.TableStyles[0].GridColumnStyles.Count; i++)
+                        {
+                            string caption = dr[i].ToString();
+                            w = dg.TableStyles[0].GridColumnStyles[i].Width;
+                            if (xPos + w > x + dg.Width)
+                                w = x + dg.Width - xPos;
+                            if (xPos < x + dg.Width)
+                                mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
+                            xPos += w;
+                        };
+                        mp.EndPrintUnit();
+                        yPos += h + extraHeight;
+                    }
+
+                // Draw horizontal line at the bottom of DataGrid
+                if (yPos < y + dg.Height + extraHeightHeaderLine)
+                    yPos = y + dg.Height + extraHeightHeaderLine;
+                mp.BeginPrintUnit(yPos, 1);
+                mp.DrawLines(_Pen, x, yPos, x + dg.Width, yPos);
+                mp.EndPrintUnit();
+
+                // Finally, Compute extendedHeight
+                if ((yPos - y) > dg.Height)
+                    extendedHeight = (yPos - y) - dg.Height;
+            }
         }
 
+        #region old code
         //		public void PrintFlexGrid(System.Windows.Forms.Control c,
         //			ParentControlPrinting typePrint, 
         //			MultiPageManagement mp, 
@@ -1207,7 +1307,7 @@ namespace Scheduler.BusinessLayer
         //			return sf;
         //		}
 
-
+        #endregion
         #endregion
 
         #region "Multi page class"

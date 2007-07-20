@@ -138,6 +138,7 @@ namespace Scheduler
         private PrintDocument printDocument1;
         private Button btnImportClientAddress;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
+        private Panel pnlContact;
 		private IContainer components;
 		#endregion Controls
 
@@ -304,6 +305,7 @@ namespace Scheduler
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.pnlContact = new System.Windows.Forms.Panel();
             this.tbcDepartment.SuspendLayout();
             this.tbpDeptInfo.SuspendLayout();
             this.pnlDeptInfo.SuspendLayout();
@@ -312,11 +314,11 @@ namespace Scheduler
             this.pnlAddress.SuspendLayout();
             this.tbpContact.SuspendLayout();
             this.pnlBottom.SuspendLayout();
-            this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            this.pnlContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -1235,6 +1237,7 @@ namespace Scheduler
             // 
             // tbpContact
             // 
+            this.tbpContact.Controls.Add(this.pnlContact);
             this.tbpContact.Controls.Add(this.pnlBottom);
             this.tbpContact.Controls.Add(this.pnlBody);
             this.tbpContact.Location = new System.Drawing.Point(4, 22);
@@ -1297,11 +1300,9 @@ namespace Scheduler
             // 
             // pnlBody
             // 
-            this.pnlBody.Controls.Add(this.grdContact);
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Location = new System.Drawing.Point(0, 142);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(640, 484);
+            this.pnlBody.Size = new System.Drawing.Size(446, 342);
             this.pnlBody.TabIndex = 0;
             // 
             // grdContact
@@ -1312,7 +1313,7 @@ namespace Scheduler
             this.grdContact.Location = new System.Drawing.Point(0, 0);
             this.grdContact.MainView = this.gvwContact;
             this.grdContact.Name = "grdContact";
-            this.grdContact.Size = new System.Drawing.Size(640, 484);
+            this.grdContact.Size = new System.Drawing.Size(640, 436);
             this.grdContact.TabIndex = 27;
             this.grdContact.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwContact});
@@ -1503,6 +1504,15 @@ namespace Scheduler
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // pnlContact
+            // 
+            this.pnlContact.Controls.Add(this.grdContact);
+            this.pnlContact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContact.Location = new System.Drawing.Point(0, 0);
+            this.pnlContact.Name = "pnlContact";
+            this.pnlContact.Size = new System.Drawing.Size(640, 436);
+            this.pnlContact.TabIndex = 2;
+            // 
             // frmDepartmentDlg
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -1535,11 +1545,11 @@ namespace Scheduler
             this.pnlAddress.PerformLayout();
             this.tbpContact.ResumeLayout(false);
             this.pnlBottom.ResumeLayout(false);
-            this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            this.pnlContact.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -2315,10 +2325,11 @@ namespace Scheduler
             pnl.Font = new Font("Arial", 8F, GraphicsUnit.Point);
 			pnl.Width = tbcDepartment.Width;
 			pnl.Height = tbcDepartment.Height*2+20;
-
+            pnl.Controls.Add(pnlContact);
 			pnl.Controls.Add(pnlAddress);
+            
 			pnl.Controls.Add(pnlDeptInfo);
-
+            
             //Resize for print-outs
             pnlDeptInfo.Height = 185;
 			pnlDeptInfo.Dock = DockStyle.Top;
@@ -2334,6 +2345,7 @@ namespace Scheduler
 
 			tbpDeptInfo.Controls.Add(pnlDeptInfo);
 			tbpAddress.Controls.Add(pnlAddress);
+            tbpContact.Controls.Add(pnlContact);
             //Back to original values so the panel displays fine on the UI
             pnlDeptInfo.Height = 484;
             pnlDeptInfo.Dock = DockStyle.Fill;
