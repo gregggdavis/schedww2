@@ -425,9 +425,14 @@ namespace Scheduler.BusinessLayer
             float fontHeight = mp.FontHeight(printFont);
             Pen pen = new Pen(Color.Black, 2);
             extendedHeight = fontHeight + 3 + pen.Width + 1;
+            BrickGraphics test = ps.Graph;
+            test.Font = printFont;
 
+            SizeF size = test.MeasureString(c.Tag.ToString());
             mp.BeginPrintUnit(y, extendedHeight);
-            mp.DrawString(c.Tag.ToString(), printFont, Color.Black, 0, y, c.Width, fontHeight + 4);
+            int xy = (int)ps.PageSettings.UsablePageSize.Width / 2;
+            xy = xy - Convert.ToInt32(size.Width / 2);
+            mp.DrawString(c.Tag.ToString(), printFont, Color.Black, xy, y, c.Width, fontHeight + 4);
             y += fontHeight + 10;
             mp.DrawLines(pen,0, y, ps.PageSettings.UsablePageRect.Width - 30, y);
             mp.EndPrintUnit();

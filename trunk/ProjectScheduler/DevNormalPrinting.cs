@@ -802,7 +802,11 @@ namespace Scheduler
             Font _font =
                 new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
             //g.DrawString("Class Information", _font, new SolidBrush(label1.ForeColor), 20, 40, new StringFormat());
-            this.DrawString(RTitle, _font, Label1ForeColor, 20, 40, TextWidth, TextHeight, new StringFormat(), graph);
+            graph.Font = _font;
+            SizeF size = graph.MeasureString(RTitle);
+            int x = PageWidth / 2;
+            x = x - Convert.ToInt32(size.Width / 2);
+            this.DrawString(RTitle, _font, Label1ForeColor, x, 40, TextWidth, TextHeight, new StringFormat(), graph);
         }
         public override void CreateDocument()
         {
