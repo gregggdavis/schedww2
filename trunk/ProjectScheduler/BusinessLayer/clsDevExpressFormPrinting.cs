@@ -1101,6 +1101,8 @@ namespace Scheduler.BusinessLayer
                 int ix = 0;
                 foreach(DevExpress.XtraGrid.Columns.GridColumn col in myview.Columns)
                 {
+                    if (col.VisibleIndex == -1)
+                        continue;
                     string caption = col.Caption;
                     w = col.Width;
                     if (xPos + w > x + dg.Width)
@@ -1136,17 +1138,27 @@ namespace Scheduler.BusinessLayer
                     {
                         extraHeight = mp.BeginPrintUnit(yPos, h);  //Space required for header text
                         xPos = x;
-                        int i = 0;
+                        int i = -1;
                         foreach (DevExpress.XtraGrid.Columns.GridColumn col in myview.Columns)
                         {
-                            string caption = dr[i].ToString();
-                            w = col.Width;
-                            if (xPos + w > x + dg.Width)
-                                w = x + dg.Width - xPos;
-                            if (xPos < x + dg.Width)
-                                mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
-                            xPos += w;
                             i++;
+                            if (col.VisibleIndex == -1)
+                            {
+                                //i++;
+                                continue;
+                                
+                            }
+                            else
+                            {
+                                string caption = dr[col.FieldName].ToString();
+                                w = col.Width;
+                                if (xPos + w > x + dg.Width)
+                                    w = x + dg.Width - xPos;
+                                if (xPos < x + dg.Width)
+                                    mp.DrawString(caption, printFont, _Brush, xPos, yPos, w, h);
+                                xPos += w;
+                                //i++;
+                            }
                         };
                         mp.EndPrintUnit();
                         yPos += h + extraHeight;
