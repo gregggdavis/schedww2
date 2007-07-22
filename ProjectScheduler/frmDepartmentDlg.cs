@@ -2327,7 +2327,8 @@ namespace Scheduler
 			pnl.Height = tbcDepartment.Height*2+20;
             pnl.Controls.Add(pnlContact);
 			pnl.Controls.Add(pnlAddress);
-            
+
+            pnlDeptInfo.Controls.Remove(chkNoDept);
 			pnl.Controls.Add(pnlDeptInfo);
             
             //Resize for print-outs
@@ -2342,7 +2343,7 @@ namespace Scheduler
 			// Print!
             //fp.Print();
 			xfp.Print();
-
+            pnlDeptInfo.Controls.Add(chkNoDept);
 			tbpDeptInfo.Controls.Add(pnlDeptInfo);
 			tbpAddress.Controls.Add(pnlAddress);
             tbpContact.Controls.Add(pnlContact);
