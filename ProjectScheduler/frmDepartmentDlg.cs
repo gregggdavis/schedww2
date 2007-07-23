@@ -277,12 +277,7 @@ namespace Scheduler
             this.lblAddressHeader = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.tbpContact = new System.Windows.Forms.TabPage();
-            this.pnlBottom = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.pnlBody = new System.Windows.Forms.Panel();
+            this.pnlContact = new System.Windows.Forms.Panel();
             this.grdContact = new DevExpress.XtraGrid.GridControl();
             this.persistentRepository1 = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -299,13 +294,18 @@ namespace Scheduler
             this.gcolMobile = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolStatusID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.pnlBottom = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.pnlBody = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnPageSetup = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.pnlContact = new System.Windows.Forms.Panel();
             this.tbcDepartment.SuspendLayout();
             this.tbpDeptInfo.SuspendLayout();
             this.pnlDeptInfo.SuspendLayout();
@@ -313,12 +313,12 @@ namespace Scheduler
             this.tbpAddress.SuspendLayout();
             this.pnlAddress.SuspendLayout();
             this.tbpContact.SuspendLayout();
-            this.pnlBottom.SuspendLayout();
+            this.pnlContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).BeginInit();
+            this.pnlBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            this.pnlContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -442,7 +442,7 @@ namespace Scheduler
             // 
             // llblClient
             // 
-            this.llblClient.Location = new System.Drawing.Point(27, 33);
+            this.llblClient.Location = new System.Drawing.Point(24, 34);
             this.llblClient.Name = "llblClient";
             this.llblClient.Size = new System.Drawing.Size(104, 17);
             this.llblClient.TabIndex = 3;
@@ -1246,64 +1246,14 @@ namespace Scheduler
             this.tbpContact.TabIndex = 2;
             this.tbpContact.Text = "Contact";
             // 
-            // pnlBottom
+            // pnlContact
             // 
-            this.pnlBottom.Controls.Add(this.button1);
-            this.pnlBottom.Controls.Add(this.btnDel);
-            this.pnlBottom.Controls.Add(this.btnEdit);
-            this.pnlBottom.Controls.Add(this.btnAdd);
-            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 436);
-            this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(640, 48);
-            this.pnlBottom.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(279, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Print";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDel.Location = new System.Drawing.Point(178, 13);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 23);
-            this.btnDel.TabIndex = 19;
-            this.btnDel.Text = "Delete";
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnEdit.Location = new System.Drawing.Point(98, 13);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 18;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAdd.Location = new System.Drawing.Point(16, 13);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // pnlBody
-            // 
-            this.pnlBody.Location = new System.Drawing.Point(0, 142);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(446, 342);
-            this.pnlBody.TabIndex = 0;
+            this.pnlContact.Controls.Add(this.grdContact);
+            this.pnlContact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContact.Location = new System.Drawing.Point(0, 0);
+            this.pnlContact.Name = "pnlContact";
+            this.pnlContact.Size = new System.Drawing.Size(640, 436);
+            this.pnlContact.TabIndex = 2;
             // 
             // grdContact
             // 
@@ -1459,6 +1409,65 @@ namespace Scheduler
             this.gcolStatus.VisibleIndex = 5;
             this.gcolStatus.Width = 80;
             // 
+            // pnlBottom
+            // 
+            this.pnlBottom.Controls.Add(this.button1);
+            this.pnlBottom.Controls.Add(this.btnDel);
+            this.pnlBottom.Controls.Add(this.btnEdit);
+            this.pnlBottom.Controls.Add(this.btnAdd);
+            this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBottom.Location = new System.Drawing.Point(0, 436);
+            this.pnlBottom.Name = "pnlBottom";
+            this.pnlBottom.Size = new System.Drawing.Size(640, 48);
+            this.pnlBottom.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button1.Location = new System.Drawing.Point(279, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Print";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnDel.Location = new System.Drawing.Point(178, 13);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
+            this.btnDel.TabIndex = 19;
+            this.btnDel.Text = "Delete";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnEdit.Location = new System.Drawing.Point(98, 13);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 18;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAdd.Location = new System.Drawing.Point(16, 13);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 17;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Location = new System.Drawing.Point(0, 142);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(446, 342);
+            this.pnlBody.TabIndex = 0;
+            // 
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -1504,15 +1513,6 @@ namespace Scheduler
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // pnlContact
-            // 
-            this.pnlContact.Controls.Add(this.grdContact);
-            this.pnlContact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContact.Location = new System.Drawing.Point(0, 0);
-            this.pnlContact.Name = "pnlContact";
-            this.pnlContact.Size = new System.Drawing.Size(640, 436);
-            this.pnlContact.TabIndex = 2;
-            // 
             // frmDepartmentDlg
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -1544,12 +1544,12 @@ namespace Scheduler
             this.pnlAddress.ResumeLayout(false);
             this.pnlAddress.PerformLayout();
             this.tbpContact.ResumeLayout(false);
-            this.pnlBottom.ResumeLayout(false);
+            this.pnlContact.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdContact)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwContact)).EndInit();
+            this.pnlBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            this.pnlContact.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
