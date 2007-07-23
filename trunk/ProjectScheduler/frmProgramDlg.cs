@@ -2434,10 +2434,10 @@ namespace Scheduler
 			arrValues.Add("------");
 			arrValues.Add(llblInitialEvt.Text);
 			arrValues.Add(txtInitialEvent.Text);
-			arrValues.Add(llblMidEvt.Text);
-			arrValues.Add(txtMidtermEvent.Text);
-			arrValues.Add(llblFinalEvt.Text);
-			arrValues.Add(txtFinalEvent.Text);
+			arrValues.Add(txtEvaluationMidtermForm.Text);
+			arrValues.Add(txtEvaluationFinalForm.Text);
+			arrValues.Add(txtQuestionaireMidtermForm.Text);
+			arrValues.Add(txtQuestionaireFinalForm.Text);
 			arrValues.Add("------");
 
 			string sReportAttendance = string.Empty;

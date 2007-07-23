@@ -70,6 +70,7 @@ namespace Scheduler.BusinessLayer
 
 			AddDelegateToPrintControl("TextBox", new ControlPrinting(PrintTextBox));
 			AddDelegateToPrintControl("System.Windows.Forms.Label", new ControlPrinting(PrintLabel));
+            AddDelegateToPrintControl("System.Windows.Forms.LinkLabel", new ControlPrinting(PrintLabel));
 			AddDelegateToPrintControl("System.Windows.Forms.CheckBox", new ControlPrinting(PrintCheckBox));
 			//AddDelegateToPrintControl("System.Windows.Forms.RadioButton", new ControlPrinting(PrintRadioButton));
 			AddDelegateToPrintControl("System.Windows.Forms.GroupBox", new ControlPrinting(PrintGroupBox));
@@ -838,7 +839,11 @@ namespace Scheduler.BusinessLayer
             // Convert ContentAlignment (property of labels) to HorizontalAlignment (Left, center, Right)
             HorizontalAlignment ha;
             string ss = c.Text;
-            ContentAlignment ha2 = ((Label)c).TextAlign;
+            ContentAlignment ha2 ;
+            if (c is System.Windows.Forms.LinkLabel)
+                ha2 = ((LinkLabel)c).TextAlign;
+            else
+                ha2 = ((Label)c).TextAlign;
             switch (ha2)
             {
                 case ContentAlignment.BottomLeft:
