@@ -2000,7 +2000,7 @@ namespace Scheduler
 
 		private void cmbStatus_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			if(_mode=="Edit")
+			//if(_mode=="Edit")
 			{
 				if(cmbStatus.SelectedIndex==1)
 				{
