@@ -2433,11 +2433,11 @@ namespace Scheduler
 			arrValues.Add(cmbStatus.Text);
 			arrValues.Add("------");
 			arrValues.Add(llblInitialEvt.Text);
-			arrValues.Add(txtInitialEvent.Text);
-			arrValues.Add(txtEvaluationMidtermForm.Text);
-			arrValues.Add(txtEvaluationFinalForm.Text);
-			arrValues.Add(txtQuestionaireMidtermForm.Text);
-			arrValues.Add(txtQuestionaireFinalForm.Text);
+			arrValues.Add(txtInitialForm.Text);
+			arrValues.Add(llblMidEvt.Text);
+			arrValues.Add(txtMidtermForm.Text);
+			arrValues.Add(llblFinalEvt.Text);
+			arrValues.Add(txtFinalForm.Text);
 			arrValues.Add("------");
 
 			string sReportAttendance = string.Empty;
