@@ -860,7 +860,7 @@ namespace Scheduler.BusinessLayer
 						ChildControl = cbx_temp;
 					}
 
-					MakeEnabled(ChildControl,true);
+					MakeEnabled(ChildControl,false);
 				}
 			}
 		}
