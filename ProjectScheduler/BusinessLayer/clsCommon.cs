@@ -676,6 +676,12 @@ namespace Scheduler.BusinessLayer
 						cbx_temp.Enabled = false;
 						ParentControl = cbx_temp;
 					}
+                    if (strControlType == "RadioButton")
+                    {
+                        RadioButton cbx_temp = ParentControl as RadioButton;
+                        cbx_temp.Enabled = false;
+                        ParentControl = cbx_temp;
+                    }
 				}
 
 				return;
@@ -735,7 +741,12 @@ namespace Scheduler.BusinessLayer
 						cbx_temp.Enabled = false;
 						ChildControl = cbx_temp;
 					}
-
+                    if (strControlType == "RadioButton")
+                    {
+                        RadioButton cbx_temp = ChildControl as RadioButton;
+                        cbx_temp.Enabled = false;
+                        ChildControl = cbx_temp;
+                    }
 					MakeReadOnly(ChildControl,false);
 				}
 			}
@@ -800,6 +811,12 @@ namespace Scheduler.BusinessLayer
 						cbx_temp.Enabled = true;
 						ParentControl = cbx_temp;
 					}
+                    if (strControlType == "RadioButton")
+                    {
+                        RadioButton cbx_temp = ParentControl as RadioButton;
+                        cbx_temp.Enabled = true;
+                        ParentControl = cbx_temp;
+                    }
 				}
 
 				return;
@@ -859,7 +876,12 @@ namespace Scheduler.BusinessLayer
 						cbx_temp.Enabled = true;
 						ChildControl = cbx_temp;
 					}
-
+                    if (strControlType == "RadioButton")
+                    {
+                        RadioButton cbx_temp = ChildControl as RadioButton;
+                        cbx_temp.Enabled = true;
+                        ChildControl = cbx_temp;
+                    }
 					MakeEnabled(ChildControl,false);
 				}
 			}

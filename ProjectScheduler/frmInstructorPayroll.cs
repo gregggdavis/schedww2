@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-
+using DevExpress.XtraPrinting;
 namespace Scheduler
 {
     public partial class frmInstructorPayroll : DevExpress.XtraEditors.XtraForm
@@ -95,12 +95,14 @@ namespace Scheduler
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Helpers.MainFunctionHelper.Print(Scheduler.Helpers.MainFunctionHelper.ViewDisplayed.SimpleView, gridControl1);
+            //Helpers.MainFunctionHelper.Print(Scheduler.Helpers.MainFunctionHelper.ViewDisplayed.SimpleView, gridControl1);
+            PrintGrid(gridControl1, false);
         }
 
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Helpers.MainFunctionHelper.PrintPreview(Scheduler.Helpers.MainFunctionHelper.ViewDisplayed.SimpleView, gridControl1);
+            //Helpers.MainFunctionHelper.PrintPreview(Scheduler.Helpers.MainFunctionHelper.ViewDisplayed.SimpleView, gridControl1);
+            PrintGrid(gridControl1, true);
         }
 
         private void exportToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -167,6 +169,88 @@ namespace Scheduler
         {
             dateEditEndDate.Enabled = checkEdit2.Checked;
             
+        }
+
+        public void PrintGrid(DevExpress.XtraGrid.GridControl gc, bool printPreview)
+        {
+            //GridView gvwContact = (GridView) gc.DefaultView;
+            // string strHeader = strMenuOption;
+            //strHeader = strHeader.Remove(strHeader.Length - 3, 3);
+            //strHeader += " Information";
+            PageHeaderFooter phf = new PageHeaderFooter();
+            phf.Header.Font = new Font("Arial", 15, FontStyle.Bold, GraphicsUnit.Point);
+            string str = "";
+            phf.Header.LineAlignment = BrickAlignment.Near;
+            str = "Pay Details By Instructor";
+            // str.AppendFormat(Environment.NewLine);
+            //Page header = phf.Header;
+            phf.Header.Content.Add(str);
+            // str.AppendFormat("Date Generated: {0}", System.DateTime.Today.ToShortDateString());
+            //str.AppendFormat(Environment.NewLine);
+            if (checkEdit1.Checked && checkEdit2.Checked)
+                str = dateEditStartDate.DateTime.ToShortDateString() + " - " + dateEditEndDate.DateTime.ToShortDateString();
+            else if (checkEdit1.Checked && !checkEdit2.Checked)
+            {
+                str = dateEditStartDate.DateTime.ToLongDateString() + " - Unlimited";
+            }
+            else if (!checkEdit1.Checked && checkEdit2.Checked)
+            {
+                str = "Unlimited - " + dateEditEndDate.DateTime.ToShortDateString();
+            }
+            else
+            {
+                str = "";
+                //str.AppendFormat("From: Not Filtered To: Not Filtered");
+            }
+            phf.Header.LineAlignment = BrickAlignment.Center;
+            phf.Header.Content.Add(str);
+            phf.Footer.LineAlignment = BrickAlignment.Near;
+            phf.Footer.Content.Add("");
+            phf.Footer.LineAlignment = BrickAlignment.Center;
+            phf.Footer.Content.Add("");
+            phf.Footer.LineAlignment = BrickAlignment.Far;
+            String footer = "Date Generated: " + System.DateTime.Today.ToShortDateString();
+            phf.Footer.Content.Add(footer);
+            phf.Footer.LineAlignment = BrickAlignment.Far;
+
+            PrintableComponentLink _link = new PrintableComponentLink(new PrintingSystem());
+            _link.Component = gc;
+            _link.Landscape = true;
+            _link.PageHeaderFooter = phf;
+            _link.PaperKind = System.Drawing.Printing.PaperKind.A4;
+            _link.Margins.Top = 60;
+            _link.Margins.Bottom = 60;
+            if (printPreview)
+                _link.ShowPreviewDialog();
+            else
+                _link.PrintDlg();
+
+            /*
+            PrinterSettings settings = printDocument1.PrinterSettings;
+            //Set PageSize to 'A4'
+            bool found=false;
+            foreach (PaperSize size in settings.PaperSizes)
+            {
+                if (size.PaperName == "A4, 210x297 mm")
+                    found = true;
+                if (found)
+                {
+                    settings.DefaultPageSettings.PaperSize = size;
+                    break;
+                }
+                else continue;
+            }
+
+			printDocument1.DefaultPageSettings.Landscape = true;
+            printDocument1.DefaultPageSettings.Margins = new Margins(50, 50, 15, 50);
+            //printDocument1.DefaultPageSettings.PaperSize = new PaperSize("A4, 210x297 mm", 827, 1169);
+            
+			dataGridPrinter1 = new GridViewPrinter(gc, printDocument1, gvwContact);
+			dataGridPrinter1.PageNumber = 1;
+			dataGridPrinter1.RowCount = 0;
+			if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+			{
+			}*/
         }
     }
 }

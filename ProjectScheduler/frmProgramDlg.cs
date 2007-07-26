@@ -82,7 +82,7 @@ namespace Scheduler
 		private ComboBox cmbClient;
 		private TextBox txtNickName;
 		private Label lblNickName;
-		private Label label15;
+		private Label lblReportAttendance;
 		private RadioButton rbtnNone;
 		private RadioButton rbtnWeekly;
 		private RadioButton rbtnMonthly;
@@ -347,7 +347,7 @@ namespace Scheduler
             this.rbtnMonthly = new System.Windows.Forms.RadioButton();
             this.rbtnWeekly = new System.Windows.Forms.RadioButton();
             this.rbtnNone = new System.Windows.Forms.RadioButton();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblReportAttendance = new System.Windows.Forms.Label();
             this.txtNickName = new System.Windows.Forms.TextBox();
             this.lblNickName = new System.Windows.Forms.Label();
             this.lblContact2 = new System.Windows.Forms.Label();
@@ -475,7 +475,7 @@ namespace Scheduler
             this.tbpCourse.Controls.Add(this.rbtnMonthly);
             this.tbpCourse.Controls.Add(this.rbtnWeekly);
             this.tbpCourse.Controls.Add(this.rbtnNone);
-            this.tbpCourse.Controls.Add(this.label15);
+            this.tbpCourse.Controls.Add(this.lblReportAttendance);
             this.tbpCourse.Controls.Add(this.txtNickName);
             this.tbpCourse.Controls.Add(this.lblNickName);
             this.tbpCourse.Controls.Add(this.lblContact2);
@@ -576,7 +576,7 @@ namespace Scheduler
             // rbtnEnd
             // 
             this.rbtnEnd.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnEnd.Location = new System.Drawing.Point(481, 448);
+            this.rbtnEnd.Location = new System.Drawing.Point(483, 445);
             this.rbtnEnd.Name = "rbtnEnd";
             this.rbtnEnd.Size = new System.Drawing.Size(53, 16);
             this.rbtnEnd.TabIndex = 18;
@@ -586,7 +586,7 @@ namespace Scheduler
             // 
             this.rbtnMonthly.Checked = true;
             this.rbtnMonthly.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnMonthly.Location = new System.Drawing.Point(389, 448);
+            this.rbtnMonthly.Location = new System.Drawing.Point(391, 445);
             this.rbtnMonthly.Name = "rbtnMonthly";
             this.rbtnMonthly.Size = new System.Drawing.Size(64, 16);
             this.rbtnMonthly.TabIndex = 17;
@@ -596,7 +596,7 @@ namespace Scheduler
             // rbtnWeekly
             // 
             this.rbtnWeekly.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnWeekly.Location = new System.Drawing.Point(297, 448);
+            this.rbtnWeekly.Location = new System.Drawing.Point(299, 445);
             this.rbtnWeekly.Name = "rbtnWeekly";
             this.rbtnWeekly.Size = new System.Drawing.Size(64, 16);
             this.rbtnWeekly.TabIndex = 16;
@@ -605,20 +605,20 @@ namespace Scheduler
             // rbtnNone
             // 
             this.rbtnNone.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnNone.Location = new System.Drawing.Point(216, 448);
+            this.rbtnNone.Location = new System.Drawing.Point(218, 445);
             this.rbtnNone.Name = "rbtnNone";
             this.rbtnNone.Size = new System.Drawing.Size(53, 16);
             this.rbtnNone.TabIndex = 15;
             this.rbtnNone.Text = "None";
             // 
-            // label15
+            // lblReportAttendance
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(48, 448);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(99, 13);
-            this.label15.TabIndex = 341;
-            this.label15.Text = "Report Attendance";
+            this.lblReportAttendance.AutoSize = true;
+            this.lblReportAttendance.Location = new System.Drawing.Point(50, 445);
+            this.lblReportAttendance.Name = "lblReportAttendance";
+            this.lblReportAttendance.Size = new System.Drawing.Size(99, 13);
+            this.lblReportAttendance.TabIndex = 341;
+            this.lblReportAttendance.Text = "Report Attendance";
             // 
             // txtNickName
             // 

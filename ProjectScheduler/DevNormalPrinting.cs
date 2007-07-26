@@ -37,7 +37,7 @@ namespace Scheduler
         int TopMargin;
         int BottomMargin;
 
-        int TextWidth = 200;
+        int TextWidth = 300;
         int TextHeight = 100;
         public Color Label1ForeColor = Color.Black;
         public string RTitle = "";

@@ -1395,8 +1395,12 @@ namespace Scheduler
 				GridControl gc = (GridControl) c;
                 if (strMenuOption == "Transportation Expenses...")
                     fTransportationExpenses.PrintGrid(gc, true);
+                else if (strMenuOption == "Payroll By Instructor...")
+                    fpayrollByInstructor.PrintGrid(gc, true);
+                else if (strMenuOption == "Pay Details By Instructor...")
+                    fpayment.PrintGrid(gc, true);
                 else
-    				PrintGrid(gc);
+                    PrintGrid(gc);
 			}
 		}
         
