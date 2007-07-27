@@ -2243,7 +2243,7 @@ namespace Scheduler
 
 					intDepartmentID = Common.GetCompanyID(
 						"Select D.DepartmentID, C.ContactID From Department D, Contact C " +
-						"Where D.ContactID=C.ContactID and (C.CompanyName=@CompanyName OR C.NickName=@CompanyName) ", cmbDept.Text
+						"Where D.ContactID=C.ContactID and (C.CompanyName=@CompanyName OR C.NickName=@CompanyName) and D.ClientID = '" + intClientID + "' ", cmbDept.Text
 						);
 
                     if (intDepartmentID != 0)
