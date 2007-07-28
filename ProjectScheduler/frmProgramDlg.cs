@@ -2381,6 +2381,8 @@ namespace Scheduler
         DevNormalPrinting xnm = null;
 		private void btnPrint_Click(object sender, EventArgs e)
         {
+            
+
             #region Initializaing Values
             ArrayList arrLabel = new ArrayList();
 
@@ -2503,6 +2505,9 @@ namespace Scheduler
 
             */
 			//nm = new NormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, printDocument1);
+           // printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            
+            
             xnm = new DevNormalPrinting(arrLabel, arrValues, arrLabel1, arrValue1, arrValue2, arrValue3, printingSystem1);
 
 			//nm.PageNumber = 1;
@@ -2511,6 +2516,10 @@ namespace Scheduler
             xnm.PageNumber = 1;
             xnm.RowCount = 0;
             xnm.RTitle = "Program Information";
+            xnm.PrintingSystem.PageMargins.Top = 100;
+            xnm.PrintingSystem.PageSettings.TopMargin = 100;
+            xnm.PrintingSystem.PageSettings.Margins.Top = 100;
+            
             xnm.CreateDocument();
             xnm.PrintingSystem.PreviewFormEx.ShowDialog();
 			//if (printPreviewDialog1.ShowDialog() == DialogResult.OK) {}

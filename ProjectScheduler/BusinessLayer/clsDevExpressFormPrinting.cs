@@ -131,7 +131,10 @@ namespace Scheduler.BusinessLayer
 
         private void InitPrinting(ref PrintingSystem pd)
         {
-
+            pd.PageSettings.TopMargin = 100;
+            pd.PageMargins.Top = 100;
+            pd.PageSettings.BottomMargin = 100;
+            pd.PageMargins.Bottom = 100;
             _traceLog = new System.Text.StringBuilder();
             _indent = 0;
             // Calculate Form position for printing
@@ -164,7 +167,8 @@ namespace Scheduler.BusinessLayer
             //ps.PageMargins. = new Margins(80, 80, 100, 60);
             ps.PageSettings.RightMargin = 80;
             ps.PageSettings.LeftMargin = 80;
-            
+            ps.PageSettings.TopMargin = 100;
+            ps.PageSettings.BottomMargin = 100;
             //ps.PageMargins.Bottom = 60;
             //ps.PageMargins.Left = 80;
             //ps.PageMargins.Right = 80;
@@ -200,6 +204,7 @@ namespace Scheduler.BusinessLayer
                 this.ps.PageSettings.LeftMargin = 80;
                 this.ps.PageSettings.RightMargin = 80;
                 this.ps.PageSettings.BottomMargin = 60;
+                this.ps.PageSettings.TopMargin = 100;
                 // += new PrintPageEventHandler(this.pd_PrintPage);
                 this.ps.Document.Name = _f.Text;
                 if (PrintPreview)
@@ -435,6 +440,7 @@ namespace Scheduler.BusinessLayer
             mp.BeginPrintUnit(y, extendedHeight);
             int xy = (int)ps.PageSettings.UsablePageSize.Width / 2;
             xy = xy - Convert.ToInt32(size.Width / 2);
+            
             mp.DrawString(c.Tag.ToString(), printFont, Color.Black, xy, y, c.Width, fontHeight + 4);
             y += fontHeight + 10;
             mp.DrawLines(pen,0, y, ps.PageSettings.UsablePageRect.Width - 30, y);
