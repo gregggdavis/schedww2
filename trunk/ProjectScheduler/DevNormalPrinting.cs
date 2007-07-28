@@ -49,10 +49,13 @@ namespace Scheduler
 			//
 			// TODO: Add constructor logic here
 			//
+            
 			arrLabel = _arrLabel;
 			arrValue = _arrValue;
 			this.ps = aPrintDocument;
-            
+            aPrintDocument.PageSettings.TopMargin = 100;
+            aPrintDocument.PageMargins.Top = 100;
+            ps.PageSettings.TopMargin = 100;
             TopMargin = ps.PageMargins.Top;
             BottomMargin = ps.PageMargins.Bottom;
             PageWidth = ps.PageBounds.Width - ps.PageMargins.Right - ps.PageMargins.Left;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
@@ -76,6 +79,9 @@ namespace Scheduler
 			arrValue3 = _arrValue3;
 			
 			this.ps = aPrintDocument;
+            aPrintDocument.PageSettings.TopMargin = 100;
+            aPrintDocument.PageSettings.TopMargin = 100;
+            ps.PageMargins.Top = 100;
             TopMargin = ps.PageMargins.Top;
             BottomMargin = ps.PageMargins.Bottom;
             PageWidth = ps.PageBounds.Width - ps.PageMargins.Right - ps.PageMargins.Left;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
@@ -108,6 +114,9 @@ namespace Scheduler
 			arrValue4 = _arrValue4;
 			
 			this.ps = aPrintDocument;
+            aPrintDocument.PageSettings.TopMargin = 100;
+            aPrintDocument.PageSettings.TopMargin = 100;
+            ps.PageSettings.TopMargin = 100;
             TopMargin = ps.PageMargins.Top;
             BottomMargin = ps.PageMargins.Bottom;
             PageWidth = ps.PageBounds.Width - ps.PageMargins.Right - ps.PageMargins.Left;//Convert.ToInt32(ps.PageSettings.UsablePageSize.Width);
@@ -806,12 +815,15 @@ namespace Scheduler
             SizeF size = graph.MeasureString(RTitle);
             int x = PageWidth / 2;
             x = x - Convert.ToInt32(size.Width / 2);
-            this.DrawString(RTitle, _font, Label1ForeColor, x, 40, TextWidth, TextHeight, new StringFormat(), graph);
+            this.DrawString(RTitle, _font, Label1ForeColor, x, 10, TextWidth, TextHeight, new StringFormat(), graph);
         }
         public override void CreateDocument()
         {
             if (ps != null)
             {
+               
+                //PrintingSystem.PageSettings.Margins.Top = 100;
+                //PrintingSystem.PageSettings.Margins.Bottom= 100;
                 base.CreateDocument();
             }
         }
