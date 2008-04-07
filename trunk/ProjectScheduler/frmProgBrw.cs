@@ -472,7 +472,7 @@ namespace Scheduler
 			// 
 			// gColTestMidEventID
 			// 
-			this.gColTestMidEventID.Caption = "Midterm EventID";
+			this.gColTestMidEventID.Caption = "Mid-term EventID";
 			this.gColTestMidEventID.FieldName = "TestMidTermEventID";
 			this.gColTestMidEventID.Name = "gColTestMidEventID";
 			// 
@@ -490,7 +490,7 @@ namespace Scheduler
 			// 
 			// gColTestMidForm
 			// 
-			this.gColTestMidForm.Caption = "Midterm Form";
+			this.gColTestMidForm.Caption = "Mid-term Form";
 			this.gColTestMidForm.FieldName = "TestMidTermForm";
 			this.gColTestMidForm.Name = "gColTestMidForm";
 			// 
@@ -502,7 +502,7 @@ namespace Scheduler
 			// 
 			// gcolEvaluationMidForm
 			// 
-			this.gcolEvaluationMidForm.Caption = "Eval. Midterm Form";
+			this.gcolEvaluationMidForm.Caption = "Eval. Mid-term Form";
 			this.gcolEvaluationMidForm.FieldName = "EvaluationMidTermForm";
 			this.gcolEvaluationMidForm.Name = "gcolEvaluationMidForm";
 			// 
@@ -514,13 +514,13 @@ namespace Scheduler
 			// 
 			// gcolQuestMidForm
 			// 
-			this.gcolQuestMidForm.Caption = "Questionaire Midterm Form";
+            this.gcolQuestMidForm.Caption = "Questionnaire Mid-term Form";
 			this.gcolQuestMidForm.FieldName = "QuestionaireMidtermForm";
 			this.gcolQuestMidForm.Name = "gcolQuestMidForm";
 			// 
 			// gcolQuestFinalForm
 			// 
-			this.gcolQuestFinalForm.Caption = "Questionaire Final Form";
+            this.gcolQuestFinalForm.Caption = "Questionnaire Final Form";
 			this.gcolQuestFinalForm.FieldName = "QuestionaireFinalForm";
 			this.gcolQuestFinalForm.Name = "gcolQuestFinalForm";
 			// 

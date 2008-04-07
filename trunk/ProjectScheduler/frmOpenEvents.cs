@@ -94,7 +94,7 @@ namespace Scheduler
 			this.rbtnCalendarEvt.Size = new System.Drawing.Size(160, 24);
 			this.rbtnCalendarEvt.TabIndex = 14;
 			this.rbtnCalendarEvt.TabStop = true;
-			this.rbtnCalendarEvt.Text = "Open this occuerence.";
+            this.rbtnCalendarEvt.Text = "Open this occurence.";
 			// 
 			// label1
 			// 

@@ -533,7 +533,7 @@ namespace Scheduler
             // 
             // gColTestMidEventID
             // 
-            this.gColTestMidEventID.Caption = "Midterm EventID";
+            this.gColTestMidEventID.Caption = "Mid-term EventID";
             this.gColTestMidEventID.FieldName = "TestMidTermEventID";
             this.gColTestMidEventID.Name = "gColTestMidEventID";
             // 
@@ -551,7 +551,7 @@ namespace Scheduler
             // 
             // gColTestMidForm
             // 
-            this.gColTestMidForm.Caption = "Midterm Form";
+            this.gColTestMidForm.Caption = "Mid-term Form";
             this.gColTestMidForm.FieldName = "TestMidTermForm";
             this.gColTestMidForm.Name = "gColTestMidForm";
             // 
