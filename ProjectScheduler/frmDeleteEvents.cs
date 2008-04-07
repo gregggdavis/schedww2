@@ -115,7 +115,7 @@ namespace Scheduler
             this.rdDeleteChoice.Properties.Appearance.Options.UseBackColor = true;
             this.rdDeleteChoice.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.rdDeleteChoice.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "Delete this occuerence"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "Delete this occurence"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(false, "Delete the series")});
             this.rdDeleteChoice.Size = new System.Drawing.Size(225, 55);
             this.rdDeleteChoice.TabIndex = 12;
