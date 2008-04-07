@@ -239,7 +239,7 @@ namespace Scheduler {
             this.schedulerControl1.CustomDrawAppointment += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl1_CustomDrawAppointment);
             this.schedulerControl1.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl_EditAppointmentFormShowing);
             this.schedulerControl1.AppointmentViewInfoCustomizing += new DevExpress.XtraScheduler.AppointmentViewInfoCustomizingEventHandler(this.schedulerControl1_AppointmentViewInfoCustomizing);
-            this.schedulerControl1.PrepareContextMenu += new DevExpress.XtraScheduler.PrepareContextMenuEventHandler(this.OnPrepareContextMenu);
+            this.schedulerControl1.PreparePopupMenu += new DevExpress.XtraScheduler.PreparePopupMenuEventHandler(this.OnPreparePopupMenu);
             // 
             // pnlFilter
             // 
@@ -594,7 +594,7 @@ namespace Scheduler {
 			}
 		}
 
-		private void OnPrepareContextMenu(object sender, PrepareContextMenuEventArgs e) {
+		private void OnPreparePopupMenu(object sender, PreparePopupMenuEventArgs e) {
 			e.Menu.RemoveMenuItem(SchedulerMenuItemId.NewRecurringEvent);
 			e.Menu.RemoveMenuItem(SchedulerMenuItemId.NewRecurringAppointment);
 			e.Menu.RemoveMenuItem(SchedulerMenuItemId.GotoToday);
