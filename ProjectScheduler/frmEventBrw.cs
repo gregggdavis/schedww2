@@ -1394,7 +1394,7 @@ namespace Scheduler
 				"ContactStatus=0 Order By LastName, FirstName ");
 
 			Common.PopulateDropdownWithValue(
-				cmbClass, "Select [Name], ClassName = CASE " +
+				cmbClass, "Select Distinct [Name], ClassName = CASE " +
 				"WHEN NickName IS NULL THEN Name " +
 				"WHEN NickName = '' THEN Name " +
 				"ELSE NickName " +
@@ -1403,7 +1403,7 @@ namespace Scheduler
 				" Order By ClassName ");
 
 			Common.PopulateDropdownWithValue(
-				cmbProgram, "Select [Name], ProgramName = CASE " +
+				cmbProgram, "Select Distinct [Name], ProgramName = CASE " +
 				"WHEN NickName IS NULL THEN Name " +
 				"WHEN NickName = '' THEN Name " +
 				"ELSE NickName " +
