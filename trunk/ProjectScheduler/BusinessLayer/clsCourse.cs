@@ -1530,7 +1530,7 @@ namespace Scheduler.BusinessLayer
             int temp;
             try
             {
-                strSQL = "Select Count(*) from [CalendarEvent] WHERE EventId=@EventId AND StartDateTime < GetDate();";
+                strSQL = "Select Count(*) from [CalendarEvent] WHERE EventId=@EventId AND StartDateTime < GetDate() AND CalendarEventStatus = 0;";
                 con = new Connection();
                 con.Connect();
                 com = new SqlCommand(strSQL, con.SQLCon);
