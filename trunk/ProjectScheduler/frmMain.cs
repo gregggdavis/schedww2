@@ -119,6 +119,7 @@ namespace Scheduler
         private NavBarItem navBarItem1;
         private NavBarItem navBarItem2;
         private NavBarItem navBarTransportationExpenses;
+        private ToolBarButton tbtnInfoProgram;
 		private string strCalendar = "";
         #endregion
         public string MenuOption
@@ -229,6 +230,7 @@ namespace Scheduler
             this.tbtnSepa = new System.Windows.Forms.ToolBarButton();
             this.tbtnFind = new System.Windows.Forms.ToolBarButton();
             this.tbtnPrint = new System.Windows.Forms.ToolBarButton();
+            this.tbtnInfoProgram = new System.Windows.Forms.ToolBarButton();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.sPnlGeneral)).BeginInit();
@@ -420,7 +422,7 @@ namespace Scheduler
             this.sPnlDate,
             this.sPnlPath});
             this.sbarMain.ShowPanels = true;
-            this.sbarMain.Size = new System.Drawing.Size(717, 22);
+            this.sbarMain.Size = new System.Drawing.Size(832, 22);
             this.sbarMain.TabIndex = 17;
             this.sbarMain.Text = "sBarMain";
             // 
@@ -428,7 +430,7 @@ namespace Scheduler
             // 
             this.sPnlGeneral.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Spring;
             this.sPnlGeneral.Name = "sPnlGeneral";
-            this.sPnlGeneral.Width = 210;
+            this.sPnlGeneral.Width = 325;
             // 
             // sPnlLogon
             // 
@@ -457,7 +459,7 @@ namespace Scheduler
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 46);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(717, 405);
+            this.pnlBody.Size = new System.Drawing.Size(832, 405);
             this.pnlBody.TabIndex = 18;
             // 
             // pnlMain
@@ -466,7 +468,7 @@ namespace Scheduler
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(160, 32);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(557, 373);
+            this.pnlMain.Size = new System.Drawing.Size(672, 373);
             this.pnlMain.TabIndex = 1;
             // 
             // pnlHeader
@@ -477,7 +479,7 @@ namespace Scheduler
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(160, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(557, 32);
+            this.pnlHeader.Size = new System.Drawing.Size(672, 32);
             this.pnlHeader.TabIndex = 0;
             this.pnlHeader.Resize += new System.EventHandler(this.pnlHeader_Resize);
             // 
@@ -514,6 +516,7 @@ namespace Scheduler
             this.navBar.Appearance.ItemPressed.Options.UseTextOptions = true;
             this.navBar.Appearance.ItemPressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.navBar.Appearance.ItemPressed.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.navBar.ContentButtonHint = null;
             this.navBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navBar.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -539,6 +542,7 @@ namespace Scheduler
             this.navBar.LargeImages = this.imlNavBar;
             this.navBar.Location = new System.Drawing.Point(0, 0);
             this.navBar.Name = "navBar";
+            this.navBar.OptionsNavPane.ExpandedWidth = 156;
             this.navBar.Size = new System.Drawing.Size(156, 401);
             this.navBar.SmallImages = this.imlSmallImageNavBar;
             this.navBar.TabIndex = 5;
@@ -769,7 +773,8 @@ namespace Scheduler
             this.tbtnDelete,
             this.tbtnSepa,
             this.tbtnFind,
-            this.tbtnPrint});
+            this.tbtnPrint,
+            this.tbtnInfoProgram});
             this.tBarMain.ButtonSize = new System.Drawing.Size(67, 34);
             //this.tBarMain.Divider = false;
             this.tBarMain.DropDownArrows = true;
@@ -779,7 +784,7 @@ namespace Scheduler
             this.tBarMain.Location = new System.Drawing.Point(0, 0);
             this.tBarMain.Name = "tBarMain";
             this.tBarMain.ShowToolTips = true;
-            this.tBarMain.Size = new System.Drawing.Size(717, 46);
+            this.tBarMain.Size = new System.Drawing.Size(832, 46);
             this.tBarMain.TabIndex = 11;
             this.tBarMain.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
             this.tBarMain.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.tBarMain_ButtonClick);
@@ -830,6 +835,12 @@ namespace Scheduler
             this.tbtnPrint.Name = "tbtnPrint";
             this.tbtnPrint.Text = "Print";
             // 
+            // tbtnInfoProgram
+            // 
+            this.tbtnInfoProgram.Name = "tbtnInfoProgram";
+            this.tbtnInfoProgram.Text = "Program Info";
+            this.tbtnInfoProgram.Visible = false;
+            // 
             // printPreviewDialog1
             // 
             this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
@@ -848,7 +859,7 @@ namespace Scheduler
             // frmMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-            this.ClientSize = new System.Drawing.Size(717, 473);
+            this.ClientSize = new System.Drawing.Size(832, 473);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.sbarMain);
             this.Controls.Add(this.tBarMain);
@@ -954,6 +965,7 @@ namespace Scheduler
 
 		private void OpenBrowse(string caller)
 		{
+            bool isProgram = false;
 			Cursor = Cursors.WaitCursor;
             if (caller != "Event") tbtnDuplicate.Enabled = true;
             else tbtnDuplicate.Enabled = false;
@@ -1154,14 +1166,17 @@ namespace Scheduler
                     if (fProgram == null)
                     {
                         DisposeAll();
+
                         MenuOption = "Program...";
                         Common.Caption = "Program";
                         fProgram = new frmProgBrw();
                         fProgram.pnl_Find.Height = 0;
+                        
                         fProgram.LoadProgram();
                         //tbtnOpen.Visible = true;
                     }
-
+                    isProgram = true;
+                    tbtnInfoProgram.Visible = true;
                     fProgram.pnlBody.Parent = pnlMain;
                     if (fProgram.GetRecordCount() <= 0)
                     {
@@ -1187,7 +1202,7 @@ namespace Scheduler
                         //fEvt.LoadFilterSettings();
                         //tbtnOpen.Visible = true;
                     }
-
+                    tbtnInfoProgram.Visible = false;
                     fEvt.pnlBody.Parent = pnlMain;
                     if (fEvt.GetRecordCount() <= 0)
                     {
@@ -1202,12 +1217,14 @@ namespace Scheduler
                 }
                 else if (caller == "DayCalendar")
                 {
+                    tbtnInfoProgram.Visible = false;
                     DisposeAll();
                     OpenCalendar("Day");
                     EnableDisable(true);
                 }
                 else if (caller == "WeekCalendar")
                 {
+
                     DisposeAll();
                     OpenCalendar("Week");
                     EnableDisable(true);
@@ -1218,6 +1235,7 @@ namespace Scheduler
                     OpenCalendar("Month");
                     EnableDisable(true);
                 }
+                tbtnInfoProgram.Visible = isProgram;
 			}
 			catch (Exception ex)
 			{
