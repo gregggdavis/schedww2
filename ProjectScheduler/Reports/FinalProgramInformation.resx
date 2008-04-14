@@ -150,8 +150,8 @@
   <metadata name="ReportHeader.Name" xml:space="preserve">
     <value>ReportHeader</value>
   </metadata>
-  <metadata name="xrLabel3.Name" xml:space="preserve">
-    <value>xrLabel3</value>
+  <metadata name="lblProgramNameValue.Name" xml:space="preserve">
+    <value>lblProgramNameValue</value>
   </metadata>
   <metadata name="xrLabel2.Name" xml:space="preserve">
     <value>xrLabel2</value>
