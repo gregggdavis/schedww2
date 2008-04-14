@@ -368,6 +368,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Reports\FinalProgramInformation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FinalProgramInformation.Designer.cs">
+      <DependentUpon>FinalProgramInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchWait.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -515,6 +521,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FinalProgramInformation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FinalProgramInformation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SearchWait.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SearchWait.cs</DependentUpon>
@@ -541,9 +551,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MSBee\MSBuildExtras.FX1_1.CSharp.targets" Condition=" '$(BuildingInsideVisualStudio)' == '' AND '$(fx11)'=='true'" />
