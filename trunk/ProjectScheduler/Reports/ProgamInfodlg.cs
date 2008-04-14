@@ -30,5 +30,13 @@ namespace Scheduler.Reports
         {
             this.Close();
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            FinalProgramInformation frm = new FinalProgramInformation();
+            frm.LoadData(lblProgramNameValue.Text);
+            frm.CreateDocument();
+            frm.ShowPreview();
+        }
     }
 }

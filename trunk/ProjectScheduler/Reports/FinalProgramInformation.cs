@@ -13,5 +13,10 @@ namespace Scheduler.Reports
             InitializeComponent();
         }
 
+        public void LoadData(string programName)
+        {
+            lblProgramNameValue.Text = programName;
+        }
+
     }
 }

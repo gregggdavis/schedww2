@@ -35,9 +35,8 @@ namespace Scheduler.Reports
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.dataSet11 = new Scheduler.BusinessLayer.DataSet1();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colProgramId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colProgramName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCourseName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,15 +44,16 @@ namespace Scheduler.Reports
             this.colEndDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCourseID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTop)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBody)).BeginInit();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -112,6 +112,7 @@ namespace Scheduler.Reports
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // gridControl1
             // 
@@ -128,6 +129,11 @@ namespace Scheduler.Reports
             this.gridView1});
             this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
+            // dataSet11
+            // 
+            this.dataSet11.DataSetName = "DataSet1";
+            this.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -143,25 +149,12 @@ namespace Scheduler.Reports
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.gridControl1);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(0, 60);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(481, 292);
-            this.panelControl1.TabIndex = 2;
-            // 
-            // dataSet11
-            // 
-            this.dataSet11.DataSetName = "DataSet1";
-            this.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // colProgramId
             // 
             this.colProgramId.Caption = "ProgramId";
             this.colProgramId.FieldName = "ProgramId";
             this.colProgramId.Name = "colProgramId";
+            this.colProgramId.OptionsColumn.AllowEdit = false;
             this.colProgramId.OptionsColumn.ReadOnly = true;
             // 
             // colProgramName
@@ -169,12 +162,15 @@ namespace Scheduler.Reports
             this.colProgramName.Caption = "ProgramName";
             this.colProgramName.FieldName = "ProgramName";
             this.colProgramName.Name = "colProgramName";
+            this.colProgramName.OptionsColumn.AllowEdit = false;
+            this.colProgramName.OptionsColumn.ReadOnly = true;
             // 
             // colCourseName
             // 
             this.colCourseName.Caption = "Course Name";
             this.colCourseName.FieldName = "CourseName";
             this.colCourseName.Name = "colCourseName";
+            this.colCourseName.OptionsColumn.AllowEdit = false;
             this.colCourseName.OptionsColumn.ReadOnly = true;
             this.colCourseName.Visible = true;
             this.colCourseName.VisibleIndex = 0;
@@ -184,6 +180,8 @@ namespace Scheduler.Reports
             this.colStartDateTime.Caption = "Event Start Date";
             this.colStartDateTime.FieldName = "StartDateTime";
             this.colStartDateTime.Name = "colStartDateTime";
+            this.colStartDateTime.OptionsColumn.AllowEdit = false;
+            this.colStartDateTime.OptionsColumn.ReadOnly = true;
             this.colStartDateTime.Visible = true;
             this.colStartDateTime.VisibleIndex = 1;
             // 
@@ -192,6 +190,8 @@ namespace Scheduler.Reports
             this.colEndDateTime.Caption = "Event End Date";
             this.colEndDateTime.FieldName = "EndDateTime";
             this.colEndDateTime.Name = "colEndDateTime";
+            this.colEndDateTime.OptionsColumn.AllowEdit = false;
+            this.colEndDateTime.OptionsColumn.ReadOnly = true;
             this.colEndDateTime.Visible = true;
             this.colEndDateTime.VisibleIndex = 2;
             // 
@@ -200,6 +200,7 @@ namespace Scheduler.Reports
             this.colCourseID.Caption = "CourseID";
             this.colCourseID.FieldName = "CourseID";
             this.colCourseID.Name = "colCourseID";
+            this.colCourseID.OptionsColumn.AllowEdit = false;
             this.colCourseID.OptionsColumn.ReadOnly = true;
             // 
             // colID
@@ -207,6 +208,17 @@ namespace Scheduler.Reports
             this.colID.Caption = "ID";
             this.colID.FieldName = "ID";
             this.colID.Name = "colID";
+            this.colID.OptionsColumn.AllowEdit = false;
+            this.colID.OptionsColumn.ReadOnly = true;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.gridControl1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 60);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(481, 292);
+            this.panelControl1.TabIndex = 2;
             // 
             // ProgamInfodlg
             // 
@@ -228,10 +240,10 @@ namespace Scheduler.Reports
             ((System.ComponentModel.ISupportInitialize)(this.pnlBody)).EndInit();
             this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
             this.ResumeLayout(false);
 
         }
