@@ -24,7 +24,7 @@ namespace Scheduler.Reports
         {
             lblProgramNameValue.Text = programName;
             dataSet11.viewSimpleProgramInfo.Clear();
-            dataSet11.viewSimpleProgramInfo.Load(BusinessLayer.DAC.SelectStatement("Select * From ViewSimpleProgramInfo Where ProgramID = " + programID), LoadOption.OverwriteChanges);
+            dataSet11.viewSimpleProgramInfo.Load(BusinessLayer.DAC.SelectStatement("Select * From newvwProgramEvents Where ProgramID = " + programID), LoadOption.OverwriteChanges);
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
