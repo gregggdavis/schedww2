@@ -1420,10 +1420,15 @@ namespace Scheduler
                 else
                     PrintGrid(gc);
 			}
+            else if (e.Button == tbtnInfoProgram)
+            {
+                fProgram.LoadProgramInfo();
+            }
 		}
         
 		private GridViewPrinter dataGridPrinter1 = null;
 
+        frmProgBrw progBrowsInfo = null;
 		private void PrintGrid(GridControl gc)
 		{
 			//GridView gvwContact = (GridView) gc.DefaultView;

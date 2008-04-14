@@ -11,8 +11,9 @@ namespace Scheduler
 	/// Summary description for frmProgBrw.
 	/// </summary>
 	public class frmProgBrw : System.Windows.Forms.Form
-	{
-		private DevExpress.XtraEditors.Repository.PersistentRepository persistentRepository1;
+    {
+        #region Declarations
+        private DevExpress.XtraEditors.Repository.PersistentRepository persistentRepository1;
 		public System.Windows.Forms.Panel pnl_Find;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.PictureBox pictureBox1;
@@ -64,8 +65,9 @@ namespace Scheduler
 		private DevExpress.XtraGrid.Columns.GridColumn gcolContact1;
 		private DevExpress.XtraGrid.Columns.GridColumn gcolContact2;
 		private bool boolFetch=true;
+        #endregion
 
-		public frmProgBrw()
+        public frmProgBrw()
 		{
 			InitializeComponent();
 			pnl_Find.Height = 0;
@@ -622,7 +624,20 @@ namespace Scheduler
 
 			//Global.ShowRecords(Finddtbl);
 		}
-
+        public void LoadProgramInfo()
+        {
+            if (gvwProgram.SelectedRowsCount > 0)
+            {
+                DataRow row = gvwProgram.GetDataRow(gvwProgram.FocusedRowHandle);
+                if (row != null)
+                {
+                    Scheduler.Reports.ProgamInfodlg frm = new Scheduler.Reports.ProgamInfodlg();
+                    frm.LoadData(row["ProgramID"].ToString(), row["BrowseName"].ToString());
+                    frm.ShowDialog();
+                }
+            }
+            
+        }
 		private void grdProgram_DoubleClick(object sender, System.EventArgs e)
 		{
 			int row=0;

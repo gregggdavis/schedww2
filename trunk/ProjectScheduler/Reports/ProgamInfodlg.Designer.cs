@@ -29,14 +29,22 @@ namespace Scheduler.Reports
         private void InitializeComponent()
         {
             this.pnlTop = new DevExpress.XtraEditors.PanelControl();
-            this.pnlBody = new DevExpress.XtraEditors.PanelControl();
-            this.lblProgramName = new DevExpress.XtraEditors.LabelControl();
             this.lblProgramNameValue = new DevExpress.XtraEditors.LabelControl();
+            this.lblProgramName = new DevExpress.XtraEditors.LabelControl();
+            this.pnlBody = new DevExpress.XtraEditors.PanelControl();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnOK = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.dataSet11 = new Scheduler.BusinessLayer.DataSet1();
+            this.colProgramId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colProgramName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCourseName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStartDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEndDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCourseID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTop)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBody)).BeginInit();
@@ -45,6 +53,7 @@ namespace Scheduler.Reports
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -57,15 +66,15 @@ namespace Scheduler.Reports
             this.pnlTop.Size = new System.Drawing.Size(481, 60);
             this.pnlTop.TabIndex = 0;
             // 
-            // pnlBody
+            // lblProgramNameValue
             // 
-            this.pnlBody.Controls.Add(this.btnCancel);
-            this.pnlBody.Controls.Add(this.btnOK);
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBody.Location = new System.Drawing.Point(0, 352);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(481, 52);
-            this.pnlBody.TabIndex = 1;
+            this.lblProgramNameValue.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.lblProgramNameValue.Appearance.Options.UseFont = true;
+            this.lblProgramNameValue.Location = new System.Drawing.Point(153, 25);
+            this.lblProgramNameValue.Name = "lblProgramNameValue";
+            this.lblProgramNameValue.Size = new System.Drawing.Size(61, 19);
+            this.lblProgramNameValue.TabIndex = 1;
+            this.lblProgramNameValue.Text = "[Name]";
             // 
             // lblProgramName
             // 
@@ -77,18 +86,37 @@ namespace Scheduler.Reports
             this.lblProgramName.TabIndex = 0;
             this.lblProgramName.Text = "Program Name";
             // 
-            // lblProgramNameValue
+            // pnlBody
             // 
-            this.lblProgramNameValue.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.lblProgramNameValue.Appearance.Options.UseFont = true;
-            this.lblProgramNameValue.Location = new System.Drawing.Point(153, 25);
-            this.lblProgramNameValue.Name = "lblProgramNameValue";
-            this.lblProgramNameValue.Size = new System.Drawing.Size(61, 19);
-            this.lblProgramNameValue.TabIndex = 1;
-            this.lblProgramNameValue.Text = "[Name]";
+            this.pnlBody.Controls.Add(this.btnCancel);
+            this.pnlBody.Controls.Add(this.btnOK);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBody.Location = new System.Drawing.Point(0, 352);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(481, 52);
+            this.pnlBody.TabIndex = 1;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(376, 17);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(295, 17);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 0;
+            this.btnOK.Text = "OK";
             // 
             // gridControl1
             // 
+            this.gridControl1.DataMember = "viewSimpleProgramInfo";
+            this.gridControl1.DataSource = this.dataSet11;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Name = "";
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
@@ -102,8 +130,17 @@ namespace Scheduler.Reports
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colProgramId,
+            this.colProgramName,
+            this.colCourseName,
+            this.colStartDateTime,
+            this.colEndDateTime,
+            this.colCourseID,
+            this.colID});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // panelControl1
@@ -115,22 +152,61 @@ namespace Scheduler.Reports
             this.panelControl1.Size = new System.Drawing.Size(481, 292);
             this.panelControl1.TabIndex = 2;
             // 
-            // btnOK
+            // dataSet11
             // 
-            this.btnOK.Location = new System.Drawing.Point(295, 17);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "OK";
+            this.dataSet11.DataSetName = "DataSet1";
+            this.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // btnCancel
+            // colProgramId
             // 
-            this.btnCancel.Location = new System.Drawing.Point(376, 17);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.colProgramId.Caption = "ProgramId";
+            this.colProgramId.FieldName = "ProgramId";
+            this.colProgramId.Name = "colProgramId";
+            this.colProgramId.OptionsColumn.ReadOnly = true;
+            // 
+            // colProgramName
+            // 
+            this.colProgramName.Caption = "ProgramName";
+            this.colProgramName.FieldName = "ProgramName";
+            this.colProgramName.Name = "colProgramName";
+            // 
+            // colCourseName
+            // 
+            this.colCourseName.Caption = "Course Name";
+            this.colCourseName.FieldName = "CourseName";
+            this.colCourseName.Name = "colCourseName";
+            this.colCourseName.OptionsColumn.ReadOnly = true;
+            this.colCourseName.Visible = true;
+            this.colCourseName.VisibleIndex = 0;
+            // 
+            // colStartDateTime
+            // 
+            this.colStartDateTime.Caption = "Event Start Date";
+            this.colStartDateTime.FieldName = "StartDateTime";
+            this.colStartDateTime.Name = "colStartDateTime";
+            this.colStartDateTime.Visible = true;
+            this.colStartDateTime.VisibleIndex = 1;
+            // 
+            // colEndDateTime
+            // 
+            this.colEndDateTime.Caption = "Event End Date";
+            this.colEndDateTime.FieldName = "EndDateTime";
+            this.colEndDateTime.Name = "colEndDateTime";
+            this.colEndDateTime.Visible = true;
+            this.colEndDateTime.VisibleIndex = 2;
+            // 
+            // colCourseID
+            // 
+            this.colCourseID.Caption = "CourseID";
+            this.colCourseID.FieldName = "CourseID";
+            this.colCourseID.Name = "colCourseID";
+            this.colCourseID.OptionsColumn.ReadOnly = true;
+            // 
+            // colID
+            // 
+            this.colID.Caption = "ID";
+            this.colID.FieldName = "ID";
+            this.colID.Name = "colID";
             // 
             // ProgamInfodlg
             // 
@@ -155,6 +231,7 @@ namespace Scheduler.Reports
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -170,5 +247,13 @@ namespace Scheduler.Reports
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnOK;
+        private Scheduler.BusinessLayer.DataSet1 dataSet11;
+        private DevExpress.XtraGrid.Columns.GridColumn colProgramId;
+        private DevExpress.XtraGrid.Columns.GridColumn colProgramName;
+        private DevExpress.XtraGrid.Columns.GridColumn colCourseName;
+        private DevExpress.XtraGrid.Columns.GridColumn colStartDateTime;
+        private DevExpress.XtraGrid.Columns.GridColumn colEndDateTime;
+        private DevExpress.XtraGrid.Columns.GridColumn colCourseID;
+        private DevExpress.XtraGrid.Columns.GridColumn colID;
     }
 }
