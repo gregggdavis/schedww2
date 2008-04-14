@@ -20,7 +20,12 @@ namespace Scheduler.Reports
         {
 
         }
-
+        public void LoadData(string programID,string programName)
+        {
+            lblProgramNameValue.Text = programName;
+            dataSet11.viewSimpleProgramInfo.Clear();
+            dataSet11.viewSimpleProgramInfo.Load(BusinessLayer.DAC.SelectStatement("Select * From ViewSimpleProgramInfo Where ProgramID = " + programID), LoadOption.OverwriteChanges);
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
