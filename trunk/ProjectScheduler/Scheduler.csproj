@@ -374,6 +374,12 @@
     <Compile Include="Reports\FinalProgramInformation.Designer.cs">
       <DependentUpon>FinalProgramInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ProgamInfodlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ProgamInfodlg.Designer.cs">
+      <DependentUpon>ProgamInfodlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="SearchWait.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -524,6 +530,10 @@
     <EmbeddedResource Include="Reports\FinalProgramInformation.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FinalProgramInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ProgamInfodlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProgamInfodlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchWait.resx">
       <SubType>Designer</SubType>
