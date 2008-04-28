@@ -43,14 +43,15 @@ namespace Scheduler
 
 			//cmb_Items.Text = cmb_Temp.Text;
 
-			bytBackColorA = NavBar.Groups[0].StyleBackground.BackColor.A;
-			bytBackColorR = NavBar.Groups[0].StyleBackground.BackColor.R;
-			bytBackColorG = NavBar.Groups[0].StyleBackground.BackColor.G;
-			bytBackColorB = NavBar.Groups[0].StyleBackground.BackColor.B;
-			bytTextColorA = NavBar.Groups[0].ItemLinks[0].Item.Style.ForeColor.A;
-			bytTextColorR = NavBar.Groups[0].ItemLinks[0].Item.Style.ForeColor.R;
-			bytTextColorG = NavBar.Groups[0].ItemLinks[0].Item.Style.ForeColor.G;
-			bytTextColorB = NavBar.Groups[0].ItemLinks[0].Item.Style.ForeColor.B;
+			bytBackColorA = NavBar.Groups[0].AppearanceBackground.BackColor.A;
+			bytBackColorR = NavBar.Groups[0].AppearanceBackground.BackColor.R;
+
+			bytBackColorG = NavBar.Groups[0].AppearanceBackground.BackColor.G;
+			bytBackColorB = NavBar.Groups[0].AppearanceBackground.BackColor.B;
+			bytTextColorA = NavBar.Groups[0].ItemLinks[0].Item.Appearance.ForeColor.A;
+			bytTextColorR = NavBar.Groups[0].ItemLinks[0].Item.Appearance.ForeColor.R;
+			bytTextColorG = NavBar.Groups[0].ItemLinks[0].Item.Appearance.ForeColor.G;
+			bytTextColorB = NavBar.Groups[0].ItemLinks[0].Item.Appearance.ForeColor.B;
 
 			//cmb_TextColor.EditValue = Color.FromArgb(bytTextColorA, bytTextColorR, bytTextColorG, bytTextColorB);
 			//cmb_BackColor.EditValue = Color.FromArgb(bytBackColorA, bytBackColorR, bytBackColorG, bytBackColorB);

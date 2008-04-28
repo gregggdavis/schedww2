@@ -353,14 +353,21 @@ namespace Scheduler
 			// 
 			// gvwProgram
 			// 
-			this.gvwProgram.BehaviorOptions = ((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags)(((((((((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowFilter | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowZoomDetail) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.EnableMasterViewMode) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.SmartVertScrollBar) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoSelectAllInEditor) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.UseTabKey) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowSort) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowGroup) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoUpdateTotalSummary)));
+            //this.gvwProgram.OptionsBehavior.Reset();
+            //this.gvwProgram.OptionsCustomization.Reset();
+            //this.gvwProgram.OptionsFilter.Reset();
+            //this.gvwProgram.OptionsNavigation.Reset();
+            //this.gvwProgram.OptionsSelection.Reset();
+            //this.gvwProgram.
+
+            //this.gvwProgram.BehaviorOptions = ((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags)(((((((((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowFilter | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowZoomDetail) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.EnableMasterViewMode) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.SmartVertScrollBar) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoSelectAllInEditor) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.UseTabKey) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowSort) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowGroup) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoUpdateTotalSummary)));
 			this.gvwProgram.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
 			this.gvwProgram.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
 																							  this.gcolProgID,
@@ -392,11 +399,13 @@ namespace Scheduler
 			this.gvwProgram.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
 			this.gvwProgram.Name = "gvwProgram";
 			this.gvwProgram.VertScrollTipFieldName = null;
-			this.gvwProgram.ViewOptions = ((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags)((((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.AutoWidth | DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowColumns) 
-				| DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowFilterPanel) 
-				| DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowVertLines)));
-			this.gvwProgram.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-			this.gvwProgram.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
+            //this.gvwProgram.OptionsBehavior.fi
+            //this.gvwProgram.ViewOptions = ((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags)((((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.AutoWidth | DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowColumns) 
+            //    | DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowFilterPanel) 
+                //| DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowVertLines)));
+            this.gvwProgram.Appearance.FocusedRow.AssignInternal(this.gvwProgram.Appearance.SelectedRow);
+            //this.gvwProgram.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
+            //this.gvwProgram.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
 			// 
 			// gcolProgID
 			// 
