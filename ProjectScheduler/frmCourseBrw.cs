@@ -406,8 +406,9 @@ namespace Scheduler
             this.gvwCourse.OptionsView.ShowIndicator = false;
             this.gvwCourse.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClient, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gvwCourse.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            this.gvwCourse.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
+            this.gvwCourse.Appearance.FocusedRow.AssignInternal(this.gvwCourse.Appearance.SelectedRow);
+            //this.gvwCourse.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
+            //this.gvwCourse.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolCourseID
             // 

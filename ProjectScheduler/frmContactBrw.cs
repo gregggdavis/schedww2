@@ -302,8 +302,9 @@ namespace Scheduler
             this.gvwContact.OptionsView.ShowIndicator = false;
             this.gvwContact.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolContactType, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gvwContact.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            this.gvwContact.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
+            this.gvwContact.Appearance.FocusedRow.AssignInternal(this.gvwContact.Appearance.SelectedRow);
+            //this.gvwContact.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
+            //this.gvwContact.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolContactID
             // 

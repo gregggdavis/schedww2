@@ -1225,8 +1225,9 @@ namespace Scheduler
             this.gvwEvents.OptionsView.ShowGroupPanel = false;
             this.gvwEvents.OptionsView.ShowHorzLines = false;
             this.gvwEvents.OptionsView.ShowIndicator = false;
-            this.gvwEvents.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            this.gvwEvents.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
+            this.gvwEvents.Appearance.FocusedRow.AssignInternal(this.gvwEvents.Appearance.SelectedRow);
+            //this.gvwEvents.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
+            //this.gvwEvents.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolCaldendarEventID
             // 

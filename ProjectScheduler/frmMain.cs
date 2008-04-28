@@ -1687,10 +1687,10 @@ namespace Scheduler
 
 					for (int ii = 0; ii <= navBar.Groups.Count - 1; ii++)
 					{
-						navBar.Groups[ii].StyleBackground.BackColor =
+						navBar.Groups[ii].AppearanceBackground.BackColor =
 							Color.FromArgb(objNavBarProperties.bytBackColorA, objNavBarProperties.bytBackColorR,
 							               objNavBarProperties.bytBackColorG, objNavBarProperties.bytBackColorB);
-						navBar.Groups[ii].Style.Font = new Font("Tahoma", 8.25F);
+						navBar.Groups[ii].Appearance.Font = new Font("Tahoma", 8.25F);
 					}
 
 					if (!((Common.FontName == "") && (Common.FontSize == 0)))
@@ -1813,10 +1813,10 @@ namespace Scheduler
 
 					for (int ii = 0; ii <= navBar.Groups.Count - 1; ii++)
 					{
-						navBar.Groups[ii].StyleBackground.BackColor =
+						navBar.Groups[ii].AppearanceBackground.BackColor =
 							Color.FromArgb(objNavBarProperties.bytBackColorA, objNavBarProperties.bytBackColorR,
 							               objNavBarProperties.bytBackColorG, objNavBarProperties.bytBackColorB);
-						navBar.Groups[ii].Style.Font = new Font("Tahoma", 8.25F);
+						navBar.Groups[ii].Appearance.Font = new Font("Tahoma", 8.25F);
 					}
 
 					if (!((Common.FontName == "") && (Common.FontSize == 0)))
@@ -3102,105 +3102,106 @@ namespace Scheduler
 
 		private void SetNavBarStyle()
 		{
-			navBar.Styles.AddReplace("GroupBackground",
-			                         new ViewStyleEx("GroupBackground", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
-			                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.ControlDark,
-			                                         Color.Black, Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("LinkDropTarget",
-			                         new ViewStyleEx("LinkDropTarget", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
-			                                         HorzAlignment.Center, VertAlignment.Center, null, Color.Black, Color.Black,
-			                                         Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("Button",
-			                         new ViewStyleEx("Button", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
-			                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.Control,
-			                                         SystemColors.ControlText, Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("ItemPressed",
-			                         new ViewStyleEx("ItemPressed", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize + 1, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "Item",
-			                                         StyleOptions.StyleEnabled, true, true, false, HorzAlignment.Center,
-			                                         VertAlignment.Center, null, SystemColors.Control,
-			                                         SystemColors.ControlLightLight, Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("ItemDisabled",
-			                         new ViewStyleEx("ItemDisabled", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize + 1, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "Item",
-			                                         ((StyleOptions) ((StyleOptions.StyleEnabled | StyleOptions.UseForeColor))),
-			                                         true, true, false, HorzAlignment.Center, VertAlignment.Center, null,
-			                                         SystemColors.Control, SystemColors.ControlDarkDark, Color.Empty,
-			                                         LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("ButtonPressed",
-			                         new ViewStyleEx("ButtonPressed", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "Button",
-			                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
-			                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
-			                                         Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("GroupHeaderActive",
-			                         new ViewStyleEx("GroupHeaderActive", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "GroupHeader",
-			                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
-			                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
-			                                         Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("GroupHeaderPressed",
-			                         new ViewStyleEx("GroupHeaderPressed", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "GroupHeader",
-			                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
-			                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
-			                                         Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("GroupHeader",
-			                         new ViewStyleEx("GroupHeader", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
-			                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.Control,
-			                                         SystemColors.ControlText, Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("Hint",
-			                         new ViewStyleEx("Hint", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, true, false,
-			                                         HorzAlignment.Near, VertAlignment.Center, null, SystemColors.Info,
-			                                         SystemColors.InfoText, Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("GroupHeaderHotTracked",
-			                         new ViewStyleEx("GroupHeaderHotTracked", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "GroupHeader",
-			                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
-			                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
-			                                         Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("ButtonHotTracked",
-			                         new ViewStyleEx("ButtonHotTracked", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "Button",
-			                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
-			                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
-			                                         Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("ItemHotTracked",
-			                         new ViewStyleEx("ItemHotTracked", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize + 1, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "Item",
-			                                         StyleOptions.StyleEnabled, true, true, false, HorzAlignment.Center,
-			                                         VertAlignment.Center, null, SystemColors.Control,
-			                                         SystemColors.ControlLightLight, Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("Item",
-			                         new ViewStyleEx("Item", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, true, false,
-			                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.Control,
-			                                         SystemColors.ControlLightLight, Color.Empty, LinearGradientMode.Horizontal));
-			navBar.Styles.AddReplace("Background",
-			                         new ViewStyleEx("Background", "NavBarControl",
-			                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
-			                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, false,
-			                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.ControlDark,
-			                                         SystemColors.ControlDark, Color.Empty, LinearGradientMode.Horizontal));
+            navBar.Appearance.Reset();
+            //navBar.Appearance.AddReplace("GroupBackground",
+            //                         new ViewStyleEx("GroupBackground", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
+            //                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.ControlDark,
+            //                                         Color.Black, Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("LinkDropTarget",
+            //                         new ViewStyleEx("LinkDropTarget", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
+            //                                         HorzAlignment.Center, VertAlignment.Center, null, Color.Black, Color.Black,
+            //                                         Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("Button",
+            //                         new ViewStyleEx("Button", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
+            //                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.Control,
+            //                                         SystemColors.ControlText, Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("ItemPressed",
+            //                         new ViewStyleEx("ItemPressed", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize + 1, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "Item",
+            //                                         StyleOptions.StyleEnabled, true, true, false, HorzAlignment.Center,
+            //                                         VertAlignment.Center, null, SystemColors.Control,
+            //                                         SystemColors.ControlLightLight, Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("ItemDisabled",
+            //                         new ViewStyleEx("ItemDisabled", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize + 1, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "Item",
+            //                                         ((StyleOptions) ((StyleOptions.StyleEnabled | StyleOptions.UseForeColor))),
+            //                                         true, true, false, HorzAlignment.Center, VertAlignment.Center, null,
+            //                                         SystemColors.Control, SystemColors.ControlDarkDark, Color.Empty,
+            //                                         LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("ButtonPressed",
+            //                         new ViewStyleEx("ButtonPressed", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "Button",
+            //                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
+            //                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
+            //                                         Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("GroupHeaderActive",
+            //                         new ViewStyleEx("GroupHeaderActive", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "GroupHeader",
+            //                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
+            //                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
+            //                                         Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("GroupHeaderPressed",
+            //                         new ViewStyleEx("GroupHeaderPressed", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "GroupHeader",
+            //                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
+            //                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
+            //                                         Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("GroupHeader",
+            //                         new ViewStyleEx("GroupHeader", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, true,
+            //                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.Control,
+            //                                         SystemColors.ControlText, Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("Hint",
+            //                         new ViewStyleEx("Hint", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, true, false,
+            //                                         HorzAlignment.Near, VertAlignment.Center, null, SystemColors.Info,
+            //                                         SystemColors.InfoText, Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("GroupHeaderHotTracked",
+            //                         new ViewStyleEx("GroupHeaderHotTracked", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "GroupHeader",
+            //                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
+            //                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
+            //                                         Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("ButtonHotTracked",
+            //                         new ViewStyleEx("ButtonHotTracked", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "Button",
+            //                                         StyleOptions.StyleEnabled, true, false, true, HorzAlignment.Center,
+            //                                         VertAlignment.Center, null, SystemColors.Control, SystemColors.ControlText,
+            //                                         Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("ItemHotTracked",
+            //                         new ViewStyleEx("ItemHotTracked", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize + 1, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "Item",
+            //                                         StyleOptions.StyleEnabled, true, true, false, HorzAlignment.Center,
+            //                                         VertAlignment.Center, null, SystemColors.Control,
+            //                                         SystemColors.ControlLightLight, Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("Item",
+            //                         new ViewStyleEx("Item", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, true, false,
+            //                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.Control,
+            //                                         SystemColors.ControlLightLight, Color.Empty, LinearGradientMode.Horizontal));
+            //navBar.Styles.AddReplace("Background",
+            //                         new ViewStyleEx("Background", "NavBarControl",
+            //                                         new Font(Common.FontName, Common.FontSize, FontStyle.Regular,
+            //                                                  GraphicsUnit.Point, ((Byte) (0))), "", true, false, false,
+            //                                         HorzAlignment.Center, VertAlignment.Center, null, SystemColors.ControlDark,
+            //                                         SystemColors.ControlDark, Color.Empty, LinearGradientMode.Horizontal));
 
 			lblTitle.Font = new Font(Common.FontName, Common.FontSize + 4, FontStyle.Bold, GraphicsUnit.Point, ((Byte) (0)));
 			sbarMain.Font = new Font(Common.FontName, Common.FontSize, FontStyle.Regular, GraphicsUnit.Point, ((Byte) (0)));

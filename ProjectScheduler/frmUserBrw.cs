@@ -188,176 +188,176 @@ namespace Scheduler
 			this.grdUser.MainView = this.gvwUser;
 			this.grdUser.Name = "grdUser";
 			this.grdUser.Size = new System.Drawing.Size(648, 244);
-			this.grdUser.Styles.AddReplace("Preview", new DevExpress.Utils.ViewStyle("Preview", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, true, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Top, null, System.Drawing.SystemColors.Window, System.Drawing.Color.Blue));
-			this.grdUser.Styles.AddReplace("FooterPanel", new DevExpress.Utils.ViewStyle("FooterPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
-			this.grdUser.Styles.AddReplace("GroupButton", new DevExpress.Utils.ViewStyle("GroupButton", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
-			this.grdUser.Styles.AddReplace("FilterButtonPressed", new DevExpress.Utils.ViewStyle("FilterButtonPressed", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window));
-			this.grdUser.Styles.AddReplace("EvenRow", new DevExpress.Utils.ViewStyle("EvenRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.Color.WhiteSmoke, System.Drawing.SystemColors.WindowText));
-			this.grdUser.Styles.AddReplace("HideSelectionRow", new DevExpress.Utils.ViewStyle("HideSelectionRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.InactiveCaption, System.Drawing.SystemColors.InactiveCaptionText));
-			this.grdUser.Styles.AddReplace("FilterButton", new DevExpress.Utils.ViewStyle("FilterButton", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
-			this.grdUser.Styles.AddReplace("PressedColumn", new DevExpress.Utils.ViewStyle("PressedColumn", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "HeaderPanel", ((DevExpress.Utils.StyleOptions)(((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseForeColor))), true, false, false, DevExpress.Utils.HorzAlignment.Center, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlLightLight));
-			this.grdUser.Styles.AddReplace("GroupPanel", new DevExpress.Utils.ViewStyle("GroupPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlText));
-			this.grdUser.Styles.AddReplace("ColumnFilterButtonPressed", new DevExpress.Utils.ViewStyle("ColumnFilterButtonPressed", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlText, System.Drawing.Color.Blue));
-			this.grdUser.Styles.AddReplace("Empty", new DevExpress.Utils.ViewStyle("Empty", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Window));
-			this.grdUser.Styles.AddReplace("HeaderPanel", new DevExpress.Utils.ViewStyle("HeaderPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Center, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
-			this.grdUser.Styles.AddReplace("GroupRow", new DevExpress.Utils.ViewStyle("GroupRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlLight, System.Drawing.SystemColors.WindowText));
-			this.grdUser.Styles.AddReplace("HorzLine", new DevExpress.Utils.ViewStyle("HorzLine", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlDark));
-			this.grdUser.Styles.AddReplace("ColumnFilterButton", new DevExpress.Utils.ViewStyle("ColumnFilterButton", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
-			this.grdUser.Styles.AddReplace("FocusedRow", new DevExpress.Utils.ViewStyle("FocusedRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Highlight, System.Drawing.SystemColors.HighlightText));
-			this.grdUser.Styles.AddReplace("VertLine", new DevExpress.Utils.ViewStyle("VertLine", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlDark));
-			this.grdUser.Styles.AddReplace("GroupFooter", new DevExpress.Utils.ViewStyle("GroupFooter", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
-			this.grdUser.Styles.AddReplace("FocusedCell", new DevExpress.Utils.ViewStyle("FocusedCell", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.WindowText));
-			this.grdUser.Styles.AddReplace("OddRow", new DevExpress.Utils.ViewStyle("OddRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.Color.White, System.Drawing.SystemColors.WindowText));
-			this.grdUser.Styles.AddReplace("SelectedRow", new DevExpress.Utils.ViewStyle("SelectedRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Highlight, System.Drawing.SystemColors.HighlightText));
-			this.grdUser.Styles.AddReplace("FocusedGroup", new DevExpress.Utils.ViewStyle("FocusedGroup", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "FocusedRow", DevExpress.Utils.StyleOptions.StyleEnabled, true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Highlight, System.Drawing.SystemColors.HighlightText));
-			this.grdUser.Styles.AddReplace("Row", new DevExpress.Utils.ViewStyle("Row", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", DevExpress.Utils.StyleOptions.StyleEnabled, true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.WindowText));
-			this.grdUser.Styles.AddReplace("FilterPanel", new DevExpress.Utils.ViewStyle("FilterPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlLightLight));
-			this.grdUser.Styles.AddReplace("DetailTip", new DevExpress.Utils.ViewStyle("DetailTip", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
-				| DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
-				| DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
-				| DevExpress.Utils.StyleOptions.UseFont) 
-				| DevExpress.Utils.StyleOptions.UseForeColor) 
-				| DevExpress.Utils.StyleOptions.UseHorzAlignment) 
-				| DevExpress.Utils.StyleOptions.UseImage) 
-				| DevExpress.Utils.StyleOptions.UseWordWrap) 
-				| DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Info, System.Drawing.SystemColors.InfoText));
+            //this.grdUser.Styles.AddReplace("Preview", new DevExpress.Utils.ViewStyle("Preview", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, true, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Top, null, System.Drawing.SystemColors.Window, System.Drawing.Color.Blue));
+            //this.grdUser.Styles.AddReplace("FooterPanel", new DevExpress.Utils.ViewStyle("FooterPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
+            //this.grdUser.Styles.AddReplace("GroupButton", new DevExpress.Utils.ViewStyle("GroupButton", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
+            //this.grdUser.Styles.AddReplace("FilterButtonPressed", new DevExpress.Utils.ViewStyle("FilterButtonPressed", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window));
+            //this.grdUser.Styles.AddReplace("EvenRow", new DevExpress.Utils.ViewStyle("EvenRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.Color.WhiteSmoke, System.Drawing.SystemColors.WindowText));
+            //this.grdUser.Styles.AddReplace("HideSelectionRow", new DevExpress.Utils.ViewStyle("HideSelectionRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.InactiveCaption, System.Drawing.SystemColors.InactiveCaptionText));
+            //this.grdUser.Styles.AddReplace("FilterButton", new DevExpress.Utils.ViewStyle("FilterButton", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
+            //this.grdUser.Styles.AddReplace("PressedColumn", new DevExpress.Utils.ViewStyle("PressedColumn", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "HeaderPanel", ((DevExpress.Utils.StyleOptions)(((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor))), true, false, false, DevExpress.Utils.HorzAlignment.Center, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlLightLight));
+            //this.grdUser.Styles.AddReplace("GroupPanel", new DevExpress.Utils.ViewStyle("GroupPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlText));
+            //this.grdUser.Styles.AddReplace("ColumnFilterButtonPressed", new DevExpress.Utils.ViewStyle("ColumnFilterButtonPressed", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlText, System.Drawing.Color.Blue));
+            //this.grdUser.Styles.AddReplace("Empty", new DevExpress.Utils.ViewStyle("Empty", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Window));
+            //this.grdUser.Styles.AddReplace("HeaderPanel", new DevExpress.Utils.ViewStyle("HeaderPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Center, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
+            //this.grdUser.Styles.AddReplace("GroupRow", new DevExpress.Utils.ViewStyle("GroupRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlLight, System.Drawing.SystemColors.WindowText));
+            //this.grdUser.Styles.AddReplace("HorzLine", new DevExpress.Utils.ViewStyle("HorzLine", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlDark));
+            //this.grdUser.Styles.AddReplace("ColumnFilterButton", new DevExpress.Utils.ViewStyle("ColumnFilterButton", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
+            //this.grdUser.Styles.AddReplace("FocusedRow", new DevExpress.Utils.ViewStyle("FocusedRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Highlight, System.Drawing.SystemColors.HighlightText));
+            //this.grdUser.Styles.AddReplace("VertLine", new DevExpress.Utils.ViewStyle("VertLine", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlDark));
+            //this.grdUser.Styles.AddReplace("GroupFooter", new DevExpress.Utils.ViewStyle("GroupFooter", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Control, System.Drawing.SystemColors.ControlText));
+            //this.grdUser.Styles.AddReplace("FocusedCell", new DevExpress.Utils.ViewStyle("FocusedCell", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.WindowText));
+            //this.grdUser.Styles.AddReplace("OddRow", new DevExpress.Utils.ViewStyle("OddRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.Color.White, System.Drawing.SystemColors.WindowText));
+            //this.grdUser.Styles.AddReplace("SelectedRow", new DevExpress.Utils.ViewStyle("SelectedRow", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseImage))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Highlight, System.Drawing.SystemColors.HighlightText));
+            //this.grdUser.Styles.AddReplace("FocusedGroup", new DevExpress.Utils.ViewStyle("FocusedGroup", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "FocusedRow", DevExpress.Utils.StyleOptions.StyleEnabled, true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Highlight, System.Drawing.SystemColors.HighlightText));
+            //this.grdUser.Styles.AddReplace("Row", new DevExpress.Utils.ViewStyle("Row", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", DevExpress.Utils.StyleOptions.StyleEnabled, true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.WindowText));
+            //this.grdUser.Styles.AddReplace("FilterPanel", new DevExpress.Utils.ViewStyle("FilterPanel", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.ControlDark, System.Drawing.SystemColors.ControlLightLight));
+            //this.grdUser.Styles.AddReplace("DetailTip", new DevExpress.Utils.ViewStyle("DetailTip", "GridView", new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0))), "", ((DevExpress.Utils.StyleOptions)((((((((((DevExpress.Utils.StyleOptions.StyleEnabled | DevExpress.Utils.StyleOptions.UseBackColor) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawEndEllipsis) 
+            //    | DevExpress.Utils.StyleOptions.UseDrawFocusRect) 
+            //    | DevExpress.Utils.StyleOptions.UseFont) 
+            //    | DevExpress.Utils.StyleOptions.UseForeColor) 
+            //    | DevExpress.Utils.StyleOptions.UseHorzAlignment) 
+            //    | DevExpress.Utils.StyleOptions.UseImage) 
+            //    | DevExpress.Utils.StyleOptions.UseWordWrap) 
+            //    | DevExpress.Utils.StyleOptions.UseVertAlignment))), true, false, false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Utils.VertAlignment.Center, null, System.Drawing.SystemColors.Info, System.Drawing.SystemColors.InfoText));
 			this.grdUser.TabIndex = 25;
 			this.grdUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdUser_KeyPress);
 			this.grdUser.DoubleClick += new System.EventHandler(this.grdUser_DoubleClick);
@@ -376,13 +376,13 @@ namespace Scheduler
 			// 
 			// gvwUser
 			// 
-			this.gvwUser.BehaviorOptions = ((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags)((((((((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowZoomDetail | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.EnableMasterViewMode) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.SmartVertScrollBar) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoSelectAllInEditor) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.UseTabKey) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowSort) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowGroup) 
-				| DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoUpdateTotalSummary)));
+            //this.gvwUser.BehaviorOptions = ((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags)((((((((DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowZoomDetail | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.EnableMasterViewMode) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.SmartVertScrollBar) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoSelectAllInEditor) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.UseTabKey) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowSort) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AllowGroup) 
+            //    | DevExpress.XtraGrid.Views.Grid.BehaviorOptionsFlags.AutoUpdateTotalSummary)));
 			this.gvwUser.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D;
 			this.gvwUser.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
 																						   this.gcolUserID,
@@ -393,28 +393,41 @@ namespace Scheduler
 			this.gvwUser.DefaultEdit = this.repositoryItemTextEdit1;
 			this.gvwUser.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
 			this.gvwUser.Name = "gvwUser";
-			this.gvwUser.PrintOptions = ((DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags)(((((((((((DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.AutoWidth | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.ExpandAllGroups) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintDetails) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintFooter) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintFilterInfo) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintGroupFooter) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintHeader) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintHorzLines) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintPreview) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintVertLines) 
-				| DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.UsePrintStyles)));
-			this.gvwUser.ViewOptions = ((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags)((((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.AutoWidth | DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowColumns) 
-				| DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowGroupedColumns) 
-				| DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowVertLines)));
-			this.gvwUser.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-			this.gvwUser.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
+            this.gvwUser.OptionsPrint.AutoWidth = true;
+            this.gvwUser.OptionsPrint.PrintDetails = true;
+            this.gvwUser.OptionsPrint.PrintFooter = true;
+            this.gvwUser.OptionsPrint.PrintFilterInfo = true;
+            this.gvwUser.OptionsPrint.PrintGroupFooter = true;
+            this.gvwUser.OptionsPrint.PrintHeader = true;
+            this.gvwUser.OptionsPrint.PrintHorzLines = true;
+            this.gvwUser.OptionsPrint.PrintPreview = true;
+            this.gvwUser.OptionsPrint.PrintVertLines = true;
+            this.gvwUser.OptionsPrint.UsePrintStyles = true;
+            //this.gvwUser.PrintOptions = ((DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags)(((((((((((DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.AutoWidth | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.ExpandAllGroups) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintDetails) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintFooter) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintFilterInfo) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintGroupFooter) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintHeader) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintHorzLines) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintPreview) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.PrintVertLines) 
+            //    | DevExpress.XtraGrid.Views.Grid.PrintOptionsFlags.UsePrintStyles)));
+
+            
+            //this.gvwUser.ViewOptions = ((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags)((((DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.AutoWidth | DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowColumns) 
+            //    | DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowGroupedColumns) 
+            //    | DevExpress.XtraGrid.Views.Grid.ViewOptionsFlags.ShowVertLines)));
+            this.gvwUser.Appearance.FocusedRow.AssignInternal(this.gvwUser.Appearance.SelectedRow);
+            //this.gvwUser.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
+            //this.gvwUser.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
 			// 
 			// gcolUserID
 			// 
 			this.gcolUserID.Caption = "User ID";
 			this.gcolUserID.FieldName = "UserID";
 			this.gcolUserID.Name = "gcolUserID";
-			this.gcolUserID.Options = DevExpress.XtraGrid.Columns.ColumnOptions.None;
+			
 			// 
 			// gcolUserName
 			// 
