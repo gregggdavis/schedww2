@@ -725,7 +725,7 @@ namespace Scheduler
             // 
             this.label7.AutoSize = true;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label7.Location = new System.Drawing.Point(64, 372);
+            this.label7.Location = new System.Drawing.Point(64, 424);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 83;
@@ -735,9 +735,9 @@ namespace Scheduler
             // 
             this.label6.AutoSize = true;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(64, 352);
+            this.label6.Location = new System.Drawing.Point(64, 376);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 82;
             this.label6.Text = "Test Mid-term";
             // 
@@ -745,7 +745,7 @@ namespace Scheduler
             // 
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(64, 332);
+            this.label5.Location = new System.Drawing.Point(64, 330);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 81;
@@ -780,36 +780,39 @@ namespace Scheduler
             // 
             // llblFinalEvt
             // 
-            this.llblFinalEvt.Location = new System.Drawing.Point(208, 372);
+            this.llblFinalEvt.Location = new System.Drawing.Point(208, 424);
             this.llblFinalEvt.Name = "llblFinalEvt";
             this.llblFinalEvt.Size = new System.Drawing.Size(320, 21);
             this.llblFinalEvt.TabIndex = 12;
             this.llblFinalEvt.TabStop = true;
             this.llblFinalEvt.Text = "None";
+            this.llblFinalEvt.TextChanged += new System.EventHandler(this.llblFinalEvt_TextChanged);
             this.llblFinalEvt.MouseLeave += new System.EventHandler(this.llblFinalEvt_MouseLeave);
             this.llblFinalEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblFinalEvt_LinkClicked);
             this.llblFinalEvt.MouseEnter += new System.EventHandler(this.llblFinalEvt_MouseEnter);
             // 
             // llblMidEvt
             // 
-            this.llblMidEvt.Location = new System.Drawing.Point(208, 352);
+            this.llblMidEvt.Location = new System.Drawing.Point(208, 376);
             this.llblMidEvt.Name = "llblMidEvt";
             this.llblMidEvt.Size = new System.Drawing.Size(320, 21);
             this.llblMidEvt.TabIndex = 11;
             this.llblMidEvt.TabStop = true;
             this.llblMidEvt.Text = "None";
+            this.llblMidEvt.TextChanged += new System.EventHandler(this.llblMidEvt_TextChanged);
             this.llblMidEvt.MouseLeave += new System.EventHandler(this.llblMidEvt_MouseLeave);
             this.llblMidEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblMidEvt_LinkClicked);
             this.llblMidEvt.MouseEnter += new System.EventHandler(this.llblMidEvt_MouseEnter);
             // 
             // llblInitialEvt
             // 
-            this.llblInitialEvt.Location = new System.Drawing.Point(208, 332);
+            this.llblInitialEvt.Location = new System.Drawing.Point(208, 330);
             this.llblInitialEvt.Name = "llblInitialEvt";
             this.llblInitialEvt.Size = new System.Drawing.Size(320, 21);
             this.llblInitialEvt.TabIndex = 10;
             this.llblInitialEvt.TabStop = true;
             this.llblInitialEvt.Text = "None";
+            this.llblInitialEvt.TextChanged += new System.EventHandler(this.llblInitialEvt_TextChanged);
             this.llblInitialEvt.MouseLeave += new System.EventHandler(this.llblInitialEvt_MouseLeave);
             this.llblInitialEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblInitialEvt_LinkClicked);
             this.llblInitialEvt.MouseEnter += new System.EventHandler(this.llblInitialEvt_MouseEnter);
@@ -851,15 +854,15 @@ namespace Scheduler
             this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label12.Location = new System.Drawing.Point(32, 396);
+            this.label12.Location = new System.Drawing.Point(32, 478);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 13);
+            this.label12.Size = new System.Drawing.Size(78, 13);
             this.label12.TabIndex = 73;
-            this.label12.Text = "Test Details";
+            this.label12.Text = "Class Details";
             // 
             // grpTest
             // 
-            this.grpTest.Location = new System.Drawing.Point(26, 405);
+            this.grpTest.Location = new System.Drawing.Point(26, 487);
             this.grpTest.Name = "grpTest";
             this.grpTest.Size = new System.Drawing.Size(558, 3);
             this.grpTest.TabIndex = 72;
@@ -896,7 +899,8 @@ namespace Scheduler
             // 
             // txtFinalForm
             // 
-            this.txtFinalForm.Location = new System.Drawing.Point(208, 488);
+            this.txtFinalForm.Enabled = false;
+            this.txtFinalForm.Location = new System.Drawing.Point(208, 448);
             this.txtFinalForm.MaxLength = 50;
             this.txtFinalForm.Name = "txtFinalForm";
             this.txtFinalForm.Size = new System.Drawing.Size(320, 21);
@@ -906,7 +910,7 @@ namespace Scheduler
             // 
             this.label8.AutoSize = true;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label8.Location = new System.Drawing.Point(64, 490);
+            this.label8.Location = new System.Drawing.Point(64, 450);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 13);
             this.label8.TabIndex = 55;
@@ -914,7 +918,8 @@ namespace Scheduler
             // 
             // txtMidtermForm
             // 
-            this.txtMidtermForm.Location = new System.Drawing.Point(208, 464);
+            this.txtMidtermForm.Enabled = false;
+            this.txtMidtermForm.Location = new System.Drawing.Point(208, 398);
             this.txtMidtermForm.MaxLength = 50;
             this.txtMidtermForm.Name = "txtMidtermForm";
             this.txtMidtermForm.Size = new System.Drawing.Size(320, 21);
@@ -924,15 +929,16 @@ namespace Scheduler
             // 
             this.label9.AutoSize = true;
             this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label9.Location = new System.Drawing.Point(64, 466);
+            this.label9.Location = new System.Drawing.Point(64, 400);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 13);
+            this.label9.Size = new System.Drawing.Size(102, 13);
             this.label9.TabIndex = 53;
             this.label9.Text = "Test Mid-Term Form";
             // 
             // txtInitialForm
             // 
-            this.txtInitialForm.Location = new System.Drawing.Point(208, 440);
+            this.txtInitialForm.Enabled = false;
+            this.txtInitialForm.Location = new System.Drawing.Point(208, 352);
             this.txtInitialForm.MaxLength = 50;
             this.txtInitialForm.Name = "txtInitialForm";
             this.txtInitialForm.Size = new System.Drawing.Size(320, 21);
@@ -942,7 +948,7 @@ namespace Scheduler
             // 
             this.label10.AutoSize = true;
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label10.Location = new System.Drawing.Point(64, 442);
+            this.label10.Location = new System.Drawing.Point(64, 354);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 13);
             this.label10.TabIndex = 51;
@@ -998,7 +1004,7 @@ namespace Scheduler
             // 
             // txtHomeWorkMinutes
             // 
-            this.txtHomeWorkMinutes.Location = new System.Drawing.Point(456, 416);
+            this.txtHomeWorkMinutes.Location = new System.Drawing.Point(456, 498);
             this.txtHomeWorkMinutes.MaxLength = 15;
             this.txtHomeWorkMinutes.Name = "txtHomeWorkMinutes";
             this.txtHomeWorkMinutes.Size = new System.Drawing.Size(72, 21);
@@ -1012,7 +1018,7 @@ namespace Scheduler
             // 
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(304, 418);
+            this.label4.Location = new System.Drawing.Point(304, 500);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(144, 13);
             this.label4.TabIndex = 43;
@@ -1020,7 +1026,7 @@ namespace Scheduler
             // 
             // txtNumberStudents
             // 
-            this.txtNumberStudents.Location = new System.Drawing.Point(208, 416);
+            this.txtNumberStudents.Location = new System.Drawing.Point(208, 498);
             this.txtNumberStudents.MaxLength = 15;
             this.txtNumberStudents.Name = "txtNumberStudents";
             this.txtNumberStudents.Size = new System.Drawing.Size(72, 21);
@@ -1034,7 +1040,7 @@ namespace Scheduler
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label3.Location = new System.Drawing.Point(64, 418);
+            this.label3.Location = new System.Drawing.Point(64, 500);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 41;
@@ -1712,8 +1718,8 @@ namespace Scheduler
             this.cmbEndTime.Name = "cmbEndTime";
             this.cmbEndTime.Size = new System.Drawing.Size(75, 21);
             this.cmbEndTime.TabIndex = 6;
-            this.cmbEndTime.Leave += new System.EventHandler(this.cmbEndTime_Leave);
             this.cmbEndTime.SelectedIndexChanged += new System.EventHandler(this.cmbEndTime_SelectedIndexChanged);
+            this.cmbEndTime.Leave += new System.EventHandler(this.cmbEndTime_Leave);
             // 
             // cmbStartTime
             // 
@@ -1770,8 +1776,8 @@ namespace Scheduler
             this.cmbStartTime.Name = "cmbStartTime";
             this.cmbStartTime.Size = new System.Drawing.Size(75, 21);
             this.cmbStartTime.TabIndex = 4;
-            this.cmbStartTime.Leave += new System.EventHandler(this.cmbStartTime_Leave);
             this.cmbStartTime.SelectedIndexChanged += new System.EventHandler(this.cmbStartTime_SelectedIndexChanged);
+            this.cmbStartTime.Leave += new System.EventHandler(this.cmbStartTime_Leave);
             this.cmbStartTime.TextChanged += new System.EventHandler(this.cmbStartTime_TextChanged);
             // 
             // groupBox6
@@ -1969,9 +1975,6 @@ namespace Scheduler
             this.gvwEvents.OptionsView.ShowGroupPanel = false;
             this.gvwEvents.OptionsView.ShowHorzLines = false;
             this.gvwEvents.OptionsView.ShowIndicator = false;
-            this.gvwEvents.Appearance.FocusedRow.AssignInternal(this.gvwEvents.Appearance.SelectedRow);
-            //this.gvwEvents.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            //this.gvwEvents.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolCaldendarEventID
             // 
@@ -2083,8 +2086,8 @@ namespace Scheduler
             // printingSystem
             // 
             this.printingSystem.StartPrint += new DevExpress.XtraPrinting.PrintDocumentEventHandler(this.printingSystem_StartPrint);
-            this.printingSystem.AfterPagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePaint);
             this.printingSystem.BeforePagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_BeforePagePaint);
+            this.printingSystem.AfterPagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePaint);
             this.printingSystem.AfterPagePrint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePrint);
             // 
             // frmClassDlg
@@ -2107,9 +2110,9 @@ namespace Scheduler
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adding Class...";
+            this.Load += new System.EventHandler(this.frmCourseDlg_Load);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.frmCourseDlg_Closing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCourseDlg_KeyDown);
-            this.Load += new System.EventHandler(this.frmCourseDlg_Load);
             this.tbcCourse.ResumeLayout(false);
             this.tbpCourse.ResumeLayout(false);
             this.tbpCourse.PerformLayout();
@@ -5705,6 +5708,36 @@ namespace Scheduler
             //    xtraPrinting.PageNumber++;
 
             //}
+        }
+
+        private void llblInitialEvt_TextChanged(object sender, EventArgs e)
+        {
+            if (llblInitialEvt.Text.Equals("None"))
+            {
+                txtInitialForm.Enabled = false;
+            }
+            else
+                txtInitialForm.Enabled = true;
+        }
+
+        private void llblMidEvt_TextChanged(object sender, EventArgs e)
+        {
+            if (llblMidEvt.Text.Equals("None"))
+            {
+                txtMidtermForm.Enabled = false;
+            }
+            else
+                txtMidtermForm.Enabled = true;
+        }
+
+        private void llblFinalEvt_TextChanged(object sender, EventArgs e)
+        {
+            if (llblFinalEvt.Text.Equals("None"))
+            {
+                txtFinalForm.Enabled = false;
+            }
+            else
+                txtFinalForm.Enabled = true;
         }
 
     }
