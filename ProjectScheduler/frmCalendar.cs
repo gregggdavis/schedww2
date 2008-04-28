@@ -17,6 +17,7 @@ using Message = Scheduler.BusinessLayer.Message;
 using DevExpress.XtraPrinting.Preview;
 using DevExpress.XtraPrinting.Control;
 using DevExpress.XtraPrinting.Design;
+using DevExpress.XtraPrinting;
 
 namespace Scheduler {
 	/// <summary>
@@ -1017,7 +1018,7 @@ namespace Scheduler {
                     Common.FontSize = 8.25f;
 					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 2);
 					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize);
-					schedulerPrintStyle.PageSettings.Margins = new Margins(0, 0, 0, 0);
+					schedulerPrintStyle.PageSettings.Margins = new Margins(10, 10, 20, 20);
 					schedulerPrintStyle.PageSettings.Landscape = true;
                     
                     
@@ -1068,14 +1069,35 @@ namespace Scheduler {
                 //schedulerControl1.PrintStyles.
                 //schedulerControl1.print
                 schedulerControl1.ShowPrintOptionsForm();
+                
+
                 if(_viewModeName == "Week")
                     schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Weekly;
+                DevExpress.XtraPrinting.PrintableComponentLink comp = new DevExpress.XtraPrinting.PrintableComponentLink(new PrintingSystem());
+                comp.Component = schedulerControl1;
+                PageHeaderFooter footer = comp.PageHeaderFooter as PageHeaderFooter;
+                
+                if(footer != null)
+                    footer.Footer.Content.Add("Test Footer");
+                comp.PaperKind = PaperKind.A4;
+                comp.Margins.Bottom = 20;
+                comp.Margins.Top = 20;
+                comp.Margins.Left = 10;
+                comp.Margins.Right = 10;
+                comp.CreateMarginalFooterArea += new CreateAreaEventHandler(pcl_CreateMarginalFooterArea);
+                //comp.CreateDocument();
+                comp.ShowPreviewDialog();
             }
             catch (Exception ex)
             {
 				MessageBox.Show(ex.Message, ex.Source);
 			}
 		}
+        void pcl_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
+        {
+            
+            //e.Graph.DrawString("All", new RectangleF(0, 0, 500, 30));
+        }
 
 		private void datePickerTop_ValueChanged(object sender, EventArgs e) {
 			DateTimePicker dtPicker = sender as DateTimePicker;
