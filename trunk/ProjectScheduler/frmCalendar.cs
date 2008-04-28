@@ -997,7 +997,7 @@ namespace Scheduler {
                     if (printStyle != null)
                     {
                         printStyle.CalendarHeaderVisible = false;
-                        
+                            
                         if (StartDatePickerTop.Checked) printStyle.StartRangeDate = CalendarFilter.StartDate;
                         if (EndDatePickerTop.Checked) printStyle.EndRangeDate = CalendarFilter.EndDate;
                         
@@ -1065,6 +1065,7 @@ namespace Scheduler {
                 //print
                 if (_viewModeName == "Week")
                     schedulerControl1.OptionsPrint.PrintStyle = SchedulerPrintStyleKind.Weekly;
+                //schedulerControl1.PrintStyles.
                 //schedulerControl1.print
                 schedulerControl1.ShowPrintOptionsForm();
                 if(_viewModeName == "Week")

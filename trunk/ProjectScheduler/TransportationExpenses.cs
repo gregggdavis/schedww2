@@ -208,6 +208,8 @@ namespace Scheduler
             _link.PaperKind = System.Drawing.Printing.PaperKind.A4;
             _link.Margins.Top = 60;
             _link.Margins.Bottom = 60;
+            _link.Margins.Left = 10;
+            _link.Margins.Right = 10;
             if (printPreview)
                 _link.ShowPreviewDialog();
             else
