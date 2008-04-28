@@ -64,6 +64,7 @@ namespace Scheduler
 		private DevExpress.XtraGrid.Columns.GridColumn gcolContact1Name;
         private DevExpress.XtraGrid.Columns.GridColumn gcolMobilePhone;
         private DevExpress.XtraGrid.Columns.GridColumn gcolDateJoined;
+        private DevExpress.XtraGrid.Columns.GridColumn colAccRepName;
 		private string option="";
         #endregion
         public string Option
@@ -157,6 +158,7 @@ namespace Scheduler
             this.gcolContactPhone2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolMobilePhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolDateJoined = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAccRepName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnl_Find = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -216,10 +218,10 @@ namespace Scheduler
             this.txt_SpeedSearch.Name = "txt_SpeedSearch";
             this.txt_SpeedSearch.Size = new System.Drawing.Size(157, 21);
             this.txt_SpeedSearch.TabIndex = 10;
-            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
-            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             this.txt_SpeedSearch.TextChanged += new System.EventHandler(this.txt_SpeedSearch_TextChanged);
             this.txt_SpeedSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyDown);
+            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
+            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             // 
             // label1
             // 
@@ -287,7 +289,8 @@ namespace Scheduler
             this.gcolContact2Name,
             this.gcolContactPhone2,
             this.gcolMobilePhone,
-            this.gcolDateJoined});
+            this.gcolDateJoined,
+            this.colAccRepName});
             this.gvwContact.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gvwContact.GridControl = this.grdContact;
             this.gvwContact.Name = "gvwContact";
@@ -302,9 +305,6 @@ namespace Scheduler
             this.gvwContact.OptionsView.ShowIndicator = false;
             this.gvwContact.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolContactType, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gvwContact.Appearance.FocusedRow.AssignInternal(this.gvwContact.Appearance.SelectedRow);
-            //this.gvwContact.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            //this.gvwContact.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolContactID
             // 
@@ -477,6 +477,12 @@ namespace Scheduler
             this.gcolDateJoined.Caption = "Date Joined";
             this.gcolDateJoined.FieldName = "DateJoined";
             this.gcolDateJoined.Name = "gcolDateJoined";
+            // 
+            // colAccRepName
+            // 
+            this.colAccRepName.Caption = "Acc. Rep Name";
+            this.colAccRepName.FieldName = "AccRepName";
+            this.colAccRepName.Name = "colAccRepName";
             // 
             // pnl_Find
             // 
@@ -729,8 +735,10 @@ namespace Scheduler
                 gcolContactPhone1.VisibleIndex = 2;
                 gcolContact2Name.VisibleIndex = 3;
                 gcolContactPhone2.VisibleIndex = 4;
-                gcolStatus.VisibleIndex = 5;
+                colAccRepName.VisibleIndex = 5;
+                gcolStatus.VisibleIndex = 6;
                 gcolPhone.Caption = "Phone";
+                
                 gcolContactName.VisibleIndex = -1;
                 gcolContactNameRomaji.VisibleIndex = -1;
                 gcolPhone.VisibleIndex = -1;
@@ -746,6 +754,7 @@ namespace Scheduler
                 gcolEmail1.VisibleIndex = -1;
                 gcolDateJoined.VisibleIndex = -1;
                 gcolMobilePhone.VisibleIndex = -1;
+
             }
             else if (option == "Instructor")
             {

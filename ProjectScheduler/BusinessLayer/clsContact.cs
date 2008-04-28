@@ -140,7 +140,7 @@ namespace Scheduler.BusinessLayer
 					"When '0' Then 'Yes' " +
 					"When '1' Then 'No' " +
 					"ELSE '' " +
-					"END,Email1,Email2,Phone1,Phone2,PhoneMobile1,PhoneMobile2,PhoneBusiness1,PhoneBusiness2 " +
+                    "END,Email1,Email2,Phone1,Phone2,PhoneMobile1,PhoneMobile2,PhoneBusiness1,PhoneBusiness2, CASE When (AccountRepLastName + ', ' + AccountRepFirstName) <> ', ' Then (AccountRepLastName + ', ' + AccountRepFirstName) Else '' End as  AccRepName " +
 					"From Contact ";
 					if(option!="Contact")
 					{
@@ -192,7 +192,7 @@ namespace Scheduler.BusinessLayer
 						"When '0' Then 'Yes' " +
 						"When '1' Then 'No' " +
 						"ELSE '' " +
-						"END " +
+                        "END, CASE When (AccountRepLastName + ', ' + AccountRepFirstName) <> ', ' Then (AccountRepLastName + ', ' + AccountRepFirstName) Else '' End as  AccRepName " +
 						"From Contact " +
 						"WHERE ContactID = " + _contactid + " ";
 				}
