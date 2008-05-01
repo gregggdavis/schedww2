@@ -2254,6 +2254,7 @@ namespace Scheduler
 
 			// Print!
 			//fp.Print();
+            xfp.PaperKind = PaperKind.A4;
             xfp.Print();
 
 			tbpLogin.Controls.Add(pnlLogin);

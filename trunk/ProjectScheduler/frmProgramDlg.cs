@@ -2516,6 +2516,7 @@ namespace Scheduler
 
             xnm.PageNumber = 1;
             xnm.RowCount = 0;
+            xnm.PaperKind = PaperKind.A4;
             xnm.RTitle = "Program Information";
             xnm.PrintingSystem.PageMargins.Top = 100;
             xnm.PrintingSystem.PageSettings.TopMargin = 100;

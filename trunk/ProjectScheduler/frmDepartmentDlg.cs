@@ -2343,6 +2343,7 @@ namespace Scheduler
 
 			// Print!
             //fp.Print();
+            xfp.PaperKind = PaperKind.A4;
 			xfp.Print();
             pnlDeptInfo.Controls.Add(chkNoDept);
 			tbpDeptInfo.Controls.Add(pnlDeptInfo);

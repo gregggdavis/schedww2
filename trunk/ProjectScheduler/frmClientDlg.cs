@@ -2024,6 +2024,7 @@ namespace Scheduler
             PrintingFunctions.SetProperties(ref xfp);
 
 			// Print!
+            xfp.PaperKind = PaperKind.A4;
 			xfp.Print();
 
 			tbpClientInfo.Controls.Add(pnlClientInfo);

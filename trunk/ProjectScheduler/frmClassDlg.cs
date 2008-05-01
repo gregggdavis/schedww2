@@ -4299,6 +4299,7 @@ namespace Scheduler
             //classPrinting.label1ForeColor = label1.ForeColor;
             //classPrinting.ShowPreview();
             devNormalPrinting.RTitle = "Class Information";
+            devNormalPrinting.PaperKind = PaperKind.A4;
             devNormalPrinting.CreateDocument();
             devNormalPrinting.PrintingSystem.PreviewFormEx.ShowDialog();
            // PrintClassDetails();

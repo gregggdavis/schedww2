@@ -2036,6 +2036,7 @@ namespace Scheduler
 
 			// Print!
 			//fp.Print();
+            xfp.PaperKind = PaperKind.A4;
             xfp.Print();
 			tbpPersonal.Controls.Add(pnlPersonal);
 			tbpContact.Controls.Add(pnlAddress);
