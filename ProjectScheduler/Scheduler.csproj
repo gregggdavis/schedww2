@@ -84,7 +84,7 @@
     <Reference Include="DevExpress.Charts.v8.1.Core, Version=8.1.2.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-<Reference Include="DevExpress.XtraCharts.v8.1, Version=8.1.2.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraCharts.v8.1, Version=8.1.2.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v8.1.UI, Version=8.1.2.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
@@ -376,6 +376,12 @@
     </Compile>
     <Compile Include="Reports\FinalProgramInformation.Designer.cs">
       <DependentUpon>FinalProgramInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FinalProgramSubReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\FinalProgramSubReport.Designer.cs">
+      <DependentUpon>FinalProgramSubReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\ProgamInfodlg.cs">
       <SubType>Form</SubType>
