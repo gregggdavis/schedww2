@@ -1538,7 +1538,8 @@ namespace Scheduler.BusinessLayer
                 com.Parameters["@EventId"].Value = eventid;
                 result1 = (int)com.ExecuteScalar();
 
-                strSQL = "Select Count(*) from [CalendarEvent] WHERE EventId=@EventId AND EndDateTime >= GetDate() AND CalendarEventStatus = 0;";
+                //strSQL = "Select Count(*) from [CalendarEvent] WHERE EventId=@EventId AND EndDateTime >= GetDate() AND CalendarEventStatus = 0;";
+                strSQL = "Select Count(*) from [CalendarEvent] WHERE EventId=@EventId AND CalendarEventStatus = 0;";
                 com.CommandText = strSQL;
                 //com.Parameters["@EventId"].Value = eventid;
                 result2 = (int)com.ExecuteScalar();
