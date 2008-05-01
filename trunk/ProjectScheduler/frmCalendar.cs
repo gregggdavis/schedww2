@@ -18,6 +18,7 @@ using DevExpress.XtraPrinting.Preview;
 using DevExpress.XtraPrinting.Control;
 using DevExpress.XtraPrinting.Design;
 using DevExpress.XtraPrinting;
+using System.Text;
 
 namespace Scheduler {
 	/// <summary>
@@ -522,7 +523,7 @@ namespace Scheduler {
 				"ContactStatus=0 Order By LastName, FirstName ");
 
             Common.PopulateDropdownWithValue(
-                cmbClass, "Select [Name], ClassName = CASE " +
+                cmbClass, "Select Distinct [Name], ClassName = CASE " +
 				"WHEN NickName IS NULL THEN Name " +
 				"WHEN NickName = '' THEN Name " +
 				"ELSE NickName " +
@@ -531,7 +532,7 @@ namespace Scheduler {
 				" Order By ClassName ");
 
             Common.PopulateDropdownWithValue(
-                cmbProgram, "Select [Name], ProgramName = CASE " +
+                cmbProgram, "Select Distinct [Name], ProgramName = CASE " +
 				"WHEN NickName IS NULL THEN Name " +
 				"WHEN NickName = '' THEN Name " +
 				"ELSE NickName " +
@@ -591,7 +592,8 @@ namespace Scheduler {
             DataTable dtblEvents = FetchGridData(startDate, endDate, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, ((ValuePair)cmbProgram.SelectedItem).Value, ((ValuePair)cmbClass.SelectedItem).Value);
 			schedulerStorage1.Appointments.DataSource = dtblEvents;
 			if (fMain != null) {
-				fMain.EnableDisable(dtblEvents.Rows.Count > 0);
+                if(dtblEvents != null)
+				    fMain.EnableDisable(dtblEvents.Rows.Count > 0);
 			}
 		}
 
@@ -1076,12 +1078,17 @@ namespace Scheduler {
                 DevExpress.XtraPrinting.PrintableComponentLink comp = new DevExpress.XtraPrinting.PrintableComponentLink(new PrintingSystem());
                 comp.Component = schedulerControl1;
                 PageHeaderFooter footer = comp.PageHeaderFooter as PageHeaderFooter;
-                
-                if(footer != null)
-                    footer.Footer.Content.Add("Test Footer");
+
+                if (footer != null)
+                {
+                    footer.Footer.Font = new Font(footer.Footer.Font.FontFamily, 12, FontStyle.Bold);
+                    footer.Footer.Content.Add(GetFilterText());
+                }
+
+                comp.Landscape = schedulerControl1.ActivePrintStyle.PageSettings.Landscape;
                 comp.PaperKind = PaperKind.A4;
-                comp.Margins.Bottom = 20;
-                comp.Margins.Top = 20;
+                comp.Margins.Bottom = 60;
+                comp.Margins.Top = 60;
                 comp.Margins.Left = 10;
                 comp.Margins.Right = 10;
                 comp.CreateMarginalFooterArea += new CreateAreaEventHandler(pcl_CreateMarginalFooterArea);
@@ -1093,6 +1100,37 @@ namespace Scheduler {
 				MessageBox.Show(ex.Message, ex.Source);
 			}
 		}
+
+        private string GetFilterText()
+        {
+            bool nothingSet = true;
+            StringBuilder strBuilder = new StringBuilder("Filter Info: ");
+            if (!cmbClass.Text.Equals(""))
+            {
+                strBuilder.Append(" Class = \"" + cmbClass.Text + "\"");
+                nothingSet = false;
+            }
+            if (!cmbClient.Text.Equals(""))
+            {
+                strBuilder.Append(" Client = \"" + cmbClient.Text + "\"");
+                nothingSet = false;
+            }
+            if (!cmbInstructor.Text.Equals(""))
+            {
+                strBuilder.Append(" Instructor = \"" + cmbInstructor.Text + "\"");
+                nothingSet = false;
+            }
+            if (!cmbProgram.Text.Equals(""))
+            {
+                strBuilder.Append(" Program = \"" + cmbProgram.Text + "\"");
+                nothingSet = false;
+            }
+
+            if (nothingSet)
+                return "All";
+            else
+                return strBuilder.ToString();
+        }
         void pcl_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
         {
             
