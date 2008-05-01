@@ -933,7 +933,7 @@ namespace Scheduler
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(102, 13);
             this.label9.TabIndex = 53;
-            this.label9.Text = "Test Mid-Term Form";
+            this.label9.Text = "Test Mid-term Form";
             // 
             // txtInitialForm
             // 
@@ -4189,13 +4189,13 @@ namespace Scheduler
 			arrLabel.Add("Status");
 			arrLabel.Add("------");
 			arrLabel.Add("Test Initial");
-			arrLabel.Add("Test Mid-Term");
+			arrLabel.Add("Test Mid-term");
 			arrLabel.Add("Test Final");
 			arrLabel.Add("------");
 			arrLabel.Add("No. of Students");
 			arrLabel.Add("Homework Minutes");
 			arrLabel.Add("Test Initial Form");
-			arrLabel.Add("Test Mid-Term Form");
+			arrLabel.Add("Test Mid-term Form");
 			arrLabel.Add("Test Final Form");
 
 			arrLabel.Add("------");

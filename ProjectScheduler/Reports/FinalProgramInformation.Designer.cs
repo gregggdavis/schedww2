@@ -846,7 +846,7 @@ namespace Scheduler.Reports
             this.xrTableCell16.ParentStyleUsing.UseBorders = false;
             this.xrTableCell16.ParentStyleUsing.UseBorderWidth = false;
             this.xrTableCell16.Size = new System.Drawing.Size(192, 25);
-            this.xrTableCell16.Text = "Mid-Term";
+            this.xrTableCell16.Text = "Mid-term";
             this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrTableCell17

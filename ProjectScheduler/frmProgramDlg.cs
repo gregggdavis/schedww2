@@ -877,7 +877,7 @@ namespace Scheduler
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 13);
             this.label2.TabIndex = 61;
-            this.label2.Text = "Questionnaire Mid-Term Form";
+            this.label2.Text = "Questionnaire Mid-term Form";
             // 
             // txtEvaluationFinalForm
             // 
@@ -915,7 +915,7 @@ namespace Scheduler
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 13);
             this.label4.TabIndex = 57;
-            this.label4.Text = "Evaluation Mid-Term Form";
+            this.label4.Text = "Evaluation Mid-term Form";
             // 
             // txtFinalForm
             // 
@@ -953,7 +953,7 @@ namespace Scheduler
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(101, 13);
             this.label9.TabIndex = 53;
-            this.label9.Text = "Test Mid-Term Form";
+            this.label9.Text = "Test Mid-term Form";
             // 
             // label10
             // 
@@ -2408,15 +2408,15 @@ namespace Scheduler
 			arrLabel.Add("------");
 			arrLabel.Add("Test Initial");
 			arrLabel.Add("Test Initial Form");
-			arrLabel.Add("Test Mid-Term");
-			arrLabel.Add("Test Mid-Term Form");
+			arrLabel.Add("Test Mid-term");
+			arrLabel.Add("Test Mid-term Form");
 			arrLabel.Add("Test Final");
 			arrLabel.Add("Test Final Form");
 			arrLabel.Add("------");
 			arrLabel.Add("Report Attendance");
 			arrLabel.Add("Evaluation Mid-term Form");
 			arrLabel.Add("Evaluation Final Form");
-            arrLabel.Add("Questionnaire Mid-Term Form");
+            arrLabel.Add("Questionnaire Mid-term Form");
             arrLabel.Add("Questionnaire Final Form");
 			arrLabel.Add("------");
 			arrLabel.Add("Description");
