@@ -11,8 +11,9 @@ namespace Scheduler
 	/// Summary description for frmCourseBrw.
 	/// </summary>
 	public class frmCourseBrw : System.Windows.Forms.Form
-	{
-		private DevExpress.XtraEditors.Repository.PersistentRepository persistentRepository1;
+    {
+        #region Declarations
+        private DevExpress.XtraEditors.Repository.PersistentRepository persistentRepository1;
 		public System.Windows.Forms.Panel pnl_Find;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.PictureBox pictureBox1;
@@ -68,8 +69,9 @@ namespace Scheduler
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gcolScheduledInstructor;
 		private bool boolFetch=true;
+        #endregion
 
-		public frmCourseBrw()
+        public frmCourseBrw()
 		{
 			InitializeComponent();
 			pnl_Find.Height = 0;
