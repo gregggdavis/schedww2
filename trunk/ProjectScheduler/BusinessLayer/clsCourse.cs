@@ -1543,7 +1543,8 @@ namespace Scheduler.BusinessLayer
                 //com.Parameters["@EventId"].Value = eventid;
                 result2 = (int)com.ExecuteScalar();
 
-                strResult = result1.ToString() + " / " + (result1 + result2).ToString();
+                //strResult = result1.ToString() + " / " + (result1 + result2).ToString();
+                strResult = result1.ToString() + " / " + (result2).ToString();
 
                 return strResult;
             }
