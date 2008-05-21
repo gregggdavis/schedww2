@@ -540,6 +540,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>FinalProgramInformation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FinalProgramSubReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FinalProgramSubReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProgamInfodlg.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ProgamInfodlg.cs</DependentUpon>

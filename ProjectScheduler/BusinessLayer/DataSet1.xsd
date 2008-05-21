@@ -131,7 +131,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="viewSimpleProgramInfo" msprop:Generator_UserTableName="viewSimpleProgramInfo" msprop:Generator_RowDeletedName="viewSimpleProgramInfoRowDeleted" msprop:Generator_TableClassName="viewSimpleProgramInfoDataTable" msprop:Generator_RowChangedName="viewSimpleProgramInfoRowChanged" msprop:Generator_RowClassName="viewSimpleProgramInfoRow" msprop:Generator_RowChangingName="viewSimpleProgramInfoRowChanging" msprop:Generator_RowEvArgName="viewSimpleProgramInfoRowChangeEvent" msprop:Generator_RowEvHandlerName="viewSimpleProgramInfoRowChangeEventHandler" msprop:Generator_TablePropName="viewSimpleProgramInfo" msprop:Generator_TableVarName="tableviewSimpleProgramInfo" msprop:Generator_RowDeletingName="viewSimpleProgramInfoRowDeleting">
+        <xs:element name="viewSimpleProgramInfo" msprop:Generator_UserTableName="viewSimpleProgramInfo" msprop:Generator_RowDeletedName="viewSimpleProgramInfoRowDeleted" msprop:Generator_RowChangedName="viewSimpleProgramInfoRowChanged" msprop:Generator_RowClassName="viewSimpleProgramInfoRow" msprop:Generator_RowChangingName="viewSimpleProgramInfoRowChanging" msprop:Generator_RowEvArgName="viewSimpleProgramInfoRowChangeEvent" msprop:Generator_RowEvHandlerName="viewSimpleProgramInfoRowChangeEventHandler" msprop:Generator_TableClassName="viewSimpleProgramInfoDataTable" msprop:Generator_TableVarName="tableviewSimpleProgramInfo" msprop:Generator_RowDeletingName="viewSimpleProgramInfoRowDeleting" msprop:Generator_TablePropName="viewSimpleProgramInfo">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ProgramId" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ProgramId" msprop:Generator_ColumnPropNameInRow="ProgramId" msprop:Generator_ColumnVarNameInTable="columnProgramId" msprop:Generator_ColumnPropNameInTable="ProgramIdColumn" type="xs:int" minOccurs="0" />
@@ -153,6 +153,118 @@
               <xs:element name="EndDateTime" msprop:Generator_UserColumnName="EndDateTime" msprop:Generator_ColumnPropNameInRow="EndDateTime" msprop:Generator_ColumnVarNameInTable="columnEndDateTime" msprop:Generator_ColumnPropNameInTable="EndDateTimeColumn" type="xs:dateTime" minOccurs="0" />
               <xs:element name="CourseID" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CourseID" msprop:Generator_ColumnPropNameInRow="CourseID" msprop:Generator_ColumnVarNameInTable="columnCourseID" msprop:Generator_ColumnPropNameInTable="CourseIDColumn" type="xs:int" minOccurs="0" />
               <xs:element name="ID" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ViewProgramReport" msprop:Generator_UserTableName="ViewProgramReport" msprop:Generator_RowDeletedName="ViewProgramReportRowDeleted" msprop:Generator_TableClassName="ViewProgramReportDataTable" msprop:Generator_RowChangedName="ViewProgramReportRowChanged" msprop:Generator_RowClassName="ViewProgramReportRow" msprop:Generator_RowChangingName="ViewProgramReportRowChanging" msprop:Generator_RowEvArgName="ViewProgramReportRowChangeEvent" msprop:Generator_RowEvHandlerName="ViewProgramReportRowChangeEventHandler" msprop:Generator_TablePropName="ViewProgramReport" msprop:Generator_TableVarName="tableViewProgramReport" msprop:Generator_RowDeletingName="ViewProgramReportRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProgramId" msprop:Generator_UserColumnName="ProgramId" msprop:Generator_ColumnPropNameInRow="ProgramId" msprop:Generator_ColumnVarNameInTable="columnProgramId" msprop:Generator_ColumnPropNameInTable="ProgramIdColumn" type="xs:int" />
+              <xs:element name="DepartmentID" msprop:Generator_UserColumnName="DepartmentID" msprop:Generator_ColumnPropNameInRow="DepartmentID" msprop:Generator_ColumnVarNameInTable="columnDepartmentID" msprop:Generator_ColumnPropNameInTable="DepartmentIDColumn" type="xs:int" />
+              <xs:element name="DepartmentName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DepartmentName" msprop:Generator_ColumnPropNameInRow="DepartmentName" msprop:Generator_ColumnVarNameInTable="columnDepartmentName" msprop:Generator_ColumnPropNameInTable="DepartmentNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ClientName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ClientName" msprop:Generator_ColumnPropNameInRow="ClientName" msprop:Generator_ColumnVarNameInTable="columnClientName" msprop:Generator_ColumnPropNameInTable="ClientNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ClientAddress" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ClientAddress" msprop:Generator_ColumnPropNameInRow="ClientAddress" msprop:Generator_ColumnVarNameInTable="columnClientAddress" msprop:Generator_ColumnPropNameInTable="ClientAddressColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="410" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contact1Email" msprop:Generator_UserColumnName="Contact1Email" msprop:Generator_ColumnPropNameInRow="Contact1Email" msprop:Generator_ColumnVarNameInTable="columnContact1Email" msprop:Generator_ColumnPropNameInTable="Contact1EmailColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contact1Phone" msprop:Generator_UserColumnName="Contact1Phone" msprop:Generator_ColumnPropNameInRow="Contact1Phone" msprop:Generator_ColumnVarNameInTable="columnContact1Phone" msprop:Generator_ColumnPropNameInTable="Contact1PhoneColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contact1Name" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Contact1Name" msprop:Generator_ColumnPropNameInRow="Contact1Name" msprop:Generator_ColumnVarNameInTable="columnContact1Name" msprop:Generator_ColumnPropNameInTable="Contact1NameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="512" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contact2Phone" msprop:Generator_UserColumnName="Contact2Phone" msprop:Generator_ColumnPropNameInRow="Contact2Phone" msprop:Generator_ColumnVarNameInTable="columnContact2Phone" msprop:Generator_ColumnPropNameInTable="Contact2PhoneColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contact2Name" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Contact2Name" msprop:Generator_ColumnPropNameInRow="Contact2Name" msprop:Generator_ColumnVarNameInTable="columnContact2Name" msprop:Generator_ColumnPropNameInTable="Contact2NameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="512" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contact2Email" msprop:Generator_UserColumnName="Contact2Email" msprop:Generator_ColumnPropNameInRow="Contact2Email" msprop:Generator_ColumnVarNameInTable="columnContact2Email" msprop:Generator_ColumnPropNameInTable="Contact2EmailColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProgramName" msdata:ReadOnly="true" msprop:Generator_UserColumnName="ProgramName" msprop:Generator_ColumnPropNameInRow="ProgramName" msprop:Generator_ColumnVarNameInTable="columnProgramName" msprop:Generator_ColumnPropNameInTable="ProgramNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TestInitialForm" msprop:Generator_UserColumnName="TestInitialForm" msprop:Generator_ColumnPropNameInRow="TestInitialForm" msprop:Generator_ColumnVarNameInTable="columnTestInitialForm" msprop:Generator_ColumnPropNameInTable="TestInitialFormColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TestMidtermForm" msprop:Generator_UserColumnName="TestMidtermForm" msprop:Generator_ColumnPropNameInRow="TestMidtermForm" msprop:Generator_ColumnVarNameInTable="columnTestMidtermForm" msprop:Generator_ColumnPropNameInTable="TestMidtermFormColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TestFinalForm" msprop:Generator_UserColumnName="TestFinalForm" msprop:Generator_ColumnPropNameInRow="TestFinalForm" msprop:Generator_ColumnVarNameInTable="columnTestFinalForm" msprop:Generator_ColumnPropNameInTable="TestFinalFormColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="InitialEventStartDate" msprop:Generator_UserColumnName="InitialEventStartDate" msprop:Generator_ColumnPropNameInRow="InitialEventStartDate" msprop:Generator_ColumnVarNameInTable="columnInitialEventStartDate" msprop:Generator_ColumnPropNameInTable="InitialEventStartDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="InitialEventEndDate" msprop:Generator_UserColumnName="InitialEventEndDate" msprop:Generator_ColumnPropNameInRow="InitialEventEndDate" msprop:Generator_ColumnVarNameInTable="columnInitialEventEndDate" msprop:Generator_ColumnPropNameInTable="InitialEventEndDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="InitialEventDateTime" msdata:ReadOnly="true" msprop:Generator_UserColumnName="InitialEventDateTime" msprop:Generator_ColumnPropNameInRow="InitialEventDateTime" msprop:Generator_ColumnVarNameInTable="columnInitialEventDateTime" msprop:Generator_ColumnPropNameInTable="InitialEventDateTimeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="103" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MidTermStartDate" msprop:Generator_UserColumnName="MidTermStartDate" msprop:Generator_ColumnPropNameInRow="MidTermStartDate" msprop:Generator_ColumnVarNameInTable="columnMidTermStartDate" msprop:Generator_ColumnPropNameInTable="MidTermStartDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MidTermEndDate" msprop:Generator_UserColumnName="MidTermEndDate" msprop:Generator_ColumnPropNameInRow="MidTermEndDate" msprop:Generator_ColumnVarNameInTable="columnMidTermEndDate" msprop:Generator_ColumnPropNameInTable="MidTermEndDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FinalStartDate" msprop:Generator_UserColumnName="FinalStartDate" msprop:Generator_ColumnPropNameInRow="FinalStartDate" msprop:Generator_ColumnVarNameInTable="columnFinalStartDate" msprop:Generator_ColumnPropNameInTable="FinalStartDateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FinalEndDate" msprop:Generator_UserColumnName="FinalEndDate" msprop:Generator_ColumnPropNameInRow="FinalEndDate" msprop:Generator_ColumnVarNameInTable="columnFinalEndDate" msprop:Generator_ColumnPropNameInTable="FinalEndDateColumn" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

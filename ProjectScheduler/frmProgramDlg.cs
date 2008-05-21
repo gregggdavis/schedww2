@@ -25,6 +25,7 @@ namespace Scheduler
 
 	public class frmProgramDlg : Form
 	{
+
 		#region Controls 
 		private Button btnCancel;
 		private Button btnSave;
@@ -99,7 +100,7 @@ namespace Scheduler
 		private PrintPreviewDialog printPreviewDialog1;
         private DataTable dtblDates = null;
 
-		#endregion Controls
+		
 
 		private bool deleted = false;
 		private int intClientID = 0;
@@ -133,8 +134,9 @@ namespace Scheduler
         private frmEventDlg frmEvent;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
 		private PageSettings ps = null;
+        #endregion Controls
 
-		public frmProgramDlg()
+        public frmProgramDlg()
 		{
 			InitializeComponent();
 
@@ -1384,7 +1386,23 @@ namespace Scheduler
 		{
 			if (_mode != "Edit") cmbStatus.SelectedIndex = 0;
 			ActiveControl = txtProgramName;
+            Common.PopulateDropdown(
+                    cmbContact1, "Select CompanyName = CASE " +
+                               "WHEN NickName IS NULL THEN CompanyName " +
+                               "WHEN NickName = '' THEN CompanyName " +
+                               "ELSE NickName " +
+                               "END From " +
+                               "Contact Where ContactType=5 and " +
+                               "ContactStatus=0 Order By CompanyName ");
 
+            Common.PopulateDropdown(
+                    cmbContact2, "Select CompanyName = CASE " +
+                               "WHEN NickName IS NULL THEN CompanyName " +
+                               "WHEN NickName = '' THEN CompanyName " +
+                               "ELSE NickName " +
+                               "END From " +
+                               "Contact Where ContactType=5 and " +
+                               "ContactStatus=0 Order By CompanyName ");
 			//cmbEventType_I.SelectedIndex = 0;
 			//IsEventChanged = false;
 
@@ -1400,6 +1418,7 @@ namespace Scheduler
 
 		public void LoadData()
 		{
+           
 			string strEM = "", strEF = "", strQM = "", strQF = "";
             if (_mode == "Edit" || _mode == "AddClone")
             {
