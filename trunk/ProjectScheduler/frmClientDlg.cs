@@ -154,7 +154,7 @@ namespace Scheduler
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-			tbcClient.Controls.Remove(tbpContact);
+			//tbcClient.Controls.Remove(tbpContact);
 			tbcClient.SelectedIndex=0;
 			//
 			// TODO: Add any constructor code after InitializeComponent call

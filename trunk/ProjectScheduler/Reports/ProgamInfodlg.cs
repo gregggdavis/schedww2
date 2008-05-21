@@ -22,9 +22,11 @@ namespace Scheduler.Reports
         }
         public void LoadData(string programID,string programName)
         {
+            this.Tag = programID;
             lblProgramNameValue.Text = programName;
             dataSet11.viewSimpleProgramInfo.Clear();
             dataSet11.viewSimpleProgramInfo.Load(BusinessLayer.DAC.SelectStatement("Select * From newvwProgramEvents Where ProgramID = " + programID), LoadOption.OverwriteChanges);
+
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -34,7 +36,7 @@ namespace Scheduler.Reports
         private void btnOK_Click(object sender, EventArgs e)
         {
             FinalProgramInformation frm = new FinalProgramInformation();
-            frm.LoadData(lblProgramNameValue.Text);
+            frm.LoadData(Convert.ToInt32(this.Tag));
             frm.CreateDocument();
             frm.ShowPreview();
         }
