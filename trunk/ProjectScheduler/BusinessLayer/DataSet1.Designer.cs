@@ -33,6 +33,10 @@ namespace Scheduler.BusinessLayer {
         
         private viewSimpleProgramInfoDataTable tableviewSimpleProgramInfo;
         
+        private ViewProgramReportDataTable tableViewProgramReport;
+        
+        private viewProgramReportClassDetailsDataTable tableviewProgramReportClassDetails;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -70,6 +74,12 @@ namespace Scheduler.BusinessLayer {
                 }
                 if ((ds.Tables["viewSimpleProgramInfo"] != null)) {
                     base.Tables.Add(new viewSimpleProgramInfoDataTable(ds.Tables["viewSimpleProgramInfo"]));
+                }
+                if ((ds.Tables["ViewProgramReport"] != null)) {
+                    base.Tables.Add(new ViewProgramReportDataTable(ds.Tables["ViewProgramReport"]));
+                }
+                if ((ds.Tables["viewProgramReportClassDetails"] != null)) {
+                    base.Tables.Add(new viewProgramReportClassDetailsDataTable(ds.Tables["viewProgramReportClassDetails"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -122,6 +132,24 @@ namespace Scheduler.BusinessLayer {
         public viewSimpleProgramInfoDataTable viewSimpleProgramInfo {
             get {
                 return this.tableviewSimpleProgramInfo;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ViewProgramReportDataTable ViewProgramReport {
+            get {
+                return this.tableViewProgramReport;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public viewProgramReportClassDetailsDataTable viewProgramReportClassDetails {
+            get {
+                return this.tableviewProgramReportClassDetails;
             }
         }
         
@@ -196,6 +224,12 @@ namespace Scheduler.BusinessLayer {
                 if ((ds.Tables["viewSimpleProgramInfo"] != null)) {
                     base.Tables.Add(new viewSimpleProgramInfoDataTable(ds.Tables["viewSimpleProgramInfo"]));
                 }
+                if ((ds.Tables["ViewProgramReport"] != null)) {
+                    base.Tables.Add(new ViewProgramReportDataTable(ds.Tables["ViewProgramReport"]));
+                }
+                if ((ds.Tables["viewProgramReportClassDetails"] != null)) {
+                    base.Tables.Add(new viewProgramReportClassDetailsDataTable(ds.Tables["viewProgramReportClassDetails"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -250,6 +284,18 @@ namespace Scheduler.BusinessLayer {
                     this.tableviewSimpleProgramInfo.InitVars();
                 }
             }
+            this.tableViewProgramReport = ((ViewProgramReportDataTable)(base.Tables["ViewProgramReport"]));
+            if ((initTable == true)) {
+                if ((this.tableViewProgramReport != null)) {
+                    this.tableViewProgramReport.InitVars();
+                }
+            }
+            this.tableviewProgramReportClassDetails = ((viewProgramReportClassDetailsDataTable)(base.Tables["viewProgramReportClassDetails"]));
+            if ((initTable == true)) {
+                if ((this.tableviewProgramReportClassDetails != null)) {
+                    this.tableviewProgramReportClassDetails.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -267,6 +313,10 @@ namespace Scheduler.BusinessLayer {
             base.Tables.Add(this.tableviewInstructorPaymentDetails);
             this.tableviewSimpleProgramInfo = new viewSimpleProgramInfoDataTable();
             base.Tables.Add(this.tableviewSimpleProgramInfo);
+            this.tableViewProgramReport = new ViewProgramReportDataTable();
+            base.Tables.Add(this.tableViewProgramReport);
+            this.tableviewProgramReportClassDetails = new viewProgramReportClassDetailsDataTable();
+            base.Tables.Add(this.tableviewProgramReportClassDetails);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -286,6 +336,16 @@ namespace Scheduler.BusinessLayer {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializeviewSimpleProgramInfo() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeViewProgramReport() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeviewProgramReportClassDetails() {
             return false;
         }
         
@@ -349,6 +409,10 @@ namespace Scheduler.BusinessLayer {
         public delegate void viewInstructorPaymentDetailsRowChangeEventHandler(object sender, viewInstructorPaymentDetailsRowChangeEvent e);
         
         public delegate void viewSimpleProgramInfoRowChangeEventHandler(object sender, viewSimpleProgramInfoRowChangeEvent e);
+        
+        public delegate void ViewProgramReportRowChangeEventHandler(object sender, ViewProgramReportRowChangeEvent e);
+        
+        public delegate void viewProgramReportClassDetailsRowChangeEventHandler(object sender, viewProgramReportClassDetailsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1720,6 +1784,996 @@ namespace Scheduler.BusinessLayer {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ViewProgramReportDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnProgramId;
+            
+            private global::System.Data.DataColumn columnDepartmentID;
+            
+            private global::System.Data.DataColumn columnDepartmentName;
+            
+            private global::System.Data.DataColumn columnClientName;
+            
+            private global::System.Data.DataColumn columnClientAddress;
+            
+            private global::System.Data.DataColumn columnContact1Email;
+            
+            private global::System.Data.DataColumn columnContact1Phone;
+            
+            private global::System.Data.DataColumn columnContact1Name;
+            
+            private global::System.Data.DataColumn columnContact2Phone;
+            
+            private global::System.Data.DataColumn columnContact2Name;
+            
+            private global::System.Data.DataColumn columnContact2Email;
+            
+            private global::System.Data.DataColumn columnProgramName;
+            
+            private global::System.Data.DataColumn columnTestInitialForm;
+            
+            private global::System.Data.DataColumn columnTestMidtermForm;
+            
+            private global::System.Data.DataColumn columnTestFinalForm;
+            
+            private global::System.Data.DataColumn columnInitialEventStartDate;
+            
+            private global::System.Data.DataColumn columnInitialEventEndDate;
+            
+            private global::System.Data.DataColumn columnInitialEventDateTime;
+            
+            private global::System.Data.DataColumn columnMidTermStartDate;
+            
+            private global::System.Data.DataColumn columnMidTermEndDate;
+            
+            private global::System.Data.DataColumn columnFinalStartDate;
+            
+            private global::System.Data.DataColumn columnFinalEndDate;
+            
+            private global::System.Data.DataColumn columnEvaluationMidtermForm;
+            
+            private global::System.Data.DataColumn columnEvaluationFinalForm;
+            
+            private global::System.Data.DataColumn columnQuestionaireMidtermForm;
+            
+            private global::System.Data.DataColumn columnQuestionaireFinalForm;
+            
+            private global::System.Data.DataColumn columnReportAttendence;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ViewProgramReportDataTable() {
+                this.TableName = "ViewProgramReport";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal ViewProgramReportDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected ViewProgramReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ProgramIdColumn {
+                get {
+                    return this.columnProgramId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DepartmentIDColumn {
+                get {
+                    return this.columnDepartmentID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DepartmentNameColumn {
+                get {
+                    return this.columnDepartmentName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ClientNameColumn {
+                get {
+                    return this.columnClientName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ClientAddressColumn {
+                get {
+                    return this.columnClientAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Contact1EmailColumn {
+                get {
+                    return this.columnContact1Email;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Contact1PhoneColumn {
+                get {
+                    return this.columnContact1Phone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Contact1NameColumn {
+                get {
+                    return this.columnContact1Name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Contact2PhoneColumn {
+                get {
+                    return this.columnContact2Phone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Contact2NameColumn {
+                get {
+                    return this.columnContact2Name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Contact2EmailColumn {
+                get {
+                    return this.columnContact2Email;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ProgramNameColumn {
+                get {
+                    return this.columnProgramName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TestInitialFormColumn {
+                get {
+                    return this.columnTestInitialForm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TestMidtermFormColumn {
+                get {
+                    return this.columnTestMidtermForm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TestFinalFormColumn {
+                get {
+                    return this.columnTestFinalForm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn InitialEventStartDateColumn {
+                get {
+                    return this.columnInitialEventStartDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn InitialEventEndDateColumn {
+                get {
+                    return this.columnInitialEventEndDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn InitialEventDateTimeColumn {
+                get {
+                    return this.columnInitialEventDateTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MidTermStartDateColumn {
+                get {
+                    return this.columnMidTermStartDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MidTermEndDateColumn {
+                get {
+                    return this.columnMidTermEndDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FinalStartDateColumn {
+                get {
+                    return this.columnFinalStartDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FinalEndDateColumn {
+                get {
+                    return this.columnFinalEndDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EvaluationMidtermFormColumn {
+                get {
+                    return this.columnEvaluationMidtermForm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EvaluationFinalFormColumn {
+                get {
+                    return this.columnEvaluationFinalForm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn QuestionaireMidtermFormColumn {
+                get {
+                    return this.columnQuestionaireMidtermForm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn QuestionaireFinalFormColumn {
+                get {
+                    return this.columnQuestionaireFinalForm;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ReportAttendenceColumn {
+                get {
+                    return this.columnReportAttendence;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ViewProgramReportRow this[int index] {
+                get {
+                    return ((ViewProgramReportRow)(this.Rows[index]));
+                }
+            }
+            
+            public event ViewProgramReportRowChangeEventHandler ViewProgramReportRowChanging;
+            
+            public event ViewProgramReportRowChangeEventHandler ViewProgramReportRowChanged;
+            
+            public event ViewProgramReportRowChangeEventHandler ViewProgramReportRowDeleting;
+            
+            public event ViewProgramReportRowChangeEventHandler ViewProgramReportRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddViewProgramReportRow(ViewProgramReportRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ViewProgramReportRow AddViewProgramReportRow(
+                        int ProgramId, 
+                        int DepartmentID, 
+                        string DepartmentName, 
+                        string ClientName, 
+                        string ClientAddress, 
+                        string Contact1Email, 
+                        string Contact1Phone, 
+                        string Contact1Name, 
+                        string Contact2Phone, 
+                        string Contact2Name, 
+                        string Contact2Email, 
+                        string ProgramName, 
+                        string TestInitialForm, 
+                        string TestMidtermForm, 
+                        string TestFinalForm, 
+                        System.DateTime InitialEventStartDate, 
+                        System.DateTime InitialEventEndDate, 
+                        string InitialEventDateTime, 
+                        System.DateTime MidTermStartDate, 
+                        System.DateTime MidTermEndDate, 
+                        System.DateTime FinalStartDate, 
+                        System.DateTime FinalEndDate, 
+                        string EvaluationMidtermForm, 
+                        string EvaluationFinalForm, 
+                        string QuestionaireMidtermForm, 
+                        string QuestionaireFinalForm, 
+                        string ReportAttendence) {
+                ViewProgramReportRow rowViewProgramReportRow = ((ViewProgramReportRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ProgramId,
+                        DepartmentID,
+                        DepartmentName,
+                        ClientName,
+                        ClientAddress,
+                        Contact1Email,
+                        Contact1Phone,
+                        Contact1Name,
+                        Contact2Phone,
+                        Contact2Name,
+                        Contact2Email,
+                        ProgramName,
+                        TestInitialForm,
+                        TestMidtermForm,
+                        TestFinalForm,
+                        InitialEventStartDate,
+                        InitialEventEndDate,
+                        InitialEventDateTime,
+                        MidTermStartDate,
+                        MidTermEndDate,
+                        FinalStartDate,
+                        FinalEndDate,
+                        EvaluationMidtermForm,
+                        EvaluationFinalForm,
+                        QuestionaireMidtermForm,
+                        QuestionaireFinalForm,
+                        ReportAttendence};
+                rowViewProgramReportRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowViewProgramReportRow);
+                return rowViewProgramReportRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                ViewProgramReportDataTable cln = ((ViewProgramReportDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ViewProgramReportDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnProgramId = base.Columns["ProgramId"];
+                this.columnDepartmentID = base.Columns["DepartmentID"];
+                this.columnDepartmentName = base.Columns["DepartmentName"];
+                this.columnClientName = base.Columns["ClientName"];
+                this.columnClientAddress = base.Columns["ClientAddress"];
+                this.columnContact1Email = base.Columns["Contact1Email"];
+                this.columnContact1Phone = base.Columns["Contact1Phone"];
+                this.columnContact1Name = base.Columns["Contact1Name"];
+                this.columnContact2Phone = base.Columns["Contact2Phone"];
+                this.columnContact2Name = base.Columns["Contact2Name"];
+                this.columnContact2Email = base.Columns["Contact2Email"];
+                this.columnProgramName = base.Columns["ProgramName"];
+                this.columnTestInitialForm = base.Columns["TestInitialForm"];
+                this.columnTestMidtermForm = base.Columns["TestMidtermForm"];
+                this.columnTestFinalForm = base.Columns["TestFinalForm"];
+                this.columnInitialEventStartDate = base.Columns["InitialEventStartDate"];
+                this.columnInitialEventEndDate = base.Columns["InitialEventEndDate"];
+                this.columnInitialEventDateTime = base.Columns["InitialEventDateTime"];
+                this.columnMidTermStartDate = base.Columns["MidTermStartDate"];
+                this.columnMidTermEndDate = base.Columns["MidTermEndDate"];
+                this.columnFinalStartDate = base.Columns["FinalStartDate"];
+                this.columnFinalEndDate = base.Columns["FinalEndDate"];
+                this.columnEvaluationMidtermForm = base.Columns["EvaluationMidtermForm"];
+                this.columnEvaluationFinalForm = base.Columns["EvaluationFinalForm"];
+                this.columnQuestionaireMidtermForm = base.Columns["QuestionaireMidtermForm"];
+                this.columnQuestionaireFinalForm = base.Columns["QuestionaireFinalForm"];
+                this.columnReportAttendence = base.Columns["ReportAttendence"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnProgramId = new global::System.Data.DataColumn("ProgramId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProgramId);
+                this.columnDepartmentID = new global::System.Data.DataColumn("DepartmentID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDepartmentID);
+                this.columnDepartmentName = new global::System.Data.DataColumn("DepartmentName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDepartmentName);
+                this.columnClientName = new global::System.Data.DataColumn("ClientName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientName);
+                this.columnClientAddress = new global::System.Data.DataColumn("ClientAddress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientAddress);
+                this.columnContact1Email = new global::System.Data.DataColumn("Contact1Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContact1Email);
+                this.columnContact1Phone = new global::System.Data.DataColumn("Contact1Phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContact1Phone);
+                this.columnContact1Name = new global::System.Data.DataColumn("Contact1Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContact1Name);
+                this.columnContact2Phone = new global::System.Data.DataColumn("Contact2Phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContact2Phone);
+                this.columnContact2Name = new global::System.Data.DataColumn("Contact2Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContact2Name);
+                this.columnContact2Email = new global::System.Data.DataColumn("Contact2Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContact2Email);
+                this.columnProgramName = new global::System.Data.DataColumn("ProgramName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProgramName);
+                this.columnTestInitialForm = new global::System.Data.DataColumn("TestInitialForm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestInitialForm);
+                this.columnTestMidtermForm = new global::System.Data.DataColumn("TestMidtermForm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestMidtermForm);
+                this.columnTestFinalForm = new global::System.Data.DataColumn("TestFinalForm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestFinalForm);
+                this.columnInitialEventStartDate = new global::System.Data.DataColumn("InitialEventStartDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInitialEventStartDate);
+                this.columnInitialEventEndDate = new global::System.Data.DataColumn("InitialEventEndDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInitialEventEndDate);
+                this.columnInitialEventDateTime = new global::System.Data.DataColumn("InitialEventDateTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInitialEventDateTime);
+                this.columnMidTermStartDate = new global::System.Data.DataColumn("MidTermStartDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMidTermStartDate);
+                this.columnMidTermEndDate = new global::System.Data.DataColumn("MidTermEndDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMidTermEndDate);
+                this.columnFinalStartDate = new global::System.Data.DataColumn("FinalStartDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFinalStartDate);
+                this.columnFinalEndDate = new global::System.Data.DataColumn("FinalEndDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFinalEndDate);
+                this.columnEvaluationMidtermForm = new global::System.Data.DataColumn("EvaluationMidtermForm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvaluationMidtermForm);
+                this.columnEvaluationFinalForm = new global::System.Data.DataColumn("EvaluationFinalForm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvaluationFinalForm);
+                this.columnQuestionaireMidtermForm = new global::System.Data.DataColumn("QuestionaireMidtermForm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuestionaireMidtermForm);
+                this.columnQuestionaireFinalForm = new global::System.Data.DataColumn("QuestionaireFinalForm", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuestionaireFinalForm);
+                this.columnReportAttendence = new global::System.Data.DataColumn("ReportAttendence", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReportAttendence);
+                this.columnProgramId.AllowDBNull = false;
+                this.columnDepartmentID.AllowDBNull = false;
+                this.columnDepartmentName.ReadOnly = true;
+                this.columnDepartmentName.MaxLength = 255;
+                this.columnClientName.ReadOnly = true;
+                this.columnClientName.MaxLength = 255;
+                this.columnClientAddress.ReadOnly = true;
+                this.columnClientAddress.MaxLength = 410;
+                this.columnContact1Email.MaxLength = 255;
+                this.columnContact1Phone.MaxLength = 50;
+                this.columnContact1Name.ReadOnly = true;
+                this.columnContact1Name.MaxLength = 512;
+                this.columnContact2Phone.MaxLength = 50;
+                this.columnContact2Name.ReadOnly = true;
+                this.columnContact2Name.MaxLength = 512;
+                this.columnContact2Email.MaxLength = 255;
+                this.columnProgramName.ReadOnly = true;
+                this.columnProgramName.MaxLength = 255;
+                this.columnTestInitialForm.MaxLength = 50;
+                this.columnTestMidtermForm.MaxLength = 50;
+                this.columnTestFinalForm.MaxLength = 50;
+                this.columnInitialEventDateTime.ReadOnly = true;
+                this.columnInitialEventDateTime.MaxLength = 103;
+                this.columnEvaluationMidtermForm.MaxLength = 50;
+                this.columnEvaluationFinalForm.MaxLength = 50;
+                this.columnQuestionaireMidtermForm.MaxLength = 50;
+                this.columnQuestionaireFinalForm.MaxLength = 50;
+                this.columnReportAttendence.AllowDBNull = false;
+                this.columnReportAttendence.MaxLength = 20;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ViewProgramReportRow NewViewProgramReportRow() {
+                return ((ViewProgramReportRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ViewProgramReportRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(ViewProgramReportRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ViewProgramReportRowChanged != null)) {
+                    this.ViewProgramReportRowChanged(this, new ViewProgramReportRowChangeEvent(((ViewProgramReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ViewProgramReportRowChanging != null)) {
+                    this.ViewProgramReportRowChanging(this, new ViewProgramReportRowChangeEvent(((ViewProgramReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ViewProgramReportRowDeleted != null)) {
+                    this.ViewProgramReportRowDeleted(this, new ViewProgramReportRowChangeEvent(((ViewProgramReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ViewProgramReportRowDeleting != null)) {
+                    this.ViewProgramReportRowDeleting(this, new ViewProgramReportRowChangeEvent(((ViewProgramReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveViewProgramReportRow(ViewProgramReportRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ViewProgramReportDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class viewProgramReportClassDetailsDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnProgramId;
+            
+            private global::System.Data.DataColumn columnCourseName;
+            
+            private global::System.Data.DataColumn columnEventId;
+            
+            private global::System.Data.DataColumn columnStartDateTime;
+            
+            private global::System.Data.DataColumn columnEndDateTime;
+            
+            private global::System.Data.DataColumn columnCourseTime;
+            
+            private global::System.Data.DataColumn columnLocation;
+            
+            private global::System.Data.DataColumn columnRoomNumber;
+            
+            private global::System.Data.DataColumn columnPaidHours;
+            
+            private global::System.Data.DataColumn columnHomeworkMinutes;
+            
+            private global::System.Data.DataColumn columnTotal;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public viewProgramReportClassDetailsDataTable() {
+                this.TableName = "viewProgramReportClassDetails";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal viewProgramReportClassDetailsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected viewProgramReportClassDetailsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ProgramIdColumn {
+                get {
+                    return this.columnProgramId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CourseNameColumn {
+                get {
+                    return this.columnCourseName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EventIdColumn {
+                get {
+                    return this.columnEventId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn StartDateTimeColumn {
+                get {
+                    return this.columnStartDateTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EndDateTimeColumn {
+                get {
+                    return this.columnEndDateTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CourseTimeColumn {
+                get {
+                    return this.columnCourseTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn LocationColumn {
+                get {
+                    return this.columnLocation;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn RoomNumberColumn {
+                get {
+                    return this.columnRoomNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PaidHoursColumn {
+                get {
+                    return this.columnPaidHours;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn HomeworkMinutesColumn {
+                get {
+                    return this.columnHomeworkMinutes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TotalColumn {
+                get {
+                    return this.columnTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public viewProgramReportClassDetailsRow this[int index] {
+                get {
+                    return ((viewProgramReportClassDetailsRow)(this.Rows[index]));
+                }
+            }
+            
+            public event viewProgramReportClassDetailsRowChangeEventHandler viewProgramReportClassDetailsRowChanging;
+            
+            public event viewProgramReportClassDetailsRowChangeEventHandler viewProgramReportClassDetailsRowChanged;
+            
+            public event viewProgramReportClassDetailsRowChangeEventHandler viewProgramReportClassDetailsRowDeleting;
+            
+            public event viewProgramReportClassDetailsRowChangeEventHandler viewProgramReportClassDetailsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddviewProgramReportClassDetailsRow(viewProgramReportClassDetailsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public viewProgramReportClassDetailsRow AddviewProgramReportClassDetailsRow(int ProgramId, string CourseName, int EventId, System.DateTime StartDateTime, System.DateTime EndDateTime, string CourseTime, string Location, string RoomNumber, decimal PaidHours, string HomeworkMinutes, int Total) {
+                viewProgramReportClassDetailsRow rowviewProgramReportClassDetailsRow = ((viewProgramReportClassDetailsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ProgramId,
+                        CourseName,
+                        EventId,
+                        StartDateTime,
+                        EndDateTime,
+                        CourseTime,
+                        Location,
+                        RoomNumber,
+                        PaidHours,
+                        HomeworkMinutes,
+                        Total};
+                rowviewProgramReportClassDetailsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowviewProgramReportClassDetailsRow);
+                return rowviewProgramReportClassDetailsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                viewProgramReportClassDetailsDataTable cln = ((viewProgramReportClassDetailsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new viewProgramReportClassDetailsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnProgramId = base.Columns["ProgramId"];
+                this.columnCourseName = base.Columns["CourseName"];
+                this.columnEventId = base.Columns["EventId"];
+                this.columnStartDateTime = base.Columns["StartDateTime"];
+                this.columnEndDateTime = base.Columns["EndDateTime"];
+                this.columnCourseTime = base.Columns["CourseTime"];
+                this.columnLocation = base.Columns["Location"];
+                this.columnRoomNumber = base.Columns["RoomNumber"];
+                this.columnPaidHours = base.Columns["PaidHours"];
+                this.columnHomeworkMinutes = base.Columns["HomeworkMinutes"];
+                this.columnTotal = base.Columns["Total"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnProgramId = new global::System.Data.DataColumn("ProgramId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProgramId);
+                this.columnCourseName = new global::System.Data.DataColumn("CourseName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseName);
+                this.columnEventId = new global::System.Data.DataColumn("EventId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEventId);
+                this.columnStartDateTime = new global::System.Data.DataColumn("StartDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStartDateTime);
+                this.columnEndDateTime = new global::System.Data.DataColumn("EndDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEndDateTime);
+                this.columnCourseTime = new global::System.Data.DataColumn("CourseTime", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseTime);
+                this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLocation);
+                this.columnRoomNumber = new global::System.Data.DataColumn("RoomNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRoomNumber);
+                this.columnPaidHours = new global::System.Data.DataColumn("PaidHours", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaidHours);
+                this.columnHomeworkMinutes = new global::System.Data.DataColumn("HomeworkMinutes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHomeworkMinutes);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal);
+                this.columnProgramId.AllowDBNull = false;
+                this.columnCourseName.AllowDBNull = false;
+                this.columnCourseName.MaxLength = 255;
+                this.columnCourseTime.ReadOnly = true;
+                this.columnCourseTime.MaxLength = 19;
+                this.columnLocation.MaxLength = 50;
+                this.columnRoomNumber.MaxLength = 50;
+                this.columnPaidHours.ReadOnly = true;
+                this.columnHomeworkMinutes.ReadOnly = true;
+                this.columnHomeworkMinutes.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public viewProgramReportClassDetailsRow NewviewProgramReportClassDetailsRow() {
+                return ((viewProgramReportClassDetailsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new viewProgramReportClassDetailsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(viewProgramReportClassDetailsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.viewProgramReportClassDetailsRowChanged != null)) {
+                    this.viewProgramReportClassDetailsRowChanged(this, new viewProgramReportClassDetailsRowChangeEvent(((viewProgramReportClassDetailsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.viewProgramReportClassDetailsRowChanging != null)) {
+                    this.viewProgramReportClassDetailsRowChanging(this, new viewProgramReportClassDetailsRowChangeEvent(((viewProgramReportClassDetailsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.viewProgramReportClassDetailsRowDeleted != null)) {
+                    this.viewProgramReportClassDetailsRowDeleted(this, new viewProgramReportClassDetailsRowChangeEvent(((viewProgramReportClassDetailsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.viewProgramReportClassDetailsRowDeleting != null)) {
+                    this.viewProgramReportClassDetailsRowDeleting(this, new viewProgramReportClassDetailsRowChangeEvent(((viewProgramReportClassDetailsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveviewProgramReportClassDetailsRow(viewProgramReportClassDetailsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "viewProgramReportClassDetailsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -2609,6 +3663,926 @@ namespace Scheduler.BusinessLayer {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class ViewProgramReportRow : global::System.Data.DataRow {
+            
+            private ViewProgramReportDataTable tableViewProgramReport;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal ViewProgramReportRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableViewProgramReport = ((ViewProgramReportDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ProgramId {
+                get {
+                    return ((int)(this[this.tableViewProgramReport.ProgramIdColumn]));
+                }
+                set {
+                    this[this.tableViewProgramReport.ProgramIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int DepartmentID {
+                get {
+                    return ((int)(this[this.tableViewProgramReport.DepartmentIDColumn]));
+                }
+                set {
+                    this[this.tableViewProgramReport.DepartmentIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string DepartmentName {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.DepartmentNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DepartmentName\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.DepartmentNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string ClientName {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.ClientNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClientName\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.ClientNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string ClientAddress {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.ClientAddressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClientAddress\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.ClientAddressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Contact1Email {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.Contact1EmailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Contact1Email\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.Contact1EmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Contact1Phone {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.Contact1PhoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Contact1Phone\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.Contact1PhoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Contact1Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.Contact1NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Contact1Name\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.Contact1NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Contact2Phone {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.Contact2PhoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Contact2Phone\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.Contact2PhoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Contact2Name {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.Contact2NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Contact2Name\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.Contact2NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Contact2Email {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.Contact2EmailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Contact2Email\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.Contact2EmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string ProgramName {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.ProgramNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ProgramName\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.ProgramNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TestInitialForm {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.TestInitialFormColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TestInitialForm\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.TestInitialFormColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TestMidtermForm {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.TestMidtermFormColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TestMidtermForm\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.TestMidtermFormColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TestFinalForm {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.TestFinalFormColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TestFinalForm\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.TestFinalFormColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime InitialEventStartDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableViewProgramReport.InitialEventStartDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InitialEventStartDate\' in table \'ViewProgramReport\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.InitialEventStartDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime InitialEventEndDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableViewProgramReport.InitialEventEndDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InitialEventEndDate\' in table \'ViewProgramReport\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.InitialEventEndDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string InitialEventDateTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.InitialEventDateTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InitialEventDateTime\' in table \'ViewProgramReport\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.InitialEventDateTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime MidTermStartDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableViewProgramReport.MidTermStartDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MidTermStartDate\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.MidTermStartDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime MidTermEndDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableViewProgramReport.MidTermEndDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MidTermEndDate\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.MidTermEndDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime FinalStartDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableViewProgramReport.FinalStartDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FinalStartDate\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.FinalStartDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime FinalEndDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableViewProgramReport.FinalEndDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FinalEndDate\' in table \'ViewProgramReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.FinalEndDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string EvaluationMidtermForm {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.EvaluationMidtermFormColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EvaluationMidtermForm\' in table \'ViewProgramReport\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.EvaluationMidtermFormColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string EvaluationFinalForm {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.EvaluationFinalFormColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EvaluationFinalForm\' in table \'ViewProgramReport\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.EvaluationFinalFormColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string QuestionaireMidtermForm {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.QuestionaireMidtermFormColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QuestionaireMidtermForm\' in table \'ViewProgramReport\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.QuestionaireMidtermFormColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string QuestionaireFinalForm {
+                get {
+                    try {
+                        return ((string)(this[this.tableViewProgramReport.QuestionaireFinalFormColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QuestionaireFinalForm\' in table \'ViewProgramReport\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.QuestionaireFinalFormColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string ReportAttendence {
+                get {
+                    return ((string)(this[this.tableViewProgramReport.ReportAttendenceColumn]));
+                }
+                set {
+                    this[this.tableViewProgramReport.ReportAttendenceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDepartmentNameNull() {
+                return this.IsNull(this.tableViewProgramReport.DepartmentNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDepartmentNameNull() {
+                this[this.tableViewProgramReport.DepartmentNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsClientNameNull() {
+                return this.IsNull(this.tableViewProgramReport.ClientNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetClientNameNull() {
+                this[this.tableViewProgramReport.ClientNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsClientAddressNull() {
+                return this.IsNull(this.tableViewProgramReport.ClientAddressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetClientAddressNull() {
+                this[this.tableViewProgramReport.ClientAddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsContact1EmailNull() {
+                return this.IsNull(this.tableViewProgramReport.Contact1EmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetContact1EmailNull() {
+                this[this.tableViewProgramReport.Contact1EmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsContact1PhoneNull() {
+                return this.IsNull(this.tableViewProgramReport.Contact1PhoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetContact1PhoneNull() {
+                this[this.tableViewProgramReport.Contact1PhoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsContact1NameNull() {
+                return this.IsNull(this.tableViewProgramReport.Contact1NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetContact1NameNull() {
+                this[this.tableViewProgramReport.Contact1NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsContact2PhoneNull() {
+                return this.IsNull(this.tableViewProgramReport.Contact2PhoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetContact2PhoneNull() {
+                this[this.tableViewProgramReport.Contact2PhoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsContact2NameNull() {
+                return this.IsNull(this.tableViewProgramReport.Contact2NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetContact2NameNull() {
+                this[this.tableViewProgramReport.Contact2NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsContact2EmailNull() {
+                return this.IsNull(this.tableViewProgramReport.Contact2EmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetContact2EmailNull() {
+                this[this.tableViewProgramReport.Contact2EmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsProgramNameNull() {
+                return this.IsNull(this.tableViewProgramReport.ProgramNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetProgramNameNull() {
+                this[this.tableViewProgramReport.ProgramNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTestInitialFormNull() {
+                return this.IsNull(this.tableViewProgramReport.TestInitialFormColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTestInitialFormNull() {
+                this[this.tableViewProgramReport.TestInitialFormColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTestMidtermFormNull() {
+                return this.IsNull(this.tableViewProgramReport.TestMidtermFormColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTestMidtermFormNull() {
+                this[this.tableViewProgramReport.TestMidtermFormColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTestFinalFormNull() {
+                return this.IsNull(this.tableViewProgramReport.TestFinalFormColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTestFinalFormNull() {
+                this[this.tableViewProgramReport.TestFinalFormColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsInitialEventStartDateNull() {
+                return this.IsNull(this.tableViewProgramReport.InitialEventStartDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetInitialEventStartDateNull() {
+                this[this.tableViewProgramReport.InitialEventStartDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsInitialEventEndDateNull() {
+                return this.IsNull(this.tableViewProgramReport.InitialEventEndDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetInitialEventEndDateNull() {
+                this[this.tableViewProgramReport.InitialEventEndDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsInitialEventDateTimeNull() {
+                return this.IsNull(this.tableViewProgramReport.InitialEventDateTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetInitialEventDateTimeNull() {
+                this[this.tableViewProgramReport.InitialEventDateTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMidTermStartDateNull() {
+                return this.IsNull(this.tableViewProgramReport.MidTermStartDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMidTermStartDateNull() {
+                this[this.tableViewProgramReport.MidTermStartDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMidTermEndDateNull() {
+                return this.IsNull(this.tableViewProgramReport.MidTermEndDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMidTermEndDateNull() {
+                this[this.tableViewProgramReport.MidTermEndDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFinalStartDateNull() {
+                return this.IsNull(this.tableViewProgramReport.FinalStartDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFinalStartDateNull() {
+                this[this.tableViewProgramReport.FinalStartDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFinalEndDateNull() {
+                return this.IsNull(this.tableViewProgramReport.FinalEndDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFinalEndDateNull() {
+                this[this.tableViewProgramReport.FinalEndDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEvaluationMidtermFormNull() {
+                return this.IsNull(this.tableViewProgramReport.EvaluationMidtermFormColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEvaluationMidtermFormNull() {
+                this[this.tableViewProgramReport.EvaluationMidtermFormColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEvaluationFinalFormNull() {
+                return this.IsNull(this.tableViewProgramReport.EvaluationFinalFormColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEvaluationFinalFormNull() {
+                this[this.tableViewProgramReport.EvaluationFinalFormColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsQuestionaireMidtermFormNull() {
+                return this.IsNull(this.tableViewProgramReport.QuestionaireMidtermFormColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetQuestionaireMidtermFormNull() {
+                this[this.tableViewProgramReport.QuestionaireMidtermFormColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsQuestionaireFinalFormNull() {
+                return this.IsNull(this.tableViewProgramReport.QuestionaireFinalFormColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetQuestionaireFinalFormNull() {
+                this[this.tableViewProgramReport.QuestionaireFinalFormColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class viewProgramReportClassDetailsRow : global::System.Data.DataRow {
+            
+            private viewProgramReportClassDetailsDataTable tableviewProgramReportClassDetails;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal viewProgramReportClassDetailsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableviewProgramReportClassDetails = ((viewProgramReportClassDetailsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int ProgramId {
+                get {
+                    return ((int)(this[this.tableviewProgramReportClassDetails.ProgramIdColumn]));
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.ProgramIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CourseName {
+                get {
+                    return ((string)(this[this.tableviewProgramReportClassDetails.CourseNameColumn]));
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.CourseNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int EventId {
+                get {
+                    try {
+                        return ((int)(this[this.tableviewProgramReportClassDetails.EventIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EventId\' in table \'viewProgramReportClassDetails\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.EventIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime StartDateTime {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableviewProgramReportClassDetails.StartDateTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StartDateTime\' in table \'viewProgramReportClassDetails\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.StartDateTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime EndDateTime {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableviewProgramReportClassDetails.EndDateTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EndDateTime\' in table \'viewProgramReportClassDetails\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.EndDateTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CourseTime {
+                get {
+                    try {
+                        return ((string)(this[this.tableviewProgramReportClassDetails.CourseTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CourseTime\' in table \'viewProgramReportClassDetails\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.CourseTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Location {
+                get {
+                    try {
+                        return ((string)(this[this.tableviewProgramReportClassDetails.LocationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Location\' in table \'viewProgramReportClassDetails\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.LocationColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string RoomNumber {
+                get {
+                    try {
+                        return ((string)(this[this.tableviewProgramReportClassDetails.RoomNumberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RoomNumber\' in table \'viewProgramReportClassDetails\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.RoomNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal PaidHours {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableviewProgramReportClassDetails.PaidHoursColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PaidHours\' in table \'viewProgramReportClassDetails\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.PaidHoursColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string HomeworkMinutes {
+                get {
+                    try {
+                        return ((string)(this[this.tableviewProgramReportClassDetails.HomeworkMinutesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HomeworkMinutes\' in table \'viewProgramReportClassDetails\' i" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.HomeworkMinutesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int Total {
+                get {
+                    try {
+                        return ((int)(this[this.tableviewProgramReportClassDetails.TotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total\' in table \'viewProgramReportClassDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.TotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEventIdNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.EventIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEventIdNull() {
+                this[this.tableviewProgramReportClassDetails.EventIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsStartDateTimeNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.StartDateTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetStartDateTimeNull() {
+                this[this.tableviewProgramReportClassDetails.StartDateTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEndDateTimeNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.EndDateTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEndDateTimeNull() {
+                this[this.tableviewProgramReportClassDetails.EndDateTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCourseTimeNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.CourseTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCourseTimeNull() {
+                this[this.tableviewProgramReportClassDetails.CourseTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsLocationNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.LocationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetLocationNull() {
+                this[this.tableviewProgramReportClassDetails.LocationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsRoomNumberNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.RoomNumberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetRoomNumberNull() {
+                this[this.tableviewProgramReportClassDetails.RoomNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPaidHoursNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.PaidHoursColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPaidHoursNull() {
+                this[this.tableviewProgramReportClassDetails.PaidHoursColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsHomeworkMinutesNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.HomeworkMinutesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetHomeworkMinutesNull() {
+                this[this.tableviewProgramReportClassDetails.HomeworkMinutesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTotalNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.TotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTotalNull() {
+                this[this.tableviewProgramReportClassDetails.TotalColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -2719,6 +4693,68 @@ namespace Scheduler.BusinessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public viewSimpleProgramInfoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class ViewProgramReportRowChangeEvent : global::System.EventArgs {
+            
+            private ViewProgramReportRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ViewProgramReportRowChangeEvent(ViewProgramReportRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ViewProgramReportRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class viewProgramReportClassDetailsRowChangeEvent : global::System.EventArgs {
+            
+            private viewProgramReportClassDetailsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public viewProgramReportClassDetailsRowChangeEvent(viewProgramReportClassDetailsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public viewProgramReportClassDetailsRow Row {
                 get {
                     return this.eventRow;
                 }
