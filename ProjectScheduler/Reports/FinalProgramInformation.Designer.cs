@@ -32,6 +32,7 @@ namespace Scheduler.Reports
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.lblProgramNameValue = new DevExpress.XtraReports.UI.XRLabel();
+            this.dataSet11 = new Scheduler.BusinessLayer.DataSet1();
             this.xrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
@@ -55,12 +56,11 @@ namespace Scheduler.Reports
             this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.GroupFooter2 = new DevExpress.XtraReports.UI.GroupFooterBand();
+            this.xrTableCell61 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell59 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell60 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell61 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell62 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow5 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -68,21 +68,7 @@ namespace Scheduler.Reports
             this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.dataSet11 = new Scheduler.BusinessLayer.DataSet1();
-            this.DetailReport = new DevExpress.XtraReports.UI.DetailReportBand();
-            this.Detail1 = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrTable6 = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow15 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell50 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell51 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell52 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell53 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell54 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell55 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell56 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell57 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell58 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.ReportHeader1 = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.GroupFooter2 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTable4 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -122,7 +108,6 @@ namespace Scheduler.Reports
             this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrTable5 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow13 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell37 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -134,16 +119,29 @@ namespace Scheduler.Reports
             this.xrTableCell42 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell44 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell45 = new DevExpress.XtraReports.UI.XRTableCell();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+            this.xrTable6 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow15 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell50 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell51 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell52 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell53 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell54 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell55 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell56 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell57 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell58 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
             // 
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrTable6});
             this.Detail.Height = 35;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
@@ -181,6 +179,11 @@ namespace Scheduler.Reports
             this.lblProgramNameValue.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblProgramNameValue.Size = new System.Drawing.Size(325, 42);
             this.lblProgramNameValue.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // dataSet11
+            // 
+            this.dataSet11.DataSetName = "DataSet1";
+            this.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // xrLabel2
             // 
@@ -278,8 +281,14 @@ namespace Scheduler.Reports
             // GroupHeader2
             // 
             this.GroupHeader2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrTable1});
-            this.GroupHeader2.Height = 157;
+            this.xrTable5,
+            this.xrTable1,
+            this.xrLabel5,
+            this.xrTable3,
+            this.xrLabel6,
+            this.xrTable4,
+            this.xrLabel7});
+            this.GroupHeader2.Height = 467;
             this.GroupHeader2.Name = "GroupHeader2";
             this.GroupHeader2.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.GroupHeader2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -415,23 +424,14 @@ namespace Scheduler.Reports
             this.xrTableCell7.Text = "Contacts";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // xrTableCell8
+            // xrTableCell61
             // 
-            this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.Contact1Email", "")});
-            this.xrTableCell8.Font = new System.Drawing.Font("Tahoma", 9.25F);
-            this.xrTableCell8.Location = new System.Drawing.Point(492, 0);
-            this.xrTableCell8.Name = "xrTableCell8";
-            this.xrTableCell8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell8.Size = new System.Drawing.Size(133, 25);
-            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // GroupFooter2
-            // 
-            this.GroupFooter2.Level = 1;
-            this.GroupFooter2.Name = "GroupFooter2";
-            this.GroupFooter2.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.GroupFooter2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrTableCell61.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.Contact1Name", "")});
+            this.xrTableCell61.Location = new System.Drawing.Point(92, 0);
+            this.xrTableCell61.Name = "xrTableCell61";
+            this.xrTableCell61.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell61.Size = new System.Drawing.Size(133, 25);
             // 
             // xrTableCell59
             // 
@@ -452,15 +452,6 @@ namespace Scheduler.Reports
             this.xrTableCell60.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrTableCell60.Size = new System.Drawing.Size(125, 25);
             // 
-            // xrTableCell61
-            // 
-            this.xrTableCell61.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.Contact1Name", "")});
-            this.xrTableCell61.Location = new System.Drawing.Point(92, 0);
-            this.xrTableCell61.Name = "xrTableCell61";
-            this.xrTableCell61.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell61.Size = new System.Drawing.Size(133, 25);
-            // 
             // xrTableCell62
             // 
             this.xrTableCell62.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
@@ -470,6 +461,17 @@ namespace Scheduler.Reports
             this.xrTableCell62.Size = new System.Drawing.Size(67, 25);
             this.xrTableCell62.StylePriority.UseFont = false;
             this.xrTableCell62.Text = "Email";
+            // 
+            // xrTableCell8
+            // 
+            this.xrTableCell8.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.Contact1Email", "")});
+            this.xrTableCell8.Font = new System.Drawing.Font("Tahoma", 9.25F);
+            this.xrTableCell8.Location = new System.Drawing.Point(492, 0);
+            this.xrTableCell8.Name = "xrTableCell8";
+            this.xrTableCell8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell8.Size = new System.Drawing.Size(133, 25);
+            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrTableRow5
             // 
@@ -537,170 +539,17 @@ namespace Scheduler.Reports
             this.xrTableCell14.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrTableCell14.Size = new System.Drawing.Size(133, 25);
             // 
-            // dataSet11
+            // GroupFooter2
             // 
-            this.dataSet11.DataSetName = "DataSet1";
-            this.dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // DetailReport
-            // 
-            this.DetailReport.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
-            this.Detail1,
-            this.ReportHeader1,
-            this.GroupHeader1});
-            this.DetailReport.DataMember = "viewPayrollByInstructor";
-            this.DetailReport.DataSource = this.dataSet11;
-            this.DetailReport.Name = "DetailReport";
-            this.DetailReport.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.DetailReport.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // Detail1
-            // 
-            this.Detail1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrTable6});
-            this.Detail1.Height = 39;
-            this.Detail1.Name = "Detail1";
-            this.Detail1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.Detail1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTable6
-            // 
-            this.xrTable6.Location = new System.Drawing.Point(8, 0);
-            this.xrTable6.Name = "xrTable6";
-            this.xrTable6.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.xrTable6.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow15});
-            this.xrTable6.Size = new System.Drawing.Size(758, 25);
-            this.xrTable6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableRow15
-            // 
-            this.xrTableRow15.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)
-                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableRow15.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell50,
-            this.xrTableCell51,
-            this.xrTableCell52,
-            this.xrTableCell53,
-            this.xrTableCell54,
-            this.xrTableCell55,
-            this.xrTableCell56,
-            this.xrTableCell57,
-            this.xrTableCell58});
-            this.xrTableRow15.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-            this.xrTableRow15.Name = "xrTableRow15";
-            this.xrTableRow15.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.xrTableRow15.Size = new System.Drawing.Size(758, 25);
-            this.xrTableRow15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell50
-            // 
-            this.xrTableCell50.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell50.Location = new System.Drawing.Point(0, 0);
-            this.xrTableCell50.Name = "xrTableCell50";
-            this.xrTableCell50.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell50.Size = new System.Drawing.Size(109, 25);
-            this.xrTableCell50.Text = "Name";
-            this.xrTableCell50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell51
-            // 
-            this.xrTableCell51.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell51.Location = new System.Drawing.Point(109, 0);
-            this.xrTableCell51.Name = "xrTableCell51";
-            this.xrTableCell51.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell51.Size = new System.Drawing.Size(83, 25);
-            this.xrTableCell51.Text = "B-Date";
-            this.xrTableCell51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell52
-            // 
-            this.xrTableCell52.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell52.Location = new System.Drawing.Point(192, 0);
-            this.xrTableCell52.Name = "xrTableCell52";
-            this.xrTableCell52.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell52.Size = new System.Drawing.Size(83, 25);
-            this.xrTableCell52.Text = "E- Date";
-            this.xrTableCell52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell53
-            // 
-            this.xrTableCell53.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell53.Location = new System.Drawing.Point(275, 0);
-            this.xrTableCell53.Name = "xrTableCell53";
-            this.xrTableCell53.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell53.Size = new System.Drawing.Size(83, 25);
-            this.xrTableCell53.Text = "Time";
-            this.xrTableCell53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell54
-            // 
-            this.xrTableCell54.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell54.Location = new System.Drawing.Point(358, 0);
-            this.xrTableCell54.Name = "xrTableCell54";
-            this.xrTableCell54.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell54.Size = new System.Drawing.Size(107, 25);
-            this.xrTableCell54.Text = "Location";
-            this.xrTableCell54.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell55
-            // 
-            this.xrTableCell55.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell55.Location = new System.Drawing.Point(465, 0);
-            this.xrTableCell55.Name = "xrTableCell55";
-            this.xrTableCell55.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell55.Size = new System.Drawing.Size(60, 25);
-            this.xrTableCell55.Text = "Room";
-            this.xrTableCell55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell56
-            // 
-            this.xrTableCell56.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell56.Location = new System.Drawing.Point(525, 0);
-            this.xrTableCell56.Name = "xrTableCell56";
-            this.xrTableCell56.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell56.Size = new System.Drawing.Size(73, 25);
-            this.xrTableCell56.Text = "Paid Hour";
-            this.xrTableCell56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell57
-            // 
-            this.xrTableCell57.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell57.Location = new System.Drawing.Point(598, 0);
-            this.xrTableCell57.Name = "xrTableCell57";
-            this.xrTableCell57.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell57.Size = new System.Drawing.Size(97, 25);
-            this.xrTableCell57.Text = "Homework Paid";
-            this.xrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrTableCell58
-            // 
-            this.xrTableCell58.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell58.Location = new System.Drawing.Point(695, 0);
-            this.xrTableCell58.Name = "xrTableCell58";
-            this.xrTableCell58.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrTableCell58.Size = new System.Drawing.Size(63, 25);
-            this.xrTableCell58.Text = "# Lessons";
-            this.xrTableCell58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // ReportHeader1
-            // 
-            this.ReportHeader1.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.ReportHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel7,
-            this.xrTable4,
-            this.xrLabel6,
-            this.xrTable3,
-            this.xrLabel5});
-            this.ReportHeader1.Height = 290;
-            this.ReportHeader1.Name = "ReportHeader1";
-            this.ReportHeader1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.ReportHeader1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.GroupFooter2.Level = 1;
+            this.GroupFooter2.Name = "GroupFooter2";
+            this.GroupFooter2.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.GroupFooter2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrLabel7
             // 
             this.xrLabel7.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel7.Location = new System.Drawing.Point(8, 258);
+            this.xrLabel7.Location = new System.Drawing.Point(8, 408);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel7.Size = new System.Drawing.Size(150, 25);
@@ -712,7 +561,7 @@ namespace Scheduler.Reports
             this.xrTable4.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top)
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable4.Location = new System.Drawing.Point(8, 150);
+            this.xrTable4.Location = new System.Drawing.Point(8, 300);
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -746,12 +595,15 @@ namespace Scheduler.Reports
             // 
             // xrTableCell28
             // 
+            this.xrTableCell28.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.ReportAttendence", "")});
             this.xrTableCell28.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell28.Location = new System.Drawing.Point(108, 0);
             this.xrTableCell28.Name = "xrTableCell28";
             this.xrTableCell28.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrTableCell28.Size = new System.Drawing.Size(517, 25);
-            this.xrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            this.xrTableCell28.StylePriority.UseTextAlignment = false;
+            this.xrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrTableRow10
             // 
@@ -777,6 +629,8 @@ namespace Scheduler.Reports
             // 
             // xrTableCell35
             // 
+            this.xrTableCell35.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.EvaluationMidtermForm", "")});
             this.xrTableCell35.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell35.Location = new System.Drawing.Point(108, 0);
             this.xrTableCell35.Name = "xrTableCell35";
@@ -786,6 +640,8 @@ namespace Scheduler.Reports
             // 
             // xrTableCell30
             // 
+            this.xrTableCell30.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.EvaluationFinalForm", "")});
             this.xrTableCell30.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell30.Location = new System.Drawing.Point(358, 0);
             this.xrTableCell30.Name = "xrTableCell30";
@@ -817,6 +673,8 @@ namespace Scheduler.Reports
             // 
             // xrTableCell36
             // 
+            this.xrTableCell36.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.QuestionaireMidtermForm", "")});
             this.xrTableCell36.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell36.Location = new System.Drawing.Point(108, 0);
             this.xrTableCell36.Name = "xrTableCell36";
@@ -826,6 +684,8 @@ namespace Scheduler.Reports
             // 
             // xrTableCell32
             // 
+            this.xrTableCell32.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.QuestionaireFinalForm", "")});
             this.xrTableCell32.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell32.Location = new System.Drawing.Point(358, 0);
             this.xrTableCell32.Name = "xrTableCell32";
@@ -866,7 +726,7 @@ namespace Scheduler.Reports
             // xrLabel6
             // 
             this.xrLabel6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel6.Location = new System.Drawing.Point(8, 125);
+            this.xrLabel6.Location = new System.Drawing.Point(8, 275);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel6.Size = new System.Drawing.Size(150, 25);
@@ -879,7 +739,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable3.BorderWidth = 1;
-            this.xrTable3.Location = new System.Drawing.Point(8, 25);
+            this.xrTable3.Location = new System.Drawing.Point(8, 175);
             this.xrTable3.Name = "xrTable3";
             this.xrTable3.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -1041,7 +901,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell20.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.InitialEventStartDate", "{0:MM/dd/yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.InitialEventStartDate", "{0:MM/dd/yyyy}")});
             this.xrTableCell20.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.xrTableCell20.Location = new System.Drawing.Point(83, 0);
             this.xrTableCell20.Name = "xrTableCell20";
@@ -1055,7 +915,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell21.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.MidTermStartDate", "{0:MM/dd/yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.MidTermStartDate", "{0:MM/dd/yyyy}")});
             this.xrTableCell21.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.xrTableCell21.Location = new System.Drawing.Point(266, 0);
             this.xrTableCell21.Name = "xrTableCell21";
@@ -1070,7 +930,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell22.BorderWidth = 1;
             this.xrTableCell22.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.FinalStartDate", "{0:MM/dd/yyyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.FinalStartDate", "{0:MM/dd/yyyy}")});
             this.xrTableCell22.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.xrTableCell22.Location = new System.Drawing.Point(458, 0);
             this.xrTableCell22.Name = "xrTableCell22";
@@ -1112,7 +972,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell24.BorderWidth = 1;
             this.xrTableCell24.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.TestInitialForm", "")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.TestInitialForm", "")});
             this.xrTableCell24.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.xrTableCell24.Location = new System.Drawing.Point(83, 0);
             this.xrTableCell24.Name = "xrTableCell24";
@@ -1127,7 +987,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell25.BorderWidth = 1;
             this.xrTableCell25.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.TestMidtermForm", "")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.TestMidtermForm", "")});
             this.xrTableCell25.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.xrTableCell25.Location = new System.Drawing.Point(266, 0);
             this.xrTableCell25.Name = "xrTableCell25";
@@ -1142,7 +1002,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell26.BorderWidth = 1;
             this.xrTableCell26.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.TestFinalForm", "")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", this.dataSet11, "ViewProgramReport.TestFinalForm", "")});
             this.xrTableCell26.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.xrTableCell26.Location = new System.Drawing.Point(458, 0);
             this.xrTableCell26.Name = "xrTableCell26";
@@ -1153,25 +1013,16 @@ namespace Scheduler.Reports
             // xrLabel5
             // 
             this.xrLabel5.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel5.Location = new System.Drawing.Point(8, 0);
+            this.xrLabel5.Location = new System.Drawing.Point(8, 150);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.Size = new System.Drawing.Size(150, 25);
             this.xrLabel5.Text = "Test";
             this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
-            // GroupHeader1
-            // 
-            this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrTable5});
-            this.GroupHeader1.Height = 25;
-            this.GroupHeader1.Name = "GroupHeader1";
-            this.GroupHeader1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
-            this.GroupHeader1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
             // xrTable5
             // 
-            this.xrTable5.Location = new System.Drawing.Point(8, 0);
+            this.xrTable5.Location = new System.Drawing.Point(8, 442);
             this.xrTable5.Name = "xrTable5";
             this.xrTable5.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.xrTable5.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -1291,6 +1142,144 @@ namespace Scheduler.Reports
             this.xrTableCell45.Text = "# Lessons";
             this.xrTableCell45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
+            // xrTable6
+            // 
+            this.xrTable6.Location = new System.Drawing.Point(8, 0);
+            this.xrTable6.Name = "xrTable6";
+            this.xrTable6.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.xrTable6.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow15});
+            this.xrTable6.Size = new System.Drawing.Size(758, 25);
+            this.xrTable6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableRow15
+            // 
+            this.xrTableRow15.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)
+                        | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableRow15.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell50,
+            this.xrTableCell51,
+            this.xrTableCell52,
+            this.xrTableCell53,
+            this.xrTableCell54,
+            this.xrTableCell55,
+            this.xrTableCell56,
+            this.xrTableCell57,
+            this.xrTableCell58});
+            this.xrTableRow15.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.xrTableRow15.Name = "xrTableRow15";
+            this.xrTableRow15.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
+            this.xrTableRow15.Size = new System.Drawing.Size(758, 25);
+            this.xrTableRow15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell50
+            // 
+            this.xrTableCell50.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.CourseName", "")});
+            this.xrTableCell50.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell50.Location = new System.Drawing.Point(0, 0);
+            this.xrTableCell50.Name = "xrTableCell50";
+            this.xrTableCell50.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell50.Size = new System.Drawing.Size(109, 25);
+            this.xrTableCell50.Text = "Name";
+            this.xrTableCell50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell51
+            // 
+            this.xrTableCell51.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.StartDateTime", "")});
+            this.xrTableCell51.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell51.Location = new System.Drawing.Point(109, 0);
+            this.xrTableCell51.Name = "xrTableCell51";
+            this.xrTableCell51.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell51.Size = new System.Drawing.Size(83, 25);
+            this.xrTableCell51.Text = "B-Date";
+            this.xrTableCell51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell52
+            // 
+            this.xrTableCell52.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.EndDateTime", "")});
+            this.xrTableCell52.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell52.Location = new System.Drawing.Point(192, 0);
+            this.xrTableCell52.Name = "xrTableCell52";
+            this.xrTableCell52.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell52.Size = new System.Drawing.Size(83, 25);
+            this.xrTableCell52.Text = "E- Date";
+            this.xrTableCell52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell53
+            // 
+            this.xrTableCell53.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.CourseTime", "")});
+            this.xrTableCell53.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell53.Location = new System.Drawing.Point(275, 0);
+            this.xrTableCell53.Name = "xrTableCell53";
+            this.xrTableCell53.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell53.Size = new System.Drawing.Size(83, 25);
+            this.xrTableCell53.Text = "Time";
+            this.xrTableCell53.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell54
+            // 
+            this.xrTableCell54.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.Location", "")});
+            this.xrTableCell54.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell54.Location = new System.Drawing.Point(358, 0);
+            this.xrTableCell54.Name = "xrTableCell54";
+            this.xrTableCell54.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell54.Size = new System.Drawing.Size(107, 25);
+            this.xrTableCell54.Text = "Location";
+            this.xrTableCell54.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell55
+            // 
+            this.xrTableCell55.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.RoomNumber", "")});
+            this.xrTableCell55.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell55.Location = new System.Drawing.Point(465, 0);
+            this.xrTableCell55.Name = "xrTableCell55";
+            this.xrTableCell55.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell55.Size = new System.Drawing.Size(60, 25);
+            this.xrTableCell55.Text = "Room";
+            this.xrTableCell55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell56
+            // 
+            this.xrTableCell56.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.PaidHours", "")});
+            this.xrTableCell56.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell56.Location = new System.Drawing.Point(525, 0);
+            this.xrTableCell56.Name = "xrTableCell56";
+            this.xrTableCell56.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell56.Size = new System.Drawing.Size(73, 25);
+            this.xrTableCell56.Text = "Paid Hour";
+            this.xrTableCell56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell57
+            // 
+            this.xrTableCell57.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.HomeworkMinutes", "")});
+            this.xrTableCell57.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell57.Location = new System.Drawing.Point(598, 0);
+            this.xrTableCell57.Name = "xrTableCell57";
+            this.xrTableCell57.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell57.Size = new System.Drawing.Size(97, 25);
+            this.xrTableCell57.Text = "Homework Paid";
+            this.xrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrTableCell58
+            // 
+            this.xrTableCell58.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "viewProgramReportClassDetails.Total", "")});
+            this.xrTableCell58.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell58.Location = new System.Drawing.Point(695, 0);
+            this.xrTableCell58.Name = "xrTableCell58";
+            this.xrTableCell58.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell58.Size = new System.Drawing.Size(63, 25);
+            this.xrTableCell58.Text = "# Lessons";
+            this.xrTableCell58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
             // FinalProgramInformation
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1299,16 +1288,15 @@ namespace Scheduler.Reports
             this.ReportHeader,
             this.ReportFooter,
             this.GroupHeader2,
-            this.DetailReport,
             this.GroupFooter2});
             this.Margins = new System.Drawing.Printing.Margins(40, 40, 40, 40);
             this.Version = "8.1";
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1343,9 +1331,6 @@ namespace Scheduler.Reports
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow4;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
-        private DevExpress.XtraReports.UI.DetailReportBand DetailReport;
-        private DevExpress.XtraReports.UI.DetailBand Detail1;
-        private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeader1;
         private DevExpress.XtraReports.UI.XRTable xrTable3;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow6;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell15;
@@ -1381,34 +1366,11 @@ namespace Scheduler.Reports
         private DevExpress.XtraReports.UI.XRLabel xrLabel7;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell35;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell36;
-        private DevExpress.XtraReports.UI.GroupHeaderBand GroupHeader1;
-        private DevExpress.XtraReports.UI.XRTable xrTable5;
-        private DevExpress.XtraReports.UI.XRTableRow xrTableRow13;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell37;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell38;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell39;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell40;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell41;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell42;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell43;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell44;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell45;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow14;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell46;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell47;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell48;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell49;
-        private DevExpress.XtraReports.UI.XRTable xrTable6;
-        private DevExpress.XtraReports.UI.XRTableRow xrTableRow15;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell50;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell51;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell52;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell53;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell54;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell55;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell56;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell57;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell58;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell61;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell59;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell60;
@@ -1421,5 +1383,27 @@ namespace Scheduler.Reports
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell14;
         private Scheduler.BusinessLayer.DataSet1 dataSet11;
+        private DevExpress.XtraReports.UI.XRTable xrTable6;
+        private DevExpress.XtraReports.UI.XRTableRow xrTableRow15;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell50;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell51;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell52;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell53;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell54;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell55;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell56;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell57;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell58;
+        private DevExpress.XtraReports.UI.XRTable xrTable5;
+        private DevExpress.XtraReports.UI.XRTableRow xrTableRow13;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell37;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell38;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell39;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell40;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell41;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell43;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell42;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell44;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell45;
     }
 }
