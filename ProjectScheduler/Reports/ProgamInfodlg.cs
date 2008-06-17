@@ -36,7 +36,28 @@ namespace Scheduler.Reports
         private void btnOK_Click(object sender, EventArgs e)
         {
             FinalProgramInformation frm = new FinalProgramInformation();
-            frm.LoadData(Convert.ToInt32(this.Tag));
+            string courseNames = "";
+            bool isFirst = true;
+            if (gridView1.SelectedRowsCount > 0)
+            {
+                int[] handles = gridView1.GetSelectedRows();
+                foreach (int handle in handles)
+                {
+                    DataRow row = gridView1.GetDataRow(handle);
+                    if (!isFirst)
+                    {
+                        courseNames += ",";
+                    }
+                    courseNames += row["CalendarEventId"].ToString();
+                    isFirst = false;
+                }
+                frm.LoadData(Convert.ToInt32(this.Tag), courseNames);
+            }
+            else
+            {
+                frm.LoadData(Convert.ToInt32(this.Tag));
+            }
+            
             frm.CreateDocument();
             frm.ShowPreview();
         }
