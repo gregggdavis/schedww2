@@ -51,6 +51,37 @@ namespace Scheduler.Reports
                 dataSet11.PivotReport.AddPivotReportRow(prow);
             }
         }
+        public void LoadData(int programID,string courses)
+        {
+            this.programID = programID;
+            dataSet11.ViewProgramReport.Clear();
+            dataSet11.ViewProgramReport.Load(DAC.SelectStatement("Select * From ViewProgramReport Where ProgramID = " + programID), System.Data.LoadOption.OverwriteChanges);
+            dataSet11.viewProgramReportClassDetails.Load(DAC.SelectStatement("Select * From viewProgramReportClassDetails Where ProgramID = " + programID + " AND CalendarEventId IN (" + courses + ")"), System.Data.LoadOption.OverwriteChanges);
+            dataSet11.viewPivotCourseDetails.Load(BusinessLayer.DAC.SelectStatement("Select * From viewPivotCourseDetails Where ProgramID = " + programID + " AND CalendarEventId IN (" + courses + ")"), System.Data.LoadOption.OverwriteChanges);
+            DataTable dt = Pivot(dataSet11.viewPivotCourseDetails.CreateDataReader(), "Name", "DAYNAME", "InstructorName");
+            foreach (DataRow row in dt.Rows)
+            {
+                BusinessLayer.DataSet1.PivotReportRow prow = dataSet11.PivotReport.NewPivotReportRow();
+                prow.Name = row["Name"].ToString();
+
+                if (dt.Columns.Contains("Sun"))
+                    prow.Sun = row["Sun"].ToString();
+                if (dt.Columns.Contains("Mon"))
+                    prow.Mon = row["Mon"].ToString();
+                if (dt.Columns.Contains("Tue"))
+                    prow.Tue = row["Tue"].ToString();
+                if (dt.Columns.Contains("Wed"))
+                    prow.Wed = row["Wed"].ToString();
+                if (dt.Columns.Contains("Thu"))
+                    prow.Thu = row["Thu"].ToString();
+                if (dt.Columns.Contains("Fri"))
+                    prow.Fri = row["Fri"].ToString();
+                if (dt.Columns.Contains("Sat"))
+                    prow.Sat = row["Sat"].ToString();
+                prow.ProgramID = programID;
+                dataSet11.PivotReport.AddPivotReportRow(prow);
+            }
+        }
         int programID;
         public static DataTable Pivot(IDataReader dataValues, string keyColumn, string pivotNameColumn, string pivotValueColumn)
         {

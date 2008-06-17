@@ -45,6 +45,7 @@ namespace Scheduler.Reports
             this.colCourseID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.colCalendarEventId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTop)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBody)).BeginInit();
@@ -58,6 +59,7 @@ namespace Scheduler.Reports
             // 
             // pnlTop
             // 
+            this.pnlTop.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
             this.pnlTop.Controls.Add(this.lblProgramNameValue);
             this.pnlTop.Controls.Add(this.lblProgramName);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -88,6 +90,7 @@ namespace Scheduler.Reports
             // 
             // pnlBody
             // 
+            this.pnlBody.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
             this.pnlBody.Controls.Add(this.btnCancel);
             this.pnlBody.Controls.Add(this.btnOK);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -143,7 +146,8 @@ namespace Scheduler.Reports
             this.colStartDateTime,
             this.colEndDateTime,
             this.colCourseID,
-            this.colID});
+            this.colID,
+            this.colCalendarEventId});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -213,12 +217,19 @@ namespace Scheduler.Reports
             // 
             // panelControl1
             // 
+            this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
             this.panelControl1.Controls.Add(this.gridControl1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 60);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(481, 292);
             this.panelControl1.TabIndex = 2;
+            // 
+            // colCalendarEventId
+            // 
+            this.colCalendarEventId.Caption = "CalendarEventId";
+            this.colCalendarEventId.FieldName = "CalendarEventId";
+            this.colCalendarEventId.Name = "colCalendarEventId";
             // 
             // ProgamInfodlg
             // 
@@ -267,5 +278,6 @@ namespace Scheduler.Reports
         private DevExpress.XtraGrid.Columns.GridColumn colEndDateTime;
         private DevExpress.XtraGrid.Columns.GridColumn colCourseID;
         private DevExpress.XtraGrid.Columns.GridColumn colID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCalendarEventId;
     }
 }
