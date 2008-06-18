@@ -148,7 +148,7 @@ namespace Scheduler.BusinessLayer {
 					if (CalendarEventID > 0)
 						strSql += "and CalendarEvent.CalendarEventID=" + CalendarEventID.ToString();
                     else
-                        strSql+="and CalendarEvent.EventType<>'Extra Class' AND CalendarEvent.EventType<>'Test Initial' AND CalendarEvent.EventType <>'Test Midterm' AND CalendarEvent.EventType<>'Test Final' ";
+                        strSql += "and CalendarEvent.EventType<>'Extra Class' AND CalendarEvent.EventType<>'Test Initial' AND CalendarEvent.EventType <>'Test Midterm' AND  CalendarEvent.EventType <>'Test Mid-term' AND CalendarEvent.EventType<>'Test Final' ";
 				}
 
 				con = new Connection();
@@ -1810,6 +1810,7 @@ namespace Scheduler.BusinessLayer {
             {
                 case "Test Initial": strField = "TestInitialEventId"; break;
                 case "Test Midterm": strField = "TestMidtermEventId"; break;
+                case "Test Mid-term": strField = "TestMidtermEventId"; break;
                 case "Test Final": strField = "TestFinalEventId"; break;
                 case "Event": strField = "EventId"; break;
             }
