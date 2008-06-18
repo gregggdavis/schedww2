@@ -1923,6 +1923,8 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnReportAttendence;
             
+            private global::System.Data.DataColumn columnSpecialRemarks;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ViewProgramReportDataTable() {
                 this.TableName = "ViewProgramReport";
@@ -2143,6 +2145,13 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn SpecialRemarksColumn {
+                get {
+                    return this.columnSpecialRemarks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2198,7 +2207,8 @@ namespace Scheduler.BusinessLayer {
                         string EvaluationFinalForm, 
                         string QuestionaireMidtermForm, 
                         string QuestionaireFinalForm, 
-                        string ReportAttendence) {
+                        string ReportAttendence, 
+                        string SpecialRemarks) {
                 ViewProgramReportRow rowViewProgramReportRow = ((ViewProgramReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProgramId,
@@ -2227,7 +2237,8 @@ namespace Scheduler.BusinessLayer {
                         EvaluationFinalForm,
                         QuestionaireMidtermForm,
                         QuestionaireFinalForm,
-                        ReportAttendence};
+                        ReportAttendence,
+                        SpecialRemarks};
                 rowViewProgramReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowViewProgramReportRow);
                 return rowViewProgramReportRow;
@@ -2279,6 +2290,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnQuestionaireMidtermForm = base.Columns["QuestionaireMidtermForm"];
                 this.columnQuestionaireFinalForm = base.Columns["QuestionaireFinalForm"];
                 this.columnReportAttendence = base.Columns["ReportAttendence"];
+                this.columnSpecialRemarks = base.Columns["SpecialRemarks"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2337,6 +2349,8 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnQuestionaireFinalForm);
                 this.columnReportAttendence = new global::System.Data.DataColumn("ReportAttendence", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReportAttendence);
+                this.columnSpecialRemarks = new global::System.Data.DataColumn("SpecialRemarks", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSpecialRemarks);
                 this.columnProgramId.AllowDBNull = false;
                 this.columnDepartmentID.AllowDBNull = false;
                 this.columnDepartmentName.ReadOnly = true;
@@ -2515,6 +2529,10 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnID;
             
+            private global::System.Data.DataColumn columnCourseID;
+            
+            private global::System.Data.DataColumn columnCalendarEventId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public viewProgramReportClassDetailsDataTable() {
                 this.TableName = "viewProgramReportClassDetails";
@@ -2630,6 +2648,20 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CourseIDColumn {
+                get {
+                    return this.columnCourseID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CalendarEventIdColumn {
+                get {
+                    return this.columnCalendarEventId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2658,7 +2690,7 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public viewProgramReportClassDetailsRow AddviewProgramReportClassDetailsRow(ViewProgramReportRow parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails, string CourseName, int EventId, System.DateTime StartDateTime, System.DateTime EndDateTime, string CourseTime, string Location, string RoomNumber, decimal PaidHours, string HomeworkMinutes, int Total) {
+            public viewProgramReportClassDetailsRow AddviewProgramReportClassDetailsRow(ViewProgramReportRow parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails, string CourseName, int EventId, System.DateTime StartDateTime, System.DateTime EndDateTime, string CourseTime, string Location, string RoomNumber, decimal PaidHours, string HomeworkMinutes, int Total, int CourseID, int CalendarEventId) {
                 viewProgramReportClassDetailsRow rowviewProgramReportClassDetailsRow = ((viewProgramReportClassDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2672,7 +2704,9 @@ namespace Scheduler.BusinessLayer {
                         PaidHours,
                         HomeworkMinutes,
                         Total,
-                        null};
+                        null,
+                        CourseID,
+                        CalendarEventId};
                 if ((parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails != null)) {
                     columnValuesArray[0] = parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails[0];
                 }
@@ -2718,6 +2752,8 @@ namespace Scheduler.BusinessLayer {
                 this.columnHomeworkMinutes = base.Columns["HomeworkMinutes"];
                 this.columnTotal = base.Columns["Total"];
                 this.columnID = base.Columns["ID"];
+                this.columnCourseID = base.Columns["CourseID"];
+                this.columnCalendarEventId = base.Columns["CalendarEventId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2746,6 +2782,10 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnTotal);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
+                this.columnCourseID = new global::System.Data.DataColumn("CourseID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseID);
+                this.columnCalendarEventId = new global::System.Data.DataColumn("CalendarEventId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCalendarEventId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnProgramId.AllowDBNull = false;
@@ -3259,6 +3299,10 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnInstructorName;
             
+            private global::System.Data.DataColumn columnCourseID;
+            
+            private global::System.Data.DataColumn columnCalendarEventId;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public viewPivotCourseDetailsDataTable() {
                 this.TableName = "viewPivotCourseDetails";
@@ -3339,6 +3383,20 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CourseIDColumn {
+                get {
+                    return this.columnCourseID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CalendarEventIdColumn {
+                get {
+                    return this.columnCalendarEventId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3367,7 +3425,7 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public viewPivotCourseDetailsRow AddviewPivotCourseDetailsRow(int ProgramId, int EventId, string Name, int ScheduledTeacherId, System.DateTime StartDateTime, string DAYNAME, string InstructorName) {
+            public viewPivotCourseDetailsRow AddviewPivotCourseDetailsRow(int ProgramId, int EventId, string Name, int ScheduledTeacherId, System.DateTime StartDateTime, string DAYNAME, string InstructorName, int CourseID, int CalendarEventId) {
                 viewPivotCourseDetailsRow rowviewPivotCourseDetailsRow = ((viewPivotCourseDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProgramId,
@@ -3376,7 +3434,9 @@ namespace Scheduler.BusinessLayer {
                         ScheduledTeacherId,
                         StartDateTime,
                         DAYNAME,
-                        InstructorName};
+                        InstructorName,
+                        CourseID,
+                        CalendarEventId};
                 rowviewPivotCourseDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowviewPivotCourseDetailsRow);
                 return rowviewPivotCourseDetailsRow;
@@ -3408,6 +3468,8 @@ namespace Scheduler.BusinessLayer {
                 this.columnStartDateTime = base.Columns["StartDateTime"];
                 this.columnDAYNAME = base.Columns["DAYNAME"];
                 this.columnInstructorName = base.Columns["InstructorName"];
+                this.columnCourseID = base.Columns["CourseID"];
+                this.columnCalendarEventId = base.Columns["CalendarEventId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3426,6 +3488,10 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnDAYNAME);
                 this.columnInstructorName = new global::System.Data.DataColumn("InstructorName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInstructorName);
+                this.columnCourseID = new global::System.Data.DataColumn("CourseID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseID);
+                this.columnCalendarEventId = new global::System.Data.DataColumn("CalendarEventId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCalendarEventId);
                 this.columnProgramId.AllowDBNull = false;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 255;
@@ -4851,6 +4917,21 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string SpecialRemarks {
+                get {
+                    if (this.IsSpecialRemarksNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableViewProgramReport.SpecialRemarksColumn]));
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.SpecialRemarksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsDepartmentNameNull() {
                 return this.IsNull(this.tableViewProgramReport.DepartmentNameColumn);
             }
@@ -5091,6 +5172,16 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSpecialRemarksNull() {
+                return this.IsNull(this.tableViewProgramReport.SpecialRemarksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSpecialRemarksNull() {
+                this[this.tableViewProgramReport.SpecialRemarksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public viewProgramReportClassDetailsRow[] GetviewProgramReportClassDetailsRows() {
                 if ((this.Table.ChildRelations["ViewProgramReport_viewProgramReportClassDetails"] == null)) {
                     return new viewProgramReportClassDetailsRow[0];
@@ -5299,6 +5390,38 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CourseID {
+                get {
+                    try {
+                        return ((int)(this[this.tableviewProgramReportClassDetails.CourseIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CourseID\' in table \'viewProgramReportClassDetails\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.CourseIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CalendarEventId {
+                get {
+                    try {
+                        return ((int)(this[this.tableviewProgramReportClassDetails.CalendarEventIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CalendarEventId\' in table \'viewProgramReportClassDetails\' i" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewProgramReportClassDetails.CalendarEventIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ViewProgramReportRow ViewProgramReportRow {
                 get {
                     return ((ViewProgramReportRow)(this.GetParentRow(this.Table.ParentRelations["ViewProgramReport_viewProgramReportClassDetails"])));
@@ -5396,6 +5519,26 @@ namespace Scheduler.BusinessLayer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetTotalNull() {
                 this[this.tableviewProgramReportClassDetails.TotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCourseIDNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.CourseIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCourseIDNull() {
+                this[this.tableviewProgramReportClassDetails.CourseIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCalendarEventIdNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.CalendarEventIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCalendarEventIdNull() {
+                this[this.tableviewProgramReportClassDetails.CalendarEventIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5772,6 +5915,37 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CourseID {
+                get {
+                    try {
+                        return ((int)(this[this.tableviewPivotCourseDetails.CourseIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CourseID\' in table \'viewPivotCourseDetails\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewPivotCourseDetails.CourseIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CalendarEventId {
+                get {
+                    try {
+                        return ((int)(this[this.tableviewPivotCourseDetails.CalendarEventIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CalendarEventId\' in table \'viewPivotCourseDetails\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableviewPivotCourseDetails.CalendarEventIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsEventIdNull() {
                 return this.IsNull(this.tableviewPivotCourseDetails.EventIdColumn);
             }
@@ -5819,6 +5993,26 @@ namespace Scheduler.BusinessLayer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetInstructorNameNull() {
                 this[this.tableviewPivotCourseDetails.InstructorNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCourseIDNull() {
+                return this.IsNull(this.tableviewPivotCourseDetails.CourseIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCourseIDNull() {
+                this[this.tableviewPivotCourseDetails.CourseIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCalendarEventIdNull() {
+                return this.IsNull(this.tableviewPivotCourseDetails.CalendarEventIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCalendarEventIdNull() {
+                this[this.tableviewPivotCourseDetails.CalendarEventIdColumn] = global::System.Convert.DBNull;
             }
         }
         
