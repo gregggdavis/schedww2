@@ -931,7 +931,7 @@ namespace Scheduler
             this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label9.Location = new System.Drawing.Point(64, 400);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 13);
+            this.label9.Size = new System.Drawing.Size(100, 13);
             this.label9.TabIndex = 53;
             this.label9.Text = "Test Mid-term Form";
             // 
@@ -1361,7 +1361,6 @@ namespace Scheduler
             // 
             // cmbExceptionReason_I
             // 
-            this.cmbExceptionReason_I.Enabled = false;
             this.cmbExceptionReason_I.Items.AddRange(new object[] {
             "Weather",
             "Instructor",
@@ -1943,6 +1942,7 @@ namespace Scheduler
             // 
             this.grdEvents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdEvents.EmbeddedNavigator.Name = "";
+            this.grdEvents.FormsUseDefaultLookAndFeel = false;
             this.grdEvents.Location = new System.Drawing.Point(0, 0);
             this.grdEvents.MainView = this.gvwEvents;
             this.grdEvents.Name = "grdEvents";
@@ -5685,7 +5685,7 @@ namespace Scheduler
             else
             {
                 Common.MakeEnabled(pnlBody_I, false);
-                cmbExceptionReason_I.Enabled = false;
+                //cmbExceptionReason_I.Enabled = false;
             }
         }
 

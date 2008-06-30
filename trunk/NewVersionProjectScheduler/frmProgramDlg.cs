@@ -1386,24 +1386,24 @@ namespace Scheduler
 		{
 			if (_mode != "Edit") cmbStatus.SelectedIndex = 0;
 			ActiveControl = txtProgramName;
-            Common.PopulateDropdown(
-                    cmbContact1, "Select CompanyName = CASE " +
-                               "WHEN NickName IS NULL THEN CompanyName " +
-                               "WHEN NickName = '' THEN CompanyName " +
-                               "ELSE NickName " +
-                               "END From " +
-                               "Contact Where ContactType=5 and " +
-                               "ContactStatus=0 Order By CompanyName ");
+            //Common.PopulateDropdown(
+            //        cmbContact1, "Select CompanyName = CASE " +
+            //                   "WHEN NickName IS NULL THEN CompanyName " +
+            //                   "WHEN NickName = '' THEN CompanyName " +
+            //                   "ELSE NickName " +
+            //                   "END From " +
+            //                   "Contact Where ContactType=5 and " +
+            //                   "ContactStatus=0 Order By CompanyName ");
 
-            Common.PopulateDropdown(
-                    cmbContact2, "Select CompanyName = CASE " +
-                               "WHEN NickName IS NULL THEN CompanyName " +
-                               "WHEN NickName = '' THEN CompanyName " +
-                               "ELSE NickName " +
-                               "END From " +
-                               "Contact Where ContactType=5 and " +
-                               "ContactStatus=0 Order By CompanyName ");
-			//cmbEventType_I.SelectedIndex = 0;
+            //Common.PopulateDropdown(
+            //        cmbContact2, "Select CompanyName = CASE " +
+            //                   "WHEN NickName IS NULL THEN CompanyName " +
+            //                   "WHEN NickName = '' THEN CompanyName " +
+            //                   "ELSE NickName " +
+            //                   "END From " +
+            //                   "Contact Where ContactType=5 and " +
+            //                   "ContactStatus=0 Order By CompanyName ");
+            ////cmbEventType_I.SelectedIndex = 0;
 			//IsEventChanged = false;
 
 			try
@@ -1452,6 +1452,7 @@ namespace Scheduler
                                                                "ELSE NickName " +
                                                                "END  " +
                                                                "from Contact where ContactID=@ContactID", intClientID);
+                        cmbClient.SelectedIndex = cmbClient.Items.IndexOf(cmbClient.Text);
                         Common.PopulateDropdown(
                             cmbDept, "Select CompanyName = CASE " +
                                      "WHEN C.NickName IS NULL THEN C.CompanyName " +
@@ -1462,20 +1463,28 @@ namespace Scheduler
                                      "D.DepartmentStatus=0 and D.ClientID=" + intClientID +
                                      " Order By D.CompanyName ");
                     }
-
+                    cmbDept.Text = dr["Department"].ToString();
+                    cmbContact1.Text = dr["Contact1"].ToString();
+                    cmbContact2.Text = dr["Contact2"].ToString();
+                    cmbContact1.SelectedIndex = cmbContact1.Items.IndexOf(dr["Contact1"].ToString());
+                    cmbContact2.SelectedIndex = cmbContact1.Items.IndexOf(dr["Contact2"].ToString());
+                    cmbDept.SelectedIndex = cmbDept.Items.IndexOf(dr["Department"].ToString());
+                    cmbContact1.Text = dr["Contact1"].ToString();
+                    cmbContact2.Text = dr["Contact2"].ToString();
+                    cmbContact1.SelectedIndex = cmbContact1.Items.IndexOf(dr["Contact1"].ToString());
+                    cmbContact2.SelectedIndex = cmbContact1.Items.IndexOf(dr["Contact2"].ToString());
                     txtProgramName.Text = dr["Name"].ToString();
                     if (_mode == "AddClone") txtProgramName.Text = "Copy of " + txtProgramName.Text;
                     txtNamePhonetic.Text = dr["NamePhonetic"].ToString();
                     txtNameRomaji.Text = dr["NameRomaji"].ToString();
                     txtNickName.Text = dr["NickName"].ToString();
-                    cmbDept.Text = dr["Department"].ToString();
-
-                    cmbContact1.Text = dr["Contact1"].ToString();
-                    cmbContact2.Text = dr["Contact2"].ToString();
+                    
+                    
+                    
 
                     txtDescription.Text = dr["Description"].ToString();
                     txtRemarks.Text = dr["SpecialRemarks"].ToString();
-
+                    
                     if (dr["ReportAttendence"].ToString() != "")
                     {
                         if (dr["ReportAttendence"].ToString() == "None")

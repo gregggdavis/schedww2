@@ -2401,8 +2401,10 @@ namespace Scheduler
 				);
 
 			objEvent.ChangeReason = txtChangeReason.Text;
-            
-            objEvent.EventType = cmbEventType.Text;
+            if(cmbEventType.Text == "Test Mid-term")
+                objEvent.EventType = "Test Midterm";
+            else
+                objEvent.EventType = cmbEventType.Text;
 			objEvent.Location = txtLocation.Text;
 			objEvent.BlockCode = cmbBlock.Text;
 			objEvent.RoomNo = txtRoomNo.Text;

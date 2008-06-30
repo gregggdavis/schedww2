@@ -316,7 +316,7 @@ namespace Scheduler.BusinessLayer {
 
 		public DataTable LoadData(DateTime dt1, DateTime dt2,
 			string sClient, string sInstructor,
-			string sProgram, string sClass) {
+			string sProgram, string sClass,bool isNames) {
 			string strSql = "";
 			bool IsDate = false;
 			SqlCommand com = null;
@@ -370,28 +370,74 @@ namespace Scheduler.BusinessLayer {
                     "OR Event.EventID=Program.TestFinalEventID) " +
                     "Inner Join CalendarEvent on Event.EventId=CalendarEvent.EventId ";
 					*/
-                    string strWhereClause = "";
+                    bool isFirst = true;
+                    string strWhereClause = " Where ";
 					if (IsDate) {
-						strWhereClause += "and CalendarEvent.StartDateTime>=@date1 and CalendarEvent.StartDateTime<=@date2 ";
+                        if (isFirst)
+                        {
+                            strWhereClause += " CalendarEvent.StartDateTime>=@date1 and CalendarEvent.StartDateTime<=@date2 ";
+                            isFirst = false;
+                        }
+                        else
+                        {
+                            strWhereClause += " and CalendarEvent.StartDateTime>=@date1 and CalendarEvent.StartDateTime<=@date2 ";
+                        }
+
 					}
 					if (sProgram != "") {
-						//strWhereClause += "and (Program.[Name] = '" + sProgram + "') ";
+                        if (isFirst)
+                        {
+                            isFirst = false;
+                            strWhereClause += "  (Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "')))) ";
+                        }
+                        else
+                            strWhereClause += " and (Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "')))) ";
 					}
 					if (sClass != "") {
-						//strWhereClause += "and (Course.[Name] = '" + sClass + "') ";
+                        if (isFirst)
+                        {
+                            strWhereClause += " (Course.[Name] = '" + sClass + "' OR Course.NickName = '" + sClass + "') ";
+                            isFirst = false;
+                        }
+                        else
+                        {
+                            strWhereClause += " and (Course.[Name] = '" + sClass + "' OR Course.NickName = '" + sClass + "') ";
+                        }
 					}
-					if (sInstructor != "") {
-						strWhereClause += "and (CC1.LastName + ', ' + CC1.FirstName = '" + sInstructor + "' OR CC2.LastName + ', ' + CC2.FirstName = '" + sInstructor + "') ";
+                    /*
+                     if (programName!=string.Empty) {
+					eventsSql += @"
+					AND 
+					((Program.[Name] = @programName) OR (Program.NickName = @programName)) 
+					OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = @programName) 
+					OR (Program.NickName = @programName))))";
+					sqlCommand.Parameters.Add(new SqlParameter("@programName", programName));
+					//sqlCommand.Parameters.AddWithValue("programName", programName);
+				}
+				if (className != string.Empty) {
+					eventsSql += "and  ((Course.[Name] = @className) OR (Course.NickName =  @className)) ";
+					sqlCommand.Parameters.Add(new SqlParameter("@className", className));
+					//sqlCommand.Parameters.AddWithValue("className", className);
+				}
+                     */
+                    if (sInstructor != "") {
+                        if (isFirst)
+                        {
+                            isFirst = false;
+                            strWhereClause += "  (CC1.LastName + ', ' + CC1.FirstName = '" + sInstructor + "' OR CC2.LastName + ', ' + CC2.FirstName = '" + sInstructor + "') ";
+                        }
+                        else
+						    strWhereClause += " and (CC1.LastName + ', ' + CC1.FirstName = '" + sInstructor + "' OR CC2.LastName + ', ' + CC2.FirstName = '" + sInstructor + "') ";
 					}
 
 					strWhereClause = strWhereClause.Trim();
-					if (strWhereClause.Length > 3) {
-						if (strWhereClause.Substring(0, 3).ToUpper() == "AND") {
-							strWhereClause = strWhereClause.Substring(3, strWhereClause.Length - 3);
-						}
+                    //if (strWhereClause.Length > 3) {
+                    //    if (strWhereClause.Substring(0, 3).ToUpper() == "AND") {
+                    //        strWhereClause = strWhereClause.Substring(3, strWhereClause.Length - 3);
+                    //    }
 
-						strWhereClause = " Where " + strWhereClause;
-					}
+                    //    strWhereClause = " Where " + strWhereClause;
+                    //}
 
 					strSql += strWhereClause + " ";
 					strSql += "Order By Event.EventID";
@@ -643,6 +689,389 @@ namespace Scheduler.BusinessLayer {
 				}
 			}
 		}
+
+        public DataTable LoadData(DateTime dt1, DateTime dt2,
+            string sClient, string sInstructor,
+            string sProgram, string sClass)
+        {
+            string strSql = "";
+            bool IsDate = false;
+            SqlCommand com = null;
+            Connection con = null;
+            SqlDataAdapter adpt = null;
+
+            if ((dt1 == Convert.ToDateTime(null)) && (dt2 == Convert.ToDateTime(null)))
+            {
+                IsDate = false;
+            }
+            else
+            {
+                IsDate = true;
+            }
+
+            if (_dtbl == null)
+            {
+                _dtbl = new DataTable();
+            }
+            try
+            {
+                if (EventID <= 0)
+                {
+                    strSql = "Select Event.EventID, CalendarEvent.CalendarEventID, Event.RepeatRule, Event.NegetiveException, CalendarEvent.Note, " +
+                        "Event.RecurrenceText, Event.Description, " +
+                        "EventStatus = " +
+                        "CASE CalendarEvent.CalendarEventStatus " +
+                        "When '0' Then 'Active' " +
+                        "When '1' Then 'Inactive' " +
+                        "END, " +
+                        "CalendarEvent.StartDateTime, CalendarEvent.EndDateTime, DateName(dw,CalendarEvent.StartDateTime) as 'DayOfWeek', " +
+                        "CalendarEvent.DateCompleted, CalendarEvent.[Name], CalendarEvent.[NamePhonetic], CalendarEvent.[NameRomaji], " +
+                        "CalendarEvent.Location, CalendarEvent.BlockCode, CalendarEvent.RoomNumber, CalendarEvent.ScheduledTeacherID, " +
+                        "CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
+                        "CalendarEvent.ExceptionReason, CC1.LastName + ', ' + CC1.FirstName as ScheduledTeacher, " +
+                        "CC2.LastName + ', ' + CC2.FirstName as RealTeacher, " +
+                        "Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program,dbo.DateAndTime(CalendarEvent.StartDateTime,CalendarEvent.EndDateTime) as DateAndTime " +
+                        "From Event " +
+                        "Inner Join CalendarEvent ON(Event.EventID=CalendarEvent.EventID) " +
+                        "Left Join Contact CC1 ON(CC1.ContactID=CalendarEvent.ScheduledTeacherID) " +
+                        "Left Join Contact CC2 ON(CC2.ContactID=CalendarEvent.RealTeacherID) " +
+                        "Left Join Course ON(" +
+                        "Event.EventID=Course.EventID OR " +
+                        "Event.EventID=Course.TestInitialEventID OR " +
+                        "Event.EventID=Course.TestMidTermEventID OR " +
+                        "Event.EventID=Course.TestFinalEventID) " +
+                        "Left Join Program ON( " +
+                        "Event.EventID=Program.TestInitialEventID OR " +
+                        "Event.EventID=Program.TestMidTermEventID OR " +
+                        "Event.EventID=Program.TestFinalEventID) ";
+                    /*
+                    strSql = "Select Course.*,Program.* from Course Left Join Program on " +
+                    "Course.ProgramId = Program.ProgramId Left Join " +
+                    "Event On(Event.EventID=Course.EventID OR Event.EventID=Course.TestInitialEventID " +
+                    "OR Event.EventID=Course.TestMidTermEventID OR Event.EventID=Course.TestFinalEventID " +
+                    "OR Event.EventID=Program.TestInitialEventID OR Event.EventID=Program.TestMidTermEventID " +
+                    "OR Event.EventID=Program.TestFinalEventID) " +
+                    "Inner Join CalendarEvent on Event.EventId=CalendarEvent.EventId ";
+					*/
+                    string strWhereClause = "";
+                    if (IsDate)
+                    {
+                        strWhereClause += "and CalendarEvent.StartDateTime>=@date1 and CalendarEvent.StartDateTime<=@date2 ";
+                    }
+                    if (sProgram != "")
+                    {
+                        //strWhereClause += "and (Program.[Name] = '" + sProgram + "') ";
+                    }
+                    if (sClass != "")
+                    {
+                        //strWhereClause += "and (Course.[Name] = '" + sClass + "') ";
+                    }
+                    if (sInstructor != "")
+                    {
+                        strWhereClause += "and (CC1.LastName + ', ' + CC1.FirstName = '" + sInstructor + "' OR CC2.LastName + ', ' + CC2.FirstName = '" + sInstructor + "') ";
+                    }
+
+                    strWhereClause = strWhereClause.Trim();
+                    if (strWhereClause.Length > 3)
+                    {
+                        if (strWhereClause.Substring(0, 3).ToUpper() == "AND")
+                        {
+                            strWhereClause = strWhereClause.Substring(3, strWhereClause.Length - 3);
+                        }
+
+                        strWhereClause = " Where " + strWhereClause;
+                    }
+
+                    strSql += strWhereClause + " ";
+                    strSql += "Order By Event.EventID";
+
+                    //	"Order By Course.[Name] ";
+                }
+                else
+                {
+                    strSql = "Select Event.EventID, CalendarEvent.CalendarEventID, Event.RepeatRule, Event.NegetiveException, CalendarEvent.Note, " +
+                        "Event.RecurrenceText, Event.Description, " +
+                        "CalendarEvent.CalendarEventStatus as EventStatus, " +
+                        "CalendarEvent.StartDateTime, CalendarEvent.EndDateTime, DateName(dw,CalendarEvent.StartDateTime) as 'DayOfWeek', " +
+                        "CalendarEvent.DateCompleted, CalendarEvent.[Name], CalendarEvent.[NamePhonetic], CalendarEvent.[NameRomaji], " +
+                        "CalendarEvent.Location, CalendarEvent.BlockCode, CalendarEvent.RoomNumber, CalendarEvent.ScheduledTeacherID, " +
+                        "CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
+                        "CalendarEvent.ExceptionReason, Contact1.LastName + ', ' + Contact1.FirstName as ScheduledTeacher, Contact2.LastName + ', ' + Contact2.FirstName as RealTeacher, " +
+                        "Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program, " +
+                        "Course.EventID as CEvent1, Course.TestInitialEventID as CEvent2, Course.TestMidtermEventID as CEvent3, Course.TestFinalEventID as CEvent4, " +
+                        "Program.TestInitialEventID as PEvent1, Program.TestMidtermEventID as PEvent2, Program.TestFinalEventID as PEvent3 " +
+                        "From Event " +
+                        "Inner Join CalendarEvent ON(Event.EventID=CalendarEvent.EventID) " +
+                        "Left Join Contact Contact1 ON(Contact1.ContactID=CalendarEvent.ScheduledTeacherID) " +
+                        "Left Join Contact Contact2 ON(Contact2.ContactID=CalendarEvent.RealTeacherID) " +
+                        "Left Join Course ON(" +
+                        "Event.EventID=Course.EventID OR " +
+                        "Event.EventID=Course.TestInitialEventID OR " +
+                        "Event.EventID=Course.TestMidTermEventID OR " +
+                        "Event.EventID=Course.TestFinalEventID) " +
+                        "Left Join Program ON( " +
+                        "Event.EventID=Program.TestInitialEventID OR " +
+                        "Event.EventID=Program.TestMidTermEventID OR " +
+                        "Event.EventID=Program.TestFinalEventID) " +
+                        "Where Event.EventID=" + EventID.ToString() + " ";
+                    if (CalendarEventID > 0)
+                    {
+                        strSql += "and CalendarEvent.CalendarEventID=" + CalendarEventID.ToString();
+                    }
+                }
+
+                con = new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.Connection = con.SQLCon;
+                com.CommandText = strSql;
+
+                if (IsDate)
+                {
+                    com.Parameters.Clear();
+                    com.Parameters.Add("@date1", SqlDbType.DateTime);
+                    com.Parameters.Add("@date2", SqlDbType.DateTime);
+                    com.Parameters["@date1"].Value = dt1;
+                    com.Parameters["@date2"].Value = dt2;
+                }
+
+                adpt = new SqlDataAdapter();
+                adpt.SelectCommand = com;
+                adpt.Fill(_dtbl);
+
+                bool boolCourse = false;
+                bool boolProgram = false;
+
+                _dtbl.Columns.Add("ProgramName", Type.GetType("System.String"));
+                _dtbl.Columns.Add("Department", Type.GetType("System.String"));
+                _dtbl.Columns.Add("DeptName", Type.GetType("System.String"));
+                _dtbl.Columns.Add("Client", Type.GetType("System.String"));
+                _dtbl.Columns.Add("ClientName", Type.GetType("System.String"));
+                _dtbl.Columns.Add("TestEvent", Type.GetType("System.String"));
+                _dtbl.Columns.Add("Instructor", Type.GetType("System.String"));
+
+                SqlDataReader Reader = null;
+                //if(EventID<=0)
+                //{
+                foreach (DataRow dr in _dtbl.Rows)
+                {
+                    if (dr["ScheduledTeacher"] != null)
+                    {
+                        if (dr["ScheduledTeacher"].ToString().Trim() == ",")
+                            dr["ScheduledTeacher"] = "";
+                    }
+                    else dr["ScheduledTeacher"] = "";
+                    if (dr["RealTeacher"] != null)
+                    {
+                        if (dr["RealTeacher"].ToString().Trim() == ",")
+                            dr["RealTeacher"] = "";
+                    }
+                    else dr["RealTeacher"] = "";
+
+                    if (dr["RealTeacher"] != "")
+                        dr["Instructor"] = dr["RealTeacher"].ToString();
+                    else
+                        if (dr["ScheduledTeacher"] != "")
+                            dr["Instructor"] = dr["ScheduledTeacher"].ToString();
+                    dr.AcceptChanges();
+
+                    if (dr["CourseID"] != DBNull.Value)
+                    {
+                        if (Convert.ToInt32(dr["CourseID"]) > 0) boolCourse = true;
+                        if (EventID > 0)
+                        {
+                            if (dr["CEvent1"] != DBNull.Value)
+                            {
+                                if (Convert.ToInt32(dr["CEvent1"].ToString()) > 0) dr["TestEvent"] = "Class Event";
+                            }
+                            if (dr["CEvent2"] != DBNull.Value)
+                            {
+                                if (Convert.ToInt32(dr["CEvent2"].ToString()) > 0) dr["TestEvent"] = "Test Initial";
+                            }
+                            if (dr["CEvent3"] != DBNull.Value)
+                            {
+                                if (Convert.ToInt32(dr["CEvent3"].ToString()) > 0) dr["TestEvent"] = "Test Midterm";
+                            }
+                            if (dr["CEvent4"] != DBNull.Value)
+                            {
+                                if (Convert.ToInt32(dr["CEvent4"].ToString()) > 0) dr["TestEvent"] = "Test Final";
+                            }
+                            dr.AcceptChanges();
+                        }
+                    }
+                    if (!boolCourse)
+                    {
+                        if (dr["ProgramID"] != DBNull.Value)
+                        {
+                            if (Convert.ToInt32(dr["ProgramID"]) > 0) boolProgram = true;
+                            if (EventID > 0)
+                            {
+                                if (dr["PEvent1"] != DBNull.Value)
+                                {
+                                    if (Convert.ToInt32(dr["PEvent1"].ToString()) > 0) dr["TestEvent"] = "Test Initial";
+                                }
+                                if (dr["PEvent2"] != DBNull.Value)
+                                {
+                                    if (Convert.ToInt32(dr["PEvent2"].ToString()) > 0) dr["TestEvent"] = "Test Midterm";
+                                }
+                                if (dr["PEvent3"] != DBNull.Value)
+                                {
+                                    if (Convert.ToInt32(dr["PEvent3"].ToString()) > 0) dr["TestEvent"] = "Test Final";
+                                }
+                                dr.AcceptChanges();
+                            }
+                        }
+                    }
+
+                    if (boolCourse)
+                    {
+                        strSql = "Select " +
+                            "P.[Name] as ProgramName, Program = CASE " +
+                            "WHEN P.NickName IS NULL THEN P.Name " +
+                            "WHEN P.NickName = '' THEN P.Name " +
+                            "ELSE P.NickName " +
+                            "END,  " +
+                            "CO.CompanyName as DeptName, Department = CASE " +
+                            "WHEN CO.NickName IS NULL THEN CO.CompanyName " +
+                            "WHEN CO.NickName = '' THEN CO.CompanyName " +
+                            "ELSE CO.NickName " +
+                            "END,  " +
+                            "CO1.CompanyName as ClientName, Client = CASE " +
+                            "WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
+                            "WHEN CO1.NickName = '' THEN CO1.CompanyName " +
+                            "ELSE CO1.NickName " +
+                            "END  " +
+                            "From Course C " +
+                            "Left Join Program P on (C.ProgramID=P.ProgramID) " +
+                            "Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
+                            "Left Join Contact CO on (D.ContactID=CO.ContactID) " +
+                            "Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
+                            "Where C.CourseID=" + dr["CourseID"].ToString() + " ";
+
+                        com.CommandText = strSql;
+                        Reader = com.ExecuteReader();
+
+                        while (Reader.Read())
+                        {
+                            dr["Program"] = Reader["Program"].ToString();
+                            dr["ProgramName"] = Reader["ProgramName"].ToString();
+                            dr["Department"] = Reader["Department"].ToString();
+                            dr["DeptName"] = Reader["DeptName"].ToString();
+                            dr["Client"] = Reader["Client"].ToString();
+                            dr["ClientName"] = Reader["ClientName"].ToString();
+                            dr.AcceptChanges();
+
+                            //if( Reader["Client"].ToString()==sClient)
+                            //{
+                            //	_dtbl.Rows.Remove(dr);															
+                            //}
+
+                        }
+                        Reader.Close();
+                    }
+                    else if (boolProgram)
+                    {
+                        strSql = "Select ";
+                        strSql += "P.[Name] as ProgramName, Program = CASE ";
+                        strSql += "WHEN P.NickName IS NULL THEN P.Name ";
+                        strSql += "WHEN P.NickName = '' THEN P.Name ";
+                        strSql += "ELSE P.NickName ";
+                        strSql += "END,  ";
+                        strSql += "C.CompanyName as DeptName, Department = CASE ";
+                        strSql += "WHEN C.NickName IS NULL THEN C.CompanyName ";
+                        strSql += "WHEN C.NickName = '' THEN C.CompanyName ";
+                        strSql += "ELSE C.NickName ";
+                        strSql += "END,  ";
+                        strSql += "C1.CompanyName as ClientName, Client = CASE ";
+                        strSql += "WHEN C1.NickName IS NULL THEN C1.CompanyName ";
+                        strSql += "WHEN C1.NickName = '' THEN C1.CompanyName ";
+                        strSql += "ELSE C1.NickName ";
+                        strSql += "END  ";
+                        strSql += "From Program P ";
+                        strSql += "Left Join Department D on (P.DepartmentID=D.DepartmentID) ";
+                        strSql += "Left Join Contact C on (D.ContactID=C.ContactID) ";
+                        strSql += "Left Join Contact C1 on (D.ClientID=C1.ContactID) ";
+                        strSql += "Where ProgramID=" + dr["ProgramID"].ToString() + " ";
+
+                        com.CommandText = strSql;
+                        Reader = com.ExecuteReader();
+
+                        while (Reader.Read())
+                        {
+                            dr["Program"] = Reader["Program"].ToString();
+                            dr["ProgramName"] = Reader["ProgramName"].ToString();
+                            dr["Department"] = Reader["Department"].ToString();
+                            dr["DeptName"] = Reader["DeptName"].ToString();
+                            dr["Client"] = Reader["Client"].ToString();
+                            dr["ClientName"] = Reader["ClientName"].ToString();
+                            dr.AcceptChanges();
+                        }
+                        Reader.Close();
+                    }
+                    boolCourse = false;
+                    boolProgram = false;
+                }
+
+                DataTable dtblTemp; // = new DataTable();
+                dtblTemp = _dtbl.Clone();
+                dtblTemp.Rows.Clear();
+                foreach (DataRow dr1 in _dtbl.Rows)
+                {
+                    if (sClient != "")
+                    {
+                        if (dr1["ClientName"] != DBNull.Value)
+                        {
+                            if (dr1["ClientName"].ToString() != sClient) continue;
+                        }
+                        else continue;
+                    }
+
+                    if (sProgram != "")
+                    {
+                        if (dr1["ProgramName"] != DBNull.Value)
+                        {
+                            if (dr1["ProgramName"].ToString() != sProgram) continue;
+                        }
+                        else continue;
+                    }
+                    if (sClass != "")
+                    {
+                        if (dr1["Class"] != DBNull.Value)
+                        {
+                            if (dr1["Class"].ToString() != sClass) continue;
+                        }
+                        else continue;
+                    }
+
+                    DataRow drNew = dtblTemp.NewRow();
+                    foreach (DataColumn dc in _dtbl.Columns)
+                    {
+                        drNew[dc.ColumnName] = dr1[dc];
+                    }
+                    dtblTemp.Rows.Add(drNew);
+                }
+
+                return dtblTemp;
+
+                return _dtbl;
+            }
+            catch (SqlException ex)
+            {
+                Message = ex.Message;
+                return null;
+            }
+            finally
+            {
+                if (com != null)
+                {
+                    com.Dispose();
+                    com = null;
+                    con.DisConnect();
+                    adpt.Dispose();
+                    adpt = null;
+                }
+            }
+        }
 		/// <summary>
 		/// 
 		/// </summary>

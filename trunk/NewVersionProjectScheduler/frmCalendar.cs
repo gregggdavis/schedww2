@@ -589,7 +589,7 @@ namespace Scheduler {
 			}
 			
 			//DataTable dtblEvents = FetchGridData(startDate, endDate, cmbClient.Text, cmbInstructor.Text, cmbProgram.Text, cmbClass.Text);
-            DataTable dtblEvents = FetchGridData(startDate, endDate, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, ((ValuePair)cmbProgram.SelectedItem).Value, ((ValuePair)cmbClass.SelectedItem).Value);
+            DataTable dtblEvents = FetchGridData(startDate, endDate, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, cmbProgram.Text, cmbClass.Text);
 			schedulerStorage1.Appointments.DataSource = dtblEvents;
 			if (fMain != null) {
                 if(dtblEvents != null)
@@ -860,14 +860,23 @@ namespace Scheduler {
 		}
 
 		private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e) {
-            if(IsAllow) CalendarFilter.ProgramIndex = cmbProgram.SelectedIndex;
+            if (IsAllow)
+            {
+                CalendarFilter.ProgramIndex = cmbProgram.SelectedIndex;
+                CalendarFilter.ProgramName = cmbProgram.Text;
+                
+            }
 			if (isProcess) {
 				LoadCalendar();
 			}
 		}
 
 		private void cmbClass_SelectedIndexChanged(object sender, EventArgs e) {
-            if(IsAllow) CalendarFilter.ClassIndex = cmbClass.SelectedIndex;
+            if (IsAllow)
+            {
+                CalendarFilter.ClassIndex = cmbClass.SelectedIndex;
+                CalendarFilter.ClassName = cmbClass.Name;
+            }
 			if (isProcess) {
 				LoadCalendar();
 			}
