@@ -975,7 +975,7 @@ namespace Scheduler
 
 			objEvent = new Events();
 			//dtbl = objEvent.LoadData(dtStart, dtEnd, cmbClient.Text, cmbInstructor.Text, cmbProgram.Text, cmbClass.Text);
-            dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, ((ValuePair)cmbProgram.SelectedItem).Value, ((ValuePair)cmbClass.SelectedItem).Value);
+            dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, cmbProgram.Text, cmbClass.Text,true);
 			grdEvent.DataSource = dtbl;
 			isProcess = true;
 
@@ -1431,7 +1431,11 @@ namespace Scheduler
 
 		private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
 		{
-            if (IsAllow) CalendarFilter.ProgramIndex = cmbProgram.SelectedIndex;			
+            if (IsAllow)
+            {
+                CalendarFilter.ProgramIndex = cmbProgram.SelectedIndex;
+                CalendarFilter.ProgramName = cmbProgram.Text;
+            }
 			if(isProcess)
 			{
 				LoadEvent();		
@@ -1440,7 +1444,11 @@ namespace Scheduler
 
 		private void cmbClass_SelectedIndexChanged(object sender, EventArgs e)
 		{
-            if (IsAllow) CalendarFilter.ClassIndex = cmbClass.SelectedIndex;
+            if (IsAllow)
+            {
+                CalendarFilter.ClassIndex = cmbClass.SelectedIndex;
+                CalendarFilter.ClassName = cmbClass.Text;
+            }
 			if(isProcess)
 			{
 				LoadEvent();		
