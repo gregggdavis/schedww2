@@ -1587,7 +1587,7 @@ namespace Scheduler.Reports
             this.DetailReport1});
             this.DataMember = "ViewProgramReport";
             this.DataSource = this.dataSet11;
-            this.Margins = new System.Drawing.Printing.Margins(40, 40, 40, 40);
+            this.Margins = new System.Drawing.Printing.Margins(20, 20, 20, 20);
             this.PageHeight = 1169;
             this.PageWidth = 827;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
