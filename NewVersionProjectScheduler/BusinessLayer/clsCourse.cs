@@ -11,9 +11,10 @@ namespace Scheduler.BusinessLayer
 	{
 		public Course()
 		{
-		}
+        }
+        #region Declarations
 
-		private DataTable _dtbl=null;
+        private DataTable _dtbl=null;
 		private int _courseid=0;
 		private string _name="";
 		private string _namephonetic="";
@@ -36,8 +37,10 @@ namespace Scheduler.BusinessLayer
 		private string _testfinalform="";
 		private int _coursestatus=0;
 		private string _message="";
+        #endregion
 
-		public DataTable CourseDataTable
+        #region Properties
+        public DataTable CourseDataTable
 		{
 			get{return _dtbl;}
 			set{_dtbl=value;}
@@ -152,8 +155,9 @@ namespace Scheduler.BusinessLayer
 		{
 			get{return _message;}
 			set{_message=value;}
-		}
-		
+        }
+
+        #endregion
         private void BuildDataTable()
 		{
 			if(_dtbl==null)
@@ -1202,6 +1206,8 @@ namespace Scheduler.BusinessLayer
                             instructorName = "None";
                         }
                     }
+                    if (id == "0")
+                        instructorName = "None";
                 }
                 Reader.Close();
                 if (IsRecord)
@@ -1231,7 +1237,7 @@ namespace Scheduler.BusinessLayer
                         }
                     }
 
-                    if (id != "None" || id != "")
+                    if (id != "None" && id != "0")
                     {
                         instructorName = getInstructorName(id,con);
                     }

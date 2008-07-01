@@ -42,10 +42,11 @@ namespace Scheduler.Reports
             this.colCourseName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStartDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEndDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colCourseID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.colCalendarEventId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pnlTop)).BeginInit();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnlBody)).BeginInit();
@@ -53,6 +54,8 @@ namespace Scheduler.Reports
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.SuspendLayout();
@@ -123,9 +126,12 @@ namespace Scheduler.Reports
             this.gridControl1.DataSource = this.dataSet11;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Name = "";
+            this.gridControl1.FormsUseDefaultLookAndFeel = false;
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemDateEdit1});
             this.gridControl1.Size = new System.Drawing.Size(477, 288);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -182,6 +188,8 @@ namespace Scheduler.Reports
             // colStartDateTime
             // 
             this.colStartDateTime.Caption = "Event Start Date";
+            this.colStartDateTime.DisplayFormat.FormatString = "MM/dd/yyyy";
+            this.colStartDateTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colStartDateTime.FieldName = "StartDateTime";
             this.colStartDateTime.Name = "colStartDateTime";
             this.colStartDateTime.OptionsColumn.AllowEdit = false;
@@ -192,12 +200,23 @@ namespace Scheduler.Reports
             // colEndDateTime
             // 
             this.colEndDateTime.Caption = "Event End Date";
+            this.colEndDateTime.DisplayFormat.FormatString = "MM/dd/yyyy";
+            this.colEndDateTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colEndDateTime.FieldName = "EndDateTime";
             this.colEndDateTime.Name = "colEndDateTime";
             this.colEndDateTime.OptionsColumn.AllowEdit = false;
             this.colEndDateTime.OptionsColumn.ReadOnly = true;
             this.colEndDateTime.Visible = true;
             this.colEndDateTime.VisibleIndex = 2;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.repositoryItemDateEdit1.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
             // colCourseID
             // 
@@ -215,6 +234,12 @@ namespace Scheduler.Reports
             this.colID.OptionsColumn.AllowEdit = false;
             this.colID.OptionsColumn.ReadOnly = true;
             // 
+            // colCalendarEventId
+            // 
+            this.colCalendarEventId.Caption = "CalendarEventId";
+            this.colCalendarEventId.FieldName = "CalendarEventId";
+            this.colCalendarEventId.Name = "colCalendarEventId";
+            // 
             // panelControl1
             // 
             this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowOnly;
@@ -224,12 +249,6 @@ namespace Scheduler.Reports
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(481, 292);
             this.panelControl1.TabIndex = 2;
-            // 
-            // colCalendarEventId
-            // 
-            this.colCalendarEventId.Caption = "CalendarEventId";
-            this.colCalendarEventId.FieldName = "CalendarEventId";
-            this.colCalendarEventId.Name = "colCalendarEventId";
             // 
             // ProgamInfodlg
             // 
@@ -253,6 +272,8 @@ namespace Scheduler.Reports
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -279,5 +300,6 @@ namespace Scheduler.Reports
         private DevExpress.XtraGrid.Columns.GridColumn colCourseID;
         private DevExpress.XtraGrid.Columns.GridColumn colID;
         private DevExpress.XtraGrid.Columns.GridColumn colCalendarEventId;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 }

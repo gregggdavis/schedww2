@@ -2939,8 +2939,13 @@ namespace Scheduler
                 cmbEventType.Items.RemoveAt(cmbEventType.Items.IndexOf("Test Initial"));
             if (!AllowTestMid)
             {
-                cmbEventType.Items.RemoveAt(cmbEventType.Items.IndexOf("Test Midterm"));
-                cmbEventType.Items.RemoveAt(cmbEventType.Items.IndexOf("Test Mid-term"));
+                int index = cmbEventType.Items.IndexOf("Test Midterm");
+                if(index >= 0)
+                    cmbEventType.Items.RemoveAt(index);
+                index = cmbEventType.Items.IndexOf("Test Mid-term");
+                if (index >= 0)
+                    cmbEventType.Items.RemoveAt(index);
+                //cmbEventType.Items.RemoveAt(cmbEventType.Items.IndexOf("Test Mid-term"));
             }
             if(!AllowTestFinal)
                 cmbEventType.Items.RemoveAt(cmbEventType.Items.IndexOf("Test Final"));
