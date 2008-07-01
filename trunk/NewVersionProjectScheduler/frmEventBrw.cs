@@ -975,7 +975,7 @@ namespace Scheduler
 
 			objEvent = new Events();
 			//dtbl = objEvent.LoadData(dtStart, dtEnd, cmbClient.Text, cmbInstructor.Text, cmbProgram.Text, cmbClass.Text);
-            dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, cmbProgram.Text, cmbClass.Text,true);
+            dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, "", "",true);
 			grdEvent.DataSource = dtbl;
 			isProcess = true;
 
@@ -1434,11 +1434,19 @@ namespace Scheduler
             if (IsAllow)
             {
                 CalendarFilter.ProgramIndex = cmbProgram.SelectedIndex;
+                
                 CalendarFilter.ProgramName = cmbProgram.Text;
+                if (CalendarFilter.ProgramName == "")
+                {
+                    gvwEvent.ActiveFilter.Remove(gcolProgram);
+                }
+                else
+                    gvwEvent.ActiveFilter.Add(gcolProgram, new ColumnFilterInfo("Program = '" + CalendarFilter.ProgramName + "'"));
+                //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";
             }
 			if(isProcess)
 			{
-				LoadEvent();		
+				//LoadEvent();		
 			}
 		}
 
@@ -1448,6 +1456,12 @@ namespace Scheduler
             {
                 CalendarFilter.ClassIndex = cmbClass.SelectedIndex;
                 CalendarFilter.ClassName = cmbClass.Text;
+                if (CalendarFilter.ClassName == "")
+                {
+                    gvwEvent.ActiveFilter.Remove(gcolClass);
+                }
+                else
+                    gvwEvent.ActiveFilter.Add(gcolClass, new ColumnFilterInfo("Class = '" + CalendarFilter.ClassName + "'"));
             }
 			if(isProcess)
 			{

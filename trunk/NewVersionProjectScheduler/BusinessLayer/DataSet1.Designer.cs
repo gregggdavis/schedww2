@@ -1669,7 +1669,7 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public viewSimpleProgramInfoRow AddviewSimpleProgramInfoRow(int ProgramId, string ProgramName, string CourseName, System.DateTime StartDateTime, System.DateTime EndDateTime, int CourseID) {
+            public viewSimpleProgramInfoRow AddviewSimpleProgramInfoRow(int ProgramId, string ProgramName, string CourseName, string StartDateTime, string EndDateTime, int CourseID) {
                 viewSimpleProgramInfoRow rowviewSimpleProgramInfoRow = ((viewSimpleProgramInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProgramId,
@@ -1726,9 +1726,9 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnProgramName);
                 this.columnCourseName = new global::System.Data.DataColumn("CourseName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCourseName);
-                this.columnStartDateTime = new global::System.Data.DataColumn("StartDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnStartDateTime = new global::System.Data.DataColumn("StartDateTime", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStartDateTime);
-                this.columnEndDateTime = new global::System.Data.DataColumn("EndDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnEndDateTime = new global::System.Data.DataColumn("EndDateTime", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEndDateTime);
                 this.columnCourseID = new global::System.Data.DataColumn("CourseID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCourseID);
@@ -4377,10 +4377,10 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime StartDateTime {
+            public string StartDateTime {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableviewSimpleProgramInfo.StartDateTimeColumn]));
+                        return ((string)(this[this.tableviewSimpleProgramInfo.StartDateTimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'StartDateTime\' in table \'viewSimpleProgramInfo\' is DBNull.", e);
@@ -4392,10 +4392,10 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime EndDateTime {
+            public string EndDateTime {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableviewSimpleProgramInfo.EndDateTimeColumn]));
+                        return ((string)(this[this.tableviewSimpleProgramInfo.EndDateTimeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'EndDateTime\' in table \'viewSimpleProgramInfo\' is DBNull.", e);

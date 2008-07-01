@@ -1,4 +1,5 @@
 using System;
+using System.Data.SqlTypes;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -326,7 +327,10 @@ namespace Scheduler.BusinessLayer {
 			if ((dt1 == Convert.ToDateTime(null)) && (dt2 == Convert.ToDateTime(null))) {
 				IsDate = false;
 			} else {
-				IsDate = true;
+                if (dt1 == SqlDateTime.MinValue && dt2 == SqlDateTime.MaxValue)
+                    IsDate = false;
+                else
+				    IsDate = true;
 			}
 
 			if (_dtbl == null) {
@@ -388,10 +392,11 @@ namespace Scheduler.BusinessLayer {
                         if (isFirst)
                         {
                             isFirst = false;
-                            strWhereClause += "  (Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "')))) ";
+                            strWhereClause += "  ((Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "'))))) ";
                         }
                         else
-                            strWhereClause += " and (Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "')))) ";
+                            strWhereClause += " and ((Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "'))))) ";
+
 					}
 					if (sClass != "") {
                         if (isFirst)
@@ -436,10 +441,12 @@ namespace Scheduler.BusinessLayer {
                     //        strWhereClause = strWhereClause.Substring(3, strWhereClause.Length - 3);
                     //    }
 
+
                     //    strWhereClause = " Where " + strWhereClause;
                     //}
+                    if(strWhereClause != "Where")
+					    strSql += strWhereClause + " ";
 
-					strSql += strWhereClause + " ";
 					strSql += "Order By Event.EventID";
 
 					//	"Order By Course.[Name] ";
