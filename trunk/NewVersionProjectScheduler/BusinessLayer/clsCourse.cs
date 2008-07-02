@@ -1498,13 +1498,47 @@ namespace Scheduler.BusinessLayer
                 temp[1] = Reader[1].ToString();
                 temp[2] = Reader[2].ToString();
                 Reader.Close();
-
-                if (temp[0] != null && temp[0] != "" && temp[0]!="0")
-                    boolArray[0] = true;
+                IDataReader readerTemp = null;
+                if (temp[0] != null && temp[0] != "" && temp[0] != "0")
+                {
+                    readerTemp = DAC.SelectStatement("Select * From Event Where EventID = " + temp[0]);
+                    if (readerTemp.Read())
+                    {
+                        boolArray[0] = true;
+                    }
+                    else
+                    {
+                        DAC.EXQuery("Update [Course] Set TestInitialEventId = 0 Where CourseID = " + _courseid);
+                        boolArray[0] = false;
+                    }
+                }
                 if (temp[1] != null && temp[1] != "" && temp[1] != "0")
-                    boolArray[1] = true;
+                {
+                    readerTemp = DAC.SelectStatement("Select * From Event Where EventID = " + temp[1]);
+                    if (readerTemp.Read())
+                    {
+                        boolArray[1] = true;
+                    }
+                    else
+                    {
+                        
+                        DAC.EXQuery("Update [Course] Set TestMidtermEventId = 0 Where CourseID = " + _courseid);
+                        boolArray[1] = false;
+                    }
+                }
                 if (temp[2] != null && temp[2] != "" && temp[2] != "0")
-                    boolArray[2] = true;
+                {
+                    readerTemp = DAC.SelectStatement("Select * From Event Where EventID = " + temp[2]);
+                    if (readerTemp.Read())
+                    {
+                        boolArray[2] = true;
+                    }
+                    else
+                    {
+                        DAC.EXQuery("Update [Course] Set TestFinalEventId = 0 Where CourseID = " + _courseid);
+                        boolArray[2] = false;
+                    }
+                }
 
                 return boolArray;
             }

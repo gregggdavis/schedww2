@@ -865,6 +865,7 @@ namespace Scheduler {
                 CalendarFilter.ProgramIndex = cmbProgram.SelectedIndex;
                 CalendarFilter.ProgramName = cmbProgram.Text;
                 
+                
             }
 			if (isProcess) {
 				LoadCalendar();

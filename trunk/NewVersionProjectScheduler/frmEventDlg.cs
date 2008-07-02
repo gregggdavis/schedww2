@@ -2531,21 +2531,21 @@ namespace Scheduler
             else
             {
                 if(cmbEventType.Items.IndexOf("Extra Class")==0)
-                    switch (cmbEventType.SelectedIndex)
+                    switch (cmbEventType.Text)
                     {
                         default:
-                        case 0: _eventtype = EventType.Extra; break;
-                        case 1: _eventtype = EventType.Initial; break;
-                        case 2: _eventtype = EventType.MidTerm; break;
-                        case 3: _eventtype = EventType.Final; break;
+                        case "Extra Class": _eventtype = EventType.Extra; break;
+                        case "Test Initial": _eventtype = EventType.Initial; break;
+                        case "Test Mid-term": _eventtype = EventType.MidTerm; break;
+                        case "Test Final": _eventtype = EventType.Final; break;
                     }
                 else
-                    switch (cmbEventType.SelectedIndex)
+                    switch (cmbEventType.Text)
                     {
                         default:
-                        case 0: _eventtype = EventType.Initial; break;
-                        case 1: _eventtype = EventType.MidTerm; break;
-                        case 2: _eventtype = EventType.Final; break;
+                        case "Test Initial": _eventtype = EventType.Initial; break;
+                        case "Test Mid-term": _eventtype = EventType.MidTerm; break;
+                        case "Test Final": _eventtype = EventType.Final; break;
                     }
             }
             
