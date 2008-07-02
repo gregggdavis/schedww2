@@ -1130,7 +1130,7 @@ namespace Scheduler.BusinessLayer {
 					eventsSql += @"
 					AND 
 					((Program.[Name] = @programName) OR (Program.NickName = @programName)) 
-					OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = @programName) 
+					OR (Course.ProgramID IN(Select ProgramID From Program Where ((Program.[Name] = @programName) 
 					OR (Program.NickName = @programName))))";
 					sqlCommand.Parameters.Add(new SqlParameter("@programName", programName));
 					//sqlCommand.Parameters.AddWithValue("programName", programName);
