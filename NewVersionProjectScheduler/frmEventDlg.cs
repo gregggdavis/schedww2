@@ -127,6 +127,8 @@ namespace Scheduler
 
 		private bool AutoSave=true;
 		private DataTable dtblDates=null;
+        private CheckBox chkEventModified;
+        private CheckBox chkEventStatus_I;
         private EventType _eventtype;
         //private EventType _eventtype_initial;
         #endregion
@@ -431,6 +433,8 @@ namespace Scheduler
             this.cmbDept = new System.Windows.Forms.ComboBox();
             this.llblProgram = new System.Windows.Forms.LinkLabel();
             this.cmbProgram = new System.Windows.Forms.ComboBox();
+            this.chkEventModified = new System.Windows.Forms.CheckBox();
+            this.chkEventStatus_I = new System.Windows.Forms.CheckBox();
             this.pnlBottom.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
@@ -642,7 +646,7 @@ namespace Scheduler
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Location = new System.Drawing.Point(14, 160);
+            this.groupBox2.Location = new System.Drawing.Point(14, 186);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(730, 3);
             this.groupBox2.TabIndex = 252;
@@ -652,7 +656,7 @@ namespace Scheduler
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblDescription.Location = new System.Drawing.Point(15, 266);
+            this.lblDescription.Location = new System.Drawing.Point(16, 318);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(60, 13);
             this.lblDescription.TabIndex = 253;
@@ -660,7 +664,7 @@ namespace Scheduler
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(128, 264);
+            this.txtDescription.Location = new System.Drawing.Point(128, 315);
             this.txtDescription.MaxLength = 255;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(608, 21);
@@ -698,11 +702,11 @@ namespace Scheduler
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(15, 296);
+            this.txtNote.Location = new System.Drawing.Point(15, 342);
             this.txtNote.MaxLength = 255;
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(723, 190);
+            this.txtNote.Size = new System.Drawing.Size(723, 144);
             this.txtNote.TabIndex = 24;
             // 
             // cmbStartTime
@@ -848,7 +852,7 @@ namespace Scheduler
             // llblTeacher1
             // 
             this.llblTeacher1.AutoSize = true;
-            this.llblTeacher1.Location = new System.Drawing.Point(16, 171);
+            this.llblTeacher1.Location = new System.Drawing.Point(16, 161);
             this.llblTeacher1.Name = "llblTeacher1";
             this.llblTeacher1.Size = new System.Drawing.Size(107, 13);
             this.llblTeacher1.TabIndex = 263;
@@ -866,7 +870,7 @@ namespace Scheduler
             "Recording",
             "Mendan",
             "Other"});
-            this.cmbTeacher1.Location = new System.Drawing.Point(128, 169);
+            this.cmbTeacher1.Location = new System.Drawing.Point(128, 153);
             this.cmbTeacher1.Name = "cmbTeacher1";
             this.cmbTeacher1.Size = new System.Drawing.Size(152, 21);
             this.cmbTeacher1.TabIndex = 19;
@@ -874,7 +878,7 @@ namespace Scheduler
             // llblTeacher2
             // 
             this.llblTeacher2.AutoSize = true;
-            this.llblTeacher2.Location = new System.Drawing.Point(16, 197);
+            this.llblTeacher2.Location = new System.Drawing.Point(16, 220);
             this.llblTeacher2.Name = "llblTeacher2";
             this.llblTeacher2.Size = new System.Drawing.Size(88, 13);
             this.llblTeacher2.TabIndex = 265;
@@ -885,6 +889,7 @@ namespace Scheduler
             // cmbTeacher2
             // 
             this.cmbTeacher2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTeacher2.Enabled = false;
             this.cmbTeacher2.Items.AddRange(new object[] {
             "Class",
             "Desk",
@@ -892,7 +897,7 @@ namespace Scheduler
             "Recording",
             "Mendan",
             "Other"});
-            this.cmbTeacher2.Location = new System.Drawing.Point(128, 195);
+            this.cmbTeacher2.Location = new System.Drawing.Point(128, 218);
             this.cmbTeacher2.Name = "cmbTeacher2";
             this.cmbTeacher2.Size = new System.Drawing.Size(152, 21);
             this.cmbTeacher2.TabIndex = 20;
@@ -926,6 +931,8 @@ namespace Scheduler
             // 
             // pnlBody
             // 
+            this.pnlBody.Controls.Add(this.chkEventStatus_I);
+            this.pnlBody.Controls.Add(this.chkEventModified);
             this.pnlBody.Controls.Add(this.label2);
             this.pnlBody.Controls.Add(this.cmbExceptionReason);
             this.pnlBody.Controls.Add(this.groupBox4);
@@ -986,7 +993,7 @@ namespace Scheduler
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(16, 223);
+            this.label2.Location = new System.Drawing.Point(301, 220);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 287;
@@ -998,7 +1005,7 @@ namespace Scheduler
             "Cancelled",
             "Extra",
             "Make-Up"});
-            this.cmbExceptionReason.Location = new System.Drawing.Point(128, 221);
+            this.cmbExceptionReason.Location = new System.Drawing.Point(400, 217);
             this.cmbExceptionReason.Name = "cmbExceptionReason";
             this.cmbExceptionReason.Size = new System.Drawing.Size(256, 21);
             this.cmbExceptionReason.TabIndex = 22;
@@ -1006,7 +1013,7 @@ namespace Scheduler
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox4.Location = new System.Drawing.Point(8, 252);
+            this.groupBox4.Location = new System.Drawing.Point(8, 302);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(730, 3);
             this.groupBox4.TabIndex = 285;
@@ -1014,19 +1021,20 @@ namespace Scheduler
             // 
             // txtChangeReason
             // 
-            this.txtChangeReason.Location = new System.Drawing.Point(400, 171);
+            this.txtChangeReason.Enabled = false;
+            this.txtChangeReason.Location = new System.Drawing.Point(128, 247);
             this.txtChangeReason.MaxLength = 100;
             this.txtChangeReason.Multiline = true;
             this.txtChangeReason.Name = "txtChangeReason";
-            this.txtChangeReason.Size = new System.Drawing.Size(336, 72);
+            this.txtChangeReason.Size = new System.Drawing.Size(166, 48);
             this.txtChangeReason.TabIndex = 21;
             // 
             // lblChangeReason
             // 
             this.lblChangeReason.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblChangeReason.Location = new System.Drawing.Point(304, 168);
+            this.lblChangeReason.Location = new System.Drawing.Point(15, 250);
             this.lblChangeReason.Name = "lblChangeReason";
-            this.lblChangeReason.Size = new System.Drawing.Size(80, 42);
+            this.lblChangeReason.Size = new System.Drawing.Size(108, 26);
             this.lblChangeReason.TabIndex = 284;
             this.lblChangeReason.Text = "Instructor Change Reason";
             // 
@@ -1133,6 +1141,28 @@ namespace Scheduler
             this.cmbProgram.Size = new System.Drawing.Size(120, 21);
             this.cmbProgram.TabIndex = 9;
             this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
+            // 
+            // chkEventModified
+            // 
+            this.chkEventModified.AutoSize = true;
+            this.chkEventModified.Location = new System.Drawing.Point(128, 195);
+            this.chkEventModified.Name = "chkEventModified";
+            this.chkEventModified.Size = new System.Drawing.Size(128, 17);
+            this.chkEventModified.TabIndex = 289;
+            this.chkEventModified.Text = "Modify the Instructor";
+            this.chkEventModified.UseVisualStyleBackColor = true;
+            this.chkEventModified.CheckedChanged += new System.EventHandler(this.chkEventModified_CheckedChanged);
+            // 
+            // chkEventStatus_I
+            // 
+            this.chkEventStatus_I.AutoSize = true;
+            this.chkEventStatus_I.Location = new System.Drawing.Point(400, 195);
+            this.chkEventStatus_I.Name = "chkEventStatus_I";
+            this.chkEventStatus_I.Size = new System.Drawing.Size(111, 17);
+            this.chkEventStatus_I.TabIndex = 290;
+            this.chkEventStatus_I.Text = "Cancel This Event";
+            this.chkEventStatus_I.UseVisualStyleBackColor = true;
+            this.chkEventStatus_I.CheckedChanged += new System.EventHandler(this.chkEventStatus_I_CheckedChanged);
             // 
             // frmEventDlg
             // 
@@ -1430,6 +1460,10 @@ namespace Scheduler
 					}
 				}
 			}
+            if (!chkEventStatus_I.Checked && cmbTeacher2.SelectedIndex <= 0 && cmbExceptionReason.SelectedIndex <= 0 && cmbExceptionReason.Text == "")
+                SetEventModificationControls(false);
+            else
+                SetEventModificationControls(true);
 		}
 
 		public bool setToConfig()
@@ -1889,7 +1923,10 @@ namespace Scheduler
 					if(dr["RecurrenceText"]!=System.DBNull.Value)
 						if(dr["RecurrenceText"].ToString()!="")
 							IsRecurrenceFlag = 1;
-					
+                    if (Convert.ToInt16(dr["EventStatus"].ToString()) == 1)
+                        chkEventStatus_I.Checked = true;
+                    else
+                        chkEventStatus_I.Checked = false;
 				    dtStart.Value = Convert.ToDateTime(dr["StartDateTime"].ToString());
 				    dtEnd.Value = Convert.ToDateTime(dr["EndDateTime"].ToString());
 
@@ -2966,6 +3003,59 @@ namespace Scheduler
             }
             else
                 cmbEventType.SelectedIndex = -1;
+        }
+
+        private void chkEventModified_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEventModified.Checked)
+                SetEventModificationControls(true);
+            else
+                SetEventModificationControls(false);
+        }
+        private void SetEventModificationControls(bool boolEnableControls)
+        {
+            if (boolEnableControls)
+            {
+                //cmbEventStatus_I.Enabled = true;
+                chkEventStatus_I.Enabled = true;
+                chkEventModified.Checked = true;
+                if (!chkEventStatus_I.Checked)
+                {
+                    cmbTeacher2.Enabled = true;
+                    //cmbExceptionReason_I.Enabled = true;
+                    txtChangeReason.Enabled = true;
+
+                }
+            }
+            else
+            {
+                chkEventModified.Checked = false;
+                //if(!chkEventStatus_I.Checked) chkEventStatus_I.Enabled = false;
+                cmbTeacher2.Enabled = false;
+                //cmbExceptionReason_I.Enabled = false;
+                txtChangeReason.Enabled = false;
+            }
+        }
+
+        private void chkEventStatus_I_CheckedChanged(object sender, EventArgs e)
+        {
+            //IsEventChanged = true;
+            //if (GetCurrentEventID((TabPage)pnlEvent.Parent) > 0)
+            //{
+                
+            //}
+            //cmbEventType_SelectedIndexChanged(sender, null);
+            if (chkEventStatus_I.Checked)
+            {
+                Common.MakeReadOnly(pnlBody, false);
+                chkEventStatus_I.Enabled = true;
+                cmbExceptionReason.Enabled = true;
+            }
+            else
+            {
+                Common.MakeEnabled(pnlBody, false);
+                //cmbExceptionReason_I.Enabled = false;
+            }
         }
 
 	}
