@@ -735,6 +735,8 @@ namespace Scheduler {
 			return evt.LoadCalendarData(dtStart, dtEnd, client, instructor, program, course);
 		}
 
+        
+
 		private void schedulerControl_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
         {
 			Appointment apt = e.Appointment;
@@ -881,14 +883,22 @@ namespace Scheduler {
 		}
 
 		private void cmbClient_SelectedIndexChanged(object sender, EventArgs e) {
-            if (IsAllow) CalendarFilter.ClientIndex = cmbClient.SelectedIndex;
+            if (IsAllow)
+            {
+                CalendarFilter.ClientIndex = cmbClient.SelectedIndex;
+                CalendarFilter.ClientName = cmbClient.Text;
+            }
 			if (isProcess) {
 				LoadCalendar();
 			}
 		}
 
 		private void cmbInstructor_SelectedIndexChanged(object sender, EventArgs e) {
-            if (IsAllow) CalendarFilter.InstructorIndex = cmbInstructor.SelectedIndex;
+            if (IsAllow)
+            {
+                CalendarFilter.InstructorIndex = cmbInstructor.SelectedIndex;
+                CalendarFilter.InstructorName = cmbInstructor.Text;
+            }
 			if (isProcess) {
 				LoadCalendar();
 			}
