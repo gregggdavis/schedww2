@@ -10,6 +10,7 @@ using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using Scheduler.BusinessLayer;
 using Message=Scheduler.BusinessLayer.Message;
+using System.Collections.Generic;
 
 namespace Scheduler
 {
@@ -1377,23 +1378,56 @@ namespace Scheduler
 		{
 			Common.PopulateDropdownWithValue(
 				cmbClient, "Select CompanyName, DisplayName = CASE " +
-				"WHEN NickName IS NULL THEN CompanyName " +
-				"WHEN NickName = '' THEN CompanyName " +
+                "WHEN NickName IS NULL OR NickName = '' THEN CompanyName " +
+				//"WHEN NickName = '' THEN CompanyName " +
 				"ELSE NickName " +
 				"END From " +
 				"Contact Where ContactType=2 and " +
 				"ContactStatus=0 Order By DisplayName ");
-
+            List<string> contacts = new List<string>();
+            bool found = false;
+            for (int i = 0; i < cmbClient.Items.Count; i++)
+            {
+                Scheduler.BusinessLayer.ValuePair p = cmbClient.Items[i] as Scheduler.BusinessLayer.ValuePair;
+                found = false;
+                foreach (string str in contacts)
+                {
+                    if (p.Name == str)
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                    contacts.Add(p.Name);
+                else
+                    cmbClient.Items.RemoveAt(i);
+            }
 			Common.PopulateDropdownWithValue(
                 cmbInstructor, "Select LastName + ', ' + FirstName, " +
-				"TeacherName = CASE " + 
-				"WHEN NickName IS NULL THEN LastName + ', ' + FirstName " +
-				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
+				"TeacherName = CASE " +
+                "WHEN NickName IS NULL OR NickName = '' THEN LastName + ', ' + FirstName " +
+				//"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
 				"Contact Where ContactType=1 and " +
 				"ContactStatus=0 Order By LastName, FirstName ");
-
+            contacts.Clear();
+            for (int i = 0; i < cmbInstructor.Items.Count; i++)
+            {
+                Scheduler.BusinessLayer.ValuePair p = cmbInstructor.Items[i] as Scheduler.BusinessLayer.ValuePair;
+                found = false;
+                foreach (string str in contacts)
+                {
+                    if (p.Name == str)
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                    contacts.Add(p.Name);
+                else
+                    cmbInstructor.Items.RemoveAt(i);
+            }
 			Common.PopulateDropdownWithValue(
 				cmbClass, "Select Distinct [Name], ClassName = CASE " +
 				"WHEN NickName IS NULL THEN Name " +
@@ -1415,18 +1449,44 @@ namespace Scheduler
 
 		private void cmbClient_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if(IsAllow) CalendarFilter.ClientIndex=cmbClient.SelectedIndex;
-			if(isProcess)
-				LoadEvent();
+            if (IsAllow)
+            {
+                CalendarFilter.ClientName = cmbClient.Text;
+
+                //CalendarFilter.ProgramName = cmbProgram.Text;
+                if (CalendarFilter.ClientName == "")
+                {
+                    gvwEvent.ActiveFilter.Remove(gcolClient);
+                }
+                else
+                    gvwEvent.ActiveFilter.Add(gcolClient, new ColumnFilterInfo("Client = '" + CalendarFilter.ClientName + "'"));
+                //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";
+            }
+            //if(IsAllow) CalendarFilter.ClientIndex=cmbClient.SelectedIndex;
+            //if(isProcess)
+            //    LoadEvent();
 		}
 
 		private void cmbInstructor_SelectedIndexChanged(object sender, EventArgs e)
 		{
-            if (IsAllow) CalendarFilter.InstructorIndex = cmbInstructor.SelectedIndex;
-			if(isProcess)
-			{
-				LoadEvent();		
-			}
+            if (IsAllow)
+            {
+                CalendarFilter.InstructorName = cmbInstructor.Text;
+
+                //CalendarFilter.ProgramName = cmbProgram.Text;
+                if (CalendarFilter.InstructorName == "")
+                {
+                    gvwEvent.ActiveFilter.Remove(gcolScheduledIns);
+                }
+                else
+                    gvwEvent.ActiveFilter.Add(gcolScheduledIns, new ColumnFilterInfo("ScheduledTeacher = '" + CalendarFilter.InstructorName + "'"));
+                //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";
+            }
+            //if (IsAllow) CalendarFilter.InstructorIndex = cmbInstructor.SelectedIndex;
+            //if(isProcess)
+            //{
+            //    LoadEvent();		
+            //}
 		}
 
 		private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)

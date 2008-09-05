@@ -13,6 +13,8 @@ namespace Scheduler.BusinessLayer
 		public static DateTime StartDate = DateTime.MinValue;
 		public static DateTime EndDate = DateTime.MaxValue;
 		public static int ClientIndex=0;
+        public static string ClientName = "";
+        public static string InstructorName = "";
 		public static int InstructorIndex=0;
 		public static int ProgramIndex=0;
         public static string ProgramName = "";

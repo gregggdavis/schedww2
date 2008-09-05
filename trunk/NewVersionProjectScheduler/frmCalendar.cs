@@ -19,6 +19,7 @@ using DevExpress.XtraPrinting.Control;
 using DevExpress.XtraPrinting.Design;
 using DevExpress.XtraPrinting;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Scheduler {
 	/// <summary>
@@ -504,16 +505,33 @@ namespace Scheduler {
 		
 		public void PopulateDropDowns() {
             Common.PopulateDropdownWithValue(
-				cmbClient, "Select CompanyName, DisplayName = CASE " +
+				cmbClient, "Select  CompanyName, DisplayName = CASE " +
 				"WHEN NickName IS NULL THEN CompanyName " +
 				"WHEN NickName = '' THEN CompanyName " +
 				"ELSE NickName " +
 				"END From " +
 				"Contact Where ContactType=2 and " +
 				"ContactStatus=0 Order By DisplayName ");
-
+            List<string> contacts = new List<string>();
+            bool found = false;
+            for (int i = 0; i < cmbClient.Items.Count; i++)
+            {
+                Scheduler.BusinessLayer.ValuePair p = cmbClient.Items[i] as Scheduler.BusinessLayer.ValuePair;
+                found = false;
+                foreach (string str in contacts)
+                {
+                    if (p.Name == str)
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                    contacts.Add(p.Name);
+                else
+                    cmbClient.Items.RemoveAt(i);
+            }
             Common.PopulateDropdownWithValue(
-                cmbInstructor, "Select LastName + ', ' + FirstName, " +
+                cmbInstructor, "Select  LastName + ', ' + FirstName, " +
 				"TeacherName = CASE " +
 				"WHEN NickName IS NULL THEN LastName + ', ' + FirstName " +
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
@@ -521,7 +539,23 @@ namespace Scheduler {
 				"END From " +
 				"Contact Where ContactType=1 and " +
 				"ContactStatus=0 Order By LastName, FirstName ");
-
+            contacts.Clear();
+            for (int i = 0; i < cmbInstructor.Items.Count; i++)
+            {
+                Scheduler.BusinessLayer.ValuePair p = cmbInstructor.Items[i] as Scheduler.BusinessLayer.ValuePair;
+                found = false;
+                foreach (string str in contacts)
+                {
+                    if (p.Name == str)
+                    {
+                        found = true;
+                    }
+                }
+                if (!found)
+                    contacts.Add(p.Name);
+                else
+                    cmbInstructor.Items.RemoveAt(i);
+            }
             Common.PopulateDropdownWithValue(
                 cmbClass, "Select Distinct [Name], ClassName = CASE " +
 				"WHEN NickName IS NULL THEN Name " +
@@ -541,6 +575,7 @@ namespace Scheduler {
 				" Order By ProgramName ");
 
 		}
+        
 
 		public void PositionDayCalendar() {
 			pnlDateNavigator.Width = 188;
@@ -1092,7 +1127,7 @@ namespace Scheduler {
 
                 if (footer != null)
                 {
-                    footer.Footer.Font = new Font(footer.Footer.Font.FontFamily, 12, FontStyle.Bold);
+                    footer.Footer.Font = new Font(footer.Footer.Font.FontFamily, 10, FontStyle.Bold);
                     footer.Footer.Content.Add(GetFilterText());
                 }
 
@@ -1134,6 +1169,16 @@ namespace Scheduler {
             if (!cmbProgram.Text.Equals(""))
             {
                 strBuilder.Append(" Program = \"" + cmbProgram.Text + "\"");
+                nothingSet = false;
+            }
+            if (StartDatePickerTop.Checked)
+            {
+                strBuilder.Append(" From = \"" + StartDatePickerTop.Text + "\"");
+                nothingSet = false;
+            }
+            if (EndDatePickerTop.Checked)
+            {
+                strBuilder.Append(" To = \"" + EndDatePickerTop.Text + "\"");
                 nothingSet = false;
             }
 
