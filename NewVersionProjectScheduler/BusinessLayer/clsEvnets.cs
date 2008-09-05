@@ -2,6 +2,7 @@ using System;
 using System.Data.SqlTypes;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace Scheduler.BusinessLayer {
 	/// <summary>
@@ -1140,6 +1141,21 @@ namespace Scheduler.BusinessLayer {
 					sqlCommand.Parameters.Add(new SqlParameter("@className", className));
 					//sqlCommand.Parameters.AddWithValue("className", className);
 				}
+                if (instructorName != String.Empty)
+                {
+                    string[] sp = instructorName.Split(',');
+                    string firstName = "";
+                    string lastName = "";
+                    if (sp.Length >= 1)
+                        lastName = sp[0].Trim();
+                    if (sp.Length >= 2)
+                        firstName = sp[1].Trim();
+
+                    eventsSql += "and  (CC1.LastName = @InsLastName AND CC1.FirstName = @InsFirstName) ";
+                    sqlCommand.Parameters.Add(new SqlParameter("@InsFirstName", firstName));
+                    sqlCommand.Parameters.Add(new SqlParameter("@InsLastName", lastName));
+                }
+                
 				eventsSql += "Order By Event.EventID";
 
 				connection = new Connection();
@@ -1165,6 +1181,7 @@ namespace Scheduler.BusinessLayer {
 				dtbl.Columns.Add("ENDDATETIME", Type.GetType("System.DateTime"));
 				dtbl.Columns.Add("TASKDESC", Type.GetType("System.String"));
                 dtbl.Columns.Add("Status", Type.GetType("System.String"));
+                List<DataRow> deleteRows = new List<DataRow>();
 				foreach (DataRow dr in _dtbl.Rows) {
 					string strfinalstring = "";
 					string strDept = "";
@@ -1227,7 +1244,7 @@ namespace Scheduler.BusinessLayer {
 						else
 							strfinalstring += dr["ClientNickName"].ToString();
 					}
-
+                    
 					//was removed in corresponding
 					//						if(strTeacher!="")
 					//						{
@@ -1250,7 +1267,21 @@ namespace Scheduler.BusinessLayer {
 														  dtEnd,
 														  strfinalstring,status
 													  });
+                    if (clientName != String.Empty)
+                    {
+                        if (dr["ClientNickName"].ToString() != clientName && dr["Client"].ToString() != clientName)
+                        {
+                            deleteRows.Add(dr);
+                        }
+                        
+
+                    }
 				}
+                int totalCount = deleteRows.Count;
+                for (int i = 0; i < totalCount; i++)
+                {
+                    deleteRows[i].Delete();
+                }
 				return dtbl;
 			} catch (SqlException ex) {
 				Message = ex.Message;
