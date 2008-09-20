@@ -1074,7 +1074,7 @@ namespace Scheduler {
                     
                     Common.FontSize = 8.25f;
 					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 2);
-					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize);
+					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize - 2);
 					schedulerPrintStyle.PageSettings.Margins = new Margins(10, 10, 20, 20);
 					schedulerPrintStyle.PageSettings.Landscape = true;
                     
