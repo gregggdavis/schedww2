@@ -418,6 +418,8 @@ namespace Scheduler
             this.label1 = new System.Windows.Forms.Label();
             this.chkIsHoliday = new System.Windows.Forms.CheckBox();
             this.pnlBody = new System.Windows.Forms.Panel();
+            this.chkEventStatus_I = new System.Windows.Forms.CheckBox();
+            this.chkEventModified = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbExceptionReason = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -433,8 +435,6 @@ namespace Scheduler
             this.cmbDept = new System.Windows.Forms.ComboBox();
             this.llblProgram = new System.Windows.Forms.LinkLabel();
             this.cmbProgram = new System.Windows.Forms.ComboBox();
-            this.chkEventModified = new System.Windows.Forms.CheckBox();
-            this.chkEventStatus_I = new System.Windows.Forms.CheckBox();
             this.pnlBottom.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
@@ -989,15 +989,37 @@ namespace Scheduler
             this.pnlBody.Size = new System.Drawing.Size(754, 508);
             this.pnlBody.TabIndex = 271;
             // 
+            // chkEventStatus_I
+            // 
+            this.chkEventStatus_I.AutoSize = true;
+            this.chkEventStatus_I.Location = new System.Drawing.Point(400, 195);
+            this.chkEventStatus_I.Name = "chkEventStatus_I";
+            this.chkEventStatus_I.Size = new System.Drawing.Size(111, 17);
+            this.chkEventStatus_I.TabIndex = 290;
+            this.chkEventStatus_I.Text = "Cancel This Event";
+            this.chkEventStatus_I.UseVisualStyleBackColor = true;
+            this.chkEventStatus_I.CheckedChanged += new System.EventHandler(this.chkEventStatus_I_CheckedChanged);
+            // 
+            // chkEventModified
+            // 
+            this.chkEventModified.AutoSize = true;
+            this.chkEventModified.Location = new System.Drawing.Point(128, 195);
+            this.chkEventModified.Name = "chkEventModified";
+            this.chkEventModified.Size = new System.Drawing.Size(128, 17);
+            this.chkEventModified.TabIndex = 289;
+            this.chkEventModified.Text = "Modify the Instructor";
+            this.chkEventModified.UseVisualStyleBackColor = true;
+            this.chkEventModified.CheckedChanged += new System.EventHandler(this.chkEventModified_CheckedChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(301, 220);
+            this.label2.Location = new System.Drawing.Point(304, 220);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 287;
-            this.label2.Text = "Exception Reason";
+            this.label2.Text = "Reason";
             // 
             // cmbExceptionReason
             // 
@@ -1141,28 +1163,6 @@ namespace Scheduler
             this.cmbProgram.Size = new System.Drawing.Size(120, 21);
             this.cmbProgram.TabIndex = 9;
             this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
-            // 
-            // chkEventModified
-            // 
-            this.chkEventModified.AutoSize = true;
-            this.chkEventModified.Location = new System.Drawing.Point(128, 195);
-            this.chkEventModified.Name = "chkEventModified";
-            this.chkEventModified.Size = new System.Drawing.Size(128, 17);
-            this.chkEventModified.TabIndex = 289;
-            this.chkEventModified.Text = "Modify the Instructor";
-            this.chkEventModified.UseVisualStyleBackColor = true;
-            this.chkEventModified.CheckedChanged += new System.EventHandler(this.chkEventModified_CheckedChanged);
-            // 
-            // chkEventStatus_I
-            // 
-            this.chkEventStatus_I.AutoSize = true;
-            this.chkEventStatus_I.Location = new System.Drawing.Point(400, 195);
-            this.chkEventStatus_I.Name = "chkEventStatus_I";
-            this.chkEventStatus_I.Size = new System.Drawing.Size(111, 17);
-            this.chkEventStatus_I.TabIndex = 290;
-            this.chkEventStatus_I.Text = "Cancel This Event";
-            this.chkEventStatus_I.UseVisualStyleBackColor = true;
-            this.chkEventStatus_I.CheckedChanged += new System.EventHandler(this.chkEventStatus_I_CheckedChanged);
             // 
             // frmEventDlg
             // 
@@ -3050,10 +3050,13 @@ namespace Scheduler
                 Common.MakeReadOnly(pnlBody, false);
                 chkEventStatus_I.Enabled = true;
                 cmbExceptionReason.Enabled = true;
+               
             }
             else
             {
                 Common.MakeEnabled(pnlBody, false);
+                cmbTeacher2.Enabled = chkEventModified.Checked;
+                txtChangeReason.Enabled = chkEventModified.Checked;
                 //cmbExceptionReason_I.Enabled = false;
             }
         }

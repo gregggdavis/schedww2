@@ -1341,7 +1341,7 @@ namespace Scheduler
             // chkEventModified
             // 
             this.chkEventModified.AutoSize = true;
-            this.chkEventModified.Location = new System.Drawing.Point(14, 196);
+            this.chkEventModified.Location = new System.Drawing.Point(128, 196);
             this.chkEventModified.Name = "chkEventModified";
             this.chkEventModified.Size = new System.Drawing.Size(128, 17);
             this.chkEventModified.TabIndex = 288;
@@ -1942,7 +1942,6 @@ namespace Scheduler
             // 
             this.grdEvents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdEvents.EmbeddedNavigator.Name = "";
-            this.grdEvents.FormsUseDefaultLookAndFeel = false;
             this.grdEvents.Location = new System.Drawing.Point(0, 0);
             this.grdEvents.MainView = this.gvwEvents;
             this.grdEvents.Name = "grdEvents";
@@ -5685,6 +5684,8 @@ namespace Scheduler
             else
             {
                 Common.MakeEnabled(pnlBody_I, false);
+                cmbTeacher2_I.Enabled = chkEventModified.Checked;
+                txtChangeReason_I.Enabled = chkEventModified.Checked;
                 //cmbExceptionReason_I.Enabled = false;
             }
         }
