@@ -1074,8 +1074,8 @@ namespace Scheduler {
                     
                     Common.FontSize = 8.25f;
 					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 2);
-					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize - 2);
-					schedulerPrintStyle.PageSettings.Margins = new Margins(10, 10, 20, 20);
+					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize );
+					schedulerPrintStyle.PageSettings.Margins = new Margins(10, 10, 10, 10);
 					schedulerPrintStyle.PageSettings.Landscape = true;
                     
                     
@@ -1144,9 +1144,13 @@ namespace Scheduler {
                 comp.Landscape = schedulerControl1.ActivePrintStyle.PageSettings.Landscape;
                 comp.PaperKind = PaperKind.A4;
                 comp.Margins.Bottom = 60;
-                comp.Margins.Top = 60;
+                comp.Margins.Top = 10;
                 comp.Margins.Left = 10;
                 comp.Margins.Right = 10;
+                comp.PrintingSystem.PageMargins.Right = 10;
+                comp.PrintingSystem.PageMargins.Left = 10;
+                comp.PrintingSystem.PageMargins.Top = 10;
+                comp.PrintingSystem.PageMargins.Bottom = 60;
                 comp.CreateMarginalFooterArea += new CreateAreaEventHandler(pcl_CreateMarginalFooterArea);
                 //comp.CreateDocument();
                 comp.ShowPreviewDialog();
