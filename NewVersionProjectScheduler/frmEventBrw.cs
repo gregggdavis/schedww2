@@ -331,9 +331,6 @@ namespace Scheduler
             this.gvwEvent.OptionsView.ShowIndicator = false;
             this.gvwEvent.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClass, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gvwEvent.Appearance.FocusedRow.AssignInternal(this.gvwEvent.Appearance.SelectedRow);
-            //this.gvwEvent.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            //this.gvwEvent.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             this.gvwEvent.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvwEvent_RowCellStyle);
             // 
             // gcolEventID
@@ -521,8 +518,11 @@ namespace Scheduler
             // colDateAndTime
             // 
             this.colDateAndTime.Caption = "Date and Time";
+            this.colDateAndTime.DisplayFormat.FormatString = "G";
+            this.colDateAndTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colDateAndTime.FieldName = "DateAndTime";
             this.colDateAndTime.Name = "colDateAndTime";
+            this.colDateAndTime.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.colDateAndTime.Visible = true;
             this.colDateAndTime.VisibleIndex = 0;
             this.colDateAndTime.Width = 116;
@@ -765,10 +765,10 @@ namespace Scheduler
             this.txt_SpeedSearch.Name = "txt_SpeedSearch";
             this.txt_SpeedSearch.Size = new System.Drawing.Size(157, 21);
             this.txt_SpeedSearch.TabIndex = 10;
-            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
-            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             this.txt_SpeedSearch.TextChanged += new System.EventHandler(this.txt_SpeedSearch_TextChanged);
             this.txt_SpeedSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyDown);
+            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
+            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             // 
             // label1
             // 
@@ -903,8 +903,8 @@ namespace Scheduler
             this.Name = "frmEventBrw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEventBrw";
-            this.Resize += new System.EventHandler(this.frmEventBrw_Resize);
             this.Load += new System.EventHandler(this.frmEventBrw_Load);
+            this.Resize += new System.EventHandler(this.frmEventBrw_Resize);
             this.pnlBody.ResumeLayout(false);
             this.pnlBrowse.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEvent)).EndInit();
