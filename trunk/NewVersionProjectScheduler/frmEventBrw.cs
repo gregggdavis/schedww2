@@ -1384,6 +1384,7 @@ namespace Scheduler
 				"END From " +
 				"Contact Where ContactType=2 and " +
 				"ContactStatus=0 Order By DisplayName ");
+            //IDataReader reader = DAC.SelectStatement("Select");
             List<string> contacts = new List<string>();
             bool found = false;
             for (int i = 0; i < cmbClient.Items.Count; i++)
@@ -1411,6 +1412,7 @@ namespace Scheduler
 				"END From " +
 				"Contact Where ContactType=1 and " +
 				"ContactStatus=0 Order By LastName, FirstName ");
+            
             contacts.Clear();
             for (int i = 0; i < cmbInstructor.Items.Count; i++)
             {

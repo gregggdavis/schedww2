@@ -212,8 +212,8 @@ namespace Scheduler
 					"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 					"ELSE NickName " +
 					"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By LastName, FirstName ");
+				"Contact Where ContactType=1 " +
+				" Order By LastName, FirstName ");
 			
 			Common.PopulateDropdown(
 				cmbTeacher2, "Select " +
@@ -222,8 +222,8 @@ namespace Scheduler
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By ContactID");
+				"Contact Where ContactType=1 " +
+				" Order By ContactID");
 		}
 
 		//Most probably, not needed anymore
@@ -255,8 +255,8 @@ namespace Scheduler
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By ContactID");
+				"Contact Where ContactType=1 " +
+				" Order By ContactID");
 			
 			Common.PopulateDropdown(
 				cmbTeacher2, "Select " +
@@ -265,8 +265,8 @@ namespace Scheduler
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By LastName, FirstName ");
+				"Contact Where ContactType=1 " +
+				"Order By LastName, FirstName ");
 		}
 
 		public frmEventDlg(bool mOpenFromClsProg)
@@ -289,8 +289,8 @@ namespace Scheduler
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By LastName, FisrtName ");
+				"Contact Where ContactType=1 " +
+				"Order By LastName, FisrtName ");
 			
 			Common.PopulateDropdown(
 				cmbTeacher2, "Select " +
@@ -299,8 +299,8 @@ namespace Scheduler
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By LastName, FisrtName ");
+				"Contact Where ContactType=1 " +
+				"Order By LastName, FisrtName ");
 
 			OpenFromClsProg=true;
 
@@ -336,8 +336,8 @@ namespace Scheduler
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By LastName, FirstName ");
+				"Contact Where ContactType=1 " +
+				"Order By LastName, FirstName ");
 			
 			Common.PopulateDropdown(
 				cmbTeacher2, "Select " +
@@ -346,8 +346,8 @@ namespace Scheduler
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
 				"END From " +
-				"Contact Where ContactType=1 and " +
-				"ContactStatus=0 Order By LastName, FirstName ");
+				"Contact Where ContactType=1 " +
+				"Order By LastName, FirstName ");
 
 			_eventid = mEventID;
 			_calendareventid=mCalEventID;
@@ -1398,7 +1398,7 @@ namespace Scheduler
 			}
 			catch{}
 			this.Refresh();
-
+            
 			if(_mode=="Edit")
 			{
 				this.Text = "Editing Event...";
@@ -1410,6 +1410,23 @@ namespace Scheduler
 			}
 			else
 			{
+                string query = "Select " +
+                "TeacherName = CASE " +
+                "WHEN NickName IS NULL THEN LastName + ', ' + FirstName " +
+                "WHEN NickName = '' THEN LastName + ', ' + FirstName " +
+                "ELSE NickName " +
+                "END From " +
+                "Contact Where ContactType=1 and " +
+                "ContactStatus=1 Order By ContactID";
+                IDataReader reader = DAC.SelectStatement(query);
+                while (reader.Read())
+                {
+                    if (reader["TeacherName"] != DBNull.Value)
+                    {
+                        cmbTeacher1.Items.Remove(reader["TeacherName"].ToString());
+                        cmbTeacher2.Items.Remove(reader["TeacherName"].ToString());
+                    }
+                }
 				dtDateComplete.Value = DateTime.Now;
 			
 				if(strMode=="")
@@ -1911,6 +1928,24 @@ namespace Scheduler
                     cmbEventStatus.SelectedIndex = Convert.ToInt16(dr["EventStatus"].ToString());
 					cmbTeacher1.Text = dr["ScheduledTeacher"].ToString();
 					cmbTeacher2.Text = dr["RealTeacher"].ToString();
+                    string query = "Select " +
+                "TeacherName = CASE " +
+                "WHEN NickName IS NULL THEN LastName + ', ' + FirstName " +
+                "WHEN NickName = '' THEN LastName + ', ' + FirstName " +
+                "ELSE NickName " +
+                "END From " +
+                "Contact Where ContactType=1 and " +
+                "ContactStatus=1 Order By ContactID";
+                    IDataReader reader = DAC.SelectStatement(query);
+                    while (reader.Read())
+                    {
+                        if (reader["TeacherName"] != DBNull.Value && reader["TeacherName"].ToString() != cmbTeacher1.Text &&  reader["TeacherName"].ToString() != cmbTeacher2.Text)
+                        {
+                            cmbTeacher1.Items.Remove(reader["TeacherName"].ToString());
+                            cmbTeacher2.Items.Remove(reader["TeacherName"].ToString());
+                        }
+                    }
+
 					txtChangeReason.Text = dr["ChangeReason"].ToString();
 					
                     if(dr["IsHoliday"]==System.DBNull.Value)
@@ -2494,11 +2529,29 @@ namespace Scheduler
 					"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 					"ELSE NickName " +
 					"END From " +
-					"Contact Where ContactType=1 and " +
-					"ContactStatus=0 Order By LastName, FirstName ");
+					"Contact Where ContactType=1 " +
+					" Order By LastName, FirstName ");
+
+                string query = "Select " +
+                    "TeacherName = CASE " +
+                    "WHEN NickName IS NULL THEN LastName + ', ' + FirstName " +
+                    "WHEN NickName = '' THEN LastName + ', ' + FirstName " +
+                    "ELSE NickName " +
+                    "END From " +
+                    "Contact Where ContactType=1 and " +
+                    "ContactStatus=1 Order By LastName, FirstName ";
+
+                IDataReader reader = DAC.SelectStatement(query);
+                
 
 				cmbTeacher1.SelectedIndex = cmbTeacher1.Items.Count-1;
-
+                while (reader.Read())
+                {
+                    if (reader["TeacherName"] != DBNull.Value && reader["TeacherName"].ToString() != cmbTeacher1.Text)
+                    {
+                        cmbTeacher1.Items.Remove(reader["TeacherName"].ToString());
+                    }
+                }
 				cmbTeacher2.Tag = cmbTeacher2.Text;
 				cmbTeacher2.Items.Clear();
 				foreach(string s in cmbTeacher1.Items)
@@ -2525,9 +2578,26 @@ namespace Scheduler
 					"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 					"ELSE NickName " +
 					"END From " +
-					"Contact Where ContactType=1 and " +
-					"ContactStatus=0 Order By LastName, FirstName ");
+					"Contact Where ContactType=1 " +
+					" Order By LastName, FirstName ");
+                cmbTeacher2.SelectedIndex = cmbTeacher2.Items.Count - 1;
+                string query = "Select " +
+                    "TeacherName = CASE " +
+                    "WHEN NickName IS NULL THEN LastName + ', ' + FirstName " +
+                    "WHEN NickName = '' THEN LastName + ', ' + FirstName " +
+                    "ELSE NickName " +
+                    "END From " +
+                    "Contact Where ContactType=1 and " +
+                    "ContactStatus=1 Order By LastName, FirstName ";
 
+                IDataReader reader = DAC.SelectStatement(query);
+                while (reader.Read())
+                {
+                    if (reader["TeacherName"] != DBNull.Value && reader["TeacherName"].ToString() != cmbTeacher2.Text)
+                    {
+                        cmbTeacher2.Items.Remove(reader["TeacherName"].ToString());
+                    }
+                }
 				cmbTeacher1.Tag = cmbTeacher1.Text;
 				cmbTeacher1.Items.Clear();
 				foreach(string s in cmbTeacher2.Items)

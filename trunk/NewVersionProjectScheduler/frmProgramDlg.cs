@@ -146,8 +146,9 @@ namespace Scheduler
 				           "WHEN NickName = '' THEN [CompanyName] " +
 				           "ELSE NickName " +
 				           "END From " +
-				           "Contact Where ContactType=2 and " +
-				           "ContactStatus=0 Order By CompanyName");
+				           "Contact Where ContactType=2  " +
+				           " Order By CompanyName");
+            #region Commented Section
             /*
 			Common.PopulateDropdown(
 				cmbTeacher1_I, "Select " +
@@ -169,7 +170,8 @@ namespace Scheduler
 				               "Contact Where ContactType=1 and " +
 				               "ContactStatus=0 Order By ContactID");
             */
-		}
+            #endregion
+        }
 
 		public frmProgramDlg(int id)
 		{
@@ -182,8 +184,9 @@ namespace Scheduler
 				           "WHEN NickName = '' THEN [CompanyName] " +
 				           "ELSE NickName " +
 				           "END From " +
-				           "Contact Where ContactType=2 and " +
-				           "ContactStatus=0 Order By CompanyName");
+				           "Contact Where ContactType=2  " +
+				           " Order By CompanyName");
+            #region CommentedSection
             /*
 			Common.PopulateDropdown(
 				cmbTeacher1_I, "Select " +
@@ -205,7 +208,8 @@ namespace Scheduler
 				               "Contact Where ContactType=1 and " +
 				               "ContactStatus=0 Order By ContactID");
              */
-		}
+            #endregion
+        }
 
 		public frmProgramDlg(int id, int eventindex)
 		{
@@ -221,9 +225,9 @@ namespace Scheduler
 				           "WHEN NickName = '' THEN [CompanyName] " +
 				           "ELSE NickName " +
 				           "END From " +
-				           "Contact Where ContactType=2 and " +
-				           "ContactStatus=0 Order By CompanyName");
-
+				           "Contact Where ContactType=2  " +
+				           " Order By CompanyName");
+            #region Commented Section
             /*
 			Common.PopulateDropdown(
 				cmbTeacher1_I, "Select " +
@@ -245,7 +249,8 @@ namespace Scheduler
 				               "Contact Where ContactType=1 and " +
 				               "ContactStatus=0 Order By ContactID");
             */
-			LoadData();
+            #endregion
+            LoadData();
 
 
             switch (eventindex)
@@ -275,8 +280,9 @@ namespace Scheduler
 				           "WHEN NickName = '' THEN [CompanyName] " +
 				           "ELSE NickName " +
 				           "END From " +
-				           "Contact Where ContactType=2 and " +
-				           "ContactStatus=0 Order By CompanyName");
+				           "Contact Where ContactType=2  " +
+				           " Order By CompanyName");
+            #region Commented Section
             /*
 			Common.PopulateDropdown(
 				cmbTeacher1_I, "Select " +
@@ -300,7 +306,8 @@ namespace Scheduler
 
 			calendareventid[eventindex] = CalID;
             */
-			LoadData();
+            #endregion
+            LoadData();
 
             switch (eventindex)
             {
@@ -1418,7 +1425,16 @@ namespace Scheduler
 
 		public void LoadData()
 		{
-           
+
+            string revQuery = "Select CompanyName = CASE " +
+                "WHEN NickName IS NULL THEN [CompanyName] " +
+                "WHEN NickName = '' THEN [CompanyName] " +
+                "ELSE NickName " +
+                "END From " +
+                "Contact Where ContactType=2 and " +
+                "ContactStatus=1 Order By CompanyName";
+            IDataReader reader = DAC.SelectStatement(revQuery);
+
 			string strEM = "", strEF = "", strQM = "", strQF = "";
             if (_mode == "Edit" || _mode == "AddClone")
             {
@@ -1452,6 +1468,27 @@ namespace Scheduler
                                                                "ELSE NickName " +
                                                                "END  " +
                                                                "from Contact where ContactID=@ContactID", intClientID);
+
+                        if (_mode == "Edit")
+                        {
+                            while (reader.Read())
+                            {
+                                if (reader["CompanyName"] != DBNull.Value && reader["CompanyName"].ToString() != cmbClient.Text)
+                                {
+                                    cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                                }
+                            }
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+                                if (reader["CompanyName"] != DBNull.Value)
+                                {
+                                    cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                                }
+                            }
+                        }
                         cmbClient.SelectedIndex = cmbClient.Items.IndexOf(cmbClient.Text);
                         Common.PopulateDropdown(
                             cmbDept, "Select CompanyName = CASE " +
@@ -1460,10 +1497,26 @@ namespace Scheduler
                                      "ELSE C.NickName " +
                                      "END From " +
                                      "Department D, Contact C Where D.ContactID=C.ContactID and " +
-                                     "D.DepartmentStatus=0 and D.ClientID=" + intClientID +
+                                     " D.ClientID=" + intClientID +
                                      " Order By D.CompanyName ");
+                        
+
                     }
                     cmbDept.Text = dr["Department"].ToString();
+                    string deptQuery = "Select CompanyName = CASE " +
+                                     "WHEN C.NickName IS NULL THEN C.CompanyName " +
+                                     "WHEN C.NickName = '' THEN C.CompanyName " +
+                                     "ELSE C.NickName " +
+                                     "END From " +
+                                     "Department D, Contact C Where D.ContactID=C.ContactID and " +
+                                     "D.DepartmentStatus=1 and D.ClientID=" + intClientID +
+                                     " Order By D.CompanyName ";
+                    IDataReader deptReader = DAC.SelectStatement(deptQuery);
+                    while (deptReader.Read())
+                    {
+                        if (deptReader["CompanyName"] != DBNull.Value && deptReader["CompanyName"].ToString() != cmbDept.Text)
+                            cmbDept.Items.Remove(deptReader["CompanyName"].ToString());
+                    }
                     cmbContact1.Text = dr["Contact1"].ToString();
                     cmbContact2.Text = dr["Contact2"].ToString();
                     cmbContact1.SelectedIndex = cmbContact1.Items.IndexOf(dr["Contact1"].ToString());
@@ -1621,6 +1674,13 @@ namespace Scheduler
             }
 			else
 			{
+                while (reader.Read())
+                {
+                    if (reader["CompanyName"] != DBNull.Value)
+                    {
+                        cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                    }
+                }
 				btnDelete.Enabled = false;
 				Text = "Adding Department...";
 				if (cmbDept.Items.Count > 0)
@@ -2114,9 +2174,25 @@ namespace Scheduler
 					         "ELSE C.NickName " +
 					         "END From " +
 					         "Department D, Contact C Where D.ContactID=C.ContactID and " +
-					         "D.DepartmentStatus=0 and D.ClientID=" + intClientID +
+					         " D.ClientID=" + intClientID +
 					         " Order By CompanyName");
-
+                string deptQuery = "Select CompanyName = CASE " +
+                             "WHEN C.NickName IS NULL THEN C.CompanyName " +
+                             "WHEN C.NickName = '' THEN C.CompanyName " +
+                             "ELSE C.NickName " +
+                             "END From " +
+                             "Department D, Contact C Where D.ContactID=C.ContactID and " +
+                             "D.DepartmentStatus=1 and D.ClientID=" + intClientID +
+                             " Order By CompanyName";
+                IDataReader reader = DAC.SelectStatement(deptQuery);
+                while (reader.Read())
+                {
+                    if(reader["CompanyName"] != DBNull.Value && reader["CompanyName"].ToString() != str3)
+                    {
+                        cmbDept.Items.Remove(reader["CompanyName"].ToString());
+                    }
+                }
+                
 				cmbDept.Text = str3;
 				if (cmbDept.Text != "")
 				{
@@ -2139,8 +2215,23 @@ namespace Scheduler
 					           "WHEN NickName = '' THEN CompanyName " +
 					           "ELSE NickName " +
 					           "END From " +
-					           "Contact Where ContactType=2 and " +
-					           "ContactStatus=0 Order By CompanyName ");
+					           "Contact Where ContactType=2  " +
+					           " Order By CompanyName ");
+                string query = "Select CompanyName = CASE " +
+                               "WHEN NickName IS NULL THEN CompanyName " +
+                               "WHEN NickName = '' THEN CompanyName " +
+                               "ELSE NickName " +
+                               "END From " +
+                               "Contact Where ContactType=2 and ContactStatus=1" +
+                               " Order By CompanyName ";
+                IDataReader reader = DAC.SelectStatement(query);
+                while (reader.Read())
+                {
+                    if (reader["CompanyName"] != DBNull.Value && reader["CompanyName"].ToString() != str)
+                    {
+                        cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                    }
+                }
 
 				cmbClient.Text = str;
 			}
@@ -2173,11 +2264,26 @@ namespace Scheduler
 				             "WHEN C.NickName = '' THEN C.LastName + ', ' + C.FirstName " +
 				             "ELSE C.NickName " +
 				             "END From " +
-				             "Contact C Where C.ContactStatus=0 and C.ContactType=5 and C.RefID=" + intDepartmentID.ToString() +
+				             "Contact C Where  C.ContactType=5 and C.RefID=" + intDepartmentID.ToString() +
 				             " Order By C.ContactName ";
+                string sql2 = "Select ContactName = CASE " + //"C.LastName + ', ' + C.FirstName " +
+                             "WHEN C.NickName IS NULL THEN C.LastName + ', ' + C.FirstName " +
+                             "WHEN C.NickName = '' THEN C.LastName + ', ' + C.FirstName " +
+                             "ELSE C.NickName " +
+                             "END From " +
+                             "Contact C Where C.ContactStatus=1 and C.ContactType=5 and C.RefID=" + intDepartmentID.ToString() +
+                             " Order By C.ContactName "; 
 				Common.PopulateDropdown(cmbContact1, sql);
 				Common.PopulateDropdown(cmbContact2, sql);
-
+                IDataReader reader = DAC.SelectStatement(sql2);
+                while (reader.Read())
+                {
+                    if (reader["ContactName"] != DBNull.Value && reader["ContactName"].ToString() != str1 && reader["ContactName"].ToString() != str2)
+                    {
+                        cmbContact1.Items.Remove(reader["ContactName"].ToString());
+                        cmbContact2.Items.Remove(reader["ContactName"].ToString());
+                    }
+                }
 				if (cmbDept.Text != "")
 				{
 					cmbContact1.Text = str1;
