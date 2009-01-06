@@ -145,15 +145,18 @@ namespace Scheduler
 		public frmDepartmentDlg()
 		{
 			InitializeComponent();
-
+            string query = "Select CompanyName = CASE " +
+                "WHEN NickName IS NULL THEN [CompanyName] " +
+                "WHEN NickName = '' THEN [CompanyName] " +
+                "ELSE NickName " +
+                "END From " +
+                "Contact Where ContactType=2 " +
+                " Order By CompanyName";
+            
 			Common.PopulateDropdown(
-				cmbClient, "Select CompanyName = CASE " +
-				"WHEN NickName IS NULL THEN [CompanyName] " +
-				"WHEN NickName = '' THEN [CompanyName] " +
-				"ELSE NickName " +
-				"END From " +
-				"Contact Where ContactType=2 and " +
-				"ContactStatus=0 Order By CompanyName");
+				cmbClient, query);
+
+            
 
 			/*Common.PopulateDropdown(
 				cmbContact, "Select LastName + ', ' + FirstName from " +
@@ -1587,8 +1590,23 @@ namespace Scheduler
 
 		public void LoadData()
 		{
+            string revQuery = "Select CompanyName = CASE " +
+                "WHEN NickName IS NULL THEN [CompanyName] " +
+                "WHEN NickName = '' THEN [CompanyName] " +
+                "ELSE NickName " +
+                "END From " +
+                "Contact Where ContactType=2 and " +
+                "ContactStatus=1 Order By CompanyName";
+            IDataReader reader = DAC.SelectStatement(revQuery);
 			if (_mode == "Add")
 			{
+                while(reader.Read())
+                {
+                    if (reader["CompanyName"] != DBNull.Value)
+                    {
+                        cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                    }
+                }
 				cmbClient.Text = String.Empty;
 				cmbClient.Tag = String.Empty;
 				cmbStatus.SelectedIndex = 0;
@@ -1660,6 +1678,13 @@ namespace Scheduler
 				intClientID = objDept.ClientID;
 				intContactID = objDept.ContactID;
 				cmbClient.Text = objDept.ClientName;
+                while (reader.Read())
+                {
+                    if (reader["CompanyName"] != DBNull.Value && reader["CompanyName"].ToString() != objDept.ClientName)
+                    {
+                        cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                    }
+                }
 				cmbClient.Tag = objDept.ClientName;
 				intStatus = objDept.StatusID;
 
@@ -2075,9 +2100,37 @@ namespace Scheduler
 					"WHEN NickName = '' THEN [CompanyName] " +
 					"ELSE NickName " +
 					"END From " +
-					"Contact Where ContactType=2 and " +
-					"ContactStatus=0 Order By ContactID");
+					"Contact Where ContactType=2  " +
+					" Order By ContactID");
 				cmbClient.SelectedIndex = cmbClient.Items.Count-1;
+                string revQuery = "Select CompanyName = CASE " +
+                "WHEN NickName IS NULL THEN [CompanyName] " +
+                "WHEN NickName = '' THEN [CompanyName] " +
+                "ELSE NickName " +
+                "END From " +
+                "Contact Where ContactType=2 and " +
+                "ContactStatus=1 Order By CompanyName";
+                IDataReader reader = DAC.SelectStatement(revQuery);
+                if (_mode == "Add")
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["CompanyName"] != DBNull.Value)
+                        {
+                            cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                        }
+                    }
+                }
+                else
+                {
+                    while (reader.Read())
+                    {
+                        if (reader["CompanyName"] != DBNull.Value && reader["CompanyName"].ToString() != cmbClient.Text)
+                        {
+                            cmbClient.Items.Remove(reader["CompanyName"].ToString());
+                        }
+                    }
+                }
 			}
 			fContDlg.Close();
 			fContDlg.Dispose();
