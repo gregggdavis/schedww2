@@ -1355,12 +1355,16 @@ namespace Scheduler.Reports
             // 
             // xrLabel11
             // 
+            this.xrLabel11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.CourseSpecialRemarks", "")});
             this.xrLabel11.Font = new System.Drawing.Font("Tahoma", 10F);
             this.xrLabel11.Location = new System.Drawing.Point(25, 158);
+            this.xrLabel11.Multiline = true;
             this.xrLabel11.Name = "xrLabel11";
             this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel11.Size = new System.Drawing.Size(692, 75);
             this.xrLabel11.StylePriority.UseFont = false;
+            this.xrLabel11.Text = "xrLabel11";
             // 
             // xrLabel10
             // 
