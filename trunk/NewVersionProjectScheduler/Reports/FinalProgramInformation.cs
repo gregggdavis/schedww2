@@ -25,8 +25,43 @@ namespace Scheduler.Reports
         {
             this.programID = programID; 
             dataSet11.ViewProgramReport.Clear();
+            
             dataSet11.ViewProgramReport.Load(DAC.SelectStatement("Select * From ViewProgramReport Where ProgramID = " + programID), System.Data.LoadOption.OverwriteChanges);
+            
+            
             dataSet11.viewProgramReportClassDetails.Load(DAC.SelectStatement("Select * From viewProgramReportClassDetails Where ProgramID = " + programID + " Order By CourseID"), System.Data.LoadOption.OverwriteChanges);
+            DataRow[] prows = dataSet11.ViewProgramReport.Select("ProgramID = " + programID);
+            if (prows.Length > 0)
+            {
+                DataSet1.ViewProgramReportRow prow = prows[0] as DataSet1.ViewProgramReportRow;
+                if (prow != null)
+                {
+                    string courseIn = "";
+                    bool isfirst = true;
+                    foreach (DataSet1.viewProgramReportClassDetailsRow drow in dataSet11.viewProgramReportClassDetails)
+                    {
+                        if (isfirst)
+                            isfirst = false;
+                        else
+                            courseIn += ",";
+                        courseIn += drow.CourseID.ToString();
+                    }
+                    if (courseIn != "")
+                    {
+                        IDataReader reader = DAC.SelectStatement("Select Name as CourseName,SpecialRemarks From Course Where CourseID IN(" + courseIn + ") Order By CourseID");
+                        string finalStringRemarks = "";
+                        while (reader.Read())
+                        {
+                            if (reader["SpecialRemarks"] != DBNull.Value)
+                            {
+                                if(reader["SpecialRemarks"].ToString() != "")
+                                    finalStringRemarks += reader["CourseName"] + ": " + reader["SpecialRemarks"].ToString() + "\n";
+                            }
+                        }
+                        prow.CourseSpecialRemarks = finalStringRemarks;
+                    }
+                }
+            }
             dataSet11.viewPivotCourseDetails.Load(BusinessLayer.DAC.SelectStatement("Select * From viewPivotCourseDetails Where ProgramID = " + programID + " Order By CourseID"), System.Data.LoadOption.OverwriteChanges);
             DataTable dt = Pivot(dataSet11.viewPivotCourseDetails.CreateDataReader(), "Name", "DAYNAME", "InstructorName");
             foreach (DataRow row in dt.Rows)
@@ -58,6 +93,40 @@ namespace Scheduler.Reports
             dataSet11.ViewProgramReport.Clear();
             dataSet11.ViewProgramReport.Load(DAC.SelectStatement("Select * From ViewProgramReport Where ProgramID = " + programID), System.Data.LoadOption.OverwriteChanges);
             dataSet11.viewProgramReportClassDetails.Load(DAC.SelectStatement("Select * From viewProgramReportClassDetails Where ProgramID = " + programID + " AND CourseID IN (" + courses + ")"), System.Data.LoadOption.OverwriteChanges);
+
+            DataRow[] prows = dataSet11.ViewProgramReport.Select("ProgramID = " + programID);
+            if (prows.Length > 0)
+            {
+                DataSet1.ViewProgramReportRow prow = prows[0] as DataSet1.ViewProgramReportRow;
+                if (prow != null)
+                {
+                    string courseIn = "";
+                    bool isfirst = true;
+                    foreach (DataSet1.viewProgramReportClassDetailsRow drow in dataSet11.viewProgramReportClassDetails)
+                    {
+                        if (isfirst)
+                            isfirst = false;
+                        else
+                            courseIn += ",";
+                        courseIn += drow.CourseID.ToString();
+                    }
+                    if (courseIn != "")
+                    {
+                        IDataReader reader = DAC.SelectStatement("Select Name as CourseName,SpecialRemarks From Course Where CourseID IN(" + courseIn + ") Order By CourseID");
+                        string finalStringRemarks = "";
+                        while (reader.Read())
+                        {
+                            if (reader["SpecialRemarks"] != DBNull.Value)
+                            {
+                                if (reader["SpecialRemarks"].ToString() != "")
+                                    finalStringRemarks += reader["CourseName"] + ": " + reader["SpecialRemarks"].ToString() + "\n";
+                            }
+                        }
+                        prow.CourseSpecialRemarks = finalStringRemarks;
+                    }
+                }
+            }
+
             dataSet11.viewPivotCourseDetails.Load(BusinessLayer.DAC.SelectStatement("Select * From viewPivotCourseDetails Where ProgramID = " + programID + " AND CourseID IN (" + courses + ")"), System.Data.LoadOption.OverwriteChanges);
             List<string> keys = new List<string>();
             keys.Add("Name");
