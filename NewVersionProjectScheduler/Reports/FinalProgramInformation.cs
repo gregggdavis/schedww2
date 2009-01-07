@@ -26,8 +26,8 @@ namespace Scheduler.Reports
             this.programID = programID; 
             dataSet11.ViewProgramReport.Clear();
             dataSet11.ViewProgramReport.Load(DAC.SelectStatement("Select * From ViewProgramReport Where ProgramID = " + programID), System.Data.LoadOption.OverwriteChanges);
-            dataSet11.viewProgramReportClassDetails.Load(DAC.SelectStatement("Select * From viewProgramReportClassDetails Where ProgramID = " + programID), System.Data.LoadOption.OverwriteChanges);
-            dataSet11.viewPivotCourseDetails.Load(BusinessLayer.DAC.SelectStatement("Select * From viewPivotCourseDetails Where ProgramID = " + programID), System.Data.LoadOption.OverwriteChanges);
+            dataSet11.viewProgramReportClassDetails.Load(DAC.SelectStatement("Select * From viewProgramReportClassDetails Where ProgramID = " + programID + " Order By CourseID"), System.Data.LoadOption.OverwriteChanges);
+            dataSet11.viewPivotCourseDetails.Load(BusinessLayer.DAC.SelectStatement("Select * From viewPivotCourseDetails Where ProgramID = " + programID + " Order By CourseID"), System.Data.LoadOption.OverwriteChanges);
             DataTable dt = Pivot(dataSet11.viewPivotCourseDetails.CreateDataReader(), "Name", "DAYNAME", "InstructorName");
             foreach (DataRow row in dt.Rows)
             {
