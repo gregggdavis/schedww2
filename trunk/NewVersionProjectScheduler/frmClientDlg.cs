@@ -1235,9 +1235,6 @@ namespace Scheduler
             this.gvwContact.OptionsView.ShowIndicator = false;
             this.gvwContact.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolContactType, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gvwContact.Appearance.FocusedRow.AssignInternal(this.gvwContact.Appearance.SelectedRow);
-            //this.gvwContact.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            //this.gvwContact.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolContactID
             // 
@@ -1351,6 +1348,7 @@ namespace Scheduler
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 20;
             this.button1.Text = "Delete";
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnDel
@@ -1835,7 +1833,7 @@ namespace Scheduler
 		{
 			Common.MaskInteger(e);		
 		}
-
+        
 		private void btnDelete_Click(object sender, System.EventArgs e)
 		{
 			if(BusinessLayer.Message.MsgDelete())
@@ -1965,7 +1963,17 @@ namespace Scheduler
 			objContact=null;
 			gvwContact.FocusedRowHandle=rowhandle;
 		}
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            DataTable dtbl = (DataTable)gvwContact.DataSource;
+            dataGridPrinter1 = new DataGridPrinter(grdContact, printDocument1, dtbl);
 
+            dataGridPrinter1.PageNumber = 1;
+            dataGridPrinter1.RowCount = 0;
+            if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
+            {
+            }
+        }
 		private void btnDel_Click(object sender, System.EventArgs e)
 		{
 			BusinessLayer.Contact objContact=new BusinessLayer.Contact();
@@ -2053,17 +2061,7 @@ namespace Scheduler
 		}
 
 		private DataGridPrinter dataGridPrinter1=null;
-		private void button1_Click(object sender, System.EventArgs e)
-		{
-			DataTable dtbl = (DataTable)gvwContact.DataSource;
-			dataGridPrinter1 = new DataGridPrinter(grdContact, printDocument1, dtbl);
-
-			dataGridPrinter1.PageNumber = 1;
-			dataGridPrinter1.RowCount = 0;
-			if (this.printPreviewDialog1.ShowDialog() == DialogResult.OK)
-			{
-			}
-		}
+		
 
 		private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
 		{
