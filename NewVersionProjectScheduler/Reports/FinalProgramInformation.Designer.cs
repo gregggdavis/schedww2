@@ -171,7 +171,7 @@ namespace Scheduler.Reports
             // 
             // Detail
             // 
-            this.Detail.Height = 35;
+            this.Detail.Height = 0;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -358,7 +358,7 @@ namespace Scheduler.Reports
             this.lblProgramNameValue,
             this.xrLabel2,
             this.xrLabel1});
-            this.ReportHeader.Height = 600;
+            this.ReportHeader.Height = 523;
             this.ReportHeader.Name = "ReportHeader";
             this.ReportHeader.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.ReportHeader.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -366,7 +366,7 @@ namespace Scheduler.Reports
             // xrLabel7
             // 
             this.xrLabel7.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel7.Location = new System.Drawing.Point(8, 542);
+            this.xrLabel7.Location = new System.Drawing.Point(8, 492);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel7.Size = new System.Drawing.Size(150, 25);
@@ -375,7 +375,7 @@ namespace Scheduler.Reports
             // 
             // xrTable1
             // 
-            this.xrTable1.Location = new System.Drawing.Point(8, 142);
+            this.xrTable1.Location = new System.Drawing.Point(8, 117);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -675,7 +675,7 @@ namespace Scheduler.Reports
             // xrLabel5
             // 
             this.xrLabel5.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel5.Location = new System.Drawing.Point(8, 283);
+            this.xrLabel5.Location = new System.Drawing.Point(8, 258);
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.Size = new System.Drawing.Size(150, 25);
@@ -688,7 +688,7 @@ namespace Scheduler.Reports
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable3.BorderWidth = 1;
-            this.xrTable3.Location = new System.Drawing.Point(8, 308);
+            this.xrTable3.Location = new System.Drawing.Point(8, 283);
             this.xrTable3.Name = "xrTable3";
             this.xrTable3.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -968,7 +968,7 @@ namespace Scheduler.Reports
             // xrLabel6
             // 
             this.xrLabel6.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel6.Location = new System.Drawing.Point(8, 408);
+            this.xrLabel6.Location = new System.Drawing.Point(8, 375);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel6.Size = new System.Drawing.Size(150, 25);
@@ -980,7 +980,7 @@ namespace Scheduler.Reports
             this.xrTable4.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top)
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable4.Location = new System.Drawing.Point(8, 433);
+            this.xrTable4.Location = new System.Drawing.Point(8, 400);
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
@@ -1348,7 +1348,7 @@ namespace Scheduler.Reports
             this.xrLabel9,
             this.xrLabel4});
             this.ReportFooter.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.ReportFooter.Height = 250;
+            this.ReportFooter.Height = 240;
             this.ReportFooter.Name = "ReportFooter";
             this.ReportFooter.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.ReportFooter.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -1356,7 +1356,7 @@ namespace Scheduler.Reports
             // xrLabel11
             // 
             this.xrLabel11.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.xrLabel11.Location = new System.Drawing.Point(25, 175);
+            this.xrLabel11.Location = new System.Drawing.Point(25, 158);
             this.xrLabel11.Name = "xrLabel11";
             this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel11.Size = new System.Drawing.Size(692, 75);
@@ -1364,7 +1364,7 @@ namespace Scheduler.Reports
             // 
             // xrLabel10
             // 
-            this.xrLabel10.Location = new System.Drawing.Point(25, 142);
+            this.xrLabel10.Location = new System.Drawing.Point(25, 125);
             this.xrLabel10.Name = "xrLabel10";
             this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel10.Size = new System.Drawing.Size(217, 17);
@@ -1376,7 +1376,7 @@ namespace Scheduler.Reports
             this.xrLabel9.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "ViewProgramReport.SpecialRemarks", "")});
             this.xrLabel9.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.xrLabel9.Location = new System.Drawing.Point(25, 58);
+            this.xrLabel9.Location = new System.Drawing.Point(25, 42);
             this.xrLabel9.Name = "xrLabel9";
             this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel9.Size = new System.Drawing.Size(692, 75);
@@ -1385,7 +1385,7 @@ namespace Scheduler.Reports
             // 
             // xrLabel4
             // 
-            this.xrLabel4.Location = new System.Drawing.Point(25, 25);
+            this.xrLabel4.Location = new System.Drawing.Point(25, 8);
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.Size = new System.Drawing.Size(217, 17);
@@ -1539,12 +1539,13 @@ namespace Scheduler.Reports
             this.GroupHeader2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel3,
             this.xrTable2});
+            this.GroupHeader2.Height = 75;
             this.GroupHeader2.Name = "GroupHeader2";
             // 
             // xrLabel3
             // 
             this.xrLabel3.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.xrLabel3.Location = new System.Drawing.Point(8, 33);
+            this.xrLabel3.Location = new System.Drawing.Point(8, 8);
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel3.Size = new System.Drawing.Size(150, 25);
@@ -1553,7 +1554,7 @@ namespace Scheduler.Reports
             // 
             // xrTable2
             // 
-            this.xrTable2.Location = new System.Drawing.Point(8, 75);
+            this.xrTable2.Location = new System.Drawing.Point(8, 50);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow16});
