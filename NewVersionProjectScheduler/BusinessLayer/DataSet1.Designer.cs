@@ -1929,6 +1929,8 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnContact2Fax;
             
+            private global::System.Data.DataColumn columnCourseSpecialRemarks;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ViewProgramReportDataTable() {
                 this.TableName = "ViewProgramReport";
@@ -2170,6 +2172,13 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CourseSpecialRemarksColumn {
+                get {
+                    return this.columnCourseSpecialRemarks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2228,7 +2237,8 @@ namespace Scheduler.BusinessLayer {
                         string ReportAttendence, 
                         string SpecialRemarks, 
                         string Contact1Fax, 
-                        string Contact2Fax) {
+                        string Contact2Fax, 
+                        string CourseSpecialRemarks) {
                 ViewProgramReportRow rowViewProgramReportRow = ((ViewProgramReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProgramId,
@@ -2260,7 +2270,8 @@ namespace Scheduler.BusinessLayer {
                         ReportAttendence,
                         SpecialRemarks,
                         Contact1Fax,
-                        Contact2Fax};
+                        Contact2Fax,
+                        CourseSpecialRemarks};
                 rowViewProgramReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowViewProgramReportRow);
                 return rowViewProgramReportRow;
@@ -2315,6 +2326,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnSpecialRemarks = base.Columns["SpecialRemarks"];
                 this.columnContact1Fax = base.Columns["Contact1Fax"];
                 this.columnContact2Fax = base.Columns["Contact2Fax"];
+                this.columnCourseSpecialRemarks = base.Columns["CourseSpecialRemarks"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2379,6 +2391,8 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnContact1Fax);
                 this.columnContact2Fax = new global::System.Data.DataColumn("Contact2Fax", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnContact2Fax);
+                this.columnCourseSpecialRemarks = new global::System.Data.DataColumn("CourseSpecialRemarks", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseSpecialRemarks);
                 this.columnProgramId.AllowDBNull = false;
                 this.columnDepartmentID.AllowDBNull = false;
                 this.columnDepartmentName.ReadOnly = true;
@@ -4977,6 +4991,21 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CourseSpecialRemarks {
+                get {
+                    if (this.IsCourseSpecialRemarksNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableViewProgramReport.CourseSpecialRemarksColumn]));
+                    }
+                }
+                set {
+                    this[this.tableViewProgramReport.CourseSpecialRemarksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsDepartmentNameNull() {
                 return this.IsNull(this.tableViewProgramReport.DepartmentNameColumn);
             }
@@ -5244,6 +5273,16 @@ namespace Scheduler.BusinessLayer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetContact2FaxNull() {
                 this[this.tableViewProgramReport.Contact2FaxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCourseSpecialRemarksNull() {
+                return this.IsNull(this.tableViewProgramReport.CourseSpecialRemarksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCourseSpecialRemarksNull() {
+                this[this.tableViewProgramReport.CourseSpecialRemarksColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
