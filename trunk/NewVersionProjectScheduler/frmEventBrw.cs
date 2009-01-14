@@ -1479,9 +1479,18 @@ namespace Scheduler
                 if (CalendarFilter.InstructorName == "")
                 {
                     gvwEvent.ActiveFilter.Remove(gcolScheduledIns);
+                    gvwEvent.ActiveFilter.Remove(gcolInstructor);
                 }
                 else
-                    gvwEvent.ActiveFilter.Add(gcolScheduledIns, new ColumnFilterInfo("ScheduledTeacher = '" + CalendarFilter.InstructorName + "'"));
+                {
+                    string str = " [Actual Instructor] = \"" + CalendarFilter.InstructorName + "\"";
+                    //gvwEvent.ActiveFilterCriteria = str;// OR ScheduledTeacher = '" + CalendarFilter.InstructorName + "'";
+                    //gvwEvent.ActiveFilterString = str;
+                    //gvwEvent.ActiveFilter.NonColumnFilter = str;
+
+                    gvwEvent.ActiveFilter.Add(gcolScheduledIns, new ColumnFilterInfo("ScheduledTeacher = '" + CalendarFilter.InstructorName + "' OR Instructor = '" + CalendarFilter.InstructorName + "'"));
+                    //gvwEvent.ActiveFilter.Add(gcolInstructor, new ColumnFilterInfo("Instructor = '" + CalendarFilter.InstructorName + "'"));
+                }
                 //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";
             }
             //if (IsAllow) CalendarFilter.InstructorIndex = cmbInstructor.SelectedIndex;
