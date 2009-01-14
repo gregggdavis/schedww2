@@ -1935,6 +1935,7 @@ namespace Scheduler
 			{
 				frmClientDlg fClientDlg = new frmClientDlg();
 				fClientDlg.Mode = "Add";
+                fClientDlg.LoadData();
 				fClientDlg.ShowDialog();
 				fClientDlg.Close();
 				fClientDlg.Dispose();
@@ -1946,6 +1947,7 @@ namespace Scheduler
 			{
 				frmDepartmentDlg fDeptDlg = new frmDepartmentDlg();
 				fDeptDlg.Mode = "Add";
+                fDeptDlg.LoadData();
 				fDeptDlg.ShowDialog();
 				fDeptDlg.Close();
 				fDeptDlg.Dispose();
@@ -1957,6 +1959,7 @@ namespace Scheduler
 			{
 				frmClassDlg fClassDlg = new frmClassDlg();
 				fClassDlg.Mode = "Add";
+                fClassDlg.LoadData();
 				fClassDlg.ShowDialog();
 				fClassDlg.Close();
 				fClassDlg.Dispose();
@@ -1968,6 +1971,7 @@ namespace Scheduler
 			{
 				frmProgramDlg fProgDlg = new frmProgramDlg();
 				fProgDlg.Mode = "Add";
+                fProgDlg.LoadData();
 				fProgDlg.ShowDialog();
 				fProgDlg.Close();
 				fProgDlg.Dispose();
