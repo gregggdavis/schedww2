@@ -237,7 +237,7 @@ namespace Scheduler
 				"ELSE NickName " +
 				"END From " +
 				"Contact Where ContactType=1 " +
-				" Order By ContactID");
+				" Order By LastName, FirstName");
 
 			IsEventChanged=false;
 		}
@@ -273,7 +273,7 @@ namespace Scheduler
 				"ELSE NickName " +
 				"END From " +
 				"Contact Where ContactType=1 " +
-				"Order By ContactID");
+                "Order By LastName, FirstName");
 
 			IsEventChanged=false;
 		}
@@ -315,7 +315,7 @@ namespace Scheduler
 				"ELSE NickName " +
 				"END From " +
 				"Contact Where ContactType=1 " +
-				"Order By ContactID");
+                "Order By LastName, FirstName");
 
             if (eventindex != 4)
                 intIndex = eventindex;
@@ -377,7 +377,7 @@ namespace Scheduler
 				"ELSE NickName " +
 				"END From " +
 				"Contact Where ContactType=1 " +
-				"Order By ContactID");
+                "Order By LastName, FirstName");
 
 			calendareventid[eventindex] = CalID;
 			intIndex = eventindex;

@@ -119,7 +119,7 @@ namespace Scheduler.Reports
                             if (reader["SpecialRemarks"] != DBNull.Value)
                             {
                                 if (reader["SpecialRemarks"].ToString() != "")
-                                    finalStringRemarks += reader["CourseName"] + ": " + reader["SpecialRemarks"].ToString() + "\n";
+                                    finalStringRemarks += reader["CourseName"] + ": " + reader["SpecialRemarks"].ToString() + "\n\n";
                             }
                         }
                         prow.CourseSpecialRemarks = finalStringRemarks;
