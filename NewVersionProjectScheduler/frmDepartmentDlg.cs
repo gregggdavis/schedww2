@@ -1771,10 +1771,10 @@ namespace Scheduler
 
 				if(chkNoDept.Checked) txtCompName.Text = "No Department";
 
-				
-				
+
+                LoadContact();
 			}
-			LoadContact();
+			
 		}
 
 		private void frmDepartmentDlg_Load(object sender, System.EventArgs e)

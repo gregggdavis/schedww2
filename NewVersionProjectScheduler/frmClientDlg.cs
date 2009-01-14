@@ -1497,6 +1497,7 @@ namespace Scheduler
                 {
                     btnDelete.Enabled = true;
                     this.Text = "Editing Client...";
+                    LoadContact();
                 }
                 else
                 {
@@ -1629,7 +1630,7 @@ namespace Scheduler
 				cmbStatus.SelectedIndex = 0;
 
 			}
-			LoadContact();
+			
 		}
 
 		private void btnCancel_Click(object sender, System.EventArgs e)

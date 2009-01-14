@@ -44,7 +44,9 @@ namespace Scheduler
 		private string _modeparental="";
 		private string _mode="";
 		private int _id=0;
-		private int _refid=0;//deptid for Department & clientid for Client
+		private int _refid=0;
+        private TextBox txtFax;
+        private Label label4;//deptid for Department & clientid for Client
 		private string _contacttype="";
 		
 		public string ModeParental
@@ -107,284 +109,300 @@ namespace Scheduler
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(frmClientDeptContactDlg));
-			this.label8 = new System.Windows.Forms.Label();
-			this.txtFNameRomaji = new System.Windows.Forms.TextBox();
-			this.txtFNamePhonetic = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
-			this.txtFName = new System.Windows.Forms.TextBox();
-			this.label10 = new System.Windows.Forms.Label();
-			this.txtPhone = new System.Windows.Forms.TextBox();
-			this.label37 = new System.Windows.Forms.Label();
-			this.txtMobile = new System.Windows.Forms.TextBox();
-			this.label35 = new System.Windows.Forms.Label();
-			this.txtEmail = new System.Windows.Forms.TextBox();
-			this.label30 = new System.Windows.Forms.Label();
-			this.lblStatus = new System.Windows.Forms.Label();
-			this.cmbStatus = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.txtLNameRomaji = new System.Windows.Forms.TextBox();
-			this.txtLNamePhonetic = new System.Windows.Forms.TextBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.txtLName = new System.Windows.Forms.TextBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.btnCancel = new System.Windows.Forms.Button();
-			this.btnSave = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// label8
-			// 
-			this.label8.AutoSize = true;
-			this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label8.Location = new System.Drawing.Point(16, 66);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(96, 17);
-			this.label8.TabIndex = 342;
-			this.label8.Text = "First Name Romaji";
-			// 
-			// txtFNameRomaji
-			// 
-			this.txtFNameRomaji.Location = new System.Drawing.Point(129, 64);
-			this.txtFNameRomaji.MaxLength = 255;
-			this.txtFNameRomaji.Name = "txtFNameRomaji";
-			this.txtFNameRomaji.Size = new System.Drawing.Size(200, 21);
-			this.txtFNameRomaji.TabIndex = 2;
-			this.txtFNameRomaji.Text = "";
-			// 
-			// txtFNamePhonetic
-			// 
-			this.txtFNamePhonetic.Location = new System.Drawing.Point(129, 40);
-			this.txtFNamePhonetic.MaxLength = 255;
-			this.txtFNamePhonetic.Name = "txtFNamePhonetic";
-			this.txtFNamePhonetic.Size = new System.Drawing.Size(200, 21);
-			this.txtFNamePhonetic.TabIndex = 1;
-			this.txtFNamePhonetic.Text = "";
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label9.Location = new System.Drawing.Point(16, 42);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(104, 17);
-			this.label9.TabIndex = 339;
-			this.label9.Text = "First Name Phonetic";
-			// 
-			// txtFName
-			// 
-			this.txtFName.Location = new System.Drawing.Point(129, 16);
-			this.txtFName.MaxLength = 255;
-			this.txtFName.Name = "txtFName";
-			this.txtFName.Size = new System.Drawing.Size(200, 21);
-			this.txtFName.TabIndex = 0;
-			this.txtFName.Text = "";
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label10.Location = new System.Drawing.Point(16, 18);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(58, 17);
-			this.label10.TabIndex = 338;
-			this.label10.Text = "First Name";
-			// 
-			// txtPhone
-			// 
-			this.txtPhone.Location = new System.Drawing.Point(129, 208);
-			this.txtPhone.MaxLength = 255;
-			this.txtPhone.Name = "txtPhone";
-			this.txtPhone.Size = new System.Drawing.Size(200, 21);
-			this.txtPhone.TabIndex = 7;
-			this.txtPhone.Text = "";
-			// 
-			// label37
-			// 
-			this.label37.AutoSize = true;
-			this.label37.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label37.Location = new System.Drawing.Point(16, 210);
-			this.label37.Name = "label37";
-			this.label37.Size = new System.Drawing.Size(82, 17);
-			this.label37.TabIndex = 337;
-			this.label37.Text = "Business Phone";
-			// 
-			// txtMobile
-			// 
-			this.txtMobile.Location = new System.Drawing.Point(129, 232);
-			this.txtMobile.MaxLength = 255;
-			this.txtMobile.Name = "txtMobile";
-			this.txtMobile.Size = new System.Drawing.Size(200, 21);
-			this.txtMobile.TabIndex = 8;
-			this.txtMobile.Text = "";
-			// 
-			// label35
-			// 
-			this.label35.AutoSize = true;
-			this.label35.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label35.Location = new System.Drawing.Point(16, 234);
-			this.label35.Name = "label35";
-			this.label35.Size = new System.Drawing.Size(36, 17);
-			this.label35.TabIndex = 336;
-			this.label35.Text = "Mobile";
-			// 
-			// txtEmail
-			// 
-			this.txtEmail.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.txtEmail.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.txtEmail.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-			this.txtEmail.Location = new System.Drawing.Point(129, 184);
-			this.txtEmail.MaxLength = 255;
-			this.txtEmail.Name = "txtEmail";
-			this.txtEmail.Size = new System.Drawing.Size(200, 21);
-			this.txtEmail.TabIndex = 6;
-			this.txtEmail.Text = "";
-			// 
-			// label30
-			// 
-			this.label30.AutoSize = true;
-			this.label30.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label30.Location = new System.Drawing.Point(16, 186);
-			this.label30.Name = "label30";
-			this.label30.Size = new System.Drawing.Size(31, 17);
-			this.label30.TabIndex = 335;
-			this.label30.Text = "Email";
-			// 
-			// lblStatus
-			// 
-			this.lblStatus.AutoSize = true;
-			this.lblStatus.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.lblStatus.Location = new System.Drawing.Point(16, 258);
-			this.lblStatus.Name = "lblStatus";
-			this.lblStatus.Size = new System.Drawing.Size(35, 17);
-			this.lblStatus.TabIndex = 343;
-			this.lblStatus.Text = "Status";
-			// 
-			// cmbStatus
-			// 
-			this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbStatus.Items.AddRange(new object[] {
-														   "Active",
-														   "Inactive"});
-			this.cmbStatus.Location = new System.Drawing.Point(129, 256);
-			this.cmbStatus.Name = "cmbStatus";
-			this.cmbStatus.Size = new System.Drawing.Size(200, 21);
-			this.cmbStatus.TabIndex = 9;
-			this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label1.Location = new System.Drawing.Point(16, 146);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(95, 17);
-			this.label1.TabIndex = 350;
-			this.label1.Text = "Last Name Romaji";
-			// 
-			// txtLNameRomaji
-			// 
-			this.txtLNameRomaji.Location = new System.Drawing.Point(129, 144);
-			this.txtLNameRomaji.MaxLength = 255;
-			this.txtLNameRomaji.Name = "txtLNameRomaji";
-			this.txtLNameRomaji.Size = new System.Drawing.Size(200, 21);
-			this.txtLNameRomaji.TabIndex = 5;
-			this.txtLNameRomaji.Text = "";
-			// 
-			// txtLNamePhonetic
-			// 
-			this.txtLNamePhonetic.Location = new System.Drawing.Point(129, 120);
-			this.txtLNamePhonetic.MaxLength = 255;
-			this.txtLNamePhonetic.Name = "txtLNamePhonetic";
-			this.txtLNamePhonetic.Size = new System.Drawing.Size(200, 21);
-			this.txtLNamePhonetic.TabIndex = 4;
-			this.txtLNamePhonetic.Text = "";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label2.Location = new System.Drawing.Point(16, 122);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(103, 17);
-			this.label2.TabIndex = 349;
-			this.label2.Text = "Last Name Phonetic";
-			// 
-			// txtLName
-			// 
-			this.txtLName.Location = new System.Drawing.Point(129, 96);
-			this.txtLName.MaxLength = 255;
-			this.txtLName.Name = "txtLName";
-			this.txtLName.Size = new System.Drawing.Size(200, 21);
-			this.txtLName.TabIndex = 3;
-			this.txtLName.Text = "";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label3.Location = new System.Drawing.Point(16, 98);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(57, 17);
-			this.label3.TabIndex = 348;
-			this.label3.Text = "Last Name";
-			// 
-			// btnCancel
-			// 
-			this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnCancel.Location = new System.Drawing.Point(252, 295);
-			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.TabIndex = 352;
-			this.btnCancel.Text = "Cancel";
-			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-			// 
-			// btnSave
-			// 
-			this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnSave.Location = new System.Drawing.Point(172, 295);
-			this.btnSave.Name = "btnSave";
-			this.btnSave.TabIndex = 351;
-			this.btnSave.Text = "Save";
-			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-			// 
-			// frmClientDeptContactDlg
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.ClientSize = new System.Drawing.Size(352, 336);
-			this.Controls.Add(this.btnCancel);
-			this.Controls.Add(this.btnSave);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.txtLNameRomaji);
-			this.Controls.Add(this.txtLNamePhonetic);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.txtLName);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.lblStatus);
-			this.Controls.Add(this.label8);
-			this.Controls.Add(this.txtFNameRomaji);
-			this.Controls.Add(this.txtFNamePhonetic);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.txtFName);
-			this.Controls.Add(this.label10);
-			this.Controls.Add(this.txtPhone);
-			this.Controls.Add(this.label37);
-			this.Controls.Add(this.txtMobile);
-			this.Controls.Add(this.label35);
-			this.Controls.Add(this.txtEmail);
-			this.Controls.Add(this.label30);
-			this.Controls.Add(this.cmbStatus);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.KeyPreview = true;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "frmClientDeptContactDlg";
-			this.ShowInTaskbar = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Contact";
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmClientDeptContactDlg_KeyDown);
-			this.Load += new System.EventHandler(this.frmClientDeptContactDlg_Load);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClientDeptContactDlg));
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtFNameRomaji = new System.Windows.Forms.TextBox();
+            this.txtFNamePhonetic = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtFName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.txtMobile = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtLNameRomaji = new System.Windows.Forms.TextBox();
+            this.txtLNamePhonetic = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtLName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.txtFax = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label8.Location = new System.Drawing.Point(16, 66);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(93, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "First Name Romaji";
+            // 
+            // txtFNameRomaji
+            // 
+            this.txtFNameRomaji.Location = new System.Drawing.Point(129, 64);
+            this.txtFNameRomaji.MaxLength = 255;
+            this.txtFNameRomaji.Name = "txtFNameRomaji";
+            this.txtFNameRomaji.Size = new System.Drawing.Size(200, 21);
+            this.txtFNameRomaji.TabIndex = 5;
+            // 
+            // txtFNamePhonetic
+            // 
+            this.txtFNamePhonetic.Location = new System.Drawing.Point(129, 40);
+            this.txtFNamePhonetic.MaxLength = 255;
+            this.txtFNamePhonetic.Name = "txtFNamePhonetic";
+            this.txtFNamePhonetic.Size = new System.Drawing.Size(200, 21);
+            this.txtFNamePhonetic.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label9.Location = new System.Drawing.Point(16, 42);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(102, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "First Name Phonetic";
+            // 
+            // txtFName
+            // 
+            this.txtFName.Location = new System.Drawing.Point(129, 16);
+            this.txtFName.MaxLength = 255;
+            this.txtFName.Name = "txtFName";
+            this.txtFName.Size = new System.Drawing.Size(200, 21);
+            this.txtFName.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label10.Location = new System.Drawing.Point(16, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "First Name";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(129, 208);
+            this.txtPhone.MaxLength = 255;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(200, 21);
+            this.txtPhone.TabIndex = 15;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label37.Location = new System.Drawing.Point(16, 210);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(81, 13);
+            this.label37.TabIndex = 14;
+            this.label37.Text = "Business Phone";
+            // 
+            // txtMobile
+            // 
+            this.txtMobile.Location = new System.Drawing.Point(129, 232);
+            this.txtMobile.MaxLength = 255;
+            this.txtMobile.Name = "txtMobile";
+            this.txtMobile.Size = new System.Drawing.Size(200, 21);
+            this.txtMobile.TabIndex = 17;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label35.Location = new System.Drawing.Point(16, 234);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(37, 13);
+            this.label35.TabIndex = 16;
+            this.label35.Text = "Mobile";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtEmail.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.txtEmail.Location = new System.Drawing.Point(129, 184);
+            this.txtEmail.MaxLength = 255;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(200, 21);
+            this.txtEmail.TabIndex = 13;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label30.Location = new System.Drawing.Point(16, 186);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(31, 13);
+            this.label30.TabIndex = 12;
+            this.label30.Text = "Email";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lblStatus.Location = new System.Drawing.Point(16, 285);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(38, 13);
+            this.lblStatus.TabIndex = 20;
+            this.lblStatus.Text = "Status";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.cmbStatus.Location = new System.Drawing.Point(129, 283);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(200, 21);
+            this.cmbStatus.TabIndex = 21;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label1.Location = new System.Drawing.Point(16, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Last Name Romaji";
+            // 
+            // txtLNameRomaji
+            // 
+            this.txtLNameRomaji.Location = new System.Drawing.Point(129, 144);
+            this.txtLNameRomaji.MaxLength = 255;
+            this.txtLNameRomaji.Name = "txtLNameRomaji";
+            this.txtLNameRomaji.Size = new System.Drawing.Size(200, 21);
+            this.txtLNameRomaji.TabIndex = 11;
+            // 
+            // txtLNamePhonetic
+            // 
+            this.txtLNamePhonetic.Location = new System.Drawing.Point(129, 120);
+            this.txtLNamePhonetic.MaxLength = 255;
+            this.txtLNamePhonetic.Name = "txtLNamePhonetic";
+            this.txtLNamePhonetic.Size = new System.Drawing.Size(200, 21);
+            this.txtLNamePhonetic.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label2.Location = new System.Drawing.Point(16, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Last Name Phonetic";
+            // 
+            // txtLName
+            // 
+            this.txtLName.Location = new System.Drawing.Point(129, 96);
+            this.txtLName.MaxLength = 255;
+            this.txtLName.Name = "txtLName";
+            this.txtLName.Size = new System.Drawing.Size(200, 21);
+            this.txtLName.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label3.Location = new System.Drawing.Point(16, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Last Name";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCancel.Location = new System.Drawing.Point(252, 307);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnSave.Location = new System.Drawing.Point(172, 307);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 22;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtFax
+            // 
+            this.txtFax.Location = new System.Drawing.Point(129, 257);
+            this.txtFax.MaxLength = 255;
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(200, 21);
+            this.txtFax.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label4.Location = new System.Drawing.Point(16, 259);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Fax";
+            // 
+            // frmClientDeptContactDlg
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+            this.ClientSize = new System.Drawing.Size(352, 355);
+            this.Controls.Add(this.txtFax);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtLNameRomaji);
+            this.Controls.Add(this.txtLNamePhonetic);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtLName);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtFNameRomaji);
+            this.Controls.Add(this.txtFNamePhonetic);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtFName);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtPhone);
+            this.Controls.Add(this.label37);
+            this.Controls.Add(this.txtMobile);
+            this.Controls.Add(this.label35);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.cmbStatus);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmClientDeptContactDlg";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Contact";
+            this.Load += new System.EventHandler(this.frmClientDeptContactDlg_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmClientDeptContactDlg_KeyDown);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
@@ -476,7 +494,7 @@ namespace Scheduler
 			objContact.PhoneMobile2="";
 			objContact.PhoneBusiness1="";
 			objContact.PhoneBusiness2="";
-			objContact.PhoneFax1="";
+			objContact.PhoneFax1=txtFax.Text;
 			objContact.PhoneFax2="";
 			objContact.PhoneOther="";
 			objContact.Url="";
@@ -568,7 +586,7 @@ namespace Scheduler
 				txtLName.Text = dr["LastName"].ToString();
 				txtLNamePhonetic.Text = dr["LastNamePhonetic"].ToString();
 				txtLNameRomaji.Text = dr["LastNameRomaji"].ToString();
-			
+                txtFax.Text = dr["PhoneFax1"].ToString();
 				txtFName.Tag = txtFName.Text;
 				txtLName.Tag = txtLName.Text;
 
