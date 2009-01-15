@@ -429,7 +429,7 @@ namespace Scheduler
             // 
             // gcolRealIns
             // 
-            this.gcolRealIns.Caption = "Actual Instructor";
+            this.gcolRealIns.Caption = "Real Instructor";
             this.gcolRealIns.FieldName = "RealTeacher";
             this.gcolRealIns.Name = "gcolRealIns";
             this.gcolRealIns.Width = 80;
@@ -1478,17 +1478,17 @@ namespace Scheduler
                 //CalendarFilter.ProgramName = cmbProgram.Text;
                 if (CalendarFilter.InstructorName == "")
                 {
-                    gvwEvent.ActiveFilter.Remove(gcolScheduledIns);
+                    //gvwEvent.ActiveFilter.Remove(gcolScheduledIns);
                     gvwEvent.ActiveFilter.Remove(gcolInstructor);
                 }
                 else
                 {
-                    string str = " [Actual Instructor] = \"" + CalendarFilter.InstructorName + "\"";
+                    string str = " Instructor = '" + CalendarFilter.InstructorName + "'";
                     //gvwEvent.ActiveFilterCriteria = str;// OR ScheduledTeacher = '" + CalendarFilter.InstructorName + "'";
                     //gvwEvent.ActiveFilterString = str;
                     //gvwEvent.ActiveFilter.NonColumnFilter = str;
-
-                    gvwEvent.ActiveFilter.Add(gcolScheduledIns, new ColumnFilterInfo("ScheduledTeacher = '" + CalendarFilter.InstructorName + "' OR Instructor = '" + CalendarFilter.InstructorName + "'"));
+                    gvwEvent.ActiveFilter.Add(gcolInstructor, new ColumnFilterInfo(str));
+                    //gvwEvent.ActiveFilter.Add(gcolScheduledIns, new ColumnFilterInfo("ScheduledTeacher = '" + CalendarFilter.InstructorName + "' OR Instructor = '" + CalendarFilter.InstructorName + "'"));
                     //gvwEvent.ActiveFilter.Add(gcolInstructor, new ColumnFilterInfo("Instructor = '" + CalendarFilter.InstructorName + "'"));
                 }
                 //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";

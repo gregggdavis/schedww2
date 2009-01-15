@@ -1827,7 +1827,7 @@ namespace Scheduler
 				DataTable dtbl=null;
 
 				this.Text = "Editing Event...";
-				
+                
 				objEvent=new Scheduler.BusinessLayer.Events();
 				objEvent.EventID = _eventid;
 

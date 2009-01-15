@@ -524,10 +524,10 @@ namespace Scheduler.BusinessLayer {
 							dr["RealTeacher"] = "";
 					} else dr["RealTeacher"] = "";
 
-					if (dr["RealTeacher"] != "")
+					if (dr["RealTeacher"].ToString() != "")
 						dr["Instructor"] = dr["RealTeacher"].ToString();
 					else
-						if (dr["ScheduledTeacher"] != "")
+						if (dr["ScheduledTeacher"].ToString() != "")
 							dr["Instructor"] = dr["ScheduledTeacher"].ToString();
 					dr.AcceptChanges();
 
