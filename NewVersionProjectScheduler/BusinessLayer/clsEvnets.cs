@@ -1103,6 +1103,7 @@ namespace Scheduler.BusinessLayer {
 				CalendarEvent.StartDateTime, CASE When CalendarEvent.CalendarEventStatus = 0 Then 'Active' Else 'InActive' End as Status,
                       CalendarEvent.EndDateTime, CalendarEvent.ScheduledTeacherId, CalendarEvent.RealTeacherId,
                       CC1.LastName + ', ' + CC1.FirstName AS ScheduledTeacher, CC2.LastName + ', ' + CC2.FirstName AS RealTeacher,
+                      CASE When ((CC2.LastName = '' OR CC2.LastName is null) AND (CC2.FirstName = '' OR CC2.FirstName is null))   Then CC1.LastName + ', ' + CC1.FirstName Else CC2.LastName + ', ' + CC2.FirstName End as ActualTeacher,
                       Course.CourseId, 
                       Course.Name AS Class, Program.ProgramId, Program.Name AS Program
 				FROM         Event INNER JOIN
@@ -1150,10 +1151,12 @@ namespace Scheduler.BusinessLayer {
                         lastName = sp[0].Trim();
                     if (sp.Length >= 2)
                         firstName = sp[1].Trim();
-
-                    eventsSql += "and  (CC1.LastName = @InsLastName AND CC1.FirstName = @InsFirstName) ";
-                    sqlCommand.Parameters.Add(new SqlParameter("@InsFirstName", firstName));
-                    sqlCommand.Parameters.Add(new SqlParameter("@InsLastName", lastName));
+                    eventsSql += " and CASE When ((CC2.LastName = '' OR CC2.LastName is null) AND (CC2.FirstName = '' OR CC2.FirstName is null))   Then CC1.LastName + ', ' + CC1.FirstName Else CC2.LastName + ', ' + CC2.FirstName End = @ActualTeachers ";
+                    //eventsSql += "and (ActualTeacher = @ActualTeachers)";
+                    sqlCommand.Parameters.Add(new SqlParameter("@ActualTeachers", instructorName));
+                    //eventsSql += "and  (CC1.LastName = @InsLastName AND CC1.FirstName = @InsFirstName) ";
+                    //sqlCommand.Parameters.Add(new SqlParameter("@InsFirstName", firstName));
+                    //sqlCommand.Parameters.Add(new SqlParameter("@InsLastName", lastName));
                 }
                 
 				eventsSql += "Order By Event.EventID";

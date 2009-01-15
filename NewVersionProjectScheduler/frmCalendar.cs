@@ -106,6 +106,7 @@ namespace Scheduler {
             this.pnlCalendar = new System.Windows.Forms.Panel();
             this.schedulerControl1 = new DevExpress.XtraScheduler.SchedulerControl();
             this.pnlFilter = new System.Windows.Forms.Panel();
+            this.chkHideWeekends = new DevExpress.XtraEditors.CheckEdit();
             this.lblMonth = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
             this.EndDatePickerTop = new System.Windows.Forms.DateTimePicker();
@@ -121,15 +122,14 @@ namespace Scheduler {
             this.pnlDateNavigator = new System.Windows.Forms.Panel();
             this.dateNavigator1 = new DevExpress.XtraScheduler.DateNavigator();
             this.imgContext = new System.Windows.Forms.ImageList(this.components);
-            this.chkHideWeekends = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
             this.pnlBody.SuspendLayout();
             this.pnlCalendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             this.pnlFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHideWeekends.Properties)).BeginInit();
             this.pnlDateNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHideWeekends.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // StartDatePickerTop
@@ -197,13 +197,12 @@ namespace Scheduler {
             weeklyPrintStyle1.CalendarHeaderVisible = false;
             monthlyPrintStyle1.CalendarHeaderVisible = false;
             triFoldPrintStyle1.CalendarHeaderVisible = false;
-            this.schedulerControl1.PrintStyles.AddRange(new DevExpress.XtraScheduler.Printing.SchedulerPrintStyle[] {
-            dailyPrintStyle1,
-            weeklyPrintStyle1,
-            monthlyPrintStyle1,
-            triFoldPrintStyle1,
-            calendarDetailsPrintStyle1,
-            memoPrintStyle1});
+            this.schedulerControl1.PrintStyles.Add(dailyPrintStyle1);
+            this.schedulerControl1.PrintStyles.Add(weeklyPrintStyle1);
+            this.schedulerControl1.PrintStyles.Add(monthlyPrintStyle1);
+            this.schedulerControl1.PrintStyles.Add(triFoldPrintStyle1);
+            this.schedulerControl1.PrintStyles.Add(calendarDetailsPrintStyle1);
+            this.schedulerControl1.PrintStyles.Add(memoPrintStyle1);
             this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
             this.schedulerControl1.Start = new System.DateTime(2006, 3, 6, 0, 0, 0, 0);
             this.schedulerControl1.Storage = this.schedulerStorage1;
@@ -226,6 +225,7 @@ namespace Scheduler {
             this.schedulerControl1.Views.DayView.TimeRulers.Add(timeRuler1);
             this.schedulerControl1.Views.MonthView.Appearance.Appointment.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.MonthView.Appearance.Appointment.Options.UseFont = true;
+            this.schedulerControl1.Views.MonthView.AppointmentDisplayOptions.AppointmentAutoHeight = true;
             this.schedulerControl1.Views.WeekView.Appearance.CellHeaderCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.WeekView.Appearance.CellHeaderCaption.Options.UseFont = true;
             this.schedulerControl1.Views.WeekView.Appearance.CellHeaderCaptionLine.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -240,9 +240,9 @@ namespace Scheduler {
             this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl1.Click += new System.EventHandler(this.schedulerControl1_Click);
             this.schedulerControl1.CustomDrawAppointment += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl1_CustomDrawAppointment);
+            this.schedulerControl1.PreparePopupMenu += new DevExpress.XtraScheduler.PreparePopupMenuEventHandler(this.OnPreparePopupMenu);
             this.schedulerControl1.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl_EditAppointmentFormShowing);
             this.schedulerControl1.AppointmentViewInfoCustomizing += new DevExpress.XtraScheduler.AppointmentViewInfoCustomizingEventHandler(this.schedulerControl1_AppointmentViewInfoCustomizing);
-            this.schedulerControl1.PreparePopupMenu += new DevExpress.XtraScheduler.PreparePopupMenuEventHandler(this.OnPreparePopupMenu);
             // 
             // pnlFilter
             // 
@@ -266,6 +266,15 @@ namespace Scheduler {
             this.pnlFilter.Name = "pnlFilter";
             this.pnlFilter.Size = new System.Drawing.Size(792, 64);
             this.pnlFilter.TabIndex = 3;
+            // 
+            // chkHideWeekends
+            // 
+            this.chkHideWeekends.Location = new System.Drawing.Point(13, 34);
+            this.chkHideWeekends.Name = "chkHideWeekends";
+            this.chkHideWeekends.Properties.Caption = "Hide Weekends";
+            this.chkHideWeekends.Size = new System.Drawing.Size(101, 19);
+            this.chkHideWeekends.TabIndex = 20;
+            this.chkHideWeekends.CheckedChanged += new System.EventHandler(this.chkHideWeekends_CheckedChanged);
             // 
             // lblMonth
             // 
@@ -469,15 +478,6 @@ namespace Scheduler {
             this.imgContext.Images.SetKeyName(0, "");
             this.imgContext.Images.SetKeyName(1, "");
             // 
-            // chkHideWeekends
-            // 
-            this.chkHideWeekends.Location = new System.Drawing.Point(13, 34);
-            this.chkHideWeekends.Name = "chkHideWeekends";
-            this.chkHideWeekends.Properties.Caption = "Hide Weekends";
-            this.chkHideWeekends.Size = new System.Drawing.Size(101, 19);
-            this.chkHideWeekends.TabIndex = 20;
-            this.chkHideWeekends.CheckedChanged += new System.EventHandler(this.chkHideWeekends_CheckedChanged);
-            // 
             // frmCalendar
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -493,9 +493,9 @@ namespace Scheduler {
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHideWeekends.Properties)).EndInit();
             this.pnlDateNavigator.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateNavigator1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkHideWeekends.Properties)).EndInit();
             this.ResumeLayout(false);
 
 		}
