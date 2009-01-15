@@ -245,6 +245,8 @@ namespace Scheduler.BusinessLayer
 					deptid=0;
 					contact1="";
 					contact2="";
+                    contact1Phone = "";
+                    contact2Phone = "";
 					deptid=Convert.ToInt32(dr["DepartmentID"].ToString());				
 					GetContact(deptid, ref contact1, ref contact2,ref contact1Phone,ref contact2Phone);
 					dr["Contact1"] = contact1;
