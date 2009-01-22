@@ -1422,7 +1422,8 @@ namespace Scheduler
 
 			SetControlEnabled();
 		}
-
+        string globalContact1 = "";
+        string globalContact2 = "";
 		public void LoadData()
 		{
 
@@ -1502,6 +1503,8 @@ namespace Scheduler
                         
 
                     }
+                    globalContact1 = dr["Contact1"].ToString();
+                    globalContact2 = dr["Contact2"].ToString();
                     cmbDept.Text = dr["Department"].ToString();
                     string deptQuery = "Select CompanyName = CASE " +
                                      "WHEN C.NickName IS NULL THEN C.CompanyName " +
@@ -2278,7 +2281,7 @@ namespace Scheduler
                 IDataReader reader = DAC.SelectStatement(sql2);
                 while (reader.Read())
                 {
-                    if (reader["ContactName"] != DBNull.Value && reader["ContactName"].ToString() != str1 && reader["ContactName"].ToString() != str2)
+                    if (reader["ContactName"] != DBNull.Value && reader["ContactName"].ToString() != str1 && reader["ContactName"].ToString() != str2 && reader["ContactName"].ToString() != globalContact1 && reader["ContactName"].ToString() != globalContact2)
                     {
                         cmbContact1.Items.Remove(reader["ContactName"].ToString());
                         cmbContact2.Items.Remove(reader["ContactName"].ToString());
