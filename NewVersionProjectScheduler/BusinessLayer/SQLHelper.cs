@@ -870,7 +870,7 @@ namespace SQLHelper.SqlHelpers
             {
 				connection = new SqlConnection(connectionString);
 				connection.Open();
-
+ 
                 // Call the private overload that takes an internally owned connection in place of the connection string
                 return ExecuteReader(connection, null, commandType, commandText, commandParameters,SqlConnectionOwnership.Internal);
             }
