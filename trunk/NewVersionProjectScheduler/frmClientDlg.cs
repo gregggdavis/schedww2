@@ -1307,6 +1307,7 @@ namespace Scheduler
             // 
             this.gcolMobile.Caption = "Mobile";
             this.gcolMobile.DisplayFormat.FormatString = "Mobile";
+            this.gcolMobile.FieldName = "PhoneMobile1";
             this.gcolMobile.Name = "gcolMobile";
             this.gcolMobile.Visible = true;
             this.gcolMobile.VisibleIndex = 4;
