@@ -25,8 +25,9 @@ namespace Scheduler.Reports
             this.Tag = programID;
             lblProgramNameValue.Text = programName;
             dataSet11.viewSimpleProgramInfo.Clear();
-            dataSet11.viewSimpleProgramInfo.Load(BusinessLayer.DAC.SelectStatement("Select * From ViewSimpleProgramInfo Where ProgramID = " + programID + " Order By CourseID"), LoadOption.OverwriteChanges);
-
+            string query = "Select * From ViewSimpleProgramInfo Where ProgramID = " + programID + " Order By CourseName";
+            dataSet11.viewSimpleProgramInfo.Load(BusinessLayer.DAC.SelectStatement(query), LoadOption.OverwriteChanges);
+            
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
