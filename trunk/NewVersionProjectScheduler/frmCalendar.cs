@@ -226,6 +226,7 @@ namespace Scheduler {
             this.schedulerControl1.Views.MonthView.Appearance.Appointment.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.MonthView.Appearance.Appointment.Options.UseFont = true;
             this.schedulerControl1.Views.MonthView.AppointmentDisplayOptions.AppointmentAutoHeight = true;
+            this.schedulerControl1.Views.MonthView.WeekCount = 4;
             this.schedulerControl1.Views.WeekView.Appearance.CellHeaderCaption.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl1.Views.WeekView.Appearance.CellHeaderCaption.Options.UseFont = true;
             this.schedulerControl1.Views.WeekView.Appearance.CellHeaderCaptionLine.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
