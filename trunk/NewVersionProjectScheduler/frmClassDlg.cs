@@ -3734,8 +3734,14 @@ namespace Scheduler
             objCourse.ProgramID = intProgramID;
 
             objCourse.CourseType = cmbCourseType.Text;
-            objCourse.NumberStudents = Convert.ToInt32(txtNumberStudents.Text);
-            objCourse.HomeWorkMinutes = Convert.ToInt32(txtHomeWorkMinutes.Text);
+            int noOfStudents = 0;
+            if (txtNumberStudents.Text != "")
+                Int32.TryParse(txtNumberStudents.Text, out noOfStudents);
+            int homeworkMinutes = 0;
+            if (txtHomeWorkMinutes.Text != "")
+                Int32.TryParse(txtHomeWorkMinutes.Text, out homeworkMinutes);
+            objCourse.NumberStudents = noOfStudents;
+            objCourse.HomeWorkMinutes = homeworkMinutes;
 
             objCourse.Description = txtDescription.Text;
             objCourse.SpecialRemarks = txtRemarks.Text;

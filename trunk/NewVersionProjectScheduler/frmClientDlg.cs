@@ -1721,10 +1721,20 @@ namespace Scheduler
 
 			objContact.ClosestStation1=txtClosestSt1.Text;
 			objContact.ClosestLine1=txtClosestLine1.Text;
-			objContact.MinutesToStation1=Convert.ToInt16(txtMintSt1.Text);
+            Int16 minToStation = 0;
+            if (txtMintSt1.Text != "")
+            {
+                Int16.TryParse(txtMintSt1.Text, out minToStation);
+            }
+            Int16 minToStation2 = 0;
+            if (txtMintSt2.Text != "")
+            {
+                Int16.TryParse(txtMintSt2.Text, out minToStation2);
+            }
+			objContact.MinutesToStation1=minToStation;
 			objContact.ClosestStation2=txtClosestSt2.Text;
 			objContact.ClosestLine2=txtClosestLine2.Text;
-			objContact.MinutesToStation2=Convert.ToInt16(txtMintSt2.Text);
+			objContact.MinutesToStation2=minToStation2;
 			objContact.ContactStatus=cmbStatus.SelectedIndex;
 
             if ((_mode == "Add") || (_mode == "AddClone") || (_mode == ""))
