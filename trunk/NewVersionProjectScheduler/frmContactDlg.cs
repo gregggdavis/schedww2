@@ -1947,6 +1947,11 @@ namespace Scheduler
 
 		private void frmContactDlg_Load(object sender, System.EventArgs e)
 		{
+            if (Common.LogonType == 2)
+            {
+               // this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+            }
 			this.ActiveControl=cmbType;
 
 			try
