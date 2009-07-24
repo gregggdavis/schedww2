@@ -2165,6 +2165,23 @@ namespace Scheduler
 
 		private void frmCourseDlg_Load(object sender, System.EventArgs e)
 		{
+            if (Common.LogonType == 2)
+            {
+                this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+                this.btnAdd.Enabled = false;
+                this.btnDel.Enabled = false;
+                this.btnEdit.Text = "View";
+                this.llblClient.Enabled = false;
+                this.llbDepartment.Enabled = false;
+                this.llblEvent.Enabled = false;
+                this.llblFinalEvt.Enabled = false;
+                this.llblInitialEvt.Enabled = false;
+                this.llblMidEvt.Enabled = false;
+                this.llblProgram.Enabled = false;
+                this.llblTeacher1_I.Enabled = false;
+                this.llblTeacher2_I.Enabled = false;
+            }
 			this.ActiveControl = txtCourseName;
             //cmbEventStatus_I.SelectedIndex = 0;
             
@@ -2759,6 +2776,15 @@ namespace Scheduler
                 btnAdd.Enabled = false;
             else
                 btnAdd.Enabled = true;
+
+            if (Common.LogonType == 2)
+            {
+                this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+                this.btnAdd.Enabled = false;
+                this.btnDel.Enabled = false;
+                this.btnEdit.Text = "View";
+            }
         }
         
         /*
@@ -3325,7 +3351,8 @@ namespace Scheduler
 							
 						if (showOnChangeConfirmation)
 						{
-							dlg = MessageBox.Show(this, "Do you want to save the current Class Event?", "Scheduler", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if(Common.LogonType != 2)
+							    dlg = MessageBox.Show(this, "Do you want to save the current Class Event?", "Scheduler", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 						}
 						
 						if(dlg==DialogResult.No)
@@ -4157,6 +4184,24 @@ namespace Scheduler
                     Common.MakeEnabled(tbpCurriculam, false);
                     Common.MakeEnabled(tbpDescription, false);
                     Common.MakeEnabled(tbpSpecialRemarks, false);
+                }
+
+                if (Common.LogonType == 2)
+                {
+                    this.btnDelete.Enabled = false;
+                    this.btnSave.Enabled = false;
+                    this.btnAdd.Enabled = false;
+                    this.btnDel.Enabled = false;
+                    this.btnEdit.Text = "View";
+                    this.llblClient.Enabled = false;
+                    this.llbDepartment.Enabled = false;
+                    this.llblEvent.Enabled = false;
+                    this.llblFinalEvt.Enabled = false;
+                    this.llblInitialEvt.Enabled = false;
+                    this.llblMidEvt.Enabled = false;
+                    this.llblProgram.Enabled = false;
+                    this.llblTeacher1_I.Enabled = false;
+                    this.llblTeacher2_I.Enabled = false;
                 }
             }
         }
