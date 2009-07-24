@@ -1391,6 +1391,19 @@ namespace Scheduler
 
 		private void frmProgramDlg_Load(object sender, EventArgs e)
 		{
+            if (Common.LogonType == 2)
+            {
+                this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+                this.btnAdd.Enabled = false;
+                this.btnDel.Enabled = false;
+                this.btnEdit.Text = "View";
+                llbDepartment.Enabled = false;
+                llblClient.Enabled = false;
+                llblFinalEvt.Enabled = false;
+                llblInitialEvt.Enabled = false;
+                llblMidEvt.Enabled = false;
+            }
 			if (_mode != "Edit") cmbStatus.SelectedIndex = 0;
 			ActiveControl = txtProgramName;
             //Common.PopulateDropdown(
@@ -1796,6 +1809,15 @@ namespace Scheduler
                 btnAdd.Enabled = false;
             else
                 btnAdd.Enabled = true;
+
+            if (Common.LogonType == 2)
+            {
+                this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+                this.btnAdd.Enabled = false;
+                this.btnDel.Enabled = false;
+                this.btnEdit.Text = "View";
+            }
         }
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -2147,6 +2169,22 @@ namespace Scheduler
 					Common.MakeEnabled(tbpDescription, false);
 					Common.MakeEnabled(tbpSpecialRemarks, false);
 				}
+
+                if (Common.LogonType == 2)
+                {
+                    this.btnDelete.Enabled = false;
+                    this.btnSave.Enabled = false;
+                    this.btnAdd.Enabled = false;
+                    this.btnDel.Enabled = false;
+                    this.btnEdit.Text = "View";
+                    llbDepartment.Enabled = false;
+                    llblClient.Enabled = false;
+                    llblFinalEvt.Enabled = false;
+                    llblInitialEvt.Enabled = false;
+                    llblMidEvt.Enabled = false;
+                }
+
+
 			}
 		}
 
@@ -2424,7 +2462,11 @@ namespace Scheduler
         private void tbcCourse_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			//DoEventTabChange(true, tbcCourse.SelectedTab != pnlEvent.Parent);
-            DoEventTabChange(true);
+            //if (Common.LogonType != 2)
+            {
+                DoEventTabChange(true);
+            }
+            
 		}
 
 		private void DoEventTabChange(bool showSaveConfirmation) 

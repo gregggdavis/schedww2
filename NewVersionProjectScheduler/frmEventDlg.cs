@@ -1387,7 +1387,14 @@ namespace Scheduler
 		
 		private void frmEventDlg_Load(object sender, System.EventArgs e)
 		{
-            //MessageBox.Show("sa7 el sa7");
+            if (Common.LogonType == 2)
+            {
+                
+                this.btnSave.Enabled = false;
+                llblTeacher1.Enabled = false;
+                llblTeacher2.Enabled = false;
+            }
+            
 			this.ActiveControl = txtName;
 
 			try

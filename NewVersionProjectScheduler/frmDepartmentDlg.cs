@@ -1779,6 +1779,16 @@ namespace Scheduler
 
 		private void frmDepartmentDlg_Load(object sender, System.EventArgs e)
 		{
+            if (Common.LogonType == 2)
+            {
+                this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+                this.btnImportClientAddress.Enabled = false;
+                this.btnAdd.Enabled = false;
+                this.btnDel.Enabled = false;
+                this.btnEdit.Text = "View";
+                this.llblClient.Enabled = false;
+            }
 			this.ActiveControl = txtCompName;
 
 			try
