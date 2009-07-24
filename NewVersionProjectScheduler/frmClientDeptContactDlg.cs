@@ -603,6 +603,11 @@ namespace Scheduler
 
 		private void frmClientDeptContactDlg_Load(object sender, System.EventArgs e)
 		{
+            if (Common.LogonType == 2)
+            {
+                //this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+            }
 			try
 			{
 				Common.SetControlFont(this);

@@ -1720,6 +1720,11 @@ namespace Scheduler
 
 		private void frmTeacherDlg_Load(object sender, System.EventArgs e)
 		{
+            if (Common.LogonType == 2)
+            {
+                this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+            }
 			this.ActiveControl=txtLName;
             printingSystem1.PageSettings.RightMargin = 80;
             printingSystem1.PageSettings.LeftMargin = 80;

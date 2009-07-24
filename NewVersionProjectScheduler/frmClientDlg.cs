@@ -1808,6 +1808,15 @@ namespace Scheduler
 
 		private void frmClientDlg_Load(object sender, System.EventArgs e)
 		{
+            if (Common.LogonType == 2)
+            {
+                this.btnDelete.Enabled = false;
+                this.btnSave.Enabled = false;
+                this.btnAdd.Enabled = false;
+                this.btnDel.Enabled = false;
+                this.button1.Enabled = false;
+                this.btnEdit.Text = "View";
+            }
 			this.ActiveControl=txtCompName;
 
 			try
