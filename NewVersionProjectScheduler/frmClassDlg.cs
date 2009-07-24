@@ -2088,8 +2088,8 @@ namespace Scheduler
             // printingSystem
             // 
             this.printingSystem.StartPrint += new DevExpress.XtraPrinting.PrintDocumentEventHandler(this.printingSystem_StartPrint);
-            this.printingSystem.BeforePagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_BeforePagePaint);
-            this.printingSystem.AfterPagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePaint);
+            //this.printingSystem.BeforePagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_BeforePagePaint);
+            //this.printingSystem.AfterPagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePaint);
             this.printingSystem.AfterPagePrint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePrint);
             // 
             // frmClassDlg
