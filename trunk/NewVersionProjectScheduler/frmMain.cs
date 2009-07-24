@@ -1559,7 +1559,7 @@ namespace Scheduler
 						tmrMain.Enabled = true;
 
 						//Admin can vie/add/modify user
-                        if (Common.LogonType == 0)
+                        if (Common.LogonType == 0 || Common.LogonType == 2)
                         {
                             navBarGroup3.Visible = false;
                             mnuItemUser.Visible = false;

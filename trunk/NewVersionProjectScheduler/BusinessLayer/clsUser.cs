@@ -177,10 +177,14 @@ namespace Scheduler.BusinessLayer
 					{
 						strtype = "User";
 					}
-					else
-					{
-						strtype = "Admin";
-					}
+                    else if (Convert.ToInt16(Reader["UserType"].ToString()) == 1)
+                    {
+                        strtype = "Admin";
+                    }
+                    else
+                    {
+                        strtype = "Read-only";
+                    }
 					if(Convert.ToInt16(Reader["UserStatus"].ToString())==0)
 					{
 						strstatus = "Active";
@@ -343,7 +347,7 @@ namespace Scheduler.BusinessLayer
 				{
 					com.Parameters.Add(new SqlParameter("@Password", SqlDbType.NVarChar));
 				}
-				com.Parameters.Add(new SqlParameter("@UserType", SqlDbType.Bit));
+				com.Parameters.Add(new SqlParameter("@UserType", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@UserStatus", SqlDbType.Bit));
 				com.Parameters.Add(new SqlParameter("@DateLastLogin", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@DateLastModified", SqlDbType.DateTime));
