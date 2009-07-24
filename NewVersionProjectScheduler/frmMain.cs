@@ -969,6 +969,14 @@ namespace Scheduler
 			Cursor = Cursors.WaitCursor;
             if (caller != "Event") tbtnDuplicate.Enabled = true;
             else tbtnDuplicate.Enabled = false;
+
+            if (Common.LogonType == 2)
+            {
+                tbtnDelete.Enabled = false;
+                tbtnNew.Enabled = false;
+                tbtnDuplicate.Enabled = false;
+
+            }
 			Common.LockWindow(Handle);
 			try
 			{
@@ -1503,6 +1511,13 @@ namespace Scheduler
 		{
 			tbtnDelete.Enabled = boolEnable;
 			tbtnOpen.Enabled = boolEnable;
+            if (Common.LogonType == 2)
+            {
+                tbtnDelete.Enabled = false;
+                tbtnNew.Enabled = false;
+                tbtnDuplicate.Enabled = false;
+
+            }
 		}
 
 		private void frmMain_Load(object sender, EventArgs e)
@@ -1564,6 +1579,13 @@ namespace Scheduler
                             navBarGroup3.Visible = false;
                             mnuItemUser.Visible = false;
                             navBarGroup4.Visible = false;
+                        }
+                        if (Common.LogonType == 2)
+                        {
+                            tbtnDelete.Enabled = false;
+                            tbtnNew.Enabled = false;
+                            tbtnDuplicate.Enabled = false;
+                            
                         }
 						Refresh();
 						Common.LockWindow(Handle);
