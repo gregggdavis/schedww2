@@ -2422,7 +2422,10 @@ namespace Scheduler
             pnlDeptInfo.Controls.Add(chkNoDept);
 			tbpDeptInfo.Controls.Add(pnlDeptInfo);
 			tbpAddress.Controls.Add(pnlAddress);
+            tbpContact.Controls.Clear();
             tbpContact.Controls.Add(pnlContact);
+            pnlContact.Dock = DockStyle.Fill;
+            pnlContact.Controls[0].Dock = DockStyle.Fill;
             //Back to original values so the panel displays fine on the UI
             pnlDeptInfo.Height = 484;
             pnlDeptInfo.Dock = DockStyle.Fill;

@@ -3344,7 +3344,11 @@ namespace Scheduler
 					{
 						if(pnlEvent.Parent!=tbpSelected)
 						{
-							tbcCourse.SelectedTab=(TabPage)pnlEvent.Parent;
+                            if (Common.LogonType != 2)
+                            {
+                                tbcCourse.SelectedTab = (TabPage)pnlEvent.Parent;
+                                return;
+                            }
 						}
 
 						DialogResult dlg = DialogResult.No;
@@ -3357,8 +3361,11 @@ namespace Scheduler
 						
 						if(dlg==DialogResult.No)
 						{
-							tbcCourse.SelectedTab = (TabPage)pnlEvent.Parent;
-							return;
+                            if (Common.LogonType != 2)
+                            {
+                                tbcCourse.SelectedTab = (TabPage)pnlEvent.Parent;
+                                return;
+                            }
 						}
 						else if(dlg==DialogResult.Yes)
 						{
@@ -4631,6 +4638,10 @@ namespace Scheduler
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (gvwEvents.SelectedRowsCount == 0)
+            {
+                return;
+            }
             frmEvent = new frmEventDlg(int.Parse(gvwEvents.GetRowCellValue(gvwEvents.FocusedRowHandle, gcolEventID).ToString()), int.Parse(gvwEvents.GetRowCellValue(gvwEvents.FocusedRowHandle, gcolCaldendarEventID).ToString()));
             frmEvent.Mode = "Edit";
             frmEvent.CourseId = _courseid;
