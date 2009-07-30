@@ -275,7 +275,7 @@ namespace Scheduler.BusinessLayer
 
 				com.Parameters.Add(new SqlParameter("@UserName", SqlDbType.NVarChar, 15));
 				com.Parameters.Add(new SqlParameter("@Password", SqlDbType.NVarChar));
-				com.Parameters.Add(new SqlParameter("@UserType", SqlDbType.Bit));
+				com.Parameters.Add(new SqlParameter("@UserType", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@UserStatus", SqlDbType.Bit));
 				com.Parameters.Add(new SqlParameter("@ContactID", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@CreatedByUserId", SqlDbType.Int));
