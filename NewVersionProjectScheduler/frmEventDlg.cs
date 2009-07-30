@@ -630,6 +630,7 @@ namespace Scheduler
             this.lblStatus.Size = new System.Drawing.Size(38, 13);
             this.lblStatus.TabIndex = 250;
             this.lblStatus.Text = "Status";
+            this.lblStatus.Visible = false;
             // 
             // cmbEventStatus
             // 
@@ -641,6 +642,7 @@ namespace Scheduler
             this.cmbEventStatus.Name = "cmbEventStatus";
             this.cmbEventStatus.Size = new System.Drawing.Size(120, 21);
             this.cmbEventStatus.TabIndex = 18;
+            this.cmbEventStatus.Visible = false;
             this.cmbEventStatus.SelectedIndexChanged += new System.EventHandler(this.cmbEventStatus_SelectedIndexChanged);
             // 
             // groupBox2
