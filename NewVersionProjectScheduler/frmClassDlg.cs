@@ -2171,6 +2171,8 @@ namespace Scheduler
                 this.btnSave.Enabled = false;
                 this.btnAdd.Enabled = false;
                 this.btnDel.Enabled = false;
+                this.btn_ClearRecc.Enabled = false;
+
                 this.btnEdit.Text = "View";
                 this.llblClient.Enabled = false;
                 this.llbDepartment.Enabled = false;
@@ -2783,6 +2785,7 @@ namespace Scheduler
                 this.btnSave.Enabled = false;
                 this.btnAdd.Enabled = false;
                 this.btnDel.Enabled = false;
+                this.btn_ClearRecc.Enabled = false;
                 this.btnEdit.Text = "View";
             }
         }
@@ -4199,6 +4202,7 @@ namespace Scheduler
                     this.btnSave.Enabled = false;
                     this.btnAdd.Enabled = false;
                     this.btnDel.Enabled = false;
+                    this.btn_ClearRecc.Enabled = false;
                     this.btnEdit.Text = "View";
                     this.llblClient.Enabled = false;
                     this.llbDepartment.Enabled = false;

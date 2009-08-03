@@ -1261,7 +1261,6 @@ namespace Scheduler
             // grdContact
             // 
             this.grdContact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdContact.EmbeddedNavigator.Name = "";
             this.grdContact.ExternalRepository = this.persistentRepository1;
             this.grdContact.Location = new System.Drawing.Point(0, 0);
             this.grdContact.MainView = this.gvwContact;
@@ -1316,9 +1315,6 @@ namespace Scheduler
             this.gvwContact.OptionsView.ShowIndicator = false;
             this.gvwContact.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolContactType, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gvwContact.Appearance.FocusedRow.AssignInternal(this.gvwContact.Appearance.SelectedRow);
-            //this.gvwContact.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            //this.gvwContact.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolContactID
             // 
@@ -1471,6 +1467,7 @@ namespace Scheduler
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(446, 342);
             this.pnlBody.TabIndex = 0;
+            this.pnlBody.Visible = false;
             // 
             // btnDelete
             // 
@@ -2422,10 +2419,13 @@ namespace Scheduler
             pnlDeptInfo.Controls.Add(chkNoDept);
 			tbpDeptInfo.Controls.Add(pnlDeptInfo);
 			tbpAddress.Controls.Add(pnlAddress);
-            tbpContact.Controls.Clear();
+            //tbpContact.Controls.Clear();
             tbpContact.Controls.Add(pnlContact);
-            pnlContact.Dock = DockStyle.Fill;
-            pnlContact.Controls[0].Dock = DockStyle.Fill;
+            //pnlContact.Height = 484;
+            //pnlContact.Dock = DockStyle.Fill;
+            //pnlContact.Dock = DockStyle.Fill;
+            //pnlContact.Controls[0].Dock = DockStyle.Fill;
+            //pnlContact.Controls[1].Dock = DockStyle.Bottom;
             //Back to original values so the panel displays fine on the UI
             pnlDeptInfo.Height = 484;
             pnlDeptInfo.Dock = DockStyle.Fill;
