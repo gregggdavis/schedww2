@@ -2767,6 +2767,10 @@ namespace Scheduler
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (gvwEvents.SelectedRowsCount == 0)
+            {
+                return;
+            }
             frmEvent = new frmEventDlg(int.Parse(gvwEvents.GetRowCellValue(gvwEvents.FocusedRowHandle, gcolEventID).ToString()), int.Parse(gvwEvents.GetRowCellValue(gvwEvents.FocusedRowHandle, gcolCaldendarEventID).ToString()));
             frmEvent.Mode = "Edit";
             frmEvent.ProgramId = _programid;
