@@ -336,7 +336,7 @@ namespace Scheduler
             // gcolEventID
             // 
             this.gcolEventID.Caption = "Event ID";
-            this.gcolEventID.FieldName = "EventID";
+            this.gcolEventID.FieldName = "EventId";
             this.gcolEventID.Name = "gcolEventID";
             // 
             // colCalendarEventID
@@ -975,8 +975,9 @@ namespace Scheduler
 			IsLoad=false;
 
 			objEvent = new Events();
-			//dtbl = objEvent.LoadData(dtStart, dtEnd, cmbClient.Text, cmbInstructor.Text, cmbProgram.Text, cmbClass.Text);
-            dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, "", "",true);
+			//old line dtbl = objEvent.LoadData(dtStart, dtEnd, cmbClient.Text, cmbInstructor.Text, cmbProgram.Text, cmbClass.Text);
+            //old line April 02 2010 - dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, "", "",true);
+            dtbl = objEvent.LoadDataNew(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, "", "", true);
 			grdEvent.DataSource = dtbl;
 			isProcess = true;
 

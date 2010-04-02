@@ -733,7 +733,8 @@ namespace Scheduler {
 		/// <returns></returns>
 		public DataTable FetchGridData(DateTime dtStart, DateTime dtEnd, string client, string instructor, string program, string course) {
 			Events evt = new Events();
-			return evt.LoadCalendarData(dtStart, dtEnd, client, instructor, program, course);
+            return evt.LoadCalendarDataNew(dtStart, dtEnd, client, instructor, program, course);
+			//return evt.LoadCalendarData(dtStart, dtEnd, client, instructor, program, course);
 		}
 
         

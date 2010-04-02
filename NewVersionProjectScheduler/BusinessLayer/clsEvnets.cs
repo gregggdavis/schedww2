@@ -315,6 +315,187 @@ namespace Scheduler.BusinessLayer {
 				}
 			}
 		}
+        public DataTable LoadDataNew(DateTime dt1, DateTime dt2,
+                    string sClient, string sInstructor,
+                    string sProgram, string sClass, bool isNames)
+        {
+            string strSql = "";
+            bool IsDate = false;
+            SqlCommand com = null;
+            Connection con = null;
+            SqlDataAdapter adpt = null;
+
+            if ((dt1 == Convert.ToDateTime(null)) && (dt2 == Convert.ToDateTime(null)))
+            {
+                IsDate = false;
+            }
+            else
+            {
+                if (dt1 == SqlDateTime.MinValue && dt2 == SqlDateTime.MaxValue)
+                    IsDate = false;
+                else
+                    IsDate = true;
+            }
+
+            if (_dtbl == null)
+            {
+                _dtbl = new DataTable();
+            }
+            try
+            {
+                if (EventID <= 0)
+                {
+                    strSql = "Select * From dbo.ViewallEventsFull ";
+                    /*
+                    strSql = "Select Course.*,Program.* from Course Left Join Program on " +
+                    "Course.ProgramId = Program.ProgramId Left Join " +
+                    "Event On(Event.EventID=Course.EventID OR Event.EventID=Course.TestInitialEventID " +
+                    "OR Event.EventID=Course.TestMidTermEventID OR Event.EventID=Course.TestFinalEventID " +
+                    "OR Event.EventID=Program.TestInitialEventID OR Event.EventID=Program.TestMidTermEventID " +
+                    "OR Event.EventID=Program.TestFinalEventID) " +
+                    "Inner Join CalendarEvent on Event.EventId=CalendarEvent.EventId ";
+					*/
+                    bool isFirst = true;
+                    string strWhereClause = " Where ";
+                    if (IsDate)
+                    {
+                        if (isFirst)
+                        {
+                            strWhereClause += " StartDateTime>=@date1 and StartDateTime<=@date2 ";
+                            isFirst = false;
+                        }
+                        else
+                        {
+                            strWhereClause += " and StartDateTime>=@date1 and StartDateTime<=@date2 ";
+                        }
+
+                    }
+                    if (sProgram != "")
+                    {
+                        if (!isFirst)
+                            strWhereClause += " and ";
+                        isFirst = false;
+                        strWhereClause += " (Program = '" + sProgram + "' OR ProgramName = '" + sProgram + "') ";
+                        //if (isFirst)
+                        //{
+                        //    isFirst = false;
+                        //    strWhereClause += "  ((Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "'))))) ";
+                        //}
+                        //else
+                        //    strWhereClause += " and ((Program.[Name] = '" + sProgram + "' OR Program.NickName = '" + sProgram + "') OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = '" + sProgram + "') OR (Program.NickName = '" + sProgram + "'))))) ";
+
+                    }
+                    if (sClass != "")
+                    {
+                        if (!isFirst)
+                            strWhereClause += " and ";
+                        isFirst = false;
+                        strWhereClause += " (Class = '" + sClass + "') ";
+                        //if (isFirst)
+                        //{
+                        //    strWhereClause += " (Course.[Name] = '" + sClass + "' OR Course.NickName = '" + sClass + "') ";
+                        //    isFirst = false;
+                        //}
+                        //else
+                        //{
+                        //    strWhereClause += " and (Course.[Name] = '" + sClass + "' OR Course.NickName = '" + sClass + "') ";
+                        //}
+                    }
+                    /*
+                     if (programName!=string.Empty) {
+					eventsSql += @"
+					AND 
+					((Program.[Name] = @programName) OR (Program.NickName = @programName)) 
+					OR (Course.ProgramID=(Select ProgramID From Program Where ((Program.[Name] = @programName) 
+					OR (Program.NickName = @programName))))";
+					sqlCommand.Parameters.Add(new SqlParameter("@programName", programName));
+					//sqlCommand.Parameters.AddWithValue("programName", programName);
+				}
+				if (className != string.Empty) {
+					eventsSql += "and  ((Course.[Name] = @className) OR (Course.NickName =  @className)) ";
+					sqlCommand.Parameters.Add(new SqlParameter("@className", className));
+					//sqlCommand.Parameters.AddWithValue("className", className);
+				}
+                     */
+                    if (sInstructor != "")
+                    {
+                        if (!isFirst)
+                            strWhereClause += " and ";
+                        isFirst = false;
+                        strWhereClause += " (ScheduledTeacher = '" + sInstructor + "' OR RealTeacher = '" + sInstructor + "') ";
+                        //if (isFirst)
+                        //{
+                        //    isFirst = false;
+                        //    strWhereClause += "  (CC1.LastName + ', ' + CC1.FirstName = '" + sInstructor + "' OR CC2.LastName + ', ' + CC2.FirstName = '" + sInstructor + "') ";
+                        //}
+                        //else
+                        //    strWhereClause += " and (CC1.LastName + ', ' + CC1.FirstName = '" + sInstructor + "' OR CC2.LastName + ', ' + CC2.FirstName = '" + sInstructor + "') ";
+                    }
+
+                    strWhereClause = strWhereClause.Trim();
+                    //if (strWhereClause.Length > 3) {
+                    //    if (strWhereClause.Substring(0, 3).ToUpper() == "AND") {
+                    //        strWhereClause = strWhereClause.Substring(3, strWhereClause.Length - 3);
+                    //    }
+
+
+                    //    strWhereClause = " Where " + strWhereClause;
+                    //}
+                    if (strWhereClause != "Where")
+                        strSql += strWhereClause + " ";
+
+                    strSql += "Order By EventID";
+
+                    //	"Order By Course.[Name] ";
+                }
+                else
+                {
+                    strSql = "Select * From dbo.ViewallEventsFull " +
+                        "Where EventID=" + EventID.ToString() + " ";
+                    if (CalendarEventID > 0)
+                    {
+                        strSql += "and CalendarEventID=" + CalendarEventID.ToString();
+                    }
+                }
+
+                con = new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.Connection = con.SQLCon;
+                com.CommandText = strSql;
+
+                if (IsDate)
+                {
+                    com.Parameters.Clear();
+                    com.Parameters.Add("@date1", SqlDbType.DateTime);
+                    com.Parameters.Add("@date2", SqlDbType.DateTime);
+                    com.Parameters["@date1"].Value = dt1;
+                    com.Parameters["@date2"].Value = dt2;
+                }
+
+                adpt = new SqlDataAdapter();
+                adpt.SelectCommand = com;
+                adpt.Fill(_dtbl);
+
+                return _dtbl;
+            }
+            catch (SqlException ex)
+            {
+                Message = ex.Message;
+                return null;
+            }
+            finally
+            {
+                if (com != null)
+                {
+                    com.Dispose();
+                    com = null;
+                    con.DisConnect();
+                    adpt.Dispose();
+                    adpt = null;
+                }
+            }
+        }
 
 		public DataTable LoadData(DateTime dt1, DateTime dt2,
 			string sClient, string sInstructor,
@@ -339,7 +520,7 @@ namespace Scheduler.BusinessLayer {
 			}
 			try {
 				if (EventID <= 0) {
-                    strSql = "Select Event.EventID, CalendarEvent.CalendarEventID, Event.RepeatRule, Event.NegetiveException, CalendarEvent.Note, " +
+                    strSql = "Select Event.EventId, CalendarEvent.CalendarEventID, Event.RepeatRule, Event.NegetiveException, CalendarEvent.Note, " +
 						"Event.RecurrenceText, Event.Description, " +
 						"EventStatus = " +
 						"CASE CalendarEvent.CalendarEventStatus " +
@@ -1303,6 +1484,227 @@ namespace Scheduler.BusinessLayer {
 				}
 			}
 		}
+
+        public DataTable LoadCalendarDataNew(DateTime startDate, DateTime endDate,
+                                          string clientName, string instructorName, string programName, string className)
+        {
+            string eventsSql;
+            SqlCommand sqlCommand = new SqlCommand();
+            Connection connection = null;
+            SqlDataAdapter sqlDataAdapter = null;
+            try
+            {
+                eventsSql = @"Select CalendarEventId as CEID,StartDateTime as STARTDATETIME,EndDateTime as ENDDATETIME,Client + ', ' + Name as TASKDESC,[EventStatus] as [Status] from
+dbo.ViewallEventsFull ";
+//                eventsSql = @"Select EventId,CalendarEventId,Description,Name as EventName,StartDateTime,EventStatus as Status, 
+//EndDateTime,ScheduledTeacherId,RealTeacherId,ScheduledTeacher,RealTeacher,Instructor as ActualTeacher,CourseId,Class,ProgramId,Program,
+//Department,Client, TestEvent,Department as DeptNickName,Client as ClientNickName
+//From dbo.ViewallEventsFull";
+                if (startDate != DateTime.MinValue)
+                {
+                    eventsSql += " AND StartDateTime>=@startDate ";
+                    sqlCommand.Parameters.Add(new SqlParameter("@startDate", startDate));
+                }
+                if (endDate != DateTime.MaxValue)
+                {
+                    eventsSql += " AND EndDateTime<=@endDate ";
+                    sqlCommand.Parameters.Add(new SqlParameter("@endDate", endDate));
+                }
+                //sqlCommand.Parameters.AddWithValue("startDate", startDate);
+                //sqlCommand.Parameters.AddWithValue("endDate", endDate);
+                if (programName != string.Empty)
+                {
+                    eventsSql += @"
+					AND (Program = @programName) ";
+                    sqlCommand.Parameters.Add(new SqlParameter("@programName", programName));
+                    //sqlCommand.Parameters.AddWithValue("programName", programName);
+                }
+                if (className != string.Empty)
+                {
+                    eventsSql += "and (Class = @className) ";
+                    sqlCommand.Parameters.Add(new SqlParameter("@className", className));
+                    //sqlCommand.Parameters.AddWithValue("className", className);
+                }
+                if (clientName != string.Empty)
+                {
+                    eventsSql += "and (Client = @clientName) ";
+                    sqlCommand.Parameters.Add(new SqlParameter("@clientName", clientName));
+                    //sqlCommand.Parameters.AddWithValue("className", className);
+                }
+                if (instructorName != String.Empty)
+                {
+                    string[] sp = instructorName.Split(',');
+                    string firstName = "";
+                    string lastName = "";
+                    if (sp.Length >= 1)
+                        lastName = sp[0].Trim();
+                    if (sp.Length >= 2)
+                        firstName = sp[1].Trim();
+                    eventsSql += " and (Instructor = @ActualTeachers) ";
+                    //eventsSql += "and (ActualTeacher = @ActualTeachers)";
+                    sqlCommand.Parameters.Add(new SqlParameter("@ActualTeachers", instructorName));
+                    //eventsSql += "and  (CC1.LastName = @InsLastName AND CC1.FirstName = @InsFirstName) ";
+                    //sqlCommand.Parameters.Add(new SqlParameter("@InsFirstName", firstName));
+                    //sqlCommand.Parameters.Add(new SqlParameter("@InsLastName", lastName));
+                }
+
+                eventsSql += "Order By EventId";
+
+                connection = new Connection();
+                connection.Connect();
+                sqlCommand.Connection = connection.SQLCon;
+
+                sqlCommand.CommandText = eventsSql;
+
+                sqlDataAdapter = new SqlDataAdapter();
+                sqlDataAdapter.SelectCommand = sqlCommand;
+                sqlDataAdapter.Fill(_dtbl);
+                //new escape line
+                return _dtbl;
+                DataTable dtbl = new DataTable();
+                dtbl.Columns.Add("CEID", Type.GetType("System.String"));
+                dtbl.Columns.Add("STARTDATETIME", Type.GetType("System.DateTime"));
+                dtbl.Columns.Add("ENDDATETIME", Type.GetType("System.DateTime"));
+                dtbl.Columns.Add("TASKDESC", Type.GetType("System.String"));
+                dtbl.Columns.Add("Status", Type.GetType("System.String"));
+                List<DataRow> deleteRows = new List<DataRow>();
+                foreach (DataRow dr in _dtbl.Rows)
+                {
+                    string strfinalstring = "";
+                    string strDept = "";
+                    string strDescription = "";
+                    string strTeacher = "";
+                    string strClient = "";
+                    string status = "";
+                    if (dr["EventName"].ToString().Trim().Length > 0)
+                    {
+                        strDescription = dr["EventName"].ToString();
+                    }
+                    DateTime dtStart = Convert.ToDateTime(null);
+                    if (dr["StartDateTime"].ToString().Length > 0)
+                    {
+                        dtStart = Convert.ToDateTime(dr["StartDateTime"].ToString());
+                    }
+
+                    DateTime dtEnd = DateTime.MinValue;
+                    if (dr["EndDateTime"].GetType().IsAssignableFrom(typeof(DateTime)))
+                    {
+                        dtEnd = (DateTime)dr["EndDateTime"];
+                    }
+
+                    if (dr["RealTeacher"].ToString().Trim().Length > 0)
+                    {
+                        strTeacher = dr["RealTeacher"].ToString().Trim();
+                        if (instructorName != "")
+                        {
+                            if (instructorName != strTeacher) continue;
+                        }
+                    }
+                    else if (dr["ScheduledTeacher"].ToString().Trim().Length > 0)
+                    {
+                        strTeacher = dr["ScheduledTeacher"].ToString().Trim();
+                        if (instructorName != "")
+                        {
+                            if (instructorName != strTeacher) continue;
+                        }
+                    }
+                    else if (instructorName != null && instructorName.Length > 0)
+                    {
+                        continue;
+                    }
+
+                    if (dr["Department"].ToString().Trim().Length > 0)
+                    {
+                        strDept = dr["Department"].ToString().Trim();
+                    }
+                    if (dr["Client"].ToString().Trim().Length > 0)
+                    {
+                        strClient = dr["Client"].ToString().Trim();
+                        if (clientName != string.Empty && clientName != strClient)
+                        {
+                            continue;
+                        }
+                    }
+                    if (dr["Status"] != DBNull.Value) status = dr["Status"].ToString();
+                    //strfinalstring = strTime.Trim();
+                    /*if(strDept!="")
+                    {
+                        if(dr["DeptNickName"].ToString()=="")
+                            strfinalstring += strDept;
+                        else
+                            strfinalstring += dr["DeptNickName"].ToString();
+                    }*/
+                    if (strClient != "")
+                    {
+                        if (dr["ClientNickName"].ToString() == "")
+                            strfinalstring += strClient;
+                        else
+                            strfinalstring += dr["ClientNickName"].ToString();
+                    }
+                    
+                    //was removed in corresponding
+                    //						if(strTeacher!="")
+                    //						{
+                    //							strfinalstring += ", " + strTeacher;
+                    //						}
+                    if (strDescription != "")
+                    {
+                        strfinalstring += ", " + strDescription;
+                    }
+
+                    strfinalstring = strfinalstring.Trim();
+                    if (strfinalstring.Length > 0)
+                    {
+                        if (strfinalstring.IndexOf(",", 0, strfinalstring.Length) == 0)
+                        {
+                            strfinalstring = strfinalstring.Substring(1, strfinalstring.Length - 1);
+                        }
+                    }
+
+                    dtbl.Rows.Add(new object[]{
+														  dr["CalendarEventID"].ToString(),
+														  dtStart,
+														  dtEnd,
+														  strfinalstring,status
+													  });
+                    if (clientName != String.Empty)
+                    {
+                        if (dr["ClientNickName"].ToString() != clientName && dr["Client"].ToString() != clientName)
+                        {
+                            deleteRows.Add(dr);
+                        }
+
+
+                    }
+                }
+                int totalCount = deleteRows.Count;
+                for (int i = 0; i < totalCount; i++)
+                {
+                    deleteRows[i].Delete();
+                }
+                return dtbl;
+            }
+            catch (SqlException ex)
+            {
+                Message = ex.Message;
+                return null;
+            }
+            finally
+            {
+                if (sqlCommand != null)
+                {
+                    sqlCommand.Dispose();
+                    if (connection != null)
+                    {
+                        connection.DisConnect();
+                    }
+                    if (sqlDataAdapter != null)
+                    {
+                        sqlDataAdapter.Dispose();
+                    }
+                }
+            }
+        }
 
 		private void FixDataTable(Connection connection) {
 			SqlCommand sqlCommand;
