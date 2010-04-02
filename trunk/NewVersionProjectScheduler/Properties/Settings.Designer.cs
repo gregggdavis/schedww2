@@ -26,7 +26,7 @@ namespace Scheduler.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RBM-PC1\\RBM;Initial Catalog=SchedulerDB;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RBM-PC1\\RBM;Initial Catalog=NewGreggDB;Integrated Security=True")]
         public string SchedulerDBConnectionString {
             get {
                 return ((string)(this["SchedulerDBConnectionString"]));
@@ -36,8 +36,8 @@ namespace Scheduler.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RBM-PC\\RBM;Initial Catalog=SchedulerDB;Persist Security Info=True;Use" +
-            "r ID=sa;Password=welcome")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=RBM-PC\\RBM;Initial Catalog=NewGreggDB;Persist Security Info=True;User" +
+            " ID=sa;Password=welcome")]
         public string SchedulerDBConnectionString1 {
             get {
                 return ((string)(this["SchedulerDBConnectionString1"]));
