@@ -4,6 +4,8 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
+using DevExpress.Xpo;
+using DevExpress.Xpo.DB;
 
 namespace Scheduler
 {
@@ -68,11 +70,15 @@ namespace Scheduler
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gcolScheduledInstructor;
+        private DevExpress.Xpo.XPServerCollectionSource xpServerCollectionSource1;
+        private DevExpress.Xpo.Session session1;
 		private bool boolFetch=true;
         #endregion
 
         public frmCourseBrw()
 		{
+            XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
+
 			InitializeComponent();
 			pnl_Find.Height = 0;
 
@@ -158,6 +164,8 @@ namespace Scheduler
             this.gcolOccurrenceCount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolScheduledInstructor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
+            this.session1 = new DevExpress.Xpo.Session();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.pnl_Find.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -170,6 +178,8 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.session1)).BeginInit();
             this.SuspendLayout();
             // 
             // persistentRepository1
@@ -329,10 +339,10 @@ namespace Scheduler
             this.txt_SpeedSearch.Name = "txt_SpeedSearch";
             this.txt_SpeedSearch.Size = new System.Drawing.Size(157, 21);
             this.txt_SpeedSearch.TabIndex = 10;
-            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
-            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             this.txt_SpeedSearch.TextChanged += new System.EventHandler(this.txt_SpeedSearch_TextChanged);
             this.txt_SpeedSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyDown);
+            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
+            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             // 
             // label1
             // 
@@ -347,8 +357,8 @@ namespace Scheduler
             // 
             // grdCourse
             // 
+            this.grdCourse.DataSource = this.xpServerCollectionSource1;
             this.grdCourse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdCourse.EmbeddedNavigator.Name = "";
             this.grdCourse.ExternalRepository = this.persistentRepository1;
             this.grdCourse.Location = new System.Drawing.Point(0, 90);
             this.grdCourse.MainView = this.gvwCourse;
@@ -357,6 +367,7 @@ namespace Scheduler
             this.repositoryItemTimeEdit1,
             this.repositoryItemButtonEdit1,
             this.repositoryItemTimeEdit2});
+            this.grdCourse.ServerMode = true;
             this.grdCourse.Size = new System.Drawing.Size(672, 267);
             this.grdCourse.TabIndex = 26;
             this.grdCourse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -408,14 +419,11 @@ namespace Scheduler
             this.gvwCourse.OptionsView.ShowIndicator = false;
             this.gvwCourse.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClient, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gvwCourse.Appearance.FocusedRow.AssignInternal(this.gvwCourse.Appearance.SelectedRow);
-            //this.gvwCourse.ViewStyles.AddReplace("FocusedRow", "SelectedRow");
-            //this.gvwCourse.ViewStyles.AddReplace("FocusedCell", "SelectedRow");
             // 
             // gcolCourseID
             // 
             this.gcolCourseID.Caption = "Course ID";
-            this.gcolCourseID.FieldName = "CourseID";
+            this.gcolCourseID.FieldName = "CourseId";
             this.gcolCourseID.Name = "gcolCourseID";
             // 
             // gColName
@@ -641,6 +649,11 @@ namespace Scheduler
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
+            // xpServerCollectionSource1
+            // 
+            this.xpServerCollectionSource1.ObjectType = typeof(Scheduler.BusinessLayer.CoursePO);
+            this.xpServerCollectionSource1.Session = this.session1;
+            // 
             // frmCourseBrw
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
@@ -666,6 +679,8 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.session1)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -695,10 +710,15 @@ namespace Scheduler
 		public void LoadCourse()
 		{
 			objCourse = new Scheduler.BusinessLayer.Course();
-			objCourse.LoadData();
-			dtbl = objCourse.CourseDataTable;
-			grdCourse.DataSource = dtbl;
+            DateTime dt = DateTime.Now;
 
+			//objCourse.LoadDataN();
+			//dtbl = objCourse.CourseDataTable;
+			//grdCourse.DataSource = xpServerCollectionSource1;
+            //grdCourse.ServerMode = true;
+            DateTime dt1 = DateTime.Now;
+            TimeSpan ts= dt1 - dt;
+            //MessageBox.Show(ts.Seconds.ToString());
 			//gvwContact.UnselectRow(0);
 			//gvwContact.FocusedRowHandle = CurrRec;
 			//gvwContact.SelectRow(CurrRec);

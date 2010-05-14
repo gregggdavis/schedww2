@@ -420,7 +420,55 @@ namespace Scheduler.BusinessLayer
 				}
 			}
 		}
+        //ViewClassEventsN
+        public bool LoadDataN()
+        {
+            string strSql = "select * From ViewClassEventsN ";
+            SqlDataReader Reader = null;
+            SqlCommand com = null;
+            Connection con = null;
+            try
+            {
+                if (_courseid <= 0)
+                {
+                    strSql +=  " Order By BrowseName ";
+                }
+                else
+                {
+                    strSql += String.Format(" Where C.CourseID= {0} ", _courseid);
+                }
 
+                BuildDataTable();
+
+                con = new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.Connection = con.SQLCon;
+                com.CommandText = strSql;
+                Reader = com.ExecuteReader();
+
+                _dtbl.Load(Reader, LoadOption.OverwriteChanges);
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                Message = ex.Message;
+                return false;
+            }
+            finally
+            {
+                if (!Reader.IsClosed)
+                {
+                    Reader.Close();
+                }
+                if (com != null)
+                {
+                    com.Dispose();
+                    com = null;
+                    con.DisConnect();
+                }
+            }
+        }
         //Loads Other Events (Events with 'EventType' fields set to anything but ZERO.
         /* Event Type Field Values:
          * 'Class' =  Repeating or Single Occurence
