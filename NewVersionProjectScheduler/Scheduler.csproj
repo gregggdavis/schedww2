@@ -244,6 +244,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="BusinessLayer\DXpressObjectClass\CoursePO.cs" />
+    <Compile Include="BusinessLayer\DXpressObjectClass\EventsPO.cs" />
     <Compile Include="BusinessLayer\GridViewPrinter.cs">
       <SubType>Code</SubType>
     </Compile>
