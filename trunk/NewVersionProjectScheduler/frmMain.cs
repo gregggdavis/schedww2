@@ -1681,9 +1681,8 @@ namespace Scheduler
 		private bool GetConnectionString(string Server, string Database)
 		{
 			string strconnstring;
-			strconnstring = "Server=" + Server + ";" +
-			                "Database=" + Database + ";" +
-			                "Trusted_Connection=True;";
+            strconnstring = @"Data Source=" +  Server + ";Initial Catalog=" + Database + ";Integrated Security=SSPI;";
+			
 			SqlConnection cn = new SqlConnection(strconnstring);
 			try
 			{
