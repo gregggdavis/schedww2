@@ -98,11 +98,11 @@ namespace Scheduler
 
         public frmEventBrw()
 		{
-            XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
+            //XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
 			InitializeComponent();
 			pnl_Find.Height = 0;
 			pnl_Find.Visible=true;
-
+            XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
 			try
 			{
 				Common.SetControlFont(pnl_Find);				
@@ -143,6 +143,8 @@ namespace Scheduler
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
+            this.session1 = new DevExpress.Xpo.Session();
             this.gvwEvent = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcolEventID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCalendarEventID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -196,8 +198,6 @@ namespace Scheduler
             this.btn_Find = new System.Windows.Forms.Button();
             this.lbl_Find = new System.Windows.Forms.Label();
             this.chk_AdvanceSearch = new System.Windows.Forms.CheckBox();
-            this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
-            this.session1 = new DevExpress.Xpo.Session();
             this.imgContext = new System.Windows.Forms.ImageList(this.components);
             this.persistentRepository1 = new DevExpress.XtraEditors.Repository.PersistentRepository(this.components);
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -205,6 +205,8 @@ namespace Scheduler
             this.pnlBrowse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEvent)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.session1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvent)).BeginInit();
             this.pnlFilter.SuspendLayout();
             this.pnl_SpeedSearch.SuspendLayout();
@@ -212,8 +214,6 @@ namespace Scheduler
             this.pnl_Find.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.session1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -254,6 +254,7 @@ namespace Scheduler
             this.grdEvent.Location = new System.Drawing.Point(0, 0);
             this.grdEvent.MainView = this.gvwEvent;
             this.grdEvent.Name = "grdEvent";
+            this.grdEvent.ServerMode = true;
             this.grdEvent.Size = new System.Drawing.Size(760, 276);
             this.grdEvent.TabIndex = 26;
             this.grdEvent.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -283,6 +284,11 @@ namespace Scheduler
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // xpServerCollectionSource1
+            // 
+            this.xpServerCollectionSource1.ObjectType = typeof(Scheduler.BusinessLayer.EventsPO);
+            this.xpServerCollectionSource1.Session = this.session1;
             // 
             // gvwEvent
             // 
@@ -882,11 +888,6 @@ namespace Scheduler
             this.chk_AdvanceSearch.Text = "Search All Fields";
             this.chk_AdvanceSearch.UseVisualStyleBackColor = false;
             // 
-            // xpServerCollectionSource1
-            // 
-            this.xpServerCollectionSource1.ObjectType = typeof(Scheduler.BusinessLayer.EventsPO);
-            this.xpServerCollectionSource1.Session = this.session1;
-            // 
             // imgContext
             // 
             this.imgContext.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgContext.ImageStream")));
@@ -921,6 +922,8 @@ namespace Scheduler
             this.pnlBrowse.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEvent)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.session1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvent)).EndInit();
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();
@@ -931,8 +934,6 @@ namespace Scheduler
             this.pnl_Find.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.session1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             this.ResumeLayout(false);
 

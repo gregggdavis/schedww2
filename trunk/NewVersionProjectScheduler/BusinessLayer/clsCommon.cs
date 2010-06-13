@@ -56,6 +56,12 @@ namespace Scheduler.BusinessLayer
             DAC.ConnectionString = value;
         }
 		}
+        private static String _SqlConnString = "";
+        public static string SqlConnString
+        {
+            set { _SqlConnString = value; }
+            get { return _SqlConnString; }
+        }
 		public static string ConnString1
 		{
 			get{return mConnString1;}

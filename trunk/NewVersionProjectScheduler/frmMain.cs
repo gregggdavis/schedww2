@@ -23,6 +23,7 @@ using Microsoft.Win32;
 using Scheduler.BusinessLayer;
 using Message=Scheduler.BusinessLayer.Message;
 using Timer=System.Windows.Forms.Timer;
+using DevExpress.Xpo;
 
 namespace Scheduler
 {
@@ -137,6 +138,7 @@ namespace Scheduler
 		{
 			InitializeComponent();
 			AddDocking();
+            
 		}
 
 		/// <summary>
@@ -1637,6 +1639,7 @@ namespace Scheduler
 
 				Visible = true;
 			}
+            
 		}
 
 		private bool DoDataConnect()
@@ -1687,6 +1690,7 @@ namespace Scheduler
 				cn.Open();
 				Common.ConnString = strconnstring;
 				Common.ConnString1 = strconnstring;
+                
 				cn.Close();
 				cn.Dispose();
 				return true;

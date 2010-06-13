@@ -77,11 +77,11 @@ namespace Scheduler
 
         public frmCourseBrw()
 		{
-            XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
+            
 
 			InitializeComponent();
 			pnl_Find.Height = 0;
-
+            XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
 			try
 			{
 				BusinessLayer.Common.SetControlFont(pnl_Find);				

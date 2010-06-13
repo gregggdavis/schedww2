@@ -13,8 +13,9 @@ namespace Scheduler
 	/// Summary description for frmSqlLogin.
 	/// </summary>
 	public class frmSqlLogin : System.Windows.Forms.Form
-	{
-		internal System.Windows.Forms.GroupBox GroupBox1;
+    {
+        #region Declarations
+        internal System.Windows.Forms.GroupBox GroupBox1;
 		internal System.Windows.Forms.GroupBox GroupBox2;
 		internal System.Windows.Forms.RadioButton rbtnSQLAuth;
 		internal System.Windows.Forms.RadioButton rbtnWindowsAuth;
@@ -30,7 +31,8 @@ namespace Scheduler
 		internal System.Windows.Forms.Button btnClose;
 		internal System.Windows.Forms.Button btnLogin;
 		internal System.Windows.Forms.Label label3;
-		/// <summary>
+        #endregion
+        /// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
