@@ -199,7 +199,9 @@ namespace Scheduler.BusinessLayer
             {
                 //DevExpress.XtraPrinting.PrintingSystem pd = new PrintingSystem();
                 //PrintDocument pd = new PrintDocument();
-                InitPrinting(ref this.ps);
+                // WATCH OUT: Change here casting this.ps to printing system
+                PrintingSystem psCurrent = this.ps as PrintingSystem;
+                InitPrinting(ref psCurrent);
                 CreateDocument(this.ps);
                 this.ps.PageSettings.LeftMargin = 80;
                 this.ps.PageSettings.RightMargin = 80;
@@ -209,8 +211,12 @@ namespace Scheduler.BusinessLayer
                 this.ps.Document.Name = _f.Text;
                 if (PrintPreview)
                 {
-                    this.ps.PreviewFormEx.ShowDialog();
-                    this.ps.PreviewFormEx.WindowState = FormWindowState.Maximized;
+                    psCurrent.PreviewFormEx.ShowDialog();
+                    psCurrent.PreviewFormEx.WindowState = FormWindowState.Maximized;
+                    /*********** WATCH OUT: two commented lines ***********************/
+                    //this.ps.PreviewFormEx.ShowDialog();
+                    //this.ps.PreviewFormEx.WindowState = FormWindowState.Maximized;
+                    /*********** WATCH OUT: two commented lines ***********************/
                     //PrintPreviewDialog pp = new PrintPreviewDialog();
                     //pp.Document = pd;
                     //pp.WindowState = FormWindowState.Maximized;
@@ -218,7 +224,8 @@ namespace Scheduler.BusinessLayer
                 }
                 else
                 {
-                    this.ps.Print();
+                    psCurrent.Print();
+                    //this.ps.Print();
                 }
             }
             catch (Exception ex)
