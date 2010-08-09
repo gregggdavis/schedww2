@@ -1698,7 +1698,7 @@ namespace Scheduler
                     }
                 }
 				btnDelete.Enabled = false;
-				Text = "Adding Department...";
+				Text = "Adding Program...";
 				if (cmbDept.Items.Count > 0)
 					cmbDept.SelectedIndex = 0;
 				cmbStatus.SelectedIndex = 0;
