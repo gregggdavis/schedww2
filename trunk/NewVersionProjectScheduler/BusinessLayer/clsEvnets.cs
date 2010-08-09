@@ -370,6 +370,13 @@ namespace Scheduler.BusinessLayer {
                         }
 
                     }
+                    if (sClient != "")
+                    {
+                        if (!isFirst)
+                            strWhereClause += " and ";
+                        isFirst = false;
+                        strWhereClause += " (Client = '" + sClient + "' OR ClientName = '" + sClient + "') ";
+                    }
                     if (sProgram != "")
                     {
                         if (!isFirst)
@@ -1495,7 +1502,7 @@ namespace Scheduler.BusinessLayer {
             try
             {
                 eventsSql = @"Select CalendarEventId as CEID,StartDateTime as STARTDATETIME,EndDateTime as ENDDATETIME,Client + ', ' + Name as TASKDESC,[EventStatus] as [Status] from
-dbo.ViewallEventsFull ";
+dbo.ViewallEventsFull where 1=1 ";
 //                eventsSql = @"Select EventId,CalendarEventId,Description,Name as EventName,StartDateTime,EventStatus as Status, 
 //EndDateTime,ScheduledTeacherId,RealTeacherId,ScheduledTeacher,RealTeacher,Instructor as ActualTeacher,CourseId,Class,ProgramId,Program,
 //Department,Client, TestEvent,Department as DeptNickName,Client as ClientNickName
@@ -1514,8 +1521,7 @@ dbo.ViewallEventsFull ";
                 //sqlCommand.Parameters.AddWithValue("endDate", endDate);
                 if (programName != string.Empty)
                 {
-                    eventsSql += @"
-					AND (Program = @programName) ";
+                    eventsSql += "and (Program = @programName) ";
                     sqlCommand.Parameters.Add(new SqlParameter("@programName", programName));
                     //sqlCommand.Parameters.AddWithValue("programName", programName);
                 }
@@ -1527,7 +1533,7 @@ dbo.ViewallEventsFull ";
                 }
                 if (clientName != string.Empty)
                 {
-                    eventsSql += "and (Client = @clientName) ";
+                    eventsSql += "and (ClientName = @clientName) ";
                     sqlCommand.Parameters.Add(new SqlParameter("@clientName", clientName));
                     //sqlCommand.Parameters.AddWithValue("className", className);
                 }
