@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using System.Data;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Scheduler
 {
@@ -77,10 +80,9 @@ namespace Scheduler
 
         public frmCourseBrw()
 		{
-            
-
 			InitializeComponent();
-			pnl_Find.Height = 0;
+            //this.gvwCourse.ActiveFilter.Add(gcolStatus, new ColumnFilterInfo("Status='Active'"));
+            pnl_Find.Height = 0;
             XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
 			try
 			{
@@ -498,9 +500,9 @@ namespace Scheduler
             this.repositoryItemTimeEdit1.AutoHeight = false;
             this.repositoryItemTimeEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.repositoryItemTimeEdit1.DisplayFormat.FormatString = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit1.DisplayFormat.FormatString = "MM/dd/yyy HH:mm";
             this.repositoryItemTimeEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.repositoryItemTimeEdit1.Mask.EditMask = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit1.Mask.EditMask = "MM/dd/yyy HH:mm";
             this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
             // 
             // gcolEndDateTime
@@ -518,9 +520,9 @@ namespace Scheduler
             this.repositoryItemTimeEdit2.AutoHeight = false;
             this.repositoryItemTimeEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.repositoryItemTimeEdit2.DisplayFormat.FormatString = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit2.DisplayFormat.FormatString = "MM/dd/yyy HH:mm";
             this.repositoryItemTimeEdit2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.repositoryItemTimeEdit2.Mask.EditMask = "MM/dd/yyy HH:mi";
+            this.repositoryItemTimeEdit2.Mask.EditMask = "MM/dd/yyy HH:mm";
             this.repositoryItemTimeEdit2.Name = "repositoryItemTimeEdit2";
             // 
             // gcolNumberStudents
@@ -682,7 +684,6 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.xpServerCollectionSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.session1)).EndInit();
             this.ResumeLayout(false);
-
 		}
 		#endregion
 
@@ -710,14 +711,16 @@ namespace Scheduler
 		public void LoadCourse()
 		{
 			objCourse = new Scheduler.BusinessLayer.Course();
-            DateTime dt = DateTime.Now;
+          //DateTime dt = DateTime.Now;
 
 			//objCourse.LoadDataN();
 			//dtbl = objCourse.CourseDataTable;
-			//grdCourse.DataSource = xpServerCollectionSource1;
+            //grdCourse.DataSource = dtbl;
+
+            //grdCourse.DataSource = xpServerCollectionSource1;
             //grdCourse.ServerMode = true;
-            DateTime dt1 = DateTime.Now;
-            TimeSpan ts= dt1 - dt;
+          //DateTime dt1 = DateTime.Now;
+          //TimeSpan ts= dt1 - dt;
             //MessageBox.Show(ts.Seconds.ToString());
 			//gvwContact.UnselectRow(0);
 			//gvwContact.FocusedRowHandle = CurrRec;
