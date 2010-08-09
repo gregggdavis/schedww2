@@ -269,7 +269,7 @@ namespace Scheduler.BusinessLayer
 						"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
 						"Left Join Contact CO on (D.ContactID=CO.ContactID) " +
 						"Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
-					    "Order By C.BrowseName ";
+                        "Order By C.BrowseName ";
 				}
 				else
 				{
