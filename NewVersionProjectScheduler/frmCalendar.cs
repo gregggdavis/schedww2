@@ -137,10 +137,9 @@ namespace Scheduler {
             this.StartDatePickerTop.Checked = false;
             this.StartDatePickerTop.CustomFormat = "MM/dd/yyyy";
             this.StartDatePickerTop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.StartDatePickerTop.Location = new System.Drawing.Point(190, 9);
+            this.StartDatePickerTop.Location = new System.Drawing.Point(85, 7);
             this.StartDatePickerTop.Name = "StartDatePickerTop";
-            this.StartDatePickerTop.ShowCheckBox = true;
-            this.StartDatePickerTop.Size = new System.Drawing.Size(96, 21);
+            this.StartDatePickerTop.Size = new System.Drawing.Size(93, 27);
             this.StartDatePickerTop.TabIndex = 15;
             this.StartDatePickerTop.ValueChanged += new System.EventHandler(this.datePickerTop_ValueChanged);
             // 
@@ -166,9 +165,9 @@ namespace Scheduler {
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter1.Location = new System.Drawing.Point(789, 0);
+            this.splitter1.Location = new System.Drawing.Point(676, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 622);
+            this.splitter1.Size = new System.Drawing.Size(5, 622);
             this.splitter1.TabIndex = 6;
             this.splitter1.TabStop = false;
             // 
@@ -180,7 +179,7 @@ namespace Scheduler {
             this.pnlCalendar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlCalendar.Location = new System.Drawing.Point(0, 0);
             this.pnlCalendar.Name = "pnlCalendar";
-            this.pnlCalendar.Size = new System.Drawing.Size(792, 622);
+            this.pnlCalendar.Size = new System.Drawing.Size(681, 622);
             this.pnlCalendar.TabIndex = 2;
             // 
             // schedulerControl1
@@ -191,7 +190,7 @@ namespace Scheduler {
             this.schedulerControl1.Appearance.Selection.Options.UseFont = true;
             this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.schedulerControl1.Location = new System.Drawing.Point(0, 64);
+            this.schedulerControl1.Location = new System.Drawing.Point(0, 60);
             this.schedulerControl1.Name = "schedulerControl1";
             dailyPrintStyle1.CalendarHeaderVisible = false;
             weeklyPrintStyle1.CalendarHeaderVisible = false;
@@ -203,7 +202,7 @@ namespace Scheduler {
             this.schedulerControl1.PrintStyles.Add(triFoldPrintStyle1);
             this.schedulerControl1.PrintStyles.Add(calendarDetailsPrintStyle1);
             this.schedulerControl1.PrintStyles.Add(memoPrintStyle1);
-            this.schedulerControl1.Size = new System.Drawing.Size(792, 558);
+            this.schedulerControl1.Size = new System.Drawing.Size(681, 562);
             this.schedulerControl1.Start = new System.DateTime(2006, 3, 6, 0, 0, 0, 0);
             this.schedulerControl1.Storage = this.schedulerStorage1;
             this.schedulerControl1.TabIndex = 1;
@@ -265,15 +264,15 @@ namespace Scheduler {
             this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFilter.Location = new System.Drawing.Point(0, 0);
             this.pnlFilter.Name = "pnlFilter";
-            this.pnlFilter.Size = new System.Drawing.Size(792, 64);
+            this.pnlFilter.Size = new System.Drawing.Size(681, 60);
             this.pnlFilter.TabIndex = 3;
             // 
             // chkHideWeekends
             // 
-            this.chkHideWeekends.Location = new System.Drawing.Point(13, 34);
+            this.chkHideWeekends.Location = new System.Drawing.Point(676, 19);
             this.chkHideWeekends.Name = "chkHideWeekends";
             this.chkHideWeekends.Properties.Caption = "Hide Weekends";
-            this.chkHideWeekends.Size = new System.Drawing.Size(101, 19);
+            this.chkHideWeekends.Size = new System.Drawing.Size(161, 24);
             this.chkHideWeekends.TabIndex = 20;
             this.chkHideWeekends.CheckedChanged += new System.EventHandler(this.chkHideWeekends_CheckedChanged);
             // 
@@ -281,9 +280,9 @@ namespace Scheduler {
             // 
             this.lblMonth.AutoSize = true;
             this.lblMonth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonth.Location = new System.Drawing.Point(120, 40);
+            this.lblMonth.Location = new System.Drawing.Point(13, 36);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(57, 13);
+            this.lblMonth.Size = new System.Drawing.Size(87, 21);
             this.lblMonth.TabIndex = 19;
             this.lblMonth.Text = "End Date";
             // 
@@ -291,9 +290,9 @@ namespace Scheduler {
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(120, 13);
+            this.lblYear.Location = new System.Drawing.Point(13, 11);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(66, 13);
+            this.lblYear.Size = new System.Drawing.Size(97, 21);
             this.lblYear.TabIndex = 18;
             this.lblYear.Text = "Start Date";
             // 
@@ -302,28 +301,28 @@ namespace Scheduler {
             this.EndDatePickerTop.Checked = false;
             this.EndDatePickerTop.CustomFormat = "MM/dd/yyyy";
             this.EndDatePickerTop.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.EndDatePickerTop.Location = new System.Drawing.Point(190, 37);
+            this.EndDatePickerTop.Location = new System.Drawing.Point(85, 33);
             this.EndDatePickerTop.Name = "EndDatePickerTop";
-            this.EndDatePickerTop.ShowCheckBox = true;
-            this.EndDatePickerTop.Size = new System.Drawing.Size(96, 21);
+            this.EndDatePickerTop.Size = new System.Drawing.Size(93, 27);
             this.EndDatePickerTop.TabIndex = 17;
             this.EndDatePickerTop.ValueChanged += new System.EventHandler(this.datePickerTop_ValueChanged);
             // 
             // btnClearFilters
             // 
             this.btnClearFilters.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearFilters.Location = new System.Drawing.Point(10, 7);
+            this.btnClearFilters.Location = new System.Drawing.Point(16, 10);
             this.btnClearFilters.Name = "btnClearFilters";
-            this.btnClearFilters.Size = new System.Drawing.Size(104, 23);
+            this.btnClearFilters.Size = new System.Drawing.Size(166, 33);
             this.btnClearFilters.TabIndex = 13;
             this.btnClearFilters.Text = "Clear All Filters";
+            this.btnClearFilters.Visible = false;
             this.btnClearFilters.Click += new System.EventHandler(this.btnClearFilters_Click);
             // 
             // cmbClass
             // 
             this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClass.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbClass.ItemHeight = 13;
+            this.cmbClass.ItemHeight = 21;
             this.cmbClass.Items.AddRange(new object[] {
             "January",
             "February",
@@ -337,9 +336,9 @@ namespace Scheduler {
             "October",
             "November",
             "December"});
-            this.cmbClass.Location = new System.Drawing.Point(584, 35);
+            this.cmbClass.Location = new System.Drawing.Point(502, 32);
             this.cmbClass.Name = "cmbClass";
-            this.cmbClass.Size = new System.Drawing.Size(144, 21);
+            this.cmbClass.Size = new System.Drawing.Size(137, 29);
             this.cmbClass.TabIndex = 12;
             this.cmbClass.SelectedIndexChanged += new System.EventHandler(this.cmbClass_SelectedIndexChanged);
             // 
@@ -348,9 +347,9 @@ namespace Scheduler {
             this.lblClass.AutoSize = true;
             this.lblClass.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblClass.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClass.Location = new System.Drawing.Point(512, 39);
+            this.lblClass.Location = new System.Drawing.Point(446, 36);
             this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(36, 13);
+            this.lblClass.Size = new System.Drawing.Size(54, 21);
             this.lblClass.TabIndex = 11;
             this.lblClass.Text = "Class";
             // 
@@ -370,9 +369,9 @@ namespace Scheduler {
             "October",
             "November",
             "December"});
-            this.cmbProgram.Location = new System.Drawing.Point(584, 9);
+            this.cmbProgram.Location = new System.Drawing.Point(502, 6);
             this.cmbProgram.Name = "cmbProgram";
-            this.cmbProgram.Size = new System.Drawing.Size(144, 21);
+            this.cmbProgram.Size = new System.Drawing.Size(137, 29);
             this.cmbProgram.TabIndex = 10;
             this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
             // 
@@ -380,9 +379,9 @@ namespace Scheduler {
             // 
             this.lblProgram.AutoSize = true;
             this.lblProgram.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProgram.Location = new System.Drawing.Point(512, 12);
+            this.lblProgram.Location = new System.Drawing.Point(446, 11);
             this.lblProgram.Name = "lblProgram";
-            this.lblProgram.Size = new System.Drawing.Size(56, 13);
+            this.lblProgram.Size = new System.Drawing.Size(83, 21);
             this.lblProgram.TabIndex = 9;
             this.lblProgram.Text = "Program";
             // 
@@ -390,7 +389,7 @@ namespace Scheduler {
             // 
             this.cmbInstructor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInstructor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbInstructor.ItemHeight = 13;
+            this.cmbInstructor.ItemHeight = 21;
             this.cmbInstructor.Items.AddRange(new object[] {
             "January",
             "February",
@@ -404,9 +403,9 @@ namespace Scheduler {
             "October",
             "November",
             "December"});
-            this.cmbInstructor.Location = new System.Drawing.Point(364, 34);
+            this.cmbInstructor.Location = new System.Drawing.Point(277, 32);
             this.cmbInstructor.Name = "cmbInstructor";
-            this.cmbInstructor.Size = new System.Drawing.Size(131, 21);
+            this.cmbInstructor.Size = new System.Drawing.Size(137, 29);
             this.cmbInstructor.TabIndex = 8;
             this.cmbInstructor.SelectedIndexChanged += new System.EventHandler(this.cmbInstructor_SelectedIndexChanged);
             // 
@@ -415,9 +414,9 @@ namespace Scheduler {
             this.lblInstructor.AutoSize = true;
             this.lblInstructor.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblInstructor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstructor.Location = new System.Drawing.Point(292, 38);
+            this.lblInstructor.Location = new System.Drawing.Point(212, 36);
             this.lblInstructor.Name = "lblInstructor";
-            this.lblInstructor.Size = new System.Drawing.Size(65, 13);
+            this.lblInstructor.Size = new System.Drawing.Size(97, 21);
             this.lblInstructor.TabIndex = 7;
             this.lblInstructor.Text = "Instructor";
             // 
@@ -437,9 +436,9 @@ namespace Scheduler {
             "October",
             "November",
             "December"});
-            this.cmbClient.Location = new System.Drawing.Point(364, 8);
+            this.cmbClient.Location = new System.Drawing.Point(277, 6);
             this.cmbClient.Name = "cmbClient";
-            this.cmbClient.Size = new System.Drawing.Size(131, 21);
+            this.cmbClient.Size = new System.Drawing.Size(137, 29);
             this.cmbClient.TabIndex = 6;
             this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
@@ -447,9 +446,9 @@ namespace Scheduler {
             // 
             this.lblClient.AutoSize = true;
             this.lblClient.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClient.Location = new System.Drawing.Point(292, 11);
+            this.lblClient.Location = new System.Drawing.Point(212, 11);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(39, 13);
+            this.lblClient.Size = new System.Drawing.Size(59, 21);
             this.lblClient.TabIndex = 5;
             this.lblClient.Text = "Client";
             // 
@@ -457,20 +456,20 @@ namespace Scheduler {
             // 
             this.pnlDateNavigator.Controls.Add(this.dateNavigator1);
             this.pnlDateNavigator.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDateNavigator.Location = new System.Drawing.Point(792, 0);
+            this.pnlDateNavigator.Location = new System.Drawing.Point(681, 0);
             this.pnlDateNavigator.Name = "pnlDateNavigator";
-            this.pnlDateNavigator.Size = new System.Drawing.Size(184, 622);
+            this.pnlDateNavigator.Size = new System.Drawing.Size(295, 622);
             this.pnlDateNavigator.TabIndex = 4;
             // 
             // dateNavigator1
             // 
             this.dateNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateNavigator1.HotDate = null;
             this.dateNavigator1.Location = new System.Drawing.Point(0, 0);
             this.dateNavigator1.Name = "dateNavigator1";
             this.dateNavigator1.SchedulerControl = this.schedulerControl1;
-            this.dateNavigator1.Size = new System.Drawing.Size(184, 622);
+            this.dateNavigator1.Size = new System.Drawing.Size(295, 622);
             this.dateNavigator1.TabIndex = 0;
-            this.dateNavigator1.View = DevExpress.XtraEditors.Controls.DateEditCalendarViewType.MonthInfo;
             // 
             // imgContext
             // 
@@ -481,7 +480,7 @@ namespace Scheduler {
             // 
             // frmCalendar
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+            this.AutoScaleBaseSize = new System.Drawing.Size(8, 20);
             this.ClientSize = new System.Drawing.Size(976, 622);
             this.Controls.Add(this.pnlBody);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
