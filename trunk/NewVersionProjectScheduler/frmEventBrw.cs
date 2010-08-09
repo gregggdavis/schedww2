@@ -93,6 +93,7 @@ namespace Scheduler
         private Session session1;
         private PersistentRepository persistentRepository1;
         private RepositoryItemTextEdit repositoryItemTextEdit1;
+        private Panel pnlFilterContainer;
         private bool IsAllow = false;
         #endregion
 
@@ -172,19 +173,20 @@ namespace Scheduler
             this.gcolDayOfWeek = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDateAndTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnlFilter = new System.Windows.Forms.Panel();
-            this.datePickerEnd = new System.Windows.Forms.DateTimePicker();
-            this.datePickerStart = new System.Windows.Forms.DateTimePicker();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.pnlFilterContainer = new System.Windows.Forms.Panel();
             this.cmbClass = new System.Windows.Forms.ComboBox();
             this.lblClass = new System.Windows.Forms.Label();
+            this.datePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.cmbProgram = new System.Windows.Forms.ComboBox();
+            this.lblYear = new System.Windows.Forms.Label();
             this.lblProgram = new System.Windows.Forms.Label();
+            this.datePickerStart = new System.Windows.Forms.DateTimePicker();
             this.cmbInstructor = new System.Windows.Forms.ComboBox();
+            this.lblMonth = new System.Windows.Forms.Label();
             this.lblInstructor = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.cmbClient = new System.Windows.Forms.ComboBox();
             this.lblClient = new System.Windows.Forms.Label();
-            this.lblMonth = new System.Windows.Forms.Label();
-            this.lblYear = new System.Windows.Forms.Label();
             this.pnl_SpeedSearch = new System.Windows.Forms.Panel();
             this.pnl_SpeedSearch1 = new System.Windows.Forms.Panel();
             this.txt_SpeedSearch = new System.Windows.Forms.TextBox();
@@ -209,6 +211,7 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.session1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvent)).BeginInit();
             this.pnlFilter.SuspendLayout();
+            this.pnlFilterContainer.SuspendLayout();
             this.pnl_SpeedSearch.SuspendLayout();
             this.pnl_SpeedSearch1.SuspendLayout();
             this.pnl_Find.SuspendLayout();
@@ -233,7 +236,7 @@ namespace Scheduler
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 0);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(760, 430);
+            this.pnlBody.Size = new System.Drawing.Size(868, 481);
             this.pnlBody.TabIndex = 30;
             this.pnlBody.Resize += new System.EventHandler(this.pnlBody_Resize);
             // 
@@ -241,9 +244,9 @@ namespace Scheduler
             // 
             this.pnlBrowse.Controls.Add(this.grdEvent);
             this.pnlBrowse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBrowse.Location = new System.Drawing.Point(0, 154);
+            this.pnlBrowse.Location = new System.Drawing.Point(0, 188);
             this.pnlBrowse.Name = "pnlBrowse";
-            this.pnlBrowse.Size = new System.Drawing.Size(760, 276);
+            this.pnlBrowse.Size = new System.Drawing.Size(868, 293);
             this.pnlBrowse.TabIndex = 45;
             // 
             // grdEvent
@@ -255,13 +258,13 @@ namespace Scheduler
             this.grdEvent.MainView = this.gvwEvent;
             this.grdEvent.Name = "grdEvent";
             this.grdEvent.ServerMode = true;
-            this.grdEvent.Size = new System.Drawing.Size(760, 276);
+            this.grdEvent.Size = new System.Drawing.Size(868, 293);
             this.grdEvent.TabIndex = 26;
             this.grdEvent.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwEvent});
+            this.grdEvent.Click += new System.EventHandler(this.grdEvent_Click);
             this.grdEvent.DoubleClick += new System.EventHandler(this.grdEvent_DoubleClick);
             this.grdEvent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdEvent_KeyPress);
-            this.grdEvent.Click += new System.EventHandler(this.grdEvent_Click);
             // 
             // contextMenuStrip1
             // 
@@ -269,19 +272,19 @@ namespace Scheduler
             this.openToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(135, 64);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -372,7 +375,7 @@ namespace Scheduler
             this.gColName.FieldName = "Name";
             this.gColName.Name = "gColName";
             this.gColName.Visible = true;
-            this.gColName.VisibleIndex = 5;
+            this.gColName.VisibleIndex = 4;
             this.gColName.Width = 93;
             // 
             // gcolClass
@@ -388,7 +391,7 @@ namespace Scheduler
             this.gcolProgram.FieldName = "Program";
             this.gcolProgram.Name = "gcolProgram";
             this.gcolProgram.Visible = true;
-            this.gcolProgram.VisibleIndex = 4;
+            this.gcolProgram.VisibleIndex = 3;
             this.gcolProgram.Width = 82;
             // 
             // gcolDescription
@@ -425,7 +428,7 @@ namespace Scheduler
             this.gcolScheduledIns.FieldName = "ScheduledTeacher";
             this.gcolScheduledIns.Name = "gcolScheduledIns";
             this.gcolScheduledIns.Visible = true;
-            this.gcolScheduledIns.VisibleIndex = 6;
+            this.gcolScheduledIns.VisibleIndex = 5;
             this.gcolScheduledIns.Width = 72;
             // 
             // gcolRealIns
@@ -489,7 +492,7 @@ namespace Scheduler
             this.gcolInstructor.FieldName = "Instructor";
             this.gcolInstructor.Name = "gcolInstructor";
             this.gcolInstructor.Visible = true;
-            this.gcolInstructor.VisibleIndex = 7;
+            this.gcolInstructor.VisibleIndex = 6;
             this.gcolInstructor.Width = 72;
             // 
             // gcolExceptionReason
@@ -498,7 +501,7 @@ namespace Scheduler
             this.gcolExceptionReason.FieldName = "ExceptionReason";
             this.gcolExceptionReason.Name = "gcolExceptionReason";
             this.gcolExceptionReason.Visible = true;
-            this.gcolExceptionReason.VisibleIndex = 8;
+            this.gcolExceptionReason.VisibleIndex = 7;
             this.gcolExceptionReason.Width = 84;
             // 
             // gcolCourseId
@@ -531,65 +534,40 @@ namespace Scheduler
             // pnlFilter
             // 
             this.pnlFilter.BackColor = System.Drawing.SystemColors.GrayText;
-            this.pnlFilter.Controls.Add(this.datePickerEnd);
-            this.pnlFilter.Controls.Add(this.datePickerStart);
-            this.pnlFilter.Controls.Add(this.btnClear);
-            this.pnlFilter.Controls.Add(this.cmbClass);
-            this.pnlFilter.Controls.Add(this.lblClass);
-            this.pnlFilter.Controls.Add(this.cmbProgram);
-            this.pnlFilter.Controls.Add(this.lblProgram);
-            this.pnlFilter.Controls.Add(this.cmbInstructor);
-            this.pnlFilter.Controls.Add(this.lblInstructor);
-            this.pnlFilter.Controls.Add(this.cmbClient);
-            this.pnlFilter.Controls.Add(this.lblClient);
-            this.pnlFilter.Controls.Add(this.lblMonth);
-            this.pnlFilter.Controls.Add(this.lblYear);
+            this.pnlFilter.Controls.Add(this.pnlFilterContainer);
             this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFilter.Location = new System.Drawing.Point(0, 90);
+            this.pnlFilter.Location = new System.Drawing.Point(0, 128);
             this.pnlFilter.Name = "pnlFilter";
-            this.pnlFilter.Size = new System.Drawing.Size(760, 64);
+            this.pnlFilter.Size = new System.Drawing.Size(868, 60);
             this.pnlFilter.TabIndex = 44;
             // 
-            // datePickerEnd
+            // pnlFilterContainer
             // 
-            this.datePickerEnd.Checked = false;
-            this.datePickerEnd.CustomFormat = "MM/dd/yyyy";
-            this.datePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePickerEnd.Location = new System.Drawing.Point(190, 37);
-            this.datePickerEnd.Name = "datePickerEnd";
-            this.datePickerEnd.ShowCheckBox = true;
-            this.datePickerEnd.Size = new System.Drawing.Size(96, 21);
-            this.datePickerEnd.TabIndex = 15;
-            this.datePickerEnd.ValueChanged += new System.EventHandler(this.datePickerValueChanged);
-            // 
-            // datePickerStart
-            // 
-            this.datePickerStart.Checked = false;
-            this.datePickerStart.CustomFormat = "MM/dd/yyyy";
-            this.datePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePickerStart.Location = new System.Drawing.Point(190, 9);
-            this.datePickerStart.Name = "datePickerStart";
-            this.datePickerStart.ShowCheckBox = true;
-            this.datePickerStart.Size = new System.Drawing.Size(96, 21);
-            this.datePickerStart.TabIndex = 14;
-            this.datePickerStart.ValueChanged += new System.EventHandler(this.datePickerValueChanged);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(10, 24);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(104, 23);
-            this.btnClear.TabIndex = 13;
-            this.btnClear.Text = "Clear All Filters";
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.pnlFilterContainer.Controls.Add(this.cmbClass);
+            this.pnlFilterContainer.Controls.Add(this.lblClass);
+            this.pnlFilterContainer.Controls.Add(this.datePickerEnd);
+            this.pnlFilterContainer.Controls.Add(this.cmbProgram);
+            this.pnlFilterContainer.Controls.Add(this.lblYear);
+            this.pnlFilterContainer.Controls.Add(this.lblProgram);
+            this.pnlFilterContainer.Controls.Add(this.datePickerStart);
+            this.pnlFilterContainer.Controls.Add(this.cmbInstructor);
+            this.pnlFilterContainer.Controls.Add(this.lblMonth);
+            this.pnlFilterContainer.Controls.Add(this.lblInstructor);
+            this.pnlFilterContainer.Controls.Add(this.btnClear);
+            this.pnlFilterContainer.Controls.Add(this.cmbClient);
+            this.pnlFilterContainer.Controls.Add(this.lblClient);
+            this.pnlFilterContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFilterContainer.Location = new System.Drawing.Point(0, 0);
+            this.pnlFilterContainer.Name = "pnlFilterContainer";
+            this.pnlFilterContainer.Size = new System.Drawing.Size(868, 60);
+            this.pnlFilterContainer.TabIndex = 16;
             // 
             // cmbClass
             // 
             this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClass.DropDownWidth = 173;
             this.cmbClass.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbClass.ItemHeight = 13;
+            this.cmbClass.ItemHeight = 21;
             this.cmbClass.Items.AddRange(new object[] {
             "January",
             "February",
@@ -603,9 +581,9 @@ namespace Scheduler
             "October",
             "November",
             "December"});
-            this.cmbClass.Location = new System.Drawing.Point(584, 35);
+            this.cmbClass.Location = new System.Drawing.Point(502, 32);
             this.cmbClass.Name = "cmbClass";
-            this.cmbClass.Size = new System.Drawing.Size(144, 21);
+            this.cmbClass.Size = new System.Drawing.Size(137, 29);
             this.cmbClass.TabIndex = 12;
             this.cmbClass.SelectedIndexChanged += new System.EventHandler(this.cmbClass_SelectedIndexChanged);
             // 
@@ -614,15 +592,27 @@ namespace Scheduler
             this.lblClass.AutoSize = true;
             this.lblClass.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblClass.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClass.Location = new System.Drawing.Point(512, 39);
+            this.lblClass.Location = new System.Drawing.Point(446, 36);
             this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(36, 13);
+            this.lblClass.Size = new System.Drawing.Size(54, 21);
             this.lblClass.TabIndex = 11;
             this.lblClass.Text = "Class";
+            // 
+            // datePickerEnd
+            // 
+            this.datePickerEnd.Checked = false;
+            this.datePickerEnd.CustomFormat = "MM/dd/yyyy";
+            this.datePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePickerEnd.Location = new System.Drawing.Point(85, 33);
+            this.datePickerEnd.Name = "datePickerEnd";
+            this.datePickerEnd.Size = new System.Drawing.Size(93, 27);
+            this.datePickerEnd.TabIndex = 15;
+            this.datePickerEnd.ValueChanged += new System.EventHandler(this.datePickerValueChanged);
             // 
             // cmbProgram
             // 
             this.cmbProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProgram.DropDownWidth = 173;
             this.cmbProgram.Items.AddRange(new object[] {
             "January",
             "February",
@@ -636,27 +626,48 @@ namespace Scheduler
             "October",
             "November",
             "December"});
-            this.cmbProgram.Location = new System.Drawing.Point(584, 9);
+            this.cmbProgram.Location = new System.Drawing.Point(502, 6);
             this.cmbProgram.Name = "cmbProgram";
-            this.cmbProgram.Size = new System.Drawing.Size(144, 21);
+            this.cmbProgram.Size = new System.Drawing.Size(137, 29);
             this.cmbProgram.TabIndex = 10;
             this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
+            // 
+            // lblYear
+            // 
+            this.lblYear.AutoSize = true;
+            this.lblYear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYear.Location = new System.Drawing.Point(13, 11);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(97, 21);
+            this.lblYear.TabIndex = 0;
+            this.lblYear.Text = "Start Date";
             // 
             // lblProgram
             // 
             this.lblProgram.AutoSize = true;
             this.lblProgram.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProgram.Location = new System.Drawing.Point(512, 12);
+            this.lblProgram.Location = new System.Drawing.Point(446, 11);
             this.lblProgram.Name = "lblProgram";
-            this.lblProgram.Size = new System.Drawing.Size(56, 13);
+            this.lblProgram.Size = new System.Drawing.Size(83, 21);
             this.lblProgram.TabIndex = 9;
             this.lblProgram.Text = "Program";
+            // 
+            // datePickerStart
+            // 
+            this.datePickerStart.Checked = false;
+            this.datePickerStart.CustomFormat = "MM/dd/yyyy";
+            this.datePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePickerStart.Location = new System.Drawing.Point(85, 7);
+            this.datePickerStart.Name = "datePickerStart";
+            this.datePickerStart.Size = new System.Drawing.Size(93, 27);
+            this.datePickerStart.TabIndex = 14;
+            this.datePickerStart.ValueChanged += new System.EventHandler(this.datePickerValueChanged);
             // 
             // cmbInstructor
             // 
             this.cmbInstructor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInstructor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbInstructor.ItemHeight = 13;
+            this.cmbInstructor.ItemHeight = 21;
             this.cmbInstructor.Items.AddRange(new object[] {
             "January",
             "February",
@@ -670,22 +681,44 @@ namespace Scheduler
             "October",
             "November",
             "December"});
-            this.cmbInstructor.Location = new System.Drawing.Point(364, 34);
+            this.cmbInstructor.Location = new System.Drawing.Point(277, 32);
             this.cmbInstructor.Name = "cmbInstructor";
-            this.cmbInstructor.Size = new System.Drawing.Size(131, 21);
+            this.cmbInstructor.Size = new System.Drawing.Size(137, 29);
             this.cmbInstructor.TabIndex = 8;
             this.cmbInstructor.SelectedIndexChanged += new System.EventHandler(this.cmbInstructor_SelectedIndexChanged);
+            // 
+            // lblMonth
+            // 
+            this.lblMonth.AutoSize = true;
+            this.lblMonth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMonth.Location = new System.Drawing.Point(13, 36);
+            this.lblMonth.Name = "lblMonth";
+            this.lblMonth.Size = new System.Drawing.Size(87, 21);
+            this.lblMonth.TabIndex = 2;
+            this.lblMonth.Text = "End Date";
             // 
             // lblInstructor
             // 
             this.lblInstructor.AutoSize = true;
             this.lblInstructor.BackColor = System.Drawing.SystemColors.GrayText;
             this.lblInstructor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstructor.Location = new System.Drawing.Point(292, 38);
+            this.lblInstructor.Location = new System.Drawing.Point(212, 36);
             this.lblInstructor.Name = "lblInstructor";
-            this.lblInstructor.Size = new System.Drawing.Size(65, 13);
+            this.lblInstructor.Size = new System.Drawing.Size(97, 21);
             this.lblInstructor.TabIndex = 7;
             this.lblInstructor.Text = "Instructor";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.Black;
+            this.btnClear.Location = new System.Drawing.Point(13, 4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(128, 57);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear All Filters";
+            this.btnClear.Visible = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // cmbClient
             // 
@@ -703,9 +736,9 @@ namespace Scheduler
             "October",
             "November",
             "December"});
-            this.cmbClient.Location = new System.Drawing.Point(364, 8);
+            this.cmbClient.Location = new System.Drawing.Point(277, 6);
             this.cmbClient.Name = "cmbClient";
-            this.cmbClient.Size = new System.Drawing.Size(131, 21);
+            this.cmbClient.Size = new System.Drawing.Size(137, 29);
             this.cmbClient.TabIndex = 6;
             this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
@@ -713,39 +746,19 @@ namespace Scheduler
             // 
             this.lblClient.AutoSize = true;
             this.lblClient.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClient.Location = new System.Drawing.Point(292, 11);
+            this.lblClient.Location = new System.Drawing.Point(212, 11);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(39, 13);
+            this.lblClient.Size = new System.Drawing.Size(59, 21);
             this.lblClient.TabIndex = 5;
             this.lblClient.Text = "Client";
-            // 
-            // lblMonth
-            // 
-            this.lblMonth.AutoSize = true;
-            this.lblMonth.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMonth.Location = new System.Drawing.Point(120, 40);
-            this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(57, 13);
-            this.lblMonth.TabIndex = 2;
-            this.lblMonth.Text = "End Date";
-            // 
-            // lblYear
-            // 
-            this.lblYear.AutoSize = true;
-            this.lblYear.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(120, 13);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(66, 13);
-            this.lblYear.TabIndex = 0;
-            this.lblYear.Text = "Start Date";
             // 
             // pnl_SpeedSearch
             // 
             this.pnl_SpeedSearch.BackColor = System.Drawing.Color.Black;
             this.pnl_SpeedSearch.Controls.Add(this.pnl_SpeedSearch1);
-            this.pnl_SpeedSearch.Location = new System.Drawing.Point(64, 288);
+            this.pnl_SpeedSearch.Location = new System.Drawing.Point(103, 412);
             this.pnl_SpeedSearch.Name = "pnl_SpeedSearch";
-            this.pnl_SpeedSearch.Size = new System.Drawing.Size(192, 72);
+            this.pnl_SpeedSearch.Size = new System.Drawing.Size(306, 102);
             this.pnl_SpeedSearch.TabIndex = 42;
             this.pnl_SpeedSearch.Visible = false;
             // 
@@ -755,30 +768,30 @@ namespace Scheduler
             this.pnl_SpeedSearch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_SpeedSearch1.Controls.Add(this.txt_SpeedSearch);
             this.pnl_SpeedSearch1.Controls.Add(this.label1);
-            this.pnl_SpeedSearch1.Location = new System.Drawing.Point(4, 4);
+            this.pnl_SpeedSearch1.Location = new System.Drawing.Point(7, 6);
             this.pnl_SpeedSearch1.Name = "pnl_SpeedSearch1";
-            this.pnl_SpeedSearch1.Size = new System.Drawing.Size(184, 64);
+            this.pnl_SpeedSearch1.Size = new System.Drawing.Size(294, 92);
             this.pnl_SpeedSearch1.TabIndex = 39;
             // 
             // txt_SpeedSearch
             // 
-            this.txt_SpeedSearch.Location = new System.Drawing.Point(11, 29);
+            this.txt_SpeedSearch.Location = new System.Drawing.Point(17, 41);
             this.txt_SpeedSearch.Name = "txt_SpeedSearch";
-            this.txt_SpeedSearch.Size = new System.Drawing.Size(157, 21);
+            this.txt_SpeedSearch.Size = new System.Drawing.Size(252, 27);
             this.txt_SpeedSearch.TabIndex = 10;
             this.txt_SpeedSearch.TextChanged += new System.EventHandler(this.txt_SpeedSearch_TextChanged);
             this.txt_SpeedSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyDown);
-            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
             this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
+            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(56, 4);
+            this.label1.Location = new System.Drawing.Point(89, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 14);
+            this.label1.Size = new System.Drawing.Size(103, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fast Search";
             // 
@@ -796,16 +809,16 @@ namespace Scheduler
             this.pnl_Find.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Find.Location = new System.Drawing.Point(0, 0);
             this.pnl_Find.Name = "pnl_Find";
-            this.pnl_Find.Size = new System.Drawing.Size(760, 90);
+            this.pnl_Find.Size = new System.Drawing.Size(868, 128);
             this.pnl_Find.TabIndex = 28;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(580, 0);
+            this.panel1.Location = new System.Drawing.Point(582, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(176, 86);
+            this.panel1.Size = new System.Drawing.Size(282, 124);
             this.panel1.TabIndex = 10;
             // 
             // pictureBox1
@@ -814,16 +827,16 @@ namespace Scheduler
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 86);
+            this.pictureBox1.Size = new System.Drawing.Size(282, 124);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(64, 17);
+            this.txtSearch.Location = new System.Drawing.Point(103, 25);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(296, 21);
+            this.txtSearch.Size = new System.Drawing.Size(473, 27);
             this.txtSearch.TabIndex = 9;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
@@ -832,10 +845,10 @@ namespace Scheduler
             this.chk_Anywhere.BackColor = System.Drawing.SystemColors.Window;
             this.chk_Anywhere.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.chk_Anywhere.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_Anywhere.Location = new System.Drawing.Point(210, 44);
+            this.chk_Anywhere.Location = new System.Drawing.Point(336, 62);
             this.chk_Anywhere.Name = "chk_Anywhere";
             this.chk_Anywhere.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chk_Anywhere.Size = new System.Drawing.Size(154, 24);
+            this.chk_Anywhere.Size = new System.Drawing.Size(247, 36);
             this.chk_Anywhere.TabIndex = 7;
             this.chk_Anywhere.Text = "Search Anywhere in Fields";
             this.chk_Anywhere.UseVisualStyleBackColor = false;
@@ -844,9 +857,9 @@ namespace Scheduler
             // 
             this.btn_Clear.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Clear.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_Clear.Location = new System.Drawing.Point(370, 44);
+            this.btn_Clear.Location = new System.Drawing.Point(592, 62);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_Clear.Size = new System.Drawing.Size(120, 33);
             this.btn_Clear.TabIndex = 6;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.UseVisualStyleBackColor = false;
@@ -856,9 +869,9 @@ namespace Scheduler
             // 
             this.btn_Find.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Find.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_Find.Location = new System.Drawing.Point(370, 15);
+            this.btn_Find.Location = new System.Drawing.Point(592, 21);
             this.btn_Find.Name = "btn_Find";
-            this.btn_Find.Size = new System.Drawing.Size(75, 23);
+            this.btn_Find.Size = new System.Drawing.Size(120, 33);
             this.btn_Find.TabIndex = 4;
             this.btn_Find.Text = "Find";
             this.btn_Find.UseVisualStyleBackColor = false;
@@ -867,9 +880,9 @@ namespace Scheduler
             // lbl_Find
             // 
             this.lbl_Find.AutoSize = true;
-            this.lbl_Find.Location = new System.Drawing.Point(15, 19);
+            this.lbl_Find.Location = new System.Drawing.Point(24, 27);
             this.lbl_Find.Name = "lbl_Find";
-            this.lbl_Find.Size = new System.Drawing.Size(30, 13);
+            this.lbl_Find.Size = new System.Drawing.Size(46, 21);
             this.lbl_Find.TabIndex = 0;
             this.lbl_Find.Text = " Find";
             // 
@@ -880,10 +893,10 @@ namespace Scheduler
             this.chk_AdvanceSearch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_AdvanceSearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.chk_AdvanceSearch.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_AdvanceSearch.Location = new System.Drawing.Point(64, 44);
+            this.chk_AdvanceSearch.Location = new System.Drawing.Point(103, 62);
             this.chk_AdvanceSearch.Name = "chk_AdvanceSearch";
             this.chk_AdvanceSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chk_AdvanceSearch.Size = new System.Drawing.Size(112, 24);
+            this.chk_AdvanceSearch.Size = new System.Drawing.Size(178, 36);
             this.chk_AdvanceSearch.TabIndex = 8;
             this.chk_AdvanceSearch.Text = "Search All Fields";
             this.chk_AdvanceSearch.UseVisualStyleBackColor = false;
@@ -909,8 +922,8 @@ namespace Scheduler
             // 
             // frmEventBrw
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-            this.ClientSize = new System.Drawing.Size(760, 430);
+            this.AutoScaleBaseSize = new System.Drawing.Size(8, 20);
+            this.ClientSize = new System.Drawing.Size(868, 481);
             this.Controls.Add(this.pnlBody);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmEventBrw";
@@ -926,7 +939,8 @@ namespace Scheduler
             ((System.ComponentModel.ISupportInitialize)(this.session1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwEvent)).EndInit();
             this.pnlFilter.ResumeLayout(false);
-            this.pnlFilter.PerformLayout();
+            this.pnlFilterContainer.ResumeLayout(false);
+            this.pnlFilterContainer.PerformLayout();
             this.pnl_SpeedSearch.ResumeLayout(false);
             this.pnl_SpeedSearch1.ResumeLayout(false);
             this.pnl_SpeedSearch1.PerformLayout();
@@ -994,11 +1008,12 @@ namespace Scheduler
 			IsLoad=false;
 
 			objEvent = new Events();
-			//old line dtbl = objEvent.LoadData(dtStart, dtEnd, cmbClient.Text, cmbInstructor.Text, cmbProgram.Text, cmbClass.Text);
-            //old line April 02 2010 - dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, "", "",true);
+			//dtbl = objEvent.LoadData(dtStart, dtEnd, cmbClient.Text, cmbInstructor.Text, cmbProgram.Text, cmbClass.Text);
+            //dtbl = objEvent.LoadData(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, "", "",true);
             if (!isNewLoad)
             {
-                dtbl = objEvent.LoadDataNew(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, "", "", true);
+                dtbl = objEvent.LoadDataNew(dtStart, dtEnd, ((ValuePair)cmbClient.SelectedItem).Value, ((ValuePair)cmbInstructor.SelectedItem).Value, ((ValuePair)cmbProgram.SelectedItem).Value, ((ValuePair)cmbClass.SelectedItem).Value, true);
+                //dtbl = objEvent.LoadDataNew(dtStart, dtEnd, "", "", "", "", true);
                 grdEvent.DataSource = dtbl;
             }
             
@@ -1006,8 +1021,8 @@ namespace Scheduler
 			isProcess = true;
             isNewLoad = false;
 		}
-        bool isNewLoad = true;
-		private void frmEventBrw_Resize(object sender, EventArgs e)
+        bool isNewLoad = false;   //Set to true to use XPO persistent query for all events only (doesn't select on date or other filters)
+        private void frmEventBrw_Resize(object sender, EventArgs e)
 		{
 			pnl_SpeedSearch.Left = pnlBody.Left + 40;
 			pnl_SpeedSearch.Top = pnlBody.Top + pnlBody.Height - pnl_SpeedSearch.Height - 40;
@@ -1478,29 +1493,30 @@ namespace Scheduler
 		{
             if (IsAllow)
             {
-                CalendarFilter.ClientName = cmbClient.Text;
+                CalendarFilter.ClientIndex = cmbClient.SelectedIndex;
+                CalendarFilter.ClientName  = cmbClient.Text;
 
-                //CalendarFilter.ProgramName = cmbProgram.Text;
                 if (CalendarFilter.ClientName == "")
                 {
                     gvwEvent.ActiveFilter.Remove(gcolClient);
                 }
                 else
                     gvwEvent.ActiveFilter.Add(gcolClient, new ColumnFilterInfo("Client = '" + CalendarFilter.ClientName + "'"));
-                //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";
             }
             //if(IsAllow) CalendarFilter.ClientIndex=cmbClient.SelectedIndex;
-            //if(isProcess)
-            //    LoadEvent();
-		}
+            if (isProcess)
+            {
+                LoadEvent();
+            }
+        }
 
 		private void cmbInstructor_SelectedIndexChanged(object sender, EventArgs e)
 		{
             if (IsAllow)
             {
-                CalendarFilter.InstructorName = cmbInstructor.Text;
+                CalendarFilter.InstructorIndex = cmbInstructor.SelectedIndex;
+                CalendarFilter.InstructorName  = cmbInstructor.Text;
 
-                //CalendarFilter.ProgramName = cmbProgram.Text;
                 if (CalendarFilter.InstructorName == "")
                 {
                     //gvwEvent.ActiveFilter.Remove(gcolScheduledIns);
@@ -1519,19 +1535,18 @@ namespace Scheduler
                 //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";
             }
             //if (IsAllow) CalendarFilter.InstructorIndex = cmbInstructor.SelectedIndex;
-            //if(isProcess)
-            //{
-            //    LoadEvent();		
-            //}
-		}
+            if (isProcess)
+            {
+                LoadEvent();
+            }
+        }
 
 		private void cmbProgram_SelectedIndexChanged(object sender, EventArgs e)
 		{
             if (IsAllow)
             {
                 CalendarFilter.ProgramIndex = cmbProgram.SelectedIndex;
-                
-                CalendarFilter.ProgramName = cmbProgram.Text;
+                CalendarFilter.ProgramName  = cmbProgram.Text;
                 if (CalendarFilter.ProgramName == "")
                 {
                     gvwEvent.ActiveFilter.Remove(gcolProgram);
@@ -1540,18 +1555,18 @@ namespace Scheduler
                     gvwEvent.ActiveFilter.Add(gcolProgram, new ColumnFilterInfo("Program = '" + CalendarFilter.ProgramName + "'"));
                 //gvwEvent.ActiveFilter.NonColumnFilterCriteria = "[Program] = '" + CalendarFilter.ProgramName + "'";
             }
-			if(isProcess)
-			{
-				//LoadEvent();		
-			}
-		}
+            if (isProcess)
+            {
+                LoadEvent();
+            }
+        }
 
 		private void cmbClass_SelectedIndexChanged(object sender, EventArgs e)
 		{
             if (IsAllow)
             {
                 CalendarFilter.ClassIndex = cmbClass.SelectedIndex;
-                CalendarFilter.ClassName = cmbClass.Text;
+                CalendarFilter.ClassName  = cmbClass.Text;
                 if (CalendarFilter.ClassName == "")
                 {
                     gvwEvent.ActiveFilter.Remove(gcolClass);
@@ -1559,11 +1574,11 @@ namespace Scheduler
                 else
                     gvwEvent.ActiveFilter.Add(gcolClass, new ColumnFilterInfo("Class = '" + CalendarFilter.ClassName + "'"));
             }
-			if(isProcess)
-			{
-				LoadEvent();		
-			}
-		}
+            if (isProcess)
+            {
+                LoadEvent();
+            }
+        }
 
 		private void datePickerValueChanged(object sender, EventArgs e)
 		{
