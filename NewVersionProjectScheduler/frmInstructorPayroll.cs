@@ -24,6 +24,10 @@ namespace Scheduler
         DataView dv = new DataView();
         public void PerformSearch()
         {
+            //dateEditEndDate.EditValue = System.DateTime.Parse("2010/06/30");
+            //dateEditStartDate.EditValue = System.DateTime.Parse("2010/06/01");
+            //checkEdit1.Checked = true;
+            //checkEdit2.Checked = true;
             if (checkEdit1.Checked && checkEdit2.Checked)
             {
                 if (dateEditStartDate.DateTime > dateEditEndDate.DateTime)
