@@ -29,8 +29,7 @@ namespace Scheduler
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pnlBody = new System.Windows.Forms.Panel();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,48 +50,39 @@ namespace Scheduler
             this.colBasePayField = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDayType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTimeStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.dateEditEndDate = new DevExpress.XtraEditors.DateEdit();
             this.dateEditStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.pnlBody.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
+            this.pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // pnlBody
+            // gridView2
             // 
-            this.pnlBody.Controls.Add(this.panelControl2);
-            this.pnlBody.Controls.Add(this.panelControl1);
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 0);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(619, 503);
-            this.pnlBody.TabIndex = 0;
-            // 
-            // panelControl2
-            // 
-            this.panelControl2.Controls.Add(this.gridControl1);
-            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 91);
-            this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(619, 412);
-            this.panelControl2.TabIndex = 2;
-            this.panelControl2.Text = "panelControl2";
+            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.Name = "gridView2";
             // 
             // gridControl1
             // 
@@ -100,7 +90,6 @@ namespace Scheduler
             this.gridControl1.DataMember = "GetPayrollByInstructor";
             this.gridControl1.DataSource = this.dataSet11;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Name = "";
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
@@ -110,7 +99,8 @@ namespace Scheduler
             this.gridControl1.Size = new System.Drawing.Size(615, 408);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridView1,
+            this.gridView2});
             // 
             // contextMenuStrip1
             // 
@@ -119,19 +109,19 @@ namespace Scheduler
             this.printPreviewToolStripMenuItem,
             this.exportToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(138, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 94);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // printPreviewToolStripMenuItem
             // 
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
             this.printPreviewToolStripMenuItem.Text = "Print Preview";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
@@ -143,34 +133,34 @@ namespace Scheduler
             this.exportToXMLToolStripMenuItem,
             this.exportToTXTToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // exportToolStripMenuItem1
             // 
             this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-            this.exportToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.exportToolStripMenuItem1.Size = new System.Drawing.Size(208, 30);
             this.exportToolStripMenuItem1.Text = "Export To Excel";
             this.exportToolStripMenuItem1.Click += new System.EventHandler(this.exportToolStripMenuItem1_Click);
             // 
             // exportToHTMLToolStripMenuItem
             // 
             this.exportToHTMLToolStripMenuItem.Name = "exportToHTMLToolStripMenuItem";
-            this.exportToHTMLToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.exportToHTMLToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
             this.exportToHTMLToolStripMenuItem.Text = "Export to HTML";
             this.exportToHTMLToolStripMenuItem.Click += new System.EventHandler(this.exportToHTMLToolStripMenuItem_Click);
             // 
             // exportToXMLToolStripMenuItem
             // 
             this.exportToXMLToolStripMenuItem.Name = "exportToXMLToolStripMenuItem";
-            this.exportToXMLToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.exportToXMLToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
             this.exportToXMLToolStripMenuItem.Text = "Export to XML";
             this.exportToXMLToolStripMenuItem.Click += new System.EventHandler(this.exportToXMLToolStripMenuItem_Click);
             // 
             // exportToTXTToolStripMenuItem
             // 
             this.exportToTXTToolStripMenuItem.Name = "exportToTXTToolStripMenuItem";
-            this.exportToTXTToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.exportToTXTToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
             this.exportToTXTToolStripMenuItem.Text = "Export to TXT";
             this.exportToTXTToolStripMenuItem.Click += new System.EventHandler(this.exportToTXTToolStripMenuItem_Click);
             // 
@@ -188,9 +178,10 @@ namespace Scheduler
             this.colHourlyRate,
             this.colBasePayField,
             this.colTotal,
-            this.colDayType});
+            this.colDayType,
+            this.colTimeStatus});
             this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.GroupCount = 1;
+            this.gridView1.GroupCount = 2;
             this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", null, "Total Hours = {0}"),
@@ -205,7 +196,9 @@ namespace Scheduler
             this.gridView1.OptionsView.ShowGroupedColumns = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colInstructorName, DevExpress.Data.ColumnSortOrder.Descending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTimeStatus, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colInstructorName, DevExpress.Data.ColumnSortOrder.Ascending),
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colHourlyRate, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDayType, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colTeacherID
@@ -226,12 +219,14 @@ namespace Scheduler
             this.colInstructorName.OptionsColumn.ReadOnly = true;
             this.colInstructorName.Visible = true;
             this.colInstructorName.VisibleIndex = 0;
-            this.colInstructorName.Width = 113;
+            this.colInstructorName.Width = 348;
             // 
             // colTotalHours
             // 
             this.colTotalHours.Caption = "Total Hours";
             this.colTotalHours.ColumnEdit = this.repositoryItemSpinEdit2;
+            this.colTotalHours.DisplayFormat.FormatString = "{0:n1}";
+            this.colTotalHours.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colTotalHours.FieldName = "TotalHours";
             this.colTotalHours.Name = "colTotalHours";
             this.colTotalHours.OptionsColumn.AllowEdit = false;
@@ -239,8 +234,8 @@ namespace Scheduler
             this.colTotalHours.SummaryItem.DisplayFormat = "Total Hours = {0}";
             this.colTotalHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTotalHours.Visible = true;
-            this.colTotalHours.VisibleIndex = 2;
-            this.colTotalHours.Width = 86;
+            this.colTotalHours.VisibleIndex = 3;
+            this.colTotalHours.Width = 290;
             // 
             // repositoryItemSpinEdit2
             // 
@@ -260,8 +255,8 @@ namespace Scheduler
             this.colHourlyRate.OptionsColumn.AllowEdit = false;
             this.colHourlyRate.OptionsColumn.ReadOnly = true;
             this.colHourlyRate.Visible = true;
-            this.colHourlyRate.VisibleIndex = 3;
-            this.colHourlyRate.Width = 79;
+            this.colHourlyRate.VisibleIndex = 4;
+            this.colHourlyRate.Width = 265;
             // 
             // repositoryItemSpinEdit1
             // 
@@ -283,8 +278,8 @@ namespace Scheduler
             this.colBasePayField.SummaryItem.DisplayFormat = "Max Base Rate = {0}";
             this.colBasePayField.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Max;
             this.colBasePayField.Visible = true;
-            this.colBasePayField.VisibleIndex = 4;
-            this.colBasePayField.Width = 71;
+            this.colBasePayField.VisibleIndex = 5;
+            this.colBasePayField.Width = 239;
             // 
             // colTotal
             // 
@@ -296,8 +291,8 @@ namespace Scheduler
             this.colTotal.SummaryItem.DisplayFormat = "Total = {0}";
             this.colTotal.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTotal.Visible = true;
-            this.colTotal.VisibleIndex = 5;
-            this.colTotal.Width = 55;
+            this.colTotal.VisibleIndex = 6;
+            this.colTotal.Width = 212;
             // 
             // colDayType
             // 
@@ -305,10 +300,38 @@ namespace Scheduler
             this.colDayType.FieldName = "DayType";
             this.colDayType.Name = "colDayType";
             this.colDayType.OptionsColumn.AllowEdit = false;
+            this.colDayType.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colDayType.OptionsColumn.ReadOnly = true;
             this.colDayType.Visible = true;
-            this.colDayType.VisibleIndex = 1;
-            this.colDayType.Width = 68;
+            this.colDayType.VisibleIndex = 2;
+            this.colDayType.Width = 229;
+            // 
+            // colTimeStatus
+            // 
+            this.colTimeStatus.FieldName = "TimeStatus";
+            this.colTimeStatus.Name = "colTimeStatus";
+            this.colTimeStatus.Visible = true;
+            this.colTimeStatus.VisibleIndex = 1;
+            this.colTimeStatus.Width = 147;
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.panelControl2);
+            this.pnlBody.Controls.Add(this.panelControl1);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(619, 503);
+            this.pnlBody.TabIndex = 0;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.gridControl1);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 91);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(619, 412);
+            this.panelControl2.TabIndex = 2;
             // 
             // panelControl1
             // 
@@ -322,14 +345,13 @@ namespace Scheduler
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(619, 91);
             this.panelControl1.TabIndex = 1;
-            this.panelControl1.Text = "panelControl1";
             // 
             // checkEdit2
             // 
             this.checkEdit2.Location = new System.Drawing.Point(23, 49);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "End Date:";
-            this.checkEdit2.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit2.Size = new System.Drawing.Size(75, 24);
             this.checkEdit2.TabIndex = 7;
             this.checkEdit2.CheckedChanged += new System.EventHandler(this.checkEdit2_CheckedChanged);
             // 
@@ -338,7 +360,7 @@ namespace Scheduler
             this.checkEdit1.Location = new System.Drawing.Point(23, 24);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Start Date:";
-            this.checkEdit1.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit1.Size = new System.Drawing.Size(75, 24);
             this.checkEdit1.TabIndex = 6;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
@@ -361,7 +383,9 @@ namespace Scheduler
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditEndDate.Properties.DisplayFormat.FormatString = "D";
             this.dateEditEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEditEndDate.Size = new System.Drawing.Size(169, 19);
+            this.dateEditEndDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEditEndDate.Size = new System.Drawing.Size(169, 26);
             this.dateEditEndDate.TabIndex = 1;
             // 
             // dateEditStartDate
@@ -374,31 +398,35 @@ namespace Scheduler
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditStartDate.Properties.DisplayFormat.FormatString = "D";
             this.dateEditStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEditStartDate.Size = new System.Drawing.Size(169, 19);
+            this.dateEditStartDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.dateEditStartDate.Size = new System.Drawing.Size(169, 26);
             this.dateEditStartDate.TabIndex = 0;
             // 
             // frmPayrollByInstructor
             // 
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(619, 503);
             this.Controls.Add(this.pnlBody);
             this.Name = "frmPayrollByInstructor";
             this.Text = "Payroll By Instructor";
             this.Load += new System.EventHandler(this.frmPayrollByInstructor_Load);
-            this.pnlBody.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
-            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
+            this.pnlBody.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties)).EndInit();
             this.ResumeLayout(false);
 
@@ -434,5 +462,7 @@ namespace Scheduler
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn colTimeStatus;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
     }
 }
