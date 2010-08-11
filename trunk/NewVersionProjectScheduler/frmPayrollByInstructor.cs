@@ -43,6 +43,10 @@ namespace Scheduler
                 //gridView1.CollapseAllGroups();
                 dateEditEndDate.EditValue = System.DateTime.Today;
                 dateEditStartDate.EditValue = System.DateTime.Today;
+                //dateEditEndDate.EditValue = System.DateTime.Parse("2010/06/30");
+                //dateEditStartDate.EditValue = System.DateTime.Parse("2010/06/01");
+                //checkEdit1.Checked = true;
+                //checkEdit2.Checked = true;
                 if (checkEdit1.Checked && checkEdit2.Checked)
                 {
                     if (dateEditStartDate.DateTime > dateEditEndDate.DateTime)
