@@ -132,13 +132,13 @@ namespace Scheduler.BusinessLayer
                                 }
                             }
                             if (!dayfound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.0), row.BasePayField, Convert.ToDecimal(0.00), "Daytime");
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.0), row.BasePayField, Convert.ToDecimal(0.00), "Daytime", row.TimeStatus);
                             if (!satfound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "Saturday");
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "Saturday", row.TimeStatus);
                             if (!morfound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.1), row.BasePayField, Convert.ToDecimal(0.00), "Morning");
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.1), row.BasePayField, Convert.ToDecimal(0.00), "Morning", row.TimeStatus);
                             if (!evefound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "Evening");
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "Evening", row.TimeStatus);
                             
                             
                             
@@ -148,7 +148,7 @@ namespace Scheduler.BusinessLayer
                 }
                 foreach (DataSet1.GetPayrollByInstructorRow row in table)
                 {
-                    ds.GetPayrollByInstructor.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, row.TotalHours, row.HourlyRate, row.BasePayField, row.Total, row.DayType);
+                    ds.GetPayrollByInstructor.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, row.TotalHours, row.HourlyRate, row.BasePayField, row.Total, row.DayType, row.TimeStatus);
                 }
             }
             catch (Exception ex)
