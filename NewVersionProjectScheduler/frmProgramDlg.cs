@@ -133,6 +133,8 @@ namespace Scheduler
         private DevExpress.XtraGrid.Columns.GridColumn gcolEndDateTime;
         private frmEventDlg frmEvent;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
+        private Label labelBilling;
+        private ComboBox cmbBilling;
 		private PageSettings ps = null;
         #endregion Controls
 
@@ -347,6 +349,7 @@ namespace Scheduler
             this.btnSave = new System.Windows.Forms.Button();
             this.tbcCourse = new System.Windows.Forms.TabControl();
             this.tbpCourse = new System.Windows.Forms.TabPage();
+            this.cmbBilling = new System.Windows.Forms.ComboBox();
             this.lblReportAttendance = new System.Windows.Forms.Label();
             this.txtInitialForm = new System.Windows.Forms.TextBox();
             this.txtFinalForm = new System.Windows.Forms.TextBox();
@@ -403,6 +406,7 @@ namespace Scheduler
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
+            this.labelBilling = new System.Windows.Forms.Label();
             this.tbpDescription = new System.Windows.Forms.TabPage();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.tbpSpecialRemarks = new System.Windows.Forms.TabPage();
@@ -440,20 +444,20 @@ namespace Scheduler
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnCancel.Location = new System.Drawing.Point(323, 575);
+            this.btnCancel.Location = new System.Drawing.Point(323, 596);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 25);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 31;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnSave.Location = new System.Drawing.Point(235, 575);
+            this.btnSave.Location = new System.Drawing.Point(235, 596);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 25);
-            this.btnSave.TabIndex = 1;
+            this.btnSave.TabIndex = 30;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -469,12 +473,13 @@ namespace Scheduler
             this.tbcCourse.Name = "tbcCourse";
             this.tbcCourse.SelectedIndex = 0;
             this.tbcCourse.ShowToolTips = true;
-            this.tbcCourse.Size = new System.Drawing.Size(509, 563);
+            this.tbcCourse.Size = new System.Drawing.Size(505, 584);
             this.tbcCourse.TabIndex = 0;
             this.tbcCourse.SelectedIndexChanged += new System.EventHandler(this.tbcCourse_SelectedIndexChanged);
             // 
             // tbpCourse
             // 
+            this.tbpCourse.Controls.Add(this.cmbBilling);
             this.tbpCourse.Controls.Add(this.lblReportAttendance);
             this.tbpCourse.Controls.Add(this.txtInitialForm);
             this.tbpCourse.Controls.Add(this.txtFinalForm);
@@ -531,17 +536,30 @@ namespace Scheduler
             this.tbpCourse.Controls.Add(this.lblStatus);
             this.tbpCourse.Controls.Add(this.lblUser);
             this.tbpCourse.Controls.Add(this.cmbStatus);
+            this.tbpCourse.Controls.Add(this.labelBilling);
             this.tbpCourse.Location = new System.Drawing.Point(4, 30);
             this.tbpCourse.Name = "tbpCourse";
-            this.tbpCourse.Size = new System.Drawing.Size(501, 529);
+            this.tbpCourse.Size = new System.Drawing.Size(497, 550);
             this.tbpCourse.TabIndex = 0;
             this.tbpCourse.Text = "Program";
             this.tbpCourse.UseVisualStyleBackColor = true;
             // 
+            // cmbBilling
+            // 
+            this.cmbBilling.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBilling.Items.AddRange(new object[] {
+            "No",
+            "Yes - There",
+            "Yes - Here"});
+            this.cmbBilling.Location = new System.Drawing.Point(170, 189);
+            this.cmbBilling.Name = "cmbBilling";
+            this.cmbBilling.Size = new System.Drawing.Size(113, 29);
+            this.cmbBilling.TabIndex = 9;
+            // 
             // lblReportAttendance
             // 
             this.lblReportAttendance.AutoSize = true;
-            this.lblReportAttendance.Location = new System.Drawing.Point(15, 408);
+            this.lblReportAttendance.Location = new System.Drawing.Point(15, 429);
             this.lblReportAttendance.Name = "lblReportAttendance";
             this.lblReportAttendance.Size = new System.Drawing.Size(150, 21);
             this.lblReportAttendance.TabIndex = 341;
@@ -549,37 +567,37 @@ namespace Scheduler
             // 
             // txtInitialForm
             // 
-            this.txtInitialForm.Location = new System.Drawing.Point(170, 255);
+            this.txtInitialForm.Location = new System.Drawing.Point(170, 276);
             this.txtInitialForm.MaxLength = 50;
             this.txtInitialForm.Name = "txtInitialForm";
             this.txtInitialForm.Size = new System.Drawing.Size(308, 27);
-            this.txtInitialForm.TabIndex = 10;
+            this.txtInitialForm.TabIndex = 11;
             // 
             // txtFinalForm
             // 
             this.txtFinalForm.Enabled = false;
-            this.txtFinalForm.Location = new System.Drawing.Point(170, 356);
+            this.txtFinalForm.Location = new System.Drawing.Point(170, 377);
             this.txtFinalForm.MaxLength = 50;
             this.txtFinalForm.Name = "txtFinalForm";
             this.txtFinalForm.Size = new System.Drawing.Size(308, 27);
-            this.txtFinalForm.TabIndex = 14;
+            this.txtFinalForm.TabIndex = 15;
             // 
             // txtMidtermForm
             // 
             this.txtMidtermForm.Enabled = false;
-            this.txtMidtermForm.Location = new System.Drawing.Point(170, 307);
+            this.txtMidtermForm.Location = new System.Drawing.Point(170, 328);
             this.txtMidtermForm.MaxLength = 50;
             this.txtMidtermForm.Name = "txtMidtermForm";
             this.txtMidtermForm.Size = new System.Drawing.Size(308, 27);
-            this.txtMidtermForm.TabIndex = 12;
+            this.txtMidtermForm.TabIndex = 13;
             // 
             // llblFinalEvt
             // 
             this.llblFinalEvt.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.llblFinalEvt.Location = new System.Drawing.Point(166, 339);
+            this.llblFinalEvt.Location = new System.Drawing.Point(166, 360);
             this.llblFinalEvt.Name = "llblFinalEvt";
             this.llblFinalEvt.Size = new System.Drawing.Size(312, 30);
-            this.llblFinalEvt.TabIndex = 13;
+            this.llblFinalEvt.TabIndex = 14;
             this.llblFinalEvt.TabStop = true;
             this.llblFinalEvt.Text = "None";
             this.llblFinalEvt.TextChanged += new System.EventHandler(this.llblFinalEvt_TextChanged);
@@ -590,10 +608,10 @@ namespace Scheduler
             // llblMidEvt
             // 
             this.llblMidEvt.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.llblMidEvt.Location = new System.Drawing.Point(166, 289);
+            this.llblMidEvt.Location = new System.Drawing.Point(166, 310);
             this.llblMidEvt.Name = "llblMidEvt";
             this.llblMidEvt.Size = new System.Drawing.Size(312, 30);
-            this.llblMidEvt.TabIndex = 11;
+            this.llblMidEvt.TabIndex = 12;
             this.llblMidEvt.TabStop = true;
             this.llblMidEvt.Text = "None";
             this.llblMidEvt.TextChanged += new System.EventHandler(this.llblMidEvt_TextChanged);
@@ -616,75 +634,75 @@ namespace Scheduler
             // chkQF
             // 
             this.chkQF.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkQF.Location = new System.Drawing.Point(170, 496);
+            this.chkQF.Location = new System.Drawing.Point(170, 517);
             this.chkQF.Name = "chkQF";
             this.chkQF.Size = new System.Drawing.Size(25, 23);
-            this.chkQF.TabIndex = 25;
+            this.chkQF.TabIndex = 26;
             this.chkQF.CheckedChanged += new System.EventHandler(this.chkQF_CheckedChanged);
             // 
             // chkQM
             // 
             this.chkQM.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkQM.Location = new System.Drawing.Point(170, 475);
+            this.chkQM.Location = new System.Drawing.Point(170, 496);
             this.chkQM.Name = "chkQM";
             this.chkQM.Size = new System.Drawing.Size(25, 23);
-            this.chkQM.TabIndex = 23;
+            this.chkQM.TabIndex = 24;
             this.chkQM.CheckedChanged += new System.EventHandler(this.chkQM_CheckedChanged);
             // 
             // chkEM
             // 
             this.chkEM.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkEM.Location = new System.Drawing.Point(170, 433);
+            this.chkEM.Location = new System.Drawing.Point(170, 454);
             this.chkEM.Name = "chkEM";
             this.chkEM.Size = new System.Drawing.Size(25, 23);
-            this.chkEM.TabIndex = 19;
+            this.chkEM.TabIndex = 20;
             this.chkEM.CheckedChanged += new System.EventHandler(this.chkEM_CheckedChanged);
             // 
             // chkEF
             // 
             this.chkEF.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkEF.Location = new System.Drawing.Point(170, 454);
+            this.chkEF.Location = new System.Drawing.Point(170, 475);
             this.chkEF.Name = "chkEF";
             this.chkEF.Size = new System.Drawing.Size(25, 22);
-            this.chkEF.TabIndex = 21;
+            this.chkEF.TabIndex = 22;
             this.chkEF.CheckedChanged += new System.EventHandler(this.chkEF_CheckedChanged);
             // 
             // rbtnEnd
             // 
             this.rbtnEnd.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnEnd.Location = new System.Drawing.Point(427, 408);
+            this.rbtnEnd.Location = new System.Drawing.Point(427, 429);
             this.rbtnEnd.Name = "rbtnEnd";
             this.rbtnEnd.Size = new System.Drawing.Size(62, 23);
-            this.rbtnEnd.TabIndex = 18;
+            this.rbtnEnd.TabIndex = 19;
             this.rbtnEnd.Text = "End";
             // 
             // rbtnMonthly
             // 
             this.rbtnMonthly.Checked = true;
             this.rbtnMonthly.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnMonthly.Location = new System.Drawing.Point(336, 408);
+            this.rbtnMonthly.Location = new System.Drawing.Point(336, 429);
             this.rbtnMonthly.Name = "rbtnMonthly";
             this.rbtnMonthly.Size = new System.Drawing.Size(102, 23);
-            this.rbtnMonthly.TabIndex = 17;
+            this.rbtnMonthly.TabIndex = 18;
             this.rbtnMonthly.TabStop = true;
             this.rbtnMonthly.Text = "Monthly";
             // 
             // rbtnWeekly
             // 
             this.rbtnWeekly.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnWeekly.Location = new System.Drawing.Point(244, 408);
+            this.rbtnWeekly.Location = new System.Drawing.Point(244, 429);
             this.rbtnWeekly.Name = "rbtnWeekly";
             this.rbtnWeekly.Size = new System.Drawing.Size(103, 23);
-            this.rbtnWeekly.TabIndex = 16;
+            this.rbtnWeekly.TabIndex = 17;
             this.rbtnWeekly.Text = "Weekly";
             // 
             // rbtnNone
             // 
             this.rbtnNone.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.rbtnNone.Location = new System.Drawing.Point(170, 408);
+            this.rbtnNone.Location = new System.Drawing.Point(170, 429);
             this.rbtnNone.Name = "rbtnNone";
             this.rbtnNone.Size = new System.Drawing.Size(85, 23);
-            this.rbtnNone.TabIndex = 15;
+            this.rbtnNone.TabIndex = 16;
             this.rbtnNone.Text = "None";
             // 
             // txtNickName
@@ -768,7 +786,7 @@ namespace Scheduler
             // 
             this.label7.AutoSize = true;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label7.Location = new System.Drawing.Point(19, 341);
+            this.label7.Location = new System.Drawing.Point(19, 362);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 21);
             this.label7.TabIndex = 86;
@@ -778,7 +796,7 @@ namespace Scheduler
             // 
             this.label6.AutoSize = true;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(19, 291);
+            this.label6.Location = new System.Drawing.Point(19, 312);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 21);
             this.label6.TabIndex = 85;
@@ -788,7 +806,7 @@ namespace Scheduler
             // 
             this.label14.AutoSize = true;
             this.label14.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label14.Location = new System.Drawing.Point(19, 240);
+            this.label14.Location = new System.Drawing.Point(19, 261);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(90, 21);
             this.label14.TabIndex = 84;
@@ -797,10 +815,10 @@ namespace Scheduler
             // llblInitialEvt
             // 
             this.llblInitialEvt.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.llblInitialEvt.Location = new System.Drawing.Point(166, 238);
+            this.llblInitialEvt.Location = new System.Drawing.Point(166, 259);
             this.llblInitialEvt.Name = "llblInitialEvt";
             this.llblInitialEvt.Size = new System.Drawing.Size(312, 30);
-            this.llblInitialEvt.TabIndex = 9;
+            this.llblInitialEvt.TabIndex = 10;
             this.llblInitialEvt.TabStop = true;
             this.llblInitialEvt.Text = "None";
             this.llblInitialEvt.TextChanged += new System.EventHandler(this.llblInitialEvt_TextChanged);
@@ -814,7 +832,7 @@ namespace Scheduler
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label5.Location = new System.Drawing.Point(3, 220);
+            this.label5.Location = new System.Drawing.Point(3, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 21);
             this.label5.TabIndex = 77;
@@ -822,7 +840,7 @@ namespace Scheduler
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(29, 225);
+            this.groupBox2.Location = new System.Drawing.Point(29, 246);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(460, 4);
             this.groupBox2.TabIndex = 76;
@@ -854,7 +872,7 @@ namespace Scheduler
             this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label12.Location = new System.Drawing.Point(3, 389);
+            this.label12.Location = new System.Drawing.Point(3, 410);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 21);
             this.label12.TabIndex = 67;
@@ -862,7 +880,7 @@ namespace Scheduler
             // 
             // grpTest
             // 
-            this.grpTest.Location = new System.Drawing.Point(29, 393);
+            this.grpTest.Location = new System.Drawing.Point(29, 414);
             this.grpTest.Name = "grpTest";
             this.grpTest.Size = new System.Drawing.Size(460, 4);
             this.grpTest.TabIndex = 66;
@@ -871,17 +889,17 @@ namespace Scheduler
             // txtQuestionaireFinalForm
             // 
             this.txtQuestionaireFinalForm.Enabled = false;
-            this.txtQuestionaireFinalForm.Location = new System.Drawing.Point(201, 496);
+            this.txtQuestionaireFinalForm.Location = new System.Drawing.Point(201, 517);
             this.txtQuestionaireFinalForm.MaxLength = 50;
             this.txtQuestionaireFinalForm.Name = "txtQuestionaireFinalForm";
             this.txtQuestionaireFinalForm.Size = new System.Drawing.Size(277, 27);
-            this.txtQuestionaireFinalForm.TabIndex = 26;
+            this.txtQuestionaireFinalForm.TabIndex = 27;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label11.Location = new System.Drawing.Point(19, 498);
+            this.label11.Location = new System.Drawing.Point(19, 519);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(196, 21);
             this.label11.TabIndex = 63;
@@ -890,17 +908,17 @@ namespace Scheduler
             // txtQuestionaireMidtermForm
             // 
             this.txtQuestionaireMidtermForm.Enabled = false;
-            this.txtQuestionaireMidtermForm.Location = new System.Drawing.Point(201, 475);
+            this.txtQuestionaireMidtermForm.Location = new System.Drawing.Point(201, 496);
             this.txtQuestionaireMidtermForm.MaxLength = 50;
             this.txtQuestionaireMidtermForm.Name = "txtQuestionaireMidtermForm";
             this.txtQuestionaireMidtermForm.Size = new System.Drawing.Size(277, 27);
-            this.txtQuestionaireMidtermForm.TabIndex = 24;
+            this.txtQuestionaireMidtermForm.TabIndex = 25;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(19, 478);
+            this.label2.Location = new System.Drawing.Point(19, 499);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(228, 21);
             this.label2.TabIndex = 61;
@@ -909,17 +927,17 @@ namespace Scheduler
             // txtEvaluationFinalForm
             // 
             this.txtEvaluationFinalForm.Enabled = false;
-            this.txtEvaluationFinalForm.Location = new System.Drawing.Point(201, 454);
+            this.txtEvaluationFinalForm.Location = new System.Drawing.Point(201, 475);
             this.txtEvaluationFinalForm.MaxLength = 50;
             this.txtEvaluationFinalForm.Name = "txtEvaluationFinalForm";
             this.txtEvaluationFinalForm.Size = new System.Drawing.Size(277, 27);
-            this.txtEvaluationFinalForm.TabIndex = 22;
+            this.txtEvaluationFinalForm.TabIndex = 23;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label3.Location = new System.Drawing.Point(19, 457);
+            this.label3.Location = new System.Drawing.Point(19, 478);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 21);
             this.label3.TabIndex = 59;
@@ -928,17 +946,17 @@ namespace Scheduler
             // txtEvaluationMidtermForm
             // 
             this.txtEvaluationMidtermForm.Enabled = false;
-            this.txtEvaluationMidtermForm.Location = new System.Drawing.Point(201, 433);
+            this.txtEvaluationMidtermForm.Location = new System.Drawing.Point(201, 454);
             this.txtEvaluationMidtermForm.MaxLength = 50;
             this.txtEvaluationMidtermForm.Name = "txtEvaluationMidtermForm";
             this.txtEvaluationMidtermForm.Size = new System.Drawing.Size(277, 27);
-            this.txtEvaluationMidtermForm.TabIndex = 20;
+            this.txtEvaluationMidtermForm.TabIndex = 21;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(19, 436);
+            this.label4.Location = new System.Drawing.Point(19, 457);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(202, 21);
             this.label4.TabIndex = 57;
@@ -948,7 +966,7 @@ namespace Scheduler
             // 
             this.label8.AutoSize = true;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label8.Location = new System.Drawing.Point(19, 361);
+            this.label8.Location = new System.Drawing.Point(19, 382);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(126, 21);
             this.label8.TabIndex = 55;
@@ -958,7 +976,7 @@ namespace Scheduler
             // 
             this.label9.AutoSize = true;
             this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label9.Location = new System.Drawing.Point(19, 312);
+            this.label9.Location = new System.Drawing.Point(19, 333);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(158, 21);
             this.label9.TabIndex = 53;
@@ -968,7 +986,7 @@ namespace Scheduler
             // 
             this.label10.AutoSize = true;
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label10.Location = new System.Drawing.Point(19, 260);
+            this.label10.Location = new System.Drawing.Point(19, 281);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(133, 21);
             this.label10.TabIndex = 51;
@@ -976,7 +994,7 @@ namespace Scheduler
             // 
             // txtFinalEvent
             // 
-            this.txtFinalEvent.Location = new System.Drawing.Point(411, 189);
+            this.txtFinalEvent.Location = new System.Drawing.Point(408, 205);
             this.txtFinalEvent.MaxLength = 15;
             this.txtFinalEvent.Name = "txtFinalEvent";
             this.txtFinalEvent.ReadOnly = true;
@@ -991,7 +1009,7 @@ namespace Scheduler
             // 
             // txtMidtermEvent
             // 
-            this.txtMidtermEvent.Location = new System.Drawing.Point(351, 189);
+            this.txtMidtermEvent.Location = new System.Drawing.Point(348, 205);
             this.txtMidtermEvent.MaxLength = 15;
             this.txtMidtermEvent.Name = "txtMidtermEvent";
             this.txtMidtermEvent.ReadOnly = true;
@@ -1006,7 +1024,7 @@ namespace Scheduler
             // 
             // txtInitialEvent
             // 
-            this.txtInitialEvent.Location = new System.Drawing.Point(298, 189);
+            this.txtInitialEvent.Location = new System.Drawing.Point(295, 205);
             this.txtInitialEvent.MaxLength = 15;
             this.txtInitialEvent.Name = "txtInitialEvent";
             this.txtInitialEvent.ReadOnly = true;
@@ -1076,7 +1094,7 @@ namespace Scheduler
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblStatus.Location = new System.Drawing.Point(19, 192);
+            this.lblStatus.Location = new System.Drawing.Point(19, 213);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(57, 21);
             this.lblStatus.TabIndex = 34;
@@ -1098,18 +1116,28 @@ namespace Scheduler
             this.cmbStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.cmbStatus.Location = new System.Drawing.Point(170, 189);
+            this.cmbStatus.Location = new System.Drawing.Point(170, 210);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(113, 29);
             this.cmbStatus.TabIndex = 8;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
+            // 
+            // labelBilling
+            // 
+            this.labelBilling.AutoSize = true;
+            this.labelBilling.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.labelBilling.Location = new System.Drawing.Point(19, 192);
+            this.labelBilling.Name = "labelBilling";
+            this.labelBilling.Size = new System.Drawing.Size(54, 21);
+            this.labelBilling.TabIndex = 35;
+            this.labelBilling.Text = "Billing";
             // 
             // tbpDescription
             // 
             this.tbpDescription.Controls.Add(this.txtDescription);
             this.tbpDescription.Location = new System.Drawing.Point(4, 30);
             this.tbpDescription.Name = "tbpDescription";
-            this.tbpDescription.Size = new System.Drawing.Size(534, 529);
+            this.tbpDescription.Size = new System.Drawing.Size(497, 529);
             this.tbpDescription.TabIndex = 1;
             this.tbpDescription.Text = "Description";
             this.tbpDescription.UseVisualStyleBackColor = true;
@@ -1121,7 +1149,7 @@ namespace Scheduler
             this.txtDescription.Location = new System.Drawing.Point(0, 0);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(534, 529);
+            this.txtDescription.Size = new System.Drawing.Size(497, 529);
             this.txtDescription.TabIndex = 0;
             // 
             // tbpSpecialRemarks
@@ -1129,7 +1157,7 @@ namespace Scheduler
             this.tbpSpecialRemarks.Controls.Add(this.txtRemarks);
             this.tbpSpecialRemarks.Location = new System.Drawing.Point(4, 30);
             this.tbpSpecialRemarks.Name = "tbpSpecialRemarks";
-            this.tbpSpecialRemarks.Size = new System.Drawing.Size(534, 529);
+            this.tbpSpecialRemarks.Size = new System.Drawing.Size(497, 529);
             this.tbpSpecialRemarks.TabIndex = 2;
             this.tbpSpecialRemarks.Text = "Special Remarks";
             this.tbpSpecialRemarks.UseVisualStyleBackColor = true;
@@ -1141,7 +1169,7 @@ namespace Scheduler
             this.txtRemarks.Location = new System.Drawing.Point(0, 0);
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(534, 529);
+            this.txtRemarks.Size = new System.Drawing.Size(497, 529);
             this.txtRemarks.TabIndex = 1;
             // 
             // tbpTestEvents
@@ -1150,7 +1178,7 @@ namespace Scheduler
             this.tbpTestEvents.Controls.Add(this.grdEvents);
             this.tbpTestEvents.Location = new System.Drawing.Point(4, 30);
             this.tbpTestEvents.Name = "tbpTestEvents";
-            this.tbpTestEvents.Size = new System.Drawing.Size(534, 529);
+            this.tbpTestEvents.Size = new System.Drawing.Size(497, 529);
             this.tbpTestEvents.TabIndex = 6;
             this.tbpTestEvents.Text = "Test Events";
             this.tbpTestEvents.UseVisualStyleBackColor = true;
@@ -1163,7 +1191,7 @@ namespace Scheduler
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlButtons.Location = new System.Drawing.Point(0, 477);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(534, 52);
+            this.pnlButtons.Size = new System.Drawing.Size(497, 52);
             this.pnlButtons.TabIndex = 34;
             // 
             // btnAdd
@@ -1204,7 +1232,7 @@ namespace Scheduler
             this.grdEvents.Location = new System.Drawing.Point(0, 0);
             this.grdEvents.MainView = this.gvwEvents;
             this.grdEvents.Name = "grdEvents";
-            this.grdEvents.Size = new System.Drawing.Size(534, 529);
+            this.grdEvents.Size = new System.Drawing.Size(497, 529);
             this.grdEvents.TabIndex = 33;
             this.grdEvents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwEvents});
@@ -1279,30 +1307,30 @@ namespace Scheduler
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDelete.Location = new System.Drawing.Point(411, 575);
+            this.btnDelete.Location = new System.Drawing.Point(411, 596);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(82, 25);
-            this.btnDelete.TabIndex = 3;
+            this.btnDelete.TabIndex = 32;
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnPageSetup
             // 
             this.btnPageSetup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnPageSetup.Location = new System.Drawing.Point(100, 575);
+            this.btnPageSetup.Location = new System.Drawing.Point(100, 596);
             this.btnPageSetup.Name = "btnPageSetup";
             this.btnPageSetup.Size = new System.Drawing.Size(82, 25);
-            this.btnPageSetup.TabIndex = 24;
+            this.btnPageSetup.TabIndex = 29;
             this.btnPageSetup.Text = "Page Setup";
             this.btnPageSetup.Click += new System.EventHandler(this.btnPageSetup_Click);
             // 
             // btnPrint
             // 
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnPrint.Location = new System.Drawing.Point(12, 575);
+            this.btnPrint.Location = new System.Drawing.Point(12, 596);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(82, 25);
-            this.btnPrint.TabIndex = 23;
+            this.btnPrint.TabIndex = 28;
             this.btnPrint.Text = "Print";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
@@ -1334,7 +1362,7 @@ namespace Scheduler
             // frmProgramDlg
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(505, 611);
+            this.ClientSize = new System.Drawing.Size(505, 632);
             this.Controls.Add(this.btnPageSetup);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnDelete);
@@ -1666,6 +1694,7 @@ namespace Scheduler
                         llblMidEvt.Text = "None";
                         llblFinalEvt.Text = "None";
                     }
+                    cmbBilling.Text = dr["Billing"].ToString();
                     break;
                 }
 
@@ -1746,7 +1775,8 @@ namespace Scheduler
 				cmbClient.SelectedIndex = 0;
 				intClientID = 0;
 
-			}
+                cmbBilling.SelectedIndex = 0;
+            }
 
 			SetControlEnabled();
 
@@ -1908,6 +1938,7 @@ namespace Scheduler
 
 				objProgram.ProgramStatus = cmbStatus.SelectedIndex;
 
+                objProgram.Billing = cmbBilling.Text;
 
 				objProgram.ProgramID = _programid;
 				if (objProgram.Exists())
@@ -2579,8 +2610,9 @@ namespace Scheduler
 			arrLabel.Add("Department");
 			arrLabel.Add("Contact1");
 			arrLabel.Add("Contact2");
-			arrLabel.Add("Status");
-			arrLabel.Add("------");
+            arrLabel.Add("Billing");
+            arrLabel.Add("Status");
+            arrLabel.Add("------");
 			arrLabel.Add("Test Initial");
 			arrLabel.Add("Test Initial Form");
 			arrLabel.Add("Test Mid-term");
@@ -2608,8 +2640,9 @@ namespace Scheduler
 			arrValues.Add(cmbDept.Text);
 			arrValues.Add(cmbContact1.Text);
 			arrValues.Add(cmbContact2.Text);
-			arrValues.Add(cmbStatus.Text);
-			arrValues.Add("------");
+            arrValues.Add(cmbBilling.Text);
+            arrValues.Add(cmbStatus.Text);
+            arrValues.Add("------");
 			arrValues.Add(llblInitialEvt.Text);
 			arrValues.Add(txtInitialForm.Text);
 			arrValues.Add(llblMidEvt.Text);
@@ -2643,28 +2676,29 @@ namespace Scheduler
 
 			//Event//
 			arrLabel1.Add("------");
-			/*
+            /*
             arrLabel1.Add("Name");
-			arrLabel1.Add("Name Phonetic");
-			arrLabel1.Add("Name Romaji");
-			arrLabel1.Add("Start Date");
-			arrLabel1.Add("End Date");
-			//arrLabel1.Add("Recurrence");
-			arrLabel1.Add("Location");
-			arrLabel1.Add("Block");
-			arrLabel1.Add("Room No.");
-			arrLabel1.Add("Is Holiday");
-			arrLabel1.Add("Date Completed");
-			arrLabel1.Add("Status");
-			arrLabel1.Add("Scheduled Instructor");
-			arrLabel1.Add("Real Instructor");
-			arrLabel1.Add("Instructor Change Reason");
-			arrLabel1.Add("Exception Reason");
-			arrLabel1.Add("Description");
-			arrLabel1.Add("Note");
+            arrLabel1.Add("Name Phonetic");
+            arrLabel1.Add("Name Romaji");
+            arrLabel1.Add("Start Date");
+            arrLabel1.Add("End Date");
+            //arrLabel1.Add("Recurrence");
+            arrLabel1.Add("Location");
+            arrLabel1.Add("Block");
+            arrLabel1.Add("Room No.");
+            arrLabel1.Add("Is Holiday");
+            arrLabel1.Add("Date Completed");
+            arrLabel1.Add("Billing");
+            arrLabel1.Add("Status");
+            arrLabel1.Add("Scheduled Instructor");
+            arrLabel1.Add("Real Instructor");
+            arrLabel1.Add("Instructor Change Reason");
+            arrLabel1.Add("Exception Reason");
+            arrLabel1.Add("Description");
+            arrLabel1.Add("Note");
             */
 
-			foreach (string s in arrLabel1)
+            foreach (string s in arrLabel1)
 			{
 				arrLabel2.Add(s);
 				arrLabel3.Add(s);

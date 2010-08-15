@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 namespace Scheduler.BusinessLayer
 {
 	/// <summary>
-	/// Summary description for clsUser.
+	/// Summary description for clsProgram.
 	/// </summary>
 	public class Program
 	{
@@ -32,13 +32,15 @@ namespace Scheduler.BusinessLayer
 		private string _evalmidform="";
 		private string _evalfinalform="";
 		private string _questmidform="";
-		private string _questfinalform="";
-		private int _programstatus=0;
+        private string _questfinalform = "";
+        private int _programstatus = 0;
 
 		private int _contact1id=0;
 		private int _contact2id=0;
 
 		private string _message="";
+
+        private string _billing = "";
 
 		public DataTable ProgramDataTable
 		{
@@ -167,7 +169,12 @@ namespace Scheduler.BusinessLayer
 			get{return _message;}
 			set{_message=value;}
 		}
-		private void BuildDataTable()
+        public string Billing
+        {
+            get { return _billing; }
+            set { _billing = value; }
+        }
+        private void BuildDataTable()
 		{
 			if(_dtbl==null)
 			{
@@ -200,7 +207,8 @@ namespace Scheduler.BusinessLayer
 			_dtbl.Columns.Add(new DataColumn("QuestionaireFinalForm", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("ProgramStatus", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("ClientID", Type.GetType("System.Int32")));
-		}
+            _dtbl.Columns.Add(new DataColumn("Billing", Type.GetType("System.String")));
+        }
 
 		public static int CloneData(int programID)
 		{
@@ -380,6 +388,7 @@ namespace Scheduler.BusinessLayer
 					_questmidform = Reader["QuestionaireMidtermForm"].ToString();
 					_questfinalform = Reader["QuestionaireFinalForm"].ToString();
 					_programstatus = Convert.ToInt32(Reader["ProgramStatus"].ToString());
+                    _billing = Reader["Billing"].ToString();
 
 					if(Reader["Contact1"]!=null)
 					{
@@ -418,7 +427,8 @@ namespace Scheduler.BusinessLayer
 						Reader["QuestionaireMidtermForm"].ToString(),
 						Reader["QuestionaireFinalForm"].ToString(),
 						strstatus,
-						Convert.ToInt32(Reader["ClientID"].ToString())
+						Convert.ToInt32(Reader["ClientID"].ToString()),
+						Reader["Billing"].ToString()
 					});
 				}
 				Reader.Close();
@@ -532,11 +542,12 @@ namespace Scheduler.BusinessLayer
 					"QuestionaireMidtermForm, " +
 					"QuestionaireFinalForm, " +
 					"ProgramStatus, " +
-					"CreatedByUserId, " + 
+                    "CreatedByUserId, " + 
 					"DateCreated, " + 
 					"DateLastModified, " + 
-					"LastModifiedByUserID) " + 
-					"Values( " +
+					"LastModifiedByUserID, " +
+                    "Billing) " +
+                    "Values( " +
 					"@Name, " + 
 					"@NamePhonetic, " +
 					"@NameRomaji, " + 
@@ -558,11 +569,12 @@ namespace Scheduler.BusinessLayer
 					"@QuestionaireMidtermForm, " + 
 					"@QuestionaireFinalForm, " +
 					"@ProgramStatus, " +
-					"@CreatedByUserId, " + 
+                    "@CreatedByUserId, " + 
 					"@DateCreated, " +
 					"@DateLastModified, " +
-					"@LastModifiedByUserID " +
-					") ";
+					"@LastModifiedByUserID, " +
+                    "@Billing " +
+                    ") ";
 				strSql += "SELECT @@IDENTITY";
 
 
@@ -597,6 +609,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@DateCreated", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@DateLastModified", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@LastModifiedByUserID", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("Billing", SqlDbType.NVarChar));
 
 				com.Parameters["@Name"].Value = _name;
 				com.Parameters["@NamePhonetic"].Value = _namephonetic;
@@ -619,10 +632,11 @@ namespace Scheduler.BusinessLayer
 				com.Parameters["@QuestionaireMidtermForm"].Value = _questmidform;
 				com.Parameters["@QuestionaireFinalForm"].Value = _questfinalform;
 				com.Parameters["@ProgramStatus"].Value = _programstatus;
-				com.Parameters["@CreatedByUserId"].Value = Scheduler.BusinessLayer.Common.LogonID;
+                com.Parameters["@CreatedByUserId"].Value = Scheduler.BusinessLayer.Common.LogonID;
 				com.Parameters["@DateCreated"].Value = DateTime.Now;
 				com.Parameters["@DateLastModified"].Value = DateTime.Now;
 				com.Parameters["@LastModifiedByUserID"].Value = Scheduler.BusinessLayer.Common.LogonID;
+                com.Parameters["@Billing"].Value = _billing;
 
 				SqlDataReader Reader = com.ExecuteReader();
 				if(Reader.Read())
@@ -679,8 +693,9 @@ namespace Scheduler.BusinessLayer
 					"QuestionaireFinalForm=@QuestionaireFinalForm, " + 
 					"ProgramStatus=@ProgramStatus, " + 
 					"DateLastModified=@DateLastModified, " + 
-					"LastModifiedByUserID=@LastModifiedByUserID " + 
-					"WHERE ProgramId=@ProgramId ";
+					"LastModifiedByUserID=@LastModifiedByUserID, " +
+                    "Billing=@Billing " +
+                    "WHERE ProgramId=@ProgramId ";
 
 				con=new Connection();
 				con.Connect();
@@ -712,6 +727,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@DateCreated", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@DateLastModified", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@LastModifiedByUserID", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@Billing", SqlDbType.NVarChar));
 
 				com.Parameters["@ProgramID"].Value = _programid;				
 				com.Parameters["@Name"].Value = _name;
@@ -735,9 +751,10 @@ namespace Scheduler.BusinessLayer
 				com.Parameters["@QuestionaireMidtermForm"].Value = _questmidform;
 				com.Parameters["@QuestionaireFinalForm"].Value = _questfinalform;
 				com.Parameters["@ProgramStatus"].Value = _programstatus;
-				com.Parameters["@DateCreated"].Value = DateTime.Now;
+                com.Parameters["@DateCreated"].Value = DateTime.Now;
 				com.Parameters["@DateLastModified"].Value = DateTime.Now;
 				com.Parameters["@LastModifiedByUserID"].Value = Scheduler.BusinessLayer.Common.LogonID;
+                com.Parameters["@Billing"].Value = _billing;
 
 				com.ExecuteNonQuery();
 
