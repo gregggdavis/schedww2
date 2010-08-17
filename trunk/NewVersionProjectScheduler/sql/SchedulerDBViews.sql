@@ -39,6 +39,7 @@ FROM         dbo.Event INNER JOIN
                       dbo.Event.EventId = dbo.Program.TestMidtermEventId OR dbo.Event.EventId = dbo.Program.TestFinalEventId
 ' 
 GO
+/*
 IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'ViewAllEvents', NULL,NULL))
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
@@ -205,6 +206,7 @@ GO
 IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'ViewAllEvents', NULL,NULL))
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=2 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewAllEvents'
 GO
+*/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -403,6 +405,7 @@ FROM         dbo.newvwCalendarEvents INNER JOIN
                       dbo.Contact ON dbo.newvwCalendarEvents.TeacherId = dbo.Contact.ContactId
 ' 
 GO
+/*
 IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'newvwCalendarEventInstructors', NULL,NULL))
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
@@ -549,6 +552,7 @@ GO
 IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'newvwCalendarEventInstructors', NULL,NULL))
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'newvwCalendarEventInstructors'
 GO
+*/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -723,6 +727,7 @@ SELECT     TOP (100) PERCENT CourseId, Name, NamePhonetic, NameRomaji, NickName,
 FROM         dbo.ViewCourseN
 ' 
 GO
+/*
 IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'ViewClassEventsN', NULL,NULL))
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
@@ -872,6 +877,7 @@ GO
 IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'ViewClassEventsN', NULL,NULL))
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewClassEventsN'
 GO
+*/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
