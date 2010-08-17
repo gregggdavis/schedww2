@@ -111,6 +111,7 @@ namespace Scheduler
         private frmInstructorPayroll fpayment = null;
         private TransportationExpenses fTransportationExpenses = null;
         private frmPayrollByInstructor fpayrollByInstructor = null;
+        private frmReportBillingInfo fReportBillingInfo = null;
 
 		private AppointmentFormController controller;
 		private ToolBarButton tbtnPrint;
@@ -121,6 +122,7 @@ namespace Scheduler
         private NavBarItem navBarItem2;
         private NavBarItem navBarTransportationExpenses;
         private ToolBarButton tbtnInfoProgram;
+        private NavBarItem navBarReportBillingInfo;
 		private string strCalendar = "";
         #endregion
         public string MenuOption
@@ -213,6 +215,7 @@ namespace Scheduler
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarTransportationExpenses = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarReportBillingInfo = new DevExpress.XtraNavBar.NavBarItem();
             this.nBarContacts = new DevExpress.XtraNavBar.NavBarItem();
             this.cMenu_New = new System.Windows.Forms.ContextMenu();
             this.mnuItemClient = new System.Windows.Forms.MenuItem();
@@ -416,7 +419,7 @@ namespace Scheduler
             // 
             // sbarMain
             // 
-            this.sbarMain.Location = new System.Drawing.Point(0, 451);
+            this.sbarMain.Location = new System.Drawing.Point(0, 627);
             this.sbarMain.Name = "sbarMain";
             this.sbarMain.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.sPnlGeneral,
@@ -424,7 +427,7 @@ namespace Scheduler
             this.sPnlDate,
             this.sPnlPath});
             this.sbarMain.ShowPanels = true;
-            this.sbarMain.Size = new System.Drawing.Size(832, 22);
+            this.sbarMain.Size = new System.Drawing.Size(1138, 32);
             this.sbarMain.TabIndex = 17;
             this.sbarMain.Text = "sBarMain";
             // 
@@ -432,7 +435,7 @@ namespace Scheduler
             // 
             this.sPnlGeneral.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Spring;
             this.sPnlGeneral.Name = "sPnlGeneral";
-            this.sPnlGeneral.Width = 325;
+            this.sPnlGeneral.Width = 623;
             // 
             // sPnlLogon
             // 
@@ -461,16 +464,16 @@ namespace Scheduler
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 46);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(832, 405);
+            this.pnlBody.Size = new System.Drawing.Size(1138, 581);
             this.pnlBody.TabIndex = 18;
             // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.Window;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(160, 32);
+            this.pnlMain.Location = new System.Drawing.Point(256, 46);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(672, 373);
+            this.pnlMain.Size = new System.Drawing.Size(882, 535);
             this.pnlMain.TabIndex = 1;
             // 
             // pnlHeader
@@ -479,9 +482,9 @@ namespace Scheduler
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(160, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(256, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(672, 32);
+            this.pnlHeader.Size = new System.Drawing.Size(882, 46);
             this.pnlHeader.TabIndex = 0;
             this.pnlHeader.Resize += new System.EventHandler(this.pnlHeader_Resize);
             // 
@@ -490,9 +493,9 @@ namespace Scheduler
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTitle.Location = new System.Drawing.Point(16, 5);
+            this.lblTitle.Location = new System.Drawing.Point(26, 7);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(47, 19);
+            this.lblTitle.Size = new System.Drawing.Size(66, 29);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Title";
             // 
@@ -503,7 +506,7 @@ namespace Scheduler
             this.pnlNavBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavBar.Location = new System.Drawing.Point(0, 0);
             this.pnlNavBar.Name = "pnlNavBar";
-            this.pnlNavBar.Size = new System.Drawing.Size(160, 405);
+            this.pnlNavBar.Size = new System.Drawing.Size(256, 581);
             this.pnlNavBar.TabIndex = 12;
             // 
             // navBar
@@ -540,12 +543,13 @@ namespace Scheduler
             this.nBarMonth,
             this.navBarItem1,
             this.navBarItem2,
-            this.navBarTransportationExpenses});
+            this.navBarTransportationExpenses,
+            this.navBarReportBillingInfo});
             this.navBar.LargeImages = this.imlNavBar;
             this.navBar.Location = new System.Drawing.Point(0, 0);
             this.navBar.Name = "navBar";
             this.navBar.OptionsNavPane.ExpandedWidth = 156;
-            this.navBar.Size = new System.Drawing.Size(156, 401);
+            this.navBar.Size = new System.Drawing.Size(252, 577);
             this.navBar.SmallImages = this.imlSmallImageNavBar;
             this.navBar.TabIndex = 5;
             this.navBar.Text = "Navigation";
@@ -668,7 +672,8 @@ namespace Scheduler
             this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarTransportationExpenses)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarTransportationExpenses),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarReportBillingInfo)});
             this.navBarGroup4.Name = "navBarGroup4";
             // 
             // navBarItem1
@@ -691,6 +696,13 @@ namespace Scheduler
             this.navBarTransportationExpenses.LargeImageIndex = 23;
             this.navBarTransportationExpenses.Name = "navBarTransportationExpenses";
             this.navBarTransportationExpenses.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarTransportationExpenses_LinkClicked);
+            // 
+            // navBarReportBillingInfo
+            // 
+            this.navBarReportBillingInfo.Caption = "Billing Information By Client";
+            this.navBarReportBillingInfo.LargeImageIndex = 2;
+            this.navBarReportBillingInfo.Name = "navBarReportBillingInfo";
+            this.navBarReportBillingInfo.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarReportBillingInfo_LinkClicked);
             // 
             // nBarContacts
             // 
@@ -786,7 +798,7 @@ namespace Scheduler
             this.tBarMain.Location = new System.Drawing.Point(0, 0);
             this.tBarMain.Name = "tBarMain";
             this.tBarMain.ShowToolTips = true;
-            this.tBarMain.Size = new System.Drawing.Size(832, 46);
+            this.tBarMain.Size = new System.Drawing.Size(1138, 46);
             this.tBarMain.TabIndex = 11;
             this.tBarMain.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
             this.tBarMain.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.tBarMain_ButtonClick);
@@ -860,15 +872,15 @@ namespace Scheduler
             // 
             // frmMain
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-            this.ClientSize = new System.Drawing.Size(832, 473);
+            this.AutoScaleBaseSize = new System.Drawing.Size(8, 20);
+            this.ClientSize = new System.Drawing.Size(1138, 659);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.sbarMain);
             this.Controls.Add(this.tBarMain);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mnuMain;
-            this.MinimumSize = new System.Drawing.Size(725, 500);
+            this.MinimumSize = new System.Drawing.Size(1160, 714);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scheduler";
@@ -1044,6 +1056,19 @@ namespace Scheduler
                     MenuOption = "Pay Details By Instructor...";
                     Common.Caption = "Pay Details By Instructor";
                     fpayment.LoadData();
+
+                }
+                else if (caller == "ReportBillingInfo")
+                {
+                    if (fReportBillingInfo == null)
+                    {
+                        DisposeAll();
+                        fReportBillingInfo = new frmReportBillingInfo();
+                        fReportBillingInfo.pnlBody.Parent = pnlMain;
+                    }
+                    MenuOption = "Billing Information By Client...";
+                    Common.Caption = "Billing Information By Client";
+                    fReportBillingInfo.LoadData();
 
                 }
                 else if (caller == "TransportationExpenses")
@@ -1295,6 +1320,12 @@ namespace Scheduler
                 fpayment.Dispose();
                 fpayment = null;
             }
+            if (fReportBillingInfo != null)
+            {
+                fReportBillingInfo.pnlBody.Parent = null;
+                fReportBillingInfo.Dispose();
+                fReportBillingInfo = null;
+            }
             if (fTransportationExpenses != null)
             {
                 fTransportationExpenses.pnlBody.Parent = null;
@@ -1427,6 +1458,8 @@ namespace Scheduler
                     fpayrollByInstructor.PrintGrid(gc, true);
                 else if (strMenuOption == "Pay Details By Instructor...")
                     fpayment.PrintGrid(gc, true);
+                else if (strMenuOption == "Billing Infomation By Client...")
+                    fReportBillingInfo.PrintGrid(gc, true);
                 else
                     PrintGrid(gc);
 			}
@@ -1597,8 +1630,11 @@ namespace Scheduler
 						sPnlPath.ToolTipText = "Server : " + Common.SqlServer;
 
 						//Open default Client Page at Startup
-						nBarClient_LinkClicked(null, null);
-						Common.UnLockWindow();
+                        nBarClient_LinkClicked(null, null);
+                        //nBarProgram_LinkClicked(null, null);
+                        //navBarItem1_LinkClicked(null, null);
+                        //navBarReportBillingInfo_LinkClicked(null, null);
+                        Common.UnLockWindow();
 						Refresh();
 
 						return;
@@ -1632,9 +1668,12 @@ namespace Scheduler
 							fLogin.ShowDialog();
 						}
 					}
-					fLogin.Close();
-					fLogin.Dispose();
-					frmMain_Load(this, null);
+                    if (fLogin != null)
+                    {
+                        fLogin.Close();
+                        fLogin.Dispose();
+                        frmMain_Load(this, null);
+                    }
 				}
 
 				Visible = true;
@@ -3306,6 +3345,12 @@ namespace Scheduler
         {
             Focus();
             OpenBrowse("TransportationExpenses");
+        }
+
+        private void navBarReportBillingInfo_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            Focus();
+            OpenBrowse("ReportBillingInfo");
         }
 	}
 }
