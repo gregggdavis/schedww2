@@ -346,6 +346,12 @@
     <Compile Include="frmRecurrenceDiaryDlg.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmReportBillingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportBillingInfo.designer.cs">
+      <DependentUpon>frmReportBillingInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -512,6 +518,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRecurrenceDiaryDlg.resx">
       <DependentUpon>frmRecurrenceDiaryDlg.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportBillingInfo.resx">
+      <DependentUpon>frmReportBillingInfo.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
