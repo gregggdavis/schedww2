@@ -308,8 +308,11 @@ namespace Scheduler
             // 
             // colTimeStatus
             // 
+            this.colTimeStatus.Caption = "Employee Status";
             this.colTimeStatus.FieldName = "TimeStatus";
             this.colTimeStatus.Name = "colTimeStatus";
+            this.colTimeStatus.OptionsColumn.AllowEdit = false;
+            this.colTimeStatus.OptionsColumn.ReadOnly = true;
             this.colTimeStatus.Visible = true;
             this.colTimeStatus.VisibleIndex = 1;
             this.colTimeStatus.Width = 147;
