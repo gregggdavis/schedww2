@@ -1167,6 +1167,8 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnHomeworkMinutes;
             
+            private global::System.Data.DataColumn columnBilling;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public viewInstructorPaymentDetailsDataTable() {
                 this.TableName = "viewInstructorPaymentDetails";
@@ -1296,6 +1298,13 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn BillingColumn {
+                get {
+                    return this.columnBilling;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1324,7 +1333,7 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public viewInstructorPaymentDetailsRow AddviewInstructorPaymentDetailsRow(int CalendarEventId, int TeacherId, string InstructorName, System.DateTime StartDateTime, System.DateTime EndDateTime, string ClientName, string ClientNickName, string ProgramName, string Class, string JobType, string DayName, decimal ScheduledHours, decimal PaidHours, decimal HomeworkMinutes) {
+            public viewInstructorPaymentDetailsRow AddviewInstructorPaymentDetailsRow(int CalendarEventId, int TeacherId, string InstructorName, System.DateTime StartDateTime, System.DateTime EndDateTime, string ClientName, string ClientNickName, string ProgramName, string Class, string JobType, string DayName, decimal ScheduledHours, decimal PaidHours, decimal HomeworkMinutes, string Billing) {
                 viewInstructorPaymentDetailsRow rowviewInstructorPaymentDetailsRow = ((viewInstructorPaymentDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CalendarEventId,
@@ -1340,7 +1349,8 @@ namespace Scheduler.BusinessLayer {
                         DayName,
                         ScheduledHours,
                         PaidHours,
-                        HomeworkMinutes};
+                        HomeworkMinutes,
+                        Billing};
                 rowviewInstructorPaymentDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowviewInstructorPaymentDetailsRow);
                 return rowviewInstructorPaymentDetailsRow;
@@ -1385,6 +1395,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnScheduledHours = base.Columns["ScheduledHours"];
                 this.columnPaidHours = base.Columns["PaidHours"];
                 this.columnHomeworkMinutes = base.Columns["HomeworkMinutes"];
+                this.columnBilling = base.Columns["Billing"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1417,6 +1428,8 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnPaidHours);
                 this.columnHomeworkMinutes = new global::System.Data.DataColumn("HomeworkMinutes", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHomeworkMinutes);
+                this.columnBilling = new global::System.Data.DataColumn("Billing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBilling);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCalendarEventId}, true));
                 this.columnCalendarEventId.AllowDBNull = false;
@@ -1437,6 +1450,8 @@ namespace Scheduler.BusinessLayer {
                 this.columnScheduledHours.ReadOnly = true;
                 this.columnPaidHours.ReadOnly = true;
                 this.columnHomeworkMinutes.ReadOnly = true;
+                this.columnBilling.ReadOnly = true;
+                this.columnBilling.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4279,6 +4294,22 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Billing {
+                get {
+                    try {
+                        return ((string)(this[this.tableviewInstructorPaymentDetails.BillingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Billing\' in table \'viewInstructorPaymentDetails\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableviewInstructorPaymentDetails.BillingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsTeacherIdNull() {
                 return this.IsNull(this.tableviewInstructorPaymentDetails.TeacherIdColumn);
             }
@@ -4396,6 +4427,16 @@ namespace Scheduler.BusinessLayer {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetHomeworkMinutesNull() {
                 this[this.tableviewInstructorPaymentDetails.HomeworkMinutesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsBillingNull() {
+                return this.IsNull(this.tableviewInstructorPaymentDetails.BillingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetBillingNull() {
+                this[this.tableviewInstructorPaymentDetails.BillingColumn] = global::System.Convert.DBNull;
             }
         }
         
