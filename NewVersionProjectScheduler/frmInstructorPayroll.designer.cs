@@ -246,7 +246,7 @@ namespace Scheduler
             this.colProgramName.OptionsColumn.AllowEdit = false;
             this.colProgramName.OptionsColumn.ReadOnly = true;
             this.colProgramName.Visible = true;
-            this.colProgramName.VisibleIndex = 6;
+            this.colProgramName.VisibleIndex = 3;
             this.colProgramName.Width = 62;
             // 
             // colClassName
@@ -257,7 +257,7 @@ namespace Scheduler
             this.colClassName.OptionsColumn.AllowEdit = false;
             this.colClassName.OptionsColumn.ReadOnly = true;
             this.colClassName.Visible = true;
-            this.colClassName.VisibleIndex = 7;
+            this.colClassName.VisibleIndex = 4;
             this.colClassName.Width = 47;
             // 
             // colClassType
@@ -268,7 +268,7 @@ namespace Scheduler
             this.colClassType.OptionsColumn.AllowEdit = false;
             this.colClassType.OptionsColumn.ReadOnly = true;
             this.colClassType.Visible = true;
-            this.colClassType.VisibleIndex = 8;
+            this.colClassType.VisibleIndex = 5;
             this.colClassType.Width = 66;
             // 
             // colClientShortName
@@ -279,7 +279,7 @@ namespace Scheduler
             this.colClientShortName.OptionsColumn.AllowEdit = false;
             this.colClientShortName.OptionsColumn.ReadOnly = true;
             this.colClientShortName.Visible = true;
-            this.colClientShortName.VisibleIndex = 5;
+            this.colClientShortName.VisibleIndex = 2;
             this.colClientShortName.Width = 49;
             // 
             // colStartDateTime
@@ -293,7 +293,7 @@ namespace Scheduler
             this.colStartDateTime.OptionsColumn.AllowEdit = false;
             this.colStartDateTime.OptionsColumn.ReadOnly = true;
             this.colStartDateTime.Visible = true;
-            this.colStartDateTime.VisibleIndex = 3;
+            this.colStartDateTime.VisibleIndex = 7;
             this.colStartDateTime.Width = 71;
             // 
             // repositoryItemTimeEdit1
@@ -317,7 +317,7 @@ namespace Scheduler
             this.colEndDateTime.OptionsColumn.AllowEdit = false;
             this.colEndDateTime.OptionsColumn.ReadOnly = true;
             this.colEndDateTime.Visible = true;
-            this.colEndDateTime.VisibleIndex = 4;
+            this.colEndDateTime.VisibleIndex = 8;
             this.colEndDateTime.Width = 65;
             // 
             // repositoryItemTimeEdit2
@@ -337,7 +337,7 @@ namespace Scheduler
             this.colDayName.OptionsColumn.AllowEdit = false;
             this.colDayName.OptionsColumn.ReadOnly = true;
             this.colDayName.Visible = true;
-            this.colDayName.VisibleIndex = 2;
+            this.colDayName.VisibleIndex = 6;
             this.colDayName.Width = 41;
             // 
             // colCalendarEventId
@@ -361,11 +361,11 @@ namespace Scheduler
             this.colPaidHours.Name = "colPaidHours";
             this.colPaidHours.OptionsColumn.AllowEdit = false;
             this.colPaidHours.OptionsColumn.ReadOnly = true;
-            this.colPaidHours.SummaryItem.DisplayFormat = "Paid Hours = {0}";
+            this.colPaidHours.SummaryItem.DisplayFormat = "TOTAL Paid Hours = {0:n1}";
             this.colPaidHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colPaidHours.Visible = true;
             this.colPaidHours.VisibleIndex = 10;
-            this.colPaidHours.Width = 172;
+            this.colPaidHours.Width = 162;
             // 
             // repositoryItemSpinEdit2
             // 
@@ -409,11 +409,11 @@ namespace Scheduler
             this.colScheduledHours.Name = "colScheduledHours";
             this.colScheduledHours.OptionsColumn.AllowEdit = false;
             this.colScheduledHours.OptionsColumn.ReadOnly = true;
-            this.colScheduledHours.SummaryItem.DisplayFormat = "Scheduled Hours = {0}";
+            this.colScheduledHours.SummaryItem.DisplayFormat = "TOTAL Scheduled Hours = {0:n1}";
             this.colScheduledHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colScheduledHours.Visible = true;
             this.colScheduledHours.VisibleIndex = 9;
-            this.colScheduledHours.Width = 162;
+            this.colScheduledHours.Width = 163;
             // 
             // repositoryItemSpinEdit1
             // 
