@@ -101,6 +101,12 @@ namespace Scheduler
 		{
             //XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
 			InitializeComponent();
+
+            // If first time on Calendar view and not yet accessed event list
+            // then set initial instructor and clear client
+            // Therefore, in here, just need to set to false
+            CalendarFilter.NotLoadedYet = false;
+
 			pnl_Find.Height = 0;
 			pnl_Find.Visible=true;
             XpoDefault.ConnectionString = BusinessLayer.Common.ConnString;
@@ -262,9 +268,9 @@ namespace Scheduler
             this.grdEvent.TabIndex = 26;
             this.grdEvent.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwEvent});
-            this.grdEvent.Click += new System.EventHandler(this.grdEvent_Click);
             this.grdEvent.DoubleClick += new System.EventHandler(this.grdEvent_DoubleClick);
             this.grdEvent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdEvent_KeyPress);
+            this.grdEvent.Click += new System.EventHandler(this.grdEvent_Click);
             // 
             // contextMenuStrip1
             // 
@@ -375,8 +381,8 @@ namespace Scheduler
             this.gColName.FieldName = "Name";
             this.gColName.Name = "gColName";
             this.gColName.Visible = true;
-            this.gColName.VisibleIndex = 4;
-            this.gColName.Width = 93;
+            this.gColName.VisibleIndex = 5;
+            this.gColName.Width = 216;
             // 
             // gcolClass
             // 
@@ -392,7 +398,7 @@ namespace Scheduler
             this.gcolProgram.Name = "gcolProgram";
             this.gcolProgram.Visible = true;
             this.gcolProgram.VisibleIndex = 3;
-            this.gcolProgram.Width = 82;
+            this.gcolProgram.Width = 189;
             // 
             // gcolDescription
             // 
@@ -428,8 +434,8 @@ namespace Scheduler
             this.gcolScheduledIns.FieldName = "ScheduledTeacher";
             this.gcolScheduledIns.Name = "gcolScheduledIns";
             this.gcolScheduledIns.Visible = true;
-            this.gcolScheduledIns.VisibleIndex = 5;
-            this.gcolScheduledIns.Width = 72;
+            this.gcolScheduledIns.VisibleIndex = 6;
+            this.gcolScheduledIns.Width = 167;
             // 
             // gcolRealIns
             // 
@@ -474,8 +480,8 @@ namespace Scheduler
             this.gcolDept.FieldName = "Department";
             this.gcolDept.Name = "gcolDept";
             this.gcolDept.Visible = true;
-            this.gcolDept.VisibleIndex = 3;
-            this.gcolDept.Width = 85;
+            this.gcolDept.VisibleIndex = 4;
+            this.gcolDept.Width = 197;
             // 
             // gcolClient
             // 
@@ -484,7 +490,7 @@ namespace Scheduler
             this.gcolClient.Name = "gcolClient";
             this.gcolClient.Visible = true;
             this.gcolClient.VisibleIndex = 2;
-            this.gcolClient.Width = 85;
+            this.gcolClient.Width = 197;
             // 
             // gcolInstructor
             // 
@@ -492,8 +498,8 @@ namespace Scheduler
             this.gcolInstructor.FieldName = "Instructor";
             this.gcolInstructor.Name = "gcolInstructor";
             this.gcolInstructor.Visible = true;
-            this.gcolInstructor.VisibleIndex = 6;
-            this.gcolInstructor.Width = 72;
+            this.gcolInstructor.VisibleIndex = 7;
+            this.gcolInstructor.Width = 167;
             // 
             // gcolExceptionReason
             // 
@@ -501,13 +507,13 @@ namespace Scheduler
             this.gcolExceptionReason.FieldName = "ExceptionReason";
             this.gcolExceptionReason.Name = "gcolExceptionReason";
             this.gcolExceptionReason.Visible = true;
-            this.gcolExceptionReason.VisibleIndex = 7;
-            this.gcolExceptionReason.Width = 84;
+            this.gcolExceptionReason.VisibleIndex = 8;
+            this.gcolExceptionReason.Width = 222;
             // 
             // gcolCourseId
             // 
             this.gcolCourseId.Caption = "CourseId";
-            this.gcolCourseId.FieldName = "CourseID";
+            this.gcolCourseId.FieldName = "CourseId";
             this.gcolCourseId.Name = "gcolCourseId";
             // 
             // gcolDayOfWeek
@@ -517,7 +523,7 @@ namespace Scheduler
             this.gcolDayOfWeek.Name = "gcolDayOfWeek";
             this.gcolDayOfWeek.Visible = true;
             this.gcolDayOfWeek.VisibleIndex = 1;
-            this.gcolDayOfWeek.Width = 67;
+            this.gcolDayOfWeek.Width = 124;
             // 
             // colDateAndTime
             // 
@@ -529,7 +535,7 @@ namespace Scheduler
             this.colDateAndTime.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.colDateAndTime.Visible = true;
             this.colDateAndTime.VisibleIndex = 0;
-            this.colDateAndTime.Width = 116;
+            this.colDateAndTime.Width = 268;
             // 
             // pnlFilter
             // 
@@ -781,8 +787,8 @@ namespace Scheduler
             this.txt_SpeedSearch.TabIndex = 10;
             this.txt_SpeedSearch.TextChanged += new System.EventHandler(this.txt_SpeedSearch_TextChanged);
             this.txt_SpeedSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyDown);
-            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
+            this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
             // 
             // label1
             // 
@@ -1096,7 +1102,7 @@ namespace Scheduler
 
             intEventID = Convert.ToInt32(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolEventID));
             int intCalID = Convert.ToInt32(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, colCalendarEventID).ToString());
-            //int CourseID = Common.ConvertToInteger(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolCourseId).ToString());
+            //int CourseId = Common.ConvertToInteger(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolCourseId).ToString());
             //int ProgramID = Common.ConvertToInteger(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolProgramId).ToString());
             string strEventType = gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolEventType).ToString();
 
@@ -1181,10 +1187,10 @@ namespace Scheduler
                 //For Extra Classes and Test Events;
                 fEvtDlg = new frmEventDlg(int.Parse(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, gcolEventID).ToString()), int.Parse(gvwEvent.GetRowCellValue(gvwEvent.FocusedRowHandle, colCalendarEventID).ToString()));
                 fEvtDlg.Mode = "Edit";
-                fEvtDlg.CourseId = CourseID;
+                fEvtDlg.CourseId = CourseId;
 
                 Course _course = new Course();
-                _course.CourseID = CourseID;
+                _course.CourseId = CourseId;
                 _course.LoadData();
                 fEvtDlg.AllowExtraClasses = _course.IsRecurring();
                 if (fEvtDlg.ShowDialog() == DialogResult.OK)
@@ -1380,7 +1386,7 @@ namespace Scheduler
 							CollSearchRow[intRowCtr]["ExceptionReason"],
 							CollSearchRow[intRowCtr]["ScheduledTeacher"],
 							CollSearchRow[intRowCtr]["RealTeacher"],
-							CollSearchRow[intRowCtr]["CourseID"],
+							CollSearchRow[intRowCtr]["CourseId"],
 							CollSearchRow[intRowCtr]["Class"],
 							CollSearchRow[intRowCtr]["ProgramID"],
 							CollSearchRow[intRowCtr]["Program"],

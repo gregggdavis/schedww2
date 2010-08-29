@@ -1855,7 +1855,7 @@ namespace Scheduler
 					if(dr["Class"]!=System.DBNull.Value) strClass = dr["Class"].ToString();
 
 					if(dr["ProgramID"]!=System.DBNull.Value) intProgramID = Convert.ToInt32(dr["ProgramID"].ToString());
-					if(dr["CourseID"]!=System.DBNull.Value) intClassID = Convert.ToInt32(dr["CourseID"].ToString());
+                    if (dr["CourseId"] != System.DBNull.Value) intClassID = Convert.ToInt32(dr["CourseId"].ToString());
 
 					cmbClient.Text = strClient;
 					if(strClient.Trim()!="")
@@ -1886,7 +1886,7 @@ namespace Scheduler
 						{
 							cmbClass.Text = strClass;
 							intClassID = Common.GetCompanyID(
-								"Select CourseID From Course " +
+                                "Select CourseId From Course " +
 								"Where ([Name]= @CompanyName OR NickName=@CompanyName) and ProgramID=" + intProgramID.ToString(), cmbClass.Text
 								);
 						}
@@ -2815,7 +2815,7 @@ namespace Scheduler
 		{
 			if(cmbClass.SelectedIndex==0) intClassID=0;
 			intClassID = Common.GetCompanyID(
-				"Select CourseID From Course " +
+                "Select CourseId From Course " +
 				"Where ([Name]= @CompanyName OR NickName=@CompanyName) and ProgramID=" + intProgramID.ToString(), cmbClass.Text
 				);
 
