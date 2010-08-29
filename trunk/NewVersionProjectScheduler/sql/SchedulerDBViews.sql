@@ -7,7 +7,7 @@ EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewAllEvents]
 AS
 SELECT     dbo.Event.EventId, dbo.Event.RepeatRule, dbo.Event.NegetiveException, dbo.Event.Description, dbo.Event.RecurrenceText, dbo.CalendarEvent.CalendarEventId, 
                       dbo.CalendarEvent.Note, CASE CalendarEvent.CalendarEventStatus WHEN ''0'' THEN ''Active'' WHEN ''1'' THEN ''Inactive'' END AS EventStatus, 
-                      dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime, DATENAME(dw, dbo.CalendarEvent.StartDateTime) AS DayOfWeek, 
+                      dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime, LEFT(DATENAME(dw, dbo.CalendarEvent.StartDateTime), 3) AS DayOfWeek, 
                       dbo.CalendarEvent.DateCompleted, dbo.CalendarEvent.Name, dbo.CalendarEvent.NamePhonetic, dbo.CalendarEvent.NameRomaji, dbo.CalendarEvent.Location, 
                       dbo.CalendarEvent.BlockCode, dbo.CalendarEvent.RoomNumber, dbo.CalendarEvent.ScheduledTeacherId, dbo.CalendarEvent.RealTeacherId, 
                       dbo.CalendarEvent.ChangeReason, dbo.CalendarEvent.IsHoliday, dbo.CalendarEvent.EventType, dbo.CalendarEvent.ExceptionReason, 
@@ -337,10 +337,9 @@ IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newv
 EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEvents]
 AS
 SELECT     CalendarEventId, EventId, StartDateTime, EndDateTime, EventType, Name AS EventName, ScheduledTeacherId, RealTeacherId, IsHoliday, 
-                      CASE dbo.CalendarEvent.CalendarEventStatus WHEN ''0'' THEN ''Active'' WHEN ''1'' THEN ''Inactive'' END AS EventStatus, 
-                      CASE WHEN RealTeacherId IS NULL OR
-                      RealTeacherId = 0 THEN ScheduledTeacherId ELSE RealTeacherId END AS TeacherId, CAST(DATEDIFF(mi, StartDateTime, EndDateTime) 
-                      AS Decimal(18, 2)) AS EventMinutes, DATENAME(dw, StartDateTime) AS DayName
+                      CASE dbo.CalendarEvent.CalendarEventStatus WHEN ''0'' THEN ''Active'' WHEN ''1'' THEN ''Inactive'' END AS EventStatus, CASE WHEN RealTeacherId IS NULL OR
+                      RealTeacherId = 0 THEN ScheduledTeacherId ELSE RealTeacherId END AS TeacherId, CAST(DATEDIFF(mi, StartDateTime, EndDateTime) AS Decimal(18, 2)) 
+                      AS EventMinutes, LEFT(DATENAME(dw, StartDateTime), 3) AS DayName
 FROM         dbo.CalendarEvent
 WHERE     (CalendarEventStatus = 0)
 ' 
@@ -478,22 +477,22 @@ Begin DesignProperties =
          Left = 0
       End
       Begin Tables = 
-         Begin Table = "newvwCalendarEvents"
-            Begin Extent = 
-               Top = 6
-               Left = 38
-               Bottom = 125
-               Right = 225
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
          Begin Table = "Contact"
             Begin Extent = 
                Top = 126
                Left = 38
                Bottom = 245
                Right = 274
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "newvwCalendarEvents"
+            Begin Extent = 
+               Top = 6
+               Left = 38
+               Bottom = 125
+               Right = 225
             End
             DisplayFlags = 280
             TopColumn = 0
@@ -718,13 +717,15 @@ GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewClassEventsN]'))
 EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewClassEventsN]
 AS
-SELECT     TOP (100) PERCENT CourseId, Name, NamePhonetic, NameRomaji, NickName, ProgramId, CourseType, EventId, Description, SpecialRemarks, Curriculam, 
-                      NumberStudents, HomeworkMinutes, ISNULL(TestInitialEventId, 0) AS TestInitialEventId, ISNULL(TestMidtermEventId, 0) AS TestMidtermEventId, 
-                      ISNULL(TestFinalEventId, 0) AS TestFinalEventId, ISNULL(TestInitialForm, 0) AS TestInitialForm, ISNULL(TestMidtermForm, 0) AS TestMidtermForm, 
-                      ISNULL(TestFinalForm, 0) AS TestFinalForm, CourseStatus, CreatedByUserId, DateCreated, DateLastModified, LastModifiedByUserId, BrowseName, 
-                      ProgramNickName, Program, Department, Client, dbo.GetEventTextStartDate(EventId) AS EventStartDateTime, dbo.GetEventTextInstructorName(EventId) 
-                      AS ScheduledInstructor, dbo.GetEventTextEndDate(EventId) AS EventEndDateTime, dbo.GetEventOccurranceCount(EventId) AS OccurrenceCount
-FROM         dbo.ViewCourseN
+SELECT TOP (100) PERCENT CourseId, Name, NamePhonetic, NameRomaji, NickName, ProgramId, CourseType, EventId, Description, 
+                      SpecialRemarks, Curriculam, NumberStudents, HomeworkMinutes, ISNULL(TestInitialEventId, 0) AS TestInitialEventId, 
+                      ISNULL(TestMidtermEventId, 0) AS TestMidtermEventId, ISNULL(TestFinalEventId, 0) AS TestFinalEventId, ISNULL(TestInitialForm, 0) 
+                      AS TestInitialForm, ISNULL(TestMidtermForm, 0) AS TestMidtermForm, ISNULL(TestFinalForm, 0) AS TestFinalForm, CourseStatus, 
+                      CreatedByUserId, DateCreated, DateLastModified, LastModifiedByUserId, BrowseName, ProgramNickName, Program, Department, 
+                      Client, dbo.GetEventTextStartDate(EventId) AS EventStartDateTime, dbo.GetEventTextInstructorName(EventId) 
+                      AS ScheduledInstructor, dbo.GetEventTextEndDate(EventId) AS EventEndDateTime, dbo.GetEventOccurranceCount(EventId) 
+                      AS OccurrenceCount
+FROM      dbo.ViewCourseN
 ' 
 GO
 /*
@@ -1046,4 +1047,5 @@ SELECT     CalendarEventId, TeacherId, InstructorName, StartDateTime, EndDateTim
                       + ScheduledHours END AS PaidHours, CAST(CAST(HomeworkMinutes AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS HomeworkMinutes, Billing
 FROM         dbo.newvwSubPayDetailsByInstructor AS subPayments
 ' 
+GO
 
