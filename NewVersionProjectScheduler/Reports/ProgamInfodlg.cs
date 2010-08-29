@@ -49,7 +49,7 @@ namespace Scheduler.Reports
                     {
                         courseNames += ",";
                     }
-                    courseNames += row["CourseID"].ToString();
+                    courseNames += row["CourseId"].ToString();
                     isFirst = false;
                 }
                 frm.LoadData(Convert.ToInt32(this.Tag), courseNames);
