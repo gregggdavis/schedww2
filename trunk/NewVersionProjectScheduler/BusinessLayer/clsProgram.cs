@@ -609,7 +609,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@DateCreated", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@DateLastModified", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@LastModifiedByUserID", SqlDbType.Int));
-                com.Parameters.Add(new SqlParameter("Billing", SqlDbType.NVarChar));
+                com.Parameters.Add(new SqlParameter("@Billing", SqlDbType.NVarChar));
 
 				com.Parameters["@Name"].Value = _name;
 				com.Parameters["@NamePhonetic"].Value = _namephonetic;
