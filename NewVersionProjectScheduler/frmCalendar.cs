@@ -69,7 +69,15 @@ namespace Scheduler {
 			//
 			// TODO: Add any constructor code after InitializeComponent call
 			//
-		}
+
+            // If first time on Calendar view and not yet accessed event list
+            // then set initial instructor and clear client
+            if (CalendarFilter.NotLoadedYet) {
+                CalendarFilter.InstructorIndex = 1;
+                CalendarFilter.ClientIndex = 0;
+            }
+            CalendarFilter.NotLoadedYet = false;
+        }
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -939,9 +947,9 @@ namespace Scheduler {
             //    chkHideWeekends.Checked = CalendarFilter.WeeklyHideWeekends;
             //}
             //else if (_viewModeName == "Month")
-            {
+            //{
                 chkHideWeekends.Checked = CalendarFilter.MonthlyHideWeekends;
-            }
+            //}
             
 			isProcess = false;
             IsAllow = false;
@@ -1074,7 +1082,7 @@ namespace Scheduler {
                     
                     
                     Common.FontSize = 8.25f;
-					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 2);
+					schedulerPrintStyle.AppointmentFont = new Font(Common.FontName, Common.FontSize - 1);
 					schedulerPrintStyle.HeadingsFont = new Font(Common.FontName, Common.FontSize );
 					schedulerPrintStyle.PageSettings.Margins = new Margins(10, 10, 10, 10);
 					schedulerPrintStyle.PageSettings.Landscape = true;
@@ -1252,7 +1260,7 @@ namespace Scheduler {
 
         private void schedulerControl1_AppointmentViewInfoCustomizing(object sender, AppointmentViewInfoCustomizingEventArgs e)
         {
-            if (e.ViewInfo.Appointment.Description.Contains("InActive"))
+            if (e.ViewInfo.Appointment.Description.Contains("Inactive"))
             {
                 e.ViewInfo.Appearance.Font = new Font(e.ViewInfo.Appearance.Font,(FontStyle.Bold|FontStyle.Strikeout));
             }
