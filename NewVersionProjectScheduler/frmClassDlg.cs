@@ -2152,7 +2152,7 @@ namespace Scheduler
 			get{return _mode;}
 			set{_mode=value;}
 		}
-		public int CourseID
+        public int CourseId
 		{
 			get{return _courseid;}
 			set{_courseid=value;}
@@ -2231,7 +2231,7 @@ namespace Scheduler
                 }
 				
 				Scheduler.BusinessLayer.Course objCourse=new Scheduler.BusinessLayer.Course();
-				objCourse.CourseID = _courseid;
+                objCourse.CourseId = _courseid;
 				objCourse.LoadData();
                 IsRecurringSeries = objCourse.IsRecurring();
                 bool[] boolArray = objCourse.CheckTestEvents();
@@ -2575,7 +2575,7 @@ namespace Scheduler
 			llblFinalEvt.Text = "None";
 
 			Scheduler.BusinessLayer.Course objCourse=new Scheduler.BusinessLayer.Course();
-			objCourse.CourseID = _courseid;
+			objCourse.CourseId = _courseid;
 			objCourse.LoadData();
 
 			foreach(DataRow dr in objCourse.CourseDataTable.Rows)
@@ -2705,7 +2705,7 @@ namespace Scheduler
                 }
                 else
                 {
-                    arrEvent.Add("InActive");
+                    arrEvent.Add("Inactive");
                 }
                 arrEvent.Add(dr["ScheduledTeacher"].ToString());
                 arrEvent.Add(dr["RealTeacher"].ToString());
@@ -2753,7 +2753,7 @@ namespace Scheduler
         private void LoadOtherEvents()
         {
             BusinessLayer.Course objCourse = new Course();
-            objCourse.CourseID = _courseid;
+            objCourse.CourseId = _courseid;
             /*
              * A Class MUST have an event of it's own to have EXTRA CLASSES.
              * A Class can HOWEVER have TEST EVENTS without an event of it's own
@@ -3762,7 +3762,7 @@ namespace Scheduler
 
             #region Setting Course Object
             objCourse = new Scheduler.BusinessLayer.Course();
-            objCourse.CourseID = 0;
+            objCourse.CourseId = 0;
 
             objCourse.name = txtCourseName.Text;
             objCourse.NamePhonetic = txtNamePhonetic.Text;
@@ -3795,7 +3795,7 @@ namespace Scheduler
 
             objCourse.CourseStatus = cmbStatus.SelectedIndex;
 
-            objCourse.CourseID = _courseid;
+            objCourse.CourseId = _courseid;
             //if (objCourse.Exists())
             //{
             //    Scheduler.BusinessLayer.Message.MsgInformation("Duplicate Class Name not allowed");
@@ -3817,7 +3817,7 @@ namespace Scheduler
             }
             else
             {
-                objCourse.CourseID = _courseid;
+                objCourse.CourseId = _courseid;
                 boolSuccess = objCourse.UpdateData();
             }
             #endregion
@@ -3837,7 +3837,7 @@ namespace Scheduler
             if (objEvent != null)
             {
                 //Update the events
-                _courseid = objCourse.CourseID;
+                _courseid = objCourse.CourseId;
                 if (_courseid != 0)
                 {
                     int _id = 0;
@@ -4042,7 +4042,7 @@ namespace Scheduler
             if (BusinessLayer.Message.MsgDelete())
             {
                 Scheduler.BusinessLayer.Course objCourse = new Scheduler.BusinessLayer.Course();
-                objCourse.CourseID = _courseid;
+                objCourse.CourseId = _courseid;
                 if (!objCourse.DeleteData())
                 {
                     BusinessLayer.Message.MsgWarning("Class cannot be deleted");
@@ -4688,7 +4688,7 @@ namespace Scheduler
                 if (objEvent.EventType == "Extra Class")
                     boolSuccess = objEvent.DeleteSingleCalendarEvent();
                 else
-                    boolSuccess = objEvent.DeleteTestEvent("Course",CourseID);
+                    boolSuccess = objEvent.DeleteTestEvent("Course", CourseId);
 
                 if (!boolSuccess)
                 {
