@@ -43,7 +43,7 @@ namespace Scheduler.Reports
             this.colStartDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEndDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.colCourseID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCourseId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCalendarEventId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -151,7 +151,7 @@ namespace Scheduler.Reports
             this.colCourseName,
             this.colStartDateTime,
             this.colEndDateTime,
-            this.colCourseID,
+            this.colCourseId,
             this.colID,
             this.colCalendarEventId});
             this.gridView1.GridControl = this.gridControl1;
@@ -218,13 +218,13 @@ namespace Scheduler.Reports
             this.repositoryItemDateEdit1.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
-            // colCourseID
+            // colCourseId
             // 
-            this.colCourseID.Caption = "CourseID";
-            this.colCourseID.FieldName = "CourseID";
-            this.colCourseID.Name = "colCourseID";
-            this.colCourseID.OptionsColumn.AllowEdit = false;
-            this.colCourseID.OptionsColumn.ReadOnly = true;
+            this.colCourseId.Caption = "CourseId";
+            this.colCourseId.FieldName = "CourseId";
+            this.colCourseId.Name = "colCourseId";
+            this.colCourseId.OptionsColumn.AllowEdit = false;
+            this.colCourseId.OptionsColumn.ReadOnly = true;
             // 
             // colID
             // 
@@ -297,7 +297,7 @@ namespace Scheduler.Reports
         private DevExpress.XtraGrid.Columns.GridColumn colCourseName;
         private DevExpress.XtraGrid.Columns.GridColumn colStartDateTime;
         private DevExpress.XtraGrid.Columns.GridColumn colEndDateTime;
-        private DevExpress.XtraGrid.Columns.GridColumn colCourseID;
+        private DevExpress.XtraGrid.Columns.GridColumn colCourseId;
         private DevExpress.XtraGrid.Columns.GridColumn colID;
         private DevExpress.XtraGrid.Columns.GridColumn colCalendarEventId;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
