@@ -45,7 +45,7 @@ namespace Scheduler.BusinessLayer
 			get{return _dtbl;}
 			set{_dtbl=value;}
 		}
-		public int CourseID
+        public int CourseId
 		{
 			get{return _courseid;}
 			set{_courseid=value;}
@@ -165,7 +165,7 @@ namespace Scheduler.BusinessLayer
 				_dtbl=new DataTable();
 			}
 			_dtbl.Columns.Clear();
-			_dtbl.Columns.Add(new DataColumn("CourseID", Type.GetType("System.Int32")));
+            _dtbl.Columns.Add(new DataColumn("CourseId", Type.GetType("System.Int32")));
 			_dtbl.Columns.Add(new DataColumn("BrowseName", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("Name", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("NamePhonetic", Type.GetType("System.String")));
@@ -189,13 +189,13 @@ namespace Scheduler.BusinessLayer
 			_dtbl.Columns.Add(new DataColumn("TestMidtermForm", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("TestFinalForm", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("CourseStatus", Type.GetType("System.String")));
-			_dtbl.Columns.Add(new DataColumn("EventStartDateTime", Type.GetType("System.String")));
-			_dtbl.Columns.Add(new DataColumn("EventEndDateTime", Type.GetType("System.String")));
+			_dtbl.Columns.Add(new DataColumn("EventStartDateTime", Type.GetType("System.DateTime")));
+            _dtbl.Columns.Add(new DataColumn("EventEndDateTime", Type.GetType("System.DateTime")));
             _dtbl.Columns.Add(new DataColumn("OccurrenceCount", Type.GetType("System.String")));
             _dtbl.Columns.Add(new DataColumn("ScheduledInstructor", Type.GetType("System.String")));
 		}
 
-		public static int CloneData(int courseID)
+        public static int CloneData(int CourseId)
 		{
 			string strSql = "";
 			SqlCommand com = null;
@@ -211,8 +211,8 @@ namespace Scheduler.BusinessLayer
 				com.Connection = con.SQLCon;
 				com.CommandText = strSql;
 
-				com.Parameters.Add(new SqlParameter("CourseID", SqlDbType.Int));
-				com.Parameters["CourseID"].Value = courseID;
+                com.Parameters.Add(new SqlParameter("CourseId", SqlDbType.Int));
+                com.Parameters["CourseId"].Value = CourseId;
 				com.Parameters.Add(new SqlParameter("creatorID", SqlDbType.Int));
 				com.Parameters["creatorID"].Value = Common.LogonID;
 				com.Parameters.Add(new SqlParameter("insertedID", SqlDbType.Int));
@@ -299,7 +299,7 @@ namespace Scheduler.BusinessLayer
 						"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
 						"Left Join Contact CO on (D.ContactID=CO.ContactID) " +
 						"Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
-						"Where C.CourseID=" + _courseid.ToString() + " ";
+                        "Where C.CourseId=" + _courseid.ToString() + " ";
 				}
 			
 				BuildDataTable();
@@ -325,7 +325,7 @@ namespace Scheduler.BusinessLayer
 						strstatus = "Inactive";
 					}
 
-					_courseid = Convert.ToInt32(Reader["CourseID"].ToString());
+                    _courseid = Convert.ToInt32(Reader["CourseId"].ToString());
 					_name = Reader["Name"].ToString();
 					_namephonetic = Reader["NamePhonetic"].ToString();
 					_nameromaji = Reader["NameRomaji"].ToString();
@@ -376,7 +376,7 @@ namespace Scheduler.BusinessLayer
 						Reader["TestInitialForm"].ToString(),
 						Reader["TestMidtermForm"].ToString(),
 						Reader["TestFinalForm"].ToString(),
-						strstatus, "",""
+						strstatus
 					});
 				}
 				Reader.Close();
@@ -429,23 +429,42 @@ namespace Scheduler.BusinessLayer
             Connection con = null;
             try
             {
+                /*
                 if (_courseid <= 0)
                 {
                     strSql +=  " Order By BrowseName ";
                 }
                 else
                 {
-                    strSql += String.Format(" Where C.CourseID= {0} ", _courseid);
+                    strSql += String.Format(" Where C.CourseId= {0} ", _courseid);
                 }
+                */
 
                 BuildDataTable();
 
+                /*
                 con = new Connection();
                 con.Connect();
                 com = new SqlCommand();
                 com.Connection = con.SQLCon;
                 com.CommandText = strSql;
                 Reader = com.ExecuteReader();
+                */
+///*
+                strSql = "SpClassEventsN";
+
+                con = new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.CommandType = CommandType.StoredProcedure;
+                com.Connection = con.SQLCon;
+                com.CommandText = strSql;
+                Reader = com.ExecuteReader();
+//*/
+
+
+
+
 
                 _dtbl.Load(Reader, LoadOption.OverwriteChanges);
                 return true;
@@ -682,7 +701,7 @@ namespace Scheduler.BusinessLayer
 				SqlDataReader Reader = com.ExecuteReader();
 				if(Reader.Read())
 				{
-					CourseID = Convert.ToInt32(Reader[0].ToString());
+                    CourseId = Convert.ToInt32(Reader[0].ToString());
 				}
 				Reader.Close();
 
@@ -733,8 +752,8 @@ namespace Scheduler.BusinessLayer
 					"TestFinalForm=@TestFinalForm, " +
 					"CourseStatus=@CourseStatus, " + 
 					"DateLastModified=@DateLastModified, " + 
-					"LastModifiedByUserID=@LastModifiedByUserID " + 
-					"WHERE CourseID=@CourseID ";
+					"LastModifiedByUserID=@LastModifiedByUserID " +
+                    "WHERE CourseId=@CourseId ";
 
 				con=new Connection();
 				con.Connect();
@@ -742,7 +761,7 @@ namespace Scheduler.BusinessLayer
 				com.Connection=con.SQLCon;
 				com.CommandText = strSql;
 
-				com.Parameters.Add(new SqlParameter("@CourseID", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@CourseId", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@Name", SqlDbType.NVarChar));
 				com.Parameters.Add(new SqlParameter("@NamePhonetic", SqlDbType.NVarChar));
 				com.Parameters.Add(new SqlParameter("@NameRomaji", SqlDbType.NVarChar));
@@ -766,7 +785,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@DateLastModified", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@LastModifiedByUserID", SqlDbType.Int));
 
-				com.Parameters["@CourseID"].Value = _courseid;				
+                com.Parameters["@CourseId"].Value = _courseid;				
 				com.Parameters["@Name"].Value = _name;
 				com.Parameters["@NamePhonetic"].Value = _namephonetic;
 				com.Parameters["@NameRomaji"].Value = _nameromaji;
@@ -822,64 +841,64 @@ namespace Scheduler.BusinessLayer
 				com = new SqlCommand();
 				com.Connection=con.SQLCon;
 
-				com.Parameters.Add(new SqlParameter("@CourseID", SqlDbType.Int));
-				com.Parameters["@CourseID"].Value = _courseid;
+                com.Parameters.Add(new SqlParameter("@CourseId", SqlDbType.Int));
+                com.Parameters["@CourseId"].Value = _courseid;
 
 
 				//Test Initial Event ID
 				strSql =  "Delete From [Event] " +
 					"WHERE EventID IN (Select TestInitialEventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				strSql =  "Delete From [CalendarEvent] " +
 					"WHERE EventID IN (Select TestInitialEventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				//Test MidTerm Event ID
 				strSql =  "Delete From [Event] " +
 					"WHERE EventID IN (Select TestMidTermEventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				strSql =  "Delete From [CalendarEvent] " +
 					"WHERE EventID IN (Select TestMidTermEventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				//Test Final Event ID
 				strSql =  "Delete From [Event] " +
 					"WHERE EventID IN (Select TestFinalEventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				strSql =  "Delete From [CalendarEvent] " +
 					"WHERE EventID IN (Select TestFinalEventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				//Event ID
 				strSql =  "Delete From [Event] " +
 					"WHERE EventID IN (Select EventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				strSql =  "Delete From [CalendarEvent] " +
 					"WHERE EventID IN (Select EventID From [Course] " +
-					"WHERE CourseID=@CourseID)  ";
+                    "WHERE CourseId=@CourseId)  ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
 				strSql =  "Delete From [Course] " +
-					"WHERE CourseID=@CourseID ";
+                    "WHERE CourseId=@CourseId ";
 				com.CommandText=strSql;
 				com.ExecuteNonQuery();
 
@@ -909,7 +928,7 @@ namespace Scheduler.BusinessLayer
 			try
 			{
 				strSql =  "Select Count(*) From [Course] " +
-					"WHERE [Name]=@Name and ProgramID=@ProgramID and CourseID<>" + _courseid + " ";
+                    "WHERE [Name]=@Name and ProgramID=@ProgramID and CourseId<>" + _courseid + " ";
 
 				con=new Connection();
 				con.Connect();
@@ -954,7 +973,7 @@ namespace Scheduler.BusinessLayer
 			try
 			{
 				strSql =  "Select Count(*) From [Course] " +
-					"WHERE [NickName]=@Name and ProgramID=@ProgramID and CourseID<>" + _courseid + " ";
+                    "WHERE [NickName]=@Name and ProgramID=@ProgramID and CourseId<>" + _courseid + " ";
 
 				con=new Connection();
 				con.Connect();
@@ -1556,7 +1575,7 @@ namespace Scheduler.BusinessLayer
                     }
                     else
                     {
-                        DAC.EXQuery("Update [Course] Set TestInitialEventId = 0 Where CourseID = " + _courseid);
+                        DAC.EXQuery("Update [Course] Set TestInitialEventId = 0 Where CourseId = " + _courseid);
                         boolArray[0] = false;
                     }
                 }
@@ -1569,8 +1588,8 @@ namespace Scheduler.BusinessLayer
                     }
                     else
                     {
-                        
-                        DAC.EXQuery("Update [Course] Set TestMidtermEventId = 0 Where CourseID = " + _courseid);
+
+                        DAC.EXQuery("Update [Course] Set TestMidtermEventId = 0 Where CourseId = " + _courseid);
                         boolArray[1] = false;
                     }
                 }
@@ -1583,7 +1602,7 @@ namespace Scheduler.BusinessLayer
                     }
                     else
                     {
-                        DAC.EXQuery("Update [Course] Set TestFinalEventId = 0 Where CourseID = " + _courseid);
+                        DAC.EXQuery("Update [Course] Set TestFinalEventId = 0 Where CourseId = " + _courseid);
                         boolArray[2] = false;
                     }
                 }
