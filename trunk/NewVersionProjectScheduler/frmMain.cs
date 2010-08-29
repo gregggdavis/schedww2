@@ -851,6 +851,7 @@ namespace Scheduler
             // 
             // tbtnInfoProgram
             // 
+            this.tbtnInfoProgram.ImageIndex = 6;
             this.tbtnInfoProgram.Name = "tbtnInfoProgram";
             this.tbtnInfoProgram.Text = "Program Info";
             this.tbtnInfoProgram.Visible = false;
@@ -2360,14 +2361,14 @@ namespace Scheduler
 				{
 					int intID =
 						Convert.ToInt32(
-							fCourse.gvwCourse.GetRowCellValue(fCourse.gvwCourse.FocusedRowHandle, fCourse.gcolCourseID).ToString());
+                            fCourse.gvwCourse.GetRowCellValue(fCourse.gvwCourse.FocusedRowHandle, fCourse.gcolCourseId).ToString());
 
 
 					//intID = Course.CloneData(intID);
 					
 					frmClassDlg fClassDlg = new frmClassDlg();
 					fClassDlg.Mode = "AddClone";
-					fClassDlg.CourseID = intID;
+                    fClassDlg.CourseId = intID;
 					fClassDlg.LoadData();
 					fClassDlg.ShowDialog();
 					fClassDlg.Close();
@@ -2700,11 +2701,11 @@ namespace Scheduler
 				{
 					int intID =
 						Convert.ToInt32(
-							fCourse.gvwCourse.GetRowCellValue(fCourse.gvwCourse.FocusedRowHandle, fCourse.gcolCourseID).ToString());
+                            fCourse.gvwCourse.GetRowCellValue(fCourse.gvwCourse.FocusedRowHandle, fCourse.gcolCourseId).ToString());
 
 					frmClassDlg fClassDlg = new frmClassDlg();
 					fClassDlg.Mode = "Edit";
-					fClassDlg.CourseID = intID;
+                    fClassDlg.CourseId = intID;
 					fClassDlg.LoadData();
 					fClassDlg.ShowDialog();
 					fClassDlg.Close();
@@ -2999,12 +3000,12 @@ namespace Scheduler
 				{
 					int intID =
 						Convert.ToInt32(
-							fCourse.gvwCourse.GetRowCellValue(fCourse.gvwCourse.FocusedRowHandle, fCourse.gcolCourseID).ToString());
+                            fCourse.gvwCourse.GetRowCellValue(fCourse.gvwCourse.FocusedRowHandle, fCourse.gcolCourseId).ToString());
 
 					if (Message.MsgDelete())
 					{
 						Course objCourse = new Course();
-						objCourse.CourseID = intID;
+                        objCourse.CourseId = intID;
 						//objCourse.DeleteData();
 						if (!objCourse.DeleteData())
 						{
@@ -3037,7 +3038,7 @@ namespace Scheduler
 						Convert.ToInt32(fEvt.gvwEvent.GetRowCellValue(fEvt.gvwEvent.FocusedRowHandle, fEvt.gcolEventID).ToString());
 					int intCalID =
 						Convert.ToInt32(fEvt.gvwEvent.GetRowCellValue(fEvt.gvwEvent.FocusedRowHandle, fEvt.colCalendarEventID).ToString());
-                    int CourseID = Convert.ToInt32(fEvt.gvwEvent.GetRowCellValue(fEvt.gvwEvent.FocusedRowHandle, fEvt.gcolCourseId).ToString());
+                    int CourseId = Convert.ToInt32(fEvt.gvwEvent.GetRowCellValue(fEvt.gvwEvent.FocusedRowHandle, fEvt.gcolCourseId).ToString());
 
 					if (fEvt.gvwEvent.GetRowCellValue(fEvt.gvwEvent.FocusedRowHandle, fEvt.gcolIsRecur).ToString() != "")
 						IsRecur = true;
@@ -3080,7 +3081,7 @@ namespace Scheduler
                             if (evt.EventType=="Extra Class")
                                 evt.DeleteSingleCalendarEvent();
                             else
-                                evt.DeleteTestEvent("Course", CourseID);
+                                evt.DeleteTestEvent("Course", CourseId);
 
                             fEvt.LoadEvent();
 							fEvt.grdEvent.Focus();

@@ -235,7 +235,7 @@ namespace Scheduler
             this.colTotalHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTotalHours.Visible = true;
             this.colTotalHours.VisibleIndex = 3;
-            this.colTotalHours.Width = 290;
+            this.colTotalHours.Width = 284;
             // 
             // repositoryItemSpinEdit2
             // 
@@ -256,7 +256,7 @@ namespace Scheduler
             this.colHourlyRate.OptionsColumn.ReadOnly = true;
             this.colHourlyRate.Visible = true;
             this.colHourlyRate.VisibleIndex = 4;
-            this.colHourlyRate.Width = 265;
+            this.colHourlyRate.Width = 259;
             // 
             // repositoryItemSpinEdit1
             // 
@@ -279,7 +279,7 @@ namespace Scheduler
             this.colBasePayField.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Max;
             this.colBasePayField.Visible = true;
             this.colBasePayField.VisibleIndex = 5;
-            this.colBasePayField.Width = 239;
+            this.colBasePayField.Width = 234;
             // 
             // colTotal
             // 
@@ -292,7 +292,7 @@ namespace Scheduler
             this.colTotal.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTotal.Visible = true;
             this.colTotal.VisibleIndex = 6;
-            this.colTotal.Width = 212;
+            this.colTotal.Width = 215;
             // 
             // colDayType
             // 
@@ -304,7 +304,7 @@ namespace Scheduler
             this.colDayType.OptionsColumn.ReadOnly = true;
             this.colDayType.Visible = true;
             this.colDayType.VisibleIndex = 2;
-            this.colDayType.Width = 229;
+            this.colDayType.Width = 224;
             // 
             // colTimeStatus
             // 
@@ -315,7 +315,7 @@ namespace Scheduler
             this.colTimeStatus.OptionsColumn.ReadOnly = true;
             this.colTimeStatus.Visible = true;
             this.colTimeStatus.VisibleIndex = 1;
-            this.colTimeStatus.Width = 147;
+            this.colTimeStatus.Width = 166;
             // 
             // pnlBody
             // 
