@@ -1587,7 +1587,7 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnEndDateTime;
             
-            private global::System.Data.DataColumn columnCourseID;
+            private global::System.Data.DataColumn columnCourseId;
             
             private global::System.Data.DataColumn columnID;
             
@@ -1657,9 +1657,9 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn CourseIDColumn {
+            public global::System.Data.DataColumn CourseIdColumn {
                 get {
-                    return this.columnCourseID;
+                    return this.columnCourseId;
                 }
             }
             
@@ -1699,7 +1699,7 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public viewSimpleProgramInfoRow AddviewSimpleProgramInfoRow(int ProgramId, string ProgramName, string CourseName, string StartDateTime, string EndDateTime, int CourseID) {
+            public viewSimpleProgramInfoRow AddviewSimpleProgramInfoRow(int ProgramId, string ProgramName, string CourseName, string StartDateTime, string EndDateTime, int CourseId) {
                 viewSimpleProgramInfoRow rowviewSimpleProgramInfoRow = ((viewSimpleProgramInfoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProgramId,
@@ -1707,7 +1707,7 @@ namespace Scheduler.BusinessLayer {
                         CourseName,
                         StartDateTime,
                         EndDateTime,
-                        CourseID,
+                        CourseId,
                         null};
                 rowviewSimpleProgramInfoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowviewSimpleProgramInfoRow);
@@ -1744,7 +1744,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnCourseName = base.Columns["CourseName"];
                 this.columnStartDateTime = base.Columns["StartDateTime"];
                 this.columnEndDateTime = base.Columns["EndDateTime"];
-                this.columnCourseID = base.Columns["CourseID"];
+                this.columnCourseId = base.Columns["CourseId"];
                 this.columnID = base.Columns["ID"];
             }
             
@@ -1760,8 +1760,8 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnStartDateTime);
                 this.columnEndDateTime = new global::System.Data.DataColumn("EndDateTime", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEndDateTime);
-                this.columnCourseID = new global::System.Data.DataColumn("CourseID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCourseID);
+                this.columnCourseId = new global::System.Data.DataColumn("CourseId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseId);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("viewSimpleProgramInfoKey1", new global::System.Data.DataColumn[] {
@@ -1770,7 +1770,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnProgramName.MaxLength = 255;
                 this.columnCourseName.ReadOnly = true;
                 this.columnCourseName.MaxLength = 255;
-                this.columnCourseID.ReadOnly = true;
+                this.columnCourseId.ReadOnly = true;
                 this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
@@ -2601,7 +2601,7 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnCourseID;
+            private global::System.Data.DataColumn columnCourseId;
             
             private global::System.Data.DataColumn columnCalendarEventId;
             
@@ -2720,9 +2720,9 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn CourseIDColumn {
+            public global::System.Data.DataColumn CourseIdColumn {
                 get {
-                    return this.columnCourseID;
+                    return this.columnCourseId;
                 }
             }
             
@@ -2762,7 +2762,7 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public viewProgramReportClassDetailsRow AddviewProgramReportClassDetailsRow(ViewProgramReportRow parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails, string CourseName, int EventId, System.DateTime StartDateTime, System.DateTime EndDateTime, string CourseTime, string Location, string RoomNumber, decimal PaidHours, string HomeworkMinutes, int Total, int CourseID, int CalendarEventId) {
+            public viewProgramReportClassDetailsRow AddviewProgramReportClassDetailsRow(ViewProgramReportRow parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails, string CourseName, int EventId, System.DateTime StartDateTime, System.DateTime EndDateTime, string CourseTime, string Location, string RoomNumber, decimal PaidHours, string HomeworkMinutes, int Total, int CourseId, int CalendarEventId) {
                 viewProgramReportClassDetailsRow rowviewProgramReportClassDetailsRow = ((viewProgramReportClassDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2777,7 +2777,7 @@ namespace Scheduler.BusinessLayer {
                         HomeworkMinutes,
                         Total,
                         null,
-                        CourseID,
+                        CourseId,
                         CalendarEventId};
                 if ((parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails != null)) {
                     columnValuesArray[0] = parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails[0];
@@ -2824,7 +2824,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnHomeworkMinutes = base.Columns["HomeworkMinutes"];
                 this.columnTotal = base.Columns["Total"];
                 this.columnID = base.Columns["ID"];
-                this.columnCourseID = base.Columns["CourseID"];
+                this.columnCourseId = base.Columns["CourseId"];
                 this.columnCalendarEventId = base.Columns["CalendarEventId"];
             }
             
@@ -2854,8 +2854,8 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnTotal);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnCourseID = new global::System.Data.DataColumn("CourseID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCourseID);
+                this.columnCourseId = new global::System.Data.DataColumn("CourseId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseId);
                 this.columnCalendarEventId = new global::System.Data.DataColumn("CalendarEventId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCalendarEventId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -3371,7 +3371,7 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnInstructorName;
             
-            private global::System.Data.DataColumn columnCourseID;
+            private global::System.Data.DataColumn columnCourseId;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public viewPivotCourseDetailsDataTable() {
@@ -3453,9 +3453,9 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn CourseIDColumn {
+            public global::System.Data.DataColumn CourseIdColumn {
                 get {
-                    return this.columnCourseID;
+                    return this.columnCourseId;
                 }
             }
             
@@ -3488,7 +3488,7 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public viewPivotCourseDetailsRow AddviewPivotCourseDetailsRow(int ProgramId, int EventId, string Name, int ScheduledTeacherId, System.DateTime StartDateTime, string DAYNAME, string InstructorName, int CourseID) {
+            public viewPivotCourseDetailsRow AddviewPivotCourseDetailsRow(int ProgramId, int EventId, string Name, int ScheduledTeacherId, System.DateTime StartDateTime, string DAYNAME, string InstructorName, int CourseId) {
                 viewPivotCourseDetailsRow rowviewPivotCourseDetailsRow = ((viewPivotCourseDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ProgramId,
@@ -3498,7 +3498,7 @@ namespace Scheduler.BusinessLayer {
                         StartDateTime,
                         DAYNAME,
                         InstructorName,
-                        CourseID};
+                        CourseId};
                 rowviewPivotCourseDetailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowviewPivotCourseDetailsRow);
                 return rowviewPivotCourseDetailsRow;
@@ -3530,7 +3530,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnStartDateTime = base.Columns["StartDateTime"];
                 this.columnDAYNAME = base.Columns["DAYNAME"];
                 this.columnInstructorName = base.Columns["InstructorName"];
-                this.columnCourseID = base.Columns["CourseID"];
+                this.columnCourseId = base.Columns["CourseId"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3549,8 +3549,8 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnDAYNAME);
                 this.columnInstructorName = new global::System.Data.DataColumn("InstructorName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInstructorName);
-                this.columnCourseID = new global::System.Data.DataColumn("CourseID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCourseID);
+                this.columnCourseId = new global::System.Data.DataColumn("CourseId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCourseId);
                 this.columnProgramId.AllowDBNull = false;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 255;
@@ -4530,17 +4530,17 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int CourseID {
+            public int CourseId {
                 get {
                     try {
-                        return ((int)(this[this.tableviewSimpleProgramInfo.CourseIDColumn]));
+                        return ((int)(this[this.tableviewSimpleProgramInfo.CourseIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CourseID\' in table \'viewSimpleProgramInfo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CourseId\' in table \'viewSimpleProgramInfo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewSimpleProgramInfo.CourseIDColumn] = value;
+                    this[this.tableviewSimpleProgramInfo.CourseIdColumn] = value;
                 }
             }
             
@@ -4605,13 +4605,13 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsCourseIDNull() {
-                return this.IsNull(this.tableviewSimpleProgramInfo.CourseIDColumn);
+            public bool IsCourseIdNull() {
+                return this.IsNull(this.tableviewSimpleProgramInfo.CourseIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetCourseIDNull() {
-                this[this.tableviewSimpleProgramInfo.CourseIDColumn] = global::System.Convert.DBNull;
+            public void SetCourseIdNull() {
+                this[this.tableviewSimpleProgramInfo.CourseIdColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5575,18 +5575,18 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int CourseID {
+            public int CourseId {
                 get {
                     try {
-                        return ((int)(this[this.tableviewProgramReportClassDetails.CourseIDColumn]));
+                        return ((int)(this[this.tableviewProgramReportClassDetails.CourseIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CourseID\' in table \'viewProgramReportClassDetails\' is DBNul" +
+                        throw new global::System.Data.StrongTypingException("The value for column \'CourseId\' in table \'viewProgramReportClassDetails\' is DBNul" +
                                 "l.", e);
                     }
                 }
                 set {
-                    this[this.tableviewProgramReportClassDetails.CourseIDColumn] = value;
+                    this[this.tableviewProgramReportClassDetails.CourseIdColumn] = value;
                 }
             }
             
@@ -5707,13 +5707,13 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsCourseIDNull() {
-                return this.IsNull(this.tableviewProgramReportClassDetails.CourseIDColumn);
+            public bool IsCourseIdNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.CourseIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetCourseIDNull() {
-                this[this.tableviewProgramReportClassDetails.CourseIDColumn] = global::System.Convert.DBNull;
+            public void SetCourseIdNull() {
+                this[this.tableviewProgramReportClassDetails.CourseIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6100,17 +6100,17 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int CourseID {
+            public int CourseId {
                 get {
                     try {
-                        return ((int)(this[this.tableviewPivotCourseDetails.CourseIDColumn]));
+                        return ((int)(this[this.tableviewPivotCourseDetails.CourseIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CourseID\' in table \'viewPivotCourseDetails\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CourseId\' in table \'viewPivotCourseDetails\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewPivotCourseDetails.CourseIDColumn] = value;
+                    this[this.tableviewPivotCourseDetails.CourseIdColumn] = value;
                 }
             }
             
@@ -6165,13 +6165,13 @@ namespace Scheduler.BusinessLayer {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsCourseIDNull() {
-                return this.IsNull(this.tableviewPivotCourseDetails.CourseIDColumn);
+            public bool IsCourseIdNull() {
+                return this.IsNull(this.tableviewPivotCourseDetails.CourseIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetCourseIDNull() {
-                this[this.tableviewPivotCourseDetails.CourseIDColumn] = global::System.Convert.DBNull;
+            public void SetCourseIdNull() {
+                this[this.tableviewPivotCourseDetails.CourseIdColumn] = global::System.Convert.DBNull;
             }
         }
         
