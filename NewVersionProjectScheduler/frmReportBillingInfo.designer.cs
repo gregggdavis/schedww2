@@ -61,6 +61,7 @@ namespace Scheduler
             this.colEventDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colHomeworkMinutes = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBilling = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -70,7 +71,6 @@ namespace Scheduler
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.dateEditEndDate = new DevExpress.XtraEditors.DateEdit();
             this.dateEditStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.colBilling = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
@@ -340,7 +340,7 @@ namespace Scheduler
             this.colDayName.OptionsColumn.ReadOnly = true;
             this.colDayName.Visible = true;
             this.colDayName.VisibleIndex = 5;
-            this.colDayName.Width = 83;
+            this.colDayName.Width = 39;
             // 
             // colCalendarEventId
             // 
@@ -363,11 +363,11 @@ namespace Scheduler
             this.colPaidHours.Name = "colPaidHours";
             this.colPaidHours.OptionsColumn.AllowEdit = false;
             this.colPaidHours.OptionsColumn.ReadOnly = true;
-            this.colPaidHours.SummaryItem.DisplayFormat = "Paid Hours = {0}";
+            this.colPaidHours.SummaryItem.DisplayFormat = "TOTAL Paid Hours = {0:n1}";
             this.colPaidHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colPaidHours.Visible = true;
             this.colPaidHours.VisibleIndex = 9;
-            this.colPaidHours.Width = 116;
+            this.colPaidHours.Width = 145;
             // 
             // repositoryItemSpinEdit2
             // 
@@ -411,11 +411,11 @@ namespace Scheduler
             this.colScheduledHours.Name = "colScheduledHours";
             this.colScheduledHours.OptionsColumn.AllowEdit = false;
             this.colScheduledHours.OptionsColumn.ReadOnly = true;
-            this.colScheduledHours.SummaryItem.DisplayFormat = "Scheduled Hours = {0}";
+            this.colScheduledHours.SummaryItem.DisplayFormat = "TOTAL Scheduled Hours = {0:n1}";
             this.colScheduledHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colScheduledHours.Visible = true;
             this.colScheduledHours.VisibleIndex = 8;
-            this.colScheduledHours.Width = 149;
+            this.colScheduledHours.Width = 183;
             // 
             // repositoryItemSpinEdit1
             // 
@@ -459,6 +459,17 @@ namespace Scheduler
             this.colHomeworkMinutes.OptionsColumn.AllowEdit = false;
             this.colHomeworkMinutes.OptionsColumn.ReadOnly = true;
             this.colHomeworkMinutes.Width = 143;
+            // 
+            // colBilling
+            // 
+            this.colBilling.Caption = "Billing";
+            this.colBilling.FieldName = "Billing";
+            this.colBilling.Name = "colBilling";
+            this.colBilling.OptionsColumn.AllowEdit = false;
+            this.colBilling.OptionsColumn.ReadOnly = true;
+            this.colBilling.Visible = true;
+            this.colBilling.VisibleIndex = 4;
+            this.colBilling.Width = 69;
             // 
             // repositoryItemDateEdit1
             // 
@@ -557,17 +568,6 @@ namespace Scheduler
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dateEditStartDate.Size = new System.Drawing.Size(169, 26);
             this.dateEditStartDate.TabIndex = 8;
-            // 
-            // colBilling
-            // 
-            this.colBilling.Caption = "Billing";
-            this.colBilling.FieldName = "Billing";
-            this.colBilling.Name = "colBilling";
-            this.colBilling.OptionsColumn.AllowEdit = false;
-            this.colBilling.OptionsColumn.ReadOnly = true;
-            this.colBilling.Visible = true;
-            this.colBilling.VisibleIndex = 4;
-            this.colBilling.Width = 69;
             // 
             // frmReportBillingInfo
             // 
