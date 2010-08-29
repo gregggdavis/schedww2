@@ -161,7 +161,7 @@
               </xs:element>
               <xs:element name="StartDateTime" msprop:Generator_UserColumnName="StartDateTime" msprop:Generator_ColumnPropNameInRow="StartDateTime" msprop:Generator_ColumnVarNameInTable="columnStartDateTime" msprop:Generator_ColumnPropNameInTable="StartDateTimeColumn" type="xs:string" minOccurs="0" />
               <xs:element name="EndDateTime" msprop:Generator_UserColumnName="EndDateTime" msprop:Generator_ColumnPropNameInRow="EndDateTime" msprop:Generator_ColumnVarNameInTable="columnEndDateTime" msprop:Generator_ColumnPropNameInTable="EndDateTimeColumn" type="xs:string" minOccurs="0" />
-              <xs:element name="CourseID" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CourseID" msprop:Generator_ColumnPropNameInRow="CourseID" msprop:Generator_ColumnVarNameInTable="columnCourseID" msprop:Generator_ColumnPropNameInTable="CourseIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CourseId" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CourseId" msprop:Generator_ColumnPropNameInRow="CourseId" msprop:Generator_ColumnVarNameInTable="columnCourseId" msprop:Generator_ColumnPropNameInTable="CourseIdColumn" type="xs:int" minOccurs="0" />
               <xs:element name="ID" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
@@ -362,7 +362,7 @@
               </xs:element>
               <xs:element name="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInTable="TotalColumn" type="xs:int" minOccurs="0" />
               <xs:element name="ID" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
-              <xs:element name="CourseID" msprop:Generator_UserColumnName="CourseID" msprop:Generator_ColumnPropNameInRow="CourseID" msprop:Generator_ColumnVarNameInTable="columnCourseID" msprop:Generator_ColumnPropNameInTable="CourseIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CourseId" msprop:Generator_UserColumnName="CourseId" msprop:Generator_ColumnPropNameInRow="CourseId" msprop:Generator_ColumnVarNameInTable="columnCourseId" msprop:Generator_ColumnPropNameInTable="CourseIdColumn" type="xs:int" minOccurs="0" />
               <xs:element name="CalendarEventId" msprop:Generator_UserColumnName="CalendarEventId" msprop:Generator_ColumnVarNameInTable="columnCalendarEventId" msprop:Generator_ColumnPropNameInRow="CalendarEventId" msprop:Generator_ColumnPropNameInTable="CalendarEventIdColumn" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
@@ -411,7 +411,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CourseID" msprop:Generator_UserColumnName="CourseID" msprop:Generator_ColumnPropNameInRow="CourseID" msprop:Generator_ColumnVarNameInTable="columnCourseID" msprop:Generator_ColumnPropNameInTable="CourseIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CourseId" msprop:Generator_UserColumnName="CourseId" msprop:Generator_ColumnPropNameInRow="CourseId" msprop:Generator_ColumnVarNameInTable="columnCourseId" msprop:Generator_ColumnPropNameInTable="CourseIdColumn" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

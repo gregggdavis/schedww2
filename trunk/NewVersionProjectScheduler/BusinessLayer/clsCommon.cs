@@ -1430,7 +1430,7 @@ namespace Scheduler.BusinessLayer
 			Connection con=null;
 			SqlDataReader Reader=null;
 
-			int CourseID=0;
+            int CourseId= 0;
 			int ProgramID=0;
 			string sEvent=string.Empty;
 			string sClient=string.Empty;
@@ -1442,7 +1442,7 @@ namespace Scheduler.BusinessLayer
 
 			try
 			{
-				strSql = "Select CourseID from Course C Where " +
+                strSql = "Select CourseId from Course C Where " +
 					"(C.EventID=" + evtid.ToString() + " OR "+
 					"C.TestInitialEventID=" + evtid.ToString() + " OR "+
 					"C.TestMidtermEventID=" + evtid.ToString() + " OR "+
@@ -1459,7 +1459,7 @@ namespace Scheduler.BusinessLayer
 				while(Reader.Read())
 				{
 					Ok = true;
-					CourseID = Convert.ToInt32(Reader[0].ToString());
+                    CourseId = Convert.ToInt32(Reader[0].ToString());
 				}
 				Reader.Close();
 
@@ -1483,7 +1483,7 @@ namespace Scheduler.BusinessLayer
 				if(Ok)
 				{
 					strSql="";
-					if(CourseID>0)
+                    if (CourseId > 0)
 					{
 						strSql = "Select " +
 							"Program = CASE " +
@@ -1506,7 +1506,7 @@ namespace Scheduler.BusinessLayer
 							"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
 							"Left Join Contact CO on (D.ContactID=CO.ContactID) " +
 							"Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
-							"Where C.CourseID=" + CourseID.ToString() + " ";
+                            "Where C.CourseId=" + CourseId.ToString() + " ";
 
 						com.CommandText = strSql;
 

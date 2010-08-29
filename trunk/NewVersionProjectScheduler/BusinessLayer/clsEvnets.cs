@@ -106,7 +106,7 @@ namespace Scheduler.BusinessLayer {
 						"CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
 						"CalendarEvent.ExceptionReason, CC1.LastName + ', ' + CC1.FirstName as ScheduledTeacher, " +
 						"CC2.LastName + ', ' + CC2.FirstName as RealTeacher, " +
-						"Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program " +
+                        "Course.CourseId, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program " +
 						"From Event " +
 						"Inner Join CalendarEvent ON(Event.EventID=CalendarEvent.EventID) " +
 						"Left Join Contact CC1 ON(CC1.ContactID=CalendarEvent.ScheduledTeacherID) " +
@@ -130,7 +130,7 @@ namespace Scheduler.BusinessLayer {
 						"CalendarEvent.Location, CalendarEvent.BlockCode, CalendarEvent.RoomNumber, CalendarEvent.ScheduledTeacherID, " +
 						"CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
 						"CalendarEvent.ExceptionReason, Contact1.LastName + ', ' + Contact1.FirstName as ScheduledTeacher, Contact2.LastName + ', ' + Contact2.FirstName as RealTeacher, " +
-						"Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program, " +
+                        "Course.CourseId, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program, " +
 						"Course.EventID as CEvent1, Course.TestInitialEventID as CEvent2, Course.TestMidtermEventID as CEvent3, Course.TestFinalEventID as CEvent4, " +
 						"Program.TestInitialEventID as PEvent1, Program.TestMidtermEventID as PEvent2, Program.TestFinalEventID as PEvent3 " +
 						"From Event " +
@@ -188,8 +188,9 @@ namespace Scheduler.BusinessLayer {
 					else if (dr["ScheduledTeacher"] != "") dr["Instructor"] = dr["ScheduledTeacher"].ToString();
 					dr.AcceptChanges();
 
-					if (dr["CourseID"] != DBNull.Value) {
-						if (Convert.ToInt32(dr["CourseID"]) > 0) boolCourse = true;
+                    if (dr["CourseId"] != DBNull.Value)
+                    {
+                        if (Convert.ToInt32(dr["CourseId"]) > 0) boolCourse = true;
 						if (EventID > 0) {
 							if (dr["CEvent1"] != DBNull.Value) {
 								if (Convert.ToInt32(dr["CEvent1"].ToString()) > 0) dr["TestEvent"] = "Class Event";
@@ -246,7 +247,7 @@ namespace Scheduler.BusinessLayer {
 							"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
 							"Left Join Contact CO on (D.ContactID=CO.ContactID) " +
 							"Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
-							"Where C.CourseID=" + dr["CourseID"].ToString() + " ";
+                            "Where C.CourseId=" + dr["CourseId"].ToString() + " ";
 
 						com.CommandText = strSql;
 						Reader = com.ExecuteReader();
@@ -540,7 +541,7 @@ namespace Scheduler.BusinessLayer {
 						"CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
 						"CalendarEvent.ExceptionReason, CC1.LastName + ', ' + CC1.FirstName as ScheduledTeacher, " +
 						"CC2.LastName + ', ' + CC2.FirstName as RealTeacher, " +
-						"Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program,dbo.DateAndTime(CalendarEvent.StartDateTime,CalendarEvent.EndDateTime) as DateAndTime " +
+                        "Course.CourseId, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program,dbo.DateAndTime(CalendarEvent.StartDateTime,CalendarEvent.EndDateTime) as DateAndTime " +
 						"From Event " +
 						"Inner Join CalendarEvent ON(Event.EventID=CalendarEvent.EventID) " +
 						"Left Join Contact CC1 ON(CC1.ContactID=CalendarEvent.ScheduledTeacherID) " +
@@ -648,7 +649,7 @@ namespace Scheduler.BusinessLayer {
 						"CalendarEvent.Location, CalendarEvent.BlockCode, CalendarEvent.RoomNumber, CalendarEvent.ScheduledTeacherID, " +
 						"CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
 						"CalendarEvent.ExceptionReason, Contact1.LastName + ', ' + Contact1.FirstName as ScheduledTeacher, Contact2.LastName + ', ' + Contact2.FirstName as RealTeacher, " +
-						"Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program, " +
+                        "Course.CourseId, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program, " +
 						"Course.EventID as CEvent1, Course.TestInitialEventID as CEvent2, Course.TestMidtermEventID as CEvent3, Course.TestFinalEventID as CEvent4, " +
 						"Program.TestInitialEventID as PEvent1, Program.TestMidtermEventID as PEvent2, Program.TestFinalEventID as PEvent3 " +
 						"From Event " +
@@ -719,8 +720,9 @@ namespace Scheduler.BusinessLayer {
 							dr["Instructor"] = dr["ScheduledTeacher"].ToString();
 					dr.AcceptChanges();
 
-					if (dr["CourseID"] != DBNull.Value) {
-						if (Convert.ToInt32(dr["CourseID"]) > 0) boolCourse = true;
+                    if (dr["CourseId"] != DBNull.Value)
+                    {
+                        if (Convert.ToInt32(dr["CourseId"]) > 0) boolCourse = true;
 						if (EventID > 0) {
 							if (dr["CEvent1"] != DBNull.Value) {
 								if (Convert.ToInt32(dr["CEvent1"].ToString()) > 0) dr["TestEvent"] = "Class Event";
@@ -777,7 +779,7 @@ namespace Scheduler.BusinessLayer {
 							"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
 							"Left Join Contact CO on (D.ContactID=CO.ContactID) " +
 							"Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
-							"Where C.CourseID=" + dr["CourseID"].ToString() + " ";
+                            "Where C.CourseId=" + dr["CourseId"].ToString() + " ";
 
 						com.CommandText = strSql;
 						Reader = com.ExecuteReader();
@@ -926,7 +928,7 @@ namespace Scheduler.BusinessLayer {
                         "CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
                         "CalendarEvent.ExceptionReason, CC1.LastName + ', ' + CC1.FirstName as ScheduledTeacher, " +
                         "CC2.LastName + ', ' + CC2.FirstName as RealTeacher, " +
-                        "Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program,dbo.DateAndTime(CalendarEvent.StartDateTime,CalendarEvent.EndDateTime) as DateAndTime " +
+                        "Course.CourseId, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program,dbo.DateAndTime(CalendarEvent.StartDateTime,CalendarEvent.EndDateTime) as DateAndTime " +
                         "From Event " +
                         "Inner Join CalendarEvent ON(Event.EventID=CalendarEvent.EventID) " +
                         "Left Join Contact CC1 ON(CC1.ContactID=CalendarEvent.ScheduledTeacherID) " +
@@ -993,7 +995,7 @@ namespace Scheduler.BusinessLayer {
                         "CalendarEvent.Location, CalendarEvent.BlockCode, CalendarEvent.RoomNumber, CalendarEvent.ScheduledTeacherID, " +
                         "CalendarEvent.RealTeacherID, CalendarEvent.ChangeReason, CalendarEvent.IsHoliday, CalendarEvent.EventType, " +
                         "CalendarEvent.ExceptionReason, Contact1.LastName + ', ' + Contact1.FirstName as ScheduledTeacher, Contact2.LastName + ', ' + Contact2.FirstName as RealTeacher, " +
-                        "Course.CourseID, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program, " +
+                        "Course.CourseId, Course.[Name] as Class, Program.ProgramID, Program.[Name] as Program, " +
                         "Course.EventID as CEvent1, Course.TestInitialEventID as CEvent2, Course.TestMidtermEventID as CEvent3, Course.TestFinalEventID as CEvent4, " +
                         "Program.TestInitialEventID as PEvent1, Program.TestMidtermEventID as PEvent2, Program.TestFinalEventID as PEvent3 " +
                         "From Event " +
@@ -1071,9 +1073,9 @@ namespace Scheduler.BusinessLayer {
                             dr["Instructor"] = dr["ScheduledTeacher"].ToString();
                     dr.AcceptChanges();
 
-                    if (dr["CourseID"] != DBNull.Value)
+                    if (dr["CourseId"] != DBNull.Value)
                     {
-                        if (Convert.ToInt32(dr["CourseID"]) > 0) boolCourse = true;
+                        if (Convert.ToInt32(dr["CourseId"]) > 0) boolCourse = true;
                         if (EventID > 0)
                         {
                             if (dr["CEvent1"] != DBNull.Value)
@@ -1142,7 +1144,7 @@ namespace Scheduler.BusinessLayer {
                             "Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
                             "Left Join Contact CO on (D.ContactID=CO.ContactID) " +
                             "Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
-                            "Where C.CourseID=" + dr["CourseID"].ToString() + " ";
+                            "Where C.CourseId=" + dr["CourseId"].ToString() + " ";
 
                         com.CommandText = strSql;
                         Reader = com.ExecuteReader();
@@ -1288,7 +1290,7 @@ namespace Scheduler.BusinessLayer {
 			try {
 				eventsSql = @"
 				SELECT     Event.EventId, CalendarEvent.CalendarEventId, Event.Description, CalendarEvent.Name AS EventName, 
-				CalendarEvent.StartDateTime, CASE When CalendarEvent.CalendarEventStatus = 0 Then 'Active' Else 'InActive' End as Status,
+				CalendarEvent.StartDateTime, CASE When CalendarEvent.CalendarEventStatus = 0 Then 'Active' Else 'Inactive' End as Status,
                       CalendarEvent.EndDateTime, CalendarEvent.ScheduledTeacherId, CalendarEvent.RealTeacherId,
                       CC1.LastName + ', ' + CC1.FirstName AS ScheduledTeacher, CC2.LastName + ', ' + CC2.FirstName AS RealTeacher,
                       CASE When ((CC2.LastName = '' OR CC2.LastName is null) AND (CC2.FirstName = '' OR CC2.FirstName is null))   Then CC1.LastName + ', ' + CC1.FirstName Else CC2.LastName + ', ' + CC2.FirstName End as ActualTeacher,
@@ -1730,8 +1732,10 @@ dbo.ViewallEventsFull where 1=1 ";
 					}
 				}
 
-				if (dr["CourseID"] != DBNull.Value) {
-					if (Convert.ToInt32(dr["CourseID"]) > 0) {
+                if (dr["CourseId"] != DBNull.Value)
+                {
+                    if (Convert.ToInt32(dr["CourseId"]) > 0)
+                    {
 						boolCourse = true;
 					}
 					if (EventID > 0) {
@@ -1776,10 +1780,10 @@ dbo.ViewallEventsFull where 1=1 ";
 							Left Join Department D on (P.DepartmentID=D.DepartmentID) 
 							Left Join Contact CO on (D.ContactID=CO.ContactID) 
 							Left Join Contact CO1 on (D.ClientID=CO1.ContactID)
-							Where C.CourseID=@courseId";
+							Where C.CourseId=@CourseId";
 					sqlCommand = new SqlCommand(courseSql, connection.SQLCon);
-					//sqlCommand.Parameters.AddWithValue("courseId", dr["CourseID"]);
-					sqlCommand.Parameters.Add(new SqlParameter("@courseId", dr["CourseID"]));
+                    //sqlCommand.Parameters.AddWithValue("CourseId", dr["CourseId"]);
+                    sqlCommand.Parameters.Add(new SqlParameter("@CourseId", dr["CourseId"]));
 					SqlDataReader reader = sqlCommand.ExecuteReader();
 					while (reader.Read()) {
 						dr["Program"] = reader["Program"].ToString();
@@ -2718,7 +2722,7 @@ dbo.ViewallEventsFull where 1=1 ";
                         strSql = "Update ["+ strType +"] SET "+ strField +"=0 WHERE "+strType+"Id="+ tableID +";";
                         com.CommandText = strSql;
                         //com.Parameters.Add(new SqlParameter("@CourseId", SqlDbType.Int));
-                        //com.Parameters["@CourseId"].Value = courseID;
+                        //com.Parameters["@CourseId"].Value = CourseId;
                         result = com.ExecuteNonQuery();
 
                         if (result == 1)
@@ -2792,23 +2796,23 @@ dbo.ViewallEventsFull where 1=1 ";
 
 
 				if (type == "Class") {
-					strSql = "Update Course set EventID=0 Where CourseID=" + tableID.ToString();
+                    strSql = "Update Course set EventID=0 Where CourseId=" + tableID.ToString();
 					com.CommandText = strSql;
 					com.ExecuteNonQuery();
 
-					strSql = "Update Course set TestInitialEventID=0 Where CourseID=" + tableID.ToString();
+                    strSql = "Update Course set TestInitialEventID=0 Where CourseId=" + tableID.ToString();
 					com.CommandText = strSql;
 					com.ExecuteNonQuery();
 
-					strSql = "Update Course set TestMidtermEventID=0 Where CourseID=" + tableID.ToString();
+                    strSql = "Update Course set TestMidtermEventID=0 Where CourseId=" + tableID.ToString();
 					com.CommandText = strSql;
 					com.ExecuteNonQuery();
 
-					strSql = "Update Course set TestFinalEventID=0 Where CourseID=" + tableID.ToString();
+                    strSql = "Update Course set TestFinalEventID=0 Where CourseId=" + tableID.ToString();
 					com.CommandText = strSql;
 					com.ExecuteNonQuery();
 
-					strSql = "Update Course set " + field + "=@EventID Where CourseID=@ID";
+                    strSql = "Update Course set " + field + "=@EventID Where CourseId=@ID";
 				} else if (type == "Program") {
 					strSql = "Update Program set TestInitialEventID=0 Where ProgramID=" + tableID.ToString();
 					com.CommandText = strSql;
@@ -2936,7 +2940,7 @@ dbo.ViewallEventsFull where 1=1 ";
 				com = new SqlCommand();
 				com.Connection = con.SQLCon;
 
-				com.CommandText = "Update Course Set " + field + " = @EventID Where CourseID=@ID"; ;
+                com.CommandText = "Update Course Set " + field + " = @EventID Where CourseId=@ID"; ;
 				com.Parameters.Add(new SqlParameter("@EventID", SqlDbType.BigInt));
 				com.Parameters.Add(new SqlParameter("@ID", SqlDbType.BigInt));
 
@@ -2974,7 +2978,7 @@ dbo.ViewallEventsFull where 1=1 ";
 				com = new SqlCommand();
 				com.Connection = con.SQLCon;
 
-				com.CommandText = "Select CourseID, EventID, " +
+                com.CommandText = "Select CourseId, EventID, " +
 					"TestInitialEventID, TestMidtermEventID, " +
 					"TestFinalEventID from Course " +
 					"Where EventID=@EventID " +
@@ -2988,7 +2992,7 @@ dbo.ViewallEventsFull where 1=1 ";
 				Reader = com.ExecuteReader();
 				if (Reader.HasRows) {
 					if (Reader.Read()) {
-						_id = Convert.ToInt32(Reader["CourseID"].ToString());
+                        _id = Convert.ToInt32(Reader["CourseId"].ToString());
 						if (Reader["EventID"] != DBNull.Value) {
 							if (Convert.ToInt32(Reader["EventID"].ToString()) == eventID) {
 								eventtypeindex = 3;

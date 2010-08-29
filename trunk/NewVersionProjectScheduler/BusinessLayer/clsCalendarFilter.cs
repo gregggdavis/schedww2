@@ -16,7 +16,7 @@ namespace Scheduler.BusinessLayer
         public static DateTime EndDate = DateTime.Today.AddMonths(3).AddDays(1).AddMilliseconds(-1);
         //public static DateTime StartDate = DateTime.Today.AddMonths(0);
         //public static DateTime EndDate = DateTime.Today.AddMonths(0).AddDays(1).AddMilliseconds(-1);
-        public static int ClientIndex = 0;
+        public static int ClientIndex = 1;
         public static string ClientName = "";
         public static string InstructorName = "";
 		public static int InstructorIndex=0;
@@ -27,5 +27,6 @@ namespace Scheduler.BusinessLayer
         public static bool MonthlyHideWeekends = true;
         public static bool WeeklyHideWeekends = true;
         public static bool DailyHideWeekends = true;
-	}
+        public static bool NotLoadedYet = true;
+    }
 }
