@@ -269,7 +269,7 @@ namespace Scheduler
             this.colProgramName.OptionsColumn.AllowEdit = false;
             this.colProgramName.OptionsColumn.ReadOnly = true;
             this.colProgramName.Visible = true;
-            this.colProgramName.VisibleIndex = 6;
+            this.colProgramName.VisibleIndex = 3;
             this.colProgramName.Width = 78;
             // 
             // colClassName
@@ -280,7 +280,7 @@ namespace Scheduler
             this.colClassName.OptionsColumn.AllowEdit = false;
             this.colClassName.OptionsColumn.ReadOnly = true;
             this.colClassName.Visible = true;
-            this.colClassName.VisibleIndex = 7;
+            this.colClassName.VisibleIndex = 4;
             this.colClassName.Width = 148;
             // 
             // colClassType
@@ -291,7 +291,7 @@ namespace Scheduler
             this.colClassType.OptionsColumn.AllowEdit = false;
             this.colClassType.OptionsColumn.ReadOnly = true;
             this.colClassType.Visible = true;
-            this.colClassType.VisibleIndex = 8;
+            this.colClassType.VisibleIndex = 5;
             this.colClassType.Width = 88;
             // 
             // colClientShortName
@@ -302,7 +302,7 @@ namespace Scheduler
             this.colClientShortName.OptionsColumn.AllowEdit = false;
             this.colClientShortName.OptionsColumn.ReadOnly = true;
             this.colClientShortName.Visible = true;
-            this.colClientShortName.VisibleIndex = 5;
+            this.colClientShortName.VisibleIndex = 2;
             this.colClientShortName.Width = 129;
             // 
             // colStartDateTime
@@ -316,7 +316,7 @@ namespace Scheduler
             this.colStartDateTime.OptionsColumn.AllowEdit = false;
             this.colStartDateTime.OptionsColumn.ReadOnly = true;
             this.colStartDateTime.Visible = true;
-            this.colStartDateTime.VisibleIndex = 3;
+            this.colStartDateTime.VisibleIndex = 7;
             this.colStartDateTime.Width = 73;
             // 
             // repositoryItemTimeEdit1
@@ -340,7 +340,7 @@ namespace Scheduler
             this.colEndDateTime.OptionsColumn.AllowEdit = false;
             this.colEndDateTime.OptionsColumn.ReadOnly = true;
             this.colEndDateTime.Visible = true;
-            this.colEndDateTime.VisibleIndex = 4;
+            this.colEndDateTime.VisibleIndex = 8;
             this.colEndDateTime.Width = 63;
             // 
             // repositoryItemTimeEdit2
@@ -360,8 +360,8 @@ namespace Scheduler
             this.colDayName.OptionsColumn.AllowEdit = false;
             this.colDayName.OptionsColumn.ReadOnly = true;
             this.colDayName.Visible = true;
-            this.colDayName.VisibleIndex = 2;
-            this.colDayName.Width = 79;
+            this.colDayName.VisibleIndex = 6;
+            this.colDayName.Width = 40;
             // 
             // colCalendarEventId
             // 
