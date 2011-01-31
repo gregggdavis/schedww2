@@ -1633,7 +1633,7 @@ namespace Scheduler
 						//Open default Client Page at Startup
                         nBarClient_LinkClicked(null, null);
                         //nBarProgram_LinkClicked(null, null);
-                        //navBarItem1_LinkClicked(null, null);
+                        //navBarItem2_LinkClicked(null, null);
                         //navBarReportBillingInfo_LinkClicked(null, null);
                         Common.UnLockWindow();
 						Refresh();
