@@ -109,19 +109,19 @@ namespace Scheduler
             this.printPreviewToolStripMenuItem,
             this.exportToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 94);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 76);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // printPreviewToolStripMenuItem
             // 
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.printPreviewToolStripMenuItem.Text = "Print Preview";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
@@ -133,34 +133,34 @@ namespace Scheduler
             this.exportToXMLToolStripMenuItem,
             this.exportToTXTToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // exportToolStripMenuItem1
             // 
             this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-            this.exportToolStripMenuItem1.Size = new System.Drawing.Size(208, 30);
+            this.exportToolStripMenuItem1.Size = new System.Drawing.Size(182, 24);
             this.exportToolStripMenuItem1.Text = "Export To Excel";
             this.exportToolStripMenuItem1.Click += new System.EventHandler(this.exportToolStripMenuItem1_Click);
             // 
             // exportToHTMLToolStripMenuItem
             // 
             this.exportToHTMLToolStripMenuItem.Name = "exportToHTMLToolStripMenuItem";
-            this.exportToHTMLToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
+            this.exportToHTMLToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.exportToHTMLToolStripMenuItem.Text = "Export to HTML";
             this.exportToHTMLToolStripMenuItem.Click += new System.EventHandler(this.exportToHTMLToolStripMenuItem_Click);
             // 
             // exportToXMLToolStripMenuItem
             // 
             this.exportToXMLToolStripMenuItem.Name = "exportToXMLToolStripMenuItem";
-            this.exportToXMLToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
+            this.exportToXMLToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.exportToXMLToolStripMenuItem.Text = "Export to XML";
             this.exportToXMLToolStripMenuItem.Click += new System.EventHandler(this.exportToXMLToolStripMenuItem_Click);
             // 
             // exportToTXTToolStripMenuItem
             // 
             this.exportToTXTToolStripMenuItem.Name = "exportToTXTToolStripMenuItem";
-            this.exportToTXTToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
+            this.exportToTXTToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.exportToTXTToolStripMenuItem.Text = "Export to TXT";
             this.exportToTXTToolStripMenuItem.Click += new System.EventHandler(this.exportToTXTToolStripMenuItem_Click);
             // 
@@ -198,7 +198,6 @@ namespace Scheduler
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colTimeStatus, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colInstructorName, DevExpress.Data.ColumnSortOrder.Ascending),
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colHourlyRate, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDayType, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colTeacherID
@@ -230,6 +229,7 @@ namespace Scheduler
             this.colTotalHours.FieldName = "TotalHours";
             this.colTotalHours.Name = "colTotalHours";
             this.colTotalHours.OptionsColumn.AllowEdit = false;
+            this.colTotalHours.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colTotalHours.OptionsColumn.ReadOnly = true;
             this.colTotalHours.SummaryItem.DisplayFormat = "Total Hours = {0}";
             this.colTotalHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
@@ -253,6 +253,7 @@ namespace Scheduler
             this.colHourlyRate.FieldName = "HourlyRate";
             this.colHourlyRate.Name = "colHourlyRate";
             this.colHourlyRate.OptionsColumn.AllowEdit = false;
+            this.colHourlyRate.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colHourlyRate.OptionsColumn.ReadOnly = true;
             this.colHourlyRate.Visible = true;
             this.colHourlyRate.VisibleIndex = 4;
@@ -274,6 +275,7 @@ namespace Scheduler
             this.colBasePayField.FieldName = "BasePayField";
             this.colBasePayField.Name = "colBasePayField";
             this.colBasePayField.OptionsColumn.AllowEdit = false;
+            this.colBasePayField.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colBasePayField.OptionsColumn.ReadOnly = true;
             this.colBasePayField.SummaryItem.DisplayFormat = "Max Base Rate = {0}";
             this.colBasePayField.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Max;
@@ -287,6 +289,7 @@ namespace Scheduler
             this.colTotal.FieldName = "Total";
             this.colTotal.Name = "colTotal";
             this.colTotal.OptionsColumn.AllowEdit = false;
+            this.colTotal.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colTotal.OptionsColumn.ReadOnly = true;
             this.colTotal.SummaryItem.DisplayFormat = "Total = {0}";
             this.colTotal.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
@@ -302,6 +305,7 @@ namespace Scheduler
             this.colDayType.OptionsColumn.AllowEdit = false;
             this.colDayType.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colDayType.OptionsColumn.ReadOnly = true;
+            this.colDayType.SortMode = DevExpress.XtraGrid.ColumnSortMode.Value;
             this.colDayType.Visible = true;
             this.colDayType.VisibleIndex = 2;
             this.colDayType.Width = 224;
@@ -312,6 +316,7 @@ namespace Scheduler
             this.colTimeStatus.FieldName = "TimeStatus";
             this.colTimeStatus.Name = "colTimeStatus";
             this.colTimeStatus.OptionsColumn.AllowEdit = false;
+            this.colTimeStatus.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
             this.colTimeStatus.OptionsColumn.ReadOnly = true;
             this.colTimeStatus.Visible = true;
             this.colTimeStatus.VisibleIndex = 1;
@@ -354,7 +359,7 @@ namespace Scheduler
             this.checkEdit2.Location = new System.Drawing.Point(23, 49);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "End Date:";
-            this.checkEdit2.Size = new System.Drawing.Size(75, 24);
+            this.checkEdit2.Size = new System.Drawing.Size(75, 21);
             this.checkEdit2.TabIndex = 7;
             this.checkEdit2.CheckedChanged += new System.EventHandler(this.checkEdit2_CheckedChanged);
             // 
@@ -363,7 +368,7 @@ namespace Scheduler
             this.checkEdit1.Location = new System.Drawing.Point(23, 24);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Start Date:";
-            this.checkEdit1.Size = new System.Drawing.Size(75, 24);
+            this.checkEdit1.Size = new System.Drawing.Size(75, 21);
             this.checkEdit1.TabIndex = 6;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
@@ -388,7 +393,7 @@ namespace Scheduler
             this.dateEditEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateEditEndDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditEndDate.Size = new System.Drawing.Size(169, 26);
+            this.dateEditEndDate.Size = new System.Drawing.Size(169, 22);
             this.dateEditEndDate.TabIndex = 1;
             // 
             // dateEditStartDate
@@ -403,7 +408,7 @@ namespace Scheduler
             this.dateEditStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateEditStartDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditStartDate.Size = new System.Drawing.Size(169, 26);
+            this.dateEditStartDate.Size = new System.Drawing.Size(169, 22);
             this.dateEditStartDate.TabIndex = 0;
             // 
             // frmPayrollByInstructor
