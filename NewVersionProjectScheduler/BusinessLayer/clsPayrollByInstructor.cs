@@ -98,16 +98,16 @@ namespace Scheduler.BusinessLayer
                             {
                                 switch (srow.DayType)
                                 {
-                                    case "Evening":
+                                    case "4-Evening":
                                         evefound = true;
                                         break;
-                                    case "Morning":
+                                    case "3-Morning":
                                         morfound = true;
                                         break;
-                                    case "Saturday":
+                                    case "2-Saturday":
                                         satfound = true;
                                         break;
-                                    case "Daytime":
+                                    case "1-Daytime":
                                         dayfound = true;
                                         break;
                                 }
@@ -117,28 +117,28 @@ namespace Scheduler.BusinessLayer
                             {
                                 switch (srow.DayType)
                                 {
-                                    case "Evening":
+                                    case "4-Evening":
                                         evefound = true;
                                         break;
-                                    case "Morning":
+                                    case "3-Morning":
                                         morfound = true;
                                         break;
-                                    case "Saturday":
+                                    case "2-Saturday":
                                         satfound = true;
                                         break;
-                                    case "Daytime":
+                                    case "1-Daytime":
                                         dayfound = true;
                                         break;
                                 }
                             }
                             if (!dayfound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.0), row.BasePayField, Convert.ToDecimal(0.00), "Daytime", row.TimeStatus);
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.0), row.BasePayField, Convert.ToDecimal(0.00), "1-Daytime", row.TimeStatus);
                             if (!satfound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "Saturday", row.TimeStatus);
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "2-Saturday", row.TimeStatus);
                             if (!morfound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.1), row.BasePayField, Convert.ToDecimal(0.00), "Morning", row.TimeStatus);
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.1), row.BasePayField, Convert.ToDecimal(0.00), "3-Morning", row.TimeStatus);
                             if (!evefound)
-                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "Evening", row.TimeStatus);
+                                table.AddGetPayrollByInstructorRow(row.TeacherID, row.InstructorName, Convert.ToDecimal(0.00), Convert.ToDecimal(1.2), row.BasePayField, Convert.ToDecimal(0.00), "4-Evening", row.TimeStatus);
                             
                             
                             
