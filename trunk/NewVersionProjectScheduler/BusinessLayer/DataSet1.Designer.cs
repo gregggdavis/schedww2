@@ -1010,8 +1010,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnTotalHours.ReadOnly = true;
                 this.columnHourlyRate.ReadOnly = true;
                 this.columnTotal.ReadOnly = true;
-                this.columnDayType.ReadOnly = true;
-                this.columnDayType.MaxLength = 8;
+                this.columnDayType.MaxLength = 10;
                 this.columnTimeStatus.ReadOnly = true;
                 this.columnTimeStatus.MaxLength = 50;
             }
