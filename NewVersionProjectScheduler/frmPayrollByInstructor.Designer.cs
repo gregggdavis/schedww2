@@ -184,12 +184,12 @@ namespace Scheduler
             this.gridView1.GroupCount = 2;
             this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", null, "Total Hours = {0}"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", this.colTotalHours, "Total Hours = {0}"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", this.colTotal, "Total = {0}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", null, "Total Hours = {0:n1}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", this.colTotalHours, "Total Hours = {0:n1}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", this.colTotal, "Total = {0:n0}"),
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Max, "BasePayField", null, "Max Base Rate = {0}"),
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Max, "BasePayField", this.colBasePayField, "Max Base Rate = {0}"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", null, "Total = {0}")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", null, "Total = {0:n0}")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
@@ -231,7 +231,7 @@ namespace Scheduler
             this.colTotalHours.OptionsColumn.AllowEdit = false;
             this.colTotalHours.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colTotalHours.OptionsColumn.ReadOnly = true;
-            this.colTotalHours.SummaryItem.DisplayFormat = "Total Hours = {0}";
+            this.colTotalHours.SummaryItem.DisplayFormat = "Total Hours = {0:n1}";
             this.colTotalHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTotalHours.Visible = true;
             this.colTotalHours.VisibleIndex = 3;
@@ -286,12 +286,14 @@ namespace Scheduler
             // colTotal
             // 
             this.colTotal.Caption = "Total";
+            this.colTotal.DisplayFormat.FormatString = "{0:n0}";
+            this.colTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colTotal.FieldName = "Total";
             this.colTotal.Name = "colTotal";
             this.colTotal.OptionsColumn.AllowEdit = false;
             this.colTotal.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colTotal.OptionsColumn.ReadOnly = true;
-            this.colTotal.SummaryItem.DisplayFormat = "Total = {0}";
+            this.colTotal.SummaryItem.DisplayFormat = "Total = {0:n0}";
             this.colTotal.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
             this.colTotal.Visible = true;
             this.colTotal.VisibleIndex = 6;
