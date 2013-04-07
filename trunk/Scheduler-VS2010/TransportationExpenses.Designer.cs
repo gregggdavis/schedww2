@@ -104,19 +104,17 @@ namespace Scheduler
             this.pnlBody.Controls.Add(this.panelControl1);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 0);
-            this.pnlBody.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(1101, 849);
+            this.pnlBody.Size = new System.Drawing.Size(856, 715);
             this.pnlBody.TabIndex = 2;
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.gridControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 133);
-            this.panelControl2.Margin = new System.Windows.Forms.Padding(4);
+            this.panelControl2.Location = new System.Drawing.Point(0, 112);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1101, 716);
+            this.panelControl2.Size = new System.Drawing.Size(856, 603);
             this.panelControl2.TabIndex = 2;
             // 
             // gridControl1
@@ -125,10 +123,8 @@ namespace Scheduler
             this.gridControl1.DataMember = "viewInstructorPaymentDetails";
             this.gridControl1.DataSource = this.dataSet11;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
             this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
@@ -137,7 +133,7 @@ namespace Scheduler
             this.repositoryItemDateEdit2,
             this.repositoryItemSpinEdit1,
             this.repositoryItemSpinEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(1097, 712);
+            this.gridControl1.Size = new System.Drawing.Size(852, 599);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -149,19 +145,19 @@ namespace Scheduler
             this.printPreviewToolStripMenuItem,
             this.exportToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(186, 94);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 76);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.printToolStripMenuItem.Text = "Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // printPreviewToolStripMenuItem
             // 
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.printPreviewToolStripMenuItem.Text = "Print Preview";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
@@ -173,34 +169,34 @@ namespace Scheduler
             this.exportToXMLToolStripMenuItem,
             this.exportToTXTToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(185, 30);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // exportToolStripMenuItem1
             // 
             this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
-            this.exportToolStripMenuItem1.Size = new System.Drawing.Size(208, 30);
+            this.exportToolStripMenuItem1.Size = new System.Drawing.Size(182, 24);
             this.exportToolStripMenuItem1.Text = "Export To Excel";
             this.exportToolStripMenuItem1.Click += new System.EventHandler(this.exportToolStripMenuItem1_Click);
             // 
             // exportToHTMLToolStripMenuItem
             // 
             this.exportToHTMLToolStripMenuItem.Name = "exportToHTMLToolStripMenuItem";
-            this.exportToHTMLToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
+            this.exportToHTMLToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.exportToHTMLToolStripMenuItem.Text = "Export to HTML";
             this.exportToHTMLToolStripMenuItem.Click += new System.EventHandler(this.exportToHTMLToolStripMenuItem_Click);
             // 
             // exportToXMLToolStripMenuItem
             // 
             this.exportToXMLToolStripMenuItem.Name = "exportToXMLToolStripMenuItem";
-            this.exportToXMLToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
+            this.exportToXMLToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.exportToXMLToolStripMenuItem.Text = "Export to XML";
             this.exportToXMLToolStripMenuItem.Click += new System.EventHandler(this.exportToXMLToolStripMenuItem_Click);
             // 
             // exportToTXTToolStripMenuItem
             // 
             this.exportToTXTToolStripMenuItem.Name = "exportToTXTToolStripMenuItem";
-            this.exportToTXTToolStripMenuItem.Size = new System.Drawing.Size(208, 30);
+            this.exportToTXTToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
             this.exportToTXTToolStripMenuItem.Text = "Export to TXT";
             this.exportToTXTToolStripMenuItem.Click += new System.EventHandler(this.exportToTXTToolStripMenuItem_Click);
             // 
@@ -211,6 +207,34 @@ namespace Scheduler
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FixedLine.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FixedLine.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.FixedLine.Options.UseBackColor = true;
+            this.gridView1.Appearance.FooterPanel.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FooterPanel.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.FooterPanel.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupFooter.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.GroupFooter.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.GroupRow.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.GroupRow.Options.UseFont = true;
+            this.gridView1.AppearancePrint.FooterPanel.BackColor = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.FooterPanel.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.FooterPanel.Options.UseBackColor = true;
+            this.gridView1.AppearancePrint.GroupFooter.BackColor = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.GroupFooter.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.GroupFooter.Options.UseBackColor = true;
+            this.gridView1.AppearancePrint.GroupRow.BackColor = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.GroupRow.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView1.AppearancePrint.GroupRow.Options.UseBackColor = true;
+            this.gridView1.AppearancePrint.GroupRow.Options.UseFont = true;
+            this.gridView1.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.HeaderPanel.BackColor2 = System.Drawing.Color.White;
+            this.gridView1.AppearancePrint.HeaderPanel.Options.UseBackColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colDepartment,
             this.colClientName,
@@ -238,7 +262,6 @@ namespace Scheduler
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
             this.gridView1.OptionsView.ShowFooter = true;
-            this.gridView1.OptionsView.ShowGroupedColumns = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colInstructorName, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -316,7 +339,7 @@ namespace Scheduler
             this.colStartDateTime.OptionsColumn.AllowEdit = false;
             this.colStartDateTime.OptionsColumn.ReadOnly = true;
             this.colStartDateTime.Visible = true;
-            this.colStartDateTime.VisibleIndex = 7;
+            this.colStartDateTime.VisibleIndex = 6;
             this.colStartDateTime.Width = 73;
             // 
             // repositoryItemTimeEdit1
@@ -340,7 +363,7 @@ namespace Scheduler
             this.colEndDateTime.OptionsColumn.AllowEdit = false;
             this.colEndDateTime.OptionsColumn.ReadOnly = true;
             this.colEndDateTime.Visible = true;
-            this.colEndDateTime.VisibleIndex = 8;
+            this.colEndDateTime.VisibleIndex = 7;
             this.colEndDateTime.Width = 63;
             // 
             // repositoryItemTimeEdit2
@@ -380,8 +403,8 @@ namespace Scheduler
             this.colPaidHours.Name = "colPaidHours";
             this.colPaidHours.OptionsColumn.AllowEdit = false;
             this.colPaidHours.OptionsColumn.ReadOnly = true;
-            this.colPaidHours.SummaryItem.DisplayFormat = "Paid Hours = {0}";
-            this.colPaidHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colPaidHours.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PaidHours", "Paid Hours = {0}")});
             this.colPaidHours.Width = 172;
             // 
             // repositoryItemSpinEdit2
@@ -422,8 +445,8 @@ namespace Scheduler
             this.colScheduledHours.Name = "colScheduledHours";
             this.colScheduledHours.OptionsColumn.AllowEdit = false;
             this.colScheduledHours.OptionsColumn.ReadOnly = true;
-            this.colScheduledHours.SummaryItem.DisplayFormat = "Scheduled Hours = {0}";
-            this.colScheduledHours.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+            this.colScheduledHours.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ScheduledHours", "Scheduled Hours = {0}")});
             this.colScheduledHours.Width = 162;
             // 
             // repositoryItemSpinEdit1
@@ -445,7 +468,7 @@ namespace Scheduler
             this.colEventDate.OptionsColumn.AllowEdit = false;
             this.colEventDate.OptionsColumn.ReadOnly = true;
             this.colEventDate.Visible = true;
-            this.colEventDate.VisibleIndex = 1;
+            this.colEventDate.VisibleIndex = 0;
             this.colEventDate.Width = 74;
             // 
             // repositoryItemDateEdit2
@@ -509,37 +532,33 @@ namespace Scheduler
             this.panelControl1.Controls.Add(this.dateEditStartDate);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1101, 133);
+            this.panelControl1.Size = new System.Drawing.Size(856, 112);
             this.panelControl1.TabIndex = 1;
             // 
             // checkEdit2
             // 
-            this.checkEdit2.Location = new System.Drawing.Point(34, 72);
-            this.checkEdit2.Margin = new System.Windows.Forms.Padding(4);
+            this.checkEdit2.Location = new System.Drawing.Point(26, 61);
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "End Date:";
-            this.checkEdit2.Size = new System.Drawing.Size(112, 24);
+            this.checkEdit2.Size = new System.Drawing.Size(87, 21);
             this.checkEdit2.TabIndex = 12;
             this.checkEdit2.CheckedChanged += new System.EventHandler(this.checkEdit2_CheckedChanged);
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(34, 35);
-            this.checkEdit1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkEdit1.Location = new System.Drawing.Point(26, 29);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Start Date:";
-            this.checkEdit1.Size = new System.Drawing.Size(112, 24);
+            this.checkEdit1.Size = new System.Drawing.Size(87, 21);
             this.checkEdit1.TabIndex = 11;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(458, 35);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.simpleButton1.Location = new System.Drawing.Point(356, 29);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(122, 64);
+            this.simpleButton1.Size = new System.Drawing.Size(95, 54);
             this.simpleButton1.TabIndex = 10;
             this.simpleButton1.Text = "Search";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -548,8 +567,7 @@ namespace Scheduler
             // 
             this.dateEditEndDate.EditValue = new System.DateTime(2007, 3, 22, 7, 25, 31, 171);
             this.dateEditEndDate.Enabled = false;
-            this.dateEditEndDate.Location = new System.Drawing.Point(195, 72);
-            this.dateEditEndDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dateEditEndDate.Location = new System.Drawing.Point(152, 61);
             this.dateEditEndDate.Name = "dateEditEndDate";
             this.dateEditEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -557,15 +575,14 @@ namespace Scheduler
             this.dateEditEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateEditEndDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditEndDate.Size = new System.Drawing.Size(254, 26);
+            this.dateEditEndDate.Size = new System.Drawing.Size(198, 22);
             this.dateEditEndDate.TabIndex = 9;
             // 
             // dateEditStartDate
             // 
             this.dateEditStartDate.EditValue = new System.DateTime(2007, 3, 22, 7, 25, 23, 234);
             this.dateEditStartDate.Enabled = false;
-            this.dateEditStartDate.Location = new System.Drawing.Point(195, 35);
-            this.dateEditStartDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dateEditStartDate.Location = new System.Drawing.Point(152, 29);
             this.dateEditStartDate.Name = "dateEditStartDate";
             this.dateEditStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -573,16 +590,15 @@ namespace Scheduler
             this.dateEditStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateEditStartDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEditStartDate.Size = new System.Drawing.Size(254, 26);
+            this.dateEditStartDate.Size = new System.Drawing.Size(198, 22);
             this.dateEditStartDate.TabIndex = 8;
             // 
             // TransportationExpenses
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 849);
+            this.ClientSize = new System.Drawing.Size(856, 715);
             this.Controls.Add(this.pnlBody);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TransportationExpenses";
             this.Text = "TransportationExpenses";
             this.Load += new System.EventHandler(this.TransportationExpenses_Load);
