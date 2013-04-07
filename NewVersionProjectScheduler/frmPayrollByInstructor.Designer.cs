@@ -224,7 +224,7 @@ namespace Scheduler
             // 
             this.colTotalHours.Caption = "Total Hours";
             this.colTotalHours.ColumnEdit = this.repositoryItemSpinEdit2;
-            this.colTotalHours.DisplayFormat.FormatString = "{0:n1}";
+            this.colTotalHours.DisplayFormat.FormatString = "{0:n2}";
             this.colTotalHours.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colTotalHours.FieldName = "TotalHours";
             this.colTotalHours.Name = "colTotalHours";
