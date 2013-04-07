@@ -419,7 +419,7 @@ namespace Scheduler
             // 
             // sbarMain
             // 
-            this.sbarMain.Location = new System.Drawing.Point(0, 627);
+            this.sbarMain.Location = new System.Drawing.Point(0, 641);
             this.sbarMain.Name = "sbarMain";
             this.sbarMain.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.sPnlGeneral,
@@ -427,7 +427,7 @@ namespace Scheduler
             this.sPnlDate,
             this.sPnlPath});
             this.sbarMain.ShowPanels = true;
-            this.sbarMain.Size = new System.Drawing.Size(1138, 32);
+            this.sbarMain.Size = new System.Drawing.Size(1142, 28);
             this.sbarMain.TabIndex = 17;
             this.sbarMain.Text = "sBarMain";
             // 
@@ -435,7 +435,7 @@ namespace Scheduler
             // 
             this.sPnlGeneral.AutoSize = System.Windows.Forms.StatusBarPanelAutoSize.Spring;
             this.sPnlGeneral.Name = "sPnlGeneral";
-            this.sPnlGeneral.Width = 623;
+            this.sPnlGeneral.Width = 631;
             // 
             // sPnlLogon
             // 
@@ -464,16 +464,16 @@ namespace Scheduler
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 46);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(1138, 581);
+            this.pnlBody.Size = new System.Drawing.Size(1142, 595);
             this.pnlBody.TabIndex = 18;
             // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.Window;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(256, 46);
+            this.pnlMain.Location = new System.Drawing.Point(224, 39);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(882, 535);
+            this.pnlMain.Size = new System.Drawing.Size(918, 556);
             this.pnlMain.TabIndex = 1;
             // 
             // pnlHeader
@@ -482,9 +482,9 @@ namespace Scheduler
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlHeader.Controls.Add(this.lblTitle);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(256, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(224, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(882, 46);
+            this.pnlHeader.Size = new System.Drawing.Size(918, 39);
             this.pnlHeader.TabIndex = 0;
             this.pnlHeader.Resize += new System.EventHandler(this.pnlHeader_Resize);
             // 
@@ -493,9 +493,9 @@ namespace Scheduler
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTitle.Location = new System.Drawing.Point(26, 7);
+            this.lblTitle.Location = new System.Drawing.Point(23, 6);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(66, 29);
+            this.lblTitle.Size = new System.Drawing.Size(54, 24);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Title";
             // 
@@ -506,7 +506,7 @@ namespace Scheduler
             this.pnlNavBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavBar.Location = new System.Drawing.Point(0, 0);
             this.pnlNavBar.Name = "pnlNavBar";
-            this.pnlNavBar.Size = new System.Drawing.Size(256, 581);
+            this.pnlNavBar.Size = new System.Drawing.Size(224, 595);
             this.pnlNavBar.TabIndex = 12;
             // 
             // navBar
@@ -548,8 +548,8 @@ namespace Scheduler
             this.navBar.LargeImages = this.imlNavBar;
             this.navBar.Location = new System.Drawing.Point(0, 0);
             this.navBar.Name = "navBar";
-            this.navBar.OptionsNavPane.ExpandedWidth = 156;
-            this.navBar.Size = new System.Drawing.Size(252, 577);
+            this.navBar.OptionsNavPane.ExpandedWidth = 220;
+            this.navBar.Size = new System.Drawing.Size(220, 591);
             this.navBar.SmallImages = this.imlSmallImageNavBar;
             this.navBar.TabIndex = 5;
             this.navBar.Text = "Navigation";
@@ -798,7 +798,7 @@ namespace Scheduler
             this.tBarMain.Location = new System.Drawing.Point(0, 0);
             this.tBarMain.Name = "tBarMain";
             this.tBarMain.ShowToolTips = true;
-            this.tBarMain.Size = new System.Drawing.Size(1138, 46);
+            this.tBarMain.Size = new System.Drawing.Size(1142, 46);
             this.tBarMain.TabIndex = 11;
             this.tBarMain.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
             this.tBarMain.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(this.tBarMain_ButtonClick);
@@ -873,21 +873,21 @@ namespace Scheduler
             // 
             // frmMain
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(8, 20);
-            this.ClientSize = new System.Drawing.Size(1138, 659);
+            this.AutoScaleBaseSize = new System.Drawing.Size(7, 17);
+            this.ClientSize = new System.Drawing.Size(1142, 669);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.sbarMain);
             this.Controls.Add(this.tBarMain);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mnuMain;
-            this.MinimumSize = new System.Drawing.Size(1160, 714);
+            this.MinimumSize = new System.Drawing.Size(1015, 607);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Scheduler";
+            this.Text = "Kurdyla Scheduler";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.frmMain_Closing);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sPnlGeneral)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPnlLogon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sPnlDate)).EndInit();
