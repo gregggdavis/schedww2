@@ -587,10 +587,10 @@ namespace Scheduler.BusinessLayer
 			{
 				Assembly assembly = Assembly.GetExecutingAssembly();
 				AssemblyName assemblyname = assembly.GetName();
-				
-				string strVersion = "Version " + assemblyname.Version.Major.ToString() + "." +
-					assemblyname.Version.Minor.ToString() + "." +
-					assemblyname.Version.Build .ToString(); // + "." +
+
+                string strVersion = "Version " + assemblyname.Version.Major.ToString() + "." +
+                    assemblyname.Version.Minor.ToString() + "." +
+                    assemblyname.Version.Build.ToString() + " (VS2010 / DEXP12.2.7)";
 					//assemblyname.Version.Revision.ToString();
 				mShortVersionInfo = strVersion;
 				return strVersion;

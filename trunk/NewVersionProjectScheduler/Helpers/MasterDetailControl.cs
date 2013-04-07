@@ -14,9 +14,6 @@ namespace Scheduler.Helpers {
 	public class MasterDetailControl : XtraUserControl {
 		
 		MyPrintControl pc = new MyPrintControl();
-		string DBFileName;
-		string connectionString;
-		DataView dv;
 
 		XtraTabControl PSTab;
 		XtraTabPage tabPage1;
