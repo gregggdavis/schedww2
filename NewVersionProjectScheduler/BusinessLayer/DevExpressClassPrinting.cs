@@ -12,10 +12,6 @@ namespace Scheduler.BusinessLayer
 
         #region Declarations
         #region Alignment Attributes
-        int top = 85;
-        int leftColumn = 50;
-        int rightColumn = 210;
-        int topIncrement = 20;
         public Color label1ForeColor = Color.Black;
         PrintingSystem printingSystem;
         #endregion

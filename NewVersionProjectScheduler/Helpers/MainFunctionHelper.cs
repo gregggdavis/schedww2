@@ -8,7 +8,9 @@ using DevExpress.XtraGrid.Views.Card;
 using DevExpress.Data;
 using DevExpress.XtraExport;
 using DevExpress.XtraGrid.Export;
+using DevExpress.XtraPrinting;
 using DevExpress.Utils;
+using DevExpress.LookAndFeel;
 using System.Windows.Forms;
 
 
@@ -122,15 +124,18 @@ namespace Scheduler.Helpers
         }
         public static void PrintPreview(Helpers.MainFunctionHelper.ViewDisplayed view, Object obj)
         {
-            if (DevExpress.XtraPrinting.PrintHelper.IsPrintingAvailable)
+            if (ComponentPrinter.IsPrintingAvailable(true))
             {
+                ComponentPrinter oCoPrinter = new ComponentPrinter((DevExpress.XtraGrid.GridControl)obj);
                 switch (view)
                 {
                     case ViewDisplayed.AdvancedView:
-                        DevExpress.XtraPrinting.PrintHelper.ShowPreview((DevExpress.XtraGrid.GridControl)obj);
+                        oCoPrinter.ShowPreview(new DefaultLookAndFeel().LookAndFeel);
+                        //DevExpress.XtraPrinting.ComponentPrinter.ShowPreview((DevExpress.XtraGrid.GridControl)obj);
                         break;
                     case ViewDisplayed.SimpleView:
-                        DevExpress.XtraPrinting.PrintHelper.ShowPreview((DevExpress.XtraGrid.GridControl)obj);
+                        oCoPrinter.ShowPreview(new DefaultLookAndFeel().LookAndFeel);
+                        //DevExpress.XtraPrinting.PrintHelper.ShowPreview((DevExpress.XtraGrid.GridControl)obj);
                         break;
                 }
 
@@ -139,15 +144,19 @@ namespace Scheduler.Helpers
         }
         public static void Print(Helpers.MainFunctionHelper.ViewDisplayed view, Object obj)
         {
-            if (DevExpress.XtraPrinting.PrintHelper.IsPrintingAvailable)
+            if (ComponentPrinter.IsPrintingAvailable(true))
+            //if (DevExpress.XtraPrinting.PrintHelper.IsPrintingAvailable)
             {
+                ComponentPrinter oCoPrinter = new ComponentPrinter((DevExpress.XtraGrid.GridControl)obj);
                 switch (view)
                 {
                     case ViewDisplayed.AdvancedView:
-                        DevExpress.XtraPrinting.PrintHelper.Print(((DevExpress.XtraGrid.GridControl)obj));
+                        oCoPrinter.ShowPreview(new DefaultLookAndFeel().LookAndFeel);
+                        //DevExpress.XtraPrinting.PrintHelper.Print(((DevExpress.XtraGrid.GridControl)obj));
                         break;
                     case ViewDisplayed.SimpleView:
-                        DevExpress.XtraPrinting.PrintHelper.Print(((DevExpress.XtraGrid.GridControl)obj));
+                        oCoPrinter.ShowPreview(new DefaultLookAndFeel().LookAndFeel);
+                        //DevExpress.XtraPrinting.PrintHelper.Print(((DevExpress.XtraGrid.GridControl)obj));
                         break;
                 }
             }

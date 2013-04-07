@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 
 namespace Scheduler.Reports
 {

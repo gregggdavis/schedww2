@@ -12,10 +12,6 @@ namespace Scheduler.BusinessLayer {
 		public Events() {}
 
 		private DataTable _dtbl = new DataTable();
-        private string temp;
-        private string temp2;
-        private string temp3;
-        private string temp4;
 
 		public int EventID = 0;
 		public int CalendarEventID = 0;

@@ -20,7 +20,6 @@ namespace Scheduler.Reports
         {
             lblProgramNameValue.Text = programName;
         }
-        string SpecialRemarks = "";
         public void LoadData(int programID)
         {
             this.programID = programID; 
