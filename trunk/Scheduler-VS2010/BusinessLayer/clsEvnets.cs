@@ -869,7 +869,7 @@ namespace Scheduler.BusinessLayer {
 
 				return dtblTemp;
 
-				return _dtbl;
+				//return _dtbl;
 			} catch (SqlException ex) {
 				Message = ex.Message;
 				return null;
@@ -1247,7 +1247,7 @@ namespace Scheduler.BusinessLayer {
 
                 return dtblTemp;
 
-                return _dtbl;
+                //return _dtbl;
             }
             catch (SqlException ex)
             {
@@ -1565,6 +1565,7 @@ dbo.ViewallEventsFull where 1=1 ";
                 sqlDataAdapter.Fill(_dtbl);
                 //new escape line
                 return _dtbl;
+/*
                 DataTable dtbl = new DataTable();
                 dtbl.Columns.Add("CEID", Type.GetType("System.String"));
                 dtbl.Columns.Add("STARTDATETIME", Type.GetType("System.DateTime"));
@@ -1631,6 +1632,7 @@ dbo.ViewallEventsFull where 1=1 ";
                     }
                     if (dr["Status"] != DBNull.Value) status = dr["Status"].ToString();
                     //strfinalstring = strTime.Trim();
+*/
                     /*if(strDept!="")
                     {
                         if(dr["DeptNickName"].ToString()=="")
@@ -1638,6 +1640,7 @@ dbo.ViewallEventsFull where 1=1 ";
                         else
                             strfinalstring += dr["DeptNickName"].ToString();
                     }*/
+/*
                     if (strClient != "")
                     {
                         if (dr["ClientNickName"].ToString() == "")
@@ -1687,6 +1690,7 @@ dbo.ViewallEventsFull where 1=1 ";
                     deleteRows[i].Delete();
                 }
                 return dtbl;
+*/
             }
             catch (SqlException ex)
             {
@@ -2108,7 +2112,6 @@ dbo.ViewallEventsFull where 1=1 ";
 		}
 
 		public string CheckProgramEvent() {
-			bool OK = false;
 			string strSql = "";
 			string Result = "";
 			SqlDataReader Reader = null;
@@ -2895,7 +2898,6 @@ dbo.ViewallEventsFull where 1=1 ";
         }
         
         public bool UpdateProgramEvent(string field, int eventID, int tableID) {
-			string strSql = "";
 			SqlCommand com = null;
 			Connection con = null;
 			try {
@@ -2927,7 +2929,6 @@ dbo.ViewallEventsFull where 1=1 ";
 		}
 
 		public bool UpdateClassEvent(string field, int eventID, int tableID) {
-			string strSql = "";
 			SqlCommand com = null;
 			Connection con = null;
 			try {
@@ -2963,7 +2964,6 @@ dbo.ViewallEventsFull where 1=1 ";
             return reader.HasRows;
         }
 		public int GetEvent(int eventID, ref string module, ref int eventtypeindex) {
-			string strSql = "";
 			SqlCommand com = null;
 			Connection con = null;
 			SqlDataReader Reader = null;

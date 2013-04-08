@@ -222,7 +222,7 @@ namespace Scheduler
             this.gvwUser.OptionsPrint.PrintPreview = true;
             this.gvwUser.OptionsPrint.UsePrintStyles = true;
             this.gvwUser.OptionsView.ShowGroupPanel = false;
-            this.gvwUser.OptionsView.ShowHorzLines = false;
+            this.gvwUser.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwUser.OptionsView.ShowIndicator = false;
             this.gvwUser.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolUserName, DevExpress.Data.ColumnSortOrder.Ascending)});

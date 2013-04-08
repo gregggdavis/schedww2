@@ -395,7 +395,7 @@ namespace Scheduler
             this.gvwProgram.GridControl = this.grdProgram;
             this.gvwProgram.Name = "gvwProgram";
             this.gvwProgram.OptionsView.ShowGroupPanel = false;
-            this.gvwProgram.OptionsView.ShowHorzLines = false;
+            this.gvwProgram.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwProgram.OptionsView.ShowIndicator = false;
             this.gvwProgram.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClientName, DevExpress.Data.ColumnSortOrder.Ascending)});

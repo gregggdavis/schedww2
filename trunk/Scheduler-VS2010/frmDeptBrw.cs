@@ -333,7 +333,7 @@ namespace Scheduler
             this.gvwDept.OptionsNavigation.AutoMoveRowFocus = false;
             this.gvwDept.OptionsView.ShowDetailButtons = false;
             this.gvwDept.OptionsView.ShowGroupPanel = false;
-            this.gvwDept.OptionsView.ShowHorzLines = false;
+            this.gvwDept.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwDept.OptionsView.ShowIndicator = false;
             this.gvwDept.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClient, DevExpress.Data.ColumnSortOrder.Ascending)});

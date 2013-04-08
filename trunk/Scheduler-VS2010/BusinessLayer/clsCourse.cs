@@ -1210,7 +1210,6 @@ namespace Scheduler.BusinessLayer
             SqlCommand com = null;
             Connection con = null;
             SqlDataReader Reader = null;
-            SqlCommand com1 = null;
             DateTime dtStart = Convert.ToDateTime(null);
             DateTime dtEnd = Convert.ToDateTime(null);
 
@@ -1337,7 +1336,7 @@ namespace Scheduler.BusinessLayer
             string Result = "";
             string strSql = "";
 
-            SqlCommand com = null;
+            //SqlCommand com = null;
             //Connection con = null;
             SqlDataReader Reader = null;
             SqlCommand com1 = null;
@@ -1359,7 +1358,7 @@ namespace Scheduler.BusinessLayer
             }
             catch (Exception ex)
             {
-
+                return ex.Message;
             }
             finally
             {
@@ -1367,7 +1366,7 @@ namespace Scheduler.BusinessLayer
                 if (com1 != null)
                 {
                     com1.Dispose();
-                    com = null;
+                    //com = null;
                     //con.DisConnect();
                 }
             }
@@ -1629,12 +1628,11 @@ namespace Scheduler.BusinessLayer
         {
             SqlCommand com = null;
             Connection con = null;
-            SqlDataReader Reader = null;
+            //SqlDataReader Reader = null;
             string strSQL = string.Empty;
             string strResult = string.Empty;
             int result1;
             int result2;
-            int temp;
             try
             {
                 strSQL = "Select Count(*) from [CalendarEvent] WHERE EventId=@EventId AND StartDateTime < GetDate() AND CalendarEventStatus = 0;";

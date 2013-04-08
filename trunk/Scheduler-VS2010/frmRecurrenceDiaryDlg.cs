@@ -67,10 +67,10 @@ namespace Scheduler
 		public string StartTimeText="";
 		public string EndTimeText="";
 
-		private bool boolNoOfEntries=false;
-		private bool boolEndDate=false;
-		private bool boolNoEndDate=false;
-		private string strWeekDay="";
+		//private bool boolNoOfEntries=false;
+		//private bool boolEndDate=false;
+		//private bool boolNoEndDate=false;
+		//private string strWeekDay="";
         private bool IsValid = false;
 
 		private string strMode="";
@@ -992,42 +992,42 @@ namespace Scheduler
 		private void rdb_Sunday_CheckedChanged(object sender, System.EventArgs e)
 		{
 			intDay=0;
-			strWeekDay="Sunday";
+			//strWeekDay="Sunday";
 		}
 
 		private void rdb_Monday_CheckedChanged(object sender, System.EventArgs e)
 		{
 			intDay=1;
-			strWeekDay="Monday";
+			//strWeekDay="Monday";
 		}
 
 		private void rdb_Tuesday_CheckedChanged(object sender, System.EventArgs e)
 		{
 			intDay=2;
-			strWeekDay="Tuesday";
+			//strWeekDay="Tuesday";
 		}
 
 		private void rdb_Wednesday_CheckedChanged(object sender, System.EventArgs e)
 		{
 			intDay=3;
-			strWeekDay="Wednesday";
+			//strWeekDay="Wednesday";
 		}
 
 		private void rdb_Thrusday_CheckedChanged(object sender, System.EventArgs e)
 		{
 			intDay=4;
-			strWeekDay="Thursday";
+			//strWeekDay="Thursday";
 		}
 		private void rdb_Friday_CheckedChanged(object sender, System.EventArgs e)
 		{
 			intDay=5;
-			strWeekDay="Friday";
+			//strWeekDay="Friday";
 		}
 
 		private void rdb_Saturday_CheckedChanged(object sender, System.EventArgs e)
 		{
 			intDay=6;
-			strWeekDay="Saturday";
+			//strWeekDay="Saturday";
 
 		}
 
@@ -1100,12 +1100,12 @@ namespace Scheduler
 		{
 			if(rdb_NoofEntries.Checked==true)
 			{
-				boolNoOfEntries=true;
+				//boolNoOfEntries=true;
 				txt_NoOfEntries.Text="10";
 			}
 			else
 			{
-                boolNoOfEntries=false;
+                //boolNoOfEntries=false;
 				txt_NoOfEntries.Text="";
 			}
 
@@ -1115,11 +1115,11 @@ namespace Scheduler
 		{
 			if(rdb_EndDate.Checked==true)
 			{
-				boolEndDate=true;
+				//boolEndDate=true;
 			}
 			else
 			{
-				boolEndDate=false;
+				//boolEndDate=false;
 			}
 		
 		}

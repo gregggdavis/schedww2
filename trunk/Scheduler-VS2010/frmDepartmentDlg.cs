@@ -1311,7 +1311,7 @@ namespace Scheduler
             this.gvwContact.OptionsView.ShowDetailButtons = false;
             this.gvwContact.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gvwContact.OptionsView.ShowGroupPanel = false;
-            this.gvwContact.OptionsView.ShowHorzLines = false;
+            this.gvwContact.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwContact.OptionsView.ShowIndicator = false;
             this.gvwContact.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolContactType, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -2434,7 +2434,7 @@ namespace Scheduler
 			pnl=null;
 		}
 
-		private FormPrinting fp=null;
+		//private FormPrinting fp=null;
         private clsDevExpressFormPrinting xfp = null;
 		private void CreateFormPrintingObject(System.Windows.Forms.Control c)
 		{
@@ -2442,7 +2442,7 @@ namespace Scheduler
             xfp = new clsDevExpressFormPrinting(c,printingSystem1);
 		}
 		
-		private PageSettings ps=null;
+		//private PageSettings ps=null;
 		private void btnPageSetup_Click(object sender, System.EventArgs e)
 		{
 			//PrintingFunctions.ShowPageSettings(ref ps);

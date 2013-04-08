@@ -130,7 +130,7 @@ namespace Scheduler
 		private bool deleted=false;
 		private int intClientID=0;
 		private int intDepartmentID=0;
-		private string strEventText="";
+		//private string strEventText="";
 		private int intIndex=0;
         private bool IsRecurringSeries = false;
         private bool HasTestInitialEvent = false;
@@ -155,7 +155,6 @@ namespace Scheduler
 		private string Pattern2 = "";
 		private string _startdate_Initial;
 		private string _enddate_Initial;
-		private string _eventmode_Initial="";
 		private int  _eventid_Initial=0;
 		private int  _calendareventid_Initial=0;
 		//end
@@ -187,7 +186,7 @@ namespace Scheduler
         private DevExpress.XtraGrid.Columns.GridColumn gcolStartDateTime;
         private DevExpress.XtraGrid.Columns.GridColumn gcolEndDateTime;
 
-		private PageSettings ps=null;
+		//private PageSettings ps=null;
         
         private CheckBox chkEventModified;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem;
@@ -195,7 +194,7 @@ namespace Scheduler
         private CheckBox chkEventStatus_I;
         private TextBox txtChangeReason_I;
         private Label lblChangeReason_I;
-        BusinessLayer.DevExpressPrinting xtraPrinting;
+        //BusinessLayer.DevExpressPrinting xtraPrinting;
         #endregion
 
         #region Constructors
@@ -587,7 +586,7 @@ namespace Scheduler
             this.tbcCourse.Name = "tbcCourse";
             this.tbcCourse.SelectedIndex = 0;
             this.tbcCourse.ShowToolTips = true;
-            this.tbcCourse.Size = new System.Drawing.Size(770, 569);
+            this.tbcCourse.Size = new System.Drawing.Size(770, 691);
             this.tbcCourse.TabIndex = 0;
             this.tbcCourse.SelectedIndexChanged += new System.EventHandler(this.tbcCourse_SelectedIndexChanged);
             // 
@@ -639,36 +638,36 @@ namespace Scheduler
             this.tbpCourse.Controls.Add(this.lblStatus);
             this.tbpCourse.Controls.Add(this.lblUser);
             this.tbpCourse.Controls.Add(this.cmbStatus);
-            this.tbpCourse.Location = new System.Drawing.Point(4, 22);
+            this.tbpCourse.Location = new System.Drawing.Point(4, 26);
             this.tbpCourse.Name = "tbpCourse";
-            this.tbpCourse.Size = new System.Drawing.Size(762, 543);
+            this.tbpCourse.Size = new System.Drawing.Size(762, 661);
             this.tbpCourse.TabIndex = 0;
             this.tbpCourse.Text = "Class";
             this.tbpCourse.UseVisualStyleBackColor = true;
             // 
             // txtCourseName
             // 
-            this.txtCourseName.Location = new System.Drawing.Point(208, 25);
+            this.txtCourseName.Location = new System.Drawing.Point(291, 30);
             this.txtCourseName.MaxLength = 255;
             this.txtCourseName.Name = "txtCourseName";
-            this.txtCourseName.Size = new System.Drawing.Size(320, 21);
+            this.txtCourseName.Size = new System.Drawing.Size(448, 24);
             this.txtCourseName.TabIndex = 0;
             // 
             // txtNickName
             // 
-            this.txtNickName.Location = new System.Drawing.Point(208, 98);
+            this.txtNickName.Location = new System.Drawing.Point(291, 119);
             this.txtNickName.MaxLength = 255;
             this.txtNickName.Name = "txtNickName";
-            this.txtNickName.Size = new System.Drawing.Size(320, 21);
+            this.txtNickName.Size = new System.Drawing.Size(448, 24);
             this.txtNickName.TabIndex = 3;
             // 
             // lblNickName
             // 
             this.lblNickName.AutoSize = true;
             this.lblNickName.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblNickName.Location = new System.Drawing.Point(64, 100);
+            this.lblNickName.Location = new System.Drawing.Point(90, 121);
             this.lblNickName.Name = "lblNickName";
-            this.lblNickName.Size = new System.Drawing.Size(96, 13);
+            this.lblNickName.Size = new System.Drawing.Size(120, 17);
             this.lblNickName.TabIndex = 338;
             this.lblNickName.Text = "Abbreviated Name";
             // 
@@ -676,9 +675,9 @@ namespace Scheduler
             // 
             this.llblClient.AutoSize = true;
             this.llblClient.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.llblClient.Location = new System.Drawing.Point(64, 186);
+            this.llblClient.Location = new System.Drawing.Point(90, 226);
             this.llblClient.Name = "llblClient";
-            this.llblClient.Size = new System.Drawing.Size(34, 13);
+            this.llblClient.Size = new System.Drawing.Size(41, 17);
             this.llblClient.TabIndex = 92;
             this.llblClient.TabStop = true;
             this.llblClient.Text = "Client";
@@ -687,9 +686,9 @@ namespace Scheduler
             // cmbClient
             // 
             this.cmbClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbClient.Location = new System.Drawing.Point(208, 184);
+            this.cmbClient.Location = new System.Drawing.Point(291, 223);
             this.cmbClient.Name = "cmbClient";
-            this.cmbClient.Size = new System.Drawing.Size(320, 21);
+            this.cmbClient.Size = new System.Drawing.Size(448, 25);
             this.cmbClient.TabIndex = 5;
             this.cmbClient.SelectedIndexChanged += new System.EventHandler(this.cmbClient_SelectedIndexChanged);
             // 
@@ -697,9 +696,9 @@ namespace Scheduler
             // 
             this.llbDepartment.AutoSize = true;
             this.llbDepartment.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.llbDepartment.Location = new System.Drawing.Point(64, 210);
+            this.llbDepartment.Location = new System.Drawing.Point(90, 255);
             this.llbDepartment.Name = "llbDepartment";
-            this.llbDepartment.Size = new System.Drawing.Size(64, 13);
+            this.llbDepartment.Size = new System.Drawing.Size(82, 17);
             this.llbDepartment.TabIndex = 90;
             this.llbDepartment.TabStop = true;
             this.llbDepartment.Text = "Department";
@@ -708,9 +707,9 @@ namespace Scheduler
             // cmbDept
             // 
             this.cmbDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDept.Location = new System.Drawing.Point(208, 208);
+            this.cmbDept.Location = new System.Drawing.Point(291, 253);
             this.cmbDept.Name = "cmbDept";
-            this.cmbDept.Size = new System.Drawing.Size(320, 21);
+            this.cmbDept.Size = new System.Drawing.Size(448, 25);
             this.cmbDept.TabIndex = 6;
             this.cmbDept.SelectedIndexChanged += new System.EventHandler(this.cmbDept_SelectedIndexChanged);
             // 
@@ -718,9 +717,9 @@ namespace Scheduler
             // 
             this.label14.AutoSize = true;
             this.label14.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label14.Location = new System.Drawing.Point(64, 128);
+            this.label14.Location = new System.Drawing.Point(90, 155);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 13);
+            this.label14.Size = new System.Drawing.Size(78, 17);
             this.label14.TabIndex = 84;
             this.label14.Text = "Class Event";
             // 
@@ -728,9 +727,9 @@ namespace Scheduler
             // 
             this.label7.AutoSize = true;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label7.Location = new System.Drawing.Point(64, 424);
+            this.label7.Location = new System.Drawing.Point(90, 515);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.Size = new System.Drawing.Size(64, 17);
             this.label7.TabIndex = 83;
             this.label7.Text = "Test Final";
             // 
@@ -738,9 +737,9 @@ namespace Scheduler
             // 
             this.label6.AutoSize = true;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label6.Location = new System.Drawing.Point(64, 376);
+            this.label6.Location = new System.Drawing.Point(90, 457);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.Size = new System.Drawing.Size(92, 17);
             this.label6.TabIndex = 82;
             this.label6.Text = "Test Mid-term";
             // 
@@ -748,20 +747,20 @@ namespace Scheduler
             // 
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(64, 330);
+            this.label5.Location = new System.Drawing.Point(90, 401);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 81;
             this.label5.Text = "Test Initial";
             // 
             // txtEvent
             // 
             this.txtEvent.Enabled = false;
-            this.txtEvent.Location = new System.Drawing.Point(416, 136);
+            this.txtEvent.Location = new System.Drawing.Point(582, 165);
             this.txtEvent.MaxLength = 15;
             this.txtEvent.Name = "txtEvent";
             this.txtEvent.ReadOnly = true;
-            this.txtEvent.Size = new System.Drawing.Size(112, 21);
+            this.txtEvent.Size = new System.Drawing.Size(157, 24);
             this.txtEvent.TabIndex = 80;
             this.txtEvent.TabStop = false;
             this.txtEvent.Tag = "N";
@@ -771,54 +770,54 @@ namespace Scheduler
             // 
             // llblEvent
             // 
-            this.llblEvent.Location = new System.Drawing.Point(208, 128);
+            this.llblEvent.Location = new System.Drawing.Point(291, 155);
             this.llblEvent.Name = "llblEvent";
-            this.llblEvent.Size = new System.Drawing.Size(320, 54);
+            this.llblEvent.Size = new System.Drawing.Size(448, 66);
             this.llblEvent.TabIndex = 4;
             this.llblEvent.TabStop = true;
             this.llblEvent.Text = "None";
-            this.llblEvent.MouseLeave += new System.EventHandler(this.llblEvent_MouseLeave);
             this.llblEvent.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblEvent_LinkClicked);
             this.llblEvent.MouseEnter += new System.EventHandler(this.llblEvent_MouseEnter);
+            this.llblEvent.MouseLeave += new System.EventHandler(this.llblEvent_MouseLeave);
             // 
             // llblFinalEvt
             // 
-            this.llblFinalEvt.Location = new System.Drawing.Point(208, 424);
+            this.llblFinalEvt.Location = new System.Drawing.Point(291, 515);
             this.llblFinalEvt.Name = "llblFinalEvt";
-            this.llblFinalEvt.Size = new System.Drawing.Size(320, 21);
+            this.llblFinalEvt.Size = new System.Drawing.Size(448, 25);
             this.llblFinalEvt.TabIndex = 12;
             this.llblFinalEvt.TabStop = true;
             this.llblFinalEvt.Text = "None";
-            this.llblFinalEvt.TextChanged += new System.EventHandler(this.llblFinalEvt_TextChanged);
-            this.llblFinalEvt.MouseLeave += new System.EventHandler(this.llblFinalEvt_MouseLeave);
             this.llblFinalEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblFinalEvt_LinkClicked);
+            this.llblFinalEvt.TextChanged += new System.EventHandler(this.llblFinalEvt_TextChanged);
             this.llblFinalEvt.MouseEnter += new System.EventHandler(this.llblFinalEvt_MouseEnter);
+            this.llblFinalEvt.MouseLeave += new System.EventHandler(this.llblFinalEvt_MouseLeave);
             // 
             // llblMidEvt
             // 
-            this.llblMidEvt.Location = new System.Drawing.Point(208, 376);
+            this.llblMidEvt.Location = new System.Drawing.Point(291, 457);
             this.llblMidEvt.Name = "llblMidEvt";
-            this.llblMidEvt.Size = new System.Drawing.Size(320, 21);
+            this.llblMidEvt.Size = new System.Drawing.Size(448, 25);
             this.llblMidEvt.TabIndex = 11;
             this.llblMidEvt.TabStop = true;
             this.llblMidEvt.Text = "None";
-            this.llblMidEvt.TextChanged += new System.EventHandler(this.llblMidEvt_TextChanged);
-            this.llblMidEvt.MouseLeave += new System.EventHandler(this.llblMidEvt_MouseLeave);
             this.llblMidEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblMidEvt_LinkClicked);
+            this.llblMidEvt.TextChanged += new System.EventHandler(this.llblMidEvt_TextChanged);
             this.llblMidEvt.MouseEnter += new System.EventHandler(this.llblMidEvt_MouseEnter);
+            this.llblMidEvt.MouseLeave += new System.EventHandler(this.llblMidEvt_MouseLeave);
             // 
             // llblInitialEvt
             // 
-            this.llblInitialEvt.Location = new System.Drawing.Point(208, 330);
+            this.llblInitialEvt.Location = new System.Drawing.Point(291, 401);
             this.llblInitialEvt.Name = "llblInitialEvt";
-            this.llblInitialEvt.Size = new System.Drawing.Size(320, 21);
+            this.llblInitialEvt.Size = new System.Drawing.Size(448, 25);
             this.llblInitialEvt.TabIndex = 10;
             this.llblInitialEvt.TabStop = true;
             this.llblInitialEvt.Text = "None";
-            this.llblInitialEvt.TextChanged += new System.EventHandler(this.llblInitialEvt_TextChanged);
-            this.llblInitialEvt.MouseLeave += new System.EventHandler(this.llblInitialEvt_MouseLeave);
             this.llblInitialEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblInitialEvt_LinkClicked);
+            this.llblInitialEvt.TextChanged += new System.EventHandler(this.llblInitialEvt_TextChanged);
             this.llblInitialEvt.MouseEnter += new System.EventHandler(this.llblInitialEvt_MouseEnter);
+            this.llblInitialEvt.MouseLeave += new System.EventHandler(this.llblInitialEvt_MouseLeave);
             // 
             // label11
             // 
@@ -826,26 +825,26 @@ namespace Scheduler
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label11.Location = new System.Drawing.Point(32, 312);
+            this.label11.Location = new System.Drawing.Point(45, 379);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(109, 13);
+            this.label11.Size = new System.Drawing.Size(131, 17);
             this.label11.TabIndex = 75;
             this.label11.Text = "Test Event Details";
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(26, 320);
+            this.groupBox2.Location = new System.Drawing.Point(36, 389);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(558, 3);
+            this.groupBox2.Size = new System.Drawing.Size(782, 3);
             this.groupBox2.TabIndex = 74;
             this.groupBox2.TabStop = false;
             // 
             // llblProgram
             // 
             this.llblProgram.AutoSize = true;
-            this.llblProgram.Location = new System.Drawing.Point(64, 234);
+            this.llblProgram.Location = new System.Drawing.Point(90, 284);
             this.llblProgram.Name = "llblProgram";
-            this.llblProgram.Size = new System.Drawing.Size(47, 13);
+            this.llblProgram.Size = new System.Drawing.Size(61, 17);
             this.llblProgram.TabIndex = 4;
             this.llblProgram.TabStop = true;
             this.llblProgram.Text = "Program";
@@ -857,17 +856,17 @@ namespace Scheduler
             this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label12.Location = new System.Drawing.Point(32, 478);
+            this.label12.Location = new System.Drawing.Point(45, 580);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(78, 13);
+            this.label12.Size = new System.Drawing.Size(92, 17);
             this.label12.TabIndex = 73;
             this.label12.Text = "Class Details";
             // 
             // grpTest
             // 
-            this.grpTest.Location = new System.Drawing.Point(26, 487);
+            this.grpTest.Location = new System.Drawing.Point(36, 591);
             this.grpTest.Name = "grpTest";
-            this.grpTest.Size = new System.Drawing.Size(558, 3);
+            this.grpTest.Size = new System.Drawing.Size(782, 4);
             this.grpTest.TabIndex = 72;
             this.grpTest.TabStop = false;
             // 
@@ -877,94 +876,94 @@ namespace Scheduler
             this.label13.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label13.Location = new System.Drawing.Point(32, 6);
+            this.label13.Location = new System.Drawing.Point(45, 7);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 13);
+            this.label13.Size = new System.Drawing.Size(92, 17);
             this.label13.TabIndex = 71;
             this.label13.Text = "Basic Details";
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(26, 13);
+            this.groupBox1.Location = new System.Drawing.Point(36, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(558, 3);
+            this.groupBox1.Size = new System.Drawing.Size(782, 3);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             // 
             // cmbProgram
             // 
             this.cmbProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProgram.Location = new System.Drawing.Point(208, 232);
+            this.cmbProgram.Location = new System.Drawing.Point(291, 282);
             this.cmbProgram.Name = "cmbProgram";
-            this.cmbProgram.Size = new System.Drawing.Size(320, 21);
+            this.cmbProgram.Size = new System.Drawing.Size(448, 25);
             this.cmbProgram.TabIndex = 7;
             this.cmbProgram.SelectedIndexChanged += new System.EventHandler(this.cmbProgram_SelectedIndexChanged);
             // 
             // txtFinalForm
             // 
             this.txtFinalForm.Enabled = false;
-            this.txtFinalForm.Location = new System.Drawing.Point(208, 448);
+            this.txtFinalForm.Location = new System.Drawing.Point(291, 544);
             this.txtFinalForm.MaxLength = 50;
             this.txtFinalForm.Name = "txtFinalForm";
-            this.txtFinalForm.Size = new System.Drawing.Size(320, 21);
+            this.txtFinalForm.Size = new System.Drawing.Size(448, 24);
             this.txtFinalForm.TabIndex = 17;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label8.Location = new System.Drawing.Point(64, 450);
+            this.label8.Location = new System.Drawing.Point(90, 546);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 13);
+            this.label8.Size = new System.Drawing.Size(100, 17);
             this.label8.TabIndex = 55;
             this.label8.Text = "Test Final Form";
             // 
             // txtMidtermForm
             // 
             this.txtMidtermForm.Enabled = false;
-            this.txtMidtermForm.Location = new System.Drawing.Point(208, 398);
+            this.txtMidtermForm.Location = new System.Drawing.Point(291, 483);
             this.txtMidtermForm.MaxLength = 50;
             this.txtMidtermForm.Name = "txtMidtermForm";
-            this.txtMidtermForm.Size = new System.Drawing.Size(320, 21);
+            this.txtMidtermForm.Size = new System.Drawing.Size(448, 24);
             this.txtMidtermForm.TabIndex = 16;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label9.Location = new System.Drawing.Point(64, 400);
+            this.label9.Location = new System.Drawing.Point(90, 486);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 13);
+            this.label9.Size = new System.Drawing.Size(128, 17);
             this.label9.TabIndex = 53;
             this.label9.Text = "Test Mid-term Form";
             // 
             // txtInitialForm
             // 
             this.txtInitialForm.Enabled = false;
-            this.txtInitialForm.Location = new System.Drawing.Point(208, 352);
+            this.txtInitialForm.Location = new System.Drawing.Point(291, 427);
             this.txtInitialForm.MaxLength = 50;
             this.txtInitialForm.Name = "txtInitialForm";
-            this.txtInitialForm.Size = new System.Drawing.Size(320, 21);
+            this.txtInitialForm.Size = new System.Drawing.Size(448, 24);
             this.txtInitialForm.TabIndex = 15;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label10.Location = new System.Drawing.Point(64, 354);
+            this.label10.Location = new System.Drawing.Point(90, 430);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 13);
+            this.label10.Size = new System.Drawing.Size(104, 17);
             this.label10.TabIndex = 51;
             this.label10.Text = "Test Initial Form";
             // 
             // txtFinalEvent
             // 
             this.txtFinalEvent.Enabled = false;
-            this.txtFinalEvent.Location = new System.Drawing.Point(640, 280);
+            this.txtFinalEvent.Location = new System.Drawing.Point(896, 340);
             this.txtFinalEvent.MaxLength = 15;
             this.txtFinalEvent.Name = "txtFinalEvent";
             this.txtFinalEvent.ReadOnly = true;
-            this.txtFinalEvent.Size = new System.Drawing.Size(72, 21);
+            this.txtFinalEvent.Size = new System.Drawing.Size(101, 24);
             this.txtFinalEvent.TabIndex = 10;
             this.txtFinalEvent.TabStop = false;
             this.txtFinalEvent.Tag = "N";
@@ -976,11 +975,11 @@ namespace Scheduler
             // txtMidtermEvent
             // 
             this.txtMidtermEvent.Enabled = false;
-            this.txtMidtermEvent.Location = new System.Drawing.Point(560, 280);
+            this.txtMidtermEvent.Location = new System.Drawing.Point(784, 340);
             this.txtMidtermEvent.MaxLength = 15;
             this.txtMidtermEvent.Name = "txtMidtermEvent";
             this.txtMidtermEvent.ReadOnly = true;
-            this.txtMidtermEvent.Size = new System.Drawing.Size(72, 21);
+            this.txtMidtermEvent.Size = new System.Drawing.Size(101, 24);
             this.txtMidtermEvent.TabIndex = 9;
             this.txtMidtermEvent.TabStop = false;
             this.txtMidtermEvent.Tag = "N";
@@ -992,11 +991,11 @@ namespace Scheduler
             // txtInitialEvent
             // 
             this.txtInitialEvent.Enabled = false;
-            this.txtInitialEvent.Location = new System.Drawing.Point(640, 256);
+            this.txtInitialEvent.Location = new System.Drawing.Point(896, 311);
             this.txtInitialEvent.MaxLength = 15;
             this.txtInitialEvent.Name = "txtInitialEvent";
             this.txtInitialEvent.ReadOnly = true;
-            this.txtInitialEvent.Size = new System.Drawing.Size(72, 21);
+            this.txtInitialEvent.Size = new System.Drawing.Size(101, 24);
             this.txtInitialEvent.TabIndex = 8;
             this.txtInitialEvent.TabStop = false;
             this.txtInitialEvent.Tag = "N";
@@ -1007,10 +1006,10 @@ namespace Scheduler
             // 
             // txtHomeWorkMinutes
             // 
-            this.txtHomeWorkMinutes.Location = new System.Drawing.Point(456, 498);
+            this.txtHomeWorkMinutes.Location = new System.Drawing.Point(638, 605);
             this.txtHomeWorkMinutes.MaxLength = 15;
             this.txtHomeWorkMinutes.Name = "txtHomeWorkMinutes";
-            this.txtHomeWorkMinutes.Size = new System.Drawing.Size(72, 21);
+            this.txtHomeWorkMinutes.Size = new System.Drawing.Size(101, 24);
             this.txtHomeWorkMinutes.TabIndex = 14;
             this.txtHomeWorkMinutes.Tag = "N";
             this.txtHomeWorkMinutes.Text = "0";
@@ -1021,18 +1020,18 @@ namespace Scheduler
             // 
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(304, 500);
+            this.label4.Location = new System.Drawing.Point(426, 607);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 13);
+            this.label4.Size = new System.Drawing.Size(182, 17);
             this.label4.TabIndex = 43;
             this.label4.Text = "Homework Minutes per Class";
             // 
             // txtNumberStudents
             // 
-            this.txtNumberStudents.Location = new System.Drawing.Point(208, 498);
+            this.txtNumberStudents.Location = new System.Drawing.Point(291, 605);
             this.txtNumberStudents.MaxLength = 15;
             this.txtNumberStudents.Name = "txtNumberStudents";
-            this.txtNumberStudents.Size = new System.Drawing.Size(72, 21);
+            this.txtNumberStudents.Size = new System.Drawing.Size(101, 24);
             this.txtNumberStudents.TabIndex = 13;
             this.txtNumberStudents.Tag = "N";
             this.txtNumberStudents.Text = "0";
@@ -1043,26 +1042,26 @@ namespace Scheduler
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label3.Location = new System.Drawing.Point(64, 500);
+            this.label3.Location = new System.Drawing.Point(90, 607);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(104, 17);
             this.label3.TabIndex = 41;
             this.label3.Text = "No. of Students";
             // 
             // txtNameRomaji
             // 
-            this.txtNameRomaji.Location = new System.Drawing.Point(208, 73);
+            this.txtNameRomaji.Location = new System.Drawing.Point(291, 89);
             this.txtNameRomaji.MaxLength = 255;
             this.txtNameRomaji.Name = "txtNameRomaji";
-            this.txtNameRomaji.Size = new System.Drawing.Size(320, 21);
+            this.txtNameRomaji.Size = new System.Drawing.Size(448, 24);
             this.txtNameRomaji.TabIndex = 2;
             // 
             // txtNamePhonetic
             // 
-            this.txtNamePhonetic.Location = new System.Drawing.Point(208, 49);
+            this.txtNamePhonetic.Location = new System.Drawing.Point(291, 60);
             this.txtNamePhonetic.MaxLength = 255;
             this.txtNamePhonetic.Name = "txtNamePhonetic";
-            this.txtNamePhonetic.Size = new System.Drawing.Size(320, 21);
+            this.txtNamePhonetic.Size = new System.Drawing.Size(448, 24);
             this.txtNamePhonetic.TabIndex = 1;
             // 
             // cmbCourseType
@@ -1074,18 +1073,18 @@ namespace Scheduler
             "Recording",
             "Mendan",
             "Other"});
-            this.cmbCourseType.Location = new System.Drawing.Point(208, 256);
+            this.cmbCourseType.Location = new System.Drawing.Point(291, 311);
             this.cmbCourseType.Name = "cmbCourseType";
-            this.cmbCourseType.Size = new System.Drawing.Size(184, 21);
+            this.cmbCourseType.Size = new System.Drawing.Size(258, 25);
             this.cmbCourseType.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label2.Location = new System.Drawing.Point(64, 258);
+            this.label2.Location = new System.Drawing.Point(90, 313);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.Size = new System.Drawing.Size(65, 17);
             this.label2.TabIndex = 38;
             this.label2.Text = "Job Type";
             // 
@@ -1093,9 +1092,9 @@ namespace Scheduler
             // 
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Location = new System.Drawing.Point(64, 75);
+            this.label1.Location = new System.Drawing.Point(90, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(89, 17);
             this.label1.TabIndex = 36;
             this.label1.Text = "Name Romaji";
             // 
@@ -1103,9 +1102,9 @@ namespace Scheduler
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblPassword.Location = new System.Drawing.Point(64, 51);
+            this.lblPassword.Location = new System.Drawing.Point(90, 62);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(78, 13);
+            this.lblPassword.Size = new System.Drawing.Size(100, 17);
             this.lblPassword.TabIndex = 32;
             this.lblPassword.Text = "Name Phonetic";
             // 
@@ -1113,9 +1112,9 @@ namespace Scheduler
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblStatus.Location = new System.Drawing.Point(64, 282);
+            this.lblStatus.Location = new System.Drawing.Point(90, 342);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(38, 13);
+            this.lblStatus.Size = new System.Drawing.Size(47, 17);
             this.lblStatus.TabIndex = 34;
             this.lblStatus.Text = "Status";
             // 
@@ -1123,9 +1122,9 @@ namespace Scheduler
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblUser.Location = new System.Drawing.Point(64, 27);
+            this.lblUser.Location = new System.Drawing.Point(90, 33);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(34, 13);
+            this.lblUser.Size = new System.Drawing.Size(43, 17);
             this.lblUser.TabIndex = 30;
             this.lblUser.Text = "Name";
             // 
@@ -1135,18 +1134,18 @@ namespace Scheduler
             this.cmbStatus.Items.AddRange(new object[] {
             "Active",
             "Inactive"});
-            this.cmbStatus.Location = new System.Drawing.Point(208, 280);
+            this.cmbStatus.Location = new System.Drawing.Point(291, 340);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(112, 21);
+            this.cmbStatus.Size = new System.Drawing.Size(157, 25);
             this.cmbStatus.TabIndex = 9;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // tbpDescription
             // 
             this.tbpDescription.Controls.Add(this.txtDescription);
-            this.tbpDescription.Location = new System.Drawing.Point(4, 22);
+            this.tbpDescription.Location = new System.Drawing.Point(4, 26);
             this.tbpDescription.Name = "tbpDescription";
-            this.tbpDescription.Size = new System.Drawing.Size(762, 543);
+            this.tbpDescription.Size = new System.Drawing.Size(1070, 661);
             this.tbpDescription.TabIndex = 1;
             this.tbpDescription.Text = "Description";
             this.tbpDescription.UseVisualStyleBackColor = true;
@@ -1158,15 +1157,15 @@ namespace Scheduler
             this.txtDescription.MaxLength = 4000;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(762, 543);
+            this.txtDescription.Size = new System.Drawing.Size(1070, 661);
             this.txtDescription.TabIndex = 0;
             // 
             // tbpSpecialRemarks
             // 
             this.tbpSpecialRemarks.Controls.Add(this.txtRemarks);
-            this.tbpSpecialRemarks.Location = new System.Drawing.Point(4, 22);
+            this.tbpSpecialRemarks.Location = new System.Drawing.Point(4, 26);
             this.tbpSpecialRemarks.Name = "tbpSpecialRemarks";
-            this.tbpSpecialRemarks.Size = new System.Drawing.Size(762, 543);
+            this.tbpSpecialRemarks.Size = new System.Drawing.Size(1070, 661);
             this.tbpSpecialRemarks.TabIndex = 2;
             this.tbpSpecialRemarks.Text = "Special Remarks";
             this.tbpSpecialRemarks.UseVisualStyleBackColor = true;
@@ -1178,15 +1177,15 @@ namespace Scheduler
             this.txtRemarks.MaxLength = 4000;
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(762, 543);
+            this.txtRemarks.Size = new System.Drawing.Size(1070, 661);
             this.txtRemarks.TabIndex = 1;
             // 
             // tbpCurriculam
             // 
             this.tbpCurriculam.Controls.Add(this.txtCurriculam);
-            this.tbpCurriculam.Location = new System.Drawing.Point(4, 22);
+            this.tbpCurriculam.Location = new System.Drawing.Point(4, 26);
             this.tbpCurriculam.Name = "tbpCurriculam";
-            this.tbpCurriculam.Size = new System.Drawing.Size(762, 543);
+            this.tbpCurriculam.Size = new System.Drawing.Size(1070, 661);
             this.tbpCurriculam.TabIndex = 3;
             this.tbpCurriculam.Text = "Curriculum";
             this.tbpCurriculam.UseVisualStyleBackColor = true;
@@ -1198,15 +1197,15 @@ namespace Scheduler
             this.txtCurriculam.MaxLength = 4000;
             this.txtCurriculam.Multiline = true;
             this.txtCurriculam.Name = "txtCurriculam";
-            this.txtCurriculam.Size = new System.Drawing.Size(762, 543);
+            this.txtCurriculam.Size = new System.Drawing.Size(1070, 661);
             this.txtCurriculam.TabIndex = 2;
             // 
             // tbpClassEvent
             // 
             this.tbpClassEvent.Controls.Add(this.pnlEvent);
-            this.tbpClassEvent.Location = new System.Drawing.Point(4, 22);
+            this.tbpClassEvent.Location = new System.Drawing.Point(4, 26);
             this.tbpClassEvent.Name = "tbpClassEvent";
-            this.tbpClassEvent.Size = new System.Drawing.Size(762, 543);
+            this.tbpClassEvent.Size = new System.Drawing.Size(1070, 661);
             this.tbpClassEvent.TabIndex = 4;
             this.tbpClassEvent.Text = "Class Event";
             this.tbpClassEvent.UseVisualStyleBackColor = true;
@@ -1219,7 +1218,7 @@ namespace Scheduler
             this.pnlEvent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEvent.Location = new System.Drawing.Point(0, 0);
             this.pnlEvent.Name = "pnlEvent";
-            this.pnlEvent.Size = new System.Drawing.Size(762, 543);
+            this.pnlEvent.Size = new System.Drawing.Size(1070, 661);
             this.pnlEvent.TabIndex = 289;
             // 
             // pnlBottom
@@ -1229,9 +1228,9 @@ namespace Scheduler
             this.pnlBottom.Controls.Add(this.btnRecurrence);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBottom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlBottom.Location = new System.Drawing.Point(0, 507);
+            this.pnlBottom.Location = new System.Drawing.Point(0, 617);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(762, 36);
+            this.pnlBottom.Size = new System.Drawing.Size(1070, 44);
             this.pnlBottom.TabIndex = 272;
             // 
             // btn_ClearRecc
@@ -1239,9 +1238,9 @@ namespace Scheduler
             this.btn_ClearRecc.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btn_ClearRecc.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_ClearRecc.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ClearRecc.Location = new System.Drawing.Point(118, 6);
+            this.btn_ClearRecc.Location = new System.Drawing.Point(165, 7);
             this.btn_ClearRecc.Name = "btn_ClearRecc";
-            this.btn_ClearRecc.Size = new System.Drawing.Size(118, 23);
+            this.btn_ClearRecc.Size = new System.Drawing.Size(165, 28);
             this.btn_ClearRecc.TabIndex = 29;
             this.btn_ClearRecc.Text = "Clear Recurrence...";
             this.btn_ClearRecc.UseVisualStyleBackColor = false;
@@ -1253,9 +1252,9 @@ namespace Scheduler
             this.btnRecurrence.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnRecurrence.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnRecurrence.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecurrence.Location = new System.Drawing.Point(16, 6);
+            this.btnRecurrence.Location = new System.Drawing.Point(22, 7);
             this.btnRecurrence.Name = "btnRecurrence";
-            this.btnRecurrence.Size = new System.Drawing.Size(96, 23);
+            this.btnRecurrence.Size = new System.Drawing.Size(135, 28);
             this.btnRecurrence.TabIndex = 28;
             this.btnRecurrence.Text = "Recurrence...";
             this.btnRecurrence.UseVisualStyleBackColor = false;
@@ -1306,36 +1305,36 @@ namespace Scheduler
             this.pnlBody_I.Controls.Add(this.cmbEventType_I);
             this.pnlBody_I.Controls.Add(this.lblRecurrenceText_I);
             this.pnlBody_I.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody_I.Location = new System.Drawing.Point(0, 32);
+            this.pnlBody_I.Location = new System.Drawing.Point(0, 39);
             this.pnlBody_I.Name = "pnlBody_I";
-            this.pnlBody_I.Size = new System.Drawing.Size(762, 511);
+            this.pnlBody_I.Size = new System.Drawing.Size(1070, 622);
             this.pnlBody_I.TabIndex = 275;
             // 
             // txtChangeReason_I
             // 
             this.txtChangeReason_I.Enabled = false;
-            this.txtChangeReason_I.Location = new System.Drawing.Point(128, 246);
+            this.txtChangeReason_I.Location = new System.Drawing.Point(179, 299);
             this.txtChangeReason_I.MaxLength = 100;
             this.txtChangeReason_I.Multiline = true;
             this.txtChangeReason_I.Name = "txtChangeReason_I";
-            this.txtChangeReason_I.Size = new System.Drawing.Size(152, 65);
+            this.txtChangeReason_I.Size = new System.Drawing.Size(213, 79);
             this.txtChangeReason_I.TabIndex = 290;
             // 
             // lblChangeReason_I
             // 
             this.lblChangeReason_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblChangeReason_I.Location = new System.Drawing.Point(15, 249);
+            this.lblChangeReason_I.Location = new System.Drawing.Point(21, 302);
             this.lblChangeReason_I.Name = "lblChangeReason_I";
-            this.lblChangeReason_I.Size = new System.Drawing.Size(87, 34);
+            this.lblChangeReason_I.Size = new System.Drawing.Size(122, 42);
             this.lblChangeReason_I.TabIndex = 291;
             this.lblChangeReason_I.Text = "Instructor Change Reason";
             // 
             // chkEventStatus_I
             // 
             this.chkEventStatus_I.AutoSize = true;
-            this.chkEventStatus_I.Location = new System.Drawing.Point(400, 196);
+            this.chkEventStatus_I.Location = new System.Drawing.Point(560, 238);
             this.chkEventStatus_I.Name = "chkEventStatus_I";
-            this.chkEventStatus_I.Size = new System.Drawing.Size(111, 17);
+            this.chkEventStatus_I.Size = new System.Drawing.Size(138, 21);
             this.chkEventStatus_I.TabIndex = 289;
             this.chkEventStatus_I.Text = "Cancel This Event";
             this.chkEventStatus_I.UseVisualStyleBackColor = true;
@@ -1344,9 +1343,9 @@ namespace Scheduler
             // chkEventModified
             // 
             this.chkEventModified.AutoSize = true;
-            this.chkEventModified.Location = new System.Drawing.Point(128, 196);
+            this.chkEventModified.Location = new System.Drawing.Point(179, 238);
             this.chkEventModified.Name = "chkEventModified";
-            this.chkEventModified.Size = new System.Drawing.Size(128, 17);
+            this.chkEventModified.Size = new System.Drawing.Size(159, 21);
             this.chkEventModified.TabIndex = 288;
             this.chkEventModified.Text = "Modify the Instructor";
             this.chkEventModified.UseVisualStyleBackColor = true;
@@ -1356,9 +1355,9 @@ namespace Scheduler
             // 
             this.lblExReason_I.AutoSize = true;
             this.lblExReason_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblExReason_I.Location = new System.Drawing.Point(304, 224);
+            this.lblExReason_I.Location = new System.Drawing.Point(426, 272);
             this.lblExReason_I.Name = "lblExReason_I";
-            this.lblExReason_I.Size = new System.Drawing.Size(43, 13);
+            this.lblExReason_I.Size = new System.Drawing.Size(53, 17);
             this.lblExReason_I.TabIndex = 287;
             this.lblExReason_I.Text = "Reason";
             // 
@@ -1368,27 +1367,27 @@ namespace Scheduler
             "Weather",
             "Instructor",
             "Client"});
-            this.cmbExceptionReason_I.Location = new System.Drawing.Point(400, 221);
+            this.cmbExceptionReason_I.Location = new System.Drawing.Point(560, 268);
             this.cmbExceptionReason_I.Name = "cmbExceptionReason_I";
-            this.cmbExceptionReason_I.Size = new System.Drawing.Size(256, 21);
+            this.cmbExceptionReason_I.Size = new System.Drawing.Size(358, 25);
             this.cmbExceptionReason_I.TabIndex = 22;
             this.cmbExceptionReason_I.SelectedIndexChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox4.Location = new System.Drawing.Point(19, 317);
+            this.groupBox4.Location = new System.Drawing.Point(27, 385);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(730, 3);
+            this.groupBox4.Size = new System.Drawing.Size(1022, 4);
             this.groupBox4.TabIndex = 285;
             this.groupBox4.TabStop = false;
             // 
             // picAlert_I
             // 
             this.picAlert_I.Image = ((System.Drawing.Image)(resources.GetObject("picAlert_I.Image")));
-            this.picAlert_I.Location = new System.Drawing.Point(296, 24);
+            this.picAlert_I.Location = new System.Drawing.Point(414, 29);
             this.picAlert_I.Name = "picAlert_I";
-            this.picAlert_I.Size = new System.Drawing.Size(32, 24);
+            this.picAlert_I.Size = new System.Drawing.Size(45, 29);
             this.picAlert_I.TabIndex = 268;
             this.picAlert_I.TabStop = false;
             this.picAlert_I.Visible = false;
@@ -1396,27 +1395,27 @@ namespace Scheduler
             // chkIsHoliday
             // 
             this.chkIsHoliday.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.chkIsHoliday.Location = new System.Drawing.Point(266, 131);
+            this.chkIsHoliday.Location = new System.Drawing.Point(372, 159);
             this.chkIsHoliday.Name = "chkIsHoliday";
-            this.chkIsHoliday.Size = new System.Drawing.Size(24, 16);
+            this.chkIsHoliday.Size = new System.Drawing.Size(34, 20);
             this.chkIsHoliday.TabIndex = 14;
             // 
             // lblIsHoliday_I
             // 
             this.lblIsHoliday_I.AutoSize = true;
             this.lblIsHoliday_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblIsHoliday_I.Location = new System.Drawing.Point(208, 131);
+            this.lblIsHoliday_I.Location = new System.Drawing.Point(291, 159);
             this.lblIsHoliday_I.Name = "lblIsHoliday_I";
-            this.lblIsHoliday_I.Size = new System.Drawing.Size(54, 13);
+            this.lblIsHoliday_I.Size = new System.Drawing.Size(66, 17);
             this.lblIsHoliday_I.TabIndex = 267;
             this.lblIsHoliday_I.Text = "Is Holiday";
             // 
             // llblTeacher2_I
             // 
             this.llblTeacher2_I.AutoSize = true;
-            this.llblTeacher2_I.Location = new System.Drawing.Point(14, 221);
+            this.llblTeacher2_I.Location = new System.Drawing.Point(20, 268);
             this.llblTeacher2_I.Name = "llblTeacher2_I";
-            this.llblTeacher2_I.Size = new System.Drawing.Size(88, 13);
+            this.llblTeacher2_I.Size = new System.Drawing.Size(110, 17);
             this.llblTeacher2_I.TabIndex = 265;
             this.llblTeacher2_I.TabStop = true;
             this.llblTeacher2_I.Text = "Actual Instructor";
@@ -1425,9 +1424,9 @@ namespace Scheduler
             // llblTeacher1_I
             // 
             this.llblTeacher1_I.AutoSize = true;
-            this.llblTeacher1_I.Location = new System.Drawing.Point(481, 107);
+            this.llblTeacher1_I.Location = new System.Drawing.Point(673, 130);
             this.llblTeacher1_I.Name = "llblTeacher1_I";
-            this.llblTeacher1_I.Size = new System.Drawing.Size(107, 13);
+            this.llblTeacher1_I.Size = new System.Drawing.Size(136, 17);
             this.llblTeacher1_I.TabIndex = 263;
             this.llblTeacher1_I.TabStop = true;
             this.llblTeacher1_I.Text = "Scheduled Instructor";
@@ -1437,29 +1436,29 @@ namespace Scheduler
             // 
             this.lblDtComp_I.AutoSize = true;
             this.lblDtComp_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblDtComp_I.Location = new System.Drawing.Point(536, 107);
+            this.lblDtComp_I.Location = new System.Drawing.Point(750, 130);
             this.lblDtComp_I.Name = "lblDtComp_I";
-            this.lblDtComp_I.Size = new System.Drawing.Size(84, 13);
+            this.lblDtComp_I.Size = new System.Drawing.Size(107, 17);
             this.lblDtComp_I.TabIndex = 260;
             this.lblDtComp_I.Text = "Date Completed";
             this.lblDtComp_I.Visible = false;
             // 
             // txtNote_I
             // 
-            this.txtNote_I.Location = new System.Drawing.Point(16, 335);
+            this.txtNote_I.Location = new System.Drawing.Point(22, 407);
             this.txtNote_I.MaxLength = 255;
             this.txtNote_I.Multiline = true;
             this.txtNote_I.Name = "txtNote_I";
-            this.txtNote_I.Size = new System.Drawing.Size(729, 134);
+            this.txtNote_I.Size = new System.Drawing.Size(1021, 163);
             this.txtNote_I.TabIndex = 24;
             this.txtNote_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
             // txtDescription_I
             // 
-            this.txtDescription_I.Location = new System.Drawing.Point(128, 159);
+            this.txtDescription_I.Location = new System.Drawing.Point(179, 193);
             this.txtDescription_I.MaxLength = 255;
             this.txtDescription_I.Name = "txtDescription_I";
-            this.txtDescription_I.Size = new System.Drawing.Size(616, 21);
+            this.txtDescription_I.Size = new System.Drawing.Size(863, 24);
             this.txtDescription_I.TabIndex = 23;
             this.txtDescription_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1467,18 +1466,18 @@ namespace Scheduler
             // 
             this.lblDescription_I.AutoSize = true;
             this.lblDescription_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblDescription_I.Location = new System.Drawing.Point(16, 162);
+            this.lblDescription_I.Location = new System.Drawing.Point(22, 197);
             this.lblDescription_I.Name = "lblDescription_I";
-            this.lblDescription_I.Size = new System.Drawing.Size(60, 13);
+            this.lblDescription_I.Size = new System.Drawing.Size(76, 17);
             this.lblDescription_I.TabIndex = 253;
             this.lblDescription_I.Text = "Description";
             // 
             // txtRoomNo_I
             // 
-            this.txtRoomNo_I.Location = new System.Drawing.Point(400, 105);
+            this.txtRoomNo_I.Location = new System.Drawing.Point(560, 128);
             this.txtRoomNo_I.MaxLength = 255;
             this.txtRoomNo_I.Name = "txtRoomNo_I";
-            this.txtRoomNo_I.Size = new System.Drawing.Size(72, 21);
+            this.txtRoomNo_I.Size = new System.Drawing.Size(101, 24);
             this.txtRoomNo_I.TabIndex = 15;
             this.txtRoomNo_I.Text = "0";
             this.txtRoomNo_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
@@ -1487,18 +1486,18 @@ namespace Scheduler
             // 
             this.lblRoomNo_I.AutoSize = true;
             this.lblRoomNo_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblRoomNo_I.Location = new System.Drawing.Point(304, 107);
+            this.lblRoomNo_I.Location = new System.Drawing.Point(426, 130);
             this.lblRoomNo_I.Name = "lblRoomNo_I";
-            this.lblRoomNo_I.Size = new System.Drawing.Size(54, 13);
+            this.lblRoomNo_I.Size = new System.Drawing.Size(70, 17);
             this.lblRoomNo_I.TabIndex = 249;
             this.lblRoomNo_I.Text = "Room No.";
             // 
             // txtLocation_I
             // 
-            this.txtLocation_I.Location = new System.Drawing.Point(128, 105);
+            this.txtLocation_I.Location = new System.Drawing.Point(179, 128);
             this.txtLocation_I.MaxLength = 255;
             this.txtLocation_I.Name = "txtLocation_I";
-            this.txtLocation_I.Size = new System.Drawing.Size(152, 21);
+            this.txtLocation_I.Size = new System.Drawing.Size(213, 24);
             this.txtLocation_I.TabIndex = 12;
             this.txtLocation_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1506,9 +1505,9 @@ namespace Scheduler
             // 
             this.lblLocation_I.AutoSize = true;
             this.lblLocation_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblLocation_I.Location = new System.Drawing.Point(16, 107);
+            this.lblLocation_I.Location = new System.Drawing.Point(22, 130);
             this.lblLocation_I.Name = "lblLocation_I";
-            this.lblLocation_I.Size = new System.Drawing.Size(47, 13);
+            this.lblLocation_I.Size = new System.Drawing.Size(60, 17);
             this.lblLocation_I.TabIndex = 246;
             this.lblLocation_I.Text = "Location";
             // 
@@ -1516,9 +1515,9 @@ namespace Scheduler
             // 
             this.lblBlock_I.AutoSize = true;
             this.lblBlock_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblBlock_I.Location = new System.Drawing.Point(16, 131);
+            this.lblBlock_I.Location = new System.Drawing.Point(22, 159);
             this.lblBlock_I.Name = "lblBlock_I";
-            this.lblBlock_I.Size = new System.Drawing.Size(31, 13);
+            this.lblBlock_I.Size = new System.Drawing.Size(40, 17);
             this.lblBlock_I.TabIndex = 244;
             this.lblBlock_I.Text = "Block";
             // 
@@ -1526,9 +1525,9 @@ namespace Scheduler
             // 
             this.lblEnddt_I.AutoSize = true;
             this.lblEnddt_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblEnddt_I.Location = new System.Drawing.Point(304, 56);
+            this.lblEnddt_I.Location = new System.Drawing.Point(426, 68);
             this.lblEnddt_I.Name = "lblEnddt_I";
-            this.lblEnddt_I.Size = new System.Drawing.Size(77, 13);
+            this.lblEnddt_I.Size = new System.Drawing.Size(99, 17);
             this.lblEnddt_I.TabIndex = 242;
             this.lblEnddt_I.Text = "End Date/Time";
             // 
@@ -1536,9 +1535,9 @@ namespace Scheduler
             // 
             this.lblStartdt_I.AutoSize = true;
             this.lblStartdt_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblStartdt_I.Location = new System.Drawing.Point(304, 32);
+            this.lblStartdt_I.Location = new System.Drawing.Point(426, 39);
             this.lblStartdt_I.Name = "lblStartdt_I";
-            this.lblStartdt_I.Size = new System.Drawing.Size(83, 13);
+            this.lblStartdt_I.Size = new System.Drawing.Size(105, 17);
             this.lblStartdt_I.TabIndex = 241;
             this.lblStartdt_I.Text = "Start Date/Time";
             // 
@@ -1546,28 +1545,28 @@ namespace Scheduler
             // 
             this.lblEventType_I.AutoSize = true;
             this.lblEventType_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblEventType_I.Location = new System.Drawing.Point(536, 131);
+            this.lblEventType_I.Location = new System.Drawing.Point(750, 159);
             this.lblEventType_I.Name = "lblEventType_I";
-            this.lblEventType_I.Size = new System.Drawing.Size(62, 13);
+            this.lblEventType_I.Size = new System.Drawing.Size(79, 17);
             this.lblEventType_I.TabIndex = 237;
             this.lblEventType_I.Text = "Event Type";
             this.lblEventType_I.Visible = false;
             // 
             // txtRomaji_I
             // 
-            this.txtRomaji_I.Location = new System.Drawing.Point(128, 65);
+            this.txtRomaji_I.Location = new System.Drawing.Point(179, 79);
             this.txtRomaji_I.MaxLength = 255;
             this.txtRomaji_I.Name = "txtRomaji_I";
-            this.txtRomaji_I.Size = new System.Drawing.Size(152, 21);
+            this.txtRomaji_I.Size = new System.Drawing.Size(213, 24);
             this.txtRomaji_I.TabIndex = 2;
             this.txtRomaji_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
             // txtPhonetic_I
             // 
-            this.txtPhonetic_I.Location = new System.Drawing.Point(128, 42);
+            this.txtPhonetic_I.Location = new System.Drawing.Point(179, 51);
             this.txtPhonetic_I.MaxLength = 255;
             this.txtPhonetic_I.Name = "txtPhonetic_I";
-            this.txtPhonetic_I.Size = new System.Drawing.Size(152, 21);
+            this.txtPhonetic_I.Size = new System.Drawing.Size(213, 24);
             this.txtPhonetic_I.TabIndex = 1;
             this.txtPhonetic_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1575,9 +1574,9 @@ namespace Scheduler
             // 
             this.lblRomaji_I.AutoSize = true;
             this.lblRomaji_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblRomaji_I.Location = new System.Drawing.Point(15, 67);
+            this.lblRomaji_I.Location = new System.Drawing.Point(21, 81);
             this.lblRomaji_I.Name = "lblRomaji_I";
-            this.lblRomaji_I.Size = new System.Drawing.Size(69, 13);
+            this.lblRomaji_I.Size = new System.Drawing.Size(89, 17);
             this.lblRomaji_I.TabIndex = 83;
             this.lblRomaji_I.Text = "Name Romaji";
             // 
@@ -1585,18 +1584,18 @@ namespace Scheduler
             // 
             this.lblPhonetic_I.AutoSize = true;
             this.lblPhonetic_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblPhonetic_I.Location = new System.Drawing.Point(15, 44);
+            this.lblPhonetic_I.Location = new System.Drawing.Point(21, 53);
             this.lblPhonetic_I.Name = "lblPhonetic_I";
-            this.lblPhonetic_I.Size = new System.Drawing.Size(78, 13);
+            this.lblPhonetic_I.Size = new System.Drawing.Size(100, 17);
             this.lblPhonetic_I.TabIndex = 82;
             this.lblPhonetic_I.Text = "Name Phonetic";
             // 
             // txtName_I
             // 
-            this.txtName_I.Location = new System.Drawing.Point(128, 19);
+            this.txtName_I.Location = new System.Drawing.Point(179, 23);
             this.txtName_I.MaxLength = 255;
             this.txtName_I.Name = "txtName_I";
-            this.txtName_I.Size = new System.Drawing.Size(152, 21);
+            this.txtName_I.Size = new System.Drawing.Size(213, 24);
             this.txtName_I.TabIndex = 0;
             this.txtName_I.TextChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1604,18 +1603,18 @@ namespace Scheduler
             // 
             this.lblName_I.AutoSize = true;
             this.lblName_I.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.lblName_I.Location = new System.Drawing.Point(15, 21);
+            this.lblName_I.Location = new System.Drawing.Point(21, 26);
             this.lblName_I.Name = "lblName_I";
-            this.lblName_I.Size = new System.Drawing.Size(34, 13);
+            this.lblName_I.Size = new System.Drawing.Size(43, 17);
             this.lblName_I.TabIndex = 81;
             this.lblName_I.Text = "Name";
             // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox5.Location = new System.Drawing.Point(14, 90);
+            this.groupBox5.Location = new System.Drawing.Point(20, 109);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(730, 3);
+            this.groupBox5.Size = new System.Drawing.Size(1022, 4);
             this.groupBox5.TabIndex = 266;
             this.groupBox5.TabStop = false;
             // 
@@ -1630,9 +1629,9 @@ namespace Scheduler
             "Recording",
             "Mendan",
             "Other"});
-            this.cmbTeacher2_I.Location = new System.Drawing.Point(128, 219);
+            this.cmbTeacher2_I.Location = new System.Drawing.Point(179, 266);
             this.cmbTeacher2_I.Name = "cmbTeacher2_I";
-            this.cmbTeacher2_I.Size = new System.Drawing.Size(152, 21);
+            this.cmbTeacher2_I.Size = new System.Drawing.Size(213, 25);
             this.cmbTeacher2_I.TabIndex = 20;
             this.cmbTeacher2_I.SelectedIndexChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1646,9 +1645,9 @@ namespace Scheduler
             "Recording",
             "Mendan",
             "Other"});
-            this.cmbTeacher1_I.Location = new System.Drawing.Point(592, 105);
+            this.cmbTeacher1_I.Location = new System.Drawing.Point(829, 128);
             this.cmbTeacher1_I.Name = "cmbTeacher1_I";
-            this.cmbTeacher1_I.Size = new System.Drawing.Size(152, 21);
+            this.cmbTeacher1_I.Size = new System.Drawing.Size(213, 25);
             this.cmbTeacher1_I.TabIndex = 19;
             this.cmbTeacher1_I.SelectedIndexChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1656,9 +1655,9 @@ namespace Scheduler
             // 
             this.dtDateComplete_I.CustomFormat = "MM/dd/yyyy";
             this.dtDateComplete_I.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDateComplete_I.Location = new System.Drawing.Point(624, 105);
+            this.dtDateComplete_I.Location = new System.Drawing.Point(874, 128);
             this.dtDateComplete_I.Name = "dtDateComplete_I";
-            this.dtDateComplete_I.Size = new System.Drawing.Size(120, 21);
+            this.dtDateComplete_I.Size = new System.Drawing.Size(168, 24);
             this.dtDateComplete_I.TabIndex = 17;
             this.dtDateComplete_I.Visible = false;
             this.dtDateComplete_I.ValueChanged += new System.EventHandler(this.txtName_I_TextChanged);
@@ -1715,10 +1714,10 @@ namespace Scheduler
             "22:30",
             "23:00",
             "23:30"});
-            this.cmbEndTime.Location = new System.Drawing.Point(507, 54);
+            this.cmbEndTime.Location = new System.Drawing.Point(710, 66);
             this.cmbEndTime.MaxLength = 5;
             this.cmbEndTime.Name = "cmbEndTime";
-            this.cmbEndTime.Size = new System.Drawing.Size(75, 21);
+            this.cmbEndTime.Size = new System.Drawing.Size(105, 25);
             this.cmbEndTime.TabIndex = 6;
             this.cmbEndTime.SelectedIndexChanged += new System.EventHandler(this.cmbEndTime_SelectedIndexChanged);
             this.cmbEndTime.Leave += new System.EventHandler(this.cmbEndTime_Leave);
@@ -1774,20 +1773,20 @@ namespace Scheduler
             "22:30",
             "23:00",
             "23:30"});
-            this.cmbStartTime.Location = new System.Drawing.Point(507, 30);
+            this.cmbStartTime.Location = new System.Drawing.Point(710, 36);
             this.cmbStartTime.Name = "cmbStartTime";
-            this.cmbStartTime.Size = new System.Drawing.Size(75, 21);
+            this.cmbStartTime.Size = new System.Drawing.Size(105, 25);
             this.cmbStartTime.TabIndex = 4;
             this.cmbStartTime.SelectedIndexChanged += new System.EventHandler(this.cmbStartTime_SelectedIndexChanged);
-            this.cmbStartTime.Leave += new System.EventHandler(this.cmbStartTime_Leave);
             this.cmbStartTime.TextChanged += new System.EventHandler(this.cmbStartTime_TextChanged);
+            this.cmbStartTime.Leave += new System.EventHandler(this.cmbStartTime_Leave);
             // 
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox6.Location = new System.Drawing.Point(14, 187);
+            this.groupBox6.Location = new System.Drawing.Point(20, 227);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(730, 3);
+            this.groupBox6.Size = new System.Drawing.Size(1022, 4);
             this.groupBox6.TabIndex = 252;
             this.groupBox6.TabStop = false;
             // 
@@ -1802,9 +1801,9 @@ namespace Scheduler
             "F",
             "G",
             "H"});
-            this.cmbBlock_I.Location = new System.Drawing.Point(128, 129);
+            this.cmbBlock_I.Location = new System.Drawing.Point(179, 157);
             this.cmbBlock_I.Name = "cmbBlock_I";
-            this.cmbBlock_I.Size = new System.Drawing.Size(72, 21);
+            this.cmbBlock_I.Size = new System.Drawing.Size(101, 25);
             this.cmbBlock_I.TabIndex = 13;
             this.cmbBlock_I.SelectedIndexChanged += new System.EventHandler(this.txtName_I_TextChanged);
             // 
@@ -1812,9 +1811,9 @@ namespace Scheduler
             // 
             this.dtEnd.CustomFormat = "MM/dd/yyyy";
             this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtEnd.Location = new System.Drawing.Point(400, 54);
+            this.dtEnd.Location = new System.Drawing.Point(560, 66);
             this.dtEnd.Name = "dtEnd";
-            this.dtEnd.Size = new System.Drawing.Size(104, 21);
+            this.dtEnd.Size = new System.Drawing.Size(146, 24);
             this.dtEnd.TabIndex = 5;
             this.dtEnd.ValueChanged += new System.EventHandler(this.dtEnd_ValueChanged);
             // 
@@ -1822,9 +1821,9 @@ namespace Scheduler
             // 
             this.dtStart.CustomFormat = "MM/dd/yyyy";
             this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtStart.Location = new System.Drawing.Point(400, 30);
+            this.dtStart.Location = new System.Drawing.Point(560, 36);
             this.dtStart.Name = "dtStart";
-            this.dtStart.Size = new System.Drawing.Size(104, 21);
+            this.dtStart.Size = new System.Drawing.Size(146, 24);
             this.dtStart.TabIndex = 3;
             this.dtStart.ValueChanged += new System.EventHandler(this.dtStart_ValueChanged);
             // 
@@ -1835,9 +1834,9 @@ namespace Scheduler
             "Event",
             "Correcting Task",
             "Translating Task"});
-            this.cmbEventType_I.Location = new System.Drawing.Point(624, 129);
+            this.cmbEventType_I.Location = new System.Drawing.Point(874, 157);
             this.cmbEventType_I.Name = "cmbEventType_I";
-            this.cmbEventType_I.Size = new System.Drawing.Size(120, 21);
+            this.cmbEventType_I.Size = new System.Drawing.Size(168, 25);
             this.cmbEventType_I.TabIndex = 16;
             this.cmbEventType_I.Visible = false;
             this.cmbEventType_I.SelectedIndexChanged += new System.EventHandler(this.cmbEventType_I_SelectedIndexChanged);
@@ -1846,9 +1845,9 @@ namespace Scheduler
             // 
             this.lblRecurrenceText_I.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecurrenceText_I.ForeColor = System.Drawing.Color.Black;
-            this.lblRecurrenceText_I.Location = new System.Drawing.Point(344, 26);
+            this.lblRecurrenceText_I.Location = new System.Drawing.Point(482, 32);
             this.lblRecurrenceText_I.Name = "lblRecurrenceText_I";
-            this.lblRecurrenceText_I.Size = new System.Drawing.Size(392, 62);
+            this.lblRecurrenceText_I.Size = new System.Drawing.Size(548, 75);
             this.lblRecurrenceText_I.TabIndex = 261;
             this.lblRecurrenceText_I.Text = "Recurrence : ";
             this.lblRecurrenceText_I.Visible = false;
@@ -1860,7 +1859,7 @@ namespace Scheduler
             this.pnlTop_I.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop_I.Location = new System.Drawing.Point(0, 0);
             this.pnlTop_I.Name = "pnlTop_I";
-            this.pnlTop_I.Size = new System.Drawing.Size(762, 32);
+            this.pnlTop_I.Size = new System.Drawing.Size(1070, 39);
             this.pnlTop_I.TabIndex = 273;
             this.pnlTop_I.Visible = false;
             // 
@@ -1869,9 +1868,9 @@ namespace Scheduler
             this.lblRecurrenceText1_I.BackColor = System.Drawing.SystemColors.Info;
             this.lblRecurrenceText1_I.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecurrenceText1_I.ForeColor = System.Drawing.Color.Black;
-            this.lblRecurrenceText1_I.Location = new System.Drawing.Point(56, 5);
+            this.lblRecurrenceText1_I.Location = new System.Drawing.Point(78, 6);
             this.lblRecurrenceText1_I.Name = "lblRecurrenceText1_I";
-            this.lblRecurrenceText1_I.Size = new System.Drawing.Size(680, 24);
+            this.lblRecurrenceText1_I.Size = new System.Drawing.Size(952, 29);
             this.lblRecurrenceText1_I.TabIndex = 270;
             this.lblRecurrenceText1_I.Text = "Recurrence : ";
             this.lblRecurrenceText1_I.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1880,9 +1879,9 @@ namespace Scheduler
             // picAlert1_I
             // 
             this.picAlert1_I.Image = ((System.Drawing.Image)(resources.GetObject("picAlert1_I.Image")));
-            this.picAlert1_I.Location = new System.Drawing.Point(16, 6);
+            this.picAlert1_I.Location = new System.Drawing.Point(22, 7);
             this.picAlert1_I.Name = "picAlert1_I";
-            this.picAlert1_I.Size = new System.Drawing.Size(32, 24);
+            this.picAlert1_I.Size = new System.Drawing.Size(45, 29);
             this.picAlert1_I.TabIndex = 269;
             this.picAlert1_I.TabStop = false;
             this.picAlert1_I.Visible = false;
@@ -1891,9 +1890,9 @@ namespace Scheduler
             // 
             this.tbpOtherEvents.Controls.Add(this.pnlButtons);
             this.tbpOtherEvents.Controls.Add(this.grdEvents);
-            this.tbpOtherEvents.Location = new System.Drawing.Point(4, 22);
+            this.tbpOtherEvents.Location = new System.Drawing.Point(4, 26);
             this.tbpOtherEvents.Name = "tbpOtherEvents";
-            this.tbpOtherEvents.Size = new System.Drawing.Size(762, 543);
+            this.tbpOtherEvents.Size = new System.Drawing.Size(1070, 661);
             this.tbpOtherEvents.TabIndex = 8;
             this.tbpOtherEvents.Text = "Other Events";
             this.tbpOtherEvents.UseVisualStyleBackColor = true;
@@ -1904,17 +1903,17 @@ namespace Scheduler
             this.pnlButtons.Controls.Add(this.btnEdit);
             this.pnlButtons.Controls.Add(this.btnDel);
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlButtons.Location = new System.Drawing.Point(0, 501);
+            this.pnlButtons.Location = new System.Drawing.Point(0, 610);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(762, 42);
+            this.pnlButtons.Size = new System.Drawing.Size(1070, 51);
             this.pnlButtons.TabIndex = 32;
             // 
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAdd.Location = new System.Drawing.Point(25, 9);
+            this.btnAdd.Location = new System.Drawing.Point(35, 11);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(105, 28);
             this.btnAdd.TabIndex = 28;
             this.btnAdd.Text = "Add";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -1923,9 +1922,9 @@ namespace Scheduler
             // 
             this.btnEdit.Enabled = false;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnEdit.Location = new System.Drawing.Point(115, 9);
+            this.btnEdit.Location = new System.Drawing.Point(161, 11);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Size = new System.Drawing.Size(105, 28);
             this.btnEdit.TabIndex = 29;
             this.btnEdit.Text = "Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -1934,9 +1933,9 @@ namespace Scheduler
             // 
             this.btnDel.Enabled = false;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDel.Location = new System.Drawing.Point(205, 9);
+            this.btnDel.Location = new System.Drawing.Point(287, 11);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 23);
+            this.btnDel.Size = new System.Drawing.Size(105, 28);
             this.btnDel.TabIndex = 30;
             this.btnDel.Text = "Delete";
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
@@ -1944,11 +1943,10 @@ namespace Scheduler
             // grdEvents
             // 
             this.grdEvents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdEvents.EmbeddedNavigator.Name = "";
             this.grdEvents.Location = new System.Drawing.Point(0, 0);
             this.grdEvents.MainView = this.gvwEvents;
             this.grdEvents.Name = "grdEvents";
-            this.grdEvents.Size = new System.Drawing.Size(762, 543);
+            this.grdEvents.Size = new System.Drawing.Size(1070, 661);
             this.grdEvents.TabIndex = 31;
             this.grdEvents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwEvents});
@@ -1971,11 +1969,10 @@ namespace Scheduler
             this.gvwEvents.OptionsCustomization.AllowFilter = false;
             this.gvwEvents.OptionsDetail.EnableDetailToolTip = true;
             this.gvwEvents.OptionsNavigation.AutoMoveRowFocus = false;
-            this.gvwEvents.OptionsPrint.UsePrintStyles = true;
             this.gvwEvents.OptionsView.ShowDetailButtons = false;
             this.gvwEvents.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gvwEvents.OptionsView.ShowGroupPanel = false;
-            this.gvwEvents.OptionsView.ShowHorzLines = false;
+            this.gvwEvents.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwEvents.OptionsView.ShowIndicator = false;
             // 
             // gcolCaldendarEventID
@@ -2023,9 +2020,9 @@ namespace Scheduler
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnCancel.Location = new System.Drawing.Point(599, 575);
+            this.btnCancel.Location = new System.Drawing.Point(839, 698);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(105, 28);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -2033,9 +2030,9 @@ namespace Scheduler
             // btnSave
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnSave.Location = new System.Drawing.Point(516, 575);
+            this.btnSave.Location = new System.Drawing.Point(722, 698);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(105, 28);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -2043,9 +2040,9 @@ namespace Scheduler
             // btnDelete
             // 
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDelete.Location = new System.Drawing.Point(682, 575);
+            this.btnDelete.Location = new System.Drawing.Point(955, 698);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(105, 28);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -2053,9 +2050,9 @@ namespace Scheduler
             // btnPageSetup
             // 
             this.btnPageSetup.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnPageSetup.Location = new System.Drawing.Point(103, 575);
+            this.btnPageSetup.Location = new System.Drawing.Point(144, 698);
             this.btnPageSetup.Name = "btnPageSetup";
-            this.btnPageSetup.Size = new System.Drawing.Size(75, 23);
+            this.btnPageSetup.Size = new System.Drawing.Size(105, 28);
             this.btnPageSetup.TabIndex = 26;
             this.btnPageSetup.Text = "Page Setup";
             this.btnPageSetup.Click += new System.EventHandler(this.btnPageSetup_Click);
@@ -2063,9 +2060,9 @@ namespace Scheduler
             // btnPrint
             // 
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnPrint.Location = new System.Drawing.Point(15, 575);
+            this.btnPrint.Location = new System.Drawing.Point(21, 698);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.Size = new System.Drawing.Size(105, 28);
             this.btnPrint.TabIndex = 25;
             this.btnPrint.Text = "Print";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
@@ -2087,14 +2084,12 @@ namespace Scheduler
             // 
             // printingSystem
             // 
-            this.printingSystem.StartPrint += new DevExpress.XtraPrinting.PrintDocumentEventHandler(this.printingSystem_StartPrint);
-            //this.printingSystem.BeforePagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_BeforePagePaint);
-            //this.printingSystem.AfterPagePaint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePaint);
             this.printingSystem.AfterPagePrint += new DevExpress.XtraPrinting.PageEventHandler(this.printingSystem_AfterPagePrint);
+            this.printingSystem.StartPrint += new DevExpress.XtraPrinting.PrintDocumentEventHandler(this.printingSystem_StartPrint);
             // 
             // frmClassDlg
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
+            this.AutoScaleBaseSize = new System.Drawing.Size(7, 17);
             this.ClientSize = new System.Drawing.Size(770, 610);
             this.Controls.Add(this.btnPageSetup);
             this.Controls.Add(this.btnPrint);
@@ -2112,8 +2107,8 @@ namespace Scheduler
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adding Class...";
-            this.Load += new System.EventHandler(this.frmCourseDlg_Load);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.frmCourseDlg_Closing);
+            this.Load += new System.EventHandler(this.frmCourseDlg_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCourseDlg_KeyDown);
             this.tbcCourse.ResumeLayout(false);
             this.tbpCourse.ResumeLayout(false);
@@ -2886,7 +2881,7 @@ namespace Scheduler
                 Color c = label1.ForeColor;
                 g.DrawString("Class Information", c, rect, DevExpress.XtraPrinting.BorderSide.None);
             }
-            catch (Exception ex)
+            catch
             {
 
             }
@@ -3637,7 +3632,6 @@ namespace Scheduler
 			int _eventid=0;
 			if(Scheduler.BusinessLayer.Message.MsgDelete())
 			{
-				string strMess="";
 				Events evt = new Events();
                 /*
 				if(pnlEvent.Parent==tbpInitial)
@@ -4381,7 +4375,7 @@ namespace Scheduler
             printingSystem.PageSetup();
 			//printDocument1.DefaultPageSettings = ps;
 		}
-        DevExpressClassPrinting classPrinting;
+        //DevExpressClassPrinting classPrinting;
         DevNormalPrinting devNormalPrinting;
 		private void btnPrint_Click(object sender, System.EventArgs e)
         {
@@ -4537,7 +4531,7 @@ namespace Scheduler
 			}
 
 		}
-
+/*
         private void PrintClassDetails()
         {
             DevExpress.XtraPrinting.BrickGraphics g = printingSystem.Graph;
@@ -4561,7 +4555,8 @@ namespace Scheduler
             //printingSystem.start
             printingSystem.End();
         }
-
+*/
+/*
         private void CompletePrinting(DevExpress.XtraPrinting.BrickGraphics g)
         {
             DrawTopLabel(g);
@@ -4575,7 +4570,7 @@ namespace Scheduler
                 //PrintClassDetails();
             }
         }
-		
+*/
 		private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
 
@@ -4774,7 +4769,6 @@ namespace Scheduler
             string instructortype,
             ref string conflictMess)
         {
-            bool Ok = false;
             if (_eventid > 0)
             {
                  DateTime dtOS = Convert.ToDateTime(StartDate);
@@ -4785,7 +4779,6 @@ namespace Scheduler
 
                 if ((dtOS == dtNS) && (dtNE == dtOE))
                 {
-                    Ok = false;
                     return false;
                 }
             }
@@ -4829,7 +4822,6 @@ namespace Scheduler
             string dt2,
             ref string conflictMess)
         {
-            bool Ok = false;
             string[] arr1;
 
             if (instructortype == "Scheduled")
@@ -4920,7 +4912,6 @@ namespace Scheduler
                 InitializeEventForm();
                 return;
             }
-            string strClient = "", strDept = "", strClass = "", strProgram = "";
 
             foreach (DataRow dr in dtbl.Rows)
             {
