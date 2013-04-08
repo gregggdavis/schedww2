@@ -1614,10 +1614,10 @@ namespace Scheduler
                         {
                             navBarGroup3.Visible = false;
                             mnuItemUser.Visible = false;
-                            navBarGroup4.Visible = false;
                         }
                         if (Common.LogonType == 2)
                         {
+                            navBarGroup4.Visible = false;  // read-only user can't access Reports
                             tbtnDelete.Enabled = false;
                             tbtnNew.Enabled = false;
                             tbtnDuplicate.Enabled = false;
