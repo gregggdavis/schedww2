@@ -369,7 +369,7 @@ namespace Scheduler
             this.repositoryItemTimeEdit1,
             this.repositoryItemButtonEdit1,
             this.repositoryItemTimeEdit2});
-            this.grdCourse.ServerMode = true;
+            //this.grdCourse.ServerMode = true;
             this.grdCourse.Size = new System.Drawing.Size(672, 228);
             this.grdCourse.TabIndex = 26;
             this.grdCourse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -423,7 +423,7 @@ namespace Scheduler
             this.gvwCourse.OptionsNavigation.AutoMoveRowFocus = false;
             this.gvwCourse.OptionsView.ShowDetailButtons = false;
             this.gvwCourse.OptionsView.ShowGroupPanel = false;
-            this.gvwCourse.OptionsView.ShowHorzLines = false;
+            this.gvwCourse.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwCourse.OptionsView.ShowIndicator = false;
             this.gvwCourse.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClient, DevExpress.Data.ColumnSortOrder.Ascending),

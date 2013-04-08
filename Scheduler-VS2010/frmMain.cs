@@ -82,8 +82,7 @@ namespace Scheduler
 
 		protected DockingManager _dockingManager = null;
 		private MenuItem menuItem11;
-		private MenuItem mnuItemUser;
-		private MenuItem menuItem13;
+        private MenuItem mnuItemUser;
 		private MenuItem mnuItemContact;
 		private MenuItem mnuItemDept;
 		private MenuItem mnuItemCourse;
@@ -101,8 +100,7 @@ namespace Scheduler
 		private frmContactBrw fContact = null;
 		private frmDeptBrw fDept = null;
 		private frmCourseBrw fCourse = null;
-		private frmProgBrw fProgram = null;
-		private MenuItem mnuItemReports;
+        private frmProgBrw fProgram = null;
 		private NavBarItem nBarDay;
 		private NavBarItem nBarWeek;
 		private NavBarItem nBarMonth;
@@ -225,8 +223,6 @@ namespace Scheduler
             this.mnuItemContact = new System.Windows.Forms.MenuItem();
             this.menuItem11 = new System.Windows.Forms.MenuItem();
             this.mnuItemUser = new System.Windows.Forms.MenuItem();
-            this.menuItem13 = new System.Windows.Forms.MenuItem();
-            this.mnuItemReports = new System.Windows.Forms.MenuItem();
             this.tBarMain = new FlatToolBar.FlatToolbar();
             this.tbtnNew = new System.Windows.Forms.ToolBarButton();
             this.tbtnDuplicate = new System.Windows.Forms.ToolBarButton();
@@ -721,9 +717,7 @@ namespace Scheduler
             this.mnuItemCourse,
             this.mnuItemContact,
             this.menuItem11,
-            this.mnuItemUser,
-            this.menuItem13,
-            this.mnuItemReports});
+            this.mnuItemUser});
             // 
             // mnuItemClient
             // 
@@ -765,17 +759,6 @@ namespace Scheduler
             this.mnuItemUser.Index = 6;
             this.mnuItemUser.Text = "User";
             this.mnuItemUser.Click += new System.EventHandler(this.mnuItemUser_Click);
-            // 
-            // menuItem13
-            // 
-            this.menuItem13.Index = 7;
-            this.menuItem13.Text = "-";
-            // 
-            // mnuItemReports
-            // 
-            this.mnuItemReports.Index = 8;
-            this.mnuItemReports.Text = "Reports";
-            this.mnuItemReports.Click += new System.EventHandler(this.mnuItemReports_Click);
             // 
             // tBarMain
             // 
@@ -1472,7 +1455,6 @@ namespace Scheduler
         
 		private GridViewPrinter dataGridPrinter1 = null;
 
-        frmProgBrw progBrowsInfo = null;
 		private void PrintGrid(GridControl gc)
 		{
 			//GridView gvwContact = (GridView) gc.DefaultView;
@@ -1776,11 +1758,6 @@ namespace Scheduler
 		{
 			double dbl = Convert.ToDouble(pnlHeader.Width/2) - Convert.ToDouble(lblTitle.Width/2);
 			lblTitle.Left = Convert.ToInt32(Math.Round(dbl, 0));
-		}
-
-		private void mnuItemReports_Click(object sender, EventArgs e)
-		{
-			MessageBox.Show("Implemented later...");
 		}
 
 		private void mnuItemEvent_Click(object sender, EventArgs e)
@@ -2424,7 +2401,7 @@ namespace Scheduler
 						}
 						//---
 
-						frmEventDlg fEvtDlg = null;
+						//frmEventDlg fEvtDlg = null;
 						if (Option == 1)
 						{
                             if (module == "Class")

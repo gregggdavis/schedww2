@@ -84,7 +84,7 @@ namespace Scheduler
 		private string XMLData="";
 		private string RepeatRule = "";
 		private string NegativeException = "";
-		private int IsRecurrenceFlag=0;
+		//private int IsRecurrenceFlag=0;
 		private string NoEntries = "";
 		private string ReccType = "";
 		private string Pattern1 = "";
@@ -100,7 +100,7 @@ namespace Scheduler
         private string _startdate;
         private string _enddate;
 
-		private bool boolSaveSeries=true;
+		//private bool boolSaveSeries=true;
         private bool boolAllowExtraClasses = true;
         private bool boolAllowTestInitial = true;
         private bool boolAllowTestMid = true;
@@ -110,12 +110,12 @@ namespace Scheduler
 		private int intDepartmentID=0;
 		private int intProgramID=0;
 		private int intClassID=0;
-		private int intTestEventID=0;
+		//private int intTestEventID=0;
 
 		private bool OpenFromClsProg=false;
 
 		private DateTime dtAppDate=new DateTime();
-		private DateTime dtAppTime=new DateTime();
+		//private DateTime dtAppTime=new DateTime();
         private string strMode = "";
         private string StartTime = "";
         private string EndTime = "";
@@ -125,7 +125,7 @@ namespace Scheduler
 
 		private bool boolNoOfRecords = false;
 
-		private bool AutoSave=true;
+		//private bool AutoSave=true;
 		private DataTable dtblDates=null;
         private CheckBox chkEventModified;
         private CheckBox chkEventStatus_I;
@@ -1567,7 +1567,7 @@ namespace Scheduler
 			string instructortype,
 			ref string conflictMess)
 		{
-			bool Ok=false;
+			//bool Ok=false;
 			
             if(EventID>0)
 			{
@@ -1624,7 +1624,6 @@ namespace Scheduler
 			string dt2,
 			ref string conflictMess)
 		{
-			bool Ok=false;
 			string[] arr1;
 
 			if(instructortype=="Scheduled")
@@ -1966,7 +1965,7 @@ namespace Scheduler
 
 					if(dr["RecurrenceText"]!=System.DBNull.Value)
 						if(dr["RecurrenceText"].ToString()!="")
-							IsRecurrenceFlag = 1;
+							//IsRecurrenceFlag = 1;
                     if (Convert.ToInt16(dr["EventStatus"].ToString()) == 1)
                         chkEventStatus_I.Checked = true;
                     else

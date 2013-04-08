@@ -1407,7 +1407,7 @@ namespace Scheduler.BusinessLayer
 				}
 				return 0;
 			}
-			catch(SqlException ex)
+			catch
 			{
 				return 0;
 			}
@@ -1676,7 +1676,7 @@ namespace Scheduler.BusinessLayer
 			}
 			catch(SqlException ex)
 			{
-				return "";
+				return ex.Message;
 			}
 			finally
 			{

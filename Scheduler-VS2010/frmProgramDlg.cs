@@ -98,7 +98,7 @@ namespace Scheduler
 		private Button btnPrint;
 		private PrintDocument printDocument1;
 		private PrintPreviewDialog printPreviewDialog1;
-        private DataTable dtblDates = null;
+        //private DataTable dtblDates = null;
 
 		
 
@@ -111,8 +111,8 @@ namespace Scheduler
 		//Events newly added
 		private Events objEvent = null;
 		//private string NoEntries = "";
-		private string Pattern1 = "";
-		private string Pattern2 = "";
+		//private string Pattern1 = "";
+		//private string Pattern2 = "";
         private int[] eventid = new int[3];
         private bool HasTestInitialEvent = false;
         private bool HasTestMidtermEvent = false;
@@ -1259,7 +1259,7 @@ namespace Scheduler
             this.gvwEvents.OptionsView.ShowDetailButtons = false;
             this.gvwEvents.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gvwEvents.OptionsView.ShowGroupPanel = false;
-            this.gvwEvents.OptionsView.ShowHorzLines = false;
+            this.gvwEvents.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwEvents.OptionsView.ShowIndicator = false;
             // 
             // gcolCaldendarEventID

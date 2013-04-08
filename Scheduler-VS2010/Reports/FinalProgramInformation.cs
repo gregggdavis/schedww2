@@ -262,7 +262,7 @@ namespace Scheduler.Reports
 
             DataRow r;
 
-            string LastKey = "//dummy//";
+            //string LastKey = "//dummy//";
 
             List<string> LastKeys = new List<string>();
             foreach (string str in keyColumn)

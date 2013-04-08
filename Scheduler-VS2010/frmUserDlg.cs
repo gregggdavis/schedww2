@@ -2267,7 +2267,7 @@ namespace Scheduler
 			pnl = null;
 		}
 
-		private FormPrinting fp = null;
+		//private FormPrinting fp = null;
         private clsDevExpressFormPrinting xfp = null;
 		private void CreateFormPrintingObject(Control c)
 		{
@@ -2275,7 +2275,7 @@ namespace Scheduler
             xfp = new clsDevExpressFormPrinting(c, printingSystem1);
 		}
 
-		private PageSettings ps = null;
+		//private PageSettings ps = null;
 
 		private void btnPageSetup_Click(object sender, EventArgs e)
 		{

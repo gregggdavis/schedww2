@@ -2072,7 +2072,7 @@ namespace Scheduler
 		}
 
 
-		private PageSettings ps=null;
+		//private PageSettings ps=null;
 		private void btnPageSetup_Click(object sender, System.EventArgs e)
 		{
 			//PrintingFunctions.ShowPageSettings(ref ps);

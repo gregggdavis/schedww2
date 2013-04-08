@@ -86,12 +86,12 @@ namespace Scheduler.BusinessLayer
 
 		public static int Clone(int userID)
 		{
-			string strSql = "";
 			SqlCommand com = null;
 			Connection con = null;
 			try
 			{
                 /*
+                string strSql = "";
 				strSql = "usp_ContactClone";
 
 				con = new Connection();

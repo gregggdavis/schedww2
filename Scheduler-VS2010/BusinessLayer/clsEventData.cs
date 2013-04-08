@@ -44,7 +44,7 @@ namespace Scheduler.BusinessLayer
 		
 		public int CalendarEventStatus;
 		public int EventStatus=0;
-		private string _message="";
+		//private string _message="";
 
 
 	}

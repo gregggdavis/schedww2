@@ -301,7 +301,7 @@ namespace Scheduler
             this.gvwContact.OptionsPrint.UsePrintStyles = true;
             this.gvwContact.OptionsView.ShowDetailButtons = false;
             this.gvwContact.OptionsView.ShowGroupPanel = false;
-            this.gvwContact.OptionsView.ShowHorzLines = false;
+            this.gvwContact.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvwContact.OptionsView.ShowIndicator = false;
             this.gvwContact.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolContactType, DevExpress.Data.ColumnSortOrder.Ascending)});

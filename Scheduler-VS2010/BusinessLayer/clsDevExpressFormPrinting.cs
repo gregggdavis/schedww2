@@ -767,7 +767,6 @@ namespace Scheduler.BusinessLayer
                 areaForOneLineOfText.Height = h;
                 areaForOneLineOfText.Width = tb.Width;
                 int charactersFitted;
-                int linesFilled;
                 int separatorCharPos;
                 Font printFont = new Font(tb.Font.Name, tb.Font.Size);
 
@@ -788,7 +787,7 @@ namespace Scheduler.BusinessLayer
                         charactersFitted = Convert.ToInt32(widthDifference / goneChar.Width);
                     }
                     //charactersFitted = Convert.ToInt32(gsize.Width);
-                    //linesFilled = Convert.ToInt32(gsize.Height);
+                    //int linesFilled = Convert.ToInt32(gsize.Height);
                     //g.MeasureString(tb.Text.Substring(pos),
                     //    printFont,
                     //    areaForOneLineOfText,

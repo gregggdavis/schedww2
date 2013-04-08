@@ -263,7 +263,7 @@ namespace Scheduler
             this.grdEvent.Location = new System.Drawing.Point(0, 0);
             this.grdEvent.MainView = this.gvwEvent;
             this.grdEvent.Name = "grdEvent";
-            this.grdEvent.ServerMode = true;
+            //this.grdEvent.ServerMode = true;
             this.grdEvent.Size = new System.Drawing.Size(868, 293);
             this.grdEvent.TabIndex = 26;
             this.grdEvent.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -337,7 +337,7 @@ namespace Scheduler
             this.gvwEvent.OptionsNavigation.AutoMoveRowFocus = false;
             this.gvwEvent.OptionsView.ShowDetailButtons = false;
             this.gvwEvent.OptionsView.ShowGroupPanel = false;
-            this.gvwEvent.OptionsView.ShowHorzLines = false;
+            this.gvwEvent.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False; ;
             this.gvwEvent.OptionsView.ShowIndicator = false;
             this.gvwEvent.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gcolClass, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -993,7 +993,7 @@ namespace Scheduler
 		public void LoadEvent()
 		{
 			isProcess=false;
-			int year=0, month=0;
+			//int year=0, month=0;
 
 			DateTime dtStart = SqlDateTime.MinValue.Value;
 			DateTime dtEnd = SqlDateTime.MaxValue.Value;
@@ -1129,7 +1129,7 @@ namespace Scheduler
                 }
             }
 
-            frmEventDlg fEvtDlg = null;
+            //frmEventDlg fEvtDlg = null;
             //Option '0' means a single occurence and '1' means the entire series
             if (Option == 1)
             {

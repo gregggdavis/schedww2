@@ -185,7 +185,7 @@ namespace Scheduler.BusinessLayer
                 Color c = label1ForeColor;
                 graph.DrawString(RTitle, c, rect, DevExpress.XtraPrinting.BorderSide.None);
             }
-            catch (Exception ex)
+            catch
             {
 
             }

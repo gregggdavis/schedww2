@@ -152,7 +152,7 @@ namespace Scheduler
                 Font _font_value = new Font("Arial", 8F, FontStyle.Regular, GraphicsUnit.Point, ((System.Byte)(0)));
                 // int X = 10;
                 bool IsRichText = false;
-                bool LastIsRichText = false;
+                //bool LastIsRichText = false;
 
                 if (LastPos <= 0)
                 {
@@ -408,7 +408,7 @@ namespace Scheduler
                 Font _font_value = new Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
                
                 bool IsRichText = false;
-                bool LastIsRichText = false;
+                //bool LastIsRichText = false;
 
                 if (LastPos <= 0)
                 {
