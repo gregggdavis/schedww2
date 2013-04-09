@@ -2794,7 +2794,7 @@ namespace Scheduler.BusinessLayer {
             
             private global::System.Data.DataColumn columnHomeworkMinutes;
             
-            private global::System.Data.DataColumn columnTotal;
+            private global::System.Data.DataColumn columnTotalString;
             
             private global::System.Data.DataColumn columnID;
             
@@ -2917,9 +2917,9 @@ namespace Scheduler.BusinessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalColumn {
+            public global::System.Data.DataColumn TotalStringColumn {
                 get {
-                    return this.columnTotal;
+                    return this.columnTotalString;
                 }
             }
             
@@ -2984,7 +2984,7 @@ namespace Scheduler.BusinessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public viewProgramReportClassDetailsRow AddviewProgramReportClassDetailsRow(ViewProgramReportRow parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails, string CourseName, int EventId, System.DateTime StartDateTime, System.DateTime EndDateTime, string CourseTime, string Location, string RoomNumber, decimal PaidHours, string HomeworkMinutes, int Total, int CourseId, int CalendarEventId) {
+            public viewProgramReportClassDetailsRow AddviewProgramReportClassDetailsRow(ViewProgramReportRow parentViewProgramReportRowByViewProgramReport_viewProgramReportClassDetails, string CourseName, int EventId, System.DateTime StartDateTime, System.DateTime EndDateTime, string CourseTime, string Location, string RoomNumber, decimal PaidHours, string HomeworkMinutes, string TotalString, int CourseId, int CalendarEventId) {
                 viewProgramReportClassDetailsRow rowviewProgramReportClassDetailsRow = ((viewProgramReportClassDetailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2997,7 +2997,7 @@ namespace Scheduler.BusinessLayer {
                         RoomNumber,
                         PaidHours,
                         HomeworkMinutes,
-                        Total,
+                        TotalString,
                         null,
                         CourseId,
                         CalendarEventId};
@@ -3043,7 +3043,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnRoomNumber = base.Columns["RoomNumber"];
                 this.columnPaidHours = base.Columns["PaidHours"];
                 this.columnHomeworkMinutes = base.Columns["HomeworkMinutes"];
-                this.columnTotal = base.Columns["Total"];
+                this.columnTotalString = base.Columns["TotalString"];
                 this.columnID = base.Columns["ID"];
                 this.columnCourseId = base.Columns["CourseId"];
                 this.columnCalendarEventId = base.Columns["CalendarEventId"];
@@ -3072,8 +3072,8 @@ namespace Scheduler.BusinessLayer {
                 base.Columns.Add(this.columnPaidHours);
                 this.columnHomeworkMinutes = new global::System.Data.DataColumn("HomeworkMinutes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHomeworkMinutes);
-                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotal);
+                this.columnTotalString = new global::System.Data.DataColumn("TotalString", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalString);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnCourseId = new global::System.Data.DataColumn("CourseId", typeof(int), null, global::System.Data.MappingType.Element);
@@ -3092,6 +3092,7 @@ namespace Scheduler.BusinessLayer {
                 this.columnPaidHours.ReadOnly = true;
                 this.columnHomeworkMinutes.ReadOnly = true;
                 this.columnHomeworkMinutes.MaxLength = 50;
+                this.columnTotalString.MaxLength = 50;
                 this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
@@ -6039,17 +6040,18 @@ namespace Scheduler.BusinessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Total {
+            public string TotalString {
                 get {
                     try {
-                        return ((int)(this[this.tableviewProgramReportClassDetails.TotalColumn]));
+                        return ((string)(this[this.tableviewProgramReportClassDetails.TotalStringColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Total\' in table \'viewProgramReportClassDetails\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalString\' in table \'viewProgramReportClassDetails\' is DB" +
+                                "Null.", e);
                     }
                 }
                 set {
-                    this[this.tableviewProgramReportClassDetails.TotalColumn] = value;
+                    this[this.tableviewProgramReportClassDetails.TotalStringColumn] = value;
                 }
             }
             
@@ -6207,14 +6209,14 @@ namespace Scheduler.BusinessLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalNull() {
-                return this.IsNull(this.tableviewProgramReportClassDetails.TotalColumn);
+            public bool IsTotalStringNull() {
+                return this.IsNull(this.tableviewProgramReportClassDetails.TotalStringColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalNull() {
-                this[this.tableviewProgramReportClassDetails.TotalColumn] = global::System.Convert.DBNull;
+            public void SetTotalStringNull() {
+                this[this.tableviewProgramReportClassDetails.TotalStringColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
