@@ -1145,7 +1145,7 @@ namespace Scheduler
             this.tbpDescription.Controls.Add(this.txtDescription);
             this.tbpDescription.Location = new System.Drawing.Point(4, 26);
             this.tbpDescription.Name = "tbpDescription";
-            this.tbpDescription.Size = new System.Drawing.Size(1070, 661);
+            this.tbpDescription.Size = new System.Drawing.Size(762, 661);
             this.tbpDescription.TabIndex = 1;
             this.tbpDescription.Text = "Description";
             this.tbpDescription.UseVisualStyleBackColor = true;
@@ -1157,7 +1157,7 @@ namespace Scheduler
             this.txtDescription.MaxLength = 4000;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(1070, 661);
+            this.txtDescription.Size = new System.Drawing.Size(762, 661);
             this.txtDescription.TabIndex = 0;
             // 
             // tbpSpecialRemarks
@@ -1165,7 +1165,7 @@ namespace Scheduler
             this.tbpSpecialRemarks.Controls.Add(this.txtRemarks);
             this.tbpSpecialRemarks.Location = new System.Drawing.Point(4, 26);
             this.tbpSpecialRemarks.Name = "tbpSpecialRemarks";
-            this.tbpSpecialRemarks.Size = new System.Drawing.Size(1070, 661);
+            this.tbpSpecialRemarks.Size = new System.Drawing.Size(762, 661);
             this.tbpSpecialRemarks.TabIndex = 2;
             this.tbpSpecialRemarks.Text = "Special Remarks";
             this.tbpSpecialRemarks.UseVisualStyleBackColor = true;
@@ -1177,7 +1177,7 @@ namespace Scheduler
             this.txtRemarks.MaxLength = 4000;
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(1070, 661);
+            this.txtRemarks.Size = new System.Drawing.Size(762, 661);
             this.txtRemarks.TabIndex = 1;
             // 
             // tbpCurriculam
@@ -1185,7 +1185,7 @@ namespace Scheduler
             this.tbpCurriculam.Controls.Add(this.txtCurriculam);
             this.tbpCurriculam.Location = new System.Drawing.Point(4, 26);
             this.tbpCurriculam.Name = "tbpCurriculam";
-            this.tbpCurriculam.Size = new System.Drawing.Size(1070, 661);
+            this.tbpCurriculam.Size = new System.Drawing.Size(762, 661);
             this.tbpCurriculam.TabIndex = 3;
             this.tbpCurriculam.Text = "Curriculum";
             this.tbpCurriculam.UseVisualStyleBackColor = true;
@@ -1197,7 +1197,7 @@ namespace Scheduler
             this.txtCurriculam.MaxLength = 4000;
             this.txtCurriculam.Multiline = true;
             this.txtCurriculam.Name = "txtCurriculam";
-            this.txtCurriculam.Size = new System.Drawing.Size(1070, 661);
+            this.txtCurriculam.Size = new System.Drawing.Size(762, 661);
             this.txtCurriculam.TabIndex = 2;
             // 
             // tbpClassEvent
@@ -1205,7 +1205,7 @@ namespace Scheduler
             this.tbpClassEvent.Controls.Add(this.pnlEvent);
             this.tbpClassEvent.Location = new System.Drawing.Point(4, 26);
             this.tbpClassEvent.Name = "tbpClassEvent";
-            this.tbpClassEvent.Size = new System.Drawing.Size(1070, 661);
+            this.tbpClassEvent.Size = new System.Drawing.Size(762, 661);
             this.tbpClassEvent.TabIndex = 4;
             this.tbpClassEvent.Text = "Class Event";
             this.tbpClassEvent.UseVisualStyleBackColor = true;
@@ -1218,7 +1218,7 @@ namespace Scheduler
             this.pnlEvent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEvent.Location = new System.Drawing.Point(0, 0);
             this.pnlEvent.Name = "pnlEvent";
-            this.pnlEvent.Size = new System.Drawing.Size(1070, 661);
+            this.pnlEvent.Size = new System.Drawing.Size(762, 661);
             this.pnlEvent.TabIndex = 289;
             // 
             // pnlBottom
@@ -1230,7 +1230,7 @@ namespace Scheduler
             this.pnlBottom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBottom.Location = new System.Drawing.Point(0, 617);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(1070, 44);
+            this.pnlBottom.Size = new System.Drawing.Size(762, 44);
             this.pnlBottom.TabIndex = 272;
             // 
             // btn_ClearRecc
@@ -1307,7 +1307,7 @@ namespace Scheduler
             this.pnlBody_I.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody_I.Location = new System.Drawing.Point(0, 39);
             this.pnlBody_I.Name = "pnlBody_I";
-            this.pnlBody_I.Size = new System.Drawing.Size(1070, 622);
+            this.pnlBody_I.Size = new System.Drawing.Size(762, 622);
             this.pnlBody_I.TabIndex = 275;
             // 
             // txtChangeReason_I
@@ -1859,7 +1859,7 @@ namespace Scheduler
             this.pnlTop_I.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop_I.Location = new System.Drawing.Point(0, 0);
             this.pnlTop_I.Name = "pnlTop_I";
-            this.pnlTop_I.Size = new System.Drawing.Size(1070, 39);
+            this.pnlTop_I.Size = new System.Drawing.Size(762, 39);
             this.pnlTop_I.TabIndex = 273;
             this.pnlTop_I.Visible = false;
             // 
@@ -1892,7 +1892,7 @@ namespace Scheduler
             this.tbpOtherEvents.Controls.Add(this.grdEvents);
             this.tbpOtherEvents.Location = new System.Drawing.Point(4, 26);
             this.tbpOtherEvents.Name = "tbpOtherEvents";
-            this.tbpOtherEvents.Size = new System.Drawing.Size(1070, 661);
+            this.tbpOtherEvents.Size = new System.Drawing.Size(762, 661);
             this.tbpOtherEvents.TabIndex = 8;
             this.tbpOtherEvents.Text = "Other Events";
             this.tbpOtherEvents.UseVisualStyleBackColor = true;
@@ -1905,7 +1905,7 @@ namespace Scheduler
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlButtons.Location = new System.Drawing.Point(0, 610);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(1070, 51);
+            this.pnlButtons.Size = new System.Drawing.Size(762, 51);
             this.pnlButtons.TabIndex = 32;
             // 
             // btnAdd
@@ -1946,7 +1946,7 @@ namespace Scheduler
             this.grdEvents.Location = new System.Drawing.Point(0, 0);
             this.grdEvents.MainView = this.gvwEvents;
             this.grdEvents.Name = "grdEvents";
-            this.grdEvents.Size = new System.Drawing.Size(1070, 661);
+            this.grdEvents.Size = new System.Drawing.Size(762, 661);
             this.grdEvents.TabIndex = 31;
             this.grdEvents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwEvents});
@@ -2090,6 +2090,8 @@ namespace Scheduler
             // frmClassDlg
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(7, 17);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(770, 610);
             this.Controls.Add(this.btnPageSetup);
             this.Controls.Add(this.btnPrint);
