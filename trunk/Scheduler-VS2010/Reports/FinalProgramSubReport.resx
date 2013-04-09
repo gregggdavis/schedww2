@@ -112,78 +112,12 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Detail.Name" xml:space="preserve">
-    <value>Detail</value>
-  </metadata>
-  <metadata name="xrTable2.Name" xml:space="preserve">
-    <value>xrTable2</value>
-  </metadata>
-  <metadata name="xrTableRow2.Name" xml:space="preserve">
-    <value>xrTableRow2</value>
-  </metadata>
-  <metadata name="xrTableCell9.Name" xml:space="preserve">
-    <value>xrTableCell9</value>
-  </metadata>
-  <metadata name="xrTableCell10.Name" xml:space="preserve">
-    <value>xrTableCell10</value>
-  </metadata>
-  <metadata name="xrTableCell11.Name" xml:space="preserve">
-    <value>xrTableCell11</value>
-  </metadata>
-  <metadata name="xrTableCell12.Name" xml:space="preserve">
-    <value>xrTableCell12</value>
-  </metadata>
-  <metadata name="xrTableCell13.Name" xml:space="preserve">
-    <value>xrTableCell13</value>
-  </metadata>
-  <metadata name="xrTableCell14.Name" xml:space="preserve">
-    <value>xrTableCell14</value>
-  </metadata>
-  <metadata name="xrTableCell15.Name" xml:space="preserve">
-    <value>xrTableCell15</value>
-  </metadata>
-  <metadata name="xrTableCell16.Name" xml:space="preserve">
-    <value>xrTableCell16</value>
-  </metadata>
-  <metadata name="GroupHeader1.Name" xml:space="preserve">
-    <value>GroupHeader1</value>
-  </metadata>
-  <metadata name="xrTable1.Name" xml:space="preserve">
-    <value>xrTable1</value>
-  </metadata>
-  <metadata name="xrTableRow1.Name" xml:space="preserve">
-    <value>xrTableRow1</value>
-  </metadata>
-  <metadata name="xrTableCell1.Name" xml:space="preserve">
-    <value>xrTableCell1</value>
-  </metadata>
-  <metadata name="xrTableCell2.Name" xml:space="preserve">
-    <value>xrTableCell2</value>
-  </metadata>
-  <metadata name="xrTableCell3.Name" xml:space="preserve">
-    <value>xrTableCell3</value>
-  </metadata>
-  <metadata name="xrTableCell8.Name" xml:space="preserve">
-    <value>xrTableCell8</value>
-  </metadata>
-  <metadata name="xrTableCell4.Name" xml:space="preserve">
-    <value>xrTableCell4</value>
-  </metadata>
-  <metadata name="xrTableCell6.Name" xml:space="preserve">
-    <value>xrTableCell6</value>
-  </metadata>
-  <metadata name="xrTableCell5.Name" xml:space="preserve">
-    <value>xrTableCell5</value>
-  </metadata>
-  <metadata name="xrTableCell7.Name" xml:space="preserve">
-    <value>xrTableCell7</value>
-  </metadata>
-  <metadata name="$this.Name" xml:space="preserve">
-    <value>FinalProgramSubReport</value>
+  <metadata name="dataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>
