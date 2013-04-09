@@ -2,215 +2,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewAllEvents]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewAllEvents]
-AS
-SELECT     dbo.Event.EventId, dbo.Event.RepeatRule, dbo.Event.NegetiveException, dbo.Event.Description, dbo.Event.RecurrenceText, dbo.CalendarEvent.CalendarEventId, 
-                      dbo.CalendarEvent.Note, CASE CalendarEvent.CalendarEventStatus WHEN ''0'' THEN ''Active'' WHEN ''1'' THEN ''Inactive'' END AS EventStatus, 
-                      dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime, LEFT(DATENAME(dw, dbo.CalendarEvent.StartDateTime), 3) AS DayOfWeek, 
-                      dbo.CalendarEvent.DateCompleted, dbo.CalendarEvent.Name, dbo.CalendarEvent.NamePhonetic, dbo.CalendarEvent.NameRomaji, dbo.CalendarEvent.Location, 
-                      dbo.CalendarEvent.BlockCode, dbo.CalendarEvent.RoomNumber, dbo.CalendarEvent.ScheduledTeacherId, dbo.CalendarEvent.RealTeacherId, 
-                      dbo.CalendarEvent.ChangeReason, dbo.CalendarEvent.IsHoliday, dbo.CalendarEvent.EventType, dbo.CalendarEvent.ExceptionReason, 
-                      ISNULL(CC1.LastName + '', '' + CC1.FirstName, '''') AS ScheduledTeacher, ISNULL(CC2.LastName + '', '' + CC2.FirstName, '''') AS RealTeacher, dbo.Course.CourseId, 
-                      dbo.Course.Name AS Class, dbo.Program.ProgramId, dbo.Program.Name AS ProgramName, CASE WHEN Program.NickName IS NULL 
-                      THEN Program.Name WHEN Program.NickName = '''' THEN Program.Name ELSE Program.NickName END AS Program, 
-                      dbo.DateAndTime(dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime) AS DateAndTime, dbo.Course.EventId AS CEvent1, 
-                      dbo.Course.TestInitialEventId AS CEvent2, dbo.Course.TestMidtermEventId AS CEvent3, dbo.Course.TestFinalEventId AS CEvent4, 
-                      dbo.Program.TestInitialEventId AS PEvent1, dbo.Program.TestMidtermEventId AS PEvent2, dbo.Program.TestFinalEventId AS PEvent3, 
-                      CASE WHEN CC2.LastName + '', '' + CC2.FirstName IS NOT NULL AND 
-                      CC2.LastName + '', '' + CC2.FirstName <> '', '' THEN CC2.LastName + '', '' + CC2.FirstName ELSE CASE WHEN CC1.LastName + '', '' + CC1.FirstName IS NOT NULL AND 
-                      CC1.LastName + '', '' + CC1.FirstName <> '', '' THEN CC1.LastName + '', '' + CC1.FirstName ELSE '''' END END AS Instructor, CASE WHEN (CourseId IS NOT NULL AND 
-                      CourseId > 0) THEN CASE WHEN dbo.Course.EventId IS NOT NULL AND 
-                      dbo.Course.EventId > 0 THEN ''Class Event'' ELSE CASE WHEN dbo.Course.TestInitialEventId IS NOT NULL AND 
-                      dbo.Course.TestInitialEventId > 0 THEN ''Test Initial'' ELSE CASE WHEN Course.TestMidtermEventId IS NOT NULL AND 
-                      Course.TestMidtermEventId > 0 THEN ''Test Midterm'' ELSE CASE WHEN Course.TestFinalEventId IS NOT NULL AND 
-                      Course.TestFinalEventId > 0 THEN ''Test Final'' END END END END ELSE CASE WHEN (Program.ProgramId IS NOT NULL AND Program.ProgramId > 0) 
-                      THEN CASE WHEN Program.TestInitialEventId IS NOT NULL AND 
-                      Program.TestInitialEventId > 0 THEN ''Test Initial'' ELSE CASE WHEN Program.TestMidtermEventId IS NOT NULL AND 
-                      Program.TestMidtermEventId > 0 THEN ''Test Midterm'' ELSE CASE WHEN Program.TestFinalEventId IS NOT NULL AND 
-                      Program.TestFinalEventId > 0 THEN ''Test Final'' END END END END END AS TestEvent, dbo.Program.DepartmentId
-FROM         dbo.Event INNER JOIN
-                      dbo.CalendarEvent ON dbo.Event.EventId = dbo.CalendarEvent.EventId LEFT OUTER JOIN
-                      dbo.Contact AS CC1 ON CC1.ContactId = dbo.CalendarEvent.ScheduledTeacherId LEFT OUTER JOIN
-                      dbo.Contact AS CC2 ON CC2.ContactId = dbo.CalendarEvent.RealTeacherId LEFT OUTER JOIN
-                      dbo.Course ON dbo.Event.EventId = dbo.Course.EventId OR dbo.Event.EventId = dbo.Course.TestInitialEventId OR 
-                      dbo.Event.EventId = dbo.Course.TestMidtermEventId OR dbo.Event.EventId = dbo.Course.TestFinalEventId LEFT OUTER JOIN
-                      dbo.Program ON dbo.Program.ProgramId = dbo.Course.ProgramId OR dbo.Event.EventId = dbo.Program.TestInitialEventId OR 
-                      dbo.Event.EventId = dbo.Program.TestMidtermEventId OR dbo.Event.EventId = dbo.Program.TestFinalEventId
-' 
-GO
-/*
-IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'ViewAllEvents', NULL,NULL))
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
-Begin DesignProperties = 
-   Begin PaneConfigurations = 
-      Begin PaneConfiguration = 0
-         NumPanes = 4
-         Configuration = "(H (1[5] 4[5] 2[85] 3) )"
-      End
-      Begin PaneConfiguration = 1
-         NumPanes = 3
-         Configuration = "(H (1 [50] 4 [25] 3))"
-      End
-      Begin PaneConfiguration = 2
-         NumPanes = 3
-         Configuration = "(H (1 [50] 2 [25] 3))"
-      End
-      Begin PaneConfiguration = 3
-         NumPanes = 3
-         Configuration = "(H (4 [30] 2 [40] 3))"
-      End
-      Begin PaneConfiguration = 4
-         NumPanes = 2
-         Configuration = "(H (1 [56] 3))"
-      End
-      Begin PaneConfiguration = 5
-         NumPanes = 2
-         Configuration = "(H (2 [66] 3))"
-      End
-      Begin PaneConfiguration = 6
-         NumPanes = 2
-         Configuration = "(H (4 [50] 3))"
-      End
-      Begin PaneConfiguration = 7
-         NumPanes = 1
-         Configuration = "(V (3))"
-      End
-      Begin PaneConfiguration = 8
-         NumPanes = 3
-         Configuration = "(H (1[56] 4[18] 2) )"
-      End
-      Begin PaneConfiguration = 9
-         NumPanes = 2
-         Configuration = "(H (1 [75] 4))"
-      End
-      Begin PaneConfiguration = 10
-         NumPanes = 2
-         Configuration = "(H (1[66] 2) )"
-      End
-      Begin PaneConfiguration = 11
-         NumPanes = 2
-         Configuration = "(H (4 [60] 2))"
-      End
-      Begin PaneConfiguration = 12
-         NumPanes = 1
-         Configuration = "(H (1) )"
-      End
-      Begin PaneConfiguration = 13
-         NumPanes = 1
-         Configuration = "(V (4))"
-      End
-      Begin PaneConfiguration = 14
-         NumPanes = 1
-         Configuration = "(V (2))"
-      End
-      ActivePaneConfig = 0
-   End
-   Begin DiagramPane = 
-      Begin Origin = 
-         Top = 0
-         Left = 0
-      End
-      Begin Tables = 
-         Begin Table = "Event"
-            Begin Extent = 
-               Top = 6
-               Left = 38
-               Bottom = 125
-               Right = 231
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "CalendarEvent"
-            Begin Extent = 
-               Top = 6
-               Left = 269
-               Bottom = 125
-               Right = 462
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "CC1"
-            Begin Extent = 
-               Top = 126
-               Left = 38
-               Bottom = 245
-               Right = 274
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "CC2"
-            Begin Extent = 
-               Top = 246
-               Left = 38
-               Bottom = 365
-               Right = 274
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "Course"
-            Begin Extent = 
-               Top = 366
-               Left = 38
-               Bottom = 485
-               Right = 231
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "Program"
-            Begin Extent = 
-               Top = 486
-               Left = 38
-               Bottom = 605
-               Right = 250
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-      End
-   End
-   Begin SQLPane = 
-   End
-   Begin DataPane = 
-      Begin ParameterDefaults = ""
-      End
-   End
-   Begin CriteriaPane = 
-      Begin ColumnWidths = 11
-         Column = 1440
-         Alias = 900
-  ' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewAllEvents'
-GO
-IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane2' , N'SCHEMA',N'dbo', N'VIEW',N'ViewAllEvents', NULL,NULL))
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane2', @value=N'       Table = 1170
-         Output = 720
-         Append = 1400
-         NewValue = 1170
-         SortType = 1350
-         SortOrder = 1410
-         GroupBy = 1350
-         Filter = 1350
-         Or = 1350
-         Or = 1350
-         Or = 1350
-      End
-   End
-End
-' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewAllEvents'
-GO
-IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'ViewAllEvents', NULL,NULL))
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=2 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewAllEvents'
-GO
-*/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwGroupCalendarEvents]'))
 EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[vwGroupCalendarEvents]
 AS
@@ -255,57 +46,41 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewPivotCourseDetails]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewPivotCourseDetails]
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewAllEvents]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewAllEvents]
 AS
-SELECT     dbo.Program.ProgramId, dbo.Course.EventId, dbo.Course.Name, dbo.Course.CourseId, LEFT(DATENAME(dw, dbo.CalendarEvent.StartDateTime), 3) 
-                      AS DAYNAME, dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, dbo.CalendarEvent.StartDateTime, 
-                      dbo.CalendarEvent.ScheduledTeacherId
-FROM         dbo.Program INNER JOIN
-                      dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId INNER JOIN
-                      dbo.CalendarEvent ON dbo.Course.EventId = dbo.CalendarEvent.EventId INNER JOIN
-                      dbo.Contact ON dbo.CalendarEvent.ScheduledTeacherId = dbo.Contact.ContactId
-WHERE     (dbo.Course.EventId <> 0)
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByEventID]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByEventID]
-AS
-SELECT     dbo.newvwCalendarEventInstructors.CalendarEventId, dbo.newvwCalendarEventInstructors.EventId, 
-                      dbo.newvwCalendarEventInstructors.StartDateTime, dbo.newvwCalendarEventInstructors.EndDateTime, 
-                      dbo.newvwCalendarEventInstructors.EventType, dbo.newvwCalendarEventInstructors.EventName, dbo.newvwCalendarEventInstructors.EventStatus, 
-                      dbo.newvwCalendarEventInstructors.TeacherId, dbo.newvwCalendarEventInstructors.InstructorName, 
-                      dbo.newvwCalendarEventInstructors.ScheduledHours, dbo.newvwCalendarEventInstructors.DayName, 
-                      dbo.newvwCalendarEventInstructors.BasePayField, dbo.Course.Name, dbo.Course.ProgramId, dbo.Course.CourseType, 
-                      dbo.Course.HomeworkMinutes, dbo.Course.CourseStatus, dbo.Course.CourseId
-FROM         dbo.newvwCalendarEventInstructors LEFT OUTER JOIN
-                      dbo.Course ON dbo.newvwCalendarEventInstructors.EventId = dbo.Course.EventId
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewAllEventCourseDetails]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewAllEventCourseDetails]
-AS
-SELECT     v.EventId, v.RepeatRule, v.NegetiveException, v.Description, v.RecurrenceText, v.CalendarEventId, v.Note, v.EventStatus, v.StartDateTime, v.EndDateTime, 
-                      v.DayOfWeek, v.DateCompleted, v.Name, v.NamePhonetic, v.NameRomaji, v.Location, v.BlockCode, v.RoomNumber, v.ScheduledTeacherId, v.RealTeacherId, 
-                      v.ChangeReason, v.IsHoliday, v.EventType, v.ExceptionReason, v.ScheduledTeacher, v.RealTeacher, v.CourseId, v.Class, v.ProgramId, v.ProgramName, v.Program, 
-                      v.DateAndTime, v.CEvent1, v.CEvent2, v.CEvent3, v.CEvent4, v.PEvent1, v.PEvent2, v.PEvent3, v.Instructor, v.TestEvent, v.DepartmentId, 
-                      CO.CompanyName AS DeptName, CASE WHEN CO.NickName IS NULL OR
-                      CO.NickName = '''' THEN CO.CompanyName ELSE CO.NickName END AS Department, CO1.CompanyName AS ClientName, CASE WHEN CO1.NickName IS NULL OR
-                      CO1.NickName = '''' THEN CO1.CompanyName ELSE CO1.NickName END AS Client
-FROM         dbo.ViewAllEvents AS v LEFT OUTER JOIN
-                      dbo.Course AS c ON v.CourseId = c.CourseId LEFT OUTER JOIN
-                      dbo.Program AS p ON p.ProgramId = c.ProgramId LEFT OUTER JOIN
-                      dbo.Department AS d ON p.DepartmentId = d.DepartmentID LEFT OUTER JOIN
-                      dbo.Contact AS CO ON d.ContactID = CO.ContactId LEFT OUTER JOIN
-                      dbo.Contact AS CO1 ON d.ClientID = CO1.ContactId
+SELECT     dbo.Event.EventId, dbo.Event.RepeatRule, dbo.Event.NegetiveException, dbo.Event.Description, dbo.Event.RecurrenceText, dbo.CalendarEvent.CalendarEventId, 
+                      dbo.CalendarEvent.Note, CASE CalendarEvent.CalendarEventStatus WHEN ''0'' THEN ''Active'' WHEN ''1'' THEN ''Inactive'' END AS EventStatus, 
+                      dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime, LEFT(DATENAME(dw, dbo.CalendarEvent.StartDateTime), 3) AS DayOfWeek, 
+                      dbo.CalendarEvent.DateCompleted, dbo.CalendarEvent.Name, dbo.CalendarEvent.NamePhonetic, dbo.CalendarEvent.NameRomaji, dbo.CalendarEvent.Location, 
+                      dbo.CalendarEvent.BlockCode, dbo.CalendarEvent.RoomNumber, dbo.CalendarEvent.ScheduledTeacherId, dbo.CalendarEvent.RealTeacherId, 
+                      dbo.CalendarEvent.ChangeReason, dbo.CalendarEvent.IsHoliday, dbo.CalendarEvent.EventType, dbo.CalendarEvent.ExceptionReason, 
+                      ISNULL(CC1.LastName + '', '' + CC1.FirstName, '''') AS ScheduledTeacher, ISNULL(CC2.LastName + '', '' + CC2.FirstName, '''') AS RealTeacher, dbo.Course.CourseId, 
+                      dbo.Course.Name AS Class, dbo.Program.ProgramId, dbo.Program.Name AS ProgramName, CASE WHEN Program.NickName IS NULL 
+                      THEN Program.Name WHEN Program.NickName = '''' THEN Program.Name ELSE Program.NickName END AS Program, 
+                      dbo.DateAndTime(dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime) AS DateAndTime, dbo.Course.EventId AS CEvent1, 
+                      dbo.Course.TestInitialEventId AS CEvent2, dbo.Course.TestMidtermEventId AS CEvent3, dbo.Course.TestFinalEventId AS CEvent4, 
+                      dbo.Program.TestInitialEventId AS PEvent1, dbo.Program.TestMidtermEventId AS PEvent2, dbo.Program.TestFinalEventId AS PEvent3, 
+                      CASE WHEN CC2.LastName + '', '' + CC2.FirstName IS NOT NULL AND 
+                      CC2.LastName + '', '' + CC2.FirstName <> '', '' THEN CC2.LastName + '', '' + CC2.FirstName ELSE CASE WHEN CC1.LastName + '', '' + CC1.FirstName IS NOT NULL AND 
+                      CC1.LastName + '', '' + CC1.FirstName <> '', '' THEN CC1.LastName + '', '' + CC1.FirstName ELSE '''' END END AS Instructor, CASE WHEN (CourseId IS NOT NULL AND 
+                      CourseId > 0) THEN CASE WHEN dbo.Course.EventId IS NOT NULL AND 
+                      dbo.Course.EventId > 0 THEN ''Class Event'' ELSE CASE WHEN dbo.Course.TestInitialEventId IS NOT NULL AND 
+                      dbo.Course.TestInitialEventId > 0 THEN ''Test Initial'' ELSE CASE WHEN Course.TestMidtermEventId IS NOT NULL AND 
+                      Course.TestMidtermEventId > 0 THEN ''Test Midterm'' ELSE CASE WHEN Course.TestFinalEventId IS NOT NULL AND 
+                      Course.TestFinalEventId > 0 THEN ''Test Final'' END END END END ELSE CASE WHEN (Program.ProgramId IS NOT NULL AND Program.ProgramId > 0) 
+                      THEN CASE WHEN Program.TestInitialEventId IS NOT NULL AND 
+                      Program.TestInitialEventId > 0 THEN ''Test Initial'' ELSE CASE WHEN Program.TestMidtermEventId IS NOT NULL AND 
+                      Program.TestMidtermEventId > 0 THEN ''Test Midterm'' ELSE CASE WHEN Program.TestFinalEventId IS NOT NULL AND 
+                      Program.TestFinalEventId > 0 THEN ''Test Final'' END END END END END AS TestEvent, dbo.Program.DepartmentId
+FROM         dbo.Event INNER JOIN
+                      dbo.CalendarEvent ON dbo.Event.EventId = dbo.CalendarEvent.EventId LEFT OUTER JOIN
+                      dbo.Contact AS CC1 ON CC1.ContactId = dbo.CalendarEvent.ScheduledTeacherId LEFT OUTER JOIN
+                      dbo.Contact AS CC2 ON CC2.ContactId = dbo.CalendarEvent.RealTeacherId LEFT OUTER JOIN
+                      dbo.Course ON dbo.Event.EventId = dbo.Course.EventId OR dbo.Event.EventId = dbo.Course.TestInitialEventId OR 
+                      dbo.Event.EventId = dbo.Course.TestMidtermEventId OR dbo.Event.EventId = dbo.Course.TestFinalEventId LEFT OUTER JOIN
+                      dbo.Program ON dbo.Program.ProgramId = dbo.Course.ProgramId OR dbo.Event.EventId = dbo.Program.TestInitialEventId OR 
+                      dbo.Event.EventId = dbo.Program.TestMidtermEventId OR dbo.Event.EventId = dbo.Program.TestFinalEventId
 ' 
 GO
 SET ANSI_NULLS ON
@@ -327,6 +102,23 @@ FROM         dbo.Course AS C LEFT OUTER JOIN
                       dbo.Department AS D ON P.DepartmentId = D.DepartmentID LEFT OUTER JOIN
                       dbo.Contact AS CO ON D.ContactID = CO.ContactId LEFT OUTER JOIN
                       dbo.Contact AS CO1 ON D.ClientID = CO1.ContactId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewPivotCourseDetails]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewPivotCourseDetails]
+AS
+SELECT     dbo.Program.ProgramId, dbo.Course.EventId, dbo.Course.Name, dbo.Course.CourseId, LEFT(DATENAME(dw, dbo.CalendarEvent.StartDateTime), 3) 
+                      AS DAYNAME, dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, dbo.CalendarEvent.StartDateTime, 
+                      dbo.CalendarEvent.ScheduledTeacherId
+FROM         dbo.Program INNER JOIN
+                      dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId INNER JOIN
+                      dbo.CalendarEvent ON dbo.Course.EventId = dbo.CalendarEvent.EventId INNER JOIN
+                      dbo.Contact ON dbo.CalendarEvent.ScheduledTeacherId = dbo.Contact.ContactId
+WHERE     (dbo.Course.EventId <> 0)
 ' 
 GO
 SET ANSI_NULLS ON
@@ -359,18 +151,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewProgramReportHelper]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewProgramReportHelper]
-AS
-SELECT     COUNT(*) AS Total, EventId
-FROM         dbo.CalendarEvent
-GROUP BY EventId
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewRefferedContacts]'))
 EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewRefferedContacts]
 AS
@@ -378,216 +158,6 @@ SELECT     TOP (100) PERCENT RefID, LastName + '', '' + FirstName AS ContactName
 FROM         dbo.Contact
 WHERE     (ContactType = 4)
 ORDER BY ContactId
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructors]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructors]
-AS
-SELECT     dbo.newvwCalendarEvents.CalendarEventId, dbo.newvwCalendarEvents.EventId, dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
-                      dbo.newvwCalendarEvents.EventType, dbo.newvwCalendarEvents.EventName, dbo.newvwCalendarEvents.ScheduledTeacherId, 
-                      dbo.newvwCalendarEvents.RealTeacherId, dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.EventStatus, dbo.newvwCalendarEvents.TeacherId, 
-                      CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) AS EventMinutes, CAST(CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) 
-                      / 60 AS Decimal(18, 2)) AS ScheduledHours, dbo.newvwCalendarEvents.DayName, dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, 
-                      dbo.Contact.BasePayField, CAST(CAST(dbo.GetSaturdayMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
-                      dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS SaturdayMinutes, 
-                      CAST(CAST(dbo.GetMorningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS MorningMinutes, 
-                      CAST(CAST(dbo.GetEveningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS EveningMinutes, 
-                      CAST(CAST(dbo.GetDaytimeMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS DaytimeMinutes
-FROM         dbo.newvwCalendarEvents INNER JOIN
-                      dbo.Contact ON dbo.newvwCalendarEvents.TeacherId = dbo.Contact.ContactId
-' 
-GO
-/*
-IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'newvwCalendarEventInstructors', NULL,NULL))
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
-Begin DesignProperties = 
-   Begin PaneConfigurations = 
-      Begin PaneConfiguration = 0
-         NumPanes = 4
-         Configuration = "(H (1[15] 4[17] 2[50] 3) )"
-      End
-      Begin PaneConfiguration = 1
-         NumPanes = 3
-         Configuration = "(H (1 [50] 4 [25] 3))"
-      End
-      Begin PaneConfiguration = 2
-         NumPanes = 3
-         Configuration = "(H (1 [50] 2 [25] 3))"
-      End
-      Begin PaneConfiguration = 3
-         NumPanes = 3
-         Configuration = "(H (4 [30] 2 [40] 3))"
-      End
-      Begin PaneConfiguration = 4
-         NumPanes = 2
-         Configuration = "(H (1 [56] 3))"
-      End
-      Begin PaneConfiguration = 5
-         NumPanes = 2
-         Configuration = "(H (2 [66] 3))"
-      End
-      Begin PaneConfiguration = 6
-         NumPanes = 2
-         Configuration = "(H (4 [50] 3))"
-      End
-      Begin PaneConfiguration = 7
-         NumPanes = 1
-         Configuration = "(V (3))"
-      End
-      Begin PaneConfiguration = 8
-         NumPanes = 3
-         Configuration = "(H (1[56] 4[18] 2) )"
-      End
-      Begin PaneConfiguration = 9
-         NumPanes = 2
-         Configuration = "(H (1 [75] 4))"
-      End
-      Begin PaneConfiguration = 10
-         NumPanes = 2
-         Configuration = "(H (1[66] 2) )"
-      End
-      Begin PaneConfiguration = 11
-         NumPanes = 2
-         Configuration = "(H (4 [60] 2))"
-      End
-      Begin PaneConfiguration = 12
-         NumPanes = 1
-         Configuration = "(H (1) )"
-      End
-      Begin PaneConfiguration = 13
-         NumPanes = 1
-         Configuration = "(V (4))"
-      End
-      Begin PaneConfiguration = 14
-         NumPanes = 1
-         Configuration = "(V (2))"
-      End
-      ActivePaneConfig = 0
-   End
-   Begin DiagramPane = 
-      Begin Origin = 
-         Top = 0
-         Left = 0
-      End
-      Begin Tables = 
-         Begin Table = "Contact"
-            Begin Extent = 
-               Top = 126
-               Left = 38
-               Bottom = 245
-               Right = 274
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-         Begin Table = "newvwCalendarEvents"
-            Begin Extent = 
-               Top = 6
-               Left = 38
-               Bottom = 125
-               Right = 225
-            End
-            DisplayFlags = 280
-            TopColumn = 0
-         End
-      End
-   End
-   Begin SQLPane = 
-   End
-   Begin DataPane = 
-      Begin ParameterDefaults = ""
-      End
-      Begin ColumnWidths = 21
-         Width = 284
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-      End
-   End
-   Begin CriteriaPane = 
-      Begin ColumnWidths = 11
-         Column = 1440
-         Alias = 900
-         Table = 1170
-         Output = 720
-         Append = 1400
-         NewValue = 1170
-         SortType = 1350
-         SortOrder = 1410
-         GroupBy = 1350
-         Filter = 1350
-         Or = 1350
-         Or = 1350
-         Or = 1350
-      End
-   End
-End
-' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'newvwCalendarEventInstructors'
-GO
-IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'newvwCalendarEventInstructors', NULL,NULL))
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'newvwCalendarEventInstructors'
-GO
-*/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewProgramReportClassDetails]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewProgramReportClassDetails]
-AS
-SELECT     dbo.Program.ProgramId, CASE WHEN Course.NickName IS NULL 
-                      THEN dbo.Course.Name ELSE CASE WHEN Course.NickName = '''' THEN Course.Name ELSE Course.NickName END END AS CourseName, 
-                      dbo.Course.EventId, CASE WHEN (dbo.Course.HomeworkMinutes = 0 OR
-                      dbo.Course.HomeworkMinutes IS NULL) THEN ''NO'' ELSE CAST(dbo.Course.HomeworkMinutes AS nvarchar(50)) END AS HomeworkMinutes, 
-                      dbo.viewProgramReportHelper.Total, dbo.Course.CourseId, dbo.GetEndDateTimeForEventID(dbo.Course.EventId) AS EndDateTime, 
-                      dbo.GetStartDateTimeForEventID(dbo.Course.EventId) AS StartDateTime, dbo.GetLocationForEventID(dbo.Course.EventId) AS Location, 
-                      dbo.GetRoomNumberForEventID(dbo.Course.EventId) AS RoomNumber, dbo.GetPaidHoursForEventID(dbo.Course.EventId) AS PaidHours, 
-                      dbo.GetCourseTime(dbo.Course.EventId) AS CourseTime
-FROM         dbo.Program RIGHT OUTER JOIN
-                      dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId LEFT OUTER JOIN
-                      dbo.viewProgramReportHelper ON dbo.Course.EventId = dbo.viewProgramReportHelper.EventId
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewSimpleProgramInfo]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewSimpleProgramInfo]
-AS
-SELECT     dbo.Program.ProgramId, dbo.Course.CourseId, dbo.Course.EventId, CASE WHEN Course.NickName IS NULL 
-                      THEN Course.Name ELSE CASE WHEN Course.NickName = '''' THEN Course.Name ELSE Course.NickName END END AS CourseName, 
-                      CASE WHEN Program.NickName IS NULL 
-                      THEN Program.Name ELSE CASE WHEN Program.NickName = '''' THEN Program.Name ELSE Program.NickName END END AS ProgramName, 
-                      CASE WHEN dbo.GetStartDateTimeForEventID(dbo.Course.EventId) IS NULL THEN ''None'' ELSE CONVERT(nvarchar(38), 
-                      dbo.GetStartDateTimeForEventID(dbo.Course.EventId), 1) END AS StartDateTime, CASE WHEN dbo.GetEndDateTimeForEventID(dbo.Course.EventId) 
-                      IS NULL THEN ''None'' ELSE CONVERT(nvarchar(38), dbo.GetEndDateTimeForEventID(dbo.Course.EventId), 1) END AS EndDateTime
-FROM         dbo.Program INNER JOIN
-                      dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId
 ' 
 GO
 SET ANSI_NULLS ON
@@ -604,6 +174,24 @@ SELECT     dbo.Program.ProgramId, dbo.Course.EventId, dbo.Course.Name, dbo.Cours
 FROM         dbo.Program INNER JOIN
                       dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId
 WHERE     (dbo.Course.EventId <> 0)' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewClassEventsN]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewClassEventsN]
+AS
+SELECT TOP (100) PERCENT CourseId, Name, NamePhonetic, NameRomaji, NickName, ProgramId, CourseType, EventId, Description, 
+                      SpecialRemarks, Curriculam, NumberStudents, HomeworkMinutes, ISNULL(TestInitialEventId, 0) AS TestInitialEventId, 
+                      ISNULL(TestMidtermEventId, 0) AS TestMidtermEventId, ISNULL(TestFinalEventId, 0) AS TestFinalEventId, ISNULL(TestInitialForm, 0) 
+                      AS TestInitialForm, ISNULL(TestMidtermForm, 0) AS TestMidtermForm, ISNULL(TestFinalForm, 0) AS TestFinalForm, CourseStatus, 
+                      CreatedByUserId, DateCreated, DateLastModified, LastModifiedByUserId, BrowseName, ProgramNickName, Program, Department, 
+                      Client, dbo.GetEventTextStartDate(EventId) AS EventStartDateTime, dbo.GetEventTextInstructorName(EventId) 
+                      AS ScheduledInstructor, dbo.GetEventTextEndDate(EventId) AS EventEndDateTime, dbo.GetEventOccurranceCount(EventId) 
+                      AS OccurrenceCount
+FROM      dbo.ViewCourseN
+' 
 GO
 SET ANSI_NULLS ON
 GO
@@ -647,6 +235,52 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewAllEventCourseDetails]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewAllEventCourseDetails]
+AS
+SELECT     v.EventId, v.RepeatRule, v.NegetiveException, v.Description, v.RecurrenceText, v.CalendarEventId, v.Note, v.EventStatus, v.StartDateTime, v.EndDateTime, 
+                      v.DayOfWeek, v.DateCompleted, v.Name, v.NamePhonetic, v.NameRomaji, v.Location, v.BlockCode, v.RoomNumber, v.ScheduledTeacherId, v.RealTeacherId, 
+                      v.ChangeReason, v.IsHoliday, v.EventType, v.ExceptionReason, v.ScheduledTeacher, v.RealTeacher, v.CourseId, v.Class, v.ProgramId, v.ProgramName, v.Program, 
+                      v.DateAndTime, v.CEvent1, v.CEvent2, v.CEvent3, v.CEvent4, v.PEvent1, v.PEvent2, v.PEvent3, v.Instructor, v.TestEvent, v.DepartmentId, 
+                      CO.CompanyName AS DeptName, CASE WHEN CO.NickName IS NULL OR
+                      CO.NickName = '''' THEN CO.CompanyName ELSE CO.NickName END AS Department, CO1.CompanyName AS ClientName, CASE WHEN CO1.NickName IS NULL OR
+                      CO1.NickName = '''' THEN CO1.CompanyName ELSE CO1.NickName END AS Client
+FROM         dbo.ViewAllEvents AS v LEFT OUTER JOIN
+                      dbo.Course AS c ON v.CourseId = c.CourseId LEFT OUTER JOIN
+                      dbo.Program AS p ON p.ProgramId = c.ProgramId LEFT OUTER JOIN
+                      dbo.Department AS d ON p.DepartmentId = d.DepartmentID LEFT OUTER JOIN
+                      dbo.Contact AS CO ON d.ContactID = CO.ContactId LEFT OUTER JOIN
+                      dbo.Contact AS CO1 ON d.ClientID = CO1.ContactId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructors]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructors]
+AS
+SELECT     dbo.newvwCalendarEvents.CalendarEventId, dbo.newvwCalendarEvents.EventId, dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
+                      dbo.newvwCalendarEvents.EventType, dbo.newvwCalendarEvents.EventName, dbo.newvwCalendarEvents.ScheduledTeacherId, 
+                      dbo.newvwCalendarEvents.RealTeacherId, dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.EventStatus, dbo.newvwCalendarEvents.TeacherId, 
+                      CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) AS EventMinutes, CAST(CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) 
+                      / 60 AS Decimal(18, 2)) AS ScheduledHours, dbo.newvwCalendarEvents.DayName, dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, 
+                      dbo.Contact.BasePayField, CAST(CAST(dbo.GetSaturdayMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
+                      dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS SaturdayMinutes, 
+                      CAST(CAST(dbo.GetMorningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
+                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS MorningMinutes, 
+                      CAST(CAST(dbo.GetEveningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
+                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS EveningMinutes, 
+                      CAST(CAST(dbo.GetDaytimeMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
+                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS DaytimeMinutes
+FROM         dbo.newvwCalendarEvents INNER JOIN
+                      dbo.Contact ON dbo.newvwCalendarEvents.TeacherId = dbo.Contact.ContactId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewClientContact]'))
 EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewClientContact]
 AS
@@ -665,77 +299,39 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByInitialEventId]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByInitialEventId]
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewSimpleProgramInfo]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewSimpleProgramInfo]
 AS
-SELECT     dbo.newvwCourseEventsByEventID.CalendarEventId, dbo.newvwCourseEventsByEventID.EventId, dbo.newvwCourseEventsByEventID.StartDateTime, 
-                      dbo.newvwCourseEventsByEventID.EndDateTime, dbo.newvwCourseEventsByEventID.EventType, dbo.newvwCourseEventsByEventID.EventName, 
-                      dbo.newvwCourseEventsByEventID.EventStatus, dbo.newvwCourseEventsByEventID.TeacherId, dbo.newvwCourseEventsByEventID.InstructorName, 
-                      dbo.newvwCourseEventsByEventID.ScheduledHours, dbo.newvwCourseEventsByEventID.DayName, 
-                      dbo.newvwCourseEventsByEventID.BasePayField, CASE WHEN dbo.newvwCourseEventsByEventID.ProgramId IS NULL 
-                      THEN Course.ProgramID ELSE dbo.newvwCourseEventsByEventID.ProgramId END AS ProgramId, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.Name IS NULL THEN Course.Name ELSE dbo.newvwCourseEventsByEventID.Name END AS Name, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseID IS NULL 
-                      THEN Course.CourseID ELSE dbo.newvwCourseEventsByEventID.CourseID END AS CourseID, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseType IS NULL 
-                      THEN Course.CourseType ELSE dbo.newvwCourseEventsByEventID.CourseType END AS CourseType, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.HomeworkMinutes IS NULL 
-                      THEN Course.HomeworkMinutes ELSE dbo.newvwCourseEventsByEventID.HomeworkMinutes END AS HomeworkMinutes, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseStatus IS NULL 
-                      THEN Course.CourseStatus ELSE dbo.newvwCourseEventsByEventID.CourseStatus END AS CouseStatus
-FROM         dbo.newvwCourseEventsByEventID LEFT OUTER JOIN
-                      dbo.Course ON dbo.newvwCourseEventsByEventID.EventId = dbo.Course.TestInitialEventId
+SELECT     dbo.Program.ProgramId, dbo.Course.CourseId, dbo.Course.EventId, CASE WHEN Course.NickName IS NULL 
+                      THEN Course.Name ELSE CASE WHEN Course.NickName = '''' THEN Course.Name ELSE Course.NickName END END AS CourseName, 
+                      CASE WHEN Program.NickName IS NULL 
+                      THEN Program.Name ELSE CASE WHEN Program.NickName = '''' THEN Program.Name ELSE Program.NickName END END AS ProgramName, 
+                      CASE WHEN dbo.GetStartDateTimeForEventID(dbo.Course.EventId) IS NULL THEN ''None'' ELSE CONVERT(nvarchar(38), 
+                      dbo.GetStartDateTimeForEventID(dbo.Course.EventId), 1) END AS StartDateTime, CASE WHEN dbo.GetEndDateTimeForEventID(dbo.Course.EventId) 
+                      IS NULL THEN ''None'' ELSE CONVERT(nvarchar(38), dbo.GetEndDateTimeForEventID(dbo.Course.EventId), 1) END AS EndDateTime
+FROM         dbo.Program INNER JOIN
+                      dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId
 ' 
 GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewAllEventsFull]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewAllEventsFull]
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewProgramReportHelper]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewProgramReportHelper]
 AS
-SELECT     v.EventId, v.RepeatRule, v.NegetiveException, v.Description, v.RecurrenceText, v.CalendarEventId, v.Note, v.EventStatus, v.StartDateTime, v.EndDateTime, 
-                      v.DayOfWeek, v.DateCompleted, v.Name, v.NamePhonetic, v.NameRomaji, v.Location, v.BlockCode, v.RoomNumber, v.ScheduledTeacherId, v.RealTeacherId, 
-                      v.ChangeReason, v.IsHoliday, v.EventType, v.ExceptionReason, v.ScheduledTeacher, v.RealTeacher, v.CourseId, v.Class, v.ProgramId, v.ProgramName, v.Program, 
-                      v.DateAndTime, v.CEvent2, v.CEvent1, v.CEvent3, v.CEvent4, v.PEvent1, v.PEvent2, v.PEvent3, v.Instructor, v.TestEvent, CASE WHEN ProgramId IS NOT NULL AND 
-                      CourseId IS NULL AND ProgramId > 0 THEN CO.CompanyName ELSE v.DeptName END AS DeptName, CASE WHEN ProgramId IS NOT NULL AND CourseId IS NULL 
-                      AND ProgramId > 0 THEN CASE WHEN CO.NickName IS NULL OR
-                      CO.NickName = '''' THEN CO.CompanyName ELSE CO.NickName END ELSE v.Department END AS Department, CASE WHEN ProgramId IS NOT NULL AND 
-                      CourseId IS NULL AND ProgramId > 0 THEN CO1.CompanyName ELSE v.ClientName END AS ClientName, CASE WHEN ProgramId IS NOT NULL AND CourseId IS NULL
-                       AND ProgramId > 0 THEN CASE WHEN CO1.NickName IS NULL OR
-                      CO1.NickName = '''' THEN CO1.CompanyName ELSE CO1.NickName END ELSE v.Client END AS Client
-FROM         dbo.ViewAllEventCourseDetails AS v LEFT OUTER JOIN
-                      dbo.Department AS d ON v.DepartmentId = d.DepartmentID LEFT OUTER JOIN
-                      dbo.Contact AS CO ON d.ContactID = CO.ContactId LEFT OUTER JOIN
-                      dbo.Contact AS CO1 ON d.ClientID = CO1.ContactId
+SELECT COUNT(*) AS Total, dbo.GetCalendarEventActivePerTotalCount(EventId) AS TotalString, EventId
+FROM  dbo.CalendarEvent
+GROUP BY EventId
 ' 
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewClassEventsN]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewClassEventsN]
-AS
-SELECT TOP (100) PERCENT CourseId, Name, NamePhonetic, NameRomaji, NickName, ProgramId, CourseType, EventId, Description, 
-                      SpecialRemarks, Curriculam, NumberStudents, HomeworkMinutes, ISNULL(TestInitialEventId, 0) AS TestInitialEventId, 
-                      ISNULL(TestMidtermEventId, 0) AS TestMidtermEventId, ISNULL(TestFinalEventId, 0) AS TestFinalEventId, ISNULL(TestInitialForm, 0) 
-                      AS TestInitialForm, ISNULL(TestMidtermForm, 0) AS TestMidtermForm, ISNULL(TestFinalForm, 0) AS TestFinalForm, CourseStatus, 
-                      CreatedByUserId, DateCreated, DateLastModified, LastModifiedByUserId, BrowseName, ProgramNickName, Program, Department, 
-                      Client, dbo.GetEventTextStartDate(EventId) AS EventStartDateTime, dbo.GetEventTextInstructorName(EventId) 
-                      AS ScheduledInstructor, dbo.GetEventTextEndDate(EventId) AS EventEndDateTime, dbo.GetEventOccurranceCount(EventId) 
-                      AS OccurrenceCount
-FROM      dbo.ViewCourseN
-' 
-GO
-/*
-IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'ViewClassEventsN', NULL,NULL))
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'viewProgramReportHelper', NULL,NULL))
 EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
 Begin DesignProperties = 
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[29] 4[32] 2[28] 3) )"
+         Configuration = "(H (1[41] 4[29] 2[11] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -801,12 +397,12 @@ Begin DesignProperties =
          Left = 0
       End
       Begin Tables = 
-         Begin Table = "ViewCourseN"
+         Begin Table = "CalendarEvent"
             Begin Extent = 
-               Top = 6
-               Left = 38
-               Bottom = 125
-               Right = 231
+               Top = 7
+               Left = 48
+               Bottom = 316
+               Right = 367
             End
             DisplayFlags = 280
             TopColumn = 0
@@ -818,48 +414,199 @@ Begin DesignProperties =
    Begin DataPane = 
       Begin ParameterDefaults = ""
       End
-      Begin ColumnWidths = 34
+      Begin ColumnWidths = 9
          Width = 284
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
-         Width = 1500
+         Width = 1200
+         Width = 1200
+         Width = 1200
+         Width = 1200
+         Width = 1200
+         Width = 1200
+         Width = 1200
+         Width = 1200
+      End
+   End
+   Begin CriteriaPane = 
+      Begin ColumnWidths = 12
+         Column = 3888
+         Alias = 2376
+         Table = 2604
+         Output = 720
+         Append = 1400
+         NewValue = 1170
+         SortType = 1356
+         SortOrder = 1416
+         GroupBy = 1356
+         Filter = 1356
+         Or = 1350
+         Or = 1350
+         Or = 1350
+      End
+   End
+End
+' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'viewProgramReportHelper'
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'viewProgramReportHelper', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'viewProgramReportHelper'
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewAllEventsFull]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewAllEventsFull]
+AS
+SELECT     v.EventId, v.RepeatRule, v.NegetiveException, v.Description, v.RecurrenceText, v.CalendarEventId, v.Note, v.EventStatus, v.StartDateTime, v.EndDateTime, 
+                      v.DayOfWeek, v.DateCompleted, v.Name, v.NamePhonetic, v.NameRomaji, v.Location, v.BlockCode, v.RoomNumber, v.ScheduledTeacherId, v.RealTeacherId, 
+                      v.ChangeReason, v.IsHoliday, v.EventType, v.ExceptionReason, v.ScheduledTeacher, v.RealTeacher, v.CourseId, v.Class, v.ProgramId, v.ProgramName, v.Program, 
+                      v.DateAndTime, v.CEvent2, v.CEvent1, v.CEvent3, v.CEvent4, v.PEvent1, v.PEvent2, v.PEvent3, v.Instructor, v.TestEvent, CASE WHEN ProgramId IS NOT NULL AND 
+                      CourseId IS NULL AND ProgramId > 0 THEN CO.CompanyName ELSE v.DeptName END AS DeptName, CASE WHEN ProgramId IS NOT NULL AND CourseId IS NULL 
+                      AND ProgramId > 0 THEN CASE WHEN CO.NickName IS NULL OR
+                      CO.NickName = '''' THEN CO.CompanyName ELSE CO.NickName END ELSE v.Department END AS Department, CASE WHEN ProgramId IS NOT NULL AND 
+                      CourseId IS NULL AND ProgramId > 0 THEN CO1.CompanyName ELSE v.ClientName END AS ClientName, CASE WHEN ProgramId IS NOT NULL AND CourseId IS NULL
+                       AND ProgramId > 0 THEN CASE WHEN CO1.NickName IS NULL OR
+                      CO1.NickName = '''' THEN CO1.CompanyName ELSE CO1.NickName END ELSE v.Client END AS Client
+FROM         dbo.ViewAllEventCourseDetails AS v LEFT OUTER JOIN
+                      dbo.Department AS d ON v.DepartmentId = d.DepartmentID LEFT OUTER JOIN
+                      dbo.Contact AS CO ON d.ContactID = CO.ContactId LEFT OUTER JOIN
+                      dbo.Contact AS CO1 ON d.ClientID = CO1.ContactId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewProgramReportClassDetails]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewProgramReportClassDetails]
+AS
+SELECT dbo.Program.ProgramId, CASE WHEN Course.NickName IS NULL 
+               THEN dbo.Course.Name ELSE CASE WHEN Course.NickName = '''' THEN Course.Name ELSE Course.NickName END END AS CourseName, dbo.Course.EventId, 
+               CASE WHEN (dbo.Course.HomeworkMinutes = 0 OR
+               dbo.Course.HomeworkMinutes IS NULL) THEN ''NO'' ELSE CAST(dbo.Course.HomeworkMinutes AS nvarchar(50)) END AS HomeworkMinutes, 
+               dbo.viewProgramReportHelper.TotalString, dbo.Course.CourseId, dbo.GetEndDateTimeForEventID(dbo.Course.EventId) AS EndDateTime, 
+               dbo.GetStartDateTimeForEventID(dbo.Course.EventId) AS StartDateTime, dbo.GetLocationForEventID(dbo.Course.EventId) AS Location, 
+               dbo.GetRoomNumberForEventID(dbo.Course.EventId) AS RoomNumber, dbo.GetPaidHoursForEventID(dbo.Course.EventId) AS PaidHours, 
+               dbo.GetCourseTime(dbo.Course.EventId) AS CourseTime
+FROM  dbo.Program RIGHT OUTER JOIN
+               dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId LEFT OUTER JOIN
+               dbo.viewProgramReportHelper ON dbo.Course.EventId = dbo.viewProgramReportHelper.EventId
+' 
+GO
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPane1' , N'SCHEMA',N'dbo', N'VIEW',N'viewProgramReportClassDetails', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPane1', @value=N'[0E232FF0-B466-11cf-A24F-00AA00A3EFFF, 1.00]
+Begin DesignProperties = 
+   Begin PaneConfigurations = 
+      Begin PaneConfiguration = 0
+         NumPanes = 4
+         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
+      End
+      Begin PaneConfiguration = 1
+         NumPanes = 3
+         Configuration = "(H (1 [50] 4 [25] 3))"
+      End
+      Begin PaneConfiguration = 2
+         NumPanes = 3
+         Configuration = "(H (1 [50] 2 [25] 3))"
+      End
+      Begin PaneConfiguration = 3
+         NumPanes = 3
+         Configuration = "(H (4 [30] 2 [40] 3))"
+      End
+      Begin PaneConfiguration = 4
+         NumPanes = 2
+         Configuration = "(H (1 [56] 3))"
+      End
+      Begin PaneConfiguration = 5
+         NumPanes = 2
+         Configuration = "(H (2 [66] 3))"
+      End
+      Begin PaneConfiguration = 6
+         NumPanes = 2
+         Configuration = "(H (4 [50] 3))"
+      End
+      Begin PaneConfiguration = 7
+         NumPanes = 1
+         Configuration = "(V (3))"
+      End
+      Begin PaneConfiguration = 8
+         NumPanes = 3
+         Configuration = "(H (1[56] 4[18] 2) )"
+      End
+      Begin PaneConfiguration = 9
+         NumPanes = 2
+         Configuration = "(H (1 [75] 4))"
+      End
+      Begin PaneConfiguration = 10
+         NumPanes = 2
+         Configuration = "(H (1[66] 2) )"
+      End
+      Begin PaneConfiguration = 11
+         NumPanes = 2
+         Configuration = "(H (4 [60] 2))"
+      End
+      Begin PaneConfiguration = 12
+         NumPanes = 1
+         Configuration = "(H (1) )"
+      End
+      Begin PaneConfiguration = 13
+         NumPanes = 1
+         Configuration = "(V (4))"
+      End
+      Begin PaneConfiguration = 14
+         NumPanes = 1
+         Configuration = "(V (2))"
+      End
+      ActivePaneConfig = 0
+   End
+   Begin DiagramPane = 
+      Begin Origin = 
+         Top = 0
+         Left = 0
+      End
+      Begin Tables = 
+         Begin Table = "Program"
+            Begin Extent = 
+               Top = 7
+               Left = 48
+               Bottom = 148
+               Right = 292
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "Course"
+            Begin Extent = 
+               Top = 154
+               Left = 48
+               Bottom = 295
+               Right = 264
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+         Begin Table = "viewProgramReportHelper"
+            Begin Extent = 
+               Top = 301
+               Left = 48
+               Bottom = 424
+               Right = 232
+            End
+            DisplayFlags = 280
+            TopColumn = 0
+         End
+      End
+   End
+   Begin SQLPane = 
+   End
+   Begin DataPane = 
+      Begin ParameterDefaults = ""
       End
    End
    Begin CriteriaPane = 
       Begin ColumnWidths = 11
-         Column = 3615
-         Alias = 1935
-         Table = 1170
+         Column = 3504
+         Alias = 2016
+         Table = 2424
          Output = 720
          Append = 1400
          NewValue = 1170
@@ -873,12 +620,55 @@ Begin DesignProperties =
       End
    End
 End
-' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewClassEventsN'
+' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'viewProgramReportClassDetails'
 GO
-IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'ViewClassEventsN', NULL,NULL))
-EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewClassEventsN'
+IF NOT EXISTS (SELECT * FROM ::fn_listextendedproperty(N'MS_DiagramPaneCount' , N'SCHEMA',N'dbo', N'VIEW',N'viewProgramReportClassDetails', NULL,NULL))
+EXEC sys.sp_addextendedproperty @name=N'MS_DiagramPaneCount', @value=1 , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'viewProgramReportClassDetails'
 GO
-*/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByEventID]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByEventID]
+AS
+SELECT     dbo.newvwCalendarEventInstructors.CalendarEventId, dbo.newvwCalendarEventInstructors.EventId, 
+                      dbo.newvwCalendarEventInstructors.StartDateTime, dbo.newvwCalendarEventInstructors.EndDateTime, 
+                      dbo.newvwCalendarEventInstructors.EventType, dbo.newvwCalendarEventInstructors.EventName, dbo.newvwCalendarEventInstructors.EventStatus, 
+                      dbo.newvwCalendarEventInstructors.TeacherId, dbo.newvwCalendarEventInstructors.InstructorName, 
+                      dbo.newvwCalendarEventInstructors.ScheduledHours, dbo.newvwCalendarEventInstructors.DayName, 
+                      dbo.newvwCalendarEventInstructors.BasePayField, dbo.Course.Name, dbo.Course.ProgramId, dbo.Course.CourseType, 
+                      dbo.Course.HomeworkMinutes, dbo.Course.CourseStatus, dbo.Course.CourseId
+FROM         dbo.newvwCalendarEventInstructors LEFT OUTER JOIN
+                      dbo.Course ON dbo.newvwCalendarEventInstructors.EventId = dbo.Course.EventId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByInitialEventId]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByInitialEventId]
+AS
+SELECT     dbo.newvwCourseEventsByEventID.CalendarEventId, dbo.newvwCourseEventsByEventID.EventId, dbo.newvwCourseEventsByEventID.StartDateTime, 
+                      dbo.newvwCourseEventsByEventID.EndDateTime, dbo.newvwCourseEventsByEventID.EventType, dbo.newvwCourseEventsByEventID.EventName, 
+                      dbo.newvwCourseEventsByEventID.EventStatus, dbo.newvwCourseEventsByEventID.TeacherId, dbo.newvwCourseEventsByEventID.InstructorName, 
+                      dbo.newvwCourseEventsByEventID.ScheduledHours, dbo.newvwCourseEventsByEventID.DayName, 
+                      dbo.newvwCourseEventsByEventID.BasePayField, CASE WHEN dbo.newvwCourseEventsByEventID.ProgramId IS NULL 
+                      THEN Course.ProgramID ELSE dbo.newvwCourseEventsByEventID.ProgramId END AS ProgramId, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.Name IS NULL THEN Course.Name ELSE dbo.newvwCourseEventsByEventID.Name END AS Name, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseID IS NULL 
+                      THEN Course.CourseID ELSE dbo.newvwCourseEventsByEventID.CourseID END AS CourseID, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseType IS NULL 
+                      THEN Course.CourseType ELSE dbo.newvwCourseEventsByEventID.CourseType END AS CourseType, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.HomeworkMinutes IS NULL 
+                      THEN Course.HomeworkMinutes ELSE dbo.newvwCourseEventsByEventID.HomeworkMinutes END AS HomeworkMinutes, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseStatus IS NULL 
+                      THEN Course.CourseStatus ELSE dbo.newvwCourseEventsByEventID.CourseStatus END AS CouseStatus
+FROM         dbo.newvwCourseEventsByEventID LEFT OUTER JOIN
+                      dbo.Course ON dbo.newvwCourseEventsByEventID.EventId = dbo.Course.TestInitialEventId
+' 
+GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1047,5 +837,3 @@ SELECT     CalendarEventId, TeacherId, InstructorName, StartDateTime, EndDateTim
                       + ScheduledHours END AS PaidHours, CAST(CAST(HomeworkMinutes AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS HomeworkMinutes, Billing
 FROM         dbo.newvwSubPayDetailsByInstructor AS subPayments
 ' 
-GO
-
