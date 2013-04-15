@@ -299,8 +299,8 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructors]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructors]
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructorsWithNullGhosts]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructorsWithNullGhosts]
 AS
 SELECT     dbo.newvwCalendarEvents.CalendarEventId, dbo.newvwCalendarEvents.EventId, dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
                       dbo.newvwCalendarEvents.EventType, dbo.newvwCalendarEvents.EventName, dbo.newvwCalendarEvents.ScheduledTeacherId, 
@@ -437,6 +437,27 @@ SELECT dbo.Program.ProgramId, CASE WHEN Course.NickName IS NULL
 FROM  dbo.Program RIGHT OUTER JOIN
                dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId LEFT OUTER JOIN
                dbo.viewProgramReportHelper ON dbo.Course.EventId = dbo.viewProgramReportHelper.EventId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructors]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructors]
+AS
+SELECT dbo.newvwCalendarEventInstructorsWithNullGhosts.CalendarEventId, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventId,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.StartDateTime, dbo.newvwCalendarEventInstructorsWithNullGhosts.EndDateTime,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.EventType, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventName, 
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.ScheduledTeacherId, dbo.newvwCalendarEventInstructorsWithNullGhosts.RealTeacherId,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.IsHoliday, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventStatus,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.TeacherId, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventMinutes,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.ScheduledHours, dbo.newvwCalendarEventInstructorsWithNullGhosts.DayName,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.InstructorName, dbo.newvwCalendarEventInstructorsWithNullGhosts.BasePayField,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.SaturdayMinutes, dbo.newvwCalendarEventInstructorsWithNullGhosts.MorningMinutes,
+               dbo.newvwCalendarEventInstructorsWithNullGhosts.EveningMinutes, dbo.newvwCalendarEventInstructorsWithNullGhosts.DaytimeMinutes
+FROM  dbo.newvwCalendarEventInstructorsWithNullGhosts INNER JOIN
+               dbo.Course ON dbo.newvwCalendarEventInstructorsWithNullGhosts.EventId = dbo.Course.EventId
 ' 
 GO
 SET ANSI_NULLS ON
