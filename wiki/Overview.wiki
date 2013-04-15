@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Scheduler for Krdla - Use the newest code here under the tag/branch of *Scheduler - VS2010*
+Scheduler for Krdla - Use the newest code here under the Trunk--> *Scheduler - VS2010*
 
 = Details =
 
