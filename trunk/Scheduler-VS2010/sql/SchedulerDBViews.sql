@@ -2,92 +2,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwGroupCalendarEvents]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[vwGroupCalendarEvents]
-AS
-SELECT     EventId, TestInitialEventId, TestMidtermEventId, TestFinalEventId, StartDateTime, EndDateTime, Name AS CourseName, EventType, EventName, 
-                      ScheduledTeacherId, RealTeacherId, IsHoliday, CalendarEventStatus, CalendarEventId, HomeworkMinutes, CourseStatus, CourseType, 
-                      ProgramId
-FROM         (SELECT     dbo.CalendarEvent.EventId, dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime, dbo.Course.Name, 
-                                              dbo.Course.TestInitialEventId, dbo.Course.TestMidtermEventId, dbo.Course.TestFinalEventId, dbo.CalendarEvent.EventType, 
-                                              dbo.CalendarEvent.Name AS EventName, dbo.CalendarEvent.ScheduledTeacherId, dbo.CalendarEvent.RealTeacherId, 
-                                              dbo.CalendarEvent.IsHoliday, dbo.CalendarEvent.CalendarEventStatus, dbo.CalendarEvent.CalendarEventId, 
-                                              dbo.Course.HomeworkMinutes, dbo.Course.CourseStatus, dbo.Course.CourseType, dbo.Course.ProgramId
-                        FROM         dbo.CalendarEvent FULL OUTER JOIN
-                                              dbo.Course ON dbo.CalendarEvent.EventId = dbo.Course.EventId
-                        UNION
-                        SELECT     CalendarEvent_3.EventId, CalendarEvent_3.StartDateTime, CalendarEvent_3.EndDateTime, Course_3.Name, Course_3.TestInitialEventId, 
-                                              Course_3.TestMidtermEventId, Course_3.TestFinalEventId, CalendarEvent_3.EventType, CalendarEvent_3.Name AS EventName, 
-                                              CalendarEvent_3.ScheduledTeacherId, CalendarEvent_3.RealTeacherId, CalendarEvent_3.IsHoliday, 
-                                              CalendarEvent_3.CalendarEventStatus, CalendarEvent_3.CalendarEventId, Course_3.HomeworkMinutes, Course_3.CourseStatus, 
-                                              Course_3.CourseType, Course_3.ProgramId
-                        FROM         dbo.CalendarEvent AS CalendarEvent_3 FULL OUTER JOIN
-                                              dbo.Course AS Course_3 ON CalendarEvent_3.EventId = Course_3.TestInitialEventId
-                        UNION
-                        SELECT     CalendarEvent_2.EventId, CalendarEvent_2.StartDateTime, CalendarEvent_2.EndDateTime, Course_2.Name, Course_2.TestInitialEventId, 
-                                              Course_2.TestMidtermEventId, Course_2.TestFinalEventId, CalendarEvent_2.EventType, CalendarEvent_2.Name AS EventName, 
-                                              CalendarEvent_2.ScheduledTeacherId, CalendarEvent_2.RealTeacherId, CalendarEvent_2.IsHoliday, 
-                                              CalendarEvent_2.CalendarEventStatus, CalendarEvent_2.CalendarEventId, Course_2.HomeworkMinutes, Course_2.CourseStatus, 
-                                              Course_2.CourseType, Course_2.ProgramId
-                        FROM         dbo.CalendarEvent AS CalendarEvent_2 FULL OUTER JOIN
-                                              dbo.Course AS Course_2 ON CalendarEvent_2.EventId = Course_2.TestMidtermEventId
-                        UNION
-                        SELECT     CalendarEvent_1.EventId, CalendarEvent_1.StartDateTime, CalendarEvent_1.EndDateTime, Course_1.Name, Course_1.TestInitialEventId, 
-                                              Course_1.TestMidtermEventId, Course_1.TestFinalEventId, CalendarEvent_1.EventType, CalendarEvent_1.Name AS EventName, 
-                                              CalendarEvent_1.ScheduledTeacherId, CalendarEvent_1.RealTeacherId, CalendarEvent_1.IsHoliday, 
-                                              CalendarEvent_1.CalendarEventStatus, CalendarEvent_1.CalendarEventId, Course_1.HomeworkMinutes, Course_1.CourseStatus, 
-                                              Course_1.CourseType, Course_1.ProgramId
-                        FROM         dbo.CalendarEvent AS CalendarEvent_1 FULL OUTER JOIN
-                                              dbo.Course AS Course_1 ON CalendarEvent_1.EventId = Course_1.TestFinalEventId) AS vwGroupCalendarEvents
-WHERE     (EventId IS NOT NULL) AND (ProgramId IS NOT NULL)
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByEventID]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByEventID]
-AS
-SELECT dbo.newvwCalendarEventInstructors.CalendarEventId, dbo.newvwCalendarEventInstructors.EventId, dbo.newvwCalendarEventInstructors.StartDateTime, 
-               dbo.newvwCalendarEventInstructors.EndDateTime, dbo.newvwCalendarEventInstructors.EventType, dbo.newvwCalendarEventInstructors.EventName, 
-               dbo.newvwCalendarEventInstructors.EventStatus, dbo.newvwCalendarEventInstructors.TeacherId, dbo.newvwCalendarEventInstructors.InstructorName, 
-               dbo.newvwCalendarEventInstructors.ScheduledHours, dbo.newvwCalendarEventInstructors.DayName, dbo.newvwCalendarEventInstructors.BasePayField, 
-               dbo.Course.Name, dbo.Course.ProgramId, dbo.Course.CourseType, dbo.Course.HomeworkMinutes, dbo.Course.CourseStatus, dbo.Course.CourseId
-FROM  dbo.newvwCalendarEventInstructors LEFT OUTER JOIN
-               dbo.Course ON dbo.newvwCalendarEventInstructors.EventId = dbo.Course.EventId
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByInitialEventId]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByInitialEventId]
-AS
-SELECT     dbo.newvwCourseEventsByEventID.CalendarEventId, dbo.newvwCourseEventsByEventID.EventId, dbo.newvwCourseEventsByEventID.StartDateTime, 
-                      dbo.newvwCourseEventsByEventID.EndDateTime, dbo.newvwCourseEventsByEventID.EventType, dbo.newvwCourseEventsByEventID.EventName, 
-                      dbo.newvwCourseEventsByEventID.EventStatus, dbo.newvwCourseEventsByEventID.TeacherId, dbo.newvwCourseEventsByEventID.InstructorName, 
-                      dbo.newvwCourseEventsByEventID.ScheduledHours, dbo.newvwCourseEventsByEventID.DayName, 
-                      dbo.newvwCourseEventsByEventID.BasePayField, CASE WHEN dbo.newvwCourseEventsByEventID.ProgramId IS NULL 
-                      THEN Course.ProgramID ELSE dbo.newvwCourseEventsByEventID.ProgramId END AS ProgramId, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.Name IS NULL THEN Course.Name ELSE dbo.newvwCourseEventsByEventID.Name END AS Name, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseID IS NULL 
-                      THEN Course.CourseID ELSE dbo.newvwCourseEventsByEventID.CourseID END AS CourseID, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseType IS NULL 
-                      THEN Course.CourseType ELSE dbo.newvwCourseEventsByEventID.CourseType END AS CourseType, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.HomeworkMinutes IS NULL 
-                      THEN Course.HomeworkMinutes ELSE dbo.newvwCourseEventsByEventID.HomeworkMinutes END AS HomeworkMinutes, 
-                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseStatus IS NULL 
-                      THEN Course.CourseStatus ELSE dbo.newvwCourseEventsByEventID.CourseStatus END AS CouseStatus
-FROM         dbo.newvwCourseEventsByEventID LEFT OUTER JOIN
-                      dbo.Course ON dbo.newvwCourseEventsByEventID.EventId = dbo.Course.TestInitialEventId
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewPivotCourseDetails]'))
 EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewPivotCourseDetails]
 AS
@@ -161,6 +75,68 @@ FROM         dbo.Course AS C LEFT OUTER JOIN
                       dbo.Department AS D ON P.DepartmentId = D.DepartmentID LEFT OUTER JOIN
                       dbo.Contact AS CO ON D.ContactID = CO.ContactId LEFT OUTER JOIN
                       dbo.Contact AS CO1 ON D.ClientID = CO1.ContactId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[vwGroupCalendarEvents]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[vwGroupCalendarEvents]
+AS
+SELECT     EventId, TestInitialEventId, TestMidtermEventId, TestFinalEventId, StartDateTime, EndDateTime, Name AS CourseName, EventType, EventName, 
+                      ScheduledTeacherId, RealTeacherId, IsHoliday, CalendarEventStatus, CalendarEventId, HomeworkMinutes, CourseStatus, CourseType, 
+                      ProgramId
+FROM         (SELECT     dbo.CalendarEvent.EventId, dbo.CalendarEvent.StartDateTime, dbo.CalendarEvent.EndDateTime, dbo.Course.Name, 
+                                              dbo.Course.TestInitialEventId, dbo.Course.TestMidtermEventId, dbo.Course.TestFinalEventId, dbo.CalendarEvent.EventType, 
+                                              dbo.CalendarEvent.Name AS EventName, dbo.CalendarEvent.ScheduledTeacherId, dbo.CalendarEvent.RealTeacherId, 
+                                              dbo.CalendarEvent.IsHoliday, dbo.CalendarEvent.CalendarEventStatus, dbo.CalendarEvent.CalendarEventId, 
+                                              dbo.Course.HomeworkMinutes, dbo.Course.CourseStatus, dbo.Course.CourseType, dbo.Course.ProgramId
+                        FROM         dbo.CalendarEvent FULL OUTER JOIN
+                                              dbo.Course ON dbo.CalendarEvent.EventId = dbo.Course.EventId
+                        UNION
+                        SELECT     CalendarEvent_3.EventId, CalendarEvent_3.StartDateTime, CalendarEvent_3.EndDateTime, Course_3.Name, Course_3.TestInitialEventId, 
+                                              Course_3.TestMidtermEventId, Course_3.TestFinalEventId, CalendarEvent_3.EventType, CalendarEvent_3.Name AS EventName, 
+                                              CalendarEvent_3.ScheduledTeacherId, CalendarEvent_3.RealTeacherId, CalendarEvent_3.IsHoliday, 
+                                              CalendarEvent_3.CalendarEventStatus, CalendarEvent_3.CalendarEventId, Course_3.HomeworkMinutes, Course_3.CourseStatus, 
+                                              Course_3.CourseType, Course_3.ProgramId
+                        FROM         dbo.CalendarEvent AS CalendarEvent_3 FULL OUTER JOIN
+                                              dbo.Course AS Course_3 ON CalendarEvent_3.EventId = Course_3.TestInitialEventId
+                        UNION
+                        SELECT     CalendarEvent_2.EventId, CalendarEvent_2.StartDateTime, CalendarEvent_2.EndDateTime, Course_2.Name, Course_2.TestInitialEventId, 
+                                              Course_2.TestMidtermEventId, Course_2.TestFinalEventId, CalendarEvent_2.EventType, CalendarEvent_2.Name AS EventName, 
+                                              CalendarEvent_2.ScheduledTeacherId, CalendarEvent_2.RealTeacherId, CalendarEvent_2.IsHoliday, 
+                                              CalendarEvent_2.CalendarEventStatus, CalendarEvent_2.CalendarEventId, Course_2.HomeworkMinutes, Course_2.CourseStatus, 
+                                              Course_2.CourseType, Course_2.ProgramId
+                        FROM         dbo.CalendarEvent AS CalendarEvent_2 FULL OUTER JOIN
+                                              dbo.Course AS Course_2 ON CalendarEvent_2.EventId = Course_2.TestMidtermEventId
+                        UNION
+                        SELECT     CalendarEvent_1.EventId, CalendarEvent_1.StartDateTime, CalendarEvent_1.EndDateTime, Course_1.Name, Course_1.TestInitialEventId, 
+                                              Course_1.TestMidtermEventId, Course_1.TestFinalEventId, CalendarEvent_1.EventType, CalendarEvent_1.Name AS EventName, 
+                                              CalendarEvent_1.ScheduledTeacherId, CalendarEvent_1.RealTeacherId, CalendarEvent_1.IsHoliday, 
+                                              CalendarEvent_1.CalendarEventStatus, CalendarEvent_1.CalendarEventId, Course_1.HomeworkMinutes, Course_1.CourseStatus, 
+                                              Course_1.CourseType, Course_1.ProgramId
+                        FROM         dbo.CalendarEvent AS CalendarEvent_1 FULL OUTER JOIN
+                                              dbo.Course AS Course_1 ON CalendarEvent_1.EventId = Course_1.TestFinalEventId) AS vwGroupCalendarEvents
+WHERE     (EventId IS NOT NULL) AND (ProgramId IS NOT NULL)
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByEventID]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByEventID]
+AS
+SELECT     dbo.newvwCalendarEventInstructors.CalendarEventId, dbo.newvwCalendarEventInstructors.EventId, 
+                      dbo.newvwCalendarEventInstructors.StartDateTime, dbo.newvwCalendarEventInstructors.EndDateTime, 
+                      dbo.newvwCalendarEventInstructors.EventType, dbo.newvwCalendarEventInstructors.EventName, dbo.newvwCalendarEventInstructors.EventStatus, 
+                      dbo.newvwCalendarEventInstructors.TeacherId, dbo.newvwCalendarEventInstructors.InstructorName, 
+                      dbo.newvwCalendarEventInstructors.ScheduledHours, dbo.newvwCalendarEventInstructors.DayName, 
+                      dbo.newvwCalendarEventInstructors.BasePayField, dbo.Course.Name, dbo.Course.ProgramId, dbo.Course.CourseType, 
+                      dbo.Course.HomeworkMinutes, dbo.Course.CourseStatus, dbo.Course.CourseId
+FROM         dbo.newvwCalendarEventInstructors LEFT OUTER JOIN
+                      dbo.Course ON dbo.newvwCalendarEventInstructors.EventId = dbo.Course.EventId
 ' 
 GO
 SET ANSI_NULLS ON
@@ -299,24 +275,26 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructorsWithNullGhosts]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructorsWithNullGhosts]
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructors]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructors]
 AS
-SELECT     dbo.newvwCalendarEvents.CalendarEventId, dbo.newvwCalendarEvents.EventId, dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
-                      dbo.newvwCalendarEvents.EventType, dbo.newvwCalendarEvents.EventName, dbo.newvwCalendarEvents.ScheduledTeacherId, 
-                      dbo.newvwCalendarEvents.RealTeacherId, dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.EventStatus, dbo.newvwCalendarEvents.TeacherId, 
-                      CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) AS EventMinutes, CAST(CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) 
-                      / 60 AS Decimal(18, 2)) AS ScheduledHours, dbo.newvwCalendarEvents.DayName, dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, 
-                      dbo.Contact.BasePayField, CAST(CAST(dbo.GetSaturdayMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
-                      dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS SaturdayMinutes, 
-                      CAST(CAST(dbo.GetMorningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS MorningMinutes, 
-                      CAST(CAST(dbo.GetEveningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS EveningMinutes, 
-                      CAST(CAST(dbo.GetDaytimeMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-                      dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS DaytimeMinutes
-FROM         dbo.newvwCalendarEvents INNER JOIN
-                      dbo.Contact ON dbo.newvwCalendarEvents.TeacherId = dbo.Contact.ContactId
+SELECT dbo.newvwCalendarEvents.CalendarEventId, dbo.newvwCalendarEvents.EventId, dbo.newvwCalendarEvents.StartDateTime, 
+               dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.EventType, dbo.newvwCalendarEvents.EventName, 
+               dbo.newvwCalendarEvents.ScheduledTeacherId, dbo.newvwCalendarEvents.RealTeacherId, dbo.newvwCalendarEvents.IsHoliday, 
+               dbo.newvwCalendarEvents.EventStatus, dbo.newvwCalendarEvents.TeacherId, CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) 
+               AS EventMinutes, CAST(CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS ScheduledHours, 
+               dbo.newvwCalendarEvents.DayName, dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, dbo.Contact.BasePayField, 
+               CAST(CAST(dbo.GetSaturdayMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
+               dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS SaturdayMinutes, 
+               CAST(CAST(dbo.GetMorningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
+               dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS MorningMinutes, 
+               CAST(CAST(dbo.GetEveningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
+               dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS EveningMinutes, 
+               CAST(CAST(dbo.GetDaytimeMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
+               dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS DaytimeMinutes
+FROM  dbo.newvwCalendarEvents INNER JOIN
+               dbo.Contact ON dbo.newvwCalendarEvents.TeacherId = dbo.Contact.ContactId INNER JOIN
+               dbo.Course ON dbo.newvwCalendarEvents.EventId = dbo.Course.EventId
 ' 
 GO
 SET ANSI_NULLS ON
@@ -341,35 +319,6 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByMidtermEventId]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByMidtermEventId]
-AS
-SELECT     dbo.newvwCourseEventsByInitialEventId.CalendarEventId, dbo.newvwCourseEventsByInitialEventId.EventId, 
-                      dbo.newvwCourseEventsByInitialEventId.StartDateTime, dbo.newvwCourseEventsByInitialEventId.EndDateTime, 
-                      dbo.newvwCourseEventsByInitialEventId.EventType, dbo.newvwCourseEventsByInitialEventId.EventName, 
-                      dbo.newvwCourseEventsByInitialEventId.EventStatus, dbo.newvwCourseEventsByInitialEventId.TeacherId, 
-                      dbo.newvwCourseEventsByInitialEventId.InstructorName, dbo.newvwCourseEventsByInitialEventId.ScheduledHours, 
-                      dbo.newvwCourseEventsByInitialEventId.DayName, dbo.newvwCourseEventsByInitialEventId.BasePayField, 
-                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.ProgramId IS NULL 
-                      THEN Course.ProgramId ELSE dbo.newvwCourseEventsByInitialEventId.ProgramId END AS ProgramId, 
-                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.Name IS NULL 
-                      THEN Course.Name ELSE dbo.newvwCourseEventsByInitialEventId.Name END AS Name, 
-                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.CourseID IS NULL 
-                      THEN Course.CourseID ELSE dbo.newvwCourseEventsByInitialEventId.CourseID END AS CourseID, 
-                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.CourseType IS NULL 
-                      THEN Course.CourseType ELSE dbo.newvwCourseEventsByInitialEventId.CourseType END AS CourseType, 
-                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.HomeworkMinutes IS NULL 
-                      THEN Course.HomeworkMinutes ELSE dbo.newvwCourseEventsByInitialEventId.HomeworkMinutes END AS HomeworkMinutes, 
-                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.CouseStatus IS NULL 
-                      THEN Course.CourseStatus ELSE dbo.newvwCourseEventsByInitialEventId.CouseStatus END AS CourseStatus
-FROM         dbo.newvwCourseEventsByInitialEventId LEFT OUTER JOIN
-                      dbo.Course ON dbo.newvwCourseEventsByInitialEventId.EventId = dbo.Course.TestMidtermEventId
-' 
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[viewSimpleProgramInfo]'))
 EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[viewSimpleProgramInfo]
 AS
@@ -382,6 +331,32 @@ SELECT     dbo.Program.ProgramId, dbo.Course.CourseId, dbo.Course.EventId, CASE 
                       IS NULL THEN ''None'' ELSE CONVERT(nvarchar(38), dbo.GetEndDateTimeForEventID(dbo.Course.EventId), 1) END AS EndDateTime
 FROM         dbo.Program INNER JOIN
                       dbo.Course ON dbo.Program.ProgramId = dbo.Course.ProgramId
+' 
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByInitialEventId]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByInitialEventId]
+AS
+SELECT     dbo.newvwCourseEventsByEventID.CalendarEventId, dbo.newvwCourseEventsByEventID.EventId, dbo.newvwCourseEventsByEventID.StartDateTime, 
+                      dbo.newvwCourseEventsByEventID.EndDateTime, dbo.newvwCourseEventsByEventID.EventType, dbo.newvwCourseEventsByEventID.EventName, 
+                      dbo.newvwCourseEventsByEventID.EventStatus, dbo.newvwCourseEventsByEventID.TeacherId, dbo.newvwCourseEventsByEventID.InstructorName, 
+                      dbo.newvwCourseEventsByEventID.ScheduledHours, dbo.newvwCourseEventsByEventID.DayName, 
+                      dbo.newvwCourseEventsByEventID.BasePayField, CASE WHEN dbo.newvwCourseEventsByEventID.ProgramId IS NULL 
+                      THEN Course.ProgramID ELSE dbo.newvwCourseEventsByEventID.ProgramId END AS ProgramId, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.Name IS NULL THEN Course.Name ELSE dbo.newvwCourseEventsByEventID.Name END AS Name, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseID IS NULL 
+                      THEN Course.CourseID ELSE dbo.newvwCourseEventsByEventID.CourseID END AS CourseID, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseType IS NULL 
+                      THEN Course.CourseType ELSE dbo.newvwCourseEventsByEventID.CourseType END AS CourseType, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.HomeworkMinutes IS NULL 
+                      THEN Course.HomeworkMinutes ELSE dbo.newvwCourseEventsByEventID.HomeworkMinutes END AS HomeworkMinutes, 
+                      CASE WHEN dbo.newvwCourseEventsByEventID.CourseStatus IS NULL 
+                      THEN Course.CourseStatus ELSE dbo.newvwCourseEventsByEventID.CourseStatus END AS CouseStatus
+FROM         dbo.newvwCourseEventsByEventID LEFT OUTER JOIN
+                      dbo.Course ON dbo.newvwCourseEventsByEventID.EventId = dbo.Course.TestInitialEventId
 ' 
 GO
 SET ANSI_NULLS ON
@@ -443,21 +418,29 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructors]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructors]
+IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCourseEventsByMidtermEventId]'))
+EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCourseEventsByMidtermEventId]
 AS
-SELECT dbo.newvwCalendarEventInstructorsWithNullGhosts.CalendarEventId, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventId,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.StartDateTime, dbo.newvwCalendarEventInstructorsWithNullGhosts.EndDateTime,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.EventType, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventName, 
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.ScheduledTeacherId, dbo.newvwCalendarEventInstructorsWithNullGhosts.RealTeacherId,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.IsHoliday, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventStatus,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.TeacherId, dbo.newvwCalendarEventInstructorsWithNullGhosts.EventMinutes,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.ScheduledHours, dbo.newvwCalendarEventInstructorsWithNullGhosts.DayName,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.InstructorName, dbo.newvwCalendarEventInstructorsWithNullGhosts.BasePayField,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.SaturdayMinutes, dbo.newvwCalendarEventInstructorsWithNullGhosts.MorningMinutes,
-               dbo.newvwCalendarEventInstructorsWithNullGhosts.EveningMinutes, dbo.newvwCalendarEventInstructorsWithNullGhosts.DaytimeMinutes
-FROM  dbo.newvwCalendarEventInstructorsWithNullGhosts INNER JOIN
-               dbo.Course ON dbo.newvwCalendarEventInstructorsWithNullGhosts.EventId = dbo.Course.EventId
+SELECT     dbo.newvwCourseEventsByInitialEventId.CalendarEventId, dbo.newvwCourseEventsByInitialEventId.EventId, 
+                      dbo.newvwCourseEventsByInitialEventId.StartDateTime, dbo.newvwCourseEventsByInitialEventId.EndDateTime, 
+                      dbo.newvwCourseEventsByInitialEventId.EventType, dbo.newvwCourseEventsByInitialEventId.EventName, 
+                      dbo.newvwCourseEventsByInitialEventId.EventStatus, dbo.newvwCourseEventsByInitialEventId.TeacherId, 
+                      dbo.newvwCourseEventsByInitialEventId.InstructorName, dbo.newvwCourseEventsByInitialEventId.ScheduledHours, 
+                      dbo.newvwCourseEventsByInitialEventId.DayName, dbo.newvwCourseEventsByInitialEventId.BasePayField, 
+                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.ProgramId IS NULL 
+                      THEN Course.ProgramId ELSE dbo.newvwCourseEventsByInitialEventId.ProgramId END AS ProgramId, 
+                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.Name IS NULL 
+                      THEN Course.Name ELSE dbo.newvwCourseEventsByInitialEventId.Name END AS Name, 
+                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.CourseID IS NULL 
+                      THEN Course.CourseID ELSE dbo.newvwCourseEventsByInitialEventId.CourseID END AS CourseID, 
+                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.CourseType IS NULL 
+                      THEN Course.CourseType ELSE dbo.newvwCourseEventsByInitialEventId.CourseType END AS CourseType, 
+                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.HomeworkMinutes IS NULL 
+                      THEN Course.HomeworkMinutes ELSE dbo.newvwCourseEventsByInitialEventId.HomeworkMinutes END AS HomeworkMinutes, 
+                      CASE WHEN dbo.newvwCourseEventsByInitialEventId.CouseStatus IS NULL 
+                      THEN Course.CourseStatus ELSE dbo.newvwCourseEventsByInitialEventId.CouseStatus END AS CourseStatus
+FROM         dbo.newvwCourseEventsByInitialEventId LEFT OUTER JOIN
+                      dbo.Course ON dbo.newvwCourseEventsByInitialEventId.EventId = dbo.Course.TestMidtermEventId
 ' 
 GO
 SET ANSI_NULLS ON
