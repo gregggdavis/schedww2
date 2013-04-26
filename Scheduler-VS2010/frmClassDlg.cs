@@ -193,6 +193,8 @@ namespace Scheduler
         NormalPrinting nm = null;
         private CheckBox chkEventStatus_I;
         private TextBox txtChangeReason_I;
+        private TextBox textBoxBreakDuration;
+        private Label label15;
         private Label lblChangeReason_I;
         //BusinessLayer.DevExpressPrinting xtraPrinting;
         #endregion
@@ -430,6 +432,8 @@ namespace Scheduler
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClassDlg));
             this.tbcCourse = new System.Windows.Forms.TabControl();
             this.tbpCourse = new System.Windows.Forms.TabPage();
+            this.textBoxBreakDuration = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtCourseName = new System.Windows.Forms.TextBox();
             this.txtNickName = new System.Windows.Forms.TextBox();
             this.lblNickName = new System.Windows.Forms.Label();
@@ -586,12 +590,14 @@ namespace Scheduler
             this.tbcCourse.Name = "tbcCourse";
             this.tbcCourse.SelectedIndex = 0;
             this.tbcCourse.ShowToolTips = true;
-            this.tbcCourse.Size = new System.Drawing.Size(770, 691);
+            this.tbcCourse.Size = new System.Drawing.Size(1052, 691);
             this.tbcCourse.TabIndex = 0;
             this.tbcCourse.SelectedIndexChanged += new System.EventHandler(this.tbcCourse_SelectedIndexChanged);
             // 
             // tbpCourse
             // 
+            this.tbpCourse.Controls.Add(this.textBoxBreakDuration);
+            this.tbpCourse.Controls.Add(this.label15);
             this.tbpCourse.Controls.Add(this.txtCourseName);
             this.tbpCourse.Controls.Add(this.txtNickName);
             this.tbpCourse.Controls.Add(this.lblNickName);
@@ -640,10 +646,32 @@ namespace Scheduler
             this.tbpCourse.Controls.Add(this.cmbStatus);
             this.tbpCourse.Location = new System.Drawing.Point(4, 26);
             this.tbpCourse.Name = "tbpCourse";
-            this.tbpCourse.Size = new System.Drawing.Size(762, 661);
+            this.tbpCourse.Size = new System.Drawing.Size(1044, 661);
             this.tbpCourse.TabIndex = 0;
             this.tbpCourse.Text = "Class";
             this.tbpCourse.UseVisualStyleBackColor = true;
+            // 
+            // textBoxBreakDuration
+            // 
+            this.textBoxBreakDuration.Location = new System.Drawing.Point(291, 605);
+            this.textBoxBreakDuration.MaxLength = 15;
+            this.textBoxBreakDuration.Name = "textBoxBreakDuration";
+            this.textBoxBreakDuration.Size = new System.Drawing.Size(101, 24);
+            this.textBoxBreakDuration.TabIndex = 17;
+            this.textBoxBreakDuration.Tag = "N";
+            this.textBoxBreakDuration.Text = "0";
+            this.textBoxBreakDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxBreakDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumberStudents_KeyPress);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label15.Location = new System.Drawing.Point(90, 608);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(163, 17);
+            this.label15.TabIndex = 339;
+            this.label15.Text = "Break Duration in Minutes";
             // 
             // txtCourseName
             // 
@@ -785,7 +813,7 @@ namespace Scheduler
             this.llblFinalEvt.Location = new System.Drawing.Point(291, 515);
             this.llblFinalEvt.Name = "llblFinalEvt";
             this.llblFinalEvt.Size = new System.Drawing.Size(448, 25);
-            this.llblFinalEvt.TabIndex = 12;
+            this.llblFinalEvt.TabIndex = 15;
             this.llblFinalEvt.TabStop = true;
             this.llblFinalEvt.Text = "None";
             this.llblFinalEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblFinalEvt_LinkClicked);
@@ -798,7 +826,7 @@ namespace Scheduler
             this.llblMidEvt.Location = new System.Drawing.Point(291, 457);
             this.llblMidEvt.Name = "llblMidEvt";
             this.llblMidEvt.Size = new System.Drawing.Size(448, 25);
-            this.llblMidEvt.TabIndex = 11;
+            this.llblMidEvt.TabIndex = 13;
             this.llblMidEvt.TabStop = true;
             this.llblMidEvt.Text = "None";
             this.llblMidEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblMidEvt_LinkClicked);
@@ -811,7 +839,7 @@ namespace Scheduler
             this.llblInitialEvt.Location = new System.Drawing.Point(291, 401);
             this.llblInitialEvt.Name = "llblInitialEvt";
             this.llblInitialEvt.Size = new System.Drawing.Size(448, 25);
-            this.llblInitialEvt.TabIndex = 10;
+            this.llblInitialEvt.TabIndex = 11;
             this.llblInitialEvt.TabStop = true;
             this.llblInitialEvt.Text = "None";
             this.llblInitialEvt.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblInitialEvt_LinkClicked);
@@ -906,7 +934,7 @@ namespace Scheduler
             this.txtFinalForm.MaxLength = 50;
             this.txtFinalForm.Name = "txtFinalForm";
             this.txtFinalForm.Size = new System.Drawing.Size(448, 24);
-            this.txtFinalForm.TabIndex = 17;
+            this.txtFinalForm.TabIndex = 16;
             // 
             // label8
             // 
@@ -925,7 +953,7 @@ namespace Scheduler
             this.txtMidtermForm.MaxLength = 50;
             this.txtMidtermForm.Name = "txtMidtermForm";
             this.txtMidtermForm.Size = new System.Drawing.Size(448, 24);
-            this.txtMidtermForm.TabIndex = 16;
+            this.txtMidtermForm.TabIndex = 14;
             // 
             // label9
             // 
@@ -944,7 +972,7 @@ namespace Scheduler
             this.txtInitialForm.MaxLength = 50;
             this.txtInitialForm.Name = "txtInitialForm";
             this.txtInitialForm.Size = new System.Drawing.Size(448, 24);
-            this.txtInitialForm.TabIndex = 15;
+            this.txtInitialForm.TabIndex = 12;
             // 
             // label10
             // 
@@ -1006,11 +1034,11 @@ namespace Scheduler
             // 
             // txtHomeWorkMinutes
             // 
-            this.txtHomeWorkMinutes.Location = new System.Drawing.Point(638, 605);
+            this.txtHomeWorkMinutes.Location = new System.Drawing.Point(638, 631);
             this.txtHomeWorkMinutes.MaxLength = 15;
             this.txtHomeWorkMinutes.Name = "txtHomeWorkMinutes";
             this.txtHomeWorkMinutes.Size = new System.Drawing.Size(101, 24);
-            this.txtHomeWorkMinutes.TabIndex = 14;
+            this.txtHomeWorkMinutes.TabIndex = 19;
             this.txtHomeWorkMinutes.Tag = "N";
             this.txtHomeWorkMinutes.Text = "0";
             this.txtHomeWorkMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1020,7 +1048,7 @@ namespace Scheduler
             // 
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label4.Location = new System.Drawing.Point(426, 607);
+            this.label4.Location = new System.Drawing.Point(426, 634);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(182, 17);
             this.label4.TabIndex = 43;
@@ -1028,11 +1056,11 @@ namespace Scheduler
             // 
             // txtNumberStudents
             // 
-            this.txtNumberStudents.Location = new System.Drawing.Point(291, 605);
+            this.txtNumberStudents.Location = new System.Drawing.Point(638, 605);
             this.txtNumberStudents.MaxLength = 15;
             this.txtNumberStudents.Name = "txtNumberStudents";
             this.txtNumberStudents.Size = new System.Drawing.Size(101, 24);
-            this.txtNumberStudents.TabIndex = 13;
+            this.txtNumberStudents.TabIndex = 18;
             this.txtNumberStudents.Tag = "N";
             this.txtNumberStudents.Text = "0";
             this.txtNumberStudents.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1042,7 +1070,7 @@ namespace Scheduler
             // 
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label3.Location = new System.Drawing.Point(90, 607);
+            this.label3.Location = new System.Drawing.Point(426, 607);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 17);
             this.label3.TabIndex = 41;
@@ -1145,7 +1173,7 @@ namespace Scheduler
             this.tbpDescription.Controls.Add(this.txtDescription);
             this.tbpDescription.Location = new System.Drawing.Point(4, 26);
             this.tbpDescription.Name = "tbpDescription";
-            this.tbpDescription.Size = new System.Drawing.Size(762, 661);
+            this.tbpDescription.Size = new System.Drawing.Size(1044, 661);
             this.tbpDescription.TabIndex = 1;
             this.tbpDescription.Text = "Description";
             this.tbpDescription.UseVisualStyleBackColor = true;
@@ -1157,7 +1185,7 @@ namespace Scheduler
             this.txtDescription.MaxLength = 4000;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(762, 661);
+            this.txtDescription.Size = new System.Drawing.Size(1044, 661);
             this.txtDescription.TabIndex = 0;
             // 
             // tbpSpecialRemarks
@@ -1165,7 +1193,7 @@ namespace Scheduler
             this.tbpSpecialRemarks.Controls.Add(this.txtRemarks);
             this.tbpSpecialRemarks.Location = new System.Drawing.Point(4, 26);
             this.tbpSpecialRemarks.Name = "tbpSpecialRemarks";
-            this.tbpSpecialRemarks.Size = new System.Drawing.Size(762, 661);
+            this.tbpSpecialRemarks.Size = new System.Drawing.Size(1044, 661);
             this.tbpSpecialRemarks.TabIndex = 2;
             this.tbpSpecialRemarks.Text = "Special Remarks";
             this.tbpSpecialRemarks.UseVisualStyleBackColor = true;
@@ -1177,7 +1205,7 @@ namespace Scheduler
             this.txtRemarks.MaxLength = 4000;
             this.txtRemarks.Multiline = true;
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(762, 661);
+            this.txtRemarks.Size = new System.Drawing.Size(1044, 661);
             this.txtRemarks.TabIndex = 1;
             // 
             // tbpCurriculam
@@ -1185,7 +1213,7 @@ namespace Scheduler
             this.tbpCurriculam.Controls.Add(this.txtCurriculam);
             this.tbpCurriculam.Location = new System.Drawing.Point(4, 26);
             this.tbpCurriculam.Name = "tbpCurriculam";
-            this.tbpCurriculam.Size = new System.Drawing.Size(762, 661);
+            this.tbpCurriculam.Size = new System.Drawing.Size(1044, 661);
             this.tbpCurriculam.TabIndex = 3;
             this.tbpCurriculam.Text = "Curriculum";
             this.tbpCurriculam.UseVisualStyleBackColor = true;
@@ -1197,7 +1225,7 @@ namespace Scheduler
             this.txtCurriculam.MaxLength = 4000;
             this.txtCurriculam.Multiline = true;
             this.txtCurriculam.Name = "txtCurriculam";
-            this.txtCurriculam.Size = new System.Drawing.Size(762, 661);
+            this.txtCurriculam.Size = new System.Drawing.Size(1044, 661);
             this.txtCurriculam.TabIndex = 2;
             // 
             // tbpClassEvent
@@ -1205,7 +1233,7 @@ namespace Scheduler
             this.tbpClassEvent.Controls.Add(this.pnlEvent);
             this.tbpClassEvent.Location = new System.Drawing.Point(4, 26);
             this.tbpClassEvent.Name = "tbpClassEvent";
-            this.tbpClassEvent.Size = new System.Drawing.Size(762, 661);
+            this.tbpClassEvent.Size = new System.Drawing.Size(1044, 661);
             this.tbpClassEvent.TabIndex = 4;
             this.tbpClassEvent.Text = "Class Event";
             this.tbpClassEvent.UseVisualStyleBackColor = true;
@@ -1218,7 +1246,7 @@ namespace Scheduler
             this.pnlEvent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEvent.Location = new System.Drawing.Point(0, 0);
             this.pnlEvent.Name = "pnlEvent";
-            this.pnlEvent.Size = new System.Drawing.Size(762, 661);
+            this.pnlEvent.Size = new System.Drawing.Size(1044, 661);
             this.pnlEvent.TabIndex = 289;
             // 
             // pnlBottom
@@ -1230,7 +1258,7 @@ namespace Scheduler
             this.pnlBottom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBottom.Location = new System.Drawing.Point(0, 617);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(762, 44);
+            this.pnlBottom.Size = new System.Drawing.Size(1044, 44);
             this.pnlBottom.TabIndex = 272;
             // 
             // btn_ClearRecc
@@ -1307,7 +1335,7 @@ namespace Scheduler
             this.pnlBody_I.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody_I.Location = new System.Drawing.Point(0, 39);
             this.pnlBody_I.Name = "pnlBody_I";
-            this.pnlBody_I.Size = new System.Drawing.Size(762, 622);
+            this.pnlBody_I.Size = new System.Drawing.Size(1044, 622);
             this.pnlBody_I.TabIndex = 275;
             // 
             // txtChangeReason_I
@@ -1859,7 +1887,7 @@ namespace Scheduler
             this.pnlTop_I.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop_I.Location = new System.Drawing.Point(0, 0);
             this.pnlTop_I.Name = "pnlTop_I";
-            this.pnlTop_I.Size = new System.Drawing.Size(762, 39);
+            this.pnlTop_I.Size = new System.Drawing.Size(1044, 39);
             this.pnlTop_I.TabIndex = 273;
             this.pnlTop_I.Visible = false;
             // 
@@ -1892,7 +1920,7 @@ namespace Scheduler
             this.tbpOtherEvents.Controls.Add(this.grdEvents);
             this.tbpOtherEvents.Location = new System.Drawing.Point(4, 26);
             this.tbpOtherEvents.Name = "tbpOtherEvents";
-            this.tbpOtherEvents.Size = new System.Drawing.Size(762, 661);
+            this.tbpOtherEvents.Size = new System.Drawing.Size(1044, 661);
             this.tbpOtherEvents.TabIndex = 8;
             this.tbpOtherEvents.Text = "Other Events";
             this.tbpOtherEvents.UseVisualStyleBackColor = true;
@@ -1905,7 +1933,7 @@ namespace Scheduler
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlButtons.Location = new System.Drawing.Point(0, 610);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(762, 51);
+            this.pnlButtons.Size = new System.Drawing.Size(1044, 51);
             this.pnlButtons.TabIndex = 32;
             // 
             // btnAdd
@@ -1946,7 +1974,7 @@ namespace Scheduler
             this.grdEvents.Location = new System.Drawing.Point(0, 0);
             this.grdEvents.MainView = this.gvwEvents;
             this.grdEvents.Name = "grdEvents";
-            this.grdEvents.Size = new System.Drawing.Size(762, 661);
+            this.grdEvents.Size = new System.Drawing.Size(1044, 661);
             this.grdEvents.TabIndex = 31;
             this.grdEvents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwEvents});
@@ -2092,7 +2120,7 @@ namespace Scheduler
             this.AutoScaleBaseSize = new System.Drawing.Size(7, 17);
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(770, 610);
+            this.ClientSize = new System.Drawing.Size(1052, 734);
             this.Controls.Add(this.btnPageSetup);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnDelete);
@@ -2337,7 +2365,8 @@ namespace Scheduler
 
 					cmbCourseType.Text = dr["CourseType"].ToString();
 					txtNumberStudents.Text = dr["NumberStudents"].ToString();
-					txtHomeWorkMinutes.Text = dr["HomeWorkMinutes"].ToString();
+                    txtHomeWorkMinutes.Text = dr["HomeWorkMinutes"].ToString();
+                    textBoxBreakDuration.Text = dr["BreakDuration"].ToString();
 
                     if (dr["CourseStatus"].ToString() == "Active")
                         cmbStatus.SelectedIndex = 0;
@@ -2530,7 +2559,8 @@ namespace Scheduler
 
 				cmbCourseType.Text = String.Empty;
 				txtNumberStudents.Text = String.Empty;
-				txtHomeWorkMinutes.Text = String.Empty;
+                txtHomeWorkMinutes.Text = String.Empty;
+                textBoxBreakDuration.Text = String.Empty;
 
 				txtInitialEvent.Text = String.Empty;
 				txtMidtermEvent.Text = String.Empty;
@@ -3773,8 +3803,12 @@ namespace Scheduler
             int homeworkMinutes = 0;
             if (txtHomeWorkMinutes.Text != "")
                 Int32.TryParse(txtHomeWorkMinutes.Text, out homeworkMinutes);
+            int breakDuration = 0;
+            if (textBoxBreakDuration.Text != "")
+                Int32.TryParse(textBoxBreakDuration.Text, out breakDuration);
             objCourse.NumberStudents = noOfStudents;
             objCourse.HomeWorkMinutes = homeworkMinutes;
+            objCourse.BreakDuration = breakDuration;
 
             objCourse.Description = txtDescription.Text;
             objCourse.SpecialRemarks = txtRemarks.Text;
@@ -4410,8 +4444,9 @@ namespace Scheduler
 			arrLabel.Add("Test Mid-term");
 			arrLabel.Add("Test Final");
 			arrLabel.Add("------");
-			arrLabel.Add("No. of Students");
-			arrLabel.Add("Homework Minutes");
+            arrLabel.Add("Break Minutes");
+            arrLabel.Add("No. of Students");
+            arrLabel.Add("Homework Minutes");
 			arrLabel.Add("Test Initial Form");
 			arrLabel.Add("Test Mid-term Form");
 			arrLabel.Add("Test Final Form");
@@ -4441,8 +4476,9 @@ namespace Scheduler
 			arrValues.Add(llblFinalEvt.Text);
 			arrValues.Add("------");
 
-			arrValues.Add(txtNumberStudents.Text);
-			arrValues.Add(txtHomeWorkMinutes.Text);
+            arrValues.Add(textBoxBreakDuration.Text);
+            arrValues.Add(txtNumberStudents.Text);
+            arrValues.Add(txtHomeWorkMinutes.Text);
 			
 			arrValues.Add(txtInitialForm.Text);
 			arrValues.Add(txtMidtermForm.Text);

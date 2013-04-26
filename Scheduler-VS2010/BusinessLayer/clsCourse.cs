@@ -27,8 +27,8 @@ namespace Scheduler.BusinessLayer
 		private string _coursetype="";
 		private string _curriculam="";
 		private int _numberstudents=0;
-		private int _homeworkminutes=0;
-		private int _eventid=0;
+        private int _homeworkminutes = 0;
+        private int _eventid = 0;
 		private int _testinieventid=0;
 		private int _testmideventid=0;
 		private int _testfinaleventid=0;
@@ -37,6 +37,7 @@ namespace Scheduler.BusinessLayer
 		private string _testfinalform="";
 		private int _coursestatus=0;
 		private string _message="";
+        private int _breakduration = 0;
         #endregion
 
         #region Properties
@@ -105,12 +106,12 @@ namespace Scheduler.BusinessLayer
 			get{return _numberstudents;}
 			set{_numberstudents=value;}
 		}
-		public int HomeWorkMinutes
-		{
-			get{return _homeworkminutes;}
-			set{_homeworkminutes=value;}
-		}
-		public int EventID
+        public int HomeWorkMinutes
+        {
+            get { return _homeworkminutes; }
+            set { _homeworkminutes = value; }
+        }
+        public int EventID
 		{
 			get{return _eventid;}
 			set{_eventid=value;}
@@ -156,6 +157,11 @@ namespace Scheduler.BusinessLayer
 			get{return _message;}
 			set{_message=value;}
         }
+        public int BreakDuration
+        {
+            get { return _breakduration; }
+            set { _breakduration = value; }
+        }
 
         #endregion
         private void BuildDataTable()
@@ -180,8 +186,8 @@ namespace Scheduler.BusinessLayer
 			_dtbl.Columns.Add(new DataColumn("SpecialRemarks", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("Curriculam", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("NumberStudents", Type.GetType("System.Int32")));
-			_dtbl.Columns.Add(new DataColumn("HomeWorkMinutes", Type.GetType("System.Int32")));
-			_dtbl.Columns.Add(new DataColumn("EventID", Type.GetType("System.Int32")));
+            _dtbl.Columns.Add(new DataColumn("HomeWorkMinutes", Type.GetType("System.Int32")));
+            _dtbl.Columns.Add(new DataColumn("EventID", Type.GetType("System.Int32")));
 			_dtbl.Columns.Add(new DataColumn("TestInitialEventID", Type.GetType("System.Int32")));
 			_dtbl.Columns.Add(new DataColumn("TestMidtermEventID", Type.GetType("System.Int32")));
 			_dtbl.Columns.Add(new DataColumn("TestFinalEventID", Type.GetType("System.Int32")));
@@ -189,11 +195,12 @@ namespace Scheduler.BusinessLayer
 			_dtbl.Columns.Add(new DataColumn("TestMidtermForm", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("TestFinalForm", Type.GetType("System.String")));
 			_dtbl.Columns.Add(new DataColumn("CourseStatus", Type.GetType("System.String")));
-			_dtbl.Columns.Add(new DataColumn("EventStartDateTime", Type.GetType("System.DateTime")));
+            _dtbl.Columns.Add(new DataColumn("BreakDuration", Type.GetType("System.Int32")));
+            _dtbl.Columns.Add(new DataColumn("EventStartDateTime", Type.GetType("System.DateTime")));
             _dtbl.Columns.Add(new DataColumn("EventEndDateTime", Type.GetType("System.DateTime")));
             _dtbl.Columns.Add(new DataColumn("OccurrenceCount", Type.GetType("System.String")));
             _dtbl.Columns.Add(new DataColumn("ScheduledInstructor", Type.GetType("System.String")));
-		}
+        }
 
         public static int CloneData(int CourseId)
 		{
@@ -340,8 +347,8 @@ namespace Scheduler.BusinessLayer
 					_specialremarks = Reader["SpecialRemarks"].ToString();
 					_curriculam = Reader["Curriculam"].ToString();
 					_numberstudents = Convert.ToInt32(Reader["NumberStudents"].ToString());
-					_homeworkminutes = Convert.ToInt32(Reader["HomeWorkMinutes"].ToString());
-					_eventid = Convert.ToInt32(Reader["EventID"].ToString());
+                    _homeworkminutes = Convert.ToInt32(Reader["HomeWorkMinutes"].ToString());
+                    _eventid = Convert.ToInt32(Reader["EventID"].ToString());
 					_testinieventid = Convert.ToInt32(Reader["TestInitialEventID"].ToString());
 					_testmideventid = Convert.ToInt32(Reader["TestMidtermEventID"].ToString());
 					_testfinaleventid = Convert.ToInt32(Reader["TestFinalEventID"].ToString());
@@ -349,6 +356,7 @@ namespace Scheduler.BusinessLayer
 					_testmidform = Reader["TestMidtermForm"].ToString();
 					_testfinalform = Reader["TestFinalForm"].ToString();
 					_coursestatus = Convert.ToInt32(Reader["CourseStatus"].ToString());
+                    _breakduration = Convert.ToInt32(Reader["BreakDuration"].ToString());
 
 					_dtbl.Rows.Add(new object[]
 		
@@ -376,7 +384,8 @@ namespace Scheduler.BusinessLayer
 						Reader["TestInitialForm"].ToString(),
 						Reader["TestMidtermForm"].ToString(),
 						Reader["TestFinalForm"].ToString(),
-						strstatus
+						strstatus,
+                        _breakduration
 					});
 				}
 				Reader.Close();
@@ -392,11 +401,16 @@ namespace Scheduler.BusinessLayer
 					startdate = getEventText(intEID, true,true,ref instructorName);
 					enddate = getEventText(intEID, false);
 
-					dr["EventStartDateTime"] = startdate;
-					dr["EventEndDateTime"] = enddate;
-                    dr["OccurrenceCount"] = getOccurrenceCount(intEID);
-                    dr["ScheduledInstructor"] = instructorName;
-					dr.AcceptChanges();
+                    // Enable these comments 1-3 in order to allow a cloned Class that has no start or end date
+                    // to be opened instead of generating an exception
+                    //1 if (startdate.ToString() != "None")
+                    //2 {
+                        dr["EventStartDateTime"] = startdate;
+                        dr["EventEndDateTime"] = enddate;
+                        dr["OccurrenceCount"] = getOccurrenceCount(intEID);
+                        dr["ScheduledInstructor"] = instructorName;
+                        dr.AcceptChanges();
+                    //3 }
 				}
 
 				return true;
@@ -605,8 +619,8 @@ namespace Scheduler.BusinessLayer
 					"CourseType, " +
 					"Curriculam, " +
 					"NumberStudents, " +
-					"HomeWorkMinutes, " +
-					"TestInitialEventID, " +
+                    "HomeWorkMinutes, " +
+                    "TestInitialEventID, " +
 					"TestMidtermEventID, " +
 					"TestFinalEventID, " +
 					"TestInitialForm, " +
@@ -616,7 +630,8 @@ namespace Scheduler.BusinessLayer
 					"CreatedByUserId, " + 
 					"DateCreated, " + 
 					"DateLastModified, " + 
-					"LastModifiedByUserID) " + 
+					"LastModifiedByUserID, " +
+                    "BreakDuration) " + 
 					"Values( " +
 					"@Name, " + 
 					"@NamePhonetic, " +
@@ -630,7 +645,7 @@ namespace Scheduler.BusinessLayer
 					"@Curriculam, " +
 					"@NumberStudents, " +
 					"@HomeWorkMinutes, " +
-					"@TestInitialEventID, " + 
+                    "@TestInitialEventID, " + 
 					"@TestMidtermEventID, " + 
 					"@TestFinalEventID, " + 
 					"@TestInitialForm, " + 
@@ -640,7 +655,8 @@ namespace Scheduler.BusinessLayer
 					"@CreatedByUserId, " + 
 					"@DateCreated, " +
 					"@DateLastModified, " +
-					"@LastModifiedByUserID " +
+					"@LastModifiedByUserID, " +
+                    "@BreakDuration " +
 					")";
 				strSql += "SELECT @@IDENTITY";
 
@@ -661,8 +677,8 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@CourseType", SqlDbType.NVarChar));
 				com.Parameters.Add(new SqlParameter("@Curriculam", SqlDbType.NVarChar));
 				com.Parameters.Add(new SqlParameter("@NumberStudents", SqlDbType.Int));
-				com.Parameters.Add(new SqlParameter("@HomeWorkMinutes", SqlDbType.Int));
-				com.Parameters.Add(new SqlParameter("@TestInitialEventID", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@HomeWorkMinutes", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@TestInitialEventID", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@TestMidtermEventID", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@TestFinalEventID", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@TestInitialForm", SqlDbType.NVarChar));
@@ -673,6 +689,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@DateCreated", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@DateLastModified", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@LastModifiedByUserID", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@BreakDuration", SqlDbType.Int));
 
 				com.Parameters["@Name"].Value = _name;
 				com.Parameters["@NamePhonetic"].Value = _namephonetic;
@@ -685,8 +702,8 @@ namespace Scheduler.BusinessLayer
 				com.Parameters["@CourseType"].Value = _coursetype;
 				com.Parameters["@Curriculam"].Value = _curriculam;
 				com.Parameters["@NumberStudents"].Value = _numberstudents;
-				com.Parameters["@HomeWorkMinutes"].Value = _homeworkminutes;
-				com.Parameters["@TestInitialEventID"].Value = _testinieventid;
+                com.Parameters["@HomeWorkMinutes"].Value = _homeworkminutes;
+                com.Parameters["@TestInitialEventID"].Value = _testinieventid;
 				com.Parameters["@TestMidtermEventID"].Value = _testmideventid;
 				com.Parameters["@TestFinalEventID"].Value = _testfinaleventid;
 				com.Parameters["@TestInitialForm"].Value = _testiniform;
@@ -697,6 +714,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters["@DateCreated"].Value = DateTime.Now;
 				com.Parameters["@DateLastModified"].Value = DateTime.Now;
 				com.Parameters["@LastModifiedByUserID"].Value = Scheduler.BusinessLayer.Common.LogonID;
+                com.Parameters["@BreakDuration"].Value = _breakduration;
 
 				SqlDataReader Reader = com.ExecuteReader();
 				if(Reader.Read())
@@ -743,8 +761,8 @@ namespace Scheduler.BusinessLayer
 					"CourseType=@CourseType, " +
 					"Curriculam=@Curriculam, " +
 					"NumberStudents=@NumberStudents, " +
-					"HomeWorkMinutes=@HomeWorkMinutes, " +
-					"TestInitialEventID=@TestInitialEventID, " +
+                    "HomeWorkMinutes=@HomeWorkMinutes, " +
+                    "TestInitialEventID=@TestInitialEventID, " +
 					"TestMidtermEventID=@TestMidtermEventID, " +
 					"TestFinalEventID=@TestFinalEventID, " +
 					"TestInitialForm=@TestInitialForm, " +
@@ -752,7 +770,8 @@ namespace Scheduler.BusinessLayer
 					"TestFinalForm=@TestFinalForm, " +
 					"CourseStatus=@CourseStatus, " + 
 					"DateLastModified=@DateLastModified, " + 
-					"LastModifiedByUserID=@LastModifiedByUserID " +
+					"LastModifiedByUserID=@LastModifiedByUserID, " +
+                    "BreakDuration=@BreakDuration " +
                     "WHERE CourseId=@CourseId ";
 
 				con=new Connection();
@@ -773,8 +792,8 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@CourseType", SqlDbType.NVarChar));
 				com.Parameters.Add(new SqlParameter("@Curriculam", SqlDbType.NVarChar));
 				com.Parameters.Add(new SqlParameter("@NumberStudents", SqlDbType.Int));
-				com.Parameters.Add(new SqlParameter("@HomeWorkMinutes", SqlDbType.Int));
-				com.Parameters.Add(new SqlParameter("@TestInitialEventID", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@HomeWorkMinutes", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@TestInitialEventID", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@TestMidtermEventID", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@TestFinalEventID", SqlDbType.Int));
 				com.Parameters.Add(new SqlParameter("@TestInitialForm", SqlDbType.NVarChar));
@@ -784,6 +803,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters.Add(new SqlParameter("@DateCreated", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@DateLastModified", SqlDbType.DateTime));
 				com.Parameters.Add(new SqlParameter("@LastModifiedByUserID", SqlDbType.Int));
+                com.Parameters.Add(new SqlParameter("@BreakDuration", SqlDbType.Int));
 
                 com.Parameters["@CourseId"].Value = _courseid;				
 				com.Parameters["@Name"].Value = _name;
@@ -797,8 +817,8 @@ namespace Scheduler.BusinessLayer
 				com.Parameters["@CourseType"].Value = _coursetype;
 				com.Parameters["@Curriculam"].Value = _curriculam;
 				com.Parameters["@NumberStudents"].Value = _numberstudents;
-				com.Parameters["@HomeWorkMinutes"].Value = _homeworkminutes;
-				com.Parameters["@TestInitialEventID"].Value = _testinieventid;
+                com.Parameters["@HomeWorkMinutes"].Value = _homeworkminutes;
+                com.Parameters["@TestInitialEventID"].Value = _testinieventid;
 				com.Parameters["@TestMidtermEventID"].Value = _testmideventid;
 				com.Parameters["@TestFinalEventID"].Value = _testfinaleventid;
 				com.Parameters["@TestInitialForm"].Value = _testiniform;
@@ -808,6 +828,7 @@ namespace Scheduler.BusinessLayer
 				com.Parameters["@DateCreated"].Value = DateTime.Now;
 				com.Parameters["@DateLastModified"].Value = DateTime.Now;
 				com.Parameters["@LastModifiedByUserID"].Value = Scheduler.BusinessLayer.Common.LogonID;
+                com.Parameters["@BreakDuration"].Value = _breakduration;
 
 				com.ExecuteNonQuery();
 
