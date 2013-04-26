@@ -61,11 +61,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewCourseN]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewCourseN]
+EXEC dbo.sp_executesql @statement = N'
+CREATE VIEW [dbo].[ViewCourseN]
 AS
 SELECT     C.CourseId, C.Name, C.NamePhonetic, C.NameRomaji, C.NickName, C.ProgramId, C.CourseType, C.EventId, C.Description, C.SpecialRemarks, C.Curriculam, 
                       C.NumberStudents, C.HomeworkMinutes, C.TestInitialEventId, C.TestMidtermEventId, C.TestFinalEventId, C.TestInitialForm, C.TestMidtermForm, C.TestFinalForm, 
-                      CASE WHEN CourseStatus = 0 THEN ''Active'' ELSE ''Inactive'' END AS CourseStatus, C.CreatedByUserId, C.DateCreated, C.DateLastModified, C.LastModifiedByUserId, 
+                      CASE WHEN CourseStatus = 0 THEN ''Active'' ELSE ''Inactive'' END AS CourseStatus, C.CreatedByUserId, C.DateCreated, C.DateLastModified, C.LastModifiedByUserId, C.BreakDuration,
                       CASE WHEN C.NickName IS NULL THEN C.Name WHEN C.NickName = '''' THEN C.Name ELSE C.NickName END AS BrowseName, P.NickName AS ProgramNickName, 
                       CASE WHEN P.NickName IS NULL THEN P.Name WHEN P.NickName = '''' THEN P.Name ELSE P.NickName END AS Program, CASE WHEN CO.NickName IS NULL 
                       THEN CO.CompanyName WHEN CO.NickName = '''' THEN CO.CompanyName ELSE CO.NickName END AS Department, CASE WHEN CO1.NickName IS NULL 
@@ -198,13 +199,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ViewClassEventsN]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[ViewClassEventsN]
+EXEC dbo.sp_executesql @statement = N'
+CREATE VIEW [dbo].[ViewClassEventsN]
 AS
 SELECT TOP (100) PERCENT CourseId, Name, NamePhonetic, NameRomaji, NickName, ProgramId, CourseType, EventId, Description, 
                       SpecialRemarks, Curriculam, NumberStudents, HomeworkMinutes, ISNULL(TestInitialEventId, 0) AS TestInitialEventId, 
                       ISNULL(TestMidtermEventId, 0) AS TestMidtermEventId, ISNULL(TestFinalEventId, 0) AS TestFinalEventId, ISNULL(TestInitialForm, 0) 
                       AS TestInitialForm, ISNULL(TestMidtermForm, 0) AS TestMidtermForm, ISNULL(TestFinalForm, 0) AS TestFinalForm, CourseStatus, 
-                      CreatedByUserId, DateCreated, DateLastModified, LastModifiedByUserId, BrowseName, ProgramNickName, Program, Department, 
+                      CreatedByUserId, DateCreated, DateLastModified, LastModifiedByUserId, BreakDuration, BrowseName, ProgramNickName, Program, Department, 
                       Client, dbo.GetEventTextStartDate(EventId) AS EventStartDateTime, dbo.GetEventTextInstructorName(EventId) 
                       AS ScheduledInstructor, dbo.GetEventTextEndDate(EventId) AS EventEndDateTime, dbo.GetEventOccurranceCount(EventId) 
                       AS OccurrenceCount
@@ -276,22 +278,23 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 IF NOT EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[newvwCalendarEventInstructors]'))
-EXEC dbo.sp_executesql @statement = N'CREATE VIEW [dbo].[newvwCalendarEventInstructors]
+EXEC dbo.sp_executesql @statement = N'
+CREATE VIEW [dbo].[newvwCalendarEventInstructors]
 AS
 SELECT dbo.newvwCalendarEvents.CalendarEventId, dbo.newvwCalendarEvents.EventId, dbo.newvwCalendarEvents.StartDateTime, 
                dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.EventType, dbo.newvwCalendarEvents.EventName, 
                dbo.newvwCalendarEvents.ScheduledTeacherId, dbo.newvwCalendarEvents.RealTeacherId, dbo.newvwCalendarEvents.IsHoliday, 
                dbo.newvwCalendarEvents.EventStatus, dbo.newvwCalendarEvents.TeacherId, CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) 
-               AS EventMinutes, CAST(CAST(dbo.newvwCalendarEvents.EventMinutes AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS ScheduledHours, 
-               dbo.newvwCalendarEvents.DayName, dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, dbo.Contact.BasePayField, 
+               AS EventMinutes, CAST(CAST(dbo.newvwCalendarEvents.EventMinutes - dbo.Course.BreakDuration AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS ScheduledHours, dbo.newvwCalendarEvents.DayName, 
+               dbo.Contact.LastName + N'', '' + dbo.Contact.FirstName AS InstructorName, dbo.Contact.BasePayField, 
                CAST(CAST(dbo.GetSaturdayMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
-               dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS SaturdayMinutes, 
-               CAST(CAST(dbo.GetMorningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-               dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS MorningMinutes, 
+               dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.DayName, dbo.Course.BreakDuration) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) 
+               AS SaturdayMinutes, CAST(CAST(dbo.GetMorningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, 
+               dbo.newvwCalendarEvents.IsHoliday, dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS MorningMinutes, 
                CAST(CAST(dbo.GetEveningMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
                dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS EveningMinutes, 
                CAST(CAST(dbo.GetDaytimeMinutes(dbo.newvwCalendarEvents.StartDateTime, dbo.newvwCalendarEvents.EndDateTime, dbo.newvwCalendarEvents.IsHoliday, 
-               dbo.newvwCalendarEvents.DayName) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS DaytimeMinutes
+               dbo.newvwCalendarEvents.DayName, dbo.Course.BreakDuration) AS Decimal(18, 2)) / 60 AS Decimal(18, 2)) AS DaytimeMinutes
 FROM  dbo.newvwCalendarEvents INNER JOIN
                dbo.Contact ON dbo.newvwCalendarEvents.TeacherId = dbo.Contact.ContactId INNER JOIN
                dbo.Course ON dbo.newvwCalendarEvents.EventId = dbo.Course.EventId
