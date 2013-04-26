@@ -75,6 +75,7 @@ namespace Scheduler
         private DevExpress.XtraGrid.Columns.GridColumn gcolScheduledInstructor;
         private DevExpress.Xpo.XPServerCollectionSource xpServerCollectionSource1;
         private DevExpress.Xpo.Session session1;
+        private GridColumn gcolBreakMinutes;
 		private bool boolFetch=true;
         #endregion
 
@@ -134,8 +135,8 @@ namespace Scheduler
             this.txt_SpeedSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grdCourse = new DevExpress.XtraGrid.GridControl();
-            this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource();
-            this.session1 = new DevExpress.Xpo.Session();
+            this.xpServerCollectionSource1 = new DevExpress.Xpo.XPServerCollectionSource(this.components);
+            this.session1 = new DevExpress.Xpo.Session(this.components);
             this.gvwCourse = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gcolCourseId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gColName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -147,6 +148,7 @@ namespace Scheduler
             this.gcolDept = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolEventDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolEndDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gcolBreakMinutes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolNumberStudents = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolHomeWorkMinutes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcolTestIniEventID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -210,16 +212,16 @@ namespace Scheduler
             this.pnl_Find.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Find.Location = new System.Drawing.Point(0, 0);
             this.pnl_Find.Name = "pnl_Find";
-            this.pnl_Find.Size = new System.Drawing.Size(672, 129);
+            this.pnl_Find.Size = new System.Drawing.Size(672, 110);
             this.pnl_Find.TabIndex = 28;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(386, 0);
+            this.panel1.Location = new System.Drawing.Point(422, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 125);
+            this.panel1.Size = new System.Drawing.Size(246, 106);
             this.panel1.TabIndex = 10;
             // 
             // pictureBox1
@@ -228,16 +230,16 @@ namespace Scheduler
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(282, 125);
+            this.pictureBox1.Size = new System.Drawing.Size(246, 106);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(102, 24);
+            this.txtSearch.Location = new System.Drawing.Point(89, 20);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(474, 27);
+            this.txtSearch.Size = new System.Drawing.Size(415, 24);
             this.txtSearch.TabIndex = 9;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
@@ -246,10 +248,10 @@ namespace Scheduler
             this.chk_Anywhere.BackColor = System.Drawing.SystemColors.Window;
             this.chk_Anywhere.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.chk_Anywhere.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_Anywhere.Location = new System.Drawing.Point(336, 63);
+            this.chk_Anywhere.Location = new System.Drawing.Point(294, 54);
             this.chk_Anywhere.Name = "chk_Anywhere";
             this.chk_Anywhere.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chk_Anywhere.Size = new System.Drawing.Size(246, 34);
+            this.chk_Anywhere.Size = new System.Drawing.Size(215, 28);
             this.chk_Anywhere.TabIndex = 7;
             this.chk_Anywhere.Text = "Search Anywhere in Fields";
             this.chk_Anywhere.UseVisualStyleBackColor = false;
@@ -258,9 +260,9 @@ namespace Scheduler
             // 
             this.btn_Clear.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Clear.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_Clear.Location = new System.Drawing.Point(592, 63);
+            this.btn_Clear.Location = new System.Drawing.Point(518, 54);
             this.btn_Clear.Name = "btn_Clear";
-            this.btn_Clear.Size = new System.Drawing.Size(120, 33);
+            this.btn_Clear.Size = new System.Drawing.Size(105, 28);
             this.btn_Clear.TabIndex = 6;
             this.btn_Clear.Text = "Clear";
             this.btn_Clear.UseVisualStyleBackColor = false;
@@ -270,9 +272,9 @@ namespace Scheduler
             // 
             this.btn_Find.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Find.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_Find.Location = new System.Drawing.Point(592, 21);
+            this.btn_Find.Location = new System.Drawing.Point(518, 18);
             this.btn_Find.Name = "btn_Find";
-            this.btn_Find.Size = new System.Drawing.Size(120, 33);
+            this.btn_Find.Size = new System.Drawing.Size(105, 28);
             this.btn_Find.TabIndex = 4;
             this.btn_Find.Text = "Find";
             this.btn_Find.UseVisualStyleBackColor = false;
@@ -281,9 +283,9 @@ namespace Scheduler
             // lbl_Find
             // 
             this.lbl_Find.AutoSize = true;
-            this.lbl_Find.Location = new System.Drawing.Point(24, 27);
+            this.lbl_Find.Location = new System.Drawing.Point(21, 23);
             this.lbl_Find.Name = "lbl_Find";
-            this.lbl_Find.Size = new System.Drawing.Size(46, 21);
+            this.lbl_Find.Size = new System.Drawing.Size(37, 17);
             this.lbl_Find.TabIndex = 0;
             this.lbl_Find.Text = " Find";
             // 
@@ -294,10 +296,10 @@ namespace Scheduler
             this.chk_AdvanceSearch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chk_AdvanceSearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.chk_AdvanceSearch.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_AdvanceSearch.Location = new System.Drawing.Point(102, 63);
+            this.chk_AdvanceSearch.Location = new System.Drawing.Point(89, 54);
             this.chk_AdvanceSearch.Name = "chk_AdvanceSearch";
             this.chk_AdvanceSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chk_AdvanceSearch.Size = new System.Drawing.Size(180, 34);
+            this.chk_AdvanceSearch.Size = new System.Drawing.Size(158, 28);
             this.chk_AdvanceSearch.TabIndex = 8;
             this.chk_AdvanceSearch.Text = "Search All Fields";
             this.chk_AdvanceSearch.UseVisualStyleBackColor = false;
@@ -318,9 +320,9 @@ namespace Scheduler
             // 
             this.pnl_SpeedSearch.BackColor = System.Drawing.Color.Black;
             this.pnl_SpeedSearch.Controls.Add(this.pnl_SpeedSearch1);
-            this.pnl_SpeedSearch.Location = new System.Drawing.Point(64, 309);
+            this.pnl_SpeedSearch.Location = new System.Drawing.Point(56, 263);
             this.pnl_SpeedSearch.Name = "pnl_SpeedSearch";
-            this.pnl_SpeedSearch.Size = new System.Drawing.Size(307, 102);
+            this.pnl_SpeedSearch.Size = new System.Drawing.Size(269, 86);
             this.pnl_SpeedSearch.TabIndex = 42;
             this.pnl_SpeedSearch.Visible = false;
             // 
@@ -330,30 +332,30 @@ namespace Scheduler
             this.pnl_SpeedSearch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_SpeedSearch1.Controls.Add(this.txt_SpeedSearch);
             this.pnl_SpeedSearch1.Controls.Add(this.label1);
-            this.pnl_SpeedSearch1.Location = new System.Drawing.Point(6, 6);
+            this.pnl_SpeedSearch1.Location = new System.Drawing.Point(5, 5);
             this.pnl_SpeedSearch1.Name = "pnl_SpeedSearch1";
-            this.pnl_SpeedSearch1.Size = new System.Drawing.Size(295, 91);
+            this.pnl_SpeedSearch1.Size = new System.Drawing.Size(258, 77);
             this.pnl_SpeedSearch1.TabIndex = 39;
             // 
             // txt_SpeedSearch
             // 
-            this.txt_SpeedSearch.Location = new System.Drawing.Point(18, 41);
+            this.txt_SpeedSearch.Location = new System.Drawing.Point(16, 35);
             this.txt_SpeedSearch.Name = "txt_SpeedSearch";
-            this.txt_SpeedSearch.Size = new System.Drawing.Size(251, 27);
+            this.txt_SpeedSearch.Size = new System.Drawing.Size(219, 24);
             this.txt_SpeedSearch.TabIndex = 10;
             this.txt_SpeedSearch.TextChanged += new System.EventHandler(this.txt_SpeedSearch_TextChanged);
             this.txt_SpeedSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyDown);
-            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
             this.txt_SpeedSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_SpeedSearch_KeyUp);
+            this.txt_SpeedSearch.Leave += new System.EventHandler(this.txt_SpeedSearch_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(90, 6);
+            this.label1.Location = new System.Drawing.Point(79, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 19);
+            this.label1.Size = new System.Drawing.Size(91, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fast Search";
             // 
@@ -362,15 +364,14 @@ namespace Scheduler
             this.grdCourse.DataSource = this.xpServerCollectionSource1;
             this.grdCourse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdCourse.ExternalRepository = this.persistentRepository1;
-            this.grdCourse.Location = new System.Drawing.Point(0, 129);
+            this.grdCourse.Location = new System.Drawing.Point(0, 110);
             this.grdCourse.MainView = this.gvwCourse;
             this.grdCourse.Name = "grdCourse";
             this.grdCourse.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemButtonEdit1,
             this.repositoryItemTimeEdit2});
-            //this.grdCourse.ServerMode = true;
-            this.grdCourse.Size = new System.Drawing.Size(672, 228);
+            this.grdCourse.Size = new System.Drawing.Size(672, 247);
             this.grdCourse.TabIndex = 26;
             this.grdCourse.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwCourse});
@@ -381,6 +382,10 @@ namespace Scheduler
             // 
             this.xpServerCollectionSource1.ObjectType = typeof(Scheduler.BusinessLayer.CoursePO);
             this.xpServerCollectionSource1.Session = this.session1;
+            // 
+            // session1
+            // 
+            this.session1.TrackPropertiesModifications = false;
             // 
             // gvwCourse
             // 
@@ -397,6 +402,7 @@ namespace Scheduler
             this.gcolDept,
             this.gcolEventDateTime,
             this.gcolEndDateTime,
+            this.gcolBreakMinutes,
             this.gcolNumberStudents,
             this.gcolHomeWorkMinutes,
             this.gcolTestIniEventID,
@@ -515,6 +521,12 @@ namespace Scheduler
             this.gcolEndDateTime.VisibleIndex = 5;
             this.gcolEndDateTime.Width = 160;
             // 
+            // gcolBreakMinutes
+            // 
+            this.gcolBreakMinutes.Caption = "Break Min";
+            this.gcolBreakMinutes.FieldName = "BreakDuration";
+            this.gcolBreakMinutes.Name = "gcolBreakMinutes";
+            // 
             // gcolNumberStudents
             // 
             this.gcolNumberStudents.Caption = "No. Students";
@@ -523,10 +535,9 @@ namespace Scheduler
             // 
             // gcolHomeWorkMinutes
             // 
-            this.gcolHomeWorkMinutes.Caption = "Homework Mints.";
+            this.gcolHomeWorkMinutes.Caption = "Homework Min";
             this.gcolHomeWorkMinutes.FieldName = "HomeWorkMinutes";
             this.gcolHomeWorkMinutes.Name = "gcolHomeWorkMinutes";
-            this.gcolHomeWorkMinutes.Width = 76;
             // 
             // gcolTestIniEventID
             // 
@@ -665,7 +676,7 @@ namespace Scheduler
             // 
             // frmCourseBrw
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size(8, 20);
+            this.AutoScaleBaseSize = new System.Drawing.Size(7, 17);
             this.ClientSize = new System.Drawing.Size(672, 357);
             this.Controls.Add(this.pnlBody);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

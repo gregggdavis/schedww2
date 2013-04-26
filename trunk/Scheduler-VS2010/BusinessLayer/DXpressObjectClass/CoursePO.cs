@@ -50,6 +50,7 @@ namespace Scheduler.BusinessLayer
         public DateTime DateCreated;
         public DateTime DateLastModified;
         public int LastModifiedByUserId;
+        public int BreakDuration;
         public string BrowseName;
         public string ProgramNickName;
         public string Program;
