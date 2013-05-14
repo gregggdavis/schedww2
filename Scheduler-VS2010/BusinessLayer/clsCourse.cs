@@ -401,7 +401,7 @@ namespace Scheduler.BusinessLayer
 					startdate = getEventText(intEID, true,true,ref instructorName);
 					enddate = getEventText(intEID, false);
 
-                    // Enable these comments 1-3 in order to allow a cloned Class that has no start or end date
+                    // gad - Enable these comments 1-3 in order to allow a cloned Class that has no start or end date
                     // to be opened instead of generating an exception
                     //1 if (startdate.ToString() != "None")
                     //2 {
