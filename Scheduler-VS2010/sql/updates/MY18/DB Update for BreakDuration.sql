@@ -49,6 +49,7 @@ BEGIN
 	RETURN @minutes
 
 END
+GO
 
 
 
@@ -99,6 +100,7 @@ BEGIN
 	RETURN @minutes
 
 END
+GO
 
 
 
