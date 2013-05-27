@@ -297,7 +297,7 @@ namespace Scheduler
 		private void frmUserLogin_Load(object sender, System.EventArgs e)
 		{
 			this.txtPwd.PasswordChar = '\u25CF';
-			this.Text = "SCHEDULER (" + Common.GetShortVersionInfo() + ")";
+            this.Text = "Kurdyla Scheduler (" + Common.GetShortVersionInfo() + ")";
 
 			this.ActiveControl=txtUser;
 
