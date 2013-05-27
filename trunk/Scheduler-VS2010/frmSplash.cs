@@ -73,7 +73,6 @@ namespace Scheduler
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label3);
@@ -84,7 +83,7 @@ namespace Scheduler
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(523, 350);
+            this.panel1.Size = new System.Drawing.Size(482, 304);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox2
@@ -149,8 +148,9 @@ namespace Scheduler
             // frmSplash
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 15);
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(523, 350);
+            this.ClientSize = new System.Drawing.Size(482, 304);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSplash";

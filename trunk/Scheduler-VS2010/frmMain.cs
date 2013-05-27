@@ -1584,7 +1584,7 @@ namespace Scheduler
 					Refresh();
 
 					//Open the Login Dialog
-					Text = "SCHEDULER (" + Common.GetShortVersionInfo() + ")";
+					Text = "Kurdyla Scheduler (" + Common.GetShortVersionInfo() + ")";
 					if (fLogin.ShowDialog() == DialogResult.OK)
 					{
 						sPnlDate.Text = DateTime.Now.ToString();
