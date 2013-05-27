@@ -590,7 +590,7 @@ namespace Scheduler.BusinessLayer
 
                 string strVersion = "Version " + assemblyname.Version.Major.ToString() + "." +
                     assemblyname.Version.Minor.ToString() + "." +
-                    assemblyname.Version.Build.ToString() + " (VS2010 / DEXP12.2.7)";
+                    assemblyname.Version.Build.ToString() + " (VS2012 / DEXP12.2.7)";
 					//assemblyname.Version.Revision.ToString();
 				mShortVersionInfo = strVersion;
 				return strVersion;

@@ -92,7 +92,7 @@ namespace Scheduler
             this.lblVersionText.Name = "lblVersionText";
             this.lblVersionText.Size = new System.Drawing.Size(229, 17);
             this.lblVersionText.TabIndex = 1;
-            this.lblVersionText.Text = "1.17.0.0 VS2010 DEVEXP12.2.7";
+            this.lblVersionText.Text = "1.17.0.0 VS2012 DEVEXP12.2.7";
             // 
             // pnlTop
             // 
