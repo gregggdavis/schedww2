@@ -182,7 +182,7 @@ namespace Scheduler
             this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
             this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.White;
             this.gridView1.Appearance.GroupRow.BackColor2 = System.Drawing.Color.White;
-            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
             this.gridView1.Appearance.GroupRow.Options.UseFont = true;
             this.gridView1.AppearancePrint.FooterPanel.BackColor = System.Drawing.Color.White;
@@ -193,7 +193,7 @@ namespace Scheduler
             this.gridView1.AppearancePrint.GroupFooter.Options.UseBackColor = true;
             this.gridView1.AppearancePrint.GroupRow.BackColor = System.Drawing.Color.White;
             this.gridView1.AppearancePrint.GroupRow.BackColor2 = System.Drawing.Color.White;
-            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.gridView1.AppearancePrint.GroupRow.Options.UseBackColor = true;
             this.gridView1.AppearancePrint.GroupRow.Options.UseFont = true;
             this.gridView1.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.White;
@@ -212,8 +212,8 @@ namespace Scheduler
             this.gridView1.GroupCount = 2;
             this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", null, "Total Hours = {0:n1}"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", this.colTotalHours, "Total Hours = {0:n1}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", null, "Total Hours = {0:n2}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", this.colTotalHours, "Total Hours = {0:n2}"),
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", this.colTotal, "Total = {0:n0}"),
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Max, "BasePayField", null, "Max Base Rate = {0}"),
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Max, "BasePayField", this.colBasePayField, "Max Base Rate = {0}"),
@@ -259,7 +259,7 @@ namespace Scheduler
             this.colTotalHours.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colTotalHours.OptionsColumn.ReadOnly = true;
             this.colTotalHours.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", "Total Hours = {0:n1}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHours", "Total Hours = {0:n2}")});
             this.colTotalHours.Visible = true;
             this.colTotalHours.VisibleIndex = 1;
             this.colTotalHours.Width = 284;
