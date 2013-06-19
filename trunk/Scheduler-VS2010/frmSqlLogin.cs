@@ -71,211 +71,214 @@ namespace Scheduler
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(frmSqlLogin));
-			this.GroupBox1 = new System.Windows.Forms.GroupBox();
-			this.GroupBox2 = new System.Windows.Forms.GroupBox();
-			this.rbtnSQLAuth = new System.Windows.Forms.RadioButton();
-			this.rbtnWindowsAuth = new System.Windows.Forms.RadioButton();
-			this.txtPwd = new System.Windows.Forms.TextBox();
-			this.txtLogin = new System.Windows.Forms.TextBox();
-			this.Label2 = new System.Windows.Forms.Label();
-			this.lblConnection = new System.Windows.Forms.Label();
-			this.Label6 = new System.Windows.Forms.Label();
-			this.Label1 = new System.Windows.Forms.Label();
-			this.TextBox2 = new System.Windows.Forms.TextBox();
-			this.lblServer = new System.Windows.Forms.Label();
-			this.TextBox1 = new System.Windows.Forms.TextBox();
-			this.btnClose = new System.Windows.Forms.Button();
-			this.btnLogin = new System.Windows.Forms.Button();
-			this.label3 = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// GroupBox1
-			// 
-			this.GroupBox1.BackColor = System.Drawing.Color.PeachPuff;
-			this.GroupBox1.Location = new System.Drawing.Point(8, 264);
-			this.GroupBox1.Name = "GroupBox1";
-			this.GroupBox1.Size = new System.Drawing.Size(288, 2);
-			this.GroupBox1.TabIndex = 82;
-			this.GroupBox1.TabStop = false;
-			// 
-			// GroupBox2
-			// 
-			this.GroupBox2.BackColor = System.Drawing.Color.PeachPuff;
-			this.GroupBox2.Location = new System.Drawing.Point(88, 136);
-			this.GroupBox2.Name = "GroupBox2";
-			this.GroupBox2.Size = new System.Drawing.Size(200, 2);
-			this.GroupBox2.TabIndex = 81;
-			this.GroupBox2.TabStop = false;
-			// 
-			// rbtnSQLAuth
-			// 
-			this.rbtnSQLAuth.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.rbtnSQLAuth.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.rbtnSQLAuth.Location = new System.Drawing.Point(32, 176);
-			this.rbtnSQLAuth.Name = "rbtnSQLAuth";
-			this.rbtnSQLAuth.Size = new System.Drawing.Size(184, 16);
-			this.rbtnSQLAuth.TabIndex = 3;
-			this.rbtnSQLAuth.Text = "Use SQL Server Authentication";
-			this.rbtnSQLAuth.CheckedChanged += new System.EventHandler(this.rbtnSQLAuth_CheckedChanged);
-			// 
-			// rbtnWindowsAuth
-			// 
-			this.rbtnWindowsAuth.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.rbtnWindowsAuth.Checked = true;
-			this.rbtnWindowsAuth.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.rbtnWindowsAuth.Location = new System.Drawing.Point(32, 152);
-			this.rbtnWindowsAuth.Name = "rbtnWindowsAuth";
-			this.rbtnWindowsAuth.Size = new System.Drawing.Size(184, 16);
-			this.rbtnWindowsAuth.TabIndex = 2;
-			this.rbtnWindowsAuth.TabStop = true;
-			this.rbtnWindowsAuth.Text = "Use Windows Authentication";
-			this.rbtnWindowsAuth.CheckedChanged += new System.EventHandler(this.rbtnWindowsAuth_CheckedChanged);
-			// 
-			// txtPwd
-			// 
-			this.txtPwd.Enabled = false;
-			this.txtPwd.Location = new System.Drawing.Point(104, 232);
-			this.txtPwd.Name = "txtPwd";
-			this.txtPwd.Size = new System.Drawing.Size(184, 21);
-			this.txtPwd.TabIndex = 5;
-			this.txtPwd.Text = "";
-			// 
-			// txtLogin
-			// 
-			this.txtLogin.Enabled = false;
-			this.txtLogin.Location = new System.Drawing.Point(104, 208);
-			this.txtLogin.Name = "txtLogin";
-			this.txtLogin.Size = new System.Drawing.Size(184, 21);
-			this.txtLogin.TabIndex = 4;
-			this.txtLogin.Text = "";
-			// 
-			// Label2
-			// 
-			this.Label2.AutoSize = true;
-			this.Label2.Location = new System.Drawing.Point(32, 232);
-			this.Label2.Name = "Label2";
-			this.Label2.Size = new System.Drawing.Size(51, 17);
-			this.Label2.TabIndex = 77;
-			this.Label2.Text = "Password";
-			// 
-			// lblConnection
-			// 
-			this.lblConnection.AutoSize = true;
-			this.lblConnection.Location = new System.Drawing.Point(32, 128);
-			this.lblConnection.Name = "lblConnection";
-			this.lblConnection.Size = new System.Drawing.Size(60, 17);
-			this.lblConnection.TabIndex = 79;
-			this.lblConnection.Text = "Connection";
-			// 
-			// Label6
-			// 
-			this.Label6.AutoSize = true;
-			this.Label6.Location = new System.Drawing.Point(32, 208);
-			this.Label6.Name = "Label6";
-			this.Label6.Size = new System.Drawing.Size(64, 17);
-			this.Label6.TabIndex = 78;
-			this.Label6.Text = "Login Name";
-			// 
-			// Label1
-			// 
-			this.Label1.AutoSize = true;
-			this.Label1.Location = new System.Drawing.Point(32, 96);
-			this.Label1.Name = "Label1";
-			this.Label1.Size = new System.Drawing.Size(51, 17);
-			this.Label1.TabIndex = 76;
-			this.Label1.Text = "Database";
-			// 
-			// TextBox2
-			// 
-			this.TextBox2.Location = new System.Drawing.Point(104, 94);
-			this.TextBox2.Name = "TextBox2";
-			this.TextBox2.Size = new System.Drawing.Size(184, 21);
-			this.TextBox2.TabIndex = 1;
-			this.TextBox2.Text = "SchedulerDB";
-			// 
-			// lblServer
-			// 
-			this.lblServer.AutoSize = true;
-			this.lblServer.Location = new System.Drawing.Point(32, 69);
-			this.lblServer.Name = "lblServer";
-			this.lblServer.Size = new System.Drawing.Size(36, 17);
-			this.lblServer.TabIndex = 75;
-			this.lblServer.Text = "Server";
-			// 
-			// TextBox1
-			// 
-			this.TextBox1.Location = new System.Drawing.Point(104, 67);
-			this.TextBox1.Name = "TextBox1";
-			this.TextBox1.Size = new System.Drawing.Size(184, 21);
-			this.TextBox1.TabIndex = 0;
-			this.TextBox1.Text = "(local)";
-			// 
-			// btnClose
-			// 
-			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnClose.Location = new System.Drawing.Point(216, 280);
-			this.btnClose.Name = "btnClose";
-			this.btnClose.TabIndex = 7;
-			this.btnClose.Text = "&Close";
-			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-			// 
-			// btnLogin
-			// 
-			this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.btnLogin.Location = new System.Drawing.Point(132, 280);
-			this.btnLogin.Name = "btnLogin";
-			this.btnLogin.TabIndex = 6;
-			this.btnLogin.Text = "&Login";
-			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-			this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label3.Location = new System.Drawing.Point(32, 21);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(219, 22);
-			this.label3.TabIndex = 85;
-			this.label3.Text = "SQL Server configuration...";
-			// 
-			// frmSqlLogin
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 14);
-			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(322, 320);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.txtPwd);
-			this.Controls.Add(this.txtLogin);
-			this.Controls.Add(this.Label2);
-			this.Controls.Add(this.lblConnection);
-			this.Controls.Add(this.Label6);
-			this.Controls.Add(this.Label1);
-			this.Controls.Add(this.TextBox2);
-			this.Controls.Add(this.lblServer);
-			this.Controls.Add(this.TextBox1);
-			this.Controls.Add(this.GroupBox1);
-			this.Controls.Add(this.GroupBox2);
-			this.Controls.Add(this.rbtnSQLAuth);
-			this.Controls.Add(this.rbtnWindowsAuth);
-			this.Controls.Add(this.btnClose);
-			this.Controls.Add(this.btnLogin);
-			this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.KeyPreview = true;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "frmSqlLogin";
-			this.ShowInTaskbar = false;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "SQL Connection...";
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmSqlLogin_KeyDown);
-			this.Load += new System.EventHandler(this.frmSqlLogin_Load);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSqlLogin));
+            this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbtnSQLAuth = new System.Windows.Forms.RadioButton();
+            this.rbtnWindowsAuth = new System.Windows.Forms.RadioButton();
+            this.txtPwd = new System.Windows.Forms.TextBox();
+            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.lblConnection = new System.Windows.Forms.Label();
+            this.Label6 = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.TextBox2 = new System.Windows.Forms.TextBox();
+            this.lblServer = new System.Windows.Forms.Label();
+            this.TextBox1 = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // GroupBox1
+            // 
+            this.GroupBox1.BackColor = System.Drawing.Color.PeachPuff;
+            this.GroupBox1.Location = new System.Drawing.Point(11, 321);
+            this.GroupBox1.Name = "GroupBox1";
+            this.GroupBox1.Size = new System.Drawing.Size(403, 2);
+            this.GroupBox1.TabIndex = 82;
+            this.GroupBox1.TabStop = false;
+            // 
+            // GroupBox2
+            // 
+            this.GroupBox2.BackColor = System.Drawing.Color.PeachPuff;
+            this.GroupBox2.Location = new System.Drawing.Point(123, 165);
+            this.GroupBox2.Name = "GroupBox2";
+            this.GroupBox2.Size = new System.Drawing.Size(280, 3);
+            this.GroupBox2.TabIndex = 81;
+            this.GroupBox2.TabStop = false;
+            // 
+            // rbtnSQLAuth
+            // 
+            this.rbtnSQLAuth.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbtnSQLAuth.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.rbtnSQLAuth.Location = new System.Drawing.Point(45, 214);
+            this.rbtnSQLAuth.Name = "rbtnSQLAuth";
+            this.rbtnSQLAuth.Size = new System.Drawing.Size(257, 19);
+            this.rbtnSQLAuth.TabIndex = 3;
+            this.rbtnSQLAuth.Text = "Use SQL Server Authentication";
+            this.rbtnSQLAuth.CheckedChanged += new System.EventHandler(this.rbtnSQLAuth_CheckedChanged);
+            // 
+            // rbtnWindowsAuth
+            // 
+            this.rbtnWindowsAuth.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbtnWindowsAuth.Checked = true;
+            this.rbtnWindowsAuth.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.rbtnWindowsAuth.Location = new System.Drawing.Point(45, 185);
+            this.rbtnWindowsAuth.Name = "rbtnWindowsAuth";
+            this.rbtnWindowsAuth.Size = new System.Drawing.Size(257, 19);
+            this.rbtnWindowsAuth.TabIndex = 2;
+            this.rbtnWindowsAuth.TabStop = true;
+            this.rbtnWindowsAuth.Text = "Use Windows Authentication";
+            this.rbtnWindowsAuth.CheckedChanged += new System.EventHandler(this.rbtnWindowsAuth_CheckedChanged);
+            // 
+            // txtPwd
+            // 
+            this.txtPwd.Enabled = false;
+            this.txtPwd.Location = new System.Drawing.Point(146, 282);
+            this.txtPwd.Name = "txtPwd";
+            this.txtPwd.PasswordChar = '*';
+            this.txtPwd.Size = new System.Drawing.Size(257, 24);
+            this.txtPwd.TabIndex = 5;
+            // 
+            // txtLogin
+            // 
+            this.txtLogin.Enabled = false;
+            this.txtLogin.Location = new System.Drawing.Point(146, 253);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(257, 24);
+            this.txtLogin.TabIndex = 4;
+            // 
+            // Label2
+            // 
+            this.Label2.AutoSize = true;
+            this.Label2.Location = new System.Drawing.Point(45, 282);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(66, 17);
+            this.Label2.TabIndex = 77;
+            this.Label2.Text = "Password";
+            // 
+            // lblConnection
+            // 
+            this.lblConnection.AutoSize = true;
+            this.lblConnection.Location = new System.Drawing.Point(45, 155);
+            this.lblConnection.Name = "lblConnection";
+            this.lblConnection.Size = new System.Drawing.Size(78, 17);
+            this.lblConnection.TabIndex = 79;
+            this.lblConnection.Text = "Connection";
+            // 
+            // Label6
+            // 
+            this.Label6.AutoSize = true;
+            this.Label6.Location = new System.Drawing.Point(45, 253);
+            this.Label6.Name = "Label6";
+            this.Label6.Size = new System.Drawing.Size(80, 17);
+            this.Label6.TabIndex = 78;
+            this.Label6.Text = "Login Name";
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Location = new System.Drawing.Point(45, 117);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(65, 17);
+            this.Label1.TabIndex = 76;
+            this.Label1.Text = "Database";
+            // 
+            // TextBox2
+            // 
+            this.TextBox2.Location = new System.Drawing.Point(146, 114);
+            this.TextBox2.Name = "TextBox2";
+            this.TextBox2.Size = new System.Drawing.Size(257, 24);
+            this.TextBox2.TabIndex = 1;
+            this.TextBox2.Text = "SchedulerDB";
+            // 
+            // lblServer
+            // 
+            this.lblServer.AutoSize = true;
+            this.lblServer.Location = new System.Drawing.Point(45, 84);
+            this.lblServer.Name = "lblServer";
+            this.lblServer.Size = new System.Drawing.Size(48, 17);
+            this.lblServer.TabIndex = 75;
+            this.lblServer.Text = "Server";
+            // 
+            // TextBox1
+            // 
+            this.TextBox1.Location = new System.Drawing.Point(146, 81);
+            this.TextBox1.Name = "TextBox1";
+            this.TextBox1.Size = new System.Drawing.Size(257, 24);
+            this.TextBox1.TabIndex = 0;
+            this.TextBox1.Text = "(local)";
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnClose.Location = new System.Drawing.Point(225, 344);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(105, 28);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "&Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnLogin.Location = new System.Drawing.Point(108, 344);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(105, 28);
+            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Text = "&Login";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(45, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(269, 24);
+            this.label3.TabIndex = 85;
+            this.label3.Text = "SQL Server configuration...";
+            // 
+            // frmSqlLogin
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(7, 17);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(438, 395);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtPwd);
+            this.Controls.Add(this.txtLogin);
+            this.Controls.Add(this.Label2);
+            this.Controls.Add(this.lblConnection);
+            this.Controls.Add(this.Label6);
+            this.Controls.Add(this.Label1);
+            this.Controls.Add(this.TextBox2);
+            this.Controls.Add(this.lblServer);
+            this.Controls.Add(this.TextBox1);
+            this.Controls.Add(this.GroupBox1);
+            this.Controls.Add(this.GroupBox2);
+            this.Controls.Add(this.rbtnSQLAuth);
+            this.Controls.Add(this.rbtnWindowsAuth);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnLogin);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmSqlLogin";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SQL Connection...";
+            this.Load += new System.EventHandler(this.frmSqlLogin_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmSqlLogin_KeyDown);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 		#endregion
