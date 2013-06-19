@@ -197,7 +197,7 @@ namespace Scheduler
             this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
             this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.White;
             this.gridView1.Appearance.GroupRow.BackColor2 = System.Drawing.Color.White;
-            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
             this.gridView1.Appearance.GroupRow.Options.UseFont = true;
             this.gridView1.AppearancePrint.FooterPanel.BackColor = System.Drawing.Color.White;
@@ -208,7 +208,7 @@ namespace Scheduler
             this.gridView1.AppearancePrint.GroupFooter.Options.UseBackColor = true;
             this.gridView1.AppearancePrint.GroupRow.BackColor = System.Drawing.Color.White;
             this.gridView1.AppearancePrint.GroupRow.BackColor2 = System.Drawing.Color.White;
-            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.gridView1.AppearancePrint.GroupRow.Options.UseBackColor = true;
             this.gridView1.AppearancePrint.GroupRow.Options.UseFont = true;
             this.gridView1.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.White;
@@ -235,10 +235,10 @@ namespace Scheduler
             this.gridView1.GroupCount = 1;
             this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ScheduledHours", null, "Scheduled Hours = {0:n1}"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PaidHours", null, "Total Paid Hours = {0:n1}"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ScheduledHours", this.colScheduledHours, "Scheduled Hours = {0:n1}"),
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PaidHours", this.colPaidHours, "Total Paid Hours = {0:n1}")});
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ScheduledHours", null, "Scheduled Hours = {0:n2}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PaidHours", null, "Total Paid Hours = {0:n2}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ScheduledHours", this.colScheduledHours, "Scheduled Hours = {0:n2}"),
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PaidHours", this.colPaidHours, "Total Paid Hours = {0:n2}")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowAutoFilterRow = true;
@@ -389,10 +389,10 @@ namespace Scheduler
             this.colPaidHours.OptionsColumn.AllowEdit = false;
             this.colPaidHours.OptionsColumn.ReadOnly = true;
             this.colPaidHours.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PaidHours", "TOTAL Paid Hours = {0:n1}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PaidHours", "TOTAL Paid Hours = {0:n2}")});
             this.colPaidHours.Visible = true;
             this.colPaidHours.VisibleIndex = 9;
-            this.colPaidHours.Width = 162;
+            this.colPaidHours.Width = 186;
             // 
             // repositoryItemSpinEdit2
             // 
@@ -437,10 +437,10 @@ namespace Scheduler
             this.colScheduledHours.OptionsColumn.AllowEdit = false;
             this.colScheduledHours.OptionsColumn.ReadOnly = true;
             this.colScheduledHours.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ScheduledHours", "TOTAL Scheduled Hours = {0:n1}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ScheduledHours", "TOTAL Scheduled Hours = {0:n2}")});
             this.colScheduledHours.Visible = true;
             this.colScheduledHours.VisibleIndex = 8;
-            this.colScheduledHours.Width = 163;
+            this.colScheduledHours.Width = 198;
             // 
             // repositoryItemSpinEdit1
             // 
