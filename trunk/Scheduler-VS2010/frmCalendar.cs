@@ -513,11 +513,11 @@ namespace Scheduler {
 		
 		public void PopulateDropDowns() {
             Common.PopulateDropdownWithValue(
-				cmbClient, "Select  CompanyName, DisplayName = CASE " +
+				cmbClient, "Select  CompanyName, CASE " +
 				"WHEN NickName IS NULL THEN CompanyName " +
 				"WHEN NickName = '' THEN CompanyName " +
 				"ELSE NickName " +
-				"END From " +
+                "END AS DisplayName From " +
 				"Contact Where ContactType=2 and " +
 				"ContactStatus=0 Order By DisplayName ");
             List<string> contacts = new List<string>();
@@ -540,11 +540,11 @@ namespace Scheduler {
             }
             Common.PopulateDropdownWithValue(
                 cmbInstructor, "Select  LastName + ', ' + FirstName, " +
-				"TeacherName = CASE " +
+				"CASE " +
 				"WHEN NickName IS NULL THEN LastName + ', ' + FirstName " +
 				"WHEN NickName = '' THEN LastName + ', ' + FirstName " +
 				"ELSE NickName " +
-				"END From " +
+                "END AS TeacherName From " +
 				"Contact Where ContactType=1 and " +
 				"ContactStatus=0 Order By LastName, FirstName ");
             contacts.Clear();
@@ -565,20 +565,20 @@ namespace Scheduler {
                     cmbInstructor.Items.RemoveAt(i);
             }
             Common.PopulateDropdownWithValue(
-                cmbClass, "Select Distinct [Name], ClassName = CASE " +
+                cmbClass, "Select Distinct [Name], CASE " +
 				"WHEN NickName IS NULL THEN Name " +
 				"WHEN NickName = '' THEN Name " +
 				"ELSE NickName " +
-				"END " +
+                "END AS ClassName " +
 				"From Course Where CourseStatus=0 " +  //and ProgramID=" + intProgramID + 
 				" Order By ClassName ");
 
             Common.PopulateDropdownWithValue(
-                cmbProgram, "Select Distinct [Name], ProgramName = CASE " +
+                cmbProgram, "Select Distinct [Name], CASE " +
 				"WHEN NickName IS NULL THEN Name " +
 				"WHEN NickName = '' THEN Name " +
 				"ELSE NickName " +
-				"END " +
+                "END AS ProgramName " +
 				"From Program Where ProgramStatus=0 " +// and DepartmentID=" + intDepartmentID + 
 				" Order By ProgramName ");
 

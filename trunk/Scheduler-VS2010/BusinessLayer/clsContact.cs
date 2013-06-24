@@ -117,30 +117,27 @@ namespace Scheduler.BusinessLayer
 			{
 				if(_contactid<=0)
 				{
-					strSql = "select BrowseName = CASE " +
+					strSql = "select CASE " +
 						"WHEN NickName IS NULL THEN CompanyName " +
 						"WHEN NickName = '' THEN CompanyName " +
 						"ELSE NickName " +
-						"END,  " +
+                        "END AS BrowseName,  " +
 						"*,  " +
-						"Type = " +
 					"CASE ContactType " +
 					"When '0' Then 'User' " +
 					"When '1' Then 'Teacher' " +
 					"When '2' Then 'Client' " +
 					"When '3' Then 'Department' " +
-					"END, " +
-					"Status = " +
+                    "END AS Type, " +
 					"CASE ContactStatus " +
 					"When '0' Then 'Active' " +
 					"When '1' Then 'Inactive' " +
-					"END, " +
-					"MaritalStatus = " +
+                    "END AS Status, " +
 					"CASE Married " +
 					"When '0' Then 'Yes' " +
 					"When '1' Then 'No' " +
 					"ELSE '' " +
-                    "END,Email1,Email2,Phone1,Phone2,PhoneMobile1,PhoneMobile2,PhoneBusiness1,PhoneBusiness2, CASE When (AccountRepLastName + ', ' + AccountRepFirstName) <> ', ' Then (AccountRepLastName + ', ' + AccountRepFirstName) Else '' End as  AccRepName " +
+                    "END AS MaritalStatus,Email1,Email2,Phone1,Phone2,PhoneMobile1,PhoneMobile2,PhoneBusiness1,PhoneBusiness2, CASE When (AccountRepLastName + ', ' + AccountRepFirstName) <> ', ' Then (AccountRepLastName + ', ' + AccountRepFirstName) Else '' End as  AccRepName " +
 					"From Contact ";
 					if(option!="Contact")
 					{
@@ -169,30 +166,27 @@ namespace Scheduler.BusinessLayer
 				}
 				else
 				{
-					strSql = "select BrowseName = CASE " +
+					strSql = "select CASE " +
 						"WHEN NickName IS NULL THEN CompanyName " +
 						"WHEN NickName = '' THEN CompanyName " +
 						"ELSE NickName " +
-						"END,  " +
+                        "END AS BrowseName,  " +
 						"*,  " +
-						"Type = " +
 						"CASE ContactType " +
 						"When '0' Then 'User' " +
 						"When '1' Then 'Teacher' " +
 						"When '2' Then 'Client' " +
 						"When '3' Then 'Department' " +
-						"END, " +
-						"Status = " +
+                        "END AS Type, " +
 						"CASE ContactStatus " +
 						"When '0' Then 'Active' " +
 						"When '1' Then 'Inactive' " +
-						"END, " +
-						"MaritalStatus = " +
+                        "END AS Status, " +
 						"CASE Married " +
 						"When '0' Then 'Yes' " +
 						"When '1' Then 'No' " +
 						"ELSE '' " +
-                        "END, CASE When (AccountRepLastName + ', ' + AccountRepFirstName) <> ', ' Then (AccountRepLastName + ', ' + AccountRepFirstName) Else '' End as  AccRepName " +
+                        "END AS MaritalStatus, CASE When (AccountRepLastName + ', ' + AccountRepFirstName) <> ', ' Then (AccountRepLastName + ', ' + AccountRepFirstName) Else '' End as  AccRepName " +
 						"From Contact " +
 						"WHERE ContactID = " + _contactid + " ";
 				}
