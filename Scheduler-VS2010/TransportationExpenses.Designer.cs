@@ -218,7 +218,7 @@ namespace Scheduler
             this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
             this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.White;
             this.gridView1.Appearance.GroupRow.BackColor2 = System.Drawing.Color.White;
-            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView1.Appearance.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
             this.gridView1.Appearance.GroupRow.Options.UseFont = true;
             this.gridView1.AppearancePrint.FooterPanel.BackColor = System.Drawing.Color.White;
@@ -229,7 +229,7 @@ namespace Scheduler
             this.gridView1.AppearancePrint.GroupFooter.Options.UseBackColor = true;
             this.gridView1.AppearancePrint.GroupRow.BackColor = System.Drawing.Color.White;
             this.gridView1.AppearancePrint.GroupRow.BackColor2 = System.Drawing.Color.White;
-            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.gridView1.AppearancePrint.GroupRow.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.gridView1.AppearancePrint.GroupRow.Options.UseBackColor = true;
             this.gridView1.AppearancePrint.GroupRow.Options.UseFont = true;
             this.gridView1.AppearancePrint.HeaderPanel.BackColor = System.Drawing.Color.White;
@@ -292,7 +292,7 @@ namespace Scheduler
             this.colProgramName.OptionsColumn.AllowEdit = false;
             this.colProgramName.OptionsColumn.ReadOnly = true;
             this.colProgramName.Visible = true;
-            this.colProgramName.VisibleIndex = 3;
+            this.colProgramName.VisibleIndex = 2;
             this.colProgramName.Width = 78;
             // 
             // colClassName
@@ -303,7 +303,7 @@ namespace Scheduler
             this.colClassName.OptionsColumn.AllowEdit = false;
             this.colClassName.OptionsColumn.ReadOnly = true;
             this.colClassName.Visible = true;
-            this.colClassName.VisibleIndex = 4;
+            this.colClassName.VisibleIndex = 3;
             this.colClassName.Width = 148;
             // 
             // colClassType
@@ -314,7 +314,7 @@ namespace Scheduler
             this.colClassType.OptionsColumn.AllowEdit = false;
             this.colClassType.OptionsColumn.ReadOnly = true;
             this.colClassType.Visible = true;
-            this.colClassType.VisibleIndex = 5;
+            this.colClassType.VisibleIndex = 4;
             this.colClassType.Width = 88;
             // 
             // colClientShortName
@@ -325,7 +325,7 @@ namespace Scheduler
             this.colClientShortName.OptionsColumn.AllowEdit = false;
             this.colClientShortName.OptionsColumn.ReadOnly = true;
             this.colClientShortName.Visible = true;
-            this.colClientShortName.VisibleIndex = 2;
+            this.colClientShortName.VisibleIndex = 1;
             this.colClientShortName.Width = 129;
             // 
             // colStartDateTime
@@ -339,7 +339,7 @@ namespace Scheduler
             this.colStartDateTime.OptionsColumn.AllowEdit = false;
             this.colStartDateTime.OptionsColumn.ReadOnly = true;
             this.colStartDateTime.Visible = true;
-            this.colStartDateTime.VisibleIndex = 6;
+            this.colStartDateTime.VisibleIndex = 5;
             this.colStartDateTime.Width = 73;
             // 
             // repositoryItemTimeEdit1
@@ -496,7 +496,7 @@ namespace Scheduler
             this.colBlock.Caption = "Block";
             this.colBlock.Name = "colBlock";
             this.colBlock.Visible = true;
-            this.colBlock.VisibleIndex = 9;
+            this.colBlock.VisibleIndex = 8;
             this.colBlock.Width = 57;
             // 
             // colExpense
@@ -504,14 +504,14 @@ namespace Scheduler
             this.colExpense.Caption = "Expense";
             this.colExpense.Name = "colExpense";
             this.colExpense.Visible = true;
-            this.colExpense.VisibleIndex = 10;
+            this.colExpense.VisibleIndex = 9;
             // 
             // colComment
             // 
             this.colComment.Caption = "Comment";
             this.colComment.Name = "colComment";
             this.colComment.Visible = true;
-            this.colComment.VisibleIndex = 11;
+            this.colComment.VisibleIndex = 10;
             this.colComment.Width = 106;
             // 
             // repositoryItemDateEdit1
