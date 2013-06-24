@@ -138,16 +138,16 @@ namespace Scheduler.BusinessLayer
 				{
 					strSql = "select D.*, ";
 					strSql += "C.NickName, C.ContactID As ContactID, C.LastName + ', ' + C.FirstName As Contact, ";
-					strSql += "C.TitleForName, CompanyName = CASE ";
+					strSql += "C.TitleForName, CASE ";
 					strSql += "WHEN C.NickName IS NULL THEN C.CompanyName ";
 					strSql += "WHEN C.NickName = '' THEN C.CompanyName ";
 					strSql += "ELSE C.NickName ";
-					strSql += "END, ";
-					strSql += "C1.ContactID As ClientID, Client = CASE ";
+                    strSql += "END AS CompanyName, ";
+					strSql += "C1.ContactID As ClientID, CASE ";
 					strSql += "WHEN C1.NickName IS NULL THEN C1.CompanyName ";
 					strSql += "WHEN C1.NickName = '' THEN C1.CompanyName ";
 					strSql += "ELSE C1.NickName ";
-					strSql += "END ";
+                    strSql += "END AS Client ";
 					strSql += "From Department D ";
 					strSql += "Left Join Contact C on(D.ContactID=C.ContactID) ";
 					strSql += "Left Join Contact C1 on(D.ClientID=C1.ContactID) ";
@@ -157,16 +157,16 @@ namespace Scheduler.BusinessLayer
 				{
 					strSql = "select D.*, ";
 					strSql += "C.NickName, C.ContactID As ContactID, C.LastName + ', ' + C.FirstName As Contact, ";
-					strSql += "C.TitleForName, CompanyName = CASE ";
+					strSql += "C.TitleForName, CASE ";
 					strSql += "WHEN C.NickName IS NULL THEN C.CompanyName ";
 					strSql += "WHEN C.NickName = '' THEN C.CompanyName ";
 					strSql += "ELSE C.NickName ";
-					strSql += "END,  ";
-					strSql += "C1.ContactID As ClientID, Client = CASE ";
+                    strSql += "END AS CompanyName,  ";
+					strSql += "C1.ContactID As ClientID, CASE ";
 					strSql += "WHEN C1.NickName IS NULL THEN C1.CompanyName ";
 					strSql += "WHEN C1.NickName = '' THEN C1.CompanyName ";
 					strSql += "ELSE C1.NickName ";
-					strSql += "END  ";
+                    strSql += "END AS Client  ";
 					strSql += "From Department D ";
 					strSql += "Left Join Contact C on(D.ContactID=C.ContactID) ";
 					strSql += "Left Join Contact C1 on(D.ClientID=C1.ContactID) ";
