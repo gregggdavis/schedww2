@@ -1486,21 +1486,21 @@ namespace Scheduler.BusinessLayer
                     if (CourseId > 0)
 					{
 						strSql = "Select " +
-							"Program = CASE " +
+							"CASE " +
 							"WHEN P.NickName IS NULL THEN P.Name " +
 							"WHEN P.NickName = '' THEN P.Name " +
 							"ELSE P.NickName " +
-							"END,  " +
-							"Department = CASE " +
+                            "END AS Program,  " +
+							"CASE " +
 							"WHEN CO.NickName IS NULL THEN CO.CompanyName " +
 							"WHEN CO.NickName = '' THEN CO.CompanyName " +
 							"ELSE CO.NickName " +
-							"END,  " +
-							"Client = CASE " + 
+                            "END AS Department,  " +
+							"CASE " + 
 							"WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
 							"WHEN CO1.NickName = '' THEN CO1.CompanyName " +
 							"ELSE CO1.NickName " +
-							"END  " +
+                            "END AS Client  " +
 							"From Course C " +
 							"Left Join Program P on (C.ProgramID=P.ProgramID) " +
 							"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
@@ -1527,21 +1527,21 @@ namespace Scheduler.BusinessLayer
 						if(ProgramID>0)
 						{
 							strSql = "Select " +
-								"Program = CASE " +
+								"CASE " +
 								"WHEN P.NickName IS NULL THEN P.Name " +
 								"WHEN P.NickName = '' THEN P.Name " +
 								"ELSE P.NickName " +
-								"END,  " +
-								"Department = CASE " +
+                                "END AS Program,  " +
+								"CASE " +
 								"WHEN CO.NickName IS NULL THEN CO.CompanyName " +
 								"WHEN CO.NickName = '' THEN CO.CompanyName " +
 								"ELSE CO.NickName " +
-								"END,  " +
-								"Client = CASE " + 
+								"END AS Department,  " +
+								"CASE " + 
 								"WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
 								"WHEN CO1.NickName = '' THEN CO1.CompanyName " +
 								"ELSE CO1.NickName " +
-								"END  " +
+                                "END AS Client  " +
 								"From Program P " +
 								"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
 								"Left Join Contact CO on (D.ContactID=CO.ContactID) " +
@@ -1592,86 +1592,86 @@ namespace Scheduler.BusinessLayer
 				}
 				strOverLapMess = strOverLapMess.Trim();
 
-				/*
-				strSql = "Select " +
-					"ClientName = CASE " +
-					"WHEN CL.NickName IS NULL THEN CL.LastName + ', ' + CL.FirstName " +
-					"WHEN CL.NickName = '' THEN CL.LastName + ', ' + CL.FirstName " +
-					"ELSE CL.NickName " +
-					"END, " +
-					"C.[Name] from Course C " +
-					"Left Outer Join Program P ON(C.ProgramID=P.ProgramID) "+
-					"Left Outer Join Department D ON(P.DepartmentID=D.DepartmentID) "+
-					"Left Outer Join Contact CL ON(D.ClientID=CL.ContactID) "+
-					"WHERE "+
-					"(C.EventID=" + evtid.ToString() + " OR "+
-					"C.TestInitialEventID=" + evtid.ToString() + " OR "+
-					"C.TestMidtermEventID=" + evtid.ToString() + " OR "+
-					"C.TestFinalEventID=" + evtid.ToString() + ")";
+                /*
+                strSql = "Select " +
+                    "CASE " +
+                    "WHEN CL.NickName IS NULL THEN CL.LastName + ', ' + CL.FirstName " +
+                    "WHEN CL.NickName = '' THEN CL.LastName + ', ' + CL.FirstName " +
+                    "ELSE CL.NickName " +
+                    "END AS ClientName, " +
+                    "C.[Name] from Course C " +
+                    "Left Outer Join Program P ON(C.ProgramID=P.ProgramID) "+
+                    "Left Outer Join Department D ON(P.DepartmentID=D.DepartmentID) "+
+                    "Left Outer Join Contact CL ON(D.ClientID=CL.ContactID) "+
+                    "WHERE "+
+                    "(C.EventID=" + evtid.ToString() + " OR "+
+                    "C.TestInitialEventID=" + evtid.ToString() + " OR "+
+                    "C.TestMidtermEventID=" + evtid.ToString() + " OR "+
+                    "C.TestFinalEventID=" + evtid.ToString() + ")";
 
 
-				con=new Connection();
-				con.Connect();
-				com = new SqlCommand();
-				com.Connection=con.SQLCon;
-				com.CommandText = strSql;
+                con=new Connection();
+                con.Connect();
+                com = new SqlCommand();
+                com.Connection=con.SQLCon;
+                com.CommandText = strSql;
 
 
-				Reader = com.ExecuteReader();
-				while(Reader.Read())
-				{
-					Ok = true;
-					sClientName = Reader[0].ToString();
-					sClassProgName = Reader[1].ToString();
-				}
-				Reader.Close();
+                Reader = com.ExecuteReader();
+                while(Reader.Read())
+                {
+                    Ok = true;
+                    sClientName = Reader[0].ToString();
+                    sClassProgName = Reader[1].ToString();
+                }
+                Reader.Close();
 				
-				if(Ok)
-				{
-					sClientName=sClientName.Trim();
-					sClassProgName=sClassProgName.Trim();
-					if(sClassProgName==",") sClassProgName="";
-				}
-				else
-				{
-					strSql = "Select " +
-						"ClientName = CASE " +
-						"WHEN CL.NickName IS NULL THEN CL.LastName + ', ' + CL.FirstName " +
-						"WHEN CL.NickName = '' THEN CL.LastName + ', ' + CL.FirstName " +
-						"ELSE CL.NickName " +
-						"END, " +
-						"C.[Name] from Program C " +
-						"Left Outer Join Department D ON(C.DepartmentID=D.DepartmentID) "+
-						"Left Outer Join Contact CL ON(D.ClientID=CL.ContactID) "+
-						"WHERE " +
-						"(C.TestInitialEventID=" + evtid.ToString() + " OR "+
-						"C.TestMidtermEventID=" + evtid.ToString() + " OR "+
-						"C.TestFinalEventID=" + evtid.ToString() + ")";
+                if(Ok)
+                {
+                    sClientName=sClientName.Trim();
+                    sClassProgName=sClassProgName.Trim();
+                    if(sClassProgName==",") sClassProgName="";
+                }
+                else
+                {
+                    strSql = "Select " +
+                        "CASE " +
+                        "WHEN CL.NickName IS NULL THEN CL.LastName + ', ' + CL.FirstName " +
+                        "WHEN CL.NickName = '' THEN CL.LastName + ', ' + CL.FirstName " +
+                        "ELSE CL.NickName " +
+                        "END AS ClientName, " +
+                        "C.[Name] from Program C " +
+                        "Left Outer Join Department D ON(C.DepartmentID=D.DepartmentID) "+
+                        "Left Outer Join Contact CL ON(D.ClientID=CL.ContactID) "+
+                        "WHERE " +
+                        "(C.TestInitialEventID=" + evtid.ToString() + " OR "+
+                        "C.TestMidtermEventID=" + evtid.ToString() + " OR "+
+                        "C.TestFinalEventID=" + evtid.ToString() + ")";
 
-					com.CommandText = strSql;
-					Reader = com.ExecuteReader();
-					while(Reader.Read())
-					{
-						Ok = true;
-						sClientName = Reader[0].ToString();
-						sClassProgName = Reader[1].ToString();
-					}
-					Reader.Close();
-				}
+                    com.CommandText = strSql;
+                    Reader = com.ExecuteReader();
+                    while(Reader.Read())
+                    {
+                        Ok = true;
+                        sClientName = Reader[0].ToString();
+                        sClassProgName = Reader[1].ToString();
+                    }
+                    Reader.Close();
+                }
 
-				string strOverLapMess=string.Empty;
-				if(sClientName!="")
-				{
-					strOverLapMess = "-<" + sClientName + ">";
-					if(sClassProgName!="")
-					{
-						strOverLapMess += "<" + sClassProgName + ">";
-					}
-				}
-				strOverLapMess = strOverLapMess.Trim();*/
+                string strOverLapMess=string.Empty;
+                if(sClientName!="")
+                {
+                    strOverLapMess = "-<" + sClientName + ">";
+                    if(sClassProgName!="")
+                    {
+                        strOverLapMess += "<" + sClassProgName + ">";
+                    }
+                }
+                strOverLapMess = strOverLapMess.Trim();*/
 
 
-				return strOverLapMess;
+                return strOverLapMess;
 
 			}
 			catch(SqlException ex)
