@@ -145,11 +145,11 @@ namespace Scheduler
 		public frmDepartmentDlg()
 		{
 			InitializeComponent();
-            string query = "Select CompanyName = CASE " +
+            string query = "Select CASE " +
                 "WHEN NickName IS NULL THEN [CompanyName] " +
                 "WHEN NickName = '' THEN [CompanyName] " +
                 "ELSE NickName " +
-                "END From " +
+                "END AS CompanyName From " +
                 "Contact Where ContactType=2 " +
                 " Order By CompanyName";
             
@@ -1587,11 +1587,11 @@ namespace Scheduler
 
 		public void LoadData()
 		{
-            string revQuery = "Select CompanyName = CASE " +
+            string revQuery = "Select CASE " +
                 "WHEN NickName IS NULL THEN [CompanyName] " +
                 "WHEN NickName = '' THEN [CompanyName] " +
                 "ELSE NickName " +
-                "END From " +
+                "END AS CompanyName From " +
                 "Contact Where ContactType=2 and " +
                 "ContactStatus=1 Order By CompanyName";
             IDataReader reader = DAC.SelectStatement(revQuery);
@@ -2113,19 +2113,19 @@ namespace Scheduler
 			if(fContDlg.ShowDialog()==DialogResult.OK)
 			{
 				Common.PopulateDropdown(
-					cmbClient, "Select CompanyName = CASE " +
+					cmbClient, "Select CASE " +
 					"WHEN NickName IS NULL THEN [CompanyName] " +
 					"WHEN NickName = '' THEN [CompanyName] " +
 					"ELSE NickName " +
-					"END From " +
+                    "END AS CompanyName From " +
 					"Contact Where ContactType=2  " +
 					" Order By ContactID");
 				cmbClient.SelectedIndex = cmbClient.Items.Count-1;
-                string revQuery = "Select CompanyName = CASE " +
+                string revQuery = "Select CASE " +
                 "WHEN NickName IS NULL THEN [CompanyName] " +
                 "WHEN NickName = '' THEN [CompanyName] " +
                 "ELSE NickName " +
-                "END From " +
+                "END AS CompanyName From " +
                 "Contact Where ContactType=2 and " +
                 "ContactStatus=1 Order By CompanyName";
                 IDataReader reader = DAC.SelectStatement(revQuery);
