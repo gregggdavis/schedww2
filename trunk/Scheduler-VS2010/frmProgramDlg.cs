@@ -1536,7 +1536,7 @@ namespace Scheduler
                                      "END AS CompanyName From " +
                                      "Department D, Contact C Where D.ContactID=C.ContactID and " +
                                      " D.ClientID=" + intClientID +
-                                     " Order By D.CompanyName ");
+                                     " Order By CompanyName ");
                         
 
                     }
@@ -1550,7 +1550,7 @@ namespace Scheduler
                                      "END AS CompanyName From " +
                                      "Department D, Contact C Where D.ContactID=C.ContactID and " +
                                      "D.DepartmentStatus=1 and D.ClientID=" + intClientID +
-                                     " Order By D.CompanyName ";
+                                     " Order By CompanyName ";
                     IDataReader deptReader = DAC.SelectStatement(deptQuery);
                     while (deptReader.Read())
                     {
@@ -2333,14 +2333,14 @@ namespace Scheduler
 				             "ELSE C.NickName " +
                              "END AS ContactName From " +
 				             "Contact C Where  C.ContactType=5 and C.RefID=" + intDepartmentID.ToString() +
-				             " Order By C.ContactName ";
+				             " Order By ContactName ";
                 string sql2 = "Select CASE " + //"C.LastName + ', ' + C.FirstName " +
                              "WHEN C.NickName IS NULL THEN C.LastName + ', ' + C.FirstName " +
                              "WHEN C.NickName = '' THEN C.LastName + ', ' + C.FirstName " +
                              "ELSE C.NickName " +
                              "END AS ContactName From " +
                              "Contact C Where C.ContactStatus=1 and C.ContactType=5 and C.RefID=" + intDepartmentID.ToString() +
-                             " Order By C.ContactName "; 
+                             " Order By ContactName "; 
 				Common.PopulateDropdown(cmbContact1, sql);
 				Common.PopulateDropdown(cmbContact2, sql);
                 IDataReader reader = DAC.SelectStatement(sql2);

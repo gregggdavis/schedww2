@@ -223,21 +223,21 @@ namespace Scheduler.BusinessLayer {
 
 					if (boolCourse) {
 						strSql = "Select " +
-							"Program = CASE " +
+							"CASE " +
 							"WHEN P.NickName IS NULL THEN P.Name " +
 							"WHEN P.NickName = '' THEN P.Name " +
 							"ELSE P.NickName " +
-							"END,  " +
-							"Department = CASE " +
+                            "END AS Program,  " +
+							"CASE " +
 							"WHEN CO.NickName IS NULL THEN CO.CompanyName " +
 							"WHEN CO.NickName = '' THEN CO.CompanyName " +
 							"ELSE CO.NickName " +
-							"END,  " +
-							"Client = CASE " +
+                            "END AS Department,  " +
+							"CASE " +
 							"WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
 							"WHEN CO1.NickName = '' THEN CO1.CompanyName " +
 							"ELSE CO1.NickName " +
-							"END  " +
+                            "END AS Client  " +
 							"From Course C " +
 							"Left Join Program P on (C.ProgramID=P.ProgramID) " +
 							"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
@@ -258,21 +258,21 @@ namespace Scheduler.BusinessLayer {
 						Reader.Close();
 					} else if (boolProgram) {
 						strSql = "Select ";
-						strSql += "Program = CASE ";
+						strSql += "CASE ";
 						strSql += "WHEN P.NickName IS NULL THEN P.Name ";
 						strSql += "WHEN P.NickName = '' THEN P.Name ";
 						strSql += "ELSE P.NickName ";
-						strSql += "END,  ";
-						strSql += "Department = CASE ";
+                        strSql += "END AS Program,  ";
+						strSql += "CASE ";
 						strSql += "WHEN C.NickName IS NULL THEN C.CompanyName ";
 						strSql += "WHEN C.NickName = '' THEN C.CompanyName ";
 						strSql += "ELSE C.NickName ";
-						strSql += "END,  ";
-						strSql += "Client = CASE ";
+                        strSql += "END AS Department,  ";
+						strSql += "CASE ";
 						strSql += "WHEN C1.NickName IS NULL THEN C1.CompanyName ";
 						strSql += "WHEN C1.NickName = '' THEN C1.CompanyName ";
 						strSql += "ELSE C1.NickName ";
-						strSql += "END  ";
+                        strSql += "END AS Client  ";
 						strSql += "From Program P ";
 						strSql += "Left Join Department D on (P.DepartmentID=D.DepartmentID) ";
 						strSql += "Left Join Contact C on (D.ContactID=C.ContactID) ";
@@ -755,21 +755,21 @@ namespace Scheduler.BusinessLayer {
 
 					if (boolCourse) {
 						strSql = "Select " +
-							"P.[Name] as ProgramName, Program = CASE " +
+							"P.[Name] as ProgramName, CASE " +
 							"WHEN P.NickName IS NULL THEN P.Name " +
 							"WHEN P.NickName = '' THEN P.Name " +
 							"ELSE P.NickName " +
-							"END,  " +
-							"CO.CompanyName as DeptName, Department = CASE " +
+                            "END AS Program,  " +
+							"CO.CompanyName as DeptName, CASE " +
 							"WHEN CO.NickName IS NULL THEN CO.CompanyName " +
 							"WHEN CO.NickName = '' THEN CO.CompanyName " +
 							"ELSE CO.NickName " +
-							"END,  " +
-							"CO1.CompanyName as ClientName, Client = CASE " +
+                            "END AS Department,  " +
+							"CO1.CompanyName as ClientName, CASE " +
 							"WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
 							"WHEN CO1.NickName = '' THEN CO1.CompanyName " +
 							"ELSE CO1.NickName " +
-							"END  " +
+                            "END AS Client  " +
 							"From Course C " +
 							"Left Join Program P on (C.ProgramID=P.ProgramID) " +
 							"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
@@ -799,21 +799,21 @@ namespace Scheduler.BusinessLayer {
 					} 
                     else if (boolProgram) {
                         strSql = "Select ";
-                        strSql += "P.[Name] as ProgramName, Program = CASE ";
+                        strSql += "P.[Name] as ProgramName, CASE ";
 						strSql += "WHEN P.NickName IS NULL THEN P.Name ";
 						strSql += "WHEN P.NickName = '' THEN P.Name ";
 						strSql += "ELSE P.NickName ";
-						strSql += "END,  ";
-						strSql += "C.CompanyName as DeptName, Department = CASE ";
+                        strSql += "END AS Program,  ";
+						strSql += "C.CompanyName as DeptName, CASE ";
 						strSql += "WHEN C.NickName IS NULL THEN C.CompanyName ";
 						strSql += "WHEN C.NickName = '' THEN C.CompanyName ";
 						strSql += "ELSE C.NickName ";
-						strSql += "END,  ";
-						strSql += "C1.CompanyName as ClientName, Client = CASE ";
+                        strSql += "END AS Department,  ";
+						strSql += "C1.CompanyName as ClientName, CASE ";
 						strSql += "WHEN C1.NickName IS NULL THEN C1.CompanyName ";
 						strSql += "WHEN C1.NickName = '' THEN C1.CompanyName ";
 						strSql += "ELSE C1.NickName ";
-						strSql += "END  ";
+                        strSql += "END AS Client  ";
 						strSql += "From Program P ";
 						strSql += "Left Join Department D on (P.DepartmentID=D.DepartmentID) ";
 						strSql += "Left Join Contact C on (D.ContactID=C.ContactID) ";
@@ -1120,21 +1120,21 @@ namespace Scheduler.BusinessLayer {
                     if (boolCourse)
                     {
                         strSql = "Select " +
-                            "P.[Name] as ProgramName, Program = CASE " +
+                            "P.[Name] as ProgramName, CASE " +
                             "WHEN P.NickName IS NULL THEN P.Name " +
                             "WHEN P.NickName = '' THEN P.Name " +
                             "ELSE P.NickName " +
-                            "END,  " +
-                            "CO.CompanyName as DeptName, Department = CASE " +
+                            "END AS Program,  " +
+                            "CO.CompanyName as DeptName, CASE " +
                             "WHEN CO.NickName IS NULL THEN CO.CompanyName " +
                             "WHEN CO.NickName = '' THEN CO.CompanyName " +
                             "ELSE CO.NickName " +
-                            "END,  " +
-                            "CO1.CompanyName as ClientName, Client = CASE " +
+                            "END AS Department,  " +
+                            "CO1.CompanyName as ClientName, CASE " +
                             "WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
                             "WHEN CO1.NickName = '' THEN CO1.CompanyName " +
                             "ELSE CO1.NickName " +
-                            "END  " +
+                            "END AS Client  " +
                             "From Course C " +
                             "Left Join Program P on (C.ProgramID=P.ProgramID) " +
                             "Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
@@ -1166,21 +1166,21 @@ namespace Scheduler.BusinessLayer {
                     else if (boolProgram)
                     {
                         strSql = "Select ";
-                        strSql += "P.[Name] as ProgramName, Program = CASE ";
+                        strSql += "P.[Name] as ProgramName, CASE ";
                         strSql += "WHEN P.NickName IS NULL THEN P.Name ";
                         strSql += "WHEN P.NickName = '' THEN P.Name ";
                         strSql += "ELSE P.NickName ";
-                        strSql += "END,  ";
-                        strSql += "C.CompanyName as DeptName, Department = CASE ";
+                        strSql += "END AS Program,  ";
+                        strSql += "C.CompanyName as DeptName, CASE ";
                         strSql += "WHEN C.NickName IS NULL THEN C.CompanyName ";
                         strSql += "WHEN C.NickName = '' THEN C.CompanyName ";
                         strSql += "ELSE C.NickName ";
-                        strSql += "END,  ";
-                        strSql += "C1.CompanyName as ClientName, Client = CASE ";
+                        strSql += "END AS Department,  ";
+                        strSql += "C1.CompanyName as ClientName, CASE ";
                         strSql += "WHEN C1.NickName IS NULL THEN C1.CompanyName ";
                         strSql += "WHEN C1.NickName = '' THEN C1.CompanyName ";
                         strSql += "ELSE C1.NickName ";
-                        strSql += "END  ";
+                        strSql += "END AS Client  ";
                         strSql += "From Program P ";
                         strSql += "Left Join Department D on (P.DepartmentID=D.DepartmentID) ";
                         strSql += "Left Join Contact C on (D.ContactID=C.ContactID) ";

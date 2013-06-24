@@ -250,57 +250,57 @@ namespace Scheduler.BusinessLayer
 			{
 				if(_courseid<=0)
 				{
-					strSql += "Select C.*, BrowseName = CASE " +
+					strSql += "Select C.*, CASE " +
 						"WHEN C.NickName IS NULL THEN C.Name " +
 						"WHEN C.NickName = '' THEN C.Name " +
 						"ELSE C.NickName " +
-						"END,  " +
+                        "END AS BrowseName,  " +
 						"P.ProgramID, " +
-						"Program = CASE " +
+						"CASE " +
 						"WHEN P.NickName IS NULL THEN P.Name " +
 						"WHEN P.NickName = '' THEN P.Name " +
 						"ELSE P.NickName " +
-						"END,  " +
-						"Department = CASE " +
+                        "END AS Program,  " +
+						"CASE " +
 						"WHEN CO.NickName IS NULL THEN CO.CompanyName " +
 						"WHEN CO.NickName = '' THEN CO.CompanyName " +
 						"ELSE CO.NickName " +
-						"END,  " +
-						"Client = CASE " + 
+                        "END AS Department,  " +
+						"CASE " + 
 						"WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
 						"WHEN CO1.NickName = '' THEN CO1.CompanyName " +
 						"ELSE CO1.NickName " +
-						"END  " +
+                        "END AS Client  " +
 						"from Course C " +
 						"Left Join Program P on (C.ProgramID=P.ProgramID) " +
 						"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
 						"Left Join Contact CO on (D.ContactID=CO.ContactID) " +
 						"Left Join Contact CO1 on (D.ClientID=CO1.ContactID) " +
-                        "Order By C.BrowseName ";
+                        "Order By BrowseName ";
 				}
 				else
 				{
-					strSql += "Select C.*, BrowseName = CASE " +
+					strSql += "Select C.*, CASE " +
 						"WHEN C.NickName IS NULL THEN C.Name " +
 						"WHEN C.NickName = '' THEN C.Name " +
 						"ELSE C.NickName " +
-						"END,  " +
+                        "END AS BrowseName,  " +
 						"P.ProgramID, " +
-						"P.NickName, Program = CASE " +
+						"P.NickName, CASE " +
 						"WHEN P.NickName IS NULL THEN P.Name " +
 						"WHEN P.NickName = '' THEN P.Name " +
 						"ELSE P.NickName " +
-						"END,  " +
-						"Department = CASE " +
+                        "END AS Program,  " +
+						"CASE " +
 						"WHEN CO.NickName IS NULL THEN CO.CompanyName " +
 						"WHEN CO.NickName = '' THEN CO.CompanyName " +
 						"ELSE CO.NickName " +
-						"END,  " +
-						"Client = CASE " + 
+                        "END AS Department,  " +
+						"CASE " + 
 						"WHEN CO1.NickName IS NULL THEN CO1.CompanyName " +
 						"WHEN CO1.NickName = '' THEN CO1.CompanyName " +
 						"ELSE CO1.NickName " +
-						"END  " +
+                        "END AS Client  " +
 						"from Course C " +
 						"Left Join Program P on (C.ProgramID=P.ProgramID) " +
 						"Left Join Department D on (P.DepartmentID=D.DepartmentID) " +
